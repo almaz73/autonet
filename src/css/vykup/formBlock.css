@@ -86,14 +86,6 @@
     position: relative;
 }
 
-.formBlock {
-    margin-top: 200px;
-}
-
-.fullBanner.second .formBlock {
-    margin-top: 400px;
-}
-
 
 @media (max-width: 768px) {
     .formBlock {
@@ -103,8 +95,8 @@
 
 @media (min-width: 768px) {
     .fullBanner .formBlock, .fullBanner .textBlock {
-        flex: 0 0 50%;
-        max-width: 50%;
+        max-width: 45%;
+        margin-right: 10px;
     }
 }
 

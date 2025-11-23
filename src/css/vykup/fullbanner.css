@@ -36,8 +36,14 @@
 .fullBanner .page__flex {
     padding-left: 30px;
     align-items: end;
+    min-height: 100vh;
 }
 
+@media (max-width: 768px) {
+    .fullBanner .page__flex {
+        min-height: auto;
+    }
+}
 .fullBanner .textBlock {
     font-family: Gilroy-Bold, sans-serif;
     color: white;
