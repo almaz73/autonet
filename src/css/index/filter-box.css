@@ -1,0 +1,163 @@
+.filter {
+    border-radius: 15px;
+    background: var(--color-grey);
+    width: calc(100% - 70px);
+    min-height: 60px;
+    padding: 10px;
+    display: flex;
+    outline: none;
+    position: relative;
+    padding: 35px;
+    margin-bottom: 100px;
+}
+
+.filter__wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.filter__controls {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.filter__controls-button {
+    display: block;
+    min-width: 135px;
+    padding: 13px 25px;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 10px;
+    border: 1px solid #dcdcdc;
+    cursor: pointer;
+}
+.filter__controls-button.active {
+    color: var(--color-red);
+    border-color: white;
+    background-color: white;
+}
+
+.filter__controls-button:hover {
+    color: white;
+    border-color: white;
+    background-color:var(--color-red);
+}
+
+.filter__controls-info-button {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 125%;
+    color: #000;
+    cursor: pointer;
+}
+
+.filter__controls-info{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: right;
+    position: absolute;
+    right: 60px;
+    top: 35px;
+    display: none;
+}
+
+
+@media (max-width: 640px) {
+
+    .filter__controls {
+        justify-items: center;
+    }
+
+    .filter__controls {
+        justify-content: center;
+        display: flex;
+    }
+
+    .filter__controls-info{
+        position: relative;
+        right: 0;
+        top: 0;
+    }
+}
+
+
+.frame-filter__item{
+    width: 170px;
+    outline: none;
+    flex-grow: 1;
+    border-radius: 5px;
+    position: relative;
+    background: white;
+}
+
+.filter-white-back .frame-filter__item{
+    background: var(--color-grey);
+}
+
+.frame-filter__item label{
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    font-size: 14px;
+    color: #6d6c6c;
+}
+
+/***********/
+
+.filter-white {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 2.5em;
+    box-shadow: 0 0 40px #0003;
+    margin-bottom: 100px;
+
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s ease-in-out;
+}
+
+.filter-white-back {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.tyres_f .frame-filter__item{
+    min-width: 273px;
+}
+
+.filter-white .big-combo, .filter-white .big-comb__input {
+    background: var(--color-grey);
+}
+
+.filter-white .big-comb__input {
+    font-weight: bold;
+}
+
+.control-flex{
+    display: flex;
+}
+
+.control-flex span{
+    font-size: 14px;
+    margin-left: 10px;
+    color: #6d6c6c;
+}
+.control-flex input:hover{
+    border-bottom: 1px solid #ccc;
+    margin-bottom: -1px;
+}
+
+.no_advanced{
+    display: none;
+    flex-grow: 1;
+}
+
+.filter-fields.active .no_advanced {
+    display: block;
+}

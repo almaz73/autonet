@@ -1,0 +1,66 @@
+.abdul {
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 35px 1px #0000001a;
+    transition: all 0.4s ease-in 0s;
+}
+
+.abdul:hover {
+    box-shadow: 0 0 35px 1px #0000004d;
+}
+
+.abdul__box {
+    padding: 1.5em 0.9375em;
+    position: relative;
+    z-index: 1;
+    max-width: 280px;
+    background: linear-gradient(to right, #ffffffff 60%, #ffffff00 100%);
+}
+
+.abdul__block {
+    display: flex;
+    direction: rtl;
+    justify-content: left;
+    text-align: left;
+    flex-wrap: wrap;
+    background-image: url(@/images/abdulnasyrov_light.webp);
+    background-repeat: no-repeat;
+    background-position: right top;
+}
+
+.abdul__box--name {
+    font-weight: 600;
+    font-size: 1.0625em;
+    color: #000;
+}
+
+.abdul__box--post {
+    color: #526193;
+    font-weight: 500;
+    font-size: 0.875em;
+    margin-top: 7px;
+}
+
+.abdul__box--info {
+    margin-top: 1.75em;
+    font-size: 0.9375em;
+    font-weight: 500;
+    color: #000;
+}
+
+.abdul__box--info a {
+    outline: none;
+    border: none;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap;
+    color: #526193;
+}
+
+.bulba {
+    display: flex;
+    width: 100px;
+    height: 200px;
+}

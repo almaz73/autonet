@@ -1,0 +1,150 @@
+.footer {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.18);
+}
+
+.footer__top {
+    padding-top: 4.375em;
+    padding-bottom: 3.75em;
+
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+
+.page__wrap {
+    margin: 0 auto;
+    max-width: 1200px;
+    position: relative;
+    width: 100%;
+}
+
+
+.page__flex {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer__top .box_1 {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.footer__top .footer-city-button {
+    font-weight: 600;
+    color: var(--color-red);
+    padding-left: 20px;
+    background: url(/src/svg/city-icon.svg) left no-repeat;
+}
+.footer__top .footer-city-button a{
+    color: var(--color-red);
+    text-decoration: underline;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.footer__top .phone {
+    margin-bottom: 1.7875em;
+}
+
+.footer__top .phone a {
+    font-weight: 600;
+    font-size: 1.325em;
+    text-decoration: none;
+    color: black;
+}
+
+.footer__top .address {
+    margin-bottom: 1.3em;
+}
+
+.footer__top .address a {
+    font-size: 0.9375rem;
+    text-decoration: none;
+    color: black;
+    padding-left: 20px;
+    background: url(/src/svg/point-icon.svg) left no-repeat;
+}
+
+.footer__subscription {
+    font-weight: 600;
+    line-height: 1.19;
+}
+
+.youtube2 {
+    width: 40px;
+    height: 30px;
+    background: url(/src/svg/youtube-icon.svg) left no-repeat;
+}
+
+.vk2 {
+    width: 40px;
+    height: 30px;
+    background: url(/src/svg/vk-icon.svg) left no-repeat;
+}
+
+
+.footer__top .box_2 {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+@media (max-width: 860px) {
+    .footer__top .box_2 {
+        opacity: 0;
+    }
+}
+
+.footer__top .box_2 a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: black;
+}
+
+.footer__top .box_2 a:hover {
+    color: var(--color-red);
+}
+
+
+.footer__bottom {
+    border-top: 1px solid #6d778e1a;
+    margin-bottom: 33px;
+}
+
+.footer__bottom .page__flex {
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+    padding: 20px 0;
+    font-size: 0.8125em;
+    color: #656565;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+@media (max-width: 1020px) {
+    .footer__bottom .page__flex {
+        padding: 20px 0 90px 0;
+    }
+}
+
+.page__flex a {
+    text-decoration: none;
+    color: #656565;
+}
+
+@media (max-width: 500px) {
+    .footer__top .box_2 {
+
+        display: none;
+    }
+
+    .footer__bottom .page__flex {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+}

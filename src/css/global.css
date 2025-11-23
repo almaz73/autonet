@@ -1,0 +1,113 @@
+:root {
+    --color-red: #E22427;
+    --color-light-blue: #f1f8fb;
+    --color-grey: #f2f2f7;
+}
+
+@font-face {
+    font-family: "Gilroy";
+    font-display: swap;
+    src: url("@/fonts/Gilroy-Light.otf");
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Gilroy-Bold";
+    font-display: swap;
+    src: url("@/fonts/Gilroy-ExtraBold.otf");
+    font-style: normal;
+    font-weight: 400;
+}
+
+body {
+    font-family: 'Gilroy', sans-serif;
+    margin: 0;
+    padding: 0;
+    scrollbar-gutter: stable;
+}
+
+main {
+    max-width: 1200px;
+    margin: auto;
+    margin-bottom: 100px;
+}
+
+@media (width < 1240px) {
+    main{
+        max-width: calc(100% - 40px);
+    }
+}
+
+main h2 , main h1 {
+    font-family: Gilroy-Bold, sans-serif;
+}
+
+
+.page_padding_20 {
+    padding: 20px 0 10px;
+}
+
+@media (max-width: 500px) {
+
+    .mainPhoto_little {
+        display: block;
+    }
+
+    .page_padding_20 {
+        padding: 20px 15px;
+    }
+}
+
+.page_padding_20 h2 {
+    font-family: system-ui, Gilroy-Bold;
+}
+
+.page_padding_20 a {
+    text-decoration: none;
+}
+
+.bread_cranbs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: .7em;
+}
+
+.bread_cranbs a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.bread_cranbs a:hover {
+    color: var(--color-red);
+}
+
+/***/
+
+.page__link {
+    font-weight: 600;
+}
+
+.page__link span {
+    color: #E22427;
+    transition: all 0.4s;
+}
+
+.page__link img {
+    margin-right: 7px;
+    margin-left: 0;
+    transition: all 0.4s;
+}
+
+.page__link span:hover {
+    color: black;
+}
+
+.page__link:hover img {
+    margin-right: 0px;
+    margin-left: 7px;
+    filter: grayscale(1);
+}
+
+/***/

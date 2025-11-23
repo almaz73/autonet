@@ -1,0 +1,56 @@
+@media (min-width: 1020px) {
+    .fix__foot {
+        display: none;
+    }
+}
+
+.fix__foot {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 32px;
+    background-color: #fff;
+    padding-top: 0.875em;
+    padding-bottom: 0.75em;
+    box-shadow: 0 0 20px rgba(201, 201, 201, 0.9);
+    z-index: 10;
+}
+
+.fix__flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.fix__foot--box a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
+    gap: 10px;
+}
+
+.fix__foot img {
+    width: 20px;
+    display: block;
+}
+
+.fix__foot .fix__foot_img {
+    width: 20px;
+    height: 20px;
+}
+.fix__foot .fix__foot_img.zvezda{
+    background: url(/src/svg/zvezda.svg) center no-repeat;
+}
+.fix__foot .fix__foot_img.car{
+    background: url(/src/svg/car.svg) center no-repeat;
+}
+.fix__foot .fix__foot_img.comment{
+    background: url(/src/svg/comment.svg) center no-repeat;
+}
+.fix__foot .fix__foot_img.adress{
+    background: url(/src/svg/adress.svg) center no-repeat;
+}
+

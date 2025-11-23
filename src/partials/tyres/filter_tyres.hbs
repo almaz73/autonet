@@ -1,0 +1,66 @@
+<div class="filter-white">
+    <div class="filter-white-back tyres_f">
+        <div class="frame-filter__item">
+            <comb data-placeholder='Производитель' />
+            <label>Производитель</label>
+        </div>
+        <div class="frame-filter__item">
+            <comb data-placeholder='Ширина профиля' />
+            <label>Ширина профиля</label>
+        </div>
+        <div class="frame-filter__item">
+            <comb data-placeholder='Высота профиля' />
+            <label>Высота профиля</label>
+        </div>
+        <div class="frame-filter__item">
+            <comb data-placeholder='Диаметр' />
+            <label>Диаметр</label>
+        </div>
+
+        <div class="frame-filter__item">
+            <comb data-placeholder='Сезон' />
+            <label>Сезон</label>
+        </div>
+        <div class="frame-filter__item">
+            <comb data-placeholder='Диски' />
+            <label>Диски</label>
+        </div>
+
+        <div style="flex-grow: 1">
+            <div class="big-combo control-flex">
+                <span style="width: 60px">Цена до:</span>
+                <input class="big-comb__input" style="width: 80px" value="200 000" onclick="this.select()">
+            </div>
+        </div>
+    </div>
+
+    <div class="frame-filter__controls">
+        <div class="filter__controls">
+            <img src="/src/svg/tires.svg" alt=''>
+            <span class="filter__controls-info-button">Где смотреть параметры</span>
+        </div>
+
+        <button class="frame-filter__submit" type="submit" id="set_filter" name="set_filter" value="Показать">
+            Показать&nbsp;<span class="number">12</span>&nbsp;предложений
+        </button>
+    </div>
+
+    <div class="tires_sizes">
+
+        <div class="tires-flex">
+            <div>
+                <h2>Расшифровка маркировки шин</h2>
+                <p>Типоразмер указан в маркировке на боковине шины:</p>
+                <p><span class="red_strong">Ширина профиля шины</span> — первое число в маркировке, например 195/50 R16 - ширина 195 мм. Ширина профиля представляет собой выраженное в миллиметрах расстояние между наружными сторонами боковин накачанной шины.</p>
+                <p><span class="red_strong">Высота профиля</span> — второе число в маркировке шин, например 195/50 R16 - высота 50%. Это отношение высоты шины к ширине, выраженное в процентах (%).</p>
+                <p><span class="red_strong">Диаметр колеса</span> — третье число в маркировке шины, например 195/50 R16 - диаметр обода 16'. Должен совпадать с монтажным диаметром колесного диска. Измеряется в дюймах.</p>
+            </div>
+            <img class="tyres_img" src="/src/images/tyres_size.webp" alt="">
+            <div class='x'><img src="/src/images/x.png" loading='lazy' alt=''></div>
+        </div>
+
+        <span class='dark-fon'/>
+    </div>
+
+    <script type='module'  src="/src/js/filter-controls.js"></script>
+</div>

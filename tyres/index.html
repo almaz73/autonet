@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+    <meta charset='UTF-8' />
+    <link rel='icon' type='image/svg+xml' sizes='any' href='/src/svg/Favicon_as.svg'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Купить автомобильные шины и диски в Казани. Каталог летних и зимних автошин  - Автосеть.РФ</title>
+    <meta property='og:type' content='website'>
+    <meta property='og:title'
+          content='Купить автомобильные шины и диски в Казани. Каталог летних и зимних автошин'>
+    <meta property='og:url' content='https://fmap.ru/autosite'>
+    <meta property='og:locale' content='ru_RU'>
+    <meta property='og:site_name' content='АВТОСЕТЬ.РФ'>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+    <meta name='robots' content='index, follow'>
+    <meta name='keywords' content='Купить автомобили с пробегом, авто в Казани'>
+    <meta name='description'
+          content='Продажа шин и дисков в Казани. ✅ В наличии зимние и летние автомобильные шины различных диаметров и
+          производителей. ➤ Цены на автошины в наличии. ☎ Звоните в шинный центр Автосеть.рф по телефону 8-800-500-11-56.'>
+
+    <link rel='stylesheet' href='/src/css/style.css' />
+    <link rel='stylesheet' href='/src/css/index/index.css' />
+    <script type='module' src='/src/js/main.js'></script>
+    <script type='module' src='/src/js/index/brands-icons.js'></script>
+    <script type='module' src='/src/js/whereSeeParams.js'></script>
+
+
+
+    <link rel="stylesheet" href="/src/css/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="/src/css/swiper.css"/>
+
+</head>
+<body>
+{{> "header/header" }}
+<main>
+
+    <div class='page_padding_20'>
+        <div class='bread_cranbs'>
+            <a href='%VITE_PROD_URL%/'>Главная</a>
+            <span>Каталог шин </span>
+        </div>
+    </div>
+
+    {{> 'tyres/filter_tyres'}}
+
+    <div class='container main__top--block'>
+        <div id='brands_dynamic'></div>
+    </div>
+
+    {{> car-vitrina}}
+
+</main>
+
+{{> "footer/footer" }}
+
+
+<script type='module' src='/src/js/swiper_buy.js'></script>
+<script defer src='../swiper-bundle.min.js'></script>
+<script type="module" src='/src/js/swiper-starter.js'></script>
+
+</body>
+</html>

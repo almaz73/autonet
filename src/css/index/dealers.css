@@ -1,0 +1,146 @@
+.dealers {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+    gap: 2em;
+    height: 100%;
+    padding: 0 0 100px;
+}
+
+.dealers__block {
+    height: 290px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    color: white;
+}
+
+.dealers__block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.3);
+    transition: filter 0.4s;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+
+.dealers__flex {
+    height: 240px;
+    padding: 15px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.dealers__block:hover img {
+    filter: brightness(0.6);
+    cursor: pointer;
+}
+
+.dealers__block .subname {
+    font-weight: 500;
+    font-size: 0.875em;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 4px;
+}
+
+.dealers__block .time {
+    font-weight: 600;
+}
+
+.dealers__block .address {
+    margin-bottom: 7px;
+}
+
+.dealers__block .address a {
+    outline: none;
+    border: none;
+    text-decoration: none;
+    display: block;
+    position: relative;
+    color: #fff;
+    font-size: 0.8125em;
+    font-weight: 600;
+    padding-left: 1.25em;
+    margin-top: 10px;
+}
+
+.dealers__block .address a::before {
+    content: url(/src/svg/address-point.svg);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    line-height: 0;
+    transform: translateX(0) translateY(-50%);
+}
+
+.dealers__block .address a span {
+    position: relative;
+}
+
+.dealers__block .address a span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    bottom: 0;
+    height: 1px;
+    background-color: #fff;
+}
+
+.dealers__block .phone a {
+    color: #fff;
+    font-size: 1.125em;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+@media (max-width: 545px) {
+    .dealers {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 1em;
+        margin: 0 -10px;
+    }
+
+    .dealers__block .phone a {
+        font-size: 1em;
+        white-space: nowrap;
+    }
+}
+
+#ya_map {
+    position: fixed;
+    display: none;
+    top: 105px;
+    left: 10px;
+    width: calc(100% - 20px);
+    height: calc(100% - 230px);
+    z-index: 10000;
+}
+
+#ya_map .map {
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+    box-shadow: 0 0 20px grey;
+    background: white;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+#ya_map .map iframe{
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid #999;
+}
+
+#ya_map .x {
+    position: absolute;
+    right: -15px;
+    top: -20px;
+    z-index: 1000;
+    cursor: pointer;
+}

@@ -1,0 +1,37 @@
+document.addEventListener('DOMContentLoaded', () => {
+    let abdul = document.querySelector('abdul')
+    if (abdul) abdul.innerHTML = block
+
+})
+
+let VITE_PROD_URL = import.meta.env.VITE_PROD_URL;
+
+export const block=`
+<div class="abdul abdulLightHor">
+        <div class="abdul__block">
+            <div class="bulba"></div>
+            <div class="abdul__box">
+                <div class="abdul__box--name">
+                    Руслан Абдулнасыров
+                </div>
+                <div class="abdul__box--post">
+                    Собственник компании АВТОСЕТЬ.РФ
+                </div>
+                <div class="abdul__box--info">
+                <b style="opacity: 0; margin: -4px">А</b>«Я гарантирую качество» 
+                
+                Пожелания по работе принимаются в 
+                <div style="display: inline-flex;direction: initial;float: right">
+                    <a href="http://vk.me/avtoset_rf" target="_blank">
+                            <span class="icon">
+                              <img src="${VITE_PROD_URL}/src/svg/vk_2.svg" alt="" style="width: 16px">
+                            </span>
+                        <span class="text"> ВКонтакте</span>
+                    </a>
+                </div>
+                </div>
+            </div>
+        </div>
+</div>
+`
+

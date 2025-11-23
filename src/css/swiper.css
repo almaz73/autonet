@@ -1,0 +1,125 @@
+.mainPage.swiper a .img_lg {
+    aspect-ratio: 585/200;
+}
+
+.mainPage.swiper a .img_md {
+    aspect-ratio: 12/5;
+}
+
+.mainPage.swiper a .img_sm {
+    aspect-ratio: 250/362;
+}
+
+
+
+@media (width <= 1000px) and (width >= 500px) {
+    .mainPage.swiper a .img_lg, .mainPage.swiper a .img_sm {
+        display: none;
+    }
+}
+
+@media (width > 1000px) {
+    .mainPage.swiper a .img_sm, .mainPage.swiper a .img_md {
+        display: none;
+    }
+}
+
+
+.mainPage.swiper {
+    width: 100%;
+    z-index: 10;
+    border-radius: 12px;
+    max-width: 1200px;
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+.mainPage .swiper-slide {
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mySwiper {
+    z-index: -1;
+}
+
+@media (width < 1240px) {
+    .mainPage.swiper {
+        margin: 30px 20px;
+        width: calc(100% - 40px)
+    }
+    .mySwiper {
+        min-height: inherit;
+    }
+}
+
+
+.mySwiper .swiper-button-next, .mySwiper .swiper-button-prev {
+    background: #00000000;
+    padding: 50px 40px;
+    right: -35px;
+    margin-top: -70px;
+    outline: none;
+}
+
+.mySwiper .swiper-button-next:active, .mySwiper .swiper-button-prev:active {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+.mySwiper .swiper-button-prev {
+    left: -35px;
+}
+
+.mySwiper .swiper-button-next::after, .mySwiper .swiper-button-prev::after {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+    width: 26px;
+    border-radius: 26px;
+    background-color: var(--color-red);
+}
+
+.mySwiper .swiper-button-next:after, .mySwiper .swiper-button-prev:after {
+    font-size: inherit;
+    color: white;
+}
+
+.swiper-pagination-bullet {
+    background-color: var(--color-red);
+}
+
+.buy_swiper img {
+    border-radius: 5px;
+}
+
+.dot8 .buy_swiper img.buy_lg {
+    display: none;
+}
+
+.dot4 .buy_swiper img.buy_mg, .dot1 .buy_swiper img.buy_mg {
+    display: none;
+}
+
+@media (width < 500px) {
+    .mainPage.swiper a .img_lg, .mainPage.swiper a .img_md {
+        display: none;
+    }
+
+    .mainPage.swiper {
+        margin: 30px 15px;
+        width: calc(100% - 30px);
+    }
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+    <meta charset='UTF-8' />
+    <link rel='icon' type='image/svg+xml' sizes='any' href='/src/svg/Favicon_as.svg'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Каталог автомобилей с пробегом (БУ). Купить авто из наличия в автосалонах Казани и всей России - Автосеть.РФ
+        - Автосеть.РФ</title>
+    <meta property='og:type' content='website'>
+    <meta property='og:title'
+          content='Каталог автомобилей с пробегом (БУ). Купить авто из наличия в автосалонах Казани и всей России - Автосеть.РФ'>
+    <meta property='og:url' content='https://fmap.ru/autosite'>
+    <meta property='og:locale' content='ru_RU'>
+    <meta property='og:site_name' content='АВТОСЕТЬ.РФ'>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+    <meta name='robots' content='index, follow'>
+    <meta name='keywords' content='Купить автомобили с пробегом, авто в Казани'>
+    <meta name='description'
+          content='Цены на Б/У авто 🚗 в автосалонах Автосеть.рф в Казани, Екатеринбурге, Уфе, Туле, Самаре и других городах России.
+          ✅ Купить автомобили с пробегом из каталога - иномарки, Lada в наличии. ☎ Звоните по телефону 8-800-500-11-56.'>
+
+    <link rel='stylesheet' href='/src/css/style.css' />
+    <link rel='stylesheet' href='/src/css/index/index.css' />
+    <script type='module' src='/src/js/main.js'></script>
+    <script type='module' src='/src/js/index/brands-icons.js'></script>
+
+
+    <link rel="stylesheet" href="/src/css/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="/src/css/swiper.css"/>
+
+</head>
+<body>
+{{> "header/header" }}
+<main>
+
+    <div class='page_padding_20'>
+        <div class='bread_cranbs'>
+            <a href='%VITE_PROD_URL%/'>Главная</a>
+            <span>Автомобили </span>
+        </div>
+    </div>
+
+    {{> 'cars/filter_cars'}}
+
+    <div class='container main__top--block'>
+        <div id='brands_dynamic'></div>
+    </div>
+
+    {{> car-vitrina}}
+
+</main>
+
+{{> "footer/footer" }}
+
+
+<script type='module' src='/src/js/swiper_buy.js'></script>
+<script defer src='../swiper-bundle.min.js'></script>
+<script type="module" src='/src/js/swiper-starter.js'></script>
+
+</body>
+</html>

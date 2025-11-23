@@ -1,0 +1,122 @@
+
+.header__nav-a {
+    margin: 0 25px;
+    color: black;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 15px;
+}
+
+@media (width < 500px) {
+    nav .header__nav-a {
+        font-size: 13px;
+        margin: 0 5px;
+    }
+}
+
+nav .header__nav-a:hover {
+    color: var(--color-red);
+}
+
+.header {
+    position: relative;
+    z-index: 100;
+    padding: 20px 0;
+    border-bottom: 2px solid #0000000d;
+}
+
+.head_div {
+    height: 0
+}
+
+@media (width < 1260px) {
+    .header {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 640px) {
+    .header {
+        padding: 0;
+        background: yellow;
+        z-index: 100;
+    }
+
+    header {
+        margin-top: 150px;
+    }
+
+    .header__container {
+        position: fixed;
+        background-color: #fff;
+        z-index: 100;
+        padding: 15px 0 9px;
+        border-bottom: 2px solid #0000000d;
+    }
+
+    .head_div {
+        height: 84px
+    }
+}
+
+.header__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-areas: "logo nav comb buttons";
+    grid-template-columns: auto auto auto 300px;
+    align-items: center;
+}
+
+.header__logo-image {
+    width: 227px;
+    height: 45px;
+}
+
+@media (max-width: 1020px) and (min-width: 800px) {
+    .header__container {
+        grid-template-columns: auto auto auto;
+        grid-template-areas:
+                "logo comb buttons"
+                "nav nav nav";
+        grid-template-rows: 45px 28px;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 800px) {
+    .header__container {
+        grid-template-columns: auto auto;
+        grid-template-areas:
+                "logo buttons"
+                "nav comb";
+        grid-template-rows: 45px 28px;
+        width: 100%;
+    }
+
+    .header__logo-image {
+        max-width: 192px;
+        margin-left: 16px;
+    }
+}
+
+.header__logo {
+    grid-area: logo;
+    max-height: 45px;
+    width: 230px;
+}
+
+.header__buttons {
+    grid-area: buttons;
+}
+
+.header__nav {
+    grid-area: nav;
+    margin-left: 12px;
+    white-space: nowrap;
+}
+
+.header__select {
+    grid-area: comb;
+}

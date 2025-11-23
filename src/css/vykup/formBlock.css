@@ -1,0 +1,250 @@
+
+.formBlock .wrap {
+    background: #fff;
+    padding: 40px;
+    max-width: 340px;
+    border-radius: 5px;
+    float: right;
+    margin-bottom: 73px;
+    text-align: center;
+}
+
+
+.formBlock .title {
+    font-size: 1.3em;
+    font-weight: 600;
+    font-family: Gilroy-Bold, sans-serif;
+    margin: 0 0 30px 0;
+}
+
+.formBlock .title strong {
+    color: var(--color-red);
+}
+
+
+.formBlock .form__modal--group {
+    margin-bottom: 1.25em;
+}
+
+@media (min-width: 576px) {
+    .formBlock .form__group input {
+        height: 3rem;
+    }
+}
+
+.formBlock .form__group {
+    position: relative;
+}
+
+.formBlock .form__group input, .formBlock .form__group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 7px 10px;
+    border-radius: 5px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 0.875em;
+    font-weight: 600;
+    outline: none;
+    border: none;
+    height: 2.8125rem;
+    background-color: var(--color-grey);
+}
+
+.formBlock .form__group label {
+    display: block;
+    text-align: center;
+    font-size: 0.875em;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    user-select: none;
+    transform: translateX(0) translateY(-50%);
+    transition: all 0.4s ease-in 0s;
+}
+
+.formBlock .modal__personal {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.4;
+    margin-top: 10px;
+    text-align: left;
+    color: #545454;
+    font-size: .8em;
+}
+
+.formBlock .modal__personal a {
+    font-size: larger;
+    text-decoration: underline;
+    white-space: nowrap;
+    color: #000;
+    position: relative;
+}
+
+.formBlock {
+    margin-top: 200px;
+}
+
+.fullBanner.second .formBlock {
+    margin-top: 400px;
+}
+
+
+@media (max-width: 768px) {
+    .formBlock {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .fullBanner .formBlock, .fullBanner .textBlock {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+
+@media (width < 1400px) {
+    .fullBanner.second .formBlock {
+        margin-top: 200px;
+    }
+}
+
+/***/
+
+.dwl_link {
+    display: inline-block;
+    min-width: 50%;
+    margin: 10px 0px;
+    border-bottom: solid 1px #f4f4f7;
+    border-top: solid 1px #f4f4f7;
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+    position: relative;
+    padding: 20px 35px 20px 50px;
+    transition: all 0.3s ease;
+}
+
+.dwl_link.pdf:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    width: 24px;
+    height: 24px;
+    background: url(/src/svg/icon_pdf.svg) center center no-repeat;
+    background-size: contain;
+    margin-top: -12px;
+}
+
+.dwl_link:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    width: 24px;
+    height: 24px;
+    background: url(/src/svg/icon_download.svg) center center no-repeat;
+    margin-top: -12px;
+}
+
+/****/
+
+@media (min-width: 1200px) {
+    .faqList {
+        column-gap: 100px;
+    }
+}
+
+@media (min-width: 992px) {
+    .faqList {
+        column-gap: 50px;
+    }
+}
+
+@media (min-width: 768px) {
+    .faqList {
+        columns: 2;
+        column-gap: 25px;
+    }
+}
+
+.faqList {
+    margin-top: 20px;
+}
+
+@media (min-width: 992px) {
+    .faqList .spoiler {
+        padding: 30px 10px;
+    }
+}
+
+@media (min-width: 768px) {
+    .faqList .spoiler {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+}
+
+.faqList .spoiler {
+    padding: 20px 10px;
+    border-top: solid 1px #f4f4f7;
+    border-bottom: solid 1px #f4f4f7;
+}
+
+.faqList button {
+    font-weight: 600;
+    font-size: 1.05em;
+    position: relative;
+    padding: 0 40px 0 0;
+    margin: 0;
+    border: 0;
+    outline: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+}
+
+.faqList .spoiler-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s ease-out;
+}
+
+.faqList .spoiler-header:focus + .spoiler-content, .faqList .spoiler-content:hover {
+    max-height: 350px;
+    padding-top: 15px;
+}
+
+
+.faqList .spoiler-header:focus {
+    color: var(--color-red);
+}
+
+.faqList button:before {
+    content: ' ';
+    position: absolute;
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-bottom: 2px solid #E22427;
+    border-right: 2px solid #E22427;
+    right: 0.625em;
+    top: 50%;
+    user-select: none;
+    pointer-events: none;
+    transform: translateX(0) translateY(-50%) rotate(45deg);
+}
+
+.faqList .item:target {
+    display: block;
+    background: yellow;
+}
+
+/*.faqList .answer*/
