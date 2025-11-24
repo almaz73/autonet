@@ -44,15 +44,12 @@ document.addEventListener('DOMContentLoaded', () => {
             fotos.style.height = '76px';
             fotos_black.style.display = 'grid'
             setTimeout(() => swiperSection.classList.remove('rotated'))
-            toBig()
+            window.toBig()
         }
         if (e.key === 'ArrowRight') swiper.slideNext()
         if (e.key === 'ArrowLeft') swiper.slidePrev()
-
-        console.log('swiper = ', swiper)
     });
 
-    console.log('swiper = ', swiper)
 })
 
 function showSlide(val) {
@@ -64,7 +61,7 @@ function showAll() {
     fotos_black.style.display = 'none'
 }
 
-function toBig(val) {
+window.toBig = function (val) {
     if (val) big.classList.add('big_viewer')
     else {
         setTimeout(() => swiperSection.classList.remove('rotated'))
