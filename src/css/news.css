@@ -90,3 +90,8 @@
 .bottom-nav a.active{
     font-family: Gilroy-Bold, system-ui;
 }
+
+main img{
+    width: 100%;
+    border-radius: 6px;
+}

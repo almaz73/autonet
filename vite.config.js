@@ -54,7 +54,12 @@ export default defineConfig({
 				p651625: resolve(__dirname, './promo/651625/index.html'),
 				p651626: resolve(__dirname, './promo/651626/index.html'),
 				about: resolve(__dirname, './about-the-company/index.html'),
+
 				news: resolve(__dirname, './news/index.html'),
+				n651961: resolve(__dirname,'./news/651961/index.html'),
+				n651960: resolve(__dirname,'./news/651960/index.html'),
+				n651959: resolve(__dirname,'./news/651959/index.html'),
+				n651955: resolve(__dirname,'./news/651955/index.html'),
 				index_0: resolve(__dirname, './news/index_0.html'),
 			},
 		},
