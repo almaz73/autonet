@@ -4,8 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 })
 
-let VITE_PROD_URL = import.meta.env.VITE_PROD_URL;
-
 export const block=`
 <div class="abdul abdulLightHor">
         <div class="abdul__block">
@@ -24,7 +22,7 @@ export const block=`
                 <div style="display: inline-flex;direction: initial;float: right">
                     <a href="http://vk.me/avtoset_rf" target="_blank">
                             <span class="icon">
-                              <img src="${VITE_PROD_URL}/src/svg/vk_2.svg" alt="" style="width: 16px">
+                              <img src="/src/svg/vk_2.svg" alt="" style="width: 16px">
                             </span>
                         <span class="text"> ВКонтакте</span>
                     </a>

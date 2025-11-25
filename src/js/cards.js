@@ -1,7 +1,6 @@
 // создает визитки, встраивает рекламные и информационные баннеры
 let cards = document.querySelector('cards');
 
-let VITE_PROD_URL = import.meta.env.VITE_PROD_URL;
 
 function createNode(item, N) {
   let txt
@@ -28,10 +27,10 @@ function createNode(item, N) {
                 </div>
                 <div class='cart__box--bottom'>
                 <a href='#'>
-                    <img class='compare_img' src='${VITE_PROD_URL}/icons/compare_cars.svg' alt=''>
+                    <img class='compare_img' src='/icons/compare_cars.svg' alt=''>
                 </a>
                 <a href='#'>
-                    <img class='penta_img1' src='${VITE_PROD_URL}/icons/penta.svg' alt=''>
+                    <img class='penta_img1' src='/icons/penta.svg' alt=''>
                 </a>
             </div>
             </div>`;
@@ -45,6 +44,7 @@ function createNode(item, N) {
 }
 
 function galeryEvents(id, images) {
+  console.log('images = ',images)
   const gallery = document.querySelector('#galery_' + id + ' .cart__slide');
   window.current_slide = null;
 
@@ -52,14 +52,14 @@ function galeryEvents(id, images) {
   const photo = gallery.querySelector('.photo');
   const red = gallery.querySelector('.cart .red');
   let offset1, offset2, i = 0;
-  photo.src = VITE_PROD_URL + images[i];
+  photo.src = images[i];
   photo.addEventListener('mousemove', (e) => {
     let i = parseInt(e.layerX * 100 / pieceWidth / 16.5 - 0.1);
-    photo.src = VITE_PROD_URL + images[i];
+    photo.src = images[i];
     red.style.left = i * 16.5 + '%';
   });
   gallery.addEventListener('mouseleave', () => {
-    photo.src = VITE_PROD_URL + images[0];
+    photo.src = images[0];
     red.style.left = '0%';
   });
   gallery.addEventListener('touchstart', e => offset1 = e.targetTouches[0].pageX - gallery.offsetLeft);
@@ -69,7 +69,7 @@ function galeryEvents(id, images) {
     else i--;
     if (i > 5) i = 5;
     if (i < 0) i = 0;
-    photo.src = VITE_PROD_URL + images[i];
+    photo.src = images[i];
     red.style.left = i * 16.5 + '%';
   });
   gallery.addEventListener('click', () => {

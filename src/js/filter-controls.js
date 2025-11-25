@@ -29,14 +29,13 @@ window.addEventListener('load', () => {
     let the_Items = items[comb_name];
     if(the_Items) {
       let items_list = the_Items.map(item =>  '<div data-parent="'+comb_name+'">'+item+'</div>')
-      let VITE_PROD_URL = import.meta.env.VITE_PROD_URL;
 
       comb.innerHTML = `<div class='big-combo' tabindex='1'>
         <span class='big-comb__selected'>
           <span class='big-comb__placeholder'>${the_Items.value || comb_name}</span>
           <input class='big-comb__input' type="text">
         </span>
-        <img src='${VITE_PROD_URL}/svg/arrow-down.svg' alt='arrow' loading='lazy' width='10' height='18'>            
+        <img src='/svg/arrow-down.svg' alt='arrow' loading='lazy' width='10' height='18'>            
         <div class='big_comb__items' onclick='big_comb_select(event)'>
             ${items_list.join('')}
         </div>

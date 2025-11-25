@@ -124,7 +124,9 @@ function getVitrina() {
                     '/photo-tyres/1/NK0_351bedd2_00002.jpg',
                     '/photo-tyres/1/NK0_351bedd2_00003.jpg',
                     '/photo-tyres/1/NK0_ff8cd2b6_00003.jpg',
+                    '/photo-tyres/1/NK0_ff8cd2b6_00004.jpg',
                     '/photo-tyres/1/NK0_ff8cd2b6_00004.jpg'
+
                 ]
             },
             {
@@ -139,6 +141,7 @@ function getVitrina() {
                     '/photo-tyres/1/NK0_03b04be8_00002.jpg',
                     '/photo-tyres/1/NK0_351bedd2_00003.jpg',
                     '/photo-tyres/1/NK0_ff8cd2b6_00003.jpg',
+                    '/photo-tyres/1/NK0_ff8cd2b6_00004.jpg',
                     '/photo-tyres/1/NK0_ff8cd2b6_00004.jpg'
                 ]
             },
