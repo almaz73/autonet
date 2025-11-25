@@ -3,6 +3,7 @@ import { resolve } from 'path'
 import { fileURLToPath, URL } from 'node:url'
 import handlebars from 'vite-plugin-handlebars'
 import liveReload from 'vite-plugin-live-reload'
+import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 export default defineConfig({
 	plugins: [
@@ -18,6 +19,14 @@ export default defineConfig({
 			reloadOnPartialChange: true,
 		}),
 		liveReload(resolve(__dirname, 'src/partials/**/*'), { alwaysReload: true }),
+		viteStaticCopy({
+			targets: [
+				{
+					src: 'CNAME', // Этот файл копируем, чтобы сообщить гитхаб привязку к домену
+					dest: '.'
+				}
+			]
+		})
 	],
 	base: '',
 	build: {
