@@ -44,7 +44,6 @@ function createNode(item, N) {
 }
 
 function galeryEvents(id, images) {
-  console.log('images = ',images)
   const gallery = document.querySelector('#galery_' + id + ' .cart__slide');
   window.current_slide = null;
 
@@ -52,11 +51,15 @@ function galeryEvents(id, images) {
   const photo = gallery.querySelector('.photo');
   const red = gallery.querySelector('.cart .red');
   let offset1, offset2, i = 0;
+  let z_zona = 0 // чтобы менять фотку, если только меняем зону
   photo.src = images[i];
   photo.addEventListener('mousemove', (e) => {
-    let i = parseInt(e.layerX * 100 / pieceWidth / 16.5 - 0.1);
-    photo.src = images[i];
-    red.style.left = i * 16.5 + '%';
+    let z = parseInt(e.layerX * 100 / pieceWidth / 20);
+    if(z_zona!==z) {
+      photo.src = images[z]; // меняем, если только сменится зона
+      z_zona = z
+    }
+    red.style.left = z * 20 + '%';
   });
   gallery.addEventListener('mouseleave', () => {
     photo.src = images[0];
@@ -67,10 +70,10 @@ function galeryEvents(id, images) {
   gallery.addEventListener('touchend', () => {
     if (offset1 > offset2) i++;
     else i--;
-    if (i > 5) i = 5;
+    if (i > 4) i = 4;
     if (i < 0) i = 0;
     photo.src = images[i];
-    red.style.left = i * 16.5 + '%';
+    red.style.left = i * 20 + '%';
   });
   gallery.addEventListener('click', () => {
     if (document.body.clientWidth < 500) return false;
@@ -95,7 +98,7 @@ let getWidth = () => {
   pieceWidth = document.querySelector('cards .cart__slide').clientWidth;
   if (current_slide) pieceWidth = current_slide.clientWidth;
 };
-document.addEventListener('DOMContentLoaded', () => getWidth());
+document.addEventListener('DOMContentLoaded', () => setTimeout(getWidth, 500));
 window.addEventListener('resize', () => current_slide && current_slide.classList.remove('watch'));
 
 setTimeout(()=>{
