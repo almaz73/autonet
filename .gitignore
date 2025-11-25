@@ -1,0 +1,13 @@
+node_modules/.yarn-integrity
+node_modules/.bin/acorn
+node_modules/.bin/acorn.cmd
+node_modules/.bin/esbuild
+node_modules/
+/.idea/
+workspace.xml
+.idea/workspace.xml
+.idea/misc.xml
+docs_test/node_modules
+
+
+autosite_dev .env
