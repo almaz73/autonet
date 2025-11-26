@@ -19,6 +19,8 @@
     <link rel='stylesheet' href='/src/css/style.css' />
     <link rel='stylesheet' href='/src/css/index/index.css' />
     <link rel='stylesheet' href='/src/css/bigbaner.css' />
+    <link rel='stylesheet' href='/src/css/vykup/Blocks4.css'/>
+
     <script type='module' src='/src/js/main.js'></script>
 
 
@@ -28,7 +30,6 @@
 
 <div class="bigbaner shadow" style="background-image: url(/photo/franshiza/banner_franshiza.webp)">
     <div class="page__wrap">
-
         <div class='page_padding_20'>
             <div class='bread_cranbs'>
                 <a href='/'>Главная</a>
@@ -42,23 +43,30 @@
                 <p>Партнёрство с международной сетью по продаже автомобилей с пробегом</p>
                 <p style="font-size: 1em; margin-top: 30px;">Анна Шилова, исполнительный директор: <a href="tel:+79178893565">+7 917 889-35-65</a></p>
             </div>
-
-
             {{> form_franshiza}}
         </div>
-
     </div>
-
 </div>
 
-<main>
-
-
-
-      12121
-
+<main style="margin-top: 60px">
+    <div class="container">
+        {{> 'blocks4/franshizablocks4'}}
     </div>
 </main>
+
+
+
+<div class="bigbaner shadow" style="background-image: url(/photo/franshiza/bnr_franshiza_02.webp)">
+    <div class="page__wrap">
+        <div class="bigbaner__filed" >
+            <div class="textBlock">
+                <h1>Зарабатывай от&nbsp;<strong>3&nbsp;млн</strong>&nbsp;₽/мес</h1>
+                <p>Партнёрство с международной сетью по продаже автомобилей с пробегом</p>
+            </div>
+            {{> form_franshiza2}}
+        </div>
+    </div>
+</div>
 
 {{> "footer/footer" }}
 

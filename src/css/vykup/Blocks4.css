@@ -1,4 +1,3 @@
-
 @media (min-width: 680px) {
     .fourBlocks {
         display: flex;
@@ -89,7 +88,7 @@
     font-weight: 500;
 }
 
-.fourBlocks b{
+.fourBlocks b {
     color: var(--color-red);
     font-family: Gilroy-Bold, sans-serif;
 }
@@ -110,7 +109,7 @@
     font-weight: 500;
 }
 
-.fourBlocks > div .num{
+.fourBlocks > div .num {
     padding: 20px;
 }
 
@@ -154,4 +153,30 @@
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+@media (max-width: 690px) {
+    .fourBlocks {
+        margin: 0 -20px;
+    }
+}
+
+.fourBlocks .nums > div {
+    position: relative;
+    display: flex;
+    padding-bottom: 15px;
+    padding-left: 10px;
+}
+
+.fourBlocks .nums > div div:first-child {
+    color: var(--color-red);
+}
+
+.fourBlocks .nums > div div:first-child {
+    font-size: 2.8em;
+    line-height: 0.9em;
+    color: var(--color-red);
+    text-align: center;
+    font-weight: 600;
+    padding-right: 15px;
 }
