@@ -1,0 +1,119 @@
+/** podbor что мы проверяем */
+
+.checkTbl {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 5vh 0;
+    padding: 0 20px;
+}
+
+.checkTbl .item {
+    padding: 10px 0;
+}
+
+@media (min-width: 576px) {
+    .checkTbl .item {
+        flex: 0 0 48%;
+        max-width: 48%;
+    }
+}
+
+@media (min-width: 992px) {
+    .checkTbl .item {
+        flex: 0 0 30%;
+        max-width: 30%;
+        padding: 20px 0;
+    }
+}
+
+.checkTbl .item .img {
+    width: 60px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+.checkTbl .item img {
+    max-width: 60px;
+    max-height: 50px;
+}
+
+.checkTbl .item .name {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/****/
+
+
+.iconSetList {
+    padding: 20px 0;
+}
+
+
+@media (min-width: 992px) {
+    .iconSetList {
+        padding: 60px 0;
+    }
+}
+
+.iconSetList img {
+    width: 36px;
+}
+
+
+.iconSetList em {
+    color: var(--color-red);
+}
+
+.iconSetList strong {
+    font-size: 0.9em;
+    line-height: 1.8em;
+}
+
+.iconSetList > div p {
+    margin: 4px 0;
+}
+
+.iconSetList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px 40px;
+}
+
+.iconSetList > div {
+    width: calc(33.1% - 28px);
+}
+
+@media (max-width: 992px) {
+    .iconSetList > div {
+        flex: 1 0 33%;
+    }
+
+    .iconSetList > div {
+        position: relative;
+        padding: 0 0 30px 54px;
+    }
+
+    .iconSetList > div > img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 36px;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+    .iconSetList > div {
+        flex: 0 0 80%;
+        max-width: 80%;
+    }
+}
+
+
+

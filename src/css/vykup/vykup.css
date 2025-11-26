@@ -248,55 +248,7 @@
     }
 }
 
-/** podbor что мы проверяем */
 
-.checkTbl {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 5vh 0;
-    padding: 0 20px;
-}
-
-.checkTbl .item {
-    padding: 10px 0;
-}
-
-@media (min-width: 576px) {
-    .checkTbl .item {
-        flex: 0 0 48%;
-        max-width: 48%;
-    }
-}
-
-@media (min-width: 992px) {
-    .checkTbl .item {
-        flex: 0 0 30%;
-        max-width: 30%;
-        padding: 20px 0;
-    }
-}
-
-.checkTbl .item .img {
-    width: 60px;
-    height: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-}
-
-.checkTbl .item img {
-    max-width: 60px;
-    max-height: 50px;
-}
-
-.checkTbl .item .name {
-    font-weight: bold;
-    margin: 10px 0;
-}
-
-/****/
 
 .showFullPrice {
     color: #fff;
