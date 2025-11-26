@@ -1,0 +1,198 @@
+.bigbaner {
+    min-height: calc(100vh - 90px);
+    background-position: center center;
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.bigbaner.shadow:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #00000000 0%, #000000A5 53%, #000000F2 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#f2000000', GradientType=0);
+}
+
+.bigbaner__filed {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    margin-bottom: 73px;
+}
+
+/* textBlock**/
+.textBlock strong{
+    color: var(--color-red)
+}
+.textBlock a{
+    color: white;
+}
+.textBlock h1 {
+    font-size: 2.3em;
+    font-family: Gilroy-Bold, system-ui;
+}
+
+.textBlock p {
+    font-size: 1.3em;
+}
+
+
+
+@media (max-width: 1200px) {
+    .textBlock {
+        margin: 15px;
+    }
+}
+
+@media (min-width: 992px) {
+    .fullBanner .textBlock p {
+        font-size: 1.4em;
+    }
+}
+
+.textBlock .person {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-top: 200px;
+}
+
+.textBlock .person .post {
+    display: block;
+    color: var(--color-red);
+    font-size: 0.7em;
+    font-weight: normal;
+}
+
+/* end textBlock**/
+
+/* formBlock**/
+.formBlock .wrap {
+    background: #fff;
+    padding: 40px;
+    max-width: 340px;
+    border-radius: 5px;
+    float: right;
+    text-align: center;
+}
+
+.formBlock .title {
+    font-size: 1.375em;
+    font-family: Gilroy-Bold, sans-serif;
+    margin: 0 0 30px 0;
+}
+
+
+.formBlock .title strong {
+    color: var(--color-red);
+}
+
+
+.formBlock .form__modal--group {
+    margin-bottom: 1.25em;
+}
+
+.formBlock .formBottom {
+    border-top: solid 1px #DEDEDE;
+    padding: 25px 0 0 0;
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.formBlock .formBottom p {
+    padding: 0;
+    margin: 0;
+}
+.formBlock .formBottom a {
+    color: var(--color-red);
+    text-decoration-color: initial;
+}
+
+
+@media (min-width: 576px) {
+    .formBlock .form__group input {
+        height: 3rem;
+    }
+}
+
+.formBlock .form__group {
+    position: relative;
+}
+
+.formBlock .form__group input, .formBlock .form__group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 7px 10px;
+    border-radius: 5px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 0.875em;
+    font-weight: 600;
+    outline: none;
+    border: none;
+    height: 2.8125rem;
+    background-color: var(--color-grey);
+}
+
+.formBlock .form__group label {
+    display: block;
+    text-align: center;
+    font-size: 0.875em;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    user-select: none;
+    transform: translateX(0) translateY(-50%);
+    transition: all 0.4s ease-in 0s;
+}
+
+
+.formBlock .modal__personal {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.4;
+    margin-top: 10px;
+    text-align: left;
+    color: #545454;
+    font-size: .8em;
+}
+
+.formBlock .modal__personal a {
+    font-size: larger;
+    text-decoration: underline;
+    white-space: nowrap;
+    color: #000;
+    position: relative;
+}
+
+
+@media (max-width: 768px) {
+    .bigbaner .formBlock {
+        display: none;
+    }
+
+    .bigbaner {
+        min-height: auto;
+        border: 1px solid red
+    }
+}
+
+@media (min-width: 768px) {
+    .bigbaner .formBlock, .bigbaner .textBlock {
+        max-width: 45%;
+        margin-right: 10px;
+    }
+}
+
+
+/* end formBlock**/
