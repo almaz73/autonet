@@ -228,6 +228,10 @@
     .bigbaner {
         min-height: auto;
     }
+
+    .bigbaner.shadow:before {
+        height: 350px ;
+    }
 }
 
 @media (min-width: 768px) {
