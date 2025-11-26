@@ -19,13 +19,18 @@
 
 .bigbaner__filed {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
     align-items: flex-end;
     margin-bottom: 73px;
+    padding: 0 20px;
 }
 
 /* textBlock**/
+.textBlock {
+    width: 100%;
+}
+
 .textBlock strong {
     color: var(--color-red)
 }
@@ -50,10 +55,47 @@
     }
 }
 
-@media (min-width: 992px) {
-    .fullBanner .textBlock p {
-        font-size: 1.4em;
-    }
+/*@media (min-width: 992px) {*/
+/*    .bigBanner .textBlock p {*/
+/*        font-size: 1.4em;*/
+/*    }*/
+/*}*/
+
+.dwl_link {
+    display: inline-block;
+    min-width: 50%;
+    margin: 10px 0px;
+    border-bottom: solid 1px #f4f4f7;
+    border-top: solid 1px #f4f4f7;
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+    position: relative;
+    padding: 20px 35px 20px 50px;
+    transition: all 0.3s ease;
+}
+
+.dwl_link.pdf:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    width: 24px;
+    height: 24px;
+    background: url(/src/svg/icon_pdf.svg) center center no-repeat;
+    background-size: contain;
+    margin-top: -12px;
+}
+
+.dwl_link:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    width: 24px;
+    height: 24px;
+    background: url(/src/svg/icon_download.svg) center center no-repeat;
+    margin-top: -12px;
 }
 
 .textBlock .person {
@@ -236,4 +278,39 @@
 .franshizaCity .nextFormLoad {
     display: block;
     margin-top: 30px;
+}
+
+/**/
+
+/*.bigbaner h1 strong, .bigbaner h2 strong {*/
+/*    color: var(--color-red);*/
+/*}*/
+
+.bigbaner p.grey{
+    background: url(/src/svg/icon_mouse.svg) left center no-repeat;
+    font-size: 0.9em !important;
+    font-family: Gilro, sans-serif;
+    opacity: 0.6;
+    padding-left: 30px;
+    line-height: 21px;
+    margin-top: 10px;
+    color: white;
+}
+
+@media (min-width: 992px) {
+    .bigbaner h1, .bigbaner h2, .banner_detailing h2 {
+        color: #e8e6e3;
+    }
+}
+
+@media (min-width: 576px) {
+    .bigbaner h1, .bigbaner h2 {
+        color: #e8e6e3
+    }
+}
+@media (min-width: 992px) {
+    .bigbaner h1, .bigbaner h2, .banner_detailing h2 {
+        color: #fff;
+        font-size: 2.2em;
+    }
 }

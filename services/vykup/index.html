@@ -19,9 +19,8 @@
           content='Бесплатная оценка стоимости и скупка автомобилей с пробегом. 🚗 Продать Б/У легковой авто дорого можно в автосалонах Автосеть.рф в Казани, Екатеринбурге, Уфе, Туле, Самаре и других городах России. ☎ Звоните по телефону 8-800-500-11-56.'>
     <link rel='stylesheet' href='/src/css/style.css'/>
     <link rel='stylesheet' href='/src/css/index/index.css'/>
-    <link rel='stylesheet' href='/src/css/vykup/fullbanner.css'/>
+    <link rel='stylesheet' href='/src/css/bigbaner.css'/>
     <link rel='stylesheet' href='/src/css/vykup/vykup.css'/>
-    <link rel='stylesheet' href='/src/css/vykup/formblock.css'/>
     <link rel='stylesheet' href='/src/css/vykup/Blocks4.css'/>
 
 
@@ -35,8 +34,7 @@
 <body>
 {{> "header/header" }}
 
-
-<div class="fullBanner headBanner" style="background-image: url(/photo/banner_vykup.webp)">
+<div class="bigbaner shadow" style="background-image: url(/photo/banner_vykup.webp)">
     <div class="page__wrap">
         <div class='page_padding_20'>
             <div class='bread_cranbs'>
@@ -45,7 +43,8 @@
                 <span>Выкуп автомобиля</span>
             </div>
         </div>
-        <div class="page__flex" >
+
+        <div class="bigbaner__filed">
             <div class="textBlock">
                 <h1>Выкуп Вашего автомобиля.<br>
                     Высокая оценка<br>
@@ -54,11 +53,7 @@
                     Почему продавать в АВТОСЕТЬ.РФ выгодно?
                 </p>
             </div>
-
-
             {{> form_vykup}}
-
-
         </div>
     </div>
 </div>
@@ -244,18 +239,17 @@
     </div>
 </main>
 
-<div class="fullBanner persona insurance" style="background-image: url(/photo/nahaev_artem.webp)">
-    <div class="page__wrap page__flex">
-        <div class="textBlock">
-            <p class="person">
-                Нахаев Артём <span class="post">Директор отдела выкупа</span>
-            </p>
-            <h2>Выкупим Ваш автомобиль <br><strong>дороже</strong> конкурентов </h2>
+<div class="bigbaner shadow" style="background-image: url(/photo/nahaev_artem.webp)">
+    <div class="page__wrap ">
+        <div class="bigbaner__filed">
+            <div class="textBlock">
+                <p class="person">
+                    Нахаев Артём <span class="post">Директор отдела выкупа</span>
+                </p>
+                <h2>Выкупим Ваш автомобиль <br><strong>дороже</strong> конкурентов </h2>
+            </div>
+            {{> form_vykup}}
         </div>
-
-
-        {{> form_vykup}}
-
 
     </div>
 </div>

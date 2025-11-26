@@ -19,9 +19,9 @@
           content='Подбор и проверка автомобилей онлайн. 🚗 На сайте указаны цены на услуги автоподбора Автосеть.рф в Казани, Екатеринбурге, Уфе, Туле, Самаре и других городах России. ☎ Звоните по телефону 8-800-500-11-56.'>
     <link rel='stylesheet' href='/src/css/style.css'/>
     <link rel='stylesheet' href='/src/css/index/index.css'/>
-    <link rel='stylesheet' href='/src/css/vykup/fullbanner.css'/>
+    <link rel='stylesheet' href='/src/css/bigbaner.css' />
+    <link rel='stylesheet' href='/src/css/faqlist.css' />
     <link rel='stylesheet' href='/src/css/vykup/vykup.css'/>
-    <link rel='stylesheet' href='/src/css/vykup/formblock.css'/>
     <link rel='stylesheet' href='/src/css/vykup/blocks4.css'/>
 
 
@@ -36,8 +36,8 @@
 {{> "header/header" }}
 
 
-<div class="fullBanner podbor headBanner" style="background-image: url(/photo/podbor/autopodbor_bnr.webp)">
-    <div class="page__wrap">
+<div class="bigbaner shadow" style="background-image: url(/photo/podbor/autopodbor_bnr.webp)">
+    <div class="page__wrap ">
         <div class='page_padding_20'>
             <div class='bread_cranbs'>
                 <a href='/'>Главная</a>
@@ -45,15 +45,9 @@
                 <span>Выкуп автомобиля</span>
             </div>
         </div>
-        <div class="page__flex" style="margin-top: 135px">
-            <div class="textBlock">
                 <h1>Полный сервис Автосеть.рф по <br>подбору и проверке автомобилей<br> с пробегом</h1>
             </div>
-
-
             {{> form_podbor}}
-
-
         </div>
     </div>
 </div>
@@ -188,24 +182,21 @@
 
 </main>
 
-<div class="fullBanner persona insurance podbor second"
-     style="background-image: url(/photo/podbor/autopodbor_bottom_bnr.webp)">
 
-    <div class="page__wrap page__flex">
+<div class="bigbaner" style="background-image: url(/photo/podbor/autopodbor_bottom_bnr.webp)">
+    <div class="page__wrap ">
+        <div class="bigbaner__filed" >
+            <div class="textBlock">
+                <h2>Полный сервис Автосеть.рф по подбору и проверке автомобилей с пробегом </h2>
+                <p style="font-size: 1rem; margin-top: 30px; font-family: Gilroy, sans-serif">
+                    Чтобы ознакомиться с ассортиментом, наличием и стоимостью оставьте заявку на нашем сайте, или свяжитесь
+                    с нами по номерам: <a href="tel:88005001156" style="color: #fff;">8 800 500 11 56</a> или&nbsp;<span
+                        class="autopodbor_call_phone"><a href="tel:89656069302" style="color: #fff;">8&nbsp;965&nbsp;606&nbsp;93&nbsp;02</a></span>
+                </p>
+            </div>
 
-        <div class="textBlock">
-            <h2>Полный сервис Автосеть.рф по подбору и проверке автомобилей с пробегом </h2>
-            <p style="font-size: 1rem; margin-top: 30px; font-family: Gilroy, sans-serif">
-                Чтобы ознакомиться с ассортиментом, наличием и стоимостью оставьте заявку на нашем сайте, или свяжитесь
-                с нами по номерам: <a href="tel:88005001156" style="color: #fff;">8 800 500 11 56</a> или&nbsp;<span
-                    class="autopodbor_call_phone"><a href="tel:89656069302" style="color: #fff;">8&nbsp;965&nbsp;606&nbsp;93&nbsp;02</a></span>
-            </p>
+            {{> form_podbor}}
         </div>
-
-
-        {{> form_podbor}}
-
-
     </div>
 </div>
 
