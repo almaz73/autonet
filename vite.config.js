@@ -95,6 +95,8 @@ export default defineConfig({
 				n643824: resolve(__dirname,'./news/643824/index.html'),
 				n643022: resolve(__dirname,'./news/643022/index.html'),
 				index_0: resolve(__dirname, './news/index_0.html'),
+
+				franshiza: resolve(__dirname, './franshiza/index.html'),
 			},
 		},
 
