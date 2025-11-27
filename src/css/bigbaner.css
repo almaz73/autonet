@@ -64,7 +64,7 @@
 .dwl_link {
     display: inline-block;
     min-width: 50%;
-    margin: 10px 0px;
+    margin: 10px 0;
     border-bottom: solid 1px #f4f4f7;
     border-top: solid 1px #f4f4f7;
     font-weight: bold;
@@ -91,7 +91,7 @@
     content: '';
     position: absolute;
     top: 50%;
-    right: 0px;
+    right: 0;
     width: 24px;
     height: 24px;
     background: url(/src/svg/icon_download.svg) center center no-repeat;
