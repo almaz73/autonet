@@ -1,0 +1,145 @@
+.dealers_pics {
+    background-image: url(/photo/franshiza/greyMap.webp);
+    background-position: center center;
+    background-size: cover;
+    margin-top: -80px;
+    margin-bottom: 80px;
+}
+
+.dealers_head {
+    display: flex;
+    justify-content: space-between;
+    font-family: Gilroy-Bold, system-ui;
+}
+
+.dealers_head strong {
+    color: var(--color-red);
+}
+
+.dealer-carousel {
+    width: 100%;
+
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0 60px;
+}
+
+.dealer-carousel .carousel-controls {
+    text-align: right;
+    padding: 10px;
+}
+
+.dealer-carousel .carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.dealer-carousel .carousel {
+    display: flex;
+    transition: transform 0.3s ease;
+}
+
+.dealer-carousel .carousel.dragging {
+    cursor: grabbing;
+    transition: none;
+}
+
+.dealer-carousel .carousel-image:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.dealer-carousel .carousel-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.dealer-carousel .carousel-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.dealer-carousel .carousel .pic:nth-child(3n-2) {
+    margin-top: 30px;
+}
+
+.dealer-carousel .carousel .pic:nth-child(3n) {
+    margin-top: 50px;
+}
+
+.dealer-carousel .carousel .pic {
+    position: relative;
+    height: 468px;
+}
+
+.dealer-carousel .carousel-image {
+    width: 300px;
+    aspect-ratio: 300/468;
+    object-fit: cover;
+    transition: transform .3s ease;
+    min-width: 300px;
+}
+
+.dealer-carousel .carousel .pic .name {
+    position: absolute;
+    top: 372px;
+    left: 20px;
+    font-weight: 600;
+    font-size: 1.1em;
+    color: #FD2528;
+}
+
+.dealer-carousel .carousel .pic .aff {
+    position: absolute;
+    top: 412px;
+    left: 20px;
+    font-size: 0.9em;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .dealer-carousel .carousel-image {
+        width: 210px;
+        min-width: 210px;
+    }
+
+    .dealer-carousel .carousel .pic {
+        position: relative;
+        height: 334px;
+    }
+
+    .dealer-carousel .carousel .pic .name {
+        top: 242px;
+    }
+
+    .dealer-carousel .carousel .pic .aff {
+        top: 273px;
+    }
+
+    .dealer-carousel .carousel .pic:nth-child(3n-2), .dealer-carousel .carousel .pic:nth-child(3n) {
+        margin-top: 0;
+    }
+
+}
+
+.dealer-carousel .carousel .pic:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 73%;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(#00000000 0%, black 98%, white 1%);
+    z-index: 0;
+    pointer-events: none;
+}

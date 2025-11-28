@@ -38,7 +38,7 @@
 .imgNumsBlock {
     height: 100%;
     position: relative;
-
+    overflow: auto;
 }
 
 @media (min-width: 768px) {
