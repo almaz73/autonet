@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+    <meta charset='UTF-8'/>
+    <link rel='icon' type='image/svg+xml' sizes='any' href='/src/svg/Favicon_as.svg'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Контакты - Автосеть.РФ</title>
+    <meta property='og:type' content='website'>
+    <meta property='og:title' content='Контакты'>
+    <meta property='og:url' content='https://автосетьрф.рф/contacts/'>
+    <meta property='og:locale' content='ru_RU'>
+    <meta property='og:site_name' content='АВТОСЕТЬ.РФ'>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+    <meta name='robots' content='index, follow'>
+    <meta name='description' content='Контактная информация компании Автосеть.РФ. Адреса дилерских и сервисных центров. Получить подробную информацию вы можете по телефону: 8-800-500-11-56. Звоните!'>
+    <link rel='stylesheet' href='/src/css/style.css'/>
+    <link rel="stylesheet" href="/src/css/contacts.css"/>
+
+    <script type='module' src='/src/js/contacts.js'></script>
+
+</head>
+<body>
+{{> "header/header" }}
+<main class="contacts">
+
+    <div class='page_padding_20'>
+        <div class='bread_cranbs'>
+            <a href='/'>Главная</a>
+            <span>Контакты</span>
+        </div>
+    </div>
+
+
+    <h1>Адреса дилерских центров</h1>
+
+    <div class="main__dealership--city">
+        Ваш город: <div class="city"><a href="javascript:;"><span>Альметьевск</span></a></div>
+    </div>
+    <div class="contact_items" id="currentCity"></div>
+
+
+    <h2>Дилерские центры в других городах</h2>
+    <input placeholder="Название города" id="search-field">
+    <div class="contact_items" id="dealers"></div>
+
+    <h2>Пункты выкупа авто</h2>
+    <div class="contact_items" id="punkts"></div>
+
+    <h2>Шинные центры</h2>
+    <div class="contact_items" id="tyres"></div>
+
+    <h2>Сервисные  центры</h2>
+    <div class="contact_items" id="services"></div>
+
+
+</main>
+
+{{> "footer/footer" }}
+
+<script type='module' src='/src/js/main.js'></script>
+<script type='module' src='/src/js/whereSeeParams.js'></script>
+</body>
+</html>

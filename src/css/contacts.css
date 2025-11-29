@@ -1,0 +1,140 @@
+.main__dealership--city {
+    margin-top: 1.875em;
+}
+
+.main__dealership--city .city {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.main__dealership--city .city a {
+    outline: none;
+    border: none;
+    text-decoration: none;
+    position: relative;
+    color: #E22427;
+    font-weight: 500;
+    padding-left: 1.25em;
+
+}
+
+.main__dealership--city .city a span {
+    border-bottom: 1px solid red;
+}
+
+.main__dealership--city .city a::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    content: url(/src/svg/city-icon.svg);
+    line-height: 0;
+    transform: translateX(0) translateY(-50%);
+}
+
+/****/
+.contact_items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 30px;
+    margin: 30px 0;
+}
+
+.contact_p {
+    flex: 0 0 calc(25% - 25px);
+    border-radius: 15px;
+    background-size: cover;
+    position: relative;
+    color: white;
+}
+
+
+@media (max-width: 1110px) {
+    .contact_p {
+        flex: 0 0 calc(32% - 14px);
+        /*height: 300px;*/
+    }
+}
+
+@media (max-width: 840px) {
+    .contact_p {
+        flex: 0 0 45%;
+    }
+}
+
+@media (max-width: 570px) {
+    .contact_p {
+        flex: 1;
+    }
+}
+
+.contact_p .address a::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    line-height: 0;
+    content: url(/src/svg//address-point.svg);
+    transform: translateX(20px) translateY(-90px);
+}
+
+.contact_p a {
+    color: white;
+    text-decoration: none;
+}
+
+.contact_p .city {
+    font-size: large;
+    font-family: Gilroy-Bold, system-ui;
+}
+
+.contact_p .contact__flex {
+    padding: 1.5em;
+    line-height: 1.7em;
+    border-radius: 12px;
+    background: linear-gradient(#00000077, #000000ff);
+}
+
+.contact_p .contact__flex:hover {
+    background: black;
+}
+
+.contact_p .address {
+    margin-left: 20px;
+    white-space: nowrap;
+}
+
+.contact_p .subname {
+    margin-top: 110px;
+    font-size: smaller;
+    color: #ffffff99;
+}
+
+.contacts h2 {
+    margin: 90px 0 30px;
+}
+
+.contacts input {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 20px;
+    color: rgba(0, 0, 0, 0.73);
+    font-size: 0.875em;
+    outline: none;
+    border: none;
+    height: 3rem;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+.contacts .letter {
+    flex: 0 0 100%;
+    font-size: 1.5em;
+    font-family: Gilroy-Bold, system-ui;
+    color: var(--color-red);
+    font-weight: 600;
+    margin: 0 0 -15px 10px;
+}
+

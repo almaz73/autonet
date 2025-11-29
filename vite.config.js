@@ -97,6 +97,7 @@ export default defineConfig({
 				index_0: resolve(__dirname, './news/index_0.html'),
 
 				franshiza: resolve(__dirname, './franshiza/index.html'),
+				contacts: resolve(__dirname, './contacts/index.html'),
 			},
 		},
 
