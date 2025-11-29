@@ -181,7 +181,9 @@ document.addEventListener('DOMContentLoaded', () => {
     searchField.addEventListener('input', () => {
         let part = searchField.value.toLowerCase()
         let smallDealers = dealers.filter(el => el.city.toLowerCase().includes(part))
-        dealersDiv.innerHTML = fillBlocks(smallDealers, 'withAlphabet')
+
+        if (smallDealers.length) dealersDiv.innerHTML = fillBlocks(smallDealers, 'withAlphabet')
+        else dealersDiv.innerHTML = 'Не найдено.'
     })
 
     let currentCity = document.querySelector('#currentCity')
