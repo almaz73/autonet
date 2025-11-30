@@ -132,6 +132,8 @@ const dealers = [
     }
 ]
 
+
+
 let punkts
 let tyres
 let services
@@ -144,7 +146,6 @@ function fillBlocks(arr, withAlphabet) {
     let oldLetter = ''
     arr.forEach(el => {
         let firstLetter = el.city.slice(0, 1)
-        console.log('firstLetter = ', firstLetter, oldLetter)
         if (withAlphabet && firstLetter !== oldLetter) {
             txt += `<div class="letter">${firstLetter}</div>`
             oldLetter = firstLetter
@@ -185,6 +186,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (smallDealers.length) dealersDiv.innerHTML = fillBlocks(smallDealers, 'withAlphabet')
         else dealersDiv.innerHTML = 'Не найдено.'
     })
+
+    // todo нужно найти город посетителя и выдать для него контакты и адрес этого города
+    // let yourSity = document.querySelector('.footer-city-button a')
+    // // let yourcity =
+    // if (yourSity) yourSity = yourSity?yourSity.innerText:'Казань'
 
     let currentCity = document.querySelector('#currentCity')
     currentCity.innerHTML = fillBlocks(contacts)

@@ -1,37 +1,26 @@
-.main__dealership--city {
+.contacts {
     margin-top: 1.875em;
 }
 
-.main__dealership--city .city {
+.contacts .city {
     display: inline-block;
     vertical-align: middle;
     margin-left: 5px;
 }
 
-.main__dealership--city .city a {
-    outline: none;
-    border: none;
-    text-decoration: none;
+.contacts .city.yourcity {
     position: relative;
-    color: #E22427;
-    font-weight: 500;
-    padding-left: 1.25em;
-
-}
-
-.main__dealership--city .city a span {
+    color: var(--color-red);
+    margin-left: 1.35em;
     border-bottom: 1px solid red;
 }
 
-.main__dealership--city .city a::before {
+.contacts .city.yourcity:before{
     content: "";
-    display: block;
     position: absolute;
-    left: 0;
-    top: 50%;
+    left: -16px;
+    top: 10%;
     content: url(/src/svg/city-icon.svg);
-    line-height: 0;
-    transform: translateX(0) translateY(-50%);
 }
 
 /****/
@@ -135,6 +124,6 @@
     font-family: Gilroy-Bold, system-ui;
     color: var(--color-red);
     font-weight: 600;
-    margin: 0 0 -15px 10px;
+    margin: 0 0 -15px;
 }
 
