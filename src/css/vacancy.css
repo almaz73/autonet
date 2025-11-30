@@ -52,3 +52,34 @@
 .videoFrame{
     margin-top: 60px;
 }
+
+.boons{
+    margin-top: 100px;
+}
+@media (max-width: 760px) {
+    .boons{
+       display: none;
+    }
+}
+.vac_img{
+    height: 130px;
+}
+.vac{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.vac_prime{
+    flex: 0 0 1%;
+    text-align: center;
+    margin-bottom: 35px;
+    min-width: 200px;
+}
+
+@media (max-width: 1070px) {
+    .vac_prime{
+        flex: 0 0 48%;
+    }
+}
+
+
