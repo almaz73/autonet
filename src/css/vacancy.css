@@ -1,0 +1,54 @@
+.vacancy{
+    position: relative;
+/*    width: 100%;*/
+
+    background: linear-gradient(90deg, white, #ffffff00);
+    background: linear-gradient(90deg, white 40%, #ffffff00, #ffffff00);
+    z-index: 1;
+
+}
+.alsu{
+    height: 100vh;
+    overflow: hidden;
+    top:87px;
+    width: 100%;
+    position: absolute;
+}
+
+.alsupic{
+    display: none;
+    margin: 0 -20px;
+    width: 100vw;
+}
+.alsufon{
+    background-image: url(/photo/vacancy/vacancy_bnr_01.webp);
+    background-position: center center;
+    background-size: cover;
+    position: absolute;
+    right: -20%;
+    left:23%;
+    aspect-ratio: 1600/1066;
+    z-index: 0;
+}
+
+@media (max-width: 1020px) {
+    .alsufon{
+        display: none;
+    }
+}
+@media (max-width: 500px) {
+    .alsupic{
+        display: block;
+    }
+}
+
+.desc{
+    max-width: 600px;
+    z-index: 10000;
+    height: calc(100vh - 87px);
+    position: relative;
+}
+
+.videoFrame{
+    margin-top: 60px;
+}
