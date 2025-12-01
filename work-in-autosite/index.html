@@ -18,6 +18,10 @@
     <link rel='stylesheet' href='/src/css/style.css'/>
     <link rel='stylesheet' href='/src/css/vacancy.css'/>
     <script type='module' src='/src/js/main.js'></script>
+    <script type='module' src="/src/js/vacancy.js"></script>
+
+
+
 </head>
 <body>
 {{> "header/header" }}
@@ -34,7 +38,7 @@
             <span>Работа в Автосеть.рф</span>
         </div>
     </div>
-    <img class="alsupic" src="/photo/vacancy/webp.jpg">
+    <img class="alsupic" src="/photo/vacancy/alsu.webp">
     <div class="desc">
         <h1 class="title">ПРИСОЕДИНЯЙТЕСЬ<span class="sub"> К НАШЕЙ КОМАНДЕ</span></h1>
         <div style="font-size:1em; line-height: 1.7em;">
@@ -108,6 +112,55 @@
         </div>
     </div>
 
+
+
+    <div class="choice_comb filter-white">
+        <span> Выберите город</span>
+        <div  style="width: 220px">
+            <comb data-placeholder='Город'/>
+        </div>
+    </div>
+
+
+
+    <div class="page__wrap">
+        <div class="vacancyFormBlock">
+            <div class="ttl_a">Не нашли подходящую <strong>вакансию</strong>? Оставьте свои данные:</div>
+            <form method="post" action="" class="smForm" id="vacancyReq">
+                <div>
+                    <div class="details"><input placeholder="Имя и фамилия" type="text" name="fio"></div>
+                    <div class="details"><input placeholder="Телефон" type="text"  name="phone"></div>
+                </div>
+                <div>
+                    <div class="details"><input placeholder="Город" type="text" name="city"></div>
+                    <div class="details fileInpt">
+                        <span>Загрузить файл</span>
+                        <input placeholder="Резюме" type="file" name="resume" style="display: none">
+                        <a href="javascript:void(0)" class="fileLabel"> Выбрать </a>
+                    </div>
+                </div>
+                <div class="details"><textarea placeholder="Расскажите нам о себе" rows="5" name="mess"></textarea></div>
+                <input id="cur_vac" name="current_vacancy" type="hidden" value="">
+                <input id="check_vac" name="check" type="hidden" value="">
+                <div class="btm">
+                    <button type="submit" onclick="document.getElementById('check_vac').value = 'vacancy_a';" class="uk-button a-button-add a-button-warning ng-scope punch-button">Отправить данные</button>
+                </div>
+
+
+                <div  style="all: initial;">
+                    <div class="modal__personal">
+                        <input type="checkbox" id="personal_agree_vacancy">
+                        <label for="personal_agree_vacancy">
+                            Нажав кнопку «Отправить данные» я даю согласие
+                            на обработку
+                            <a href="/privacy-policy/" target="_blank">персональных данных</a>
+                        </label>
+                    </div>
+                    <!--   <div class="modal__error" id="personal_error_vacancy">Вы должны дать согласие на обработку персональных данных</div>-->
+                </div>
+            </form>
+        </div>
+    </div>
 </main>
 
 
