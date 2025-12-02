@@ -100,8 +100,8 @@ export default defineConfig({
 				contacts: resolve(__dirname, './contacts/index.html'),
 				workinautosite: resolve(__dirname, './work-in-autosite/index.html'),
 				services: resolve(__dirname, './services/index.html'),
-				insurance: resolve(__dirname, './services/insurance/index.html')
-
+				insurance: resolve(__dirname, './services/insurance/index.html'),
+				landlords: resolve(__dirname, './landlords/index.html')
 			},
 		},
 
