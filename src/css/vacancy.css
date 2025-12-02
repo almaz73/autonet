@@ -184,6 +184,7 @@
     outline: none;
     border-radius: 5px;
     min-width: 200px;
+    position: relative;
 }
 
 @media (min-width: 576px) {
@@ -310,11 +311,9 @@ form .modal__personal {
 }
 
 
-
 .vacancy_item .fst_desc {
     font-weight: 600;
 }
-
 
 
 .vacancy_item .ttl {
@@ -325,9 +324,11 @@ form .modal__personal {
     .vacancy_item .fst_desc {
         position: relative;
     }
+
     .vacancy_item .ttl {
         max-width: 470px;
     }
+
     .vacancy_item .fst_desc .zp {
         position: absolute;
         top: 50%;
@@ -361,6 +362,97 @@ form .modal__personal {
 }
 
 .vacancy_item .detail {
+    padding: 20px 0;
+    float: inherit;
+}
+
+.vacancy_item .content {
     padding-top: 20px;
 }
 
+/*****/
+
+.vacancy_item .request_vac {
+    float: right;
+    width: 35%;
+    margin-right: 20px;
+}
+
+@media (max-width: 992px) {
+    .vacancy_item .request_vac {
+        float: inherit;
+        width: 90%;
+    }
+}
+
+.request_vac {
+    max-width: 350px;
+    padding-top: 40px;
+    display: block;
+}
+
+.request_vac .ttl_a {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+
+.request_vac input, .request_vac textarea {
+    background: #F2F2F7;
+    border: solid 1px #F2F2F7;
+    padding: 10px;
+    font-size: 0.9em;
+    width: 100%;
+    margin-bottom: 10px;
+    outline: none;
+    resize: none;
+    border-radius: 5px;
+}
+
+
+.request_vac .fileLabel {
+    display: block;
+    background: #F2F2F7;
+    border: solid 1px #F2F2F7;
+    padding: 10px;
+    font-size: 0.9em;
+    width: 100%;
+    margin-bottom: 10px;
+    outline: none;
+    color: #000;
+    border-radius: 5px;
+    position: relative;
+
+        color: #777;
+}
+
+.fileLabel input {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+}
+
+.request_vac button {
+    width: calc(100% + 20px);
+    border-radius: 5px;
+    background: var(--color-red);
+    color: #fff;
+    font-size: 0.9em;
+    text-align: center;
+    padding: 15px 0;
+    border: none;
+    outline: none;
+    margin: 0 0 20px;
+}
+
+.request_vac .ppDesc {
+    display: block;
+    font-size: 0.7em;
+}
+
+.request_vac .ppDesc a {
+    color: black ;
+}

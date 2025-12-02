@@ -55,13 +55,29 @@ window.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.vacancy_item').forEach(block => {
         // Сохраняем исходную высоту для анимации
         const firstLine = block.querySelector('.fst_desc');
+        const content = block.querySelector('.content');
         const detail = block.querySelector('.detail');
+
+
         // Вычисляем высоту первой строки
         const firstLineHeight = firstLine.offsetHeight;
-        const detailHeight = detail.offsetHeight;
+        const detailHeight = content ? content.offsetHeight : 0;
+
+        console.log('detailHeight = ', detailHeight)
         block.style.maxHeight = firstLineHeight + 'px';
         block.addEventListener('click', function () {
             toSmall()
+
+            const form = document.querySelector('.request_vac');
+            if (document.body.offsetWidth > 992) detail.before(form)
+            else detail.after(form)
+
+
+
+            const detailHeight = content ? content.offsetHeight : 0;
+            
+            console.log('document.body.offsetWidth = ',document.body.offsetWidth)
+
             this.classList.toggle('expanded');
             this.style.maxHeight = (firstLineHeight + detailHeight) + 'px';
         });
@@ -75,6 +91,8 @@ window.addEventListener('DOMContentLoaded', () => {
             block.style.maxHeight = firstLineHeight + 'px';
         });
     }
+
+    window.addEventListener('resize', toSmall);
 })
 
 
