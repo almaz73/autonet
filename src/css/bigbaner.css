@@ -2,7 +2,7 @@
     min-height: calc(100vh - 90px);
     background-position: center center;
     background-size: cover;
-
+    color: white;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -317,5 +317,32 @@
     .bigbaner h1, .bigbaner h2, .banner_detailing h2 {
         color: #fff;
         font-size: 2.2em;
+    }
+}
+
+/***/
+
+.insurance_call_phone a{
+    text-decoration: none;
+}
+
+.logoTbl {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px 0px 0;
+}
+
+.logoTbl > div {
+    display: grid;
+    place-items: center;
+    padding: 15px;
+    min-width: 200px;
+}
+
+@media (max-width: 500px) {
+    .bigbaner.inshurance {
+        background-position: -160px -30px;
+
     }
 }
