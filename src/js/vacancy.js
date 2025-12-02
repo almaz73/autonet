@@ -1,8 +1,8 @@
-window.addEventListener('load', () => {
+window.addEventListener('DOMContentLoaded', () => {
     let comb = document.querySelector('comb');
 
     // нужно все города поучать откуда-то централизованно
-    let items ={'Город': ['Все', 'Альметьевск', 'Казань', 'Набережные Челны', 'Нижнекамск', 'Стерлитамак']}
+    let items = {'Город': ['Все', 'Альметьевск', 'Казань', 'Набережные Челны', 'Нижнекамск', 'Стерлитамак']}
 
     items['Город'].value = localStorage.getItem('selectedCity')
     selectedCity(items['Город'].value)
@@ -30,11 +30,10 @@ window.addEventListener('load', () => {
     }
 
 
-
-    document.querySelector('.big_comb__items').addEventListener('click', function vacancyCitySelected(val){
+    document.querySelector('.big_comb__items').addEventListener('click', function vacancyCitySelected(val) {
         let combName = 'Город'
         let value = val.srcElement.innerText
-        
+
         items[combName].value = value
         selectedCity(items[combName].value)
 
@@ -47,11 +46,35 @@ window.addEventListener('load', () => {
     })
 
     function selectedCity(val) {
-        console.log('!!!selectedCity val = ',val)
+        console.log('!!!selectedCity val = ', val)
     }
 
 
-    
+    /** высота узлов **/
+
+    document.querySelectorAll('.vacancy_item').forEach(block => {
+        // Сохраняем исходную высоту для анимации
+        const firstLine = block.querySelector('.fst_desc');
+        const detail = block.querySelector('.detail');
+        // Вычисляем высоту первой строки
+        const firstLineHeight = firstLine.offsetHeight;
+        const detailHeight = detail.offsetHeight;
+        block.style.maxHeight = firstLineHeight + 'px';
+        block.addEventListener('click', function () {
+            toSmall()
+            this.classList.toggle('expanded');
+            this.style.maxHeight = (firstLineHeight + detailHeight) + 'px';
+        });
+    });
+
+    function toSmall() {
+        document.querySelectorAll('.vacancy_item').forEach(block => {
+            block.classList.remove('expanded');
+            const firstLine = block.querySelector('.fst_desc');
+            const firstLineHeight = firstLine.offsetHeight;
+            block.style.maxHeight = firstLineHeight + 'px';
+        });
+    }
 })
 
 

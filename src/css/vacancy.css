@@ -31,24 +31,29 @@
     z-index: 0;
 }
 
-@media (max-width: 1020px) {
-    .alsufon {
-        display: none;
-    }
-}
-
-@media (max-width: 500px) {
-    .alsupic {
-        display: block;
-    }
-}
-
 .desc {
     max-width: 600px;
     z-index: 10000;
     height: calc(100vh - 87px);
     position: relative;
 }
+
+@media (max-width: 1020px) {
+    .alsufon {
+        display: none;
+    }
+
+    .desc {
+        height: inherit;
+    }
+}
+
+@media (max-width: 600px) {
+    .alsupic {
+        display: block;
+    }
+}
+
 
 .videoFrame {
     margin-top: 60px;
@@ -229,7 +234,6 @@
 }
 
 form .modal__personal {
-    /*max-width: none;*/
     padding: 20px 0 0 0;
     display: flex;
     width: inherit;
@@ -242,7 +246,7 @@ form .modal__personal {
     display: inline-block;
 }
 
-@media (min-width: 600px){
+@media (min-width: 600px) {
     .modal__personal {
         font-size: 1em;
     }
@@ -253,6 +257,7 @@ form .modal__personal {
     min-width: inherit;
     margin-right: 14px;
 }
+
 .modal__personal a {
     outline: none;
     border: none;
@@ -273,3 +278,89 @@ form .modal__personal {
     background-color: #000;
     bottom: 0;
 }
+
+/****/
+
+.region.active {
+    display: block;
+}
+
+.region {
+    display: none;
+}
+
+@media (min-width: 860px) {
+    .vacancy_item {
+        padding: 40px;
+        margin-bottom: 30px;
+    }
+}
+
+.vacancy_item {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    cursor: pointer;
+}
+
+
+
+.vacancy_item .fst_desc {
+    font-weight: 600;
+}
+
+
+
+.vacancy_item .ttl {
+    font-size: 1.2em;
+}
+
+@media (min-width: 768px) {
+    .vacancy_item .fst_desc {
+        position: relative;
+    }
+    .vacancy_item .ttl {
+        max-width: 470px;
+    }
+    .vacancy_item .fst_desc .zp {
+        position: absolute;
+        top: 50%;
+        right: 0px;
+        transform: translateY(-50%);
+
+    }
+}
+
+.vacancy_item.expanded .zp {
+    position: relative;
+    transform: inherit;
+    margin-top: 20px;
+    color: var(--color-red);
+}
+
+.vacancy_item.expanded .show_detail {
+    display: none;
+}
+
+.vacancy_item .show_detail, .vacancy_item .show_hh {
+    color: var(--color-red);
+    font-size: 0.9em;
+}
+
+@media (min-width: 992px) {
+    .vacancy_item .detail {
+        float: left;
+        width: 60%;
+    }
+}
+
+.vacancy_item .detail {
+    padding-top: 20px;
+}
+

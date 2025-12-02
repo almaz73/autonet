@@ -96,7 +96,7 @@
 }
 
 .main__history--left .description {
-    color: #E22427;
+    color: var(--color-red);
     font-size: 1.0625em;
     font-weight: 600;
 }

@@ -63,7 +63,7 @@
 }
 
 .bossBlock .name {
-    color: #E22427;
+    color: var(--color-red);
     padding: 20px 0;
 }
 

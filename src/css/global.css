@@ -90,7 +90,7 @@ main h2 , main h1 {
 }
 
 .page__link span {
-    color: #E22427;
+    color: var(--color-red);
     transition: all 0.4s;
 }
 

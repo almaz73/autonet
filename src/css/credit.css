@@ -73,7 +73,7 @@
 }
 
 .form__card-calc .mountly_payment {
-    color: #E22427;
+    color: var(--color-red);
     font-size: 1.1625em;
     font-weight: 600;
 }
@@ -133,7 +133,7 @@
     height: 1.25em;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
     border-radius: 50%;
-    background-color: #E22427;
+    background-color: var(--color-red);
     border: 2px solid #fff;
     color: transparent;
     top: 50%;
@@ -148,5 +148,5 @@
 .form__card-calc .ui-slider .ui-slider-range, .form__card-calc .ui-slide .ui-slider-range {
     height: 3px;
     top: -1px;
-    background-color: #E22427;
+    background-color: var(--color-red);
 }

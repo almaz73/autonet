@@ -72,7 +72,7 @@
     display: block;
     position: absolute;
     z-index: 1;
-    background: #E22427;
+    background: var(--color-red);
     width: 80%;
     height: 100%;
     top: 22px;

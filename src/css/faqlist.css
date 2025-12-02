@@ -75,8 +75,8 @@
     display: inline-block;
     width: 6px;
     height: 6px;
-    border-bottom: 2px solid #E22427;
-    border-right: 2px solid #E22427;
+    border-bottom: 2px solid var(--color-red);
+    border-right: 2px solid var(--color-red);
     right: 0.625em;
     top: 50%;
     user-select: none;

@@ -180,7 +180,7 @@ cards.dot8 .cart {
 }
 
 .cart__of {
-    color: #E22427;
+    color: var(--color-red);
     font-size: 0.875em;
     display: inline-block;
 }
