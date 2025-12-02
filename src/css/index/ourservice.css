@@ -1,6 +1,7 @@
-.main__provided--top{
+.main__provided--top {
     margin-bottom: 30px;
 }
+
 .main__provided--top .page__flex {
     justify-content: space-between;
     align-items: center;
@@ -30,9 +31,10 @@
 }
 
 @media (max-width: 880px) {
-    .main__provided--block{
+    .main__provided--block {
         flex-wrap: wrap;
     }
+
     .main__provided--block .item {
         flex: inherit;
         max-width: 100%;
@@ -59,20 +61,20 @@
     border-radius: 10px;
 }
 
- .main__provided--item::after {
-     content: "";
-     display: block;
-     position: absolute;
-     width: 230px;
-     height: 230px;
-     top: 10%;
-     right: -43%;
-     z-index: -1;
-     transform: translateX(0) translateY(0) rotate(36.03deg);
-     border-radius: 10px;
- }
+.main__provided--item::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    top: 10%;
+    right: -43%;
+    z-index: -1;
+    transform: translateX(0) translateY(0) rotate(36.03deg);
+    border-radius: 10px;
+}
 
-.main__provided--item a{
+.main__provided--item a {
     color: black;
 }
 
@@ -108,7 +110,7 @@
     transition: all 0.4s;
 }
 
-.main__provided--block .item:hover .main__provided--link span.text{
+.main__provided--block .item:hover .main__provided--link span.text {
     opacity: 1;
 }
 
@@ -121,17 +123,19 @@
 .main__provided--img {
     position: absolute;
     bottom: 0;
-    right: 0;
+    right: -5px;
     max-width: 45vw;
 }
 
-.main__provided--img img{
+.main__provided--img img {
     height: 170px;
+    margin: 0;
     transition: all 0.4s;
 }
 
-.main__provided--block .item:hover .main__provided--img img{
-    height: 180px
+.main__provided--block .item:hover .main__provided--img img {
+    height: 190px;
+    margin: -15px 0 0 -15px;
 }
 
 .main__provided--item {
@@ -230,4 +234,50 @@
     .main__provided--item {
         min-height: 287px !important;
     }
+}
+
+/***/
+.serv_block {
+    margin: 40px 0;
+    flex-wrap: wrap;
+
+}
+
+.serv_block .item {
+    flex: 0 0 23%;
+    max-width: 23%;
+}
+
+
+@media (min-width: 860px) and (max-width: 1220px) {
+    .serv_block .item {
+        flex: 0 0 22%;
+        max-width: 22%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .serv_block .item {
+        flex: 0 0 47%;
+        max-width: 47%;
+    }
+}
+
+@media (max-width: 680px) {
+    .serv_block .item {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+.main__provided--dark {
+    background-color: #191E21;
+}
+
+.main__provided--dark .page__flex {
+    color: white;
+}
+
+.main__provided--dark::after {
+    background-color: #232830;
 }

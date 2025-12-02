@@ -99,7 +99,7 @@ export default defineConfig({
 				franshiza: resolve(__dirname, './franshiza/index.html'),
 				contacts: resolve(__dirname, './contacts/index.html'),
 				workinautosite: resolve(__dirname, './work-in-autosite/index.html'),
-
+				services: resolve(__dirname, './services/index.html')
 			},
 		},
 
