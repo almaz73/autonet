@@ -101,7 +101,8 @@ export default defineConfig({
 				workinautosite: resolve(__dirname, './work-in-autosite/index.html'),
 				services: resolve(__dirname, './services/index.html'),
 				insurance: resolve(__dirname, './services/insurance/index.html'),
-				landlords: resolve(__dirname, './landlords/index.html')
+				landlords: resolve(__dirname, './landlords/index.html'),
+				crediting: resolve(__dirname, './services/crediting/index.html')
 			},
 		},
 
