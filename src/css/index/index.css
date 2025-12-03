@@ -2,32 +2,7 @@
 @import url('@/css/index/brands-icons.css');
 @import url('@/css/cards.css');
 @import url('@/css/index/filter-box.css');
-/*@import url('@/css/index/ourservice.css');*/
 @import url('@/css/index/dealers.css');
 
-
-.geography {
-    margin-bottom: 60px;
-}
-
-.mainPhoto_big, .mainPhoto_little {
-    width: 100%;
-    cursor: pointer;
-}
-
-.mainPhoto_little {
-    display: none;
-}
-
-.mainPhoto_big {
-    aspect-ratio: 1200/500
-}
-
-@media (max-width: 500px) {
-    .mainPhoto_big {
-        display: none;
-        aspect-ratio: 483/534
-    }
-}
 
 

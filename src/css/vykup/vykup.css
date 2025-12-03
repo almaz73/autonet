@@ -221,6 +221,7 @@
         justify-content: center;
         padding: 0;
         border: 0;
+        margin-top: 15px;
     }
 
     .shadowTable .row  div:first-child img{
@@ -263,7 +264,6 @@
     .shadowTable.podbor .ttl {
         font-size: 1.3em;
         line-height: 1.1em;
-        padding-top: 20px;
     }
 }
 
@@ -287,7 +287,6 @@
 @media (max-width: 600px) {
     .shadowTable.podbor .row.R, .shadowTable.podbor .row.R1.active, .shadowTable.podbor .row.R2.active, .shadowTable.podbor .row.R3.active{
         height: 100px;
-        padding: 0 80px;
         padding-top: 20px;
     }
 
@@ -300,4 +299,10 @@
     .shadowTable .row div{
         border-bottom: none;
     }
+}
+
+
+.page__btn {
+    padding: 10px 0;
+    text-decoration: none;
 }

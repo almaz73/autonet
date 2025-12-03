@@ -117,7 +117,7 @@
     .fourBlocks > div:nth-child(3) {
         flex: 0 0 30%;
         max-width: 30%;
-        margin: 0 -4%;
+        margin: 0 -1% 0 -5%;
     }
 }
 

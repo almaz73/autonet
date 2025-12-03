@@ -102,7 +102,8 @@ export default defineConfig({
 				services: resolve(__dirname, './services/index.html'),
 				insurance: resolve(__dirname, './services/insurance/index.html'),
 				landlords: resolve(__dirname, './landlords/index.html'),
-				crediting: resolve(__dirname, './services/crediting/index.html')
+				crediting: resolve(__dirname, './services/crediting/index.html'),
+				shinnyyсentr: resolve(__dirname, './services/shinnyy-сentr/index.html')
 			},
 		},
 

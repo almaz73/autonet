@@ -34,12 +34,12 @@ main {
 }
 
 @media (width < 1240px) {
-    main{
+    main {
         max-width: calc(100% - 40px);
     }
 }
 
-main h2 , main h1 {
+main h2, main h1 {
     font-family: Gilroy-Bold, sans-serif;
 }
 
@@ -110,4 +110,43 @@ main h2 , main h1 {
     filter: grayscale(1);
 }
 
-/***/
+/* geography **/
+
+.geography {
+    margin-bottom: 60px;
+}
+
+.mainPhoto_big, .mainPhoto_little {
+    width: 100%;
+    cursor: pointer;
+}
+
+.mainPhoto_little {
+    display: none;
+    aspect-ratio: 483/534;
+}
+
+.mainPhoto_big {
+    aspect-ratio: 1200/500
+}
+
+
+@media (max-width: 900px) {
+    .mainPhoto_big {
+        display: none;
+    }
+
+    .mainPhoto_little {
+        display: block;
+        margin: 0 -20px;
+        width: calc(100% + 40px);
+    }
+}
+
+@media (max-width: 500px) {
+    .mainPhoto_big {
+        display: none;
+    }
+}
+
+/*****/
