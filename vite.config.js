@@ -98,12 +98,13 @@ export default defineConfig({
 
 				franshiza: resolve(__dirname, './franshiza/index.html'),
 				contacts: resolve(__dirname, './contacts/index.html'),
-				workinautosite: resolve(__dirname, './work-in-autosite/index.html'),
+				vacancy: resolve(__dirname, './work-in-autosite/index.html'),
 				services: resolve(__dirname, './services/index.html'),
 				insurance: resolve(__dirname, './services/insurance/index.html'),
 				landlords: resolve(__dirname, './landlords/index.html'),
 				crediting: resolve(__dirname, './services/crediting/index.html'),
-				shinnyyсentr: resolve(__dirname, './services/shinnyy-сentr/index.html')
+				shinny: resolve(__dirname, './services/shinnyy-сentr/index.html'),
+				osmotr: resolve(__dirname, './services/tehnicheskiy-osmotr/index.html')
 			},
 		},
 

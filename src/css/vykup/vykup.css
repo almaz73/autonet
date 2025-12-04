@@ -306,3 +306,14 @@
     padding: 10px 0;
     text-decoration: none;
 }
+
+.osmotr a{
+    color: black;
+    text-decoration: none;
+}
+
+.osmotr a:hover{
+    /*text-decoration: underline;*/
+    color: #3538f2;
+
+}
