@@ -104,7 +104,8 @@ export default defineConfig({
 				landlords: resolve(__dirname, './landlords/index.html'),
 				crediting: resolve(__dirname, './services/crediting/index.html'),
 				shinny: resolve(__dirname, './services/shinnyy-сentr/index.html'),
-				osmotr: resolve(__dirname, './services/tehnicheskiy-osmotr/index.html')
+				osmotr: resolve(__dirname, './services/tehnicheskiy-osmotr/index.html'),
+				obsluzh: resolve(__dirname, './services/servisnoe-obsluzhivanie/index.html')
 			},
 		},
 
