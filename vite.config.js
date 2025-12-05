@@ -105,7 +105,8 @@ export default defineConfig({
 				crediting: resolve(__dirname, './services/crediting/index.html'),
 				shinny: resolve(__dirname, './services/shinnyy-сentr/index.html'),
 				osmotr: resolve(__dirname, './services/tehnicheskiy-osmotr/index.html'),
-				obsluzh: resolve(__dirname, './services/servisnoe-obsluzhivanie/index.html')
+				obsluzh: resolve(__dirname, './services/servisnoe-obsluzhivanie/index.html'),
+				remont: resolve(__dirname, './services/remont-dvigatel/index.html')
 			},
 		},
 
