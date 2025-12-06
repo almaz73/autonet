@@ -12,17 +12,23 @@ export function filter_changed(items, name) {
 
 /** Запрос сервера и отображения витрины **/
 function getVitrina() {
-    if (location.pathname === '/' || location.pathname === '/autosite/') {
-        // Если это первая страница, скрываем сортировку по цене
-        let coin = document.querySelector('.type_views.coin')
-        if (coin) coin.style.display = 'none'
+     let cars_link = document.querySelector('.cars_link')
+    let view_buttons = document.querySelector('.view_buttons')
+
+    if (location.pathname === '/') {
+        cars_link.style.display = 'block'
+        localStorage.setItem('TYPE_VIEW', 'dot4')
+    } else {
+        cars_link.style.display = 'none'
+        view_buttons.style.display = 'block'
     }
 
 // в зависимости от страницы, запрашиваем нужные данные
     let cars
-    if (location.pathname === '/' || location.pathname === '/autosite/') {
+    if (location.pathname === '/') {
         let name = document.querySelector('#vitrina_name')
-        name.innerHTML = 'Специальные предложения по цене'
+        if (location.pathname === '/') name.innerHTML = 'Специальные предложения по цене'
+        else name.innerHTML = 'Автомобили'
         name.style.fontSize = '1.5rem'
         cars = [
             {

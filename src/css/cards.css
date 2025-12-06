@@ -233,24 +233,24 @@ cards.dot8 .cart {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-h2 .type_views {
+.type_views {
     float: right;
     display: flex;
     cursor: pointer;
 }
-h2 .type_views.coin {
+.type_views.coin {
     font-size: 16px;
     font-family: 'Gilroy';
     margin: 6px 100px 0;
 }
 
 @media (max-width: 600px) {
-    h2 .type_views {
+    .type_views {
         display: none;
     }
 }
 
-h2 .type_views div {
+.type_views div {
     background: #ddd;
     width: 20px;
     height: 20px;
@@ -262,12 +262,12 @@ h2 .type_views div {
     opacity: .4;
 }
 
-h2 .type_views div.active {
+.type_views div.active {
     background: #ffffff;
     opacity: 1;
 }
 
-h2 .type_views img {
+.type_views img {
     width: 60%;
     pointer-events: none;
 }

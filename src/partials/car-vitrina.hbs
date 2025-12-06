@@ -1,7 +1,17 @@
 <div class='container'>
-    <h2 >
-      <span id="vitrina_name" style='font-size: 2rem; font-weight: 200'></span>
-        <span class='type_views'>
+    <div style="display: flex; justify-content: space-between; align-items: center">
+        <h2>
+            <span id="vitrina_name" style='font-size: 2rem; font-weight: 200'></span>
+        </h2>
+
+
+        <a href="/cars/" class="page__link cars_link" style="display: none">
+            <img src="/src/svg/red_arrow.svg" loading='lazy' alt=''>
+            <span>Все предложения</span>
+        </a>
+
+        <span class="view_buttons" style="display: none">
+             <span class='type_views'>
                 <div class='dot8'>
                     <img src='/svg/dot8.svg' alt="">
                 </div>
@@ -13,11 +23,12 @@
                 </div>
             </span>
 
-        <span class='type_views coin'>
-            цена
-            <img src="/src/svg/arrow-down.svg" alt="arrow" loading="lazy" width='10' height='18'>
+            <span class='type_views coin'>
+                цена
+                <img src="/src/svg/arrow-down.svg" alt="arrow" loading="lazy" width='10' height='18'>
+            </span>
         </span>
-    </h2>
+    </div>
 
     <cards class='cards dot8' data-col='dot8'></cards>
 </div>

@@ -87,6 +87,7 @@ main h2, main h1 {
 
 .page__link {
     font-weight: 600;
+    text-decoration: none;
 }
 
 .page__link span {
