@@ -107,7 +107,8 @@ export default defineConfig({
 				osmotr: resolve(__dirname, './services/tehnicheskiy-osmotr/index.html'),
 				obsluzh: resolve(__dirname, './services/servisnoe-obsluzhivanie/index.html'),
 				remont: resolve(__dirname, './services/remont-dvigatel/index.html'),
-				akpp: resolve(__dirname, './services/remont-akpp/index.html')
+				akpp: resolve(__dirname, './services/remont-akpp/index.html'),
+				masla: resolve(__dirname, './services/zamena-masla/index.html')
 			},
 		},
 
