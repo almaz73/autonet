@@ -39,7 +39,7 @@ function getComparedCars() {
 function showCountBurron(storage) {
     let countDiv = document.querySelector('#compareCount')
     if (storage.length) {
-        countDiv.innerHTML = '<img src="/src/svg/car-icon_b.svg"> ' + storage.length
+        countDiv.innerHTML = '<img src="/icons/car-icon_b.svg">' + storage.length
         countDiv.style.display = 'flex'
     } else countDiv.style.display = 'none'
 }
