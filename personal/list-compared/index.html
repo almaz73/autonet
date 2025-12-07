@@ -15,10 +15,10 @@
     <meta name='robots' content='index, follow'>
     <meta name='description' content='Список сравнения - Автосеть.РФ'>
     <link rel='stylesheet' href='/src/css/style.css'/>
-
     <link rel='stylesheet' href='/src/css/compared.css'/>
 
     <script type='module' src='/src/js/main.js'></script>
+    <script type='module' src='/src/js/compareCars.js'></script>
 
 </head>
 <body>
@@ -35,161 +35,9 @@
 
 
     <div class="bx_compare">
-
         <table class="data-table">
-            <tbody>
-            <tr class="DELETE">
-                <td></td>
-                <td class="item">
-                    <a href="javascript:void(0)">Удалить</a>
-                </td>
-                <td class="item">
-                    <a href="javascript:void(0)">Удалить</a>
-                </td>
-            </tr>
-            <tr class="PREVIEW_PICTURE">
-                <td style="min-width: 140px">Картинка для анонса</td>
-                <td valign="top">
-                    <a href="/cars/santa-fe/653277/">
-                        <img src="/photo-offers/2/p1.jpg"
-                             alt="Hyundai Santa Fe" title="Hyundai Santa Fe"></a>
-                </td>
-                <td valign="top">
-                    <a href="/cars/hilux/652259/">
-                        <img src="/photo-offers/2/p1.jpg"
-                             alt="Toyota Hilux" title="Toyota Hilux"></a>
-                </td>
-            </tr>
-            <tr class="NAME">
-                <td>Название</td>
-                <td valign="top">
-                    <a href="/cars/santa-fe/653277/">Hyundai Santa Fe</a>
-                </td>
-                <td valign="top">
-                    <a href="/cars/hilux/652259/">Toyota Hilux</a>
-                </td>
-            </tr>
-            <tr class="PRICE">
-                <td>Цена</td>
-                <td class="P-VALUE">
-                    <div>
-                        5 725 000 руб.
-                    </div>
-                </td>
-                <td class="P-VALUE">
-                    <div>
-                        5 949 000 руб.
-                    </div>
-                </td>
-            </tr>
-            <tr class="PROBEG">
-                <td>Пробег</td>
-                <td>
-                    15
-                </td>
-                <td>
-                    49328
-                </td>
-            </tr>
-            <tr class="GOD_VYPUSKA">
-                <td>Год выпуска</td>
-                <td>
-                    2024
-                </td>
-                <td>
-                    2022
-                </td>
-            </tr>
-            <tr class="TSVET">
-                <td>Цвет</td>
-                <td>
-                    Белый
-                </td>
-                <td>
-                    Коричневый
-                </td>
-            </tr>
-            <tr class="OBEM_DVIGATELYA">
-                <td>Объем двигателя</td>
-                <td>
-                    2500
-                </td>
-                <td>
-                    4000
-                </td>
-            </tr>
-            <tr class="TIP_DVIGATELYA">
-                <td>Тип двигателя</td>
-                <td>
-                    Бензиновый
-                </td>
-                <td>
-                    Бензиновый
-                </td>
-            </tr>
-            <tr class="MOSHCHNOST_DVIGATELYA">
-                <td>Мощность двигателя</td>
-                <td>
-                    194
-                </td>
-                <td>
-                    238
-                </td>
-            </tr>
-            <tr class="TIP_KPP">
-                <td>Тип КПП</td>
-                <td>
-                    Автоматическая
-                </td>
-                <td>
-                    Автоматическая
-                </td>
-            </tr>
-            <tr class="TIP_PRIVODA">
-                <td>Тип привода</td>
-                <td>
-                    Полный
-                </td>
-                <td>
-                    Полный
-                </td>
-            </tr>
-            <tr class="TIP_KUZOVA">
-                <td>Тип кузова</td>
-                <td>
-                    Внедорожник
-                </td>
-                <td>
-                    Пикап
-                </td>
-            </tr>
-            <tr class="GOROD">
-                <td>Город</td>
-                <td>
-                    Стерлитамак
-                </td>
-                <td>
-                    Стерлитамак
-                </td>
-            </tr>
-            <tr class="MARKA">
-                <td>Марка</td>
-                <td>
-                    HYUNDAI
-                </td>
-                <td>
-                    Toyota
-                </td>
-            </tr>
-            <tr class="MODEL">
-                <td>Модель</td>
-                <td>
-                    SANTA FE
-                </td>
-                <td>
-                    Hilux
-                </td>
-            </tr>
+            <tbody  id="compare-field">
+
             </tbody>
         </table>
     </div>

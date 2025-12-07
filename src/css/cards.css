@@ -25,10 +25,6 @@
     grid-template-areas: 'c_slide name' 'c_slide c_price' 'c_slide c_info' 'c_slide  c_box'
 }
 
-.cart .compare_img{
-    width: 20px;
-    height: 18px;
-}
 .cart .penta_img{
     width: 20px;
     height: 20px;
@@ -205,8 +201,14 @@ cards.dot8 .cart {
 }
 
 .cart__box--bottom img:hover {
+    /*красный по наведению*/
     filter: sepia(100%) saturate(6860%);
 }
+
+.cart__box--bottom img.chosen{
+    filter: sepia(100%) saturate(6860%);
+}
+
 
 .cart .field {
     width: 100%;
