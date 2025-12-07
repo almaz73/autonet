@@ -108,7 +108,8 @@ export default defineConfig({
 				obsluzh: resolve(__dirname, './services/servisnoe-obsluzhivanie/index.html'),
 				remont: resolve(__dirname, './services/remont-dvigatel/index.html'),
 				akpp: resolve(__dirname, './services/remont-akpp/index.html'),
-				masla: resolve(__dirname, './services/zamena-masla/index.html')
+				masla: resolve(__dirname, './services/zamena-masla/index.html'),
+				compared: resolve(__dirname, './personal/list-compared/index.html')
 			},
 		},
 
