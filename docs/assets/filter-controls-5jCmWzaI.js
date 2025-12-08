@@ -1,4 +1,4 @@
-import"./compareCars-DO8Ids8l.js";let c=document.querySelector("cards");function u(o,p){let e;isNaN(p)||(e=`<div class='cart' id='galery_${p}'>
+let c=document.querySelector("cards");function u(o,p){let e;isNaN(p)||(e=`<div class='cart' id='galery_${p}'>
               <div class='cart__slide'>                    
                   <img class='photo' alt=''>
                   <div class='cart__blank'>${o.address}</div>
