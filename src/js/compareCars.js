@@ -62,7 +62,7 @@ function showChosen(storage_) {
     })
 
     if (location.pathname === '/personal/list-compared/') {
-        let div = document.querySelector('#compare-field')
+        let compareDiv = document.querySelector('#compare-field')
         let DELETE = ''
         let PREVIEW_PICTURE = ''
         let NAME = ''
@@ -101,7 +101,7 @@ function showChosen(storage_) {
             MODEL += `<td>${el.name.split(' ')[1]}</td>`
         })
 
-        div.innerHTML = `
+        compareDiv.innerHTML = `
               <tr class="DELETE">
                 <td style="min-width: 140px"></td>
                 ${DELETE}
@@ -166,14 +166,31 @@ function showChosen(storage_) {
                 <td>Модель</td>
                 ${MODEL}
             </tr>`
-        if (!storage.length) div.innerHTML = '<div class="nodata">НЕТ ВЫБРАННЫХ ПОЗИЦИЙ ДЛЯ СРАВНЕНИЯ</div>'
+        if (!storage.length) compareDiv.innerHTML = '<div class="nodata">НЕТ ВЫБРАННЫХ ПОЗИЦИЙ ДЛЯ СРАВНЕНИЯ</div>'
     }
 }
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    showChosen()
+    showChosen();
+
+    // Перетаскивание мышкой
+    let isDragging = false;
+    let startX;
+    let tableScroll=document.querySelector('.bx_compare')
+    tableScroll.addEventListener('mousedown', (e)=>{
+        isDragging = true;
+        startX = e.clientX;
+        e.preventDefault();
+    });
+    tableScroll.addEventListener('mousemove', (e)=>{
+        if (!isDragging) return;
+        tableScroll.scrollBy(startX-e.clientX , 0); // Прокрутка контейнера
+        startX = e.clientX;
+    });
+    tableScroll.addEventListener('mouseup', () => isDragging = false);
 })
+
 window.dblCompare = function () {
     location.href = '/personal/list-compared/'
 }
