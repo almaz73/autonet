@@ -1,4 +1,4 @@
-.bx_compare{
+.bx_compare {
     max-width: 100vw;
     overflow-x: auto;
     overflow-x: auto;
@@ -16,7 +16,7 @@
     background: #f9f9f9;
 }
 
-.bx_compare  table tr td {
+.bx_compare table tr td {
     font-size: 13px;
     padding: 8px 5px;
     border-top: solid 1px #fff;
@@ -25,4 +25,11 @@
 
 .PREVIEW_PICTURE img {
     max-width: 150px;
+}
+
+#compare-field .nodata {
+    width: 100%;
+    height: 300px;
+    display: grid;
+    place-items: center;
 }

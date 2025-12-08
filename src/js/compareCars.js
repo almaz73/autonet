@@ -55,7 +55,6 @@ window.deleteCar = function (id) {
 function showChosen(storage_) {
     let storage = storage_ || getComparedCars()
     showCountBurron(storage)
-    if (!storage.length) return false;
 
     storage.forEach(el => {
         let compareButton = document.querySelector("#compareId_" + el.id)
@@ -167,8 +166,7 @@ function showChosen(storage_) {
                 <td>Модель</td>
                 ${MODEL}
             </tr>`
-
-        if (!storage.length) div.innerHTML = '<div style="width: 100%;  height: 300px; display: grid; place-items: center;">НЕТ ВЫБРАННЫХ ПОЗИЦИЙ ДЛЯ СРАВНЕНИЯ</div>'
+        if (!storage.length) div.innerHTML = '<div class="nodata">НЕТ ВЫБРАННЫХ ПОЗИЦИЙ ДЛЯ СРАВНЕНИЯ</div>'
     }
 }
 
