@@ -1,5 +1,4 @@
 import {fill} from '@/js/cards.js';
-import '@/js/compareCars.js';
 
 
 export function filter_changed(items, name) {
@@ -13,7 +12,7 @@ export function filter_changed(items, name) {
 
 /** Запрос сервера и отображения витрины **/
 function getVitrina() {
-     let cars_link = document.querySelector('.cars_link')
+    let cars_link = document.querySelector('.cars_link')
     let view_buttons = document.querySelector('.view_buttons')
 
     if (location.pathname === '/') {
@@ -214,7 +213,7 @@ function getVitrina() {
         cars = [
             {
                 address: 'Альметьевск , Герцена 1Б',
-                id:3333,
+                id: 3333,
                 name: 'ВАЗ (LADA) 2106, 2002',
                 href: '/autosite/cars/2106/651138/',
                 price: '123 091',
@@ -229,7 +228,7 @@ function getVitrina() {
             },
             {
                 address: 'Набережные Челны, Мусы Джалиля 15',
-                id:3331,
+                id: 3331,
                 name: 'Volkswagen Polo, 2014',
                 href: '/cars/2106/651138/',
                 price: '784 238',
@@ -244,7 +243,7 @@ function getVitrina() {
             },
             {
                 address: 'Набережные Челны, Мусы Джалиля 15',
-                id:400,
+                id: 400,
                 name: 'Volkswagen Polo, 2014',
                 href: '/cars/polo/649868/',
                 price: '784 238',
@@ -259,7 +258,7 @@ function getVitrina() {
             },
             {
                 address: 'Набережные Челны, Мусы Джалиля 15',
-                id:401,
+                id: 401,
                 name: 'Volkswagen Polo, 2014',
                 href: '/cars/polo/649868/',
                 price: '784 238',
@@ -274,7 +273,7 @@ function getVitrina() {
             },
             {
                 address: 'Набережные Челны, Мусы Джалиля 15',
-                id:402,
+                id: 402,
                 name: 'Volkswagen Polo, 2014',
                 href: '/cars/polo/649868/',
                 price: '784 238',
@@ -289,7 +288,7 @@ function getVitrina() {
             },
             {
                 address: 'Набережные Челны, Мусы Джалиля 15',
-                id:403,
+                id: 403,
                 name: 'Volkswagen Polo, 2014',
                 href: '/cars/polo/649868/',
                 price: '784 238',
@@ -304,7 +303,7 @@ function getVitrina() {
             },
             {
                 address: 'Набережные Челны, Мусы Джалиля 15',
-                id:404,
+                id: 404,
                 name: 'Volkswagen Polo, 2014',
                 href: '/cars/polo/649868/',
                 price: '784 238',
@@ -319,7 +318,7 @@ function getVitrina() {
             },
             {
                 address: 'Набережные Челны, Мусы Джалиля 15',
-                id:405,
+                id: 405,
                 name: 'Volkswagen Polo, 2014',
                 href: '/cars/polo/649868/',
                 price: '784 238',
@@ -334,7 +333,7 @@ function getVitrina() {
             },
             {
                 address: 'Набережные Челны, Мусы Джалиля 15',
-                id:406,
+                id: 406,
                 name: 'Volkswagen Polo, 2014',
                 href: '/cars/polo/649868/',
                 price: '784 238',
@@ -349,7 +348,7 @@ function getVitrina() {
             },
             {
                 address: 'Набережные Челны, Мусы Джалиля 15',
-                id:407,
+                id: 407,
                 name: 'Volkswagen Polo, 2014',
                 href: '/cars/polo/649868/',
                 price: '784 238',
@@ -364,7 +363,7 @@ function getVitrina() {
             },
             {
                 address: 'Набережные Челны, Мусы Джалиля 15',
-                id:408,
+                id: 408,
                 name: 'Volkswagen Polo, 2014',
                 href: '/cars/polo/649868/',
                 price: '784 238',

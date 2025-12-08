@@ -55,6 +55,8 @@ window.deleteCar = function (id) {
 function showChosen(storage_) {
     let storage = storage_ || getComparedCars()
     showCountBurron(storage)
+    if (!storage.length) return false;
+
     storage.forEach(el => {
         let compareButton = document.querySelector("#compareId_" + el.id)
         if (compareButton) compareButton.classList.add('chosen')
