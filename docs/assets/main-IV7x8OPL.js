@@ -90,4 +90,4 @@
             <tr class="MODEL">
                 <td>Модель</td>
                 ${A}
-            </tr>`,t.length||(n.innerHTML='<div class="nodata">НЕТ ВЫБРАННЫХ ПОЗИЦИЙ ДЛЯ СРАВНЕНИЯ</div>')}}document.addEventListener("DOMContentLoaded",()=>{Y();let e=!1,t,n=document.querySelector(".bx_compare");n.addEventListener("mousedown",r=>{e=!0,t=r.clientX,r.preventDefault()}),n.addEventListener("mousemove",r=>{e&&(n.scrollBy(t-r.clientX,0),t=r.clientX)}),n.addEventListener("mouseup",()=>e=!1)});window.dblCompare=function(){location.href="/personal/list-compared/"};
+            </tr>`,t.length||(n.innerHTML='<div class="nodata">НЕТ ВЫБРАННЫХ ПОЗИЦИЙ ДЛЯ СРАВНЕНИЯ</div>')}}document.addEventListener("DOMContentLoaded",()=>{Y();let e=!1,t,n=document.querySelector(".bx_compare");n&&(n.addEventListener("mousedown",r=>{e=!0,t=r.clientX,r.preventDefault()}),n.addEventListener("mousemove",r=>{e&&(n.scrollBy(t-r.clientX,0),t=r.clientX)}),n.addEventListener("mouseup",()=>e=!1))});window.dblCompare=function(){location.href="/personal/list-compared/"};
