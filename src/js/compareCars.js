@@ -178,17 +178,19 @@ document.addEventListener('DOMContentLoaded', () => {
     let isDragging = false;
     let startX;
     let tableScroll=document.querySelector('.bx_compare')
-    tableScroll.addEventListener('mousedown', (e)=>{
-        isDragging = true;
-        startX = e.clientX;
-        e.preventDefault();
-    });
-    tableScroll.addEventListener('mousemove', (e)=>{
-        if (!isDragging) return;
-        tableScroll.scrollBy(startX-e.clientX , 0); // Прокрутка контейнера
-        startX = e.clientX;
-    });
-    tableScroll.addEventListener('mouseup', () => isDragging = false);
+    if (tableScroll) {
+        tableScroll.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+            e.preventDefault();
+        });
+        tableScroll.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            tableScroll.scrollBy(startX - e.clientX, 0); // Прокрутка контейнера
+            startX = e.clientX;
+        });
+        tableScroll.addEventListener('mouseup', () => isDragging = false);
+    }
 })
 
 window.dblCompare = function () {
