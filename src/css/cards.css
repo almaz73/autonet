@@ -136,6 +136,15 @@ cards.dot8 .cart {
     grid-area: c_price;
 }
 
+.big_link{
+    text-decoration: none;
+    color: black;
+
+}
+.cards.dot1 .big_link{
+    font-size: 1.4em;
+}
+
 .cart__price .total {
     font-size: 1.25em;
     display: inline-block;

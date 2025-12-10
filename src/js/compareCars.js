@@ -44,12 +44,22 @@ function showCountBurron(storage) {
     } else countDiv.style.display = 'none'
 }
 
+window.deleteAllCar = function () {
+    window.deleteCar()
+}
 window.deleteCar = function (id) {
     let storage = getComparedCars()
-    storage = storage.filter(el => el.id !== id)
+    if(id) storage = storage.filter(el => el.id !== id)
+    else storage = []
+
     localStorage.setItem('ComparedCars', JSON.stringify(storage))
     showCountBurron(storage)
     showChosen(storage)
+
+    if (!storage.length) {
+        let clearButton = document.querySelector('.compare-clear')
+        clearButton.style.display='none'
+    }
 }
 
 function showChosen(storage_) {

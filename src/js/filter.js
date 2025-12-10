@@ -35,7 +35,7 @@ function getVitrina() {
                 address: 'Альметьевск , Герцена 1Б',
                 id: 200,
                 name: 'ВАЗ (LADA) 2106, 2002',
-                href: '/autosite/cars/2106/651138/',
+                href: '/cars/2106/651138/',
                 price: '123 091',
                 fromPerMonth: '1 100',
                 info: '133&nbsp;055 км, 1.6 MT (85 л.с), седан, передний, бензин',
@@ -122,14 +122,14 @@ function getVitrina() {
                     '/photo-offers/2/p6.jpg']
             },
         ]
-    } else if (location.pathname === '/tyres/' || location.pathname === '/autosite/tyres/') {
+    } else if (location.pathname === '/tyres/' || location.pathname === '/tyres/') {
         document.querySelector('#vitrina_name').innerHTML = 'Каталог шин'
         cars = [
             {
                 address: 'Альметьевск , Герцена 1Б',
                 id: 210,
                 name: 'Viatti Brina Nordico 225/45 R17 Зима шип ',
-                href: '/autosite/cars/2106/651138/',
+                href: '/cars/2106/651138/',
                 price: '15 000',
                 // fromPerMonth: '1 100',
                 info: '',
@@ -146,7 +146,7 @@ function getVitrina() {
                 address: 'Альметьевск , Герцена 1Б',
                 id: 211,
                 name: 'Viatti Brina Nordico 225/45 R17 Зима шип ',
-                href: '/autosite/cars/2106/651138/',
+                href: '/cars/2106/651138/',
                 price: '21 091',
                 // fromPerMonth: '1 100',
                 info: '',
@@ -163,7 +163,7 @@ function getVitrina() {
                 address: 'Альметьевск , Герцена 1Б',
                 id: 212,
                 name: 'Viatti Brina Nordico 225/45 R17 Зима шип ',
-                href: '/autosite/cars/2106/651138/',
+                href: '/cars/2106/651138/',
                 price: '15 000',
                 // fromPerMonth: '1 100',
                 info: '',
@@ -179,7 +179,7 @@ function getVitrina() {
                 address: 'Альметьевск , Герцена 1Б',
                 id: 213,
                 name: 'Viatti Brina Nordico 225/45 R17 Зима шип ',
-                href: '/autosite/cars/2106/651138/',
+                href: '/cars/2106/651138/',
                 price: '21 091',
                 // fromPerMonth: '1 100',
                 info: '',
@@ -195,7 +195,7 @@ function getVitrina() {
                 address: 'Альметьевск , Герцена 1Б',
                 id: 214,
                 name: 'Viatti Brina Nordico 225/45 R17 Зима шип ',
-                href: '/autosite/cars/2106/651138/',
+                href: '/cars/2106/651138/',
                 price: '15 000',
                 // fromPerMonth: '1 100',
                 info: '',
@@ -208,14 +208,14 @@ function getVitrina() {
                 ]
             },
         ]
-    } else if (location.pathname === '/cars/' || location.pathname === '/autosite/cars/') {
+    } else if (location.pathname === '/cars/' || location.pathname === '/cars/') {
         document.querySelector('#vitrina_name').innerHTML = 'Автомобили'
         cars = [
             {
                 address: 'Альметьевск , Герцена 1Б',
                 id: 3333,
                 name: 'ВАЗ (LADA) 2106, 2002',
-                href: '/autosite/cars/2106/651138/',
+                href: '/cars/2106/651138/',
                 price: '123 091',
                 fromPerMonth: '1 100',
                 info: '133&nbsp;055 км, 1.6 MT (85 л.с), седан, передний, бензин',
@@ -384,7 +384,7 @@ function getVitrina() {
                 address: 'Альметьевск , Герцена 1Б',
                 id: 100,
                 name: 'ВАЗ (LADA) 2106, 2002',
-                href: '/autosite/cars/2106/651138/',
+                href: '/cars/2106/651138/',
                 price: '123 091',
                 fromPerMonth: '1 100',
                 info: '133&nbsp;055 км, 1.6 MT (85 л.с), седан, передний, бензин',
@@ -624,7 +624,7 @@ function getVitrina() {
                 address: 'Альметьевск , Герцена 1Б',
                 id: 116,
                 name: 'Viatti Brina Nordico 225/45 R17 Зима шип ',
-                href: '/autosite/cars/2106/651138/',
+                href: '/cars/2106/651138/',
                 price: '21 091',
                 // fromPerMonth: '1 100',
                 info: '',
@@ -639,7 +639,7 @@ function getVitrina() {
                 address: 'Альметьевск , Герцена 1Б',
                 id: 117,
                 name: 'Viatti Brina Nordico 225/45 R17 Зима шип ',
-                href: '/autosite/cars/2106/651138/',
+                href: '/cars/2106/651138/',
                 price: '15 000',
                 // fromPerMonth: '1 100',
                 info: '',
@@ -654,7 +654,7 @@ function getVitrina() {
                 address: 'Альметьевск , Герцена 1Б',
                 id: 118,
                 name: 'Viatti Brina Nordico 225/45 R17 Зима шип ',
-                href: '/autosite/cars/2106/651138/',
+                href: '/cars/2106/651138/',
                 price: '21 091',
                 // fromPerMonth: '1 100',
                 info: '',

@@ -33,3 +33,20 @@
     display: grid;
     place-items: center;
 }
+
+.compare-clear #delete-all{
+    height: 40px;
+    padding: 0 26px;
+    font-size: 15px;
+    font-weight: 600;
+    background: var(--color-red);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.compare-clear{
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}

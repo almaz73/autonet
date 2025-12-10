@@ -5,7 +5,7 @@ let cards = document.querySelector('cards');
 function createNode(item, N) {
     let txt
     if (!isNaN(N)) {
-        txt = `<div class='cart' id='galery_${N}'>
+        txt = `<div class='cart' id='galery_${N}' >
               <div class='cart__slide'>                    
                   <img class='photo' alt=''>
                   <div class='cart__blank'>${item.address}</div>
@@ -14,25 +14,27 @@ function createNode(item, N) {
                   </div>
                   <span class='dark-fon'/>                    
               </div>
-              <div class='name'>
-                  <br>
-                  <a href='${item.href}'> ${item.name}</a>
-              </div>
-              <div class='cart__price'>
-                  <div class='total'>${item.price ? item.price + '₽' : ''} </div>
-                  <div class='cart__of'>${item.fromPerMonth ? 'ot ' + item.fromPerMonth + '₽/мес' : ''} </div>
-              </div>
-              <div class='cart__info'>
-                  ${item.info}
-              </div>
-              <div class='cart__box--bottom'>
-                  <a href='javascript:void(0)' onclick="addCompare(${item.id})" ondblclick="dblCompare(${item.id})">
-                      <img id="compareId_${item.id}" src='/icons/compare_cars.svg' alt=''>
-                  </a>
-                  <a href='javascript:void(0)'>
-                      <img class='penta_img1' src='/icons/penta.svg' alt=''>
-                  </a>
-              </div>
+              <a class="big_link" href='${item.href}' title="перейти">
+                  <div class='name'>
+                      <br>                      
+                      ${item.name}
+                  </div>
+                  <div class='cart__price'>
+                      <div class='total'>${item.price ? item.price + '₽' : ''} </div>
+                      <div class='cart__of'>${item.fromPerMonth ? 'ot ' + item.fromPerMonth + '₽/мес' : ''} </div>
+                  </div>
+                  <div class='cart__info'>
+                      ${item.info}
+                  </div>
+                  <div class='cart__box--bottom'>
+                      <a href='javascript:void(0)' onclick="addCompare(${item.id})" ondblclick="dblCompare(${item.id})">
+                          <img id="compareId_${item.id}" src='/icons/compare_cars.svg' alt=''>
+                      </a>
+                      <a href='javascript:void(0)'>
+                          <img class='penta_img1' src='/icons/penta.svg' alt=''>
+                      </a>
+                  </div>
+              </a>
           </div>`;
     }
 

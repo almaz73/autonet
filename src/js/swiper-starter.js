@@ -1,5 +1,8 @@
 let swiper
 let fotos = document.querySelector('.alone .fotos')
+
+console.log('fotos = ',fotos)
+
 let fotos_black = document.querySelector('.fotos_black')
 let big = document.querySelector('.big')
 let swiperSection = document.querySelector('.swiper.mySwiper')
@@ -56,10 +59,10 @@ function showSlide(val) {
     swiper.slideTo(val);
 }
 
-function showAll() {
+fotos_black.addEventListener('click', function () {
     fotos.style.height = 'inherit';
     fotos_black.style.display = 'none'
-}
+})
 
 window.toBig = function (val) {
     if (val) big.classList.add('big_viewer')
