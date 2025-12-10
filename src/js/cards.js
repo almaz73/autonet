@@ -27,11 +27,11 @@ function createNode(item, N) {
                       ${item.info}
                   </div>
                   <div class='cart__box--bottom'>
-                      <a href='javascript:void(0)' onclick="addCompare(${item.id})" ondblclick="dblCompare(${item.id})">
+                      <a href='javascript:addCompare(${item.id})' ondblclick="dblCompare(${item.id})">
                           <img id="compareId_${item.id}" src='/icons/compare_cars.svg' alt=''>
                       </a>
-                      <a href='javascript:void(0)'>
-                          <img class='penta_img1' src='/icons/penta.svg' alt=''>
+                      <a href='javascript:addFavorite(${item.id})'>
+                          <img id="favoriteId_${item.id}" src='/icons/penta.svg' alt=''>
                       </a>
                   </div>
               </a>
@@ -86,25 +86,29 @@ function galeryEvents(id, images) {
 }
 
 export function fill(cars) {
-
     window.currentCars = cars
+    cards.innerHTML = ''
 
     cars.forEach((el, i) => {
         createNode(el, i + 1)
-        if (i === 2) createNode(null, 'abdul')
+        if (i === 2 && (location.pathname !== '/personal/favorite-cars/')) createNode(null, 'abdul')
         if (i === 0 && (location.pathname === '/cars/' || location.pathname === '/autosite/cars/')) createNode(null, 'swiper_buy')
     }); // прикручиваем html
     cars.forEach((el, i) => galeryEvents(i + 1, el.photos)); // прикрепляем события
+
+    if (!cards.innerHTML) cards.innerHTML = 'Нет данных...'
 }
 
 let type_views = document.querySelector('.type_views');
 let pieceWidth;
 let getWidth = () => {
-    pieceWidth = document.querySelector('cards .cart__slide').clientWidth;
-    if (current_slide) pieceWidth = current_slide.clientWidth;
+    let cart__slide = document.querySelector('cards .cart__slide')
+    if (cart__slide) pieceWidth = cart__slide.clientWidth;
+
+    if (window.current_slide) pieceWidth = window.current_slide.clientWidth;
 };
 document.addEventListener('DOMContentLoaded', () => setTimeout(getWidth, 500));
-window.addEventListener('resize', () => current_slide && current_slide.classList.remove('watch'));
+window.addEventListener('resize', () => window.current_slide && window.current_slide.classList.remove('watch'));
 
 setTimeout(() => {
     let TYPE_VIEW = localStorage.getItem('TYPE_VIEW') || 'dot4'
@@ -133,8 +137,8 @@ function setTypeView(e) {
 }
 
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && current_slide) {
-        current_slide.classList.remove('watch')
+    if (e.key === 'Escape' && window.current_slide) {
+        window.current_slide.classList.remove('watch')
         getWidth();
     }
 });
