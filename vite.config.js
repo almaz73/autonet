@@ -94,6 +94,13 @@ export default defineConfig({
 				n643866: resolve(__dirname,'./news/643866/index.html'),
 				n643824: resolve(__dirname,'./news/643824/index.html'),
 				n643022: resolve(__dirname,'./news/643022/index.html'),
+				n653313: resolve(__dirname,'./news/653313/index.html'),
+				n653314: resolve(__dirname,'./news/653314/index.html'),
+				n653315: resolve(__dirname,'./news/653315/index.html'),
+				n653316: resolve(__dirname,'./news/653316/index.html'),
+				n653317: resolve(__dirname,'./news/653317/index.html'),
+
+
 				index_0: resolve(__dirname, './news/index_0.html'),
 
 				franshiza: resolve(__dirname, './franshiza/index.html'),
@@ -111,6 +118,7 @@ export default defineConfig({
 				masla: resolve(__dirname, './services/zamena-masla/index.html'),
 				compared: resolve(__dirname, './personal/list-compared/index.html'),
 				favorite: resolve(__dirname, './personal/favorite-cars/index.html')
+
 
 			},
 		},
