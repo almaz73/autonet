@@ -101,8 +101,6 @@ export default defineConfig({
 				n653317: resolve(__dirname,'./news/653317/index.html'),
 
 
-				index_0: resolve(__dirname, './news/index_0.html'),
-
 				franshiza: resolve(__dirname, './franshiza/index.html'),
 				contacts: resolve(__dirname, './contacts/index.html'),
 				vacancy: resolve(__dirname, './work-in-autosite/index.html'),
