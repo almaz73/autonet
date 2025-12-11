@@ -125,6 +125,8 @@ function getVitrina() {
             {
                 address: 'Альметьевск , Герцена 1Б',
                 id: 210,
+                type: 'tyres',
+                winter: true,
                 name: 'Viatti Brina Nordico 225/45 R17 Зима шип ',
                 href: '/cars/2106/651138/',
                 price: '15 000',
@@ -142,6 +144,7 @@ function getVitrina() {
             {
                 address: 'Альметьевск , Герцена 1Б',
                 id: 211,
+                type: 'tyres',
                 name: 'Viatti Brina Nordico 225/45 R17 Зима шип ',
                 href: '/cars/2106/651138/',
                 price: '21 091',
@@ -159,6 +162,8 @@ function getVitrina() {
             {
                 address: 'Альметьевск , Герцена 1Б',
                 id: 212,
+                type: 'tyres',
+                winter: true,
                 name: 'Viatti Brina Nordico 225/45 R17 Зима шип ',
                 href: '/cars/2106/651138/',
                 price: '15 000',
@@ -175,6 +180,8 @@ function getVitrina() {
             {
                 address: 'Альметьевск , Герцена 1Б',
                 id: 213,
+                type: 'tyres',
+                winter: true,
                 name: 'Viatti Brina Nordico 225/45 R17 Зима шип ',
                 href: '/cars/2106/651138/',
                 price: '21 091',
@@ -191,6 +198,7 @@ function getVitrina() {
             {
                 address: 'Альметьевск , Герцена 1Б',
                 id: 214,
+                type: 'tyres',
                 name: 'Viatti Brina Nordico 225/45 R17 Зима шип ',
                 href: '/cars/2106/651138/',
                 price: '15 000',

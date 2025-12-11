@@ -19,6 +19,10 @@ function createNode(item, N) {
                       <br>                      
                       ${item.name}
                   </div>
+                  <img src="/svg/icon_spines.svg" alt="Шипованная рещина" class="tyres_icon " 
+                       style="display: ${item.type === 'tyres' ? 'block' : 0}; 
+                       opacity: ${item.type === 'tyres' && item.winter ? 1 : 0}">
+                       
                   <div class='cart__price'>
                       <div class='total'>${item.price ? item.price + '₽' : ''} </div>
                       <div class='cart__of'>${item.fromPerMonth ? 'ot ' + item.fromPerMonth + '₽/мес' : ''} </div>
@@ -26,7 +30,7 @@ function createNode(item, N) {
                   <div class='cart__info'>
                       ${item.info}
                   </div>
-                  <div class='cart__box--bottom'>
+                  <div class='cart__box--bottom' style="display: ${item.type === 'tyres' ? 'none' : ''}">
                       <a href='javascript:addCompare(${item.id})' ondblclick="dblCompare(${item.id})">
                           <img id="compareId_${item.id}" src='/icons/compare_cars.svg' alt=''>
                       </a>

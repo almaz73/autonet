@@ -141,6 +141,13 @@ cards.dot8 .cart {
     color: black;
 
 }
+
+.tyres_icon {
+    width: 31px;
+    margin: 20px;
+    opacity: 0;
+}
+
 .cards.dot1 .big_link{
     font-size: 1.4em;
 }
