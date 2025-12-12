@@ -1,4 +1,4 @@
-import"./compareCars-BwNqvBw6.js";let d=document.querySelector("cards");function b(o,p){let e;isNaN(p)||(e=`<div class='cart' id='galery_${p}' >
+let d=document.querySelector("cards");function b(o,p){let e;isNaN(p)||(e=`<div class='cart' id='galery_${p}' >
               <div class='cart__slide'>                    
                   <img class='photo' alt=''>
                   <div class='cart__blank'>${o.address}</div>
@@ -13,7 +13,7 @@ import"./compareCars-BwNqvBw6.js";let d=document.querySelector("cards");function
                       ${o.name}
                   </div>
                   <img src="/svg/icon_spines.svg" alt="Шипованная рещина" class="tyres_icon " 
-                       style="display: ${o.type==="tyres"?"block":0}; 
+                       style="display: ${o.type==="tyres"?"block":"none"}; 
                        opacity: ${o.type==="tyres"&&o.winter?1:0}">
                        
                   <div class='cart__price'>
