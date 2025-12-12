@@ -20,7 +20,7 @@ function createNode(item, N) {
                       ${item.name}
                   </div>
                   <img src="/svg/icon_spines.svg" alt="Шипованная рещина" class="tyres_icon " 
-                       style="display: ${item.type === 'tyres' ? 'block' : 0}; 
+                       style="display: ${item.type === 'tyres' ? 'block' : 'none'}; 
                        opacity: ${item.type === 'tyres' && item.winter ? 1 : 0}">
                        
                   <div class='cart__price'>

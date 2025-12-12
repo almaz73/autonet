@@ -25,7 +25,7 @@ window.addCompare = function (val) {
     }
 
     localStorage.setItem('ComparedCars', JSON.stringify(storage))
-    showCountBurron(storage)
+    showCountButton(storage)
 }
 
 function getComparedCars() {
@@ -36,7 +36,7 @@ function getComparedCars() {
     return storage
 }
 
-function showCountBurron(storage) {
+function showCountButton(storage) {
     let countDiv = document.querySelector('#compareCount')
     if (storage.length) {
         countDiv.innerHTML = '<img src="/icons/car-icon_b.svg">' + storage.length
@@ -53,7 +53,7 @@ window.deleteCar = function (id) {
     else storage = []
 
     localStorage.setItem('ComparedCars', JSON.stringify(storage))
-    showCountBurron(storage)
+    showCountButton(storage)
     showChosen(storage)
 
     if (!storage.length) {
@@ -64,7 +64,7 @@ window.deleteCar = function (id) {
 
 function showChosen(storage_) {
     let storage = storage_ || getComparedCars()
-    showCountBurron(storage)
+    showCountButton(storage)
 
     storage.forEach(el => {
         let compareButton = document.querySelector("#compareId_" + el.id)
