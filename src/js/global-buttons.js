@@ -11,6 +11,9 @@ let cityCombName = document.querySelector('.comb__selected');
 let cityClose = document.querySelector('.modal-place__close');
 let mySwiper = document.querySelector('.mySwiper')
 let isOpened;
+let request = document.querySelector('.main-nav.request');
+let closerFon = document.querySelector('#closer-fon')
+let closerButton = document.querySelector('.modal-closer.form')
 
 if (mySwiper) mySwiper.style.zIndex = 0
 
@@ -79,6 +82,7 @@ cookieAccept && cookieAccept.addEventListener('click', () => {
 
 
 function close_all_open_panels(show) {
+  if (request) request.style.transform = 'translateX(150vw)';
   if (cities) cities.style.transform = 'translateX(150vw)';
   if (panel) panel.style.transform = 'translateX(150vw)';
   if (buttonBurger) buttonBurger.classList.remove('close');
@@ -93,7 +97,15 @@ function close_all_open_panels(show) {
 }
 
 window.close_all = close_all_open_panels;
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') close_all_open_panels(false);
-});
+document.addEventListener('keydown', (e) => e.key === 'Escape' && close_all_open_panels());
 
+/**  Панель заявки **/
+window.sendBid = function (id) {
+  console.log('>>>> id = ',id)
+  isOpened = request.style.transform !== 'none';
+  if (isOpened) request.style.transform = 'none';
+  hideMainScroll(isOpened);
+}
+
+closerFon && closerFon.addEventListener('click', () => close_all_open_panels())
+closerButton && closerButton.addEventListener('click', () => close_all_open_panels())

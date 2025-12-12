@@ -195,7 +195,6 @@
 
 .shadowTable img{
     height: 36px;
-    /*height: 28px;*/
 }
 .shadowTable strong{
     color: var(--color-red);

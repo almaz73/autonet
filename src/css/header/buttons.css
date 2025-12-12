@@ -282,3 +282,47 @@
 }
 
 
+/* Выезжающие форомы */
+.main-nav.request {
+    background: #0000008a !important;
+    transition: all ease-in-out 1s;
+}
+
+.main-nav.request .right {
+    background: white;
+    width: 450px;
+    height: 100vh;
+    position: relative;
+    right: calc(-100% + 450px);
+}
+
+#closer-fon {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.modal-closer.form {
+    position: fixed;
+    right: 15px;
+    top: 15px;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.modal-closer.form:hover {
+    background: #efefef;
+}
+
+@media (max-width: 450px) {
+    .modal-closer.form {
+        top: 100px;
+    }
+
+    .main-nav.request .right {
+        width: 100%;
+        right: 0;
+    }
+}
+/***/
