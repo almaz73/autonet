@@ -4,4 +4,5 @@ import '@/js/photo-opener.js';
 import '@/js/question.js';
 import '@/js/abdul.js';
 import '@/js/compareCars.js';
+import '@/js/reCaptcha.js'
 
