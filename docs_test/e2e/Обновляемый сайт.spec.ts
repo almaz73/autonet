@@ -295,7 +295,7 @@ test.describe('Общий тест', () => {
 });
 
 test.describe('Проверка контролов', () => {
-  test('Работа с локалсторажем', async ({ page }) => {
+  test('Работа с локалсторажем (выбор города) ', async ({ page }) => {
     await page.goto('http://xn--80aej9alefdt2f.xn--p1ai/');
 
     await page.evaluate(() => localStorage.clear()); // чистим
@@ -324,5 +324,27 @@ test.describe('Проверка контролов', () => {
     );
     await expect(cityName).toBe('Бугульма'); // проверяем в локалстороже
     await page.evaluate(() => localStorage.clear()); // чистим
+  });
+
+  test('Работа комбобокса в фильтре', async ({ page }) => {
+    await page.goto('http://xn--80aej9alefdt2f.xn--p1ai/');
+    await page.getByRole('img', { name: 'arrow' }).nth(1).click();
+    await page.getByRole('img', { name: 'arrow' }).nth(1).click();
+    await page.getByText('Все').nth(1).click();
+    await expect(
+      page.locator('span').filter({ hasText: /^Все$/ }),
+    ).toBeVisible();
+    await expect(page.getByRole('main')).toContainText('Все');
+  });
+
+  test('На весь экран элементы', async ({ page }) => {
+    await page.goto('http://xn--80aej9alefdt2f.xn--p1ai/');
+    await page.locator('#mainPhoto').click();
+    await page.goto('http://xn--80aej9alefdt2f.xn--p1ai/about-the-company/');
+    await page.locator('#mainPhoto').click();
+    await page.goto(
+      'http://xn--80aej9alefdt2f.xn--p1ai/services/shinnyy-%D1%81entr/',
+    );
+    await page.locator('#mainPhoto').click();
   });
 });

@@ -231,7 +231,7 @@
     }
 
     .bigbaner.shadow:before {
-        height: 350px ;
+        height: 350px;
     }
 }
 
@@ -291,7 +291,7 @@
 /*    color: var(--color-red);*/
 /*}*/
 
-.bigbaner p.grey{
+.bigbaner p.grey {
     background: url(/src/svg/icon_mouse.svg) left center no-repeat;
     font-size: 0.9em !important;
     font-family: Gilro, sans-serif;
@@ -313,6 +313,7 @@
         color: #e8e6e3
     }
 }
+
 @media (min-width: 992px) {
     .bigbaner h1, .bigbaner h2, .banner_detailing h2 {
         color: #fff;
@@ -322,7 +323,7 @@
 
 /***/
 
-.insurance_call_phone a{
+.insurance_call_phone a {
     text-decoration: none;
 }
 
@@ -344,5 +345,109 @@
     .bigbaner.insurance {
         background-position: -160px -30px;
 
+    }
+}
+
+/*большие баннеры*/
+.shinny_f {
+    background-image: url(/photo/shinny/srv_bnr_01.webp)
+}
+
+.vykup_f {
+    background-image: url(/photo/vyk/banner_vykup.webp)
+}
+
+.podbor_f {
+    background-image: url(/photo/podbor/autopodbor_bnr.webp)
+}
+
+.podbor_ff {
+    background-image: url(/photo/podbor/autopodbor_bottom_bnr.webp)
+}
+
+.franshiza_f {
+    background-image: url(/photo/franshiza/banner_franshiza.webp)
+}
+
+.franshiza_ff {
+    background-image: url(/photo/franshiza/bnr_franshiza_02.webp)
+}
+
+.credit_f {
+    background-image: url(/photo/insurance/credit_banner.webp)
+}
+
+.credit_ff {
+    background-image: url(/photo/insurance/elvira_gaifulina.webp);
+    margin-top: 140px
+}
+
+.insurance_f {
+    background-image: url(/photo/insurance/insurance_bnr.webp)
+}
+
+.osmotr_f {
+    background-image: url(/photo/osmotr.webp)
+}
+
+.remony_f {
+    background-image: url(/photo/remont/banner_dvs.webp)
+}
+
+.akkp_f {
+    background-image: url(/photo/akpp/banner_akpp.webp)
+}
+
+.zamena_f {
+    background-image: url(/photo/masla/banner_oil.webp)
+}
+
+@media (max-width: 500px) {
+    .shinny_f {
+        background-image: url(/photo/shinny/srv_bnr_01_little.webp)
+    }
+
+    .vykup_f {
+        background-image: url(/photo/vyk/banner_vykup_little.webp)
+    }
+
+    .podbor_f {
+        background-image: url(/photo/podbor/autopodbor_bnr_little.webp)
+    }
+
+    .podbor_ff {
+        background-image: url(/photo/podbor/autopodbor_bottom_bnr_little.webp)
+    }
+
+    .franshiza_f {
+        background-image: url(/photo/franshiza/banner_franshiza_little.webp)
+    }
+
+    .franshiza_ff {
+        background-image: url(/photo/franshiza/bnr_franshiza_02_little.webp)
+    }
+
+    .credit_f {
+        background-image: url(/photo/insurance/credit_banner_little.webp)
+    }
+
+    .insurance_f {
+        background-image: url(/photo/insurance/insurance_bnr_little.webp)
+    }
+
+    .osmotr_f {
+        background-image: url(/photo/osmotr_little.webp)
+    }
+
+    .remony_f {
+        background-image: url(/photo/remont/banner_dvs_little.webp)
+    }
+
+    .akkp_f {
+        background-image: url(/photo/akpp/banner_akpp_little.webp)
+    }
+
+    .zamena_f {
+        background-image: url(/photo/masla/banner_oil_little.webp)
     }
 }
