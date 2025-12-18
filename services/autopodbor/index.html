@@ -21,7 +21,7 @@
     <link rel='stylesheet' href='/src/css/index/index.css'/>
     <link rel='stylesheet' href='/src/css/bigbaner.css' />
     <link rel='stylesheet' href='/src/css/faqlist.css' />
-    <link rel='stylesheet' href='/src/css/vykup/vykup.css'/>
+    <link rel='stylesheet' href='/src/css/vykup_styles.css'/>
     <link rel='stylesheet' href='/src/css/column3.css'/>
     <link rel='stylesheet' href='/src/css/Blocks4.css'/>
     <link rel='stylesheet' href='/src/css/index/ourservice.css'/>
@@ -38,20 +38,23 @@
 {{> "header/header" }}
 
 
-<div class="bigbaner shadow" style="background-image: url(/photo/podbor/autopodbor_bnr.webp)">
-    <div class="page__wrap ">
-        <div class='page_padding_20'>
-            <div class='bread_cranbs'>
-                <a href='/'>Главная</a>
-                <a href='/services/'>Услуги</a>
-                <span>Выкуп автомобиля</span>
-            </div>
-        </div>
-                <h1>Полный сервис Автосеть.рф по <br>подбору и проверке автомобилей<br> с пробегом</h1>
-            </div>
-            {{> form_podbor}}
-        </div>
+<div class="bigbaner shadow podbor_f">
+  <div class="page__wrap">
+    <div class='page_padding_20'>
+      <div class='bread_cranbs'>
+        <a href='/'>Главная</a>
+        <a href='/services/'>Услуги</a>
+        <span>Автоподбор</span>
+      </div>
     </div>
+
+    <div class="bigbaner__filed">
+      <div class="textBlock">
+        <h1>Полный сервис Автосеть.рф по подбору и проверке автомобилей с&nbsp;пробегом </h1>
+      </div>
+      {{> form_podbor}}
+    </div>
+  </div>
 </div>
 
 <main>
@@ -185,7 +188,7 @@
 </main>
 
 
-<div class="bigbaner" style="background-image: url(/photo/podbor/autopodbor_bottom_bnr.webp)">
+<div class="bigbaner podbor_f2" style="background-image: url(/photo/podbor/autopodbor_bottom_bnr.webp)">
     <div class="page__wrap ">
         <div class="bigbaner__filed" >
             <div class="textBlock">
