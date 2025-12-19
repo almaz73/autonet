@@ -90,7 +90,7 @@ function close_all_open_panels(show) {
   closeChat()
 
   let ya_map = document.getElementById('ya_map');
-  if (ya_map) {
+  if (ya_map && show) {
     ya_map.style.display = ya_map.style.display === 'block' ? 'none' : 'block';
     if (show !== undefined) ya_map.style.display = show ? 'block' : 'none';
   }
