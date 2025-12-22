@@ -187,11 +187,6 @@ document.addEventListener('DOMContentLoaded', () => {
         else dealersDiv.innerHTML = 'Не найдено.'
     })
 
-    // todo нужно найти город посетителя и выдать для него контакты и адрес этого города
-    // let yourSity = document.querySelector('.footer-city-button a')
-    // // let yourcity =
-    // if (yourSity) yourSity = yourSity?yourSity.innerText:'Казань'
-
     let currentCity = document.querySelector('#currentCity')
     currentCity.innerHTML = fillBlocks(contacts)
 

@@ -6,7 +6,7 @@ let buttonBurger = document.querySelector('.button__burger');
 
 let cities = document.querySelector('.main-nav.cities');
 let cityButton = document.querySelector('.footer-city-button');
-let cityName = document.querySelector('.footer-city-button a');
+let cityB_contacts = document.querySelector('#city-contacts')
 let cityCombName = document.querySelector('.comb__selected');
 let cityClose = document.querySelector('.modal-place__close');
 let mySwiper = document.querySelector('.mySwiper')
@@ -45,7 +45,10 @@ burger_menu && burger_menu.addEventListener('click', () => {
   } else buttonBurger.classList.remove('close');
 });
 
-cityButton && cityButton.addEventListener('click', () => {
+cityButton && cityButton.addEventListener('click', () => openSideBar());
+cityB_contacts && cityB_contacts.addEventListener('click', () => openSideBar());
+
+function openSideBar() {
   isOpened = cities.style.transform !== 'none';
   if (isOpened) {
     cities.style.transform = 'none';
@@ -53,21 +56,20 @@ cityButton && cityButton.addEventListener('click', () => {
   }
   hideMainScroll(isOpened);
   fillCities();
-});
+}
+
 cityClose && cityClose.addEventListener('click', () => {
   cities.style.transform = 'translateX(150vw)';
   hideMainScroll(false);
 });
 
-if(cityName) {
-  cityName.innerHTML = localStorage.getItem('selectedCity') || 'Россия';
-  window.setCity = function (val) {
-    localStorage.setItem('selectedCity', val);
-    cities.style.transform = 'translateX(150vw)';
-    cityName.innerHTML = val
-    cityCombName.innerHTML = val
-    hideMainScroll(false);
-  }
+cityButton.innerHTML = localStorage.getItem('selectedCity') || 'Россия';
+if (cityB_contacts) cityB_contacts.innerHTML = localStorage.getItem('selectedCity') || 'Россия';
+window.setCity = function (val) {
+  localStorage.setItem('selectedCity', val);
+  cities.style.transform = 'translateX(150vw)';
+  cityButton.innerHTML = cityB_contacts.innerHTML = cityCombName.innerHTML = val
+  hideMainScroll(false);
 }
 
 /* работа с cookie-banner */

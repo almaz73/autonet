@@ -13,6 +13,7 @@
     color: var(--color-red);
     margin-left: 1.35em;
     border-bottom: 1px solid red;
+    cursor: pointer !important;
 }
 
 .contacts .city.yourcity:before{

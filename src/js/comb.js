@@ -1,10 +1,10 @@
 let option_div = document.querySelector('.comb__items');
 let comb_field = document.querySelector('.comb_field');
 let select_div = document.querySelector('.comb__selected');
-let cityName = document.querySelector('.footer-city-button a');
+let cityButton = document.querySelector('.footer-city-button');
+let cityB_contacts = document.querySelector('#city-contacts')
 let comb_arrow = document.querySelector('.comb_field img');
 let mySwiper = document.querySelector('.mySwiper')
-
 
 let selectedCity = localStorage.getItem('selectedCity');
 if (comb_field) {
@@ -17,8 +17,7 @@ if (comb_field) {
 function getCity(e) {
   let val = e.target.innerText;
   if (val.length > 30) return false;
-  select_div.innerHTML = val;
-  cityName.innerHTML = val
+  select_div.innerHTML = cityButton.innerHTML = cityB_contacts.innerHTML = val
   localStorage.setItem('selectedCity', val);
 }
 

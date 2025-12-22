@@ -36,11 +36,6 @@
     color: var(--color-red);
     padding-left: 20px;
     background: url(/src/svg/city-icon.svg) left no-repeat;
-}
-.footer__top .footer-city-button a{
-    color: var(--color-red);
-    text-decoration: underline;
-    font-size: 0.9em;
     cursor: pointer;
 }
 
