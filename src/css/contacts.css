@@ -128,3 +128,18 @@
     margin: 0 0 -15px;
 }
 
+
+.map-modal{
+    display: grid;
+    place-items: center;
+    background: #00000099;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top:0;
+    left: 0;
+    overflow: hidden;
+}
+body{
+    scrollbar-width: none !important;
+}

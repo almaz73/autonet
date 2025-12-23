@@ -6,6 +6,17 @@ import liveReload from 'vite-plugin-live-reload'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 export default defineConfig({
+	server: {
+		proxy: {
+			'/api': {
+				// target: 'http://localhost:5000', // локальный сервер
+				target: 'https://ext.cartat.ru/exchange/', // удаленный сервер
+				changeOrigin: true,
+				secure: false,
+				// withCredentials: true
+			}
+		}
+	},
 	plugins: [
 		handlebars({
 			compileOptions: {

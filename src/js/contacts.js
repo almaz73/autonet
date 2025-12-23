@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let smallDealers = dealers.filter(el => el.city.toLowerCase().includes(part))
 
         if (smallDealers.length) dealersDiv.innerHTML = fillBlocks(smallDealers, 'withAlphabet')
-        else dealersDiv.innerHTML = 'Не найдено.'
+        else dealersDiv.innerHTML = 'Такой город не найден.'
     })
 
     let currentCity = document.querySelector('#currentCity')
@@ -202,3 +202,31 @@ document.addEventListener('DOMContentLoaded', () => {
     let servicesViv = document.querySelector('#services')
     servicesViv.innerHTML = fillBlocks(services)
 });
+
+
+function ASC() {
+    let request = 'https://ext.cartat.ru/exchange/api/auto/getlist'
+
+    let options = {
+        method: "get",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json",
+        }
+    }
+
+    fetch(request, options)
+        .then(response => response.json())
+        .then(res => {
+            console.log('res = ',res)
+            
+            // oredering_buttons.style.display = 'none';
+            // oredering_buttons.classList.remove('disabled');
+            // localStorage.setItem('meAllOrders', JSON.stringify(OrederList));
+            // showOrders();
+        });
+
+}
+
+let BBBB = document.querySelector('#BBBB')
+BBBB.addEventListener('click', ()=>ASC())
