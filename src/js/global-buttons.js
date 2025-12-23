@@ -111,3 +111,34 @@ window.sendBid = function (id) {
 
 closerFon && closerFon.addEventListener('click', () => close_all_open_panels())
 closerButton && closerButton.addEventListener('click', () => close_all_open_panels())
+
+
+
+function ASC() {
+  let request = 'https://ext.cartat.ru/exchange/api/auto/getlist'
+
+  let options = {
+    method: "get",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+    }
+  }
+  
+  console.log('request = ',request)
+
+  fetch(request, options)
+      .then(response => response.json())
+      .then(res => {
+        console.log('res = ',res)
+
+        // oredering_buttons.style.display = 'none';
+        // oredering_buttons.classList.remove('disabled');
+        // localStorage.setItem('meAllOrders', JSON.stringify(OrederList));
+        // showOrders();
+      });
+
+}
+
+let BBBB = document.querySelector('#BBBB')
+BBBB.addEventListener('click', ()=>ASC())

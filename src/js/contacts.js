@@ -204,29 +204,3 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-function ASC() {
-    let request = 'https://ext.cartat.ru/exchange/api/auto/getlist'
-
-    let options = {
-        method: "get",
-        mode: "cors",
-        headers: {
-            "Content-Type": "application/json",
-        }
-    }
-
-    fetch(request, options)
-        .then(response => response.json())
-        .then(res => {
-            console.log('res = ',res)
-            
-            // oredering_buttons.style.display = 'none';
-            // oredering_buttons.classList.remove('disabled');
-            // localStorage.setItem('meAllOrders', JSON.stringify(OrederList));
-            // showOrders();
-        });
-
-}
-
-let BBBB = document.querySelector('#BBBB')
-BBBB.addEventListener('click', ()=>ASC())
