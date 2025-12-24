@@ -256,10 +256,13 @@ cards.dot8 .cart {
     display: flex;
     cursor: pointer;
 }
-.type_views.coin {
+.coin {
     font-size: 16px;
     font-family: 'Gilroy';
-    margin: 6px 100px 0;
+    margin: 6px 50px 0;
+    float: right;
+    display: flex;
+    cursor: pointer;
 }
 
 @media (max-width: 600px) {

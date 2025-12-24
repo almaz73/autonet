@@ -7,23 +7,23 @@ import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 export default defineConfig({
 	server: {
-		// proxy: {
+		proxy: {
+			'/api': { // тут пока прикидываясь новым сайтом или самим сервером не получается достать данные
+				// target: 'ext.cartat.ru/exchange',
+				target: 'https://xn--80aej9alefdt2f.xn--p1ai',
+				changeOrigin: true,
+				// secure: false,
+				// withCredentials: true,
+				// rewrite: path => path.replace(/^\/api/, '')
+			}
+		},
+		// proxy: { // Это работает локально, т.е. прикидываясь dev можно из него получать данные
 		// 	'/api': {
-		// 		// target: 'ext.cartat.ru/exchange',
-		// 		target: 'https://xn--80aej9alefdt2f.xn--p1ai',
-		// 		changeOrigin: true,
-		// 		secure: false,
-		// 		// withCredentials: true
-		// 		rewrite: path => path.replace(/^\/api/, '')
+		// 		// target: 'http://localhost:5000', // локальный сервер
+		// 		target: 'https://dev.autonet.pro/', // удаленный сервер
+		// 		changeOrigin: true
 		// 	}
 		// }
-		proxy: {
-			'/api': {
-				// target: 'http://localhost:5000', // локальный сервер
-				target: 'https://dev.autonet.pro/', // удаленный сервер
-				changeOrigin: true
-			}
-		}
 	},
 	plugins: [
 		handlebars({

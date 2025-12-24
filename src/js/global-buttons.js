@@ -113,6 +113,7 @@ closerFon && closerFon.addEventListener('click', () => close_all_open_panels())
 closerButton && closerButton.addEventListener('click', () => close_all_open_panels())
 
 
+/** Все что ниже - временно **/
 
 function ASC() {
   let request = 'https://ext.cartat.ru/exchange/api/auto/getlist'

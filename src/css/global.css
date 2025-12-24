@@ -151,3 +151,14 @@ main h2, main h1 {
 }
 
 /*****/
+.car_vitrina{
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+@media (max-width: 500px) {
+    .car_vitrina{
+        display: ruby;
+    }
+}

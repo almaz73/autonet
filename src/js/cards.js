@@ -100,7 +100,7 @@ export function fill(cars) {
     }); // прикручиваем html
     cars.forEach((el, i) => galeryEvents(i + 1, el.photos)); // прикрепляем события
 
-    if (!cards.innerHTML) cards.innerHTML = 'Нет данных...'
+    if (!cards.innerHTML) cards.innerHTML = 'Нет избранных автомобилей...'
 }
 
 let type_views = document.querySelector('.type_views');
