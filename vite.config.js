@@ -7,23 +7,21 @@ import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 export default defineConfig({
 	server: {
-		// port: 7373, // Замените 3000 на любой другой свободный порт
 		// proxy: {
 		// 	'/api': {
-		// 		// target: 'http://localhost:5000', // локальный сервер
-		// 		target: 'https://ext.cartat.ru/exchange/', // удаленный сервер
+		// 		// target: 'ext.cartat.ru/exchange',
+		// 		target: 'https://xn--80aej9alefdt2f.xn--p1ai',
 		// 		changeOrigin: true,
-		// 		// secure: false,
+		// 		secure: false,
 		// 		// withCredentials: true
+		// 		rewrite: path => path.replace(/^\/api/, '')
 		// 	}
 		// }
 		proxy: {
 			'/api': {
-				target: 'https://xn--80aej9alefdt2f.xn--p1ai',
-				changeOrigin: true,
-				secure: false,
-				// withCredentials: true
-				rewrite: path => path.replace(/^\/api/, '')
+				// target: 'http://localhost:5000', // локальный сервер
+				target: 'https://dev.autonet.pro/', // удаленный сервер
+				changeOrigin: true
 			}
 		}
 	},
