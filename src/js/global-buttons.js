@@ -145,40 +145,5 @@ function ASC() {
 
 }
 
-
-function ASC2() {
-  let request = 'https://ext.cartat.ru/exchange/api/auto/getlist'
-
-  request = 'api/appeals/list/?filter={}&limit=20&mainFilter=10'
-
-  let options = {
-    method: "get",
-    mode: "cors",
-    headers: {
-      "Content-Type": "application/json",
-    }
-  }
-
-  console.log('222 request = ',request)
-
-  fetch(request)
-      .then(response => response.json())
-      .then(res => {
-        console.log('res = ',res)
-
-        // oredering_buttons.style.display = 'none';
-        // oredering_buttons.classList.remove('disabled');
-        // localStorage.setItem('meAllOrders', JSON.stringify(OrederList));
-        // showOrders();
-      });
-
-
-  //http://localhost:5174/api/workflow/getleadworkflowsbydate/24.12.2025?limit=12&offset=0
-
-}
-
 let BBBB = document.querySelector('#BBBB')
 BBBB && BBBB.addEventListener('click', ()=>ASC())
-
-let BBBB2 = document.querySelector('#BBBB2')
-BBBB2 && BBBB2.addEventListener('click', ()=>ASC2())

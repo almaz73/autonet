@@ -7,6 +7,7 @@ import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 export default defineConfig({
 	server: {
+		port: 9173,
 		proxy: {
 			'/api': { // тут пока прикидываясь новым сайтом или самим сервером не получается достать данные
 				// target: 'ext.cartat.ru/exchange',
