@@ -5,7 +5,8 @@ const contacts = [
         coords: '55.826655, 49.022026',
         address: 'Горьковское шоссе, 55',
         tel: '88005001156',
-        days: 'ПН-ВС с 9:00 до 21:00'
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Aa48691a6bc05dd67e7bcfb1ad8e429acaff3cf13a292a8f4a69e512dbacb7fda&amp;source=constructor'
     },
     {
         city: 'Казань',
@@ -155,7 +156,7 @@ function fillBlocks(arr, withAlphabet) {
             <div class="contact__flex">
                 <div class="city">${el.city}</div>
                 <div class="address">
-                    <a href="javascript:void(0);" data-point="${el.coords}">
+                    <a href="javascript:openMap('${el.map}')">
                         ${el.address}
                     </a>
                 </div>
@@ -203,4 +204,18 @@ document.addEventListener('DOMContentLoaded', () => {
     servicesViv.innerHTML = fillBlocks(services)
 });
 
+let mapModal = document.querySelector('.map-modal')
+let mapModalmap = document.querySelector('.map-modal .map')
 
+
+if (mapModal) {
+    window.openMap = function (val) {
+        mapModal.style.display = val ? 'grid' : 'none'
+        // mapModalmap.innerHTML =`<iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aa48691a6bc05dd67e7bcfb1ad8e429acaff3cf13a292a8f4a69e512dbacb7fda&amp;source=constructor" width="100%" height="720" frameborder="0"></iframe>`
+        mapModalmap.innerHTML = `<iframe src="${val}" width="100%" height="720" frameborder="0"></iframe>`
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mapModal) window.openMap(false)
+    })
+}

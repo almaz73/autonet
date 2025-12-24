@@ -127,7 +127,40 @@ function ASC() {
   
   console.log('request = ',request)
 
-  fetch(request, options)
+  fetch(request)
+      .then(response => {
+        if (!response.ok) {
+          // If the response status is not in the 2xx range, throw an error
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json(); // Parse the response body as JSON
+      })
+      .then(res => {
+        console.log('ХОРОШИЙ ОТВЕТ res = ',res)
+      }).catch(error => {
+        // Перехватываем ошибки сети и HTTP-ошибки (если мы их "выбросили" выше)
+        console.error('Произошла ошибка:', error);
+      });
+
+}
+
+
+function ASC2() {
+  let request = 'https://ext.cartat.ru/exchange/api/auto/getlist'
+
+  request = 'api/appeals/list/?filter={}&limit=20&mainFilter=10'
+
+  let options = {
+    method: "get",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+    }
+  }
+
+  console.log('222 request = ',request)
+
+  fetch(request)
       .then(response => response.json())
       .then(res => {
         console.log('res = ',res)
@@ -138,7 +171,13 @@ function ASC() {
         // showOrders();
       });
 
+
+  //http://localhost:5174/api/workflow/getleadworkflowsbydate/24.12.2025?limit=12&offset=0
+
 }
 
 let BBBB = document.querySelector('#BBBB')
-BBBB.addEventListener('click', ()=>ASC())
+BBBB && BBBB.addEventListener('click', ()=>ASC())
+
+let BBBB2 = document.querySelector('#BBBB2')
+BBBB2 && BBBB2.addEventListener('click', ()=>ASC2())

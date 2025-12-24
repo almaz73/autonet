@@ -130,7 +130,7 @@
 
 
 .map-modal{
-    display: grid;
+    /*display: grid;*/
     place-items: center;
     background: #00000099;
     width: 100vw;
@@ -139,7 +139,12 @@
     top:0;
     left: 0;
     overflow: hidden;
+    z-index: 100;
+    display: none;
 }
-body{
-    scrollbar-width: none !important;
+.map-modal > img{
+    position: absolute;
+    top: 60px;
+    padding: 20px;
+    cursor: pointer;
 }
