@@ -5,7 +5,11 @@
     gap: 10px;
     width: 100%;
     box-sizing: border-box;
+
+}
+#brands_dynamic{
     margin: 30px 0 100px;
+    min-height: 146px;
 }
 
 .list_brands .d-block{

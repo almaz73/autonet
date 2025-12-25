@@ -112,38 +112,3 @@ window.sendBid = function (id) {
 closerFon && closerFon.addEventListener('click', () => close_all_open_panels())
 closerButton && closerButton.addEventListener('click', () => close_all_open_panels())
 
-
-/** Все что ниже - временно **/
-
-function ASC() {
-  let request = 'https://ext.cartat.ru/exchange/api/auto/getlist'
-
-  let options = {
-    method: "get",
-    mode: "cors",
-    headers: {
-      "Content-Type": "application/json",
-    }
-  }
-  
-  console.log('request = ',request)
-
-  fetch(request)
-      .then(response => {
-        if (!response.ok) {
-          // If the response status is not in the 2xx range, throw an error
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json(); // Parse the response body as JSON
-      })
-      .then(res => {
-        console.log('ХОРОШИЙ ОТВЕТ res = ',res)
-      }).catch(error => {
-        // Перехватываем ошибки сети и HTTP-ошибки (если мы их "выбросили" выше)
-        console.error('Произошла ошибка:', error);
-      });
-
-}
-
-let BBBB = document.querySelector('#BBBB')
-BBBB && BBBB.addEventListener('click', ()=>ASC())
