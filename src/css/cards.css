@@ -47,6 +47,14 @@ cards.dot8 .cart {
     overflow: hidden;
 }
 
+cards.dot4 .cart__slide img, cards.dot8 .cart__slide img{
+    max-height: 196px; /* чтобы разноразмерные файлы не прыгали на экране */
+    aspect-ratio: 660/433;
+}
+cards.dot4 .cart__slide.watch img, cards.dot8 .cart__slide.watch img{
+    max-height: 433px; /* чтобы разноразмерные файлы не прыгали на экране */
+}
+
 .cart:hover {
     box-shadow: 0 0 35px 1px #00000035;
 }

@@ -153,7 +153,10 @@ document.addEventListener('DOMContentLoaded', () => {
             let brandName = res[i].name.toUpperCase()
             let brand = brandDatas.find(el => el.text === brandName)
 
-            if (!brand) console.log('res[i].name = ', res[i].name)
+            if (!brand) {
+                console.log("%c Новый НЕнастроенный бренд = ","background: orange; color: black", "", res[i].name)
+                // тоже нужно логировать
+            }
 
             newList.push({
                 url: brand ? brand.url : `/cars/${brandName}/`,

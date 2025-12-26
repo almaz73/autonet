@@ -1,5 +1,5 @@
 import {fill} from '@/js/cards.js';
-
+import {api_getList} from "@/js/API-base/apibase.js"
 
 export function filter_changed(items, name) {
     console.log('items = ', items)
@@ -119,6 +119,35 @@ function getVitrina() {
                     '/photo-offers/2/p6.jpg']
             },
         ]
+
+
+        api_getList().then(res => {
+            cars = []
+            res.forEach(el => {
+                let info = el.milleage + ' км, '
+                if (el.engineCapacity) info += el.engineCapacity
+                if (el.gearboxType) info += ' ' + el.gearboxType
+                if (el.enginePower) info += ' (' + el.enginePower + '&nbsp;л.с)'
+                if (el.bodyType) info += ', ' + el.bodyType
+                info += ', ' + el.driveType
+                if (el.engineType) info += ', ' + el.engineType
+
+                cars.push({
+                    address: el.fullAddress,
+                    id: el.id,
+                    name: el.brand + ' ' + el.model,
+                    href: '/cars/2106/651138/', // todo нужно придумать путь
+                    price: el.price,
+                    fromPerMonth: Math.round(el.price / 90.12),
+                    info: info,
+                    photos: el.images
+                })
+
+            })
+
+            fill(cars)
+        })
+
     } else if (location.pathname === '/tyres/') {
         document.querySelector('#vitrina_name').innerHTML = 'Каталог шин'
         cars = [
@@ -387,7 +416,7 @@ function getVitrina() {
 
         cars = localStorage.getItem('FavoriteCars')
         cars = cars ? JSON.parse(cars) : []
-    }else {
+    } else {
         document.querySelector('#vitrina_name').innerHTML = 'Автомобили ВАЗ (LADA) с пробегом'
         cars = [
             {

@@ -1,8 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
+    window.reloadAbdul()
+})
+
+window.reloadAbdul=function () {
     let abdul = document.querySelector('abdul')
     if (abdul) abdul.innerHTML = block
-
-})
+}
 
 export const block=`
 <div class="abdul abdulLightHor">

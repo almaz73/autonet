@@ -1,6 +1,7 @@
+const server = 'https://ext.cartat.ru/exchange'
 /* Получение кол-во автомобилей разбитых по бренду. Отсортированно от большего к меньшему */
 export function api_getCountBrands() {
-    let request = 'https://ext.cartat.ru/exchange/api/Auto/GetCarCount'
+    let request = server+'/api/Auto/GetCarCount'
 
     return fetch(request).then(response => {
         if (!response.ok) {
@@ -15,6 +16,15 @@ export function api_getCountBrands() {
         // Перехватываем ошибки сети и HTTP-ошибки (если мы их "выбросили" выше)
         console.error('Произошла ошибка:', error);
     });
+}
+
+export function api_getList(){
+    let request = server+'/api/Auto/GetList?Limit=7'
+
+    return fetch(request).then(response => {
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
+        return response.json();
+    }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
 }
 
 

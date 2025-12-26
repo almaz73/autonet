@@ -18,7 +18,6 @@ const contacts = [
         map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A979da2fb56535c0821d2d11cefaee1a7e0ef27b8629715079f8ffa862c1d1ffd&amp;source=constructor'
     }
 ]
-
 const dealers = [
     {
         city: 'Альметьевски',
@@ -201,10 +200,7 @@ const dealers = [
         map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Ae77ab1daaa8f743e51e23372676cf7785ea83ffeaf29df86d7cec91039b41deb&amp;source=constructor'
     }
 ]
-
-
-
-let punkts = [
+const punkts = [
     {
         city: 'Ижевск',
         url: '/photo/contacts/chelna_myra.webp',
@@ -296,7 +292,7 @@ let punkts = [
         map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A711b921703be62b7b6bb60f4a3a08775c26e9862880855f1d0f16835be8a4003&amp;source=constructor'
     }
 ]
-let tyres =[
+const tyres =[
     {
         city: 'Казань',
         url: '/photo/contacts/chelna_myra.webp',
@@ -316,7 +312,7 @@ let tyres =[
         map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Abcb084f68946abe81affde230c329b47e53ab28d9d6c28a5ff039f8454f9d8b8&amp;source=constructor'
     }
 ]
-let services = [
+const services = [
     {
         city: 'Альметьевск',
         url: '/photo/contacts/chelna_myra.webp',
@@ -390,7 +386,6 @@ let services = [
         map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A7281c97a9571a78d8adcf25c3ec6bab5c14cfcd042ccab43cc1078dd2cf40504&amp;source=constructor'
     },
 ]
-
 
 function fillBlocks(arr, withAlphabet) {
     let txt = ''

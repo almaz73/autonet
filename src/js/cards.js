@@ -43,8 +43,15 @@ function createNode(item, N) {
     }
 
     /* вкрапливаем другими баннерами*/
-    if (N === 'abdul') txt = `<abdul></abdul>`
-    if (N === 'swiper_buy') txt = `<div style="min-width: 200px; max-width: 730px"><swiper_buy></swiper_buy></div>`
+
+    if (N === 'abdul') {
+        txt = `<abdul></abdul>`
+        setTimeout(window.reloadAbdul)
+    }
+    if (N === 'swiper_buy') {
+        txt = `<div style="min-width: 200px; max-width: 730px"><swiper_buy></swiper_buy></div>`
+        setTimeout(window.reloadLittleSwiper)
+    }
 
     cards.innerHTML += txt;
 }

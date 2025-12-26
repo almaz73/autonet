@@ -7,7 +7,7 @@ let buttonBurger = document.querySelector('.button__burger');
 let cities = document.querySelector('.main-nav.cities');
 let cityButton = document.querySelector('.footer-city-button');
 let cityB_contacts = document.querySelector('#city-contacts')
-let cityCombName = document.querySelector('.comb__selected');
+let select_div = document.querySelector('.comb__selected');
 let cityClose = document.querySelector('.modal-place__close');
 let mySwiper = document.querySelector('.mySwiper')
 let isOpened;
@@ -68,7 +68,8 @@ if (cityB_contacts) cityB_contacts.innerHTML = localStorage.getItem('selectedCit
 window.setCity = function (val) {
   localStorage.setItem('selectedCity', val);
   cities.style.transform = 'translateX(150vw)';
-  cityButton.innerHTML = cityB_contacts.innerHTML = cityCombName.innerHTML = val
+  select_div.innerHTML = cityButton.innerHTML = val
+  if (cityB_contacts) cityB_contacts.innerHTML = val
   hideMainScroll(false);
 }
 

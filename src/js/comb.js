@@ -17,7 +17,8 @@ if (comb_field) {
 function getCity(e) {
   let val = e.target.innerText;
   if (val.length > 30) return false;
-  select_div.innerHTML = cityButton.innerHTML = cityB_contacts.innerHTML = val
+  select_div.innerHTML = cityButton.innerHTML = val
+  if (cityB_contacts) cityB_contacts.innerHTML = val
   localStorage.setItem('selectedCity', val);
 }
 

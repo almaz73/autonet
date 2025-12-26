@@ -1,9 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+    window.reloadLittleSwiper()
+})
+
+window.reloadLittleSwiper = function (){
     let swiper_buy = document.querySelector('swiper_buy')
     if (!swiper_buy) return console.warn('карусель фоток не подключен')
 
     swiper_buy.innerHTML = block
-})
+}
 
 let block = `
     <section class="swiper mySwiper buy_swiper" style="z-index: 1">
