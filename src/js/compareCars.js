@@ -2,15 +2,8 @@ window.addCompare = function (val) {
     let currentCar = window.currentCars.find(el => el.id === val)
 
     let storage = getComparedCars()
-    let car = {
-        id: currentCar.id,
-        address: currentCar.address,
-        name: currentCar.name,
-        price: currentCar.price,
-        info: currentCar.info,
-        href: currentCar.href,
-        photo: currentCar.photos[0],
-    }
+    let car = currentCar
+    car.images =  currentCar.images[0]
 
     let compareButton = document.querySelector("#compareId_" + val)
     let isChoden = compareButton.classList.contains('chosen')
@@ -91,24 +84,22 @@ function showChosen(storage_) {
         let MODEL = ''
 
         storage.forEach(el => {
-            let info = el.info.split(',')
-
-            DELETE += `<td><a href="javascript:deleteCar(${el.id})">Удалить</a></td>`
-            PREVIEW_PICTURE += `<td><a href="${el.href}"><img src="${el.photo}" alt=""></a></td>`
-            NAME += `<td><a href="${el.href}">"${el.name.slice(0, -5)}</a></td>`
+            DELETE += `<td><a href="javascript:deleteCar('${el.id}')">Удалить</a></td>`
+            PREVIEW_PICTURE += `<td><a href="${el.href}"><img src="${el.images}" alt=""></a></td>`
+            NAME += `<td><a href="${el.href}">"${el.brand} ${el.model}</a></td>`
             PRICE += `<td>${el.price} руб.</td>`
-            PROBEG += `<td>${info[0]}</td>`
-            GOD_VYPUSKA += `<td>${el.name.slice(-5)}</td>`
-            TSVET += `<td></td>`
-            OBEM_DVIGATELYA += `<td>${info[1]}</td>`
-            TIP_DVIGATELYA += `<td>${info[4]}</td>`
-            MOSHCHNOST_DVIGATELYA += `<td></td>`
-            TIP_KPP += `<td></td>`
-            TIP_PRIVODA += `<td>${info[3]}</td>`
-            TIP_KUZOVA += `<td>${info[2]}</td>`
-            GOROD += `<td>${el.address.split(',')[0]}</td>`
-            MARKA += `<td>${el.name.split(' ')[0]}</td>`
-            MODEL += `<td>${el.name.split(' ')[1]}</td>`
+            PROBEG += `<td>${el.milliage}</td>`
+            GOD_VYPUSKA += `<td>${el.yearReleased}</td>`
+            TSVET += `<td>${el.color}</td>`
+            OBEM_DVIGATELYA += `<td>${el.engineCapacity}</td>`
+            TIP_DVIGATELYA += `<td>${el.engineType}</td>`
+            MOSHCHNOST_DVIGATELYA += `<td>${el.enginePower}</td>`
+            TIP_KPP += `<td>${el.gearboxType}</td>`
+            TIP_PRIVODA += `<td>${el.driveType}</td>`
+            TIP_KUZOVA += `<td>${el.bodyType}</td>`
+            GOROD += `<td>${el.fullAddress}</td>`
+            MARKA += `<td>${el.brand}</td>`
+            MODEL += `<td>${el.model}</td>`
         })
 
         compareDiv.innerHTML = `

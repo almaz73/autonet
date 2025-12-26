@@ -145,7 +145,7 @@ function getVitrina() {
 
             })
 
-            fill(cars)
+            fill(cars, res)
         })
 
     } else if (location.pathname === '/tyres/') {

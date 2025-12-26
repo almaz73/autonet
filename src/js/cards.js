@@ -31,10 +31,10 @@ function createNode(item, N) {
                       ${item.info}
                   </div>
                   <div class='cart__box--bottom' style="display: ${item.type === 'tyres' ? 'none' : ''}">
-                      <a href='javascript:addCompare(${item.id})' ondblclick="dblCompare(${item.id})">
+                      <a href="javascript:addCompare('${item.id}')" ondblclick="dblCompare('${item.id}')">
                           <img id="compareId_${item.id}" src='/icons/compare_cars.svg' alt=''>
                       </a>
-                      <a href='javascript:addFavorite(${item.id})'>
+                      <a href="javascript:addFavorite('${item.id}')">
                           <img id="favoriteId_${item.id}" src='/icons/penta.svg' alt=''>
                       </a>
                   </div>
@@ -96,8 +96,8 @@ function galeryEvents(id, images) {
     });
 }
 
-export function fill(cars) {
-    window.currentCars = cars
+export function fill(cars, currentCars) {
+    window.currentCars = currentCars
     cards.innerHTML = ''
 
     cars.forEach((el, i) => {
