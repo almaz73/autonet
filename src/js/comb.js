@@ -20,6 +20,7 @@ function getCity(e) {
   select_div.innerHTML = cityButton.innerHTML = val
   if (cityB_contacts) cityB_contacts.innerHTML = val
   localStorage.setItem('selectedCity', val);
+  window.setCityContacts && window.setCityContacts(val)
 }
 
 function openComb(e) {

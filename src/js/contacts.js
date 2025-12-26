@@ -1,23 +1,4 @@
-const contacts = [
-    {
-        city: 'Альметьевски',
-        url: '/photo/contacts/chelna_myra.webp',
-        coords: '55.826655, 49.022026',
-        address: 'ул. Советская, 182/1',
-        tel: '8–800–500–11–56',
-        days: 'ПН-ВС с 9:00 до 21:00',
-        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Aa48691a6bc05dd67e7bcfb1ad8e429acaff3cf13a292a8f4a69e512dbacb7fda&amp;source=constructor'
-    },
-    {
-        city: 'Казань',
-        url: '/photo/contacts/chelna_myra.webp',
-        coords: '55.823581, 49.159553',
-        address: 'Проспект Ямашева, 115А',
-        tel: '8–800–500–11–56',
-        days: 'ПН-ВС с 9:00 до 21:00',
-        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A979da2fb56535c0821d2d11cefaee1a7e0ef27b8629715079f8ffa862c1d1ffd&amp;source=constructor'
-    }
-]
+let contacts = []
 const dealers = [
     {
         city: 'Альметьевски',
@@ -64,6 +45,37 @@ const dealers = [
         days: 'ПН-ВС с 9:00 до 21:00',
         map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A7d97dc8bafe4d372c2b3d4cf1cb634f3835520141a7310296d2f363580c2075f&amp;source=constructor'
     },
+    {
+        city: 'Казань',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '55.823581, 49.159553',
+        address: 'пр. Ямашева, 115а',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: '"https://yandex.ru/map-widget/v1/?um=constructor%3A0740fee9f6396ff8f4aa3048c10c417b7f2be4ce61e41f46d69a4627f97951c7&amp;source=constructor'
+    },
+
+    {
+        city: 'Казань',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '55.826655, 49.022026',
+        address: 'Горьковское шоссе, 55',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Af4c7baecf06e4154b6bbd13632c95edc600e2482b332190b262776928450e25f&amp;source=constructor'
+    },
+
+    {
+        city: 'Казань',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '55.803967, 49.208709',
+        address: 'пр. Победы, 212к2',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A169e10ae037f14065a213eecd07e24f9a9d53659f4170e2d3c90d579d7b544bd&amp;source=constructor'
+    },
+
+
     {
         city: 'Магнитогорск',
         url: '/photo/contacts/chelna_myra.webp',
@@ -423,6 +435,7 @@ function fillBlocks(arr, withAlphabet) {
 
 }
 
+const currentCity = document.querySelector('#currentCity')
 
 document.addEventListener('DOMContentLoaded', () => {
     let searchField = document.querySelector('#search-field')
@@ -434,8 +447,8 @@ document.addEventListener('DOMContentLoaded', () => {
         else dealersDiv.innerHTML = 'Такой город не найден.'
     })
 
-    let currentCity = document.querySelector('#currentCity')
-    currentCity.innerHTML = fillBlocks(contacts)
+    let city = localStorage.getItem('selectedCity')
+    window.setCityContacts(city)
 
     let dealersDiv = document.querySelector('#dealers')
     dealersDiv.innerHTML = fillBlocks(dealers, 'withAlphabet')
@@ -464,4 +477,9 @@ if (mapModal) {
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && mapModal) window.openMap(false)
     })
+}
+
+window.setCityContacts = function (val) {
+    contacts = dealers.filter(el=>el.city==val)
+    currentCity.innerHTML = fillBlocks(contacts)
 }

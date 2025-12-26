@@ -71,6 +71,7 @@ window.setCity = function (val) {
   select_div.innerHTML = cityButton.innerHTML = val
   if (cityB_contacts) cityB_contacts.innerHTML = val
   hideMainScroll(false);
+  window.setCityContacts && window.setCityContacts(val)
 }
 
 /* работа с cookie-banner */
