@@ -1,5 +1,6 @@
 import {fill} from '@/js/cards.js';
 import {api_getList} from "@/js/API-base/apibase.js"
+import {formatterShowPrice} from "@/js/global-func.js";
 
 export function filter_changed(items, name) {
     console.log('items = ', items)
@@ -137,7 +138,7 @@ function getVitrina() {
                     id: el.id,
                     name: el.brand + ' ' + el.model,
                     href: '/cars/2106/651138/', // todo нужно придумать путь
-                    price: el.price,
+                    price: formatterShowPrice(el.price),
                     fromPerMonth: Math.round(el.price / 90.12),
                     info: info,
                     photos: el.images

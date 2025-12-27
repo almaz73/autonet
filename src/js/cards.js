@@ -24,7 +24,7 @@ function createNode(item, N) {
                        opacity: ${item.type === 'tyres' && item.winter ? 1 : 0}">
                        
                   <div class='cart__price'>
-                      <div class='total'>${item.price ? item.price + '₽' : ''} </div>
+                      <div class='total'>${item.price ? item.price + ' ₽' : ''} </div>
                       <div class='cart__of'>${item.fromPerMonth ? 'ot ' + item.fromPerMonth + '₽/мес' : ''} </div>
                   </div>
                   <div class='cart__info'>
@@ -97,7 +97,8 @@ function galeryEvents(id, images) {
 }
 
 export function fill(cars, currentCars) {
-    window.currentCars = currentCars
+    window.compareCars = currentCars
+    window.favorCars = cars
     cards.innerHTML = ''
 
     cars.forEach((el, i) => {

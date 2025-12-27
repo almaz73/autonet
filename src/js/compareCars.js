@@ -1,15 +1,17 @@
+import {formatterShowPrice} from '@/js/global-func.js'
+
 window.addCompare = function (val) {
-    let currentCar = window.currentCars.find(el => el.id === val)
+    let currentCar = window.compareCars.find(el => el.id === val)
 
     let storage = getComparedCars()
     let car = currentCar
-    car.images =  currentCar.images[0]
+    car.images = currentCar.images[0]
 
     let compareButton = document.querySelector("#compareId_" + val)
-    let isChoden = compareButton.classList.contains('chosen')
+    let isChosen = compareButton.classList.contains('chosen')
     let isExist = storage.find(el => el.id === val)
 
-    if (!isChoden) {
+    if (!isChosen) {
         compareButton.classList.add('chosen')
         if (!isExist) storage.push(car)
     } else {
@@ -42,7 +44,7 @@ window.deleteAllCar = function () {
 }
 window.deleteCar = function (id) {
     let storage = getComparedCars()
-    if(id) storage = storage.filter(el => el.id !== id)
+    if (id) storage = storage.filter(el => el.id !== id)
     else storage = []
 
     localStorage.setItem('ComparedCars', JSON.stringify(storage))
@@ -51,7 +53,7 @@ window.deleteCar = function (id) {
 
     if (!storage.length) {
         let clearButton = document.querySelector('.compare-clear')
-        clearButton.style.display='none'
+        clearButton.style.display = 'none'
     }
 }
 
@@ -87,19 +89,19 @@ function showChosen(storage_) {
             DELETE += `<td><a href="javascript:deleteCar('${el.id}')">Удалить</a></td>`
             PREVIEW_PICTURE += `<td><a href="${el.href}"><img src="${el.images}" alt=""></a></td>`
             NAME += `<td><a href="${el.href}">"${el.brand} ${el.model}</a></td>`
-            PRICE += `<td>${el.price} руб.</td>`
-            PROBEG += `<td>${el.milliage}</td>`
-            GOD_VYPUSKA += `<td>${el.yearReleased}</td>`
-            TSVET += `<td>${el.color}</td>`
-            OBEM_DVIGATELYA += `<td>${el.engineCapacity}</td>`
-            TIP_DVIGATELYA += `<td>${el.engineType}</td>`
-            MOSHCHNOST_DVIGATELYA += `<td>${el.enginePower}</td>`
-            TIP_KPP += `<td>${el.gearboxType}</td>`
-            TIP_PRIVODA += `<td>${el.driveType}</td>`
-            TIP_KUZOVA += `<td>${el.bodyType}</td>`
-            GOROD += `<td>${el.fullAddress}</td>`
-            MARKA += `<td>${el.brand}</td>`
-            MODEL += `<td>${el.model}</td>`
+            PRICE += `<td>${formatterShowPrice(el.price)} руб.</td>`
+            if (el.milleage) PROBEG += `<td>${formatterShowPrice(el.milleage) || ''} км</td>`
+            GOD_VYPUSKA += `<td>${el.yearReleased || ''}</td>`
+            TSVET += `<td>${el.color || ''}</td>`
+            OBEM_DVIGATELYA += `<td>${el.engineCapacity || ''}</td>`
+            TIP_DVIGATELYA += `<td>${el.engineType || ''}</td>`
+            MOSHCHNOST_DVIGATELYA += `<td>${el.enginePower || ''}</td>`
+            TIP_KPP += `<td>${el.gearboxType || ''}</td>`
+            TIP_PRIVODA += `<td>${el.driveType || ''}</td>`
+            TIP_KUZOVA += `<td>${el.bodyType || ''}</td>`
+            GOROD += `<td>${el.fullAddress || ''}</td>`
+            MARKA += `<td>${el.brand || ''}</td>`
+            MODEL += `<td>${el.model || ''}</td>`
         })
 
         compareDiv.innerHTML = `
@@ -173,12 +175,10 @@ function showChosen(storage_) {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    showChosen();
-
     // Перетаскивание мышкой
     let isDragging = false;
     let startX;
-    let tableScroll=document.querySelector('.bx_compare')
+    let tableScroll = document.querySelector('.bx_compare')
     if (tableScroll) {
         tableScroll.addEventListener('mousedown', (e) => {
             isDragging = true;
@@ -192,6 +192,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         tableScroll.addEventListener('mouseup', () => isDragging = false);
     }
+
+    if (location.pathname === '/personal/list-compared/') showChosen()
+    else setTimeout(showChosen, 2000);
+
 })
 
 window.dblCompare = function () {

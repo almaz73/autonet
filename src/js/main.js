@@ -5,4 +5,5 @@ import '@/js/question.js';
 import '@/js/abdul.js';
 import '@/js/compareCars.js';
 import '@/js/reCaptcha.js'
+import '@/js/global-func.js'
 

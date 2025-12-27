@@ -1,11 +1,11 @@
 window.addFavorite = function (val) {
-    let currentCar = window.currentCars.find(el => el.id === val)
+    let currentCar = window.favorCars.find(el => el.id === val)
     let cars = getFavoriteCars()
     let favoriteButton = document.querySelector("#favoriteId_" + val)
-    let isChoden = favoriteButton.classList.contains('chosen')
+    let isChosen = favoriteButton.classList.contains('chosen')
     let isExist = cars.find(el => el.id === val)
 
-    if (!isChoden) {
+    if (!isChosen) {
         favoriteButton.classList.add('chosen')
         if (!isExist) cars.push(currentCar)
     } else if (location.pathname === '/personal/favorite-cars/') {
@@ -18,8 +18,10 @@ window.addFavorite = function (val) {
         location.href = '/personal/favorite-cars/'
     }
 
-    localStorage.setItem('FavoriteCars', JSON.stringify(cars))
-    showChosen(cars)
+    if (cars) {
+        localStorage.setItem('FavoriteCars', JSON.stringify(cars))
+        showChosen(cars)
+    }
 }
 
 function showChosen(cars_) {
@@ -39,5 +41,5 @@ function getFavoriteCars() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    showChosen();
+    setTimeout(showChosen, 2000);
 })
