@@ -18,8 +18,8 @@ export function api_getCountBrands() {
     });
 }
 
-export function api_getList(){
-    let request = server+'/api/Auto/GetList?Limit=7'
+export function api_getList(count){
+    let request = server+'/api/Auto/GetList?Limit='+count
 
     return fetch(request).then(response => {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
