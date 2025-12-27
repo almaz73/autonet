@@ -16,7 +16,7 @@
     cursor: pointer !important;
 }
 
-.contacts .city.yourcity:before{
+.contacts .city.yourcity:before {
     content: "";
     position: absolute;
     left: -16px;
@@ -103,6 +103,23 @@
     color: #ffffff99;
 }
 
+.contact_p .navi {
+    position: absolute;
+    display: none;
+    margin-top: 25px;
+}
+
+.contact_p:hover .navi {
+    display: block;
+}
+
+.contact_p .navi button {
+    background: #3f3f3f;
+    color: white;
+    cursor: pointer;
+    padding: 3px 22px;
+}
+
 .contacts h2 {
     margin: 90px 0 30px;
 }
@@ -129,20 +146,21 @@
 }
 
 
-.map-modal{
+.map-modal, .photo-modal {
     /*display: grid;*/
     place-items: center;
     background: #00000099;
     width: 100vw;
     height: 100vh;
     position: fixed;
-    top:0;
+    top: 0;
     left: 0;
     overflow: hidden;
     z-index: 100;
     display: none;
 }
-.map-modal > img{
+
+.map-modal > .closer{
     position: absolute;
     top: 60px;
     padding: 20px;

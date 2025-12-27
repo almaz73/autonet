@@ -421,6 +421,11 @@ function fillBlocks(arr, withAlphabet) {
                 <div class="phone">
                     <a href="tel:${el.tel}">${el.tel}</a>
                 </div>
+                
+                <div  class="navi">
+                    <button onclick="openPhoto('${el.url}')">Фото</button>
+                    <button onclick="openMap('${el.map}')">Карта</button>
+                </div>
 
                 <div class="subname">
                     Режим работы
@@ -465,17 +470,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 let mapModal = document.querySelector('.map-modal')
 let mapModalmap = document.querySelector('.map-modal .map')
+let photoModal = document.querySelector('.photo-modal')
+let photoModalPic = document.querySelector('.photo-modal .pic')
 
 
 if (mapModal) {
     window.openMap = function (val) {
         mapModal.style.display = val ? 'grid' : 'none'
-        // mapModalmap.innerHTML =`<iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aa48691a6bc05dd67e7bcfb1ad8e429acaff3cf13a292a8f4a69e512dbacb7fda&amp;source=constructor" width="100%" height="720" frameborder="0"></iframe>`
         mapModalmap.innerHTML = `<iframe src="${val}" width="100%" height="720" frameborder="0"></iframe>`
     }
 
+    window.openPhoto = function (val) {
+        photoModal.style.display = val ? 'grid' : 'none'
+        photoModalPic.innerHTML = `<img src ="${val}">`
+    }
+
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && mapModal) window.openMap(false)
+        if (e.key === 'Escape' && mapModal) {
+            window.openMap(false)
+            window.openPhoto(false)
+        }
     })
 }
 

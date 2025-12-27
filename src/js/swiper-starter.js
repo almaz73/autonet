@@ -5,7 +5,7 @@ let big = document.querySelector('.big')
 let swiperSection = document.querySelector('.swiper.mySwiper')
 
 
-document.addEventListener('DOMContentLoaded', () => {
+swiperSection && document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         swiper = new Swiper('.mySwiper', {
             spaceBetween: 30,

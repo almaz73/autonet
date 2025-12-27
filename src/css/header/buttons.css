@@ -105,7 +105,7 @@
     z-index: 21;
     max-height: 100vh;
     background-color: var(--color-grey);
-    transition: transform ease-in-out 0.4s;
+    transition: transform ease-in-out 0.3s;
     transform: translateX(150vw);
     overflow: auto;
 }

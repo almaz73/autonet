@@ -17,18 +17,6 @@ let closerButton = document.querySelector('.modal-closer.form')
 
 if (mySwiper) mySwiper.style.zIndex = 0
 
-function hideMainScroll(hide) {
-  if (hide) {
-    document.body.style.overflow = 'hidden';
-    if (document.body.clientWidth > 500) {
-      document.body.style.marginRight = '14px';
-    }
-  } else {
-    document.body.style.overflow = 'auto';
-    if (document.body.clientWidth > 500) document.body.style.marginRight = '0';
-  }
-}
-
 burger_menu && burger_menu.addEventListener('click', () => {
   if (isOpened) {
     isOpened = false;
@@ -38,7 +26,6 @@ burger_menu && burger_menu.addEventListener('click', () => {
   isOpened = panel.style.transform !== 'none';
 
   panel.style.transform = isOpened ? 'none' : 'translateX(150vw)';
-  hideMainScroll(isOpened);
   if (isOpened) {
     buttonBurger.classList.add('close');
     isOpened = false;
@@ -54,13 +41,11 @@ function openSideBar() {
     cities.style.transform = 'none';
     cities.style.backgroundColor = 'white';
   }
-  hideMainScroll(isOpened);
   fillCities();
 }
 
 cityClose && cityClose.addEventListener('click', () => {
   cities.style.transform = 'translateX(150vw)';
-  hideMainScroll(false);
 });
 
 cityButton.innerHTML = localStorage.getItem('selectedCity') || 'Россия';
@@ -70,7 +55,6 @@ window.setCity = function (val) {
   cities.style.transform = 'translateX(150vw)';
   select_div.innerHTML = cityButton.innerHTML = val
   if (cityB_contacts) cityB_contacts.innerHTML = val
-  hideMainScroll(false);
   window.setCityContacts && window.setCityContacts(val)
 }
 
@@ -90,14 +74,7 @@ function close_all_open_panels(show) {
   if (cities) cities.style.transform = 'translateX(150vw)';
   if (panel) panel.style.transform = 'translateX(150vw)';
   if (buttonBurger) buttonBurger.classList.remove('close');
-  hideMainScroll(false);
   closeChat()
-
-  let ya_map = document.getElementById('ya_map');
-  if (ya_map && show) {
-    ya_map.style.display = ya_map.style.display === 'block' ? 'none' : 'block';
-    if (show !== undefined) ya_map.style.display = show ? 'block' : 'none';
-  }
 }
 
 window.close_all = close_all_open_panels;
@@ -108,7 +85,6 @@ window.sendBid = function (id) {
   console.log('>>>> id = ',id)
   isOpened = request.style.transform !== 'none';
   if (isOpened) request.style.transform = 'none';
-  hideMainScroll(isOpened);
 }
 
 closerFon && closerFon.addEventListener('click', () => close_all_open_panels())

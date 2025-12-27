@@ -88,7 +88,7 @@ cards.dot1 .cart__box--bottom {
     overflow: hidden;
 }
 
-.cart__slide .dark-fon, #ya_map .dark-fon, .question_block .dark-fon {
+.cart__slide .dark-fon, .question_block .dark-fon {
     display: none;
     position: fixed;
     top: 0;
@@ -98,10 +98,6 @@ cards.dot1 .cart__box--bottom {
     height: 100%;
     cursor: pointer;
     z-index: -1;
-}
-
-#ya_map .dark-fon {
-    display: block;
 }
 
 .cart__slide.watch .dark-fon {

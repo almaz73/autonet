@@ -36,7 +36,7 @@
 
 .dealer-carousel .carousel {
     display: flex;
-    transition: transform 0.3s ease;
+    transition: transform ease-in-out 0.3s;
 }
 
 .dealer-carousel .carousel.dragging {
@@ -85,7 +85,7 @@
     width: 300px;
     aspect-ratio: 300/468;
     object-fit: cover;
-    transition: transform .3s ease;
+    transition: transform ease-in-out 0.3s;
     min-width: 300px;
 }
 
