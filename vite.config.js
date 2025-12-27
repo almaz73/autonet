@@ -119,6 +119,11 @@ export default defineConfig({
 				n653315: resolve(__dirname,'./news/653315/index.html'),
 				n653316: resolve(__dirname,'./news/653316/index.html'),
 				n653317: resolve(__dirname,'./news/653317/index.html'),
+				n655165: resolve(__dirname,'./news/655165/index.html'),
+				n655166: resolve(__dirname,'./news/655166/index.html'),
+				n655169: resolve(__dirname,'./news/655169/index.html'),
+				n655170: resolve(__dirname,'./news/655170/index.html'),
+				n655171: resolve(__dirname,'./news/655171/index.html'),
 
 
 				franshiza: resolve(__dirname, './franshiza/index.html'),
