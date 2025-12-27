@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang='ru'>
 <head>
-    <meta charset='UTF-8' />
+    <meta charset='UTF-8'/>
     <link rel='icon' type='image/svg+xml' sizes='any' href='./assets/Favicon_as-Bk6QhC65.svg'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Автомобили с пробегом (бу) в автосалонах Казани и других городов России - Автосеть.РФ</title>
     <meta property='og:type' content='website'>
@@ -16,10 +16,16 @@
     <meta name='keywords' content='Купить автомобили с пробегом, авто в Казани'>
     <meta name='description' content='Купите автомобили с пробегом в Казани и других городах.
         🚗 БУ авто в автосалонах Автосеть.рф.
-        Подробная информация по телефону: ☎ 8-800-500-11-56. Звоните!'>
+        Подробная информация по телефону: ☎ 8-800-500-11-56. Звоните!'>
+
+
+
+
+
 
 
   <script type="module" crossorigin src="./assets/main-DRGPb5tS.js"></script>
+  <script type="module" crossorigin src="./assets/contacts-D8JxFhIg.js"></script>
   <script type="module" crossorigin src="./assets/apibase-Dz9Nfw84.js"></script>
   <script type="module" crossorigin src="./assets/brands-icons-BsLwymeD.js"></script>
   <script type="module" crossorigin src="./assets/index-BzDdUJaC.js"></script>
@@ -27,8 +33,9 @@
   <script type="module" crossorigin src="./assets/whereSeeParams-v0HSyoE_.js"></script>
   <script type="module" crossorigin src="./assets/filter-controls-W8b9GqcV.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/main-DMVn17nM.css">
+  <link rel="stylesheet" crossorigin href="./assets/contacts-DJ-x8OFk.css">
   <link rel="stylesheet" crossorigin href="./assets/swiper-bundle-DzqBDURw.css">
-  <link rel="stylesheet" crossorigin href="./assets/index-ENCT4qHm.css">
+  <link rel="stylesheet" crossorigin href="./assets/index-hx9qMqbl.css">
   <link rel="stylesheet" crossorigin href="./assets/ourservice-Bhv2pcd3.css">
 </head>
 <body>
@@ -403,8 +410,6 @@
   </div>
 </section>
 
-
-
     <div class='container main__top--block'>
         <h2>Топ 20 марок по продаже</h2>
         <div id='brands_dynamic'></div>
@@ -560,7 +565,8 @@
         </div>
     </div>
 </div>
-    <div class="container">
+
+    <!-- контакты-->
     <div class="main__provided--top">
         <div class="page__flex">
             <h2> Адреса дилерских центров Автосеть.РФ </h2>
@@ -570,87 +576,18 @@
             </a>
         </div>
     </div>
-
-    <div class='dealers'>
-        <div class='dealers__block'>
-            <div class="dealers__flex">
-                <div class="block">
-                    <div class="city">
-                        Казань
-                    </div>
-                    <div class="address">
-                        <a href="javascript:void(0);" onclick="close_all()">
-                            <!--                            55.823581, 49.159553-->
-                            <span>пр. Ямашева, 115а</span>
-                        </a>
-                    </div>
-                    <div class="phone"><a href="tel:88005001156">8–800–500–11–56</a></div>
-                </div>
-                <div class="block">
-                    <div class="subname">
-                        Режим работы
-                    </div>
-                    <div class="time">
-                        ПН-ВС с 9:00 до 21:00
-                    </div>
-                </div>
-            </div>
-            <img src="photo-dealers/kazan1.jpg"  loading='lazy' alt=''>
-        </div>
-        <div class='dealers__block'>
-            <div class="dealers__flex">
-                <div class="block">
-                    <div class="city">
-                        Казань
-                    </div>
-                    <div class="address">
-                        <a href="javascript:void(0);" onclick="close_all()" data-point="55.826655, 49.022026"
-                           class="showPoint">
-                                    <span>
-                                        Горьковское шоссе, 55                                    </span>
-                        </a>
-                    </div>
-                    <div class="phone"><a href="tel:88005001156">8–800–500–11–56</a></div>
-                </div>
-                <div class="block">
-                    <div class="subname">
-                        Режим работы
-                    </div>
-                    <div class="time">
-                        ПН-ВС с 9:00 до 21:00
-                    </div>
-                </div>
-            </div>
-            <img src="photo-dealers/kazan2.jpg"  loading='lazy' alt=''>
-        </div>
-        <div class='dealers__block'>
-            <div class="dealers__flex">
-                <div class="block">
-                    <div class="city">
-                        Казань
-                    </div>
-                    <div class="address">
-                        <a href="javascript:void(0);" onclick="close_all()" data-point="55.803967, 49.208709"
-                           class="showPoint">
-                                    <span>
-                                        пр. Победы, 212к2                                    </span>
-                        </a>
-                    </div>
-                    <div class="phone"><a href="tel:88005001156">8–800–500–11–56</a></div>
-                </div>
-                <div class="block">
-                    <div class="subname">
-                        Режим работы
-                    </div>
-                    <div class="time">
-                        ПН-ВС с 9:00 до 21:00
-                    </div>
-                </div>
-            </div>
-            <img src="photo-dealers/kazan3.jpg"  loading='lazy' alt=''>
-        </div>
+    <div class="contact_items" id="currentCity"></div>
+    <div class="map-modal" onclick="openMap(false)">
+        <img class="closer" src="data:image/webp;base64,UklGRl4FAABXRUJQVlA4WAoAAAAQAAAAJwAAJQAAQUxQSMECAAANoLNtmyJZXdH7flXVfdzd3d01Ogd3i8mJIeRnEHJSrhPj7pC7u7utTVfV9yJjGxETgMGkWYghRqNUSyle3SGMTLMQYgzeVbAwRuXq7tIINLMYWxSs2LF0QTvx11efzDDlUiUfigwxNam3+PCRNQ5g6ZKleOvNt0Ls1QofgowxzgEuXgCACsgW7zh/5tsrn83vFZcPIFNIc8vyu4AKMlAml+bfeM/Vx+aXzuH9LIY0t2y6HY5IASAImurqBz98uKnZpf+ZxTRXa25ESRSIvoQYa7i/PNTm4v+jxdiG+TehtpJhSELRed8fV+f13AUwxtToEmojEsNTodoDT7+bshwIIbW+Yw5MJEalYll67xUvFTKLKcZD8CBidCrq2sk32+yykJKvEyjDWFnCrU+7u0IIkZvgAeOlAs5+8x36hLAMEMcDUKtXv9VUhWhaVECMm6ph56ehKDBqTsYsElj3+wxgRgTNhogFXYYMICGOD0CqggiwIGhWZlpzCmAPLcZP5y8LW8HhnLL5EMelgK/XweguzsyskGHMok19ubMXUN1r/G4LBY6H1T5sttT/Fbdf5y8TMVaBeP5Qa4Zaa0Xvp72iwNFkHr/8Yn+OhJeaa/PlqlUehJFlIh45sYQRqF5KlX90KskEDieTpxd0uGsMUC2lK+n3H87Rg8QhBJOaj14+rRQJyGsuXW2+mjljbhQHiBTiB49eXMjWAMBryTnX9vOJs/PkBoGACCnwtTcuLdOcwP/Ja85d8fTtNwe3EQIEUIH449GJa+ZwTiT6qpacu+xp4iPsWbuA6Fu/e+utvWcR22gYIM+5K7ma/fR1b+HaRQ27ye8+7VYdXZ6bNhkGy72UritFgVO//jyRvYal61fOK9Y20TCsVHMpueTqZoQ8AZClponE8JLXXEqtXiQINIYYUwzEqJKrevUKdxBuZiEEYlgAVlA4IHYCAAAwDwCdASooACYAPlEgjkUjoaEVXVSsOAUEtIAJ6b+5/iNz0nrz6AWIPhg7W33H8lM/T+RuRL2wK8A9a//U8pXzp/3PcF/lf9T/3vYA/Y72DP16Ijnv69wL6/MFuiLHWyiDox+pXO8BZm0jnCO3jQkb++z9VZZpbO7WzmfWhGcMFl4AAP7/fH7mAlhZb6hNwfH7/GbhGrDGVZu7jz/tp7G2/TLeh0fu1WCw7oPNeqs6n/dC6jOj722LN7R7M+WCMXHRTQLdymCAP/aq/BqXXYv4wPZ569RfzlfD2eVnIdgE8Uy8ganqyKmopXt8bncA9NyrtpvWYIJ4wBhMpWZY7goC+lTx8sy1NoQ9IiDMjAfLQE6iNiRai9arg0CB3vAGegJN25hnbz1WscszdWmNsm5io5Hd8DXqM3XE6CsX5DKNMsz7NR+cvJofeHRAL0fEptlPuKCV/5m+Q899adWMYk+HEteeMFvK94YNyyLyeRMBlX+m2xqWTichJWiewC7CGxLs5HIaIKb3pPnhx4XhP5O88i1aLz/iY15aAmVnsnQWnrIA+WyzwLgTNJkcUkqQRBnLdsEqTku7XXZvLngfEPOB/GG3M5h4pC/rpKh/P4OidHtPV/sJ6gBHKc8K4r9pv/zPHUMl6lycA74djZ7xeyGPZWHxTpbrx37qdB7WdpWoJ3Jh+nQ0HkMG/nFOdYfoS+NeROss/uop99Jpe9RY6j6Oi/xZ7awekVYTxcJOsckiuNTBsGDy+zFhb2h1po2qMJK7JsaTgee1ScTlKJRORKbwnlusAmYIJY5CzRtslwYhjPKVsSXc4PiqeecdGTjezTP509xiAAA=" loading="lazy" alt="">
+        <div class="map" style="width: 90%"> карта от яндекса</div>
     </div>
-</div>    <div class='geography'>
+    <div class="photo-modal" onclick="openPhoto(false)">
+        <div class="pic"></div>
+    </div>
+    <!-- end  контакты-->
+
+
+    <div class='geography'>
     <img src='./assets/bnr_geo_desc-DjXWD4lM.webp' id='mainPhoto' class="mainPhoto_big" alt='география присутствия'
          loading='lazy'>
     <img src='./assets/bnr_geo_mobile-BAiAY0Gl.webp' class='mainPhoto_little' alt='география присутствия' loading='lazy'>
@@ -972,8 +909,14 @@
 </div>
 
 
-
-<script defer src='swiper-bundle.min.js'></script>
+
+
+
+<script defer src='swiper-bundle.min.js'></script>
+
+
+
+
 
 </body>
 </html>
