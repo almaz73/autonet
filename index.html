@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang='ru'>
 <head>
-    <meta charset='UTF-8' />
+    <meta charset='UTF-8'/>
     <link rel='icon' type='image/svg+xml' sizes='any' href='/src/svg/Favicon_as.svg'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Автомобили с пробегом (бу) в автосалонах Казани и других городов России - Автосеть.РФ</title>
     <meta property='og:type' content='website'>
@@ -18,10 +18,11 @@
         🚗 БУ авто в автосалонах Автосеть.рф.
         Подробная информация по телефону: ☎ 8-800-500-11-56. Звоните!'>
     <link rel="stylesheet" href="/src/css/swiper.css"/>
-    <link rel='stylesheet' href='/src/css/style.css' />
-    <link rel='stylesheet' href='/src/css/index/index.css' />
+    <link rel='stylesheet' href='/src/css/style.css'/>
+    <link rel='stylesheet' href='/src/css/index/index.css'/>
     <link rel="stylesheet" href="/src/css/swiper-bundle.min.css"/>
     <link rel='stylesheet' href='/src/css/index/ourservice.css'/>
+    <link rel="stylesheet" href="/src/css/contacts.css"/>
 
 
 </head>
@@ -32,8 +33,6 @@
     {{> 'index/filter'}}
 
 
-
-
     <div class='container main__top--block'>
         <h2>Топ 20 марок по продаже</h2>
         <div id='brands_dynamic'></div>
@@ -41,7 +40,28 @@
 
     {{> car-vitrina}}
     {{> 'index/ourservice'}}
-    {{> 'index/dealers'}}
+
+    <!-- контакты-->
+    <div class="main__provided--top">
+        <div class="page__flex">
+            <h2> Адреса дилерских центров Автосеть.РФ </h2>
+            <a href="/contacts/" class="page__link">
+                <img src="/src/svg/red_arrow.svg" loading='lazy' alt=''>
+                <span>Все адреса</span>
+            </a>
+        </div>
+    </div>
+    <div class="contact_items" id="currentCity"></div>
+    <div class="map-modal" onclick="openMap(false)">
+        <img class="closer" src="/src/images/close.webp" loading="lazy" alt="">
+        <div class="map" style="width: 90%"> карта от яндекса</div>
+    </div>
+    <div class="photo-modal" onclick="openPhoto(false)">
+        <div class="pic"></div>
+    </div>
+    <!-- end  контакты-->
+
+
     {{> geography}}
     <div class='container'>
         <h2>Легковые авто с пробегом в автосалонах Автосеть.рф</h2>
@@ -132,6 +152,7 @@
 <script type='module' src='/src/js/swiper-starter.js'></script>
 <script type='module' src='/src/js/whereSeeParams.js'></script>
 <script type='module' src="/src/js/filter-controls.js"></script>
+<script type='module' src='/src/js/contacts.js'></script>
 
 </body>
 </html>

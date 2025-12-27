@@ -52,7 +52,7 @@ const dealers = [
         address: 'пр. Ямашева, 115а',
         tel: '8–800–500–11–56',
         days: 'ПН-ВС с 9:00 до 21:00',
-        map: '"https://yandex.ru/map-widget/v1/?um=constructor%3A0740fee9f6396ff8f4aa3048c10c417b7f2be4ce61e41f46d69a4627f97951c7&amp;source=constructor'
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A0740fee9f6396ff8f4aa3048c10c417b7f2be4ce61e41f46d69a4627f97951c7&amp;source=constructor'
     },
 
     {
@@ -444,7 +444,7 @@ const currentCity = document.querySelector('#currentCity')
 
 document.addEventListener('DOMContentLoaded', () => {
     let searchField = document.querySelector('#search-field')
-    searchField.addEventListener('input', () => {
+    searchField && searchField.addEventListener('input', () => {
         let part = searchField.value.toLowerCase()
         let smallDealers = dealers.filter(el => el.city.toLowerCase().includes(part))
 
