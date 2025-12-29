@@ -19,13 +19,6 @@ export default defineConfig({
 				// rewrite: path => path.replace(/^\/api/, '')
 			}
 		},
-		// proxy: { // Это работает локально, т.е. прикидываясь dev можно из него получать данные
-		// 	'/api': {
-		// 		// target: 'http://localhost:5000', // локальный сервер
-		// 		target: 'https://dev.autonet.pro/', // удаленный сервер
-		// 		changeOrigin: true
-		// 	}
-		// }
 	},
 	plugins: [
 		handlebars({
@@ -33,9 +26,6 @@ export default defineConfig({
 				// Example config option: avoid auto-indenting partials
 				preventIndent: true,
 			},
-			// context: {
-			// 	title: 'Hello, world!', // {{title}}
-			// },
 			partialDirectory: resolve(__dirname, 'src/partials'),
 			reloadOnPartialChange: true,
 		}),
@@ -52,6 +42,7 @@ export default defineConfig({
 			// Ваши настройки, например, домен
 			hostname: 'https://xn--80aej9alefdt2f.xn--p1ai',
 			outDir: 'docs', // Выходная папка
+			changefreq: 'monthly', // Устанавливаем частоту 'weekly' (еженедельно)
 		}),
 	],
 	base: '',
@@ -147,8 +138,6 @@ export default defineConfig({
 				masla: resolve(__dirname, './services/zamena-masla/index.html'),
 				compared: resolve(__dirname, './personal/list-compared/index.html'),
 				favorite: resolve(__dirname, './personal/favorite-cars/index.html')
-
-
 			},
 		},
 

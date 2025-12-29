@@ -155,6 +155,7 @@ function getVitrina() {
                 ]
             },
         ]
+        fill(cars)
     } else if (location.pathname === '/cars/') {
         document.querySelector('#vitrina_name').innerHTML = 'Автомобили'
         api_getList(12).then(res => {
@@ -169,7 +170,7 @@ function getVitrina() {
         fill(cars)
     } else {
         document.querySelector('#vitrina_name').innerHTML = 'Автомобили ВАЗ (LADA) с пробегом'
-        alert(' тут не ожидалсь фотки авто')
+        console.log(' тут карточек нет, либо не сформированы')
     }
 }
 
