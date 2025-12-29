@@ -4,6 +4,7 @@ import { fileURLToPath, URL } from 'node:url'
 import handlebars from 'vite-plugin-handlebars'
 import liveReload from 'vite-plugin-live-reload'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
+import sitemap from 'vite-plugin-sitemap'; // Импортируем плагин
 
 export default defineConfig({
 	server: {
@@ -46,7 +47,12 @@ export default defineConfig({
 					dest: '.'
 				}
 			]
-		})
+		}),
+		sitemap({
+			// Ваши настройки, например, домен
+			hostname: 'https://xn--80aej9alefdt2f.xn--p1ai',
+			outDir: 'docs', // Выходная папка
+		}),
 	],
 	base: '',
 	build: {
