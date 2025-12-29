@@ -22,13 +22,15 @@ function prepareCars(res) {
         info += ', ' + el.driveType
         if (el.engineType) info += ', ' + el.engineType
 
+        let fromPerMonth = formatterShowPrice(parseInt(parseInt(el.price.replace(/ /g, '')) / 90.12))
+
         cars.push({
             address: el.fullAddress,
             id: el.id,
             name: el.brand + ' ' + el.model,
             href: '/cars/2106/651138/', // todo нужно придумать путь
             price: formatterShowPrice(el.price),
-            fromPerMonth: Math.round(el.price / 90.12),
+            fromPerMonth: fromPerMonth,
             info: info,
             photos: el.images
         })

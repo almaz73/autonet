@@ -25,7 +25,7 @@ function createNode(item, N) {
                        
                   <div class='cart__price'>
                       <div class='total'>${item.price ? item.price + ' ₽' : ''} </div>
-                      <div class='cart__of'>${item.fromPerMonth ? 'ot ' + item.fromPerMonth + '₽/мес' : ''} </div>
+                      <div class='cart__of'>${item.fromPerMonth ? 'ot ' + item.fromPerMonth + '  ₽/мес' : ''}</div>
                   </div>
                   <div class='cart__info'>
                       ${item.info}
