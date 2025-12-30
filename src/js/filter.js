@@ -157,7 +157,6 @@ function getVitrina() {
         ]
         fill(cars)
     } else if (location.pathname === '/cars/') {
-        document.querySelector('#vitrina_name').innerHTML = 'Автомобили'
         api_getList(12).then(res => {
             cars = prepareCars(res)
             fill(cars, res)
@@ -174,7 +173,10 @@ function getVitrina() {
     }
 }
 
-getVitrina()
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get('id');
+
+if (!id) getVitrina()
 window.getVitrina = getVitrina
 
 

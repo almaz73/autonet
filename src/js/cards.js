@@ -125,8 +125,8 @@ window.addEventListener('resize', () => window.current_slide && window.current_s
 setTimeout(() => {
     let TYPE_VIEW = localStorage.getItem('TYPE_VIEW') || 'dot4'
     let dot = document.querySelector('.' + TYPE_VIEW)
-    dot.classList.add('active')
-    setTypeView({srcElement: {classList: {value: TYPE_VIEW}}})
+    dot && dot.classList.add('active')
+    dot && setTypeView({srcElement: {classList: {value: TYPE_VIEW}}})
 })
 
 type_views && type_views.addEventListener('click', (e) => {
