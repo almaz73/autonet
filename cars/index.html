@@ -23,8 +23,9 @@
     <link rel='stylesheet' href='/src/css/style.css' />
     <link rel='stylesheet' href='/src/css/index/index.css' />
     <script type='module' src='/src/js/main.js'></script>
-    <script type='module' src='/src/js/index/brands-icons.js'></script>
+    <script type='module' src='/src/js/brands-icons.js'></script>
     <script type='module' src="/src/js/filter-controls.js"></script>
+    <script type='module' src="/src/js/cars.js"></script>
 
 
     <link rel="stylesheet" href="/src/css/swiper-bundle.min.css"/>
@@ -38,15 +39,14 @@
     <div class='page_padding_20'>
         <div class='bread_cranbs'>
             <a href='/'>Главная</a>
-            <span>Автомобили </span>
+            <a href='/cars/'>Автомобили</a>
+            <div id="path">Opel</div>
         </div>
     </div>
 
     {{> 'cars/filter_cars'}}
 
-    <div class='container main__top--block'>
-        <div id='brands_dynamic'></div>
-    </div>
+    <div id='brands_dynamic' class='container main__top--block'></div>
 
     {{> car-vitrina}}
 

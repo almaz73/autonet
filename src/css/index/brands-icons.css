@@ -7,12 +7,13 @@
     box-sizing: border-box;
 
 }
-#brands_dynamic{
+
+.list_brands {
     margin: 30px 0 100px;
     min-height: 146px;
 }
 
-.list_brands .d-block{
+.list_brands .d-block {
     width: 37px;
     height: 25px;
 }

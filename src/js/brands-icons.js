@@ -1,341 +1,345 @@
 import {api_getCountBrands} from "@/js/API-base/apibase.js"
 
+const urlParams = new URLSearchParams(window.location.search);
+const hasBrand = urlParams.has('brand');
+
 document.addEventListener('DOMContentLoaded', () => {
     let brands_dynamic = document.querySelector('#brands_dynamic')
-    if (!brands_dynamic) return false
+    if (!brands_dynamic || hasBrand) return false
+
     let brandDatas = [
         {
-            url: "/cars/vaz-lada/",
+            url: "/cars/?brand=vaz-lada",
             imgSrc: "/icons/lada.png",
             text: "ВАЗ (LADA)"
         },
         {
-            url: "/cars/kia/",
+            url: "/cars/?brand=kia",
             imgSrc: "/icons/kia.png",
             text: "KIA"
         },
         {
-            url: "/cars/hyundai/",
+            url: "/cars/?brand=hyundai",
             imgSrc: "/icons/hyundai.png",
             text: "HYUNDAI"
         },
         {
-            url: "/cars/renault/",
+            url: "/cars/?brand=renault",
             imgSrc: "/icons/renault.png",
             text: "RENAULT"
         },
         {
-            url: "/cars/chevrolet/",
+            url: "/cars/?brand=chevrolet",
             imgSrc: "/icons/chevrolet.png",
             text: "CHEVROLET"
         },
         {
-            url: "/cars/volkswagen/",
+            url: "/cars/?brand=volkswagen",
             imgSrc: "/icons/volkswagen.png",
             text: "VOLKSWAGEN"
         },
         {
-            url: "/cars/skoda/",
+            url: "/cars/?brand=skoda",
             imgSrc: "/icons/skoda.png",
             text: "SKODA"
         },
         {
-            url: "/cars/nissan/",
+            url: "/cars/?brand=nissan",
             imgSrc: "/icons/nissan.png",
             text: "NISSAN"
         },
         {
-            url: "/cars/ford/",
+            url: "/cars/?brand=ford",
             imgSrc: "/icons/ford.png",
             text: "FORD"
         },
         {
-            url: "/cars/opel/",
+            url: "/cars/?brand=opel",
             imgSrc: "/icons/opel.png",
             text: "OPEL"
         },
         {
-            url: "/cars/toyota/",
+            url: "/cars/?brand=toyota",
             imgSrc: "/icons/toyota.png",
             text: "TOYOTA"
         },
         {
-            url: "/cars/mitsubishi/",
+            url: "/cars/?brand=mitsubishi",
             imgSrc: "/icons/mitsubishi.png",
             text: "MITSUBISHI"
         },
         {
-            url: "/cars/mazda/",
+            url: "/cars/?brand=mazda",
             imgSrc: "/icons/mazda.png",
             text: "MAZDA"
         },
         {
-            url: "/cars/chery/",
+            url: "/cars/?brand=chery",
             imgSrc: "/icons/chery.png",
             text: "CHERY"
         },
         {
-            url: "/cars/gaz/",
+            url: "/cars/?brand=gaz",
             imgSrc: "/icons/gaz.png",
             text: "ГАЗ"
         },
         {
-            url: "/cars/haval/",
+            url: "/cars/?brand=haval",
             imgSrc: "/icons/haval.png",
             text: "HAVAL"
         },
         {
-            url: "/cars/honda/",
+            url: "/cars/?brand=honda",
             imgSrc: "/icons/honda.png",
             text: "HONDA"
         },
         {
-            url: "/cars/datsun/",
+            url: "/cars/?brand=datsun",
             imgSrc: "/icons/datsun.png",
             text: "DATSUN"
         },
         {
-            url: "/cars/geely/",
+            url: "/cars/?brand=geely",
             imgSrc: "/icons/geely.png",
             text: "GEELY"
         },
         {
-            url: "/cars/peugeot/",
+            url: "/cars/?brand=peugeot",
             imgSrc: "/icons/peugeot.png",
             text: "PEUGEOT"
         },
         {
-            url: "/cars/audi/",
+            url: "/cars/?brand=audi",
             imgSrc: "/icons/audi.png",
             text: "AUDI"
         },
         {
-            url: "/cars/bmw/",
+            url: "/cars/?brand=bmw",
             imgSrc: "/icons/bmw.png",
             text: "BMW"
         },
         {
-            url: "/cars/bogdan/",
+            url: "/cars/?brand=bogdan",
             imgSrc: "/icons/bogdan.png",
             text: "BOGDAN"
         },
         {
-            url: "/cars/brilliance/",
+            url: "/cars/?brand=brilliance",
             imgSrc: "/icons/brilliance.png",
             text: "BRILLIANCE"
         },
         {
-            url: "/cars/byd/",
+            url: "/cars/?brand=byd",
             imgSrc: "/icons/byd.png",
             text: "BYD"
         },
         {
-            url: "/cars/cadillac/",
+            url: "/cars/?brand=cadillac",
             imgSrc: "/icons/cadillac.png",
             text: "CADILLAC"
         },
         {
-            url: "/cars/achanganudi/",
+            url: "/cars/?brand=achanganudi",
             imgSrc: "/icons/changan.png",
             text: "CHANGAN"
         },
         {
-            url: "/cars/chrysler/",
+            url: "/cars/?brand=chrysler",
             imgSrc: "/icons/chrysler.png",
             text: "CHRYSLER"
         },
         {
-            url: "/cars/citroen/",
+            url: "/cars/?brand=citroen",
             imgSrc: "/icons/citroen.png",
             text: "CITROEN"
         },
         {
-            url: "/cars/daihatsu/",
+            url: "/cars/?brand=daihatsu",
             imgSrc: "/icons/daihatsu.png",
             text: "DAIHATSU"
         },
         {
-            url: "/cars/daewoo/",
+            url: "/cars/?brand=daewoo",
             imgSrc: "/icons/daewoo.png",
             text: "DAEWOO"
         },
         {
-            url: "/cars/dodge/",
+            url: "/cars/?brand=dodge",
             imgSrc: "/icons/dodge.png",
             text: "DODGE"
         },
         {
-            url: "/cars/dongfeng/",
+            url: "/cars/?brand=dongfeng",
             imgSrc: "/icons/dongfeng.png",
             text: "DONGFENG"
         },
         {
-            url: "/cars/fiat/",
+            url: "/cars/?brand=fiat",
             imgSrc: "/icons/fiat.png",
             text: "FIAT"
         },
         {
-            url: "/cars/foton/",
+            url: "/cars/?brand=foton",
             imgSrc: "/icons/foton.png",
             text: "FOTON"
         },
         {
-            url: "/cars/great-wall/",
+            url: "/cars/?brand=great-wall",
             imgSrc: "/icons/great-wall.png",
             text: "GREAT-WALL"
         },
         {
-            url: "/cars/hafei/",
+            url: "/cars/?brand=hafei",
             imgSrc: "/icons/hafei.png",
             text: "HAFEI"
         },
         {
-            url: "/cars/haima/",
+            url: "/cars/?brand=haima",
             imgSrc: "/icons/haima.png",
             text: "HAIMA"
         },
         {
-            url: "/cars/hawtai/",
+            url: "/cars/?brand=hawtai",
             imgSrc: "/icons/hawtai.png",
             text: "HAWTAI"
         },
         {
-            url: "/cars/infiniti/",
+            url: "/cars/?brand=infiniti",
             imgSrc: "/icons/infiniti.png",
             text: "INFINITI"
         },
         {
-            url: "/cars/iran-khodro/",
+            url: "/cars/?brand=iran-khodro",
             imgSrc: "/icons/iran-khodro.png",
             text: "IRAN-KHODRO"
         },
         {
-            url: "/cars/isuzu/",
+            url: "/cars/?brand=isuzu",
             imgSrc: "/icons/isuzu.png",
             text: "ISUZU"
         },
         {
-            url: "/cars/IVECO/",
+            url: "/cars/?brand=IVECO",
             imgSrc: "/icons/IVECO.png",
             text: "IVECO"
         },
         {
-            url: "/cars/izh/",
+            url: "/cars/?brand=izh",
             imgSrc: "/icons/izh.png",
             text: "IZH"
         },
         {
-            url: "/cars/jac/",
+            url: "/cars/?brand=jac",
             imgSrc: "/icons/jac.png",
             text: "JAC"
         },
         {
-            url: "/cars/jaguar/",
+            url: "/cars/?brand=jaguar",
             imgSrc: "/icons/jaguar.png",
             text: "JAGUAR"
         },
         {
-            url: "/cars/jeep/",
+            url: "/cars/?brand=jeep",
             imgSrc: "/icons/jeep.png",
             text: "JEEP"
         },
         {
-            url: "/cars/land-rover/",
+            url: "/cars/?brand=land-rover",
             imgSrc: "/icons/land-rover.png",
             text: "LAND-ROVER"
         },
         {
-            url: "/cars/lexus/",
+            url: "/cars/?brand=lexus",
             imgSrc: "/icons/lexus.png",
             text: "LEXUS"
         },
         {
-            url: "/cars/lifan/",
+            url: "/cars/?brand=lifan",
             imgSrc: "/icons/lifan.png",
             text: "LIFAN"
         },
         {
-            url: "/cars/LUXGEN/",
+            url: "/cars/?brand=LUXGEN",
             imgSrc: "/icons/LUXGEN.png",
             text: "LUXGEN"
         },
         {
-            url: "/cars/mercedes-benz/",
+            url: "/cars/?brand=mercedes-benz",
             imgSrc: "/icons/mercedes-benz.png",
             text: "MERCEDES-BENZ"
         },
         {
-            url: "/cars/mini/",
+            url: "/cars/?brand=mini",
             imgSrc: "/icons/mini.png",
             text: "MINI"
         },
         {
-            url: "/cars/moskvich/",
+            url: "/cars/?brand=moskvich",
             imgSrc: "/icons/moskvich.png",
             text: "MOSKVICH"
         },
         {
-            url: "/cars/porsche/",
+            url: "/cars/?brand=porsche",
             imgSrc: "/icons/porsche.png",
             text: "PORSCHE"
         },
         {
-            url: "/cars/ravon/",
+            url: "/cars/?brand=ravon",
             imgSrc: "/icons/ravon.png",
             text: "RAVON"
         },
         {
-            url: "/cars/rover/",
+            url: "/cars/?brand=rover",
             imgSrc: "/icons/rover.png",
             text: "ROVER"
         },
         {
-            url: "/cars/seat/",
+            url: "/cars/?brand=seat",
             imgSrc: "/icons/seat.png",
             text: "SEAT"
         },
         {
-            url: "/cars/ssangyong/",
+            url: "/cars/?brand=ssangyong",
             imgSrc: "/icons/ssangyong.png",
             text: "SSANGYONG"
         },
         {
-            url: "/cars/subaru/",
+            url: "/cars/?brand=subaru",
             imgSrc: "/icons/subaru.png",
             text: "SUBARU"
         },
         {
-            url: "/cars/uaz/",
+            url: "/cars/?brand=uaz",
             imgSrc: "/icons/uaz.png",
             text: "UAZ"
         },
         {
-            url: "/cars/volvo/",
+            url: "/cars/?brand=volvo",
             imgSrc: "/icons/volvo.png",
             text: "VOLVO"
         },
         {
-            url: "/cars/vortex/",
+            url: "/cars/?brand=vortex",
             imgSrc: "/icons/vortex.png",
             text: "VORTEX"
         },
         {
-            url: "/cars/YAMAHA/",
+            url: "/cars/?brand=YAMAHA",
             imgSrc: "/icons/YAMAHA.png",
             text: "YAMAHA"
         },
         {
-            url: "/cars/zaz/",
+            url: "/cars/?brand=zaz",
             imgSrc: "/icons/zaz.png",
             text: "ZAZ"
         },
         {
-            url: "/cars/zotye/",
+            url: "/cars/?brand=zotye",
             imgSrc: "/icons/zotye.png",
             text: "ZOTYE"
         },
         {
-            url: "/cars/СЕАЗ/",
+            url: "/cars/?brand=СЕАЗ",
             imgSrc: "/icons/СЕАЗ.png",
             text: "СЕАЗ"
         }
