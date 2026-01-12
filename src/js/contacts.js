@@ -456,16 +456,16 @@ document.addEventListener('DOMContentLoaded', () => {
     window.setCityContacts(city)
 
     let dealersDiv = document.querySelector('#dealers')
-    dealersDiv.innerHTML = fillBlocks(dealers, 'withAlphabet')
+    if (dealersDiv) dealersDiv.innerHTML = fillBlocks(dealers, 'withAlphabet')
 
     let punktsDiv = document.querySelector('#punkts')
-    punktsDiv.innerHTML = fillBlocks(punkts)
+    if (punktsDiv) punktsDiv.innerHTML = fillBlocks(punkts)
 
     let tyresDiv = document.querySelector('#tyres')
-    tyresDiv.innerHTML = fillBlocks(tyres)
+    if (tyresDiv) tyresDiv.innerHTML = fillBlocks(tyres)
 
     let servicesViv = document.querySelector('#services')
-    servicesViv.innerHTML = fillBlocks(services)
+    if (servicesViv) servicesViv.innerHTML = fillBlocks(services)
 });
 
 let mapModal = document.querySelector('.map-modal')

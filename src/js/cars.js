@@ -535,8 +535,13 @@ if (brandName && !hasId) {
     document.querySelector('#vitrina_name').innerHTML = brandName.toUpperCase() + ' с пробегом — выбрать и купить в Автосеть.рф'
 }
 
+console.log('hasId',hasId)
+
 if (hasId) {
     // document.querySelector('#alone').innerHTML = alone
+
+    console.log('66445',121212)
+
 }
 
 
