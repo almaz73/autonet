@@ -13,7 +13,7 @@ export function filter_changed(items, name) {
 
 function prepareCars(res) {
     let cars = []
-    res.forEach(el => {
+    res && res.forEach(el => {
         let info = el.milleage + ' км, '
         if (el.engineCapacity) info += el.engineCapacity
         if (el.gearboxType) info += ' ' + el.gearboxType
@@ -28,7 +28,7 @@ function prepareCars(res) {
             address: el.fullAddress,
             id: el.id,
             name: el.brand + ' ' + el.model,
-            href: '/cars/2106/651138/', // todo нужно придумать путь
+            href: '/cars/car.html?id=' + el.id,
             price: formatterShowPrice(el.price),
             fromPerMonth: fromPerMonth,
             info: info,

@@ -33,10 +33,10 @@ function getComparedCars() {
 
 function showCountButton(storage) {
     let countDiv = document.querySelector('#compareCount')
-    if (storage.length) {
+    if (countDiv && storage.length) {
         countDiv.innerHTML = '<img src="/icons/car-icon_b.svg">' + storage.length
         countDiv.style.display = 'flex'
-    } else countDiv.style.display = 'none'
+    } else if (countDiv) countDiv.style.display = 'none'
 }
 
 window.deleteAllCar = function () {
@@ -53,7 +53,7 @@ window.deleteCar = function (id) {
 
     if (!storage.length) {
         let clearButton = document.querySelector('.compare-clear')
-        clearButton.style.display = 'none'
+        if (clearButton) clearButton.style.display = 'none'
     }
 }
 

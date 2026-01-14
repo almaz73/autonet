@@ -52,14 +52,16 @@ swiperSection && document.addEventListener('DOMContentLoaded', () => {
 
 })
 
-function showSlide(val) {
+window.showSlide = function (val) {
+    console.log(val)
     swiper.slideTo(val);
 }
 
-fotos_black && fotos_black.addEventListener('click', function () {
+console.log('fotos_black', fotos_black)
+window.showMore = function (){
     fotos.style.height = 'inherit';
-    fotos_black.style.display = 'none'
-})
+    if (fotos_black) fotos_black.style.display = 'none'
+}
 
 window.toBig = function (val) {
     if (val) big.classList.add('big_viewer')

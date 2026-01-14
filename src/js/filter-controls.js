@@ -51,7 +51,7 @@ window.addEventListener('load', () => {
     bigCombo && bigCombo.addEventListener('focus', () => {
       bigCombItems.style.display = 'block'
       bigCombInput.style.display = 'inline'
-      bigCombPlaceholder.style.display = 'none'
+      if(bigCombPlaceholder) bigCombPlaceholder.style.display = 'none'
       comb_field_img.style.rotate = '180deg'
       bigCombInput.focus()
       bigCombInput.select()
@@ -64,10 +64,10 @@ window.addEventListener('load', () => {
     }
 
     function blur() {
-      bigCombItems.style.display = 'none'
-      bigCombInput.style.display = 'none'
-      bigCombPlaceholder.style.display = ''
-      comb_field_img.style.rotate='0deg'
+      if (bigCombItems) bigCombItems.style.display = 'none'
+      if (bigCombInput) bigCombInput.style.display = 'none'
+      if (bigCombPlaceholde) bigCombPlaceholder.style.display = ''
+      if (comb_field_img) comb_field_img.style.rotate = '0deg'
     }
   })
 });
