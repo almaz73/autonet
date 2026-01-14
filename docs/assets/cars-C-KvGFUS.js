@@ -1,4 +1,4 @@
-import"./main-DRGPb5tS.js";/* empty css              */import"./brands-icons-DRXsVgkQ.js";import"./filter-controls-DPBGwjij.js";/* empty css                          */import"./swiper_buy-DuPzPkpo.js";import"./swiper-starter-C7a4MFKN.js";const e=`<div  class="filter-white">
+import"./main-BP-t1OE4.js";/* empty css              */import"./brands-icons-Djl--ObG.js";import"./filter-controls-DTSzs8xM.js";/* empty css                          */import"./swiper_buy-DuPzPkpo.js";import"./swiper-starter-CbK9yu3F.js";import"./apibase-7zUvTSbv.js";const e=`<div  class="filter-white">
 <div class="filter-white-back filter-fields">
         <div class="frame-filter__item">
             <comb data-placeholder='Марка' />
