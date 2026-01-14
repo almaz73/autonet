@@ -1,5 +1,6 @@
 import {api_getFullAutoInfo} from "@/js/API-base/apibase.js"
 import {formatterShowPrice} from "@/js/global-func.js";
+import {initSwipper} from "@/js/swiper-starter.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
@@ -56,6 +57,8 @@ api_getFullAutoInfo(id).then(res => {
         <img src="${el}" alt="">
     </div>`
   })
+
+  setTimeout(()=>initSwipper(), 3000)  // активируем
 
   let autoMore = document.querySelector('#auto-more')
   autoMore.innerHTML = `<div class="fotos_black" onclick="showMore()">${res.images.length} фото</div>`

@@ -6,43 +6,11 @@ let swiperSection = document.querySelector('.swiper.mySwiper')
 
 
 swiperSection && document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-        swiper = new Swiper('.mySwiper', {
-            spaceBetween: 30,
-            loop: true,
-            autoHeight: true,
-            centeredSlides: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev'
-            },
-            on: {
-                init() {
-                    let isUsed = false
-                    // Если один раз нажали на прокрутку - автопрокрутку выключаем
-                    this.el.addEventListener('click', () => {
-                        this.autoplay.stop();
-                        isUsed = true
-                    })
-                    this.el.addEventListener('mouseenter', () => this.autoplay.stop())
-                    this.el.addEventListener('mouseleave', () => !isUsed && this.autoplay.start())
-                }
-            }
-        })
-    })
-
+    if (!location.pathname.includes('car.html')) initSwipper()
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && fotos) {
             fotos.style.height = '76px';
-            fotos_black.style.display = 'grid'
+            if (fotos_black) fotos_black.style.display = 'grid'
             setTimeout(() => swiperSection.classList.remove('rotated'))
             window.toBig()
         }
@@ -52,12 +20,43 @@ swiperSection && document.addEventListener('DOMContentLoaded', () => {
 
 })
 
+export function initSwipper() {
+    swiper = new Swiper('.mySwiper', {
+        spaceBetween: 30,
+        loop: true,
+        autoHeight: true,
+        centeredSlides: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+        },
+        on: {
+            init() {
+                let isUsed = false
+                // Если один раз нажали на прокрутку - автопрокрутку выключаем
+                this.el.addEventListener('click', () => {
+                    this.autoplay.stop();
+                    isUsed = true
+                })
+                this.el.addEventListener('mouseenter', () => this.autoplay.stop())
+                this.el.addEventListener('mouseleave', () => !isUsed && this.autoplay.start())
+            }
+        }
+    })
+}
+
 window.showSlide = function (val) {
-    console.log(val)
     swiper.slideTo(val);
 }
 
-console.log('fotos_black', fotos_black)
 window.showMore = function (){
     fotos.style.height = 'inherit';
     if (fotos_black) fotos_black.style.display = 'none'
