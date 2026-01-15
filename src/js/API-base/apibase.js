@@ -20,9 +20,10 @@ export function api_getCountBrands() {
     });
 }
 
-export function api_getList(count){
+export function api_getList(count, BrandId) {
     /*** Получение автомобилей по заданным фильтрам ***/
-    let request = server+'/api/Auto/GetList?Limit='+count
+    let request = server + '/api/Auto/GetList?Limit=' + count
+    if (BrandId) request += '&BrandId=' + BrandId
 
     return fetch(request).then(response => {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)

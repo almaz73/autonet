@@ -6,8 +6,6 @@ const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
 
 api_getFullAutoInfo(id).then(res => {
-  console.log('res = ', res)
-
   /** Имя и зарактеристики  b Хлебные крошки */
   {
     let autoName = document.querySelectorAll('.auto-name')

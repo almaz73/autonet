@@ -1,5 +1,5 @@
 import {fill} from '@/js/cards.js';
-import {api_getList} from "@/js/API-base/apibase.js"
+import {api_getCountBrands, api_getList} from "@/js/API-base/apibase.js"
 import {formatterShowPrice} from "@/js/global-func.js";
 
 export function filter_changed(items, name) {
@@ -158,9 +158,17 @@ function getVitrina() {
         ]
         fill(cars)
     } else if (location.pathname === '/cars/') {
-        api_getList(12).then(res => {
-            cars = prepareCars(res)
-            fill(cars, res)
+        const urlParams = new URLSearchParams(window.location.search);
+        const brandName = urlParams.get('brand').slice(0, -1);
+
+        api_getCountBrands().then(brands => {
+            let BrandId = brands.find(el => el.name.toLowerCase() === brandName.toLowerCase())
+            if (BrandId) BrandId = BrandId.brandId
+
+            api_getList(12, BrandId).then(res => {
+                cars = prepareCars(res)
+                fill(cars, res)
+            })
         })
     } else if (location.pathname === '/personal/favorite-cars/') {
         document.querySelector('#vitrina_name').innerHTML = 'Избранные автомобили'

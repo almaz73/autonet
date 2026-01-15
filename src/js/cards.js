@@ -108,7 +108,7 @@ export function fill(cars, currentCars) {
     }); // прикручиваем html
     cars.forEach((el, i) => galeryEvents(i + 1, el.photos)); // прикрепляем события
 
-    if (!cards.innerHTML) cards.innerHTML = 'Нет избранных автомобилей...'
+    if (!cards.innerHTML) cards.innerHTML = '<div class="nodata" style="width: 200%;text-align:center">HЕТ ИЗБРАННЫХ АВТОМОБИЛЕЙ </div>'
 }
 
 let type_views = document.querySelector('.type_views');

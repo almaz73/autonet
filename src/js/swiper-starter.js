@@ -5,8 +5,8 @@ let big = document.querySelector('.big')
 let swiperSection = document.querySelector('.swiper.mySwiper')
 
 
-swiperSection && document.addEventListener('DOMContentLoaded', () => {
-    if (!location.pathname.includes('car.html')) initSwipper()
+document.addEventListener('DOMContentLoaded', () => {
+    if (!location.pathname.includes('car.html')) setTimeout(()=>initSwipper(), 3000)
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && fotos) {
             fotos.style.height = '76px';

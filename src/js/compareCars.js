@@ -169,7 +169,7 @@ function showChosen(storage_) {
                 <td>Модель</td>
                 ${MODEL}
             </tr>`
-        if (!storage.length) compareDiv.innerHTML = '<div class="nodata">НЕТ ВЫБРАННЫХ ПОЗИЦИЙ ДЛЯ СРАВНЕНИЯ</div>'
+        if (!storage.length) compareDiv.innerHTML = '<div class="nodata">НЕТ ВЫБРАННЫХ АВТОМОБИЛЕЙ ДЛЯ СРАВНЕНИЯ</div>'
     }
 }
 
