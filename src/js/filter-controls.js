@@ -51,7 +51,7 @@ window.addEventListener('load', () => {
     bigCombo && bigCombo.addEventListener('focus', () => {
       bigCombItems.style.display = 'block'
       bigCombInput.style.display = 'inline'
-      if(bigCombPlaceholder) bigCombPlaceholder.style.display = 'none'
+      if (bigCombPlaceholder) bigCombPlaceholder.style.display = 'none'
       comb_field_img.style.rotate = '180deg'
       bigCombInput.focus()
       bigCombInput.select()
@@ -118,15 +118,15 @@ if(f_auto && f_tire) {
   f_auto.addEventListener('click', () => {
     f_auto.classList.add("active")
     f_tire.classList.remove("active")
-    f_tire_buttons.style.display = 'none'
-    f_auto_buttons.style.display = 'flex'
-    tireSizeInfo.style.display = 'none'
+    if (f_tire_buttons) f_tire_buttons.style.display = 'none'
+    if (f_auto_buttons) f_auto_buttons.style.display = 'flex'
+    if (tireSizeInfo) tireSizeInfo.style.display = 'none'
   })
   f_tire.addEventListener('click', () => {
     f_tire.classList.add("active")
     f_auto.classList.remove("active")
-    f_auto_buttons.style.display = 'none'
-    f_tire_buttons.style.display = 'flex'
-    tireSizeInfo.style.display = 'flex'
+    if (f_auto_buttons) f_auto_buttons.style.display = 'none'
+    if (f_tire_buttons) f_tire_buttons.style.display = 'flex'
+    if (tireSizeInfo) tireSizeInfo.style.display = 'flex'
   })
 }

@@ -10,7 +10,7 @@ window.openChat = function (e, root) {
     history.scrollTo(0, 10000);
 }
 window.closeChat = function (e) {
-    question_block.style.display = 'none'
+    if(question_block) question_block.style.display = 'none'
 }
 
 

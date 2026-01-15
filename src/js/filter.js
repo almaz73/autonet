@@ -44,11 +44,11 @@ function getVitrina() {
     let view_buttons = document.querySelector('.view_buttons')
 
     if (location.pathname === '/') {
-        cars_link.style.display = 'block'
+        if(cars_link) cars_link.style.display = 'block'
         localStorage.setItem('TYPE_VIEW', 'dot4')
     } else {
-        cars_link.style.display = 'none'
-        view_buttons.style.display = 'block'
+        if(cars_link) cars_link.style.display = 'none'
+        if(view_buttons) view_buttons.style.display = 'block'
     }
 
 // в зависимости от страницы, запрашиваем нужные данные

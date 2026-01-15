@@ -29,7 +29,7 @@ function openComb(e) {
 }
 
 function openOptions(isOpen) {
-  option_div.style.display = isOpen ? 'block' : 'none';
-  comb_arrow.style.rotate = isOpen ? '180deg' : '0deg';
+  if (option_div) option_div.style.display = isOpen ? 'block' : 'none';
+  if (comb_arrow) comb_arrow.style.rotate = isOpen ? '180deg' : '0deg';
   if (mySwiper) mySwiper.style.zIndex = isOpen ? -1 : 0
 }

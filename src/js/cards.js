@@ -1,5 +1,8 @@
 // создает визитки, встраивает рекламные и информационные баннеры
-let cards = document.querySelector('cards');
+let cards
+document.addEventListener('DOMContentLoaded', () => {
+    cards = document.querySelector('cards');
+})
 
 
 function createNode(item, N) {
@@ -136,6 +139,7 @@ type_views && type_views.addEventListener('click', (e) => {
 
 function setTypeView(e) {
     // выбор варианта отображения галерии
+    if (!e || !cards) return false
     cards.classList = [];
     getWidth();
     if (e.srcElement.classList.value === 'dot8') cards.classList.add('cards', 'dot8');
