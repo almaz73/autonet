@@ -65,8 +65,8 @@ window.showMore = function (){
 window.toBig = function (val) {
     if (val) big.classList.add('big_viewer')
     else {
-        setTimeout(() => swiperSection.classList.remove('rotated'))
         big.classList.remove('big_viewer')
+        setTimeout(() => swiperSection.classList.remove('rotated'))
     }
 
     if (window.innerWidth > 1000) setTimeout(() => swiperSection.classList.remove('rotated'))

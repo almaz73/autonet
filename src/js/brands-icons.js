@@ -350,7 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let txt = `<div class='list_brands'>`
         arr.forEach((el => {
             txt += ` <div>
-              <a href='${el.url}'>
+              <a href='${el.url}/'>
                   <span class='icon'>
                       <img src='${el.imgSrc}' alt='' class='d-block' loading='lazy'>
                   </span>

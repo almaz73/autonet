@@ -59,9 +59,9 @@
     z-index: -1;
 }
 
-/*.big .mySwiper{*/
-/*    !*aspect-ratio: 517/380*!*/
-/*}*/
+.big .mySwiper {
+    aspect-ratio: 517/380
+}
 
 @media (width < 1240px) {
     .mainPage.swiper {

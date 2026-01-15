@@ -54,6 +54,7 @@ function getVitrina() {
 // в зависимости от страницы, запрашиваем нужные данные
     let cars
     if (location.pathname === '/') {
+        // Пока берем первые семь, а надо бы спецпредложения от организации
         document.querySelector('#vitrina_name').innerHTML = 'Специальные предложения по цене'
 
         api_getList(7).then(res => {

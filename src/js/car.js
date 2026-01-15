@@ -8,21 +8,19 @@ const id = urlParams.get('id');
 api_getFullAutoInfo(id).then(res => {
   console.log('res = ', res)
 
-  /** Хлебные крошки */
-  {
-
-  }
-
-  /** Имя и зарактеристики */
+  /** Имя и зарактеристики  b Хлебные крошки */
   {
     let autoName = document.querySelectorAll('.auto-name')
     autoName[0].innerHTML = autoName[1].innerHTML = autoName[2].innerHTML = res.brand + ' ' + res.model + ', ' + res.yearReleased
+
+    let brandPath = document.querySelector('#auto-brand-path')
+    brandPath.innerHTML = `<a href='/cars/?brand=${res.brand}/'>Автомобили ${res.brand} с пробегом</a>`
 
     let autoPrice = document.querySelectorAll('.auto-price')
     autoPrice[0].innerHTML = autoPrice[1].innerHTML = formatterShowPrice(res.price) + ' ₽'
 
     let autoPriceMonth = document.querySelectorAll('.auto-price-month')
-    // autoPriceMonth[0].innerHTML = autoPriceMonth[1].innerHTML = 'от ' + parseInt(parseInt(res.price.replace(/ /g, '')) / 90.12) + ' ₽/мес'
+    autoPriceMonth[0].innerHTML = autoPriceMonth[1].innerHTML = 'от ' + parseInt(parseInt(res.price.replace(/ /g, '')) / 90.12) + ' ₽/мес'
 
     let autoYear = document.querySelectorAll('.auto-year')
     autoYear[0].innerHTML = autoYear[1].innerHTML = autoYear[1].innerHTML = res.yearReleased + ' год'
@@ -50,20 +48,29 @@ api_getFullAutoInfo(id).then(res => {
   }
 
   /** Фотки */
-  let autoSwip =  document.querySelector('#auto-swip')
-  res.images.forEach(el=>{
-    autoSwip.innerHTML += `
+  {
+    let autoSwip = document.querySelector('#auto-swip')
+    res.images.forEach(el => {
+      autoSwip.innerHTML += `
     <div class="swiper-slide">
         <img src="${el}" alt="">
     </div>`
-  })
+    })
 
-  setTimeout(()=>initSwipper(), 3000)  // активируем
+    setTimeout(() => initSwipper(), 3000)  // активируем
 
-  let autoMore = document.querySelector('#auto-more')
-  autoMore.innerHTML = `<div class="fotos_black" onclick="showMore()">${res.images.length} фото</div>`
+    let autoMore = document.querySelector('#auto-more')
+    autoMore.innerHTML = `<div class="fotos_black" onclick="showMore()">${res.images.length} фото</div>`
 
-  res.images.forEach((el, index)=>{
-  autoMore.innerHTML += `<div onClick="showSlide(${index+1})"><img src="${el}" alt=""></div>`
-  })
+    res.images.forEach((el, index) => {
+      autoMore.innerHTML += `<div onClick="showSlide(${index + 1})"><img src="${el}" alt=""></div>`
+    })
+  }
+
+  /** комплектация*/
+  {
+    let equipment = document.querySelector('#auto-equipment')
+    equipment.innerHTML = []
+    res.сonfiguration.forEach(el => equipment.innerHTML += `<li>${el}</li>`)
+  }
 })
