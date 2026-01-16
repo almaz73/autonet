@@ -159,10 +159,10 @@ function getVitrina() {
         fill(cars)
     } else if (location.pathname === '/cars/') {
         const urlParams = new URLSearchParams(window.location.search);
-        const brandName = urlParams.get('brand').slice(0, -1);
+        const brandName = urlParams.get('brand') && urlParams.get('brand').slice(0, -1);
 
         api_getCountBrands().then(brands => {
-            let BrandId = brands.find(el => el.name.toLowerCase() === brandName.toLowerCase())
+            let BrandId = brandName && brands.find(el => el.name.toLowerCase() === brandName.toLowerCase())
             if (BrandId) BrandId = BrandId.brandId
 
             api_getList(12, BrandId).then(res => {

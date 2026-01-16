@@ -1,4 +1,4 @@
-import"./main-zwmTiN8O.js";/* empty css              */import"./brands-icons-CnP8OsvD.js";import"./filter-controls-DJ3KQCal.js";/* empty css                          */import"./swiper_buy-DuPzPkpo.js";import"./swiper-starter-CO_6yeV6.js";import"./apibase-CWZdDwnH.js";const e=`<div  class="filter-white">
+import"./main-zwmTiN8O.js";/* empty css              */import"./brands-icons-CnP8OsvD.js";import"./filter-controls-BvtFYsm1.js";/* empty css                          */import"./swiper_buy-DuPzPkpo.js";import"./swiper-starter-CO_6yeV6.js";import"./apibase-CWZdDwnH.js";const e=`<div  class="filter-white">
 <div class="filter-white-back filter-fields">
         <div class="frame-filter__item">
             <comb data-placeholder='Марка' />
@@ -127,4 +127,4 @@ import"./main-zwmTiN8O.js";/* empty css              */import"./brands-icons-CnP
                 <img src="/src/svg/arrow-down.svg" alt="arrow" loading="lazy" width='10' height='18'>
             </span>
         </span>
-    </div><cards class='cards dot4' data-col='dot4'></cards>`,s=new URLSearchParams(window.location.search),i=s.get("brand");s.get("id");const a=s.has("id");a||(document.querySelector("#filter_cars").innerHTML=e);a||(document.querySelector("#car-vitrina").innerHTML=t);i&&!a&&(document.querySelector("#path").innerHTML=i.toUpperCase(),document.querySelector("#vitrina_name").innerHTML=i.toUpperCase()+" с пробегом — выбрать и купить в Автосеть.рф");console.log("hasId",a);a&&console.log("66445",121212);console.log("document.querySelector(#car-vitrina = ",document.querySelector("#car-vitrina"));
+    </div><cards class='cards dot4' data-col='dot4'></cards>`,i=new URLSearchParams(window.location.search),s=i.get("brand");i.get("id");const a=i.has("id");a||(document.querySelector("#filter_cars").innerHTML=e);a||(document.querySelector("#car-vitrina").innerHTML=t);s&&!a&&(document.querySelector("#path").innerHTML=s.toUpperCase(),document.querySelector("#vitrina_name").innerHTML=s.toUpperCase()+" с пробегом — выбрать и купить в Автосеть.рф");console.log("hasId",a);a&&console.log("66445",121212);

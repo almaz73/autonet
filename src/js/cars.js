@@ -162,4 +162,3 @@ if (hasId) {
 }
 
 
-console.log('document.querySelector(#car-vitrina = ', document.querySelector('#car-vitrina'))
