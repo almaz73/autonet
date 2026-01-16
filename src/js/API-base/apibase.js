@@ -27,6 +27,10 @@ export function api_getList(count, BrandId) {
 
     return fetch(request).then(response => {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
+
+        let preload_getList = document.querySelector('#preload_getList')
+        if (preload_getList) preload_getList.style.display = 'none'
+
         return response.json();
     }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
 }

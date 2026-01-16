@@ -156,7 +156,7 @@ function getVitrina() {
                 ]
             },
         ]
-        fill(cars)
+        setTimeout(()=>fill(cars))
     } else if (location.pathname === '/cars/') {
         const urlParams = new URLSearchParams(window.location.search);
         const brandName = urlParams.get('brand') && urlParams.get('brand').slice(0, -1);
@@ -175,7 +175,7 @@ function getVitrina() {
 
         cars = localStorage.getItem('FavoriteCars')
         cars = cars ? JSON.parse(cars) : []
-        fill(cars)
+        setTimeout(()=>fill(cars))
     } else {
         document.querySelector('#vitrina_name').innerHTML = 'Автомобили ВАЗ (LADA) с пробегом'
         console.log(' тут карточек нет, либо не сформированы')

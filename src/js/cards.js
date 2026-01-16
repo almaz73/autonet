@@ -72,12 +72,7 @@ function galeryEvents(id, images) {
     let z_zona = 0 // чтобы менять фотку, если только меняем зону
     photo.src = images[i];
     photo.addEventListener('mousemove', (e) => {
-
-
         let z = parseInt(e.layerX * 100 / pieceWidth / 20);
-
-        console.log(z)
-
         if (z_zona !== z) {
             photo.src = images[z]; // меняем, если только сменится зона
             z_zona = z
@@ -118,7 +113,7 @@ export function fill(cars, currentCars) {
     }); // прикручиваем html
     cars.forEach((el, i) => galeryEvents(i + 1, el.photos)); // прикрепляем события
 
-    if (!cards.innerHTML) cards.innerHTML = '<div class="nodata" style="width: 200%;text-align:center">HЕТ ИЗБРАННЫХ АВТОМОБИЛЕЙ </div>'
+    if (!cards.innerHTML && location.pathname.includes('favorite')) cards.innerHTML = '<div class="nodata" style="width: 200%;text-align:center">HЕТ ИЗБРАННЫХ АВТОМОБИЛЕЙ </div>'
 }
 
 let type_views = document.querySelector('.type_views');
@@ -128,8 +123,6 @@ let getWidth = () => {
     if (cart__slide) pieceWidth = cart__slide.clientWidth;
 
     if (window.current_slide) pieceWidth = window.current_slide.clientWidth;
-
-    console.log(' --- pieceWidth = ', pieceWidth)
 };
 document.addEventListener('DOMContentLoaded', () => setTimeout(getWidth, 500));
 window.addEventListener('resize', () => window.current_slide && window.current_slide.classList.remove('watch'));
