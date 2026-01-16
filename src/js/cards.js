@@ -1,4 +1,7 @@
 // создает визитки, встраивает рекламные и информационные баннеры
+import {initFavotite} from "@/js/favoriteCars.js";
+import {initChosen} from '@/js/compareCars.js'
+
 let cards
 document.addEventListener('DOMContentLoaded', () => {
     cards = document.querySelector('cards');
@@ -114,6 +117,9 @@ export function fill(cars, currentCars) {
     cars.forEach((el, i) => galeryEvents(i + 1, el.photos)); // прикрепляем события
 
     if (!cards.innerHTML && location.pathname.includes('favorite')) cards.innerHTML = '<div class="nodata" style="width: 200%;text-align:center">HЕТ ИЗБРАННЫХ АВТОМОБИЛЕЙ </div>'
+
+    initChosen()
+    initFavotite()
 }
 
 let type_views = document.querySelector('.type_views');

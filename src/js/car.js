@@ -1,6 +1,8 @@
 import {api_getFullAutoInfo} from "@/js/API-base/apibase.js"
-import {formatterShowPrice} from "@/js/global-func.js";
+import {formatterShowPrice, prepareCars} from "@/js/global-func.js";
 import {initSwipper} from "@/js/swiper-starter.js";
+import {initFavotite} from "@/js/favoriteCars.js";
+import {initChosen} from "@/js/compareCars.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
@@ -70,5 +72,24 @@ api_getFullAutoInfo(id).then(res => {
     let equipment = document.querySelector('#auto-equipment')
     equipment.innerHTML = []
     res.сonfiguration.forEach(el => equipment.innerHTML += `<li>${el}</li>`)
+  }
+
+  /** выбранные  и сраниваемые*/
+  {
+    let favorite_chosen = document.querySelector('#favorite_chosen')
+    if (favorite_chosen) {
+      favorite_chosen.innerHTML = `<a href="javascript:addCompare('${res.id}')" ondblclick="dblCompare('${res.id}')">
+        <img id="compareId_${res.id}" src='/icons/compare_cars.svg' alt=''>
+      </a>
+      <a href="javascript:addFavorite('${res.id}')">
+        <img id="favoriteId_${res.id}" src='/icons/penta.svg' alt=''>
+      </a>`
+    }
+
+    window.favorCars = prepareCars([res])
+    window.compareCars = [res]
+
+    initFavotite()
+    initChosen()
   }
 })

@@ -88,7 +88,7 @@ function showChosen(storage_) {
         storage.forEach(el => {
             DELETE += `<td><a href="javascript:deleteCar('${el.id}')">Удалить</a></td>`
             PREVIEW_PICTURE += `<td><a href="${el.href}"><img src="${el.images}" alt=""></a></td>`
-            NAME += `<td><a href="${el.href}">"${el.brand} ${el.model}</a></td>`
+            NAME += `<td><a href="/cars/car.html?id=${el.id}">"${el.brand} ${el.model}</a></td>`
             PRICE += `<td>${formatterShowPrice(el.price)} руб.</td>`
             if (el.milleage) PROBEG += `<td>${formatterShowPrice(el.milleage) || ''} км</td>`
             GOD_VYPUSKA += `<td>${el.yearReleased || ''}</td>`
@@ -174,7 +174,7 @@ function showChosen(storage_) {
 }
 
 
-document.addEventListener('DOMContentLoaded', () => {
+export function initChosen() {
     // Перетаскивание мышкой
     let isDragging = false;
     let startX;
@@ -193,11 +193,16 @@ document.addEventListener('DOMContentLoaded', () => {
         tableScroll.addEventListener('mouseup', () => isDragging = false);
     }
 
-    if (location.pathname === '/personal/list-compared/') showChosen()
-    else setTimeout(showChosen, 2000);
 
-})
+    showChosen()
+
+    let preload_getList = document.querySelector('#preload_getList')
+    if (preload_getList) preload_getList.style.display = 'none'
+}
 
 window.dblCompare = function () {
     location.href = '/personal/list-compared/'
 }
+
+if (location.href.includes('list-compared')) initChosen()
+

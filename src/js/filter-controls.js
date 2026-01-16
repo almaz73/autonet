@@ -1,5 +1,4 @@
 import {filter_changed} from '@/js/filter.js';
-import '@/js/favoriteCars.js'
 
 let items = {}; // некоторые поля нужно запросить с обюновляемой базы
 items['Марка'] = ['Все', 'AUDI', 'BMV', 'Brilliance', 'BYD', 'Cadilac'] // todo нужно запросить с сервера

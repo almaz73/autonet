@@ -1,5 +1,6 @@
 import {fill} from '@/js/cards.js';
 import {api_getCountBrands, api_getList} from "@/js/API-base/apibase.js"
+import {prepareCars} from '@/js/global-func.js'
 import {formatterShowPrice} from "@/js/global-func.js";
 
 export function filter_changed(items, name) {
@@ -11,32 +12,6 @@ export function filter_changed(items, name) {
 }
 
 
-function prepareCars(res) {
-    let cars = []
-    res && res.forEach(el => {
-        let info = el.milleage + ' км, '
-        if (el.engineCapacity) info += el.engineCapacity
-        if (el.gearboxType) info += ' ' + el.gearboxType
-        if (el.enginePower) info += ' (' + el.enginePower + '&nbsp;л.с)'
-        if (el.bodyType) info += ', ' + el.bodyType
-        info += ', ' + el.driveType
-        if (el.engineType) info += ', ' + el.engineType
-
-        let fromPerMonth = formatterShowPrice(parseInt(parseInt(el.price.replace(/ /g, '')) / 90.12))
-
-        cars.push({
-            address: el.fullAddress,
-            id: el.id,
-            name: el.brand + ' ' + el.model,
-            href: '/cars/car.html?id=' + el.id,
-            price: formatterShowPrice(el.price),
-            fromPerMonth: fromPerMonth,
-            info: info,
-            photos: el.images
-        })
-    })
-    return cars
-}
 
 /** Запрос сервера и отображения витрины **/
 function getVitrina() {
