@@ -60,6 +60,8 @@ function createNode(item, N) {
 }
 
 function galeryEvents(id, images) {
+
+
     const gallery = document.querySelector('#galery_' + id + ' .cart__slide');
     window.current_slide = null;
 
@@ -70,7 +72,12 @@ function galeryEvents(id, images) {
     let z_zona = 0 // чтобы менять фотку, если только меняем зону
     photo.src = images[i];
     photo.addEventListener('mousemove', (e) => {
+
+
         let z = parseInt(e.layerX * 100 / pieceWidth / 20);
+
+        console.log(z)
+
         if (z_zona !== z) {
             photo.src = images[z]; // меняем, если только сменится зона
             z_zona = z
@@ -115,12 +122,14 @@ export function fill(cars, currentCars) {
 }
 
 let type_views = document.querySelector('.type_views');
-let pieceWidth;
+let pieceWidth= 285;
 let getWidth = () => {
     let cart__slide = document.querySelector('cards .cart__slide')
     if (cart__slide) pieceWidth = cart__slide.clientWidth;
 
     if (window.current_slide) pieceWidth = window.current_slide.clientWidth;
+
+    console.log(' --- pieceWidth = ', pieceWidth)
 };
 document.addEventListener('DOMContentLoaded', () => setTimeout(getWidth, 500));
 window.addEventListener('resize', () => window.current_slide && window.current_slide.classList.remove('watch'));
