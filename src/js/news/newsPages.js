@@ -284,10 +284,10 @@ let page = 1
 let all = ''
 news.reverse()
 
-function prepareLink(max, currentPage) {
+function preparePager(max, currentPage) {
     let pagerText = ''
     for (let i = 1; i < max + 1; i++) {
-        pagerText += `<a ${currentPage === i ? 'class="active"' : ''} href="/news/?PAGEN_2=${i}">${i}</a> |`
+        pagerText += `<a ${currentPage === i ? 'class="active"' : ''} href="/news/?PAGEN_2=${i}">${i}</a> <span style="color: #bbb"> | </span>`
     }
     pagerText += `<a href="javascript:preparePage('next')">След.</a>`
     pager.innerHTML = pagerText
@@ -309,7 +309,7 @@ window.preparePage = function (next) {
 
     if (page > maxPage) page = maxPage
     if (next) return location.href = "/news/?PAGEN_2=" + (++page)
-    else prepareLink(maxPage, page)
+    else preparePager(maxPage, page)
 
 
     news_part_15 = news.slice((page - 1) * step, (page - 1) * step + step)

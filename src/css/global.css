@@ -162,3 +162,25 @@ main h2, main h1 {
         display: ruby;
     }
 }
+
+.pager a {
+    color: black;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.pager a:hover {
+    color: var(--color-red);
+    font-weight: bold;
+
+}
+
+.pager span{
+    color: #bbb
+}
+
+.pager a.active {
+    color: var(--color-red);
+    font-weight: bold;
+    font-size: large;
+}

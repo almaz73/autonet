@@ -83,17 +83,6 @@
     margin: 40px 0 0 0;
 }
 
-.bottom-nav a {
-    color: black;
-    padding: 5px;
-    text-decoration: none;
-}
-
-.bottom-nav a.active {
-    color: var(--color-red);
-    font-family: Gilroy-Bold, system-ui;
-}
-
 main img {
     width: 100%;
     border-radius: 6px;

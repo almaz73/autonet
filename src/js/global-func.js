@@ -5,7 +5,7 @@ export function formatterShowPrice(val){
 export function prepareCars(res) {
     let cars = []
     res && res.forEach(el => {
-        let info = el.milleage + ' км, '
+        let info = formatterShowPrice(el.milleage) + ' км, '
         if (el.engineCapacity) info += el.engineCapacity
         if (el.gearboxType) info += ' ' + el.gearboxType
         if (el.enginePower) info += ' (' + el.enginePower + '&nbsp;л.с)'

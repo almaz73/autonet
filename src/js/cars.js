@@ -134,7 +134,7 @@ const carVitrina = `<div class="car_vitrina">
 
 const urlParams = new URLSearchParams(window.location.search);
 // console.log('urlParams = ', urlParams)
-const brandName = urlParams.get('brand');
+let brandName = urlParams.get('brand');
 const id = urlParams.get('id');
 const hasId = urlParams.has('id');
 // console.log('id = ', id)
@@ -148,6 +148,7 @@ if (!hasId) document.querySelector('#filter_cars').innerHTML = whiteFilter
 if (!hasId) document.querySelector('#car-vitrina').innerHTML = carVitrina
 
 if (brandName && !hasId) {
+    if (brandName.includes('/')) brandName = brandName.split('/')[0]
     document.querySelector('#path').innerHTML = brandName.toUpperCase()
     document.querySelector('#vitrina_name').innerHTML = brandName.toUpperCase() + ' с пробегом — выбрать и купить в Автосеть.рф'
 }
