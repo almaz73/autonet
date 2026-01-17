@@ -1,4 +1,4 @@
-import"./main-CtzwmiUx.js";/* empty css              */import"./brands-icons-Dqi0AiGi.js";import"./filter-controls-CO8tmUY1.js";/* empty css                          */import"./swiper_buy-DuPzPkpo.js";import"./swiper-starter-CO_6yeV6.js";import"./favoriteCars-DAMi6eFw.js";import"./compareCars-7d1If7Q4.js";const e=`<div  class="filter-white">
+import"./main-CQbA20Ps.js";/* empty css              */import"./brands-icons-Dqi0AiGi.js";import"./filter-controls-Bg4iKRr7.js";/* empty css                          */import"./swiper_buy-DuPzPkpo.js";import"./swiper-starter-CO_6yeV6.js";import"./favoriteCars-DAMi6eFw.js";import"./compareCars-BdXehKsA.js";const e=`<div  class="filter-white">
 <div class="filter-white-back filter-fields">
         <div class="frame-filter__item">
             <comb data-placeholder='Марка' />
@@ -127,4 +127,4 @@ import"./main-CtzwmiUx.js";/* empty css              */import"./brands-icons-Dqi
                 <img src="/src/svg/arrow-down.svg" alt="arrow" loading="lazy" width='10' height='18'>
             </span>
         </span>
-    </div><cards class='cards dot4' data-col='dot4'></cards>`,s=new URLSearchParams(window.location.search),i=s.get("brand");s.get("id");const a=s.has("id");a||(document.querySelector("#filter_cars").innerHTML=e);a||(document.querySelector("#car-vitrina").innerHTML=t);i&&!a&&(document.querySelector("#path").innerHTML=i.toUpperCase(),document.querySelector("#vitrina_name").innerHTML=i.toUpperCase()+" с пробегом — выбрать и купить в Автосеть.рф");console.log("hasId",a);a&&console.log("66445",121212);
+    </div><cards class='cards dot4' data-col='dot4'></cards>`,s=new URLSearchParams(window.location.search);let a=s.get("brand");s.get("id");const i=s.has("id");i||(document.querySelector("#filter_cars").innerHTML=e);i||(document.querySelector("#car-vitrina").innerHTML=t);a&&!i&&(a.includes("/")&&(a=a.split("/")[0]),document.querySelector("#path").innerHTML=a.toUpperCase(),document.querySelector("#vitrina_name").innerHTML=a.toUpperCase()+" с пробегом — выбрать и купить в Автосеть.рф");console.log("hasId",i);i&&console.log("66445",121212);
