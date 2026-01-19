@@ -1,5 +1,5 @@
 import {api_GetBrandList, api_GetModelList} from "@/js/API-base/apibase.js"
-import {global_brandsIds} from '@/js/global-func.js'
+import {global_brandsIds, global_modelsIds} from '@/js/global-func.js'
 
 
 export let items = {}; // некоторые поля нужно запросить с обюновляемой базы
@@ -26,7 +26,6 @@ items['Диски'] = ['Все', 'Отсутствуют']
 
 function fillFields() {
     let combs = document.querySelectorAll('comb');
-    // console.log('!!!!!!!! fill combs .... ' )
     combs.forEach(comb => {
         let comb_name = comb.dataset.placeholder
         let the_Items = items[comb_name];
@@ -76,7 +75,6 @@ function fillFields() {
 
 ///////////////////////////
 
-console.log('99999-22222')
 
 api_GetBrandList().then(res=>{
     items['Марка'] = res.map(el=>el.name)
@@ -89,6 +87,7 @@ export function getModelList(brandName) {
     let brand = global_brandsIds.find(el=>el.name===brandName)
     brand && api_GetModelList(brand.id).then(res=>{
         items['Модель'] = res.map(el=>el.name)
+        global_modelsIds.push(...res)
         fillFields()
     })
 

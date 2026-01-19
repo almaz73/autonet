@@ -2,7 +2,7 @@ import {fill} from '@/js/cards.js';
 import {api_getCountBrands, api_getList} from "@/js/API-base/apibase.js"
 import {prepareCars} from '@/js/global-func.js'
 import {getModelList} from '@/js/filter-ctrl-filling.js'
-import {global_brandsIds} from '@/js/global-func.js'
+import {global_modelsIds} from '@/js/global-func.js'
 
 export function filter_changed(items, name) {
     // console.log('items = ', items)
@@ -10,7 +10,16 @@ export function filter_changed(items, name) {
     console.log('<> <> <> items[name].value = ', items[name].value)
     filterParams[name] = items[name].value
 
+
+    console.log('2222 global_modelsIds', global_modelsIds)
+
     if (name === 'Марка') getModelList(items[name].value)
+    if (name === 'Модель') {
+        let model = global_modelsIds.find(el=>el.name === items[name].value)
+        console.log(' = = model', model)
+
+        if(model) filterParams['modelId'] = model.id
+    }
     getVitrina()
 }
 
@@ -20,6 +29,8 @@ let filterParams = {}
 function getVitrina() {
 
     console.log('getVitrina ::: filterParams =', filterParams)
+
+
 
     let cars_link = document.querySelector('.cars_link')
     let view_buttons = document.querySelector('.view_buttons')
@@ -144,8 +155,13 @@ function getVitrina() {
         if (brandId) filterParams['brandId'] = brandId
 
         api_getList(12, filterParams).then(res => {
-            cars = prepareCars(res)
-            fill(cars, res)
+
+            console.log('555 res=', res)
+
+            // по кнопке Показать
+                cars = prepareCars(res)
+                fill(cars, res)
+            //
         })
     } else if (location.pathname === '/personal/favorite-cars/') {
         document.querySelector('#vitrina_name').innerHTML = 'Избранные автомобили'

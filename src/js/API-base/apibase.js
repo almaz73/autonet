@@ -23,10 +23,12 @@ export function api_getCountBrands() {
 export function api_getList(count, params) {
     let request = server + '/api/Auto/GetList?Limit=' + count
     if (params.brandId) request += '&brandId=' + params.brandId
+    if (params.modelId) request += '&modelId=' + params.modelId
 
     return fetch(request).then(response => {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
 
+        /** убираем крутилку */
         let preload_getList = document.querySelector('#preload_getList')
         if (preload_getList) preload_getList.style.display = 'none'
 

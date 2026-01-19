@@ -116,7 +116,6 @@ export function fill(cars, currentCars) {
         if (i === 2 && (location.pathname !== '/personal/favorite-cars/')) createNode(null, 'abdul')
         if (i === 0 && (location.pathname === '/cars/' || location.pathname === '/autosite/cars/')) createNode(null, 'swiper_buy')
     }); // прикручиваем html
-    cars.forEach((el, i) => galeryEvents(i + 1, el.photos)); // прикрепляем события
 
     if (!cards.innerHTML && location.pathname.includes('favorite')) cards.innerHTML = '<div class="nodata" style="width: 200%;text-align:center">HЕТ ИЗБРАННЫХ АВТОМОБИЛЕЙ </div>'
 
@@ -124,6 +123,8 @@ export function fill(cars, currentCars) {
     preparePager( 355 ) // todo СЕРВЕР ОТДАСТ
     initChosen()
     initFavotite()
+
+    cars.forEach((el, i) => galeryEvents(i + 1, el.photos)); // прикрепляем события
 }
 
 let type_views = document.querySelector('.type_views');

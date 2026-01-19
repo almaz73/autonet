@@ -21,15 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 export function initSwipper() {
-    swiper = new Swiper('.mySwiper', {
+    let params = {
         spaceBetween: 30,
         loop: true,
         autoHeight: true,
         centeredSlides: true,
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: false
-        },
         pagination: {
             el: '.swiper-pagination',
             clickable: true
@@ -50,7 +46,10 @@ export function initSwipper() {
                 this.el.addEventListener('mouseleave', () => !isUsed && this.autoplay.start())
             }
         }
-    })
+    }
+
+    if (!location.pathname.includes('car.html')) params.autoplay = {delay: 5000, disableOnInteraction: false}
+    swiper = new Swiper('.mySwiper', params)
 }
 
 window.showSlide = function (val) {
