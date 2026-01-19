@@ -124,7 +124,7 @@ const carVitrina = `<div class="car_vitrina">
             </span>
 
             <span class='coin'>
-                цена
+                цена&nbsp;
                 <img src="/src/svg/arrow-down.svg" alt="arrow" loading="lazy" width='10' height='18'>
             </span>
         </span>
@@ -152,8 +152,6 @@ if (brandName && !hasId) {
     document.querySelector('#path').innerHTML = brandName.toUpperCase()
     document.querySelector('#vitrina_name').innerHTML = brandName.toUpperCase() + ' с пробегом — выбрать и купить в Автосеть.рф'
 }
-
-console.log('hasId',hasId)
 
 if (hasId) {
     // document.querySelector('#alone').innerHTML = alone

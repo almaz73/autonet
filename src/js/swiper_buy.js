@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.reloadLittleSwiper = function (){
     let swiper_buy = document.querySelector('swiper_buy')
-    if (!swiper_buy) return console.warn('карусель фоток не подключен')
+    if (!swiper_buy) return false //console.warn('карусель фоток не подключен')
 
     swiper_buy.innerHTML = block
 }

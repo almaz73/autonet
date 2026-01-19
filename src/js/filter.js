@@ -1,20 +1,26 @@
 import {fill} from '@/js/cards.js';
 import {api_getCountBrands, api_getList} from "@/js/API-base/apibase.js"
 import {prepareCars} from '@/js/global-func.js'
-import {formatterShowPrice} from "@/js/global-func.js";
+import {getModelList} from '@/js/filter-ctrl-filling.js'
+import {global_brandsIds} from '@/js/global-func.js'
 
 export function filter_changed(items, name) {
-    console.log('items = ', items)
+    // console.log('items = ', items)
     console.log('name = ', name)
-    console.log('items[name].value = ', items[name].value)
+    console.log('<> <> <> items[name].value = ', items[name].value)
+    filterParams[name] = items[name].value
 
-
+    if (name === 'Марка') getModelList(items[name].value)
+    getVitrina()
 }
 
-
+let filterParams = {}
 
 /** Запрос сервера и отображения витрины **/
 function getVitrina() {
+
+    console.log('getVitrina ::: filterParams =', filterParams)
+
     let cars_link = document.querySelector('.cars_link')
     let view_buttons = document.querySelector('.view_buttons')
 
@@ -32,7 +38,7 @@ function getVitrina() {
         // Пока берем первые семь, а надо бы спецпредложения от организации
         document.querySelector('#vitrina_name').innerHTML = 'Специальные предложения по цене'
 
-        api_getList(7).then(res => {
+        api_getList(7, filterParams).then(res => {
             cars = prepareCars(res)
             fill(cars, res)
         })
@@ -134,16 +140,12 @@ function getVitrina() {
         setTimeout(()=>fill(cars))
     } else if (location.pathname === '/cars/') {
         const urlParams = new URLSearchParams(window.location.search);
-        const brandName = urlParams.get('brand') && urlParams.get('brand').slice(0, -1);
+        const brandId = urlParams.get('brandId')
+        if (brandId) filterParams['brandId'] = brandId
 
-        api_getCountBrands().then(brands => {
-            let BrandId = brandName && brands.find(el => el.name.toLowerCase() === brandName.toLowerCase())
-            if (BrandId) BrandId = BrandId.brandId
-
-            api_getList(12, BrandId).then(res => {
-                cars = prepareCars(res)
-                fill(cars, res)
-            })
+        api_getList(12, filterParams).then(res => {
+            cars = prepareCars(res)
+            fill(cars, res)
         })
     } else if (location.pathname === '/personal/favorite-cars/') {
         document.querySelector('#vitrina_name').innerHTML = 'Избранные автомобили'
@@ -152,7 +154,7 @@ function getVitrina() {
         cars = cars ? JSON.parse(cars) : []
         setTimeout(()=>fill(cars))
     } else {
-        document.querySelector('#vitrina_name').innerHTML = 'Автомобили ВАЗ (LADA) с пробегом'
+        document.querySelector('#vitrina_name').innerHTML = 'Автомобили'
         console.log(' тут карточек нет, либо не сформированы')
     }
 }

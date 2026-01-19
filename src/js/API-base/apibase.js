@@ -1,9 +1,8 @@
 const server = 'https://ext.cartat.ru/exchange'
 
-
+/*** Получение кол-во автомобилей разбитых по бренду. Отсортированно от большего к меньшему ***/
 export function api_getCountBrands() {
-    /*** Получение кол-во автомобилей разбитых по бренду. Отсортированно от большего к меньшему ***/
-    let request = server+'/api/Auto/GetCarCount'
+    let request = server + '/api/Auto/GetCarCount'
 
     return fetch(request).then(response => {
         if (!response.ok) {
@@ -20,10 +19,10 @@ export function api_getCountBrands() {
     });
 }
 
-export function api_getList(count, BrandId) {
-    /*** Получение автомобилей по заданным фильтрам ***/
+/*** Получение автомобилей по заданным фильтрам ***/
+export function api_getList(count, params) {
     let request = server + '/api/Auto/GetList?Limit=' + count
-    if (BrandId) request += '&BrandId=' + BrandId
+    if (params.brandId) request += '&brandId=' + params.brandId
 
     return fetch(request).then(response => {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
@@ -35,9 +34,9 @@ export function api_getList(count, BrandId) {
     }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
 }
 
-export function api_getFullAutoInfo(guid){
-    /*** Все данные по одной машине ***/
-    let request = server+'/api/Auto/GetFullAutoInfo?guid='+guid
+/*** Все данные по одной машине ***/
+export function api_getFullAutoInfo(guid) {
+    let request = server + '/api/Auto/GetFullAutoInfo?guid=' + guid
 
     return fetch(request).then(response => {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
@@ -52,6 +51,22 @@ export function api_getFullAutoInfo(guid){
     // })
 
 
-
 }
 
+/** Получение брендов автомобилей */
+export function api_GetBrandList() {
+    let request = server + '/api/auto/getBrandList'
+    return fetch(request).then(res => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
+        return res.json();
+    }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
+}
+
+/** Поолучение моделей автомобилей по бренду */
+export function api_GetModelList(brandId) {
+    let request = server + '/api/auto/getModelList?brandId=' + brandId
+    return fetch(request).then(res => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
+        return res.json();
+    }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
+}

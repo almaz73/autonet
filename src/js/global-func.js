@@ -1,3 +1,5 @@
+export let global_brandsIds= []; // здесь будет хранить
+
 export function formatterShowPrice(val){
     return parseInt(val).toLocaleString('ru-RU')
 }
