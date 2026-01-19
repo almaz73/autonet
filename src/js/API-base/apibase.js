@@ -1,7 +1,7 @@
 const server = 'https://ext.cartat.ru/exchange'
 
 /*** Получение кол-во автомобилей разбитых по бренду. Отсортированно от большего к меньшему ***/
-export function api_getCountBrands() {
+export function api_GetCarCount() {
     let request = server + '/api/Auto/GetCarCount'
 
     return fetch(request).then(response => {

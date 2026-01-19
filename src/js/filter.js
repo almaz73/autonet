@@ -1,5 +1,5 @@
 import {fill} from '@/js/cards.js';
-import {api_getCountBrands, api_getList} from "@/js/API-base/apibase.js"
+import {api_getList} from "@/js/API-base/apibase.js"
 import {prepareCars} from '@/js/global-func.js'
 import {getModelList} from '@/js/filter-ctrl-filling.js'
 import {global_modelsIds} from '@/js/global-func.js'
@@ -50,6 +50,9 @@ function getVitrina() {
         document.querySelector('#vitrina_name').innerHTML = 'Специальные предложения по цене'
 
         api_getList(7, filterParams).then(res => {
+
+            console.log('res', res)
+
             cars = prepareCars(res)
             fill(cars, res)
         })
