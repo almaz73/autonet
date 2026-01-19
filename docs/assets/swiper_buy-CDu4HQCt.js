@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded",()=>{window.reloadLittleSwiper()});window.reloadLittleSwiper=function(){let s=document.querySelector("swiper_buy");if(!s)return console.warn("карусель фоток не подключен");s.innerHTML=l};let l=`
+document.addEventListener("DOMContentLoaded",()=>{window.reloadLittleSwiper()});window.reloadLittleSwiper=function(){let s=document.querySelector("swiper_buy");if(!s)return!1;s.innerHTML=l};let l=`
     <section class="swiper mySwiper buy_swiper" style="z-index: 1">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
