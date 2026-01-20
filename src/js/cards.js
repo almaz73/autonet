@@ -119,7 +119,7 @@ export function fill(cars, currentCars, totalPages) {
 
     if (!cards.innerHTML && location.pathname.includes('favorite')) cards.innerHTML = '<div class="nodata" style="width: 200%;text-align:center">HЕТ ИЗБРАННЫХ АВТОМОБИЛЕЙ </div>'
 
-    if (location.pathname !== '/') cards.innerHTML += `<div class=" pager">Страницы: <span id="pager"></span></div>`
+    if (location.pathname !== '/') cards.innerHTML += `<div class="pager">Страницы: <span id="pager"></span></div>`
 
     console.log('totalPages', totalPages)
     totalPages = totalPages || 12

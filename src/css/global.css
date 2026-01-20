@@ -163,6 +163,10 @@ main h2, main h1 {
     }
 }
 
+.pager{
+    grid-column: 1 / -1
+}
+
 .pager a {
     color: black;
     padding: 5px;

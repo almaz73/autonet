@@ -38,7 +38,7 @@ api_getFullAutoInfo(id).then(res => {
     autoDrive[0].innerHTML = autoDrive[1].innerHTML = res.driveType || ''
 
     let autoRule = document.querySelectorAll('.auto-rule')
-    autoRule[0].innerHTML = autoRule[1].innerHTML = res.rule || ''
+    autoRule[0].innerHTML = autoRule[1].innerHTML = res.wheelType || ''
 
     let autoBody = document.querySelectorAll('.auto-body')
     autoBody[0].innerHTML = autoBody[1].innerHTML = res.bodyType || ''

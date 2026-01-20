@@ -22,3 +22,7 @@ if(filter__controlsInfoButton) {
     if (e.key === 'Escape') tires_sizes.classList.remove('watch')
   });
 }
+
+window.goTires = function (vak) {l
+  console.log('vak', vak)
+}

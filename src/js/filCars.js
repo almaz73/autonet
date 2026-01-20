@@ -2,7 +2,7 @@
 import {api_getList} from "@/js/API-base/apibase.js"
 import {declOfNum, prepareCars} from '@/js/global-func.js'
 
-// import {items} from "@/js/filter-ctrl-filling.js";
+const countPerPage = 20
 
 function FillOldFilter(filterParams) {
     const urlParams = new URLSearchParams(window.location.search);
@@ -11,13 +11,7 @@ function FillOldFilter(filterParams) {
     if (brandId) {
         filterParams['brandId'] = brandId
         filterParams['brand'] = brand
-        setTimeout(()=>{
-            let comb = document.querySelector('[data-placeholder="Марка"]')
-            if (comb) {
-                comb.querySelector('.big-comb__placeholder').innerText = brand
-                comb.querySelector('.big-comb__placeholder').classList.add('bold')
-            }
-        }, 2000)
+        setCombName('Марка', brand)
     }
 
     const modelId = urlParams.get('modelId')
@@ -25,17 +19,24 @@ function FillOldFilter(filterParams) {
     if (modelId) {
         filterParams['modelId'] = modelId
         filterParams['model'] = model
-
-        setTimeout(()=> {
-            let comb = document.querySelector('[data-placeholder="Модель"]')
-            if (comb) {
-                comb.querySelector('.big-comb__placeholder').innerText = model
-                comb.querySelector('.big-comb__placeholder').classList.add('bold')
-            }
-        }, 2000)
+        setCombName('Модель', model)
     }
+
+    const page = urlParams.get('page')
+    filterParams['page'] = page
 }
 
+function setCombName(name, value) {
+    console.log('value',value)
+    setTimeout(()=>{
+        console.log(name)
+        let comb = document.querySelector(`[data-placeholder="${name}"]`)
+        if (comb) {
+            comb.querySelector('.big-comb__placeholder').innerText = value
+            comb.querySelector('.big-comb__placeholder').classList.add('bold')
+        }
+    }, 2000)
+}
 
 export function run(cars, ishandEvent, filterParams, fill) {
     FillOldFilter(filterParams)
@@ -43,10 +44,11 @@ export function run(cars, ishandEvent, filterParams, fill) {
     console.log('###### filterParams', filterParams)
 
 
-    api_getList(12, filterParams).then(res => {
+    api_getList(countPerPage, filterParams).then(res => {
         // по кнопке Показать
         cars = prepareCars(res.items)
-        fill(cars, res.items, res.totalCount)
+        let totalPages = Math.ceil(res.totalCount/countPerPage)
+        fill(cars, res.items, totalPages)
 
         document.querySelector('#set_filter span.number').innerHTML = res.totalCount
             + ' ' +declOfNum(res.totalCount, ['предложение', 'предложения', 'предложений'])
