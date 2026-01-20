@@ -1,4 +1,4 @@
-import"./main-CQbA20Ps.js";/* empty css              */import"./brands-icons-C2gREdvI.js";import"./filter-controls-BVus1_iw.js";/* empty css                          */import"./swiper_buy-CDu4HQCt.js";import"./swiper-starter-DAQO3WFk.js";import"./favoriteCars-EQ3GyLFP.js";import"./compareCars-Dzpko8KM.js";const l=`<div  class="filter-white">
+import"./main-C_NK2tbB.js";/* empty css              */import"./brands-icons-C2gREdvI.js";import"./filter-controls-C7iS8SeR.js";/* empty css                          */import"./swiper_buy-CDu4HQCt.js";import"./swiper-starter-DAQO3WFk.js";import"./favoriteCars-EQ3GyLFP.js";import"./compareCars-Dzpko8KM.js";const l=`<div  class="filter-white">
 <div class="filter-white-back filter-fields">
         <div class="frame-filter__item">
             <comb data-placeholder='Марка' />
