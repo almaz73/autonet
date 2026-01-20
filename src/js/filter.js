@@ -7,9 +7,7 @@ import {run} from '@/js/filCars.js'
 
 export function filter_changed(items, name) {
 
-
     console.log('<> <> <> value  = ', items[name].value)
-
 
     filterParams[name] = items[name].value
 
@@ -18,7 +16,7 @@ export function filter_changed(items, name) {
 
         if (brand) {
             filterParams['brandId'] = brand.id
-            filterParams['brand='] = brand.name
+            filterParams['brand'] = brand.name
         }
         getModelList(items[name].value)
     }
@@ -37,15 +35,20 @@ let filterParams = {}
 
 /** Запрос сервера и отображения витрины **/
 function getVitrina(ishandEvent) {
+
+    console.log('ishandEvent', ishandEvent)
+
     let cars_link = document.querySelector('.cars_link')
     let view_buttons = document.querySelector('.view_buttons')
 
     if (location.pathname === '/') {
-        if(cars_link) cars_link.style.display = 'block'
-        localStorage.setItem('TYPE_VIEW', 'dot4')
+        if (cars_link) cars_link.style.display = 'block'
+        // localStorage.setItem('TYPE_VIEW', 'dot4')
+        localStorage.removeItem('TYPE_VIEW')
     } else {
-        if(cars_link) cars_link.style.display = 'none'
-        if(view_buttons) view_buttons.style.display = 'block'
+        if (cars_link) cars_link.style.display = 'none'
+        if (view_buttons) view_buttons.style.display = 'block'
+        if (!localStorage.getItem('TYPE_VIEW')) localStorage.setItem('TYPE_VIEW', 'dot8')
     }
 
 // в зависимости от страницы, запрашиваем нужные данные

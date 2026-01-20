@@ -6,7 +6,6 @@ window.big_comb_select = function(val) {
   let combName = val.srcElement.dataset.parent
   let value = val.srcElement.innerText
   let parent = val.srcElement.parentElement.parentElement
-  console.log('parent', parent)
 
   items[combName].value = value
   parent.querySelector('.big-comb__placeholder').innerText = value

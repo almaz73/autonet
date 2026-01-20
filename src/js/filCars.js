@@ -27,7 +27,6 @@ function FillOldFilter(filterParams) {
 }
 
 function setCombName(name, value) {
-    console.log('value',value)
     setTimeout(()=>{
         console.log(name)
         let comb = document.querySelector(`[data-placeholder="${name}"]`)
@@ -39,9 +38,12 @@ function setCombName(name, value) {
 }
 
 export function run(cars, ishandEvent, filterParams, fill) {
-    FillOldFilter(filterParams)
 
-    console.log('###### filterParams', filterParams)
+    console.log('999 99 ishandEvent', ishandEvent)
+
+    if (!ishandEvent) FillOldFilter(filterParams)
+
+    console.log('#222 ##### filterParams', filterParams)
 
 
     api_getList(countPerPage, filterParams).then(res => {
