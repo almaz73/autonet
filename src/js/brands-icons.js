@@ -1,5 +1,4 @@
 import {api_GetCarCount} from "@/js/API-base/apibase.js"
-import {global_Values} from "@/js/global-func.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 const hasBrand = urlParams.has('brand');
@@ -435,8 +434,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     api_GetCarCount().then(res => {
         let newList = []
-        global_Values.count = res.reduce((summ, el) => summ + el.count, 0);
-        document.querySelector('#set_filter span.number').innerHTML = global_Values.count
 
         for (let i = 0; i < 20; i++) {
             let brandName = res[i].name.toUpperCase()

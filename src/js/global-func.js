@@ -1,6 +1,5 @@
 export let global_brandsIds= [];
 export let global_modelsIds= [];
-export let global_Values = {}
 
 export function formatterShowPrice(val){
     return parseInt(val).toLocaleString('ru-RU')

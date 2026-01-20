@@ -106,7 +106,7 @@ function galeryEvents(id, images) {
     });
 }
 
-export function fill(cars, currentCars) {
+export function fill(cars, currentCars, totalPages) {
     window.compareCars = currentCars
     window.favorCars = cars
     cards.innerHTML = ''
@@ -120,7 +120,11 @@ export function fill(cars, currentCars) {
     if (!cards.innerHTML && location.pathname.includes('favorite')) cards.innerHTML = '<div class="nodata" style="width: 200%;text-align:center">HЕТ ИЗБРАННЫХ АВТОМОБИЛЕЙ </div>'
 
     if (location.pathname !== '/') cards.innerHTML += `<div class=" pager">Страницы: <span id="pager"></span></div>`
-    preparePager( 355 ) // todo СЕРВЕР ОТДАСТ
+
+    console.log('totalPages', totalPages)
+    totalPages = totalPages || 12
+
+    preparePager( totalPages ) // todo СЕРВЕР ОТДАСТ
     initChosen()
     initFavotite()
 

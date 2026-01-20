@@ -97,7 +97,7 @@ const whiteFilter = `<div  class="filter-white">
 
         <a href="javascript:void(0);" class="frame-filter__controls-reset">Сбросить</a>
 
-        <button class="frame-filter__submit" type="submit" id="set_filter" name="set_filter" value="Показать">
+        <button class="frame-filter__submit" id="set_filter" onclick="goToCars()">
             Показать&nbsp;<span class="number">12</span>&nbsp;предложений
         </button>
     </div>
