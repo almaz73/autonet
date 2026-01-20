@@ -95,7 +95,7 @@ const whiteFilter = `<div  class="filter-white">
             <span class="frame-filter__controls-advanced-text">Расширенный фильтр</span>
         </button>
 
-        <a href="javascript:void(0);" class="frame-filter__controls-reset">Сбросить</a>
+        <a href="javascript:void(0)" onclick="clearFilter()" class="frame-filter__controls-reset">Сбросить</a>
 
         <button class="frame-filter__submit" id="set_filter" onclick="goToCars()">
             Показать&nbsp;<span class="number">12</span>&nbsp;предложений

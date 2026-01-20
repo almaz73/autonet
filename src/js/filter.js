@@ -3,18 +3,19 @@ import {api_getList} from "@/js/API-base/apibase.js"
 import {global_brandsIds, prepareCars} from '@/js/global-func.js'
 import {getModelList} from '@/js/filter-ctrl-filling.js'
 import {global_modelsIds} from '@/js/global-func.js'
+import {run} from '@/js/filCars.js'
 
 export function filter_changed(items, name) {
     console.log('<> <> <> value  = ', items[name].value)
     filterParams[name] = items[name].value
 
-
-    console.log('2222 global_modelsIds', global_modelsIds)
-
     if (name === 'Марка') {
         let brand = global_brandsIds.find(el=>el.name === items[name].value)
 
-        if (brand) filterParams['brandId'] = brand.id
+        if (brand) {
+            filterParams['brandId'] = brand.id
+            filterParams['brand='] = brand.name
+        }
         getModelList(items[name].value)
     }
     if (name === 'Модель') {
@@ -149,27 +150,7 @@ function getVitrina(ishandEvent) {
         ]
         setTimeout(()=>fill(cars))
     } else if (location.pathname === '/cars/') {
-        const urlParams = new URLSearchParams(window.location.search);
-        const brandId = urlParams.get('brandId')
-        if (brandId) filterParams['brandId'] = brandId
-
-        console.log('###### filterParams', filterParams)
-
-        api_getList(12, filterParams).then(res => {
-            console.log('555 res=', res.items)
-
-            // по кнопке Показать
-            cars = prepareCars(res.items)
-            fill(cars, res.items, res.totalCount)
-
-            document.querySelector('#set_filter span.number').innerHTML = res.totalCount
-            if (ishandEvent) {
-                document.getElementById('set_filter').scrollIntoView({behavior: 'smooth', block: 'start'}); // прокрутка
-                document.getElementById('brands_dynamic').style.display = 'none'
-                document.querySelector('.filter-white').style.marginBottom = 0
-                document.querySelector('#vitrina_name').innerHTML = 'Автомобили ' + filterParams['Марка']
-            }
-        })
+        run(cars, ishandEvent, filterParams, fill)
     } else if (location.pathname === '/personal/favorite-cars/') {
         document.querySelector('#vitrina_name').innerHTML = 'Избранные автомобили'
 
@@ -191,9 +172,23 @@ window.getVitrina = getVitrina
 window.goToCars = function () {
     console.log('? ???? ?????? filterParams',filterParams)
     let link  = `?`
-    if (filterParams.brandId) link = '?brandId=' + filterParams.brandId
+    if (filterParams.brandId) {
+        link = '?brand=' + filterParams['Марка']
+        link += '&brandId=' + filterParams.brandId
+    }
     if (filterParams.modelId) link += '&modelId=' + filterParams.modelId
    location.href = '/cars/'+link
+}
+window.clearFilter = function () {
+    location.href = location.pathname
+
+    // if (location.pathname !== '/') location.href = location.pathname
+    // else {
+    //     console.log(items)
+    //     Object.keys(items).forEach(el=>{
+    //         items[el].value = ''
+    //     })
+    // }
 }
 
 
