@@ -1,4 +1,4 @@
-import"./main-CQbA20Ps.js";/* empty css              */import"./brands-icons-C2gREdvI.js";import"./filter-controls-B3SckYh9.js";/* empty css                          */import"./swiper_buy-CDu4HQCt.js";import"./swiper-starter-DAQO3WFk.js";import"./favoriteCars-EQ3GyLFP.js";import"./compareCars-DhB5upfo.js";const e=`<div  class="filter-white">
+import"./main-CQbA20Ps.js";/* empty css              */import"./brands-icons-C2gREdvI.js";import"./filter-controls-BJMzEaaF.js";/* empty css                          */import"./swiper_buy-CDu4HQCt.js";import"./swiper-starter-DAQO3WFk.js";import"./favoriteCars-EQ3GyLFP.js";import"./compareCars-DhB5upfo.js";const e=`<div  class="filter-white">
 <div class="filter-white-back filter-fields">
         <div class="frame-filter__item">
             <comb data-placeholder='Марка' />
@@ -95,7 +95,7 @@ import"./main-CQbA20Ps.js";/* empty css              */import"./brands-icons-C2g
             <span class="frame-filter__controls-advanced-text">Расширенный фильтр</span>
         </button>
 
-        <a href="javascript:void(0);" class="frame-filter__controls-reset">Сбросить</a>
+        <a href="javascript:void(0)" onclick="clearFilter()" class="frame-filter__controls-reset">Сбросить</a>
 
         <button class="frame-filter__submit" id="set_filter" onclick="goToCars()">
             Показать&nbsp;<span class="number">12</span>&nbsp;предложений
