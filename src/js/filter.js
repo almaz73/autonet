@@ -1,12 +1,16 @@
 import {fill} from '@/js/cards.js';
 import {api_getList} from "@/js/API-base/apibase.js"
-import {global_brandsIds, prepareCars} from '@/js/global-func.js'
+import {global_brandsIds, prepareCars, declOfNum} from '@/js/global-func.js'
 import {getModelList} from '@/js/filter-ctrl-filling.js'
 import {global_modelsIds} from '@/js/global-func.js'
 import {run} from '@/js/filCars.js'
 
 export function filter_changed(items, name) {
+
+
     console.log('<> <> <> value  = ', items[name].value)
+
+
     filterParams[name] = items[name].value
 
     if (name === 'Марка') {
@@ -20,7 +24,10 @@ export function filter_changed(items, name) {
     }
     if (name === 'Модель') {
         let model = global_modelsIds.find(el=>el.name === items[name].value)
-        if(model) filterParams['modelId'] = model.id
+        if(model) {
+            filterParams['modelId'] = model.id
+            filterParams['model='] = model.name
+        }
     }
 
     getVitrina('ishandEvent')
@@ -49,7 +56,9 @@ function getVitrina(ishandEvent) {
 
         api_getList(7, filterParams).then(res => {
             cars = prepareCars(res.items)
+            declOfNum(res.totalCount, ['предложение', 'предложений', 'предложений'])
             document.querySelector('#set_filter span.number').innerHTML = res.totalCount
+                + ' ' +declOfNum(res.totalCount, ['предложение', 'предложения', 'предложений'])
 
             if (!ishandEvent) fill(cars, res.items)
         })
@@ -158,7 +167,7 @@ function getVitrina(ishandEvent) {
         cars = cars ? JSON.parse(cars) : []
         setTimeout(()=>fill(cars))
     } else {
-        document.querySelector('#vitrina_name').innerHTML = 'Автомобили'
+        document.querySelector('#vitrina_name').innerHTML = '111 Автомобили'
         console.log(' тут карточек нет, либо не сформированы')
     }
 }
@@ -170,13 +179,15 @@ if (!id) getVitrina()
 window.getVitrina = getVitrina
 
 window.goToCars = function () {
-    console.log('? ???? ?????? filterParams',filterParams)
     let link  = `?`
     if (filterParams.brandId) {
         link = '?brand=' + filterParams['Марка']
         link += '&brandId=' + filterParams.brandId
     }
-    if (filterParams.modelId) link += '&modelId=' + filterParams.modelId
+    if (filterParams.modelId) {
+        link += '&model=' + filterParams['Модель']
+        link += '&modelId=' + filterParams.modelId
+    }
    location.href = '/cars/'+link
 }
 window.clearFilter = function () {

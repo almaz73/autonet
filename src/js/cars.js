@@ -98,7 +98,7 @@ const whiteFilter = `<div  class="filter-white">
         <a href="javascript:void(0)" onclick="clearFilter()" class="frame-filter__controls-reset">Сбросить</a>
 
         <button class="frame-filter__submit" id="set_filter" onclick="goToCars()">
-            Показать&nbsp;<span class="number">12</span>&nbsp;предложений
+            Показать&nbsp;<span class="number"></span>
         </button>
     </div>
 </div>`
@@ -150,7 +150,7 @@ if (!hasId) document.querySelector('#car-vitrina').innerHTML = carVitrina
 if (brandName && !hasId) {
     if (brandName.includes('/')) brandName = brandName.split('/')[0]
     document.querySelector('#path').innerHTML = brandName.toUpperCase()
-    document.querySelector('#vitrina_name').innerHTML = brandName.toUpperCase() + ' с пробегом — выбрать и купить в Автосеть.рф'
+    // document.querySelector('#vitrina_name').innerHTML = brandName.toUpperCase() + ' с пробегом — выбрать и купить в Автосеть.рф'
 }
 
 if (hasId) {
