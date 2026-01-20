@@ -1,4 +1,4 @@
-import"./main-CQbA20Ps.js";/* empty css              */import"./brands-icons-C2gREdvI.js";import"./filter-controls-BJMzEaaF.js";/* empty css                          */import"./swiper_buy-CDu4HQCt.js";import"./swiper-starter-DAQO3WFk.js";import"./favoriteCars-EQ3GyLFP.js";import"./compareCars-DhB5upfo.js";const e=`<div  class="filter-white">
+import"./main-CQbA20Ps.js";/* empty css              */import"./brands-icons-C2gREdvI.js";import"./filter-controls-BVus1_iw.js";/* empty css                          */import"./swiper_buy-CDu4HQCt.js";import"./swiper-starter-DAQO3WFk.js";import"./favoriteCars-EQ3GyLFP.js";import"./compareCars-Dzpko8KM.js";const l=`<div  class="filter-white">
 <div class="filter-white-back filter-fields">
         <div class="frame-filter__item">
             <comb data-placeholder='Марка' />
@@ -98,10 +98,10 @@ import"./main-CQbA20Ps.js";/* empty css              */import"./brands-icons-C2g
         <a href="javascript:void(0)" onclick="clearFilter()" class="frame-filter__controls-reset">Сбросить</a>
 
         <button class="frame-filter__submit" id="set_filter" onclick="goToCars()">
-            Показать&nbsp;<span class="number">12</span>&nbsp;предложений
+            Показать&nbsp;<span class="number"></span>
         </button>
     </div>
-</div>`,l=`<div class="car_vitrina">
+</div>`,t=`<div class="car_vitrina">
         <h2 id="vitrina_name">Автомобили</h2>
 
         <a href="/cars#vitrina_name" class="page__link cars_link" style="display: none">
@@ -127,4 +127,4 @@ import"./main-CQbA20Ps.js";/* empty css              */import"./brands-icons-C2g
                 <img src="/src/svg/arrow-down.svg" alt="arrow" loading="lazy" width='10' height='18'>
             </span>
         </span>
-    </div><cards class='cards dot4' data-col='dot4'></cards>`,s=new URLSearchParams(window.location.search);let a=s.get("brand");s.get("id");const i=s.has("id");i||(document.querySelector("#filter_cars").innerHTML=e);i||(document.querySelector("#car-vitrina").innerHTML=l);a&&!i&&(a.includes("/")&&(a=a.split("/")[0]),document.querySelector("#path").innerHTML=a.toUpperCase(),document.querySelector("#vitrina_name").innerHTML=a.toUpperCase()+" с пробегом — выбрать и купить в Автосеть.рф");i&&console.log("66445",121212);
+    </div><cards class='cards dot4' data-col='dot4'></cards>`,s=new URLSearchParams(window.location.search);let a=s.get("brand");s.get("id");const i=s.has("id");i||(document.querySelector("#filter_cars").innerHTML=l);i||(document.querySelector("#car-vitrina").innerHTML=t);a&&!i&&(a.includes("/")&&(a=a.split("/")[0]),document.querySelector("#path").innerHTML=a.toUpperCase());i&&console.log("66445",121212);
