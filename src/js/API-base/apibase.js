@@ -20,10 +20,11 @@ export function api_GetCarCount() {
 }
 
 /*** Получение автомобилей по заданным фильтрам ***/
-export function api_getList(count, params) {
-    let request = server + '/api/Auto/GetList?Limit=' + count
+export function api_getList(limit, params) {
+    let request = server + '/api/Auto/GetList?Limit=' + limit
     if (params.brandId) request += '&brandId=' + params.brandId
     if (params.modelId) request += '&modelId=' + params.modelId
+    if (params.offset) request += '&offset=' + params.offset
 
     return fetch(request).then(response => {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)

@@ -23,7 +23,7 @@ function FillOldFilter(filterParams) {
     }
 
     const page = urlParams.get('page')
-    filterParams['page'] = page
+    filterParams['offset'] = page
 }
 
 function setCombName(name, value) {
