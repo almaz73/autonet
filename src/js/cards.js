@@ -121,9 +121,6 @@ export function fill(cars, currentCars, totalPages) {
 
     if (location.pathname !== '/') cards.innerHTML += `<div class="pager">Страницы: <span id="pager"></span></div>`
 
-    console.log('totalPages', totalPages)
-    totalPages = totalPages || 12
-
     preparePager( totalPages ) // todo СЕРВЕР ОТДАСТ
     initChosen()
     initFavotite()

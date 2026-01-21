@@ -29,6 +29,8 @@ export function api_getList(limit, params) {
     if (params.city) request += '&city=' + params.city
     if (params.gearboxType) request += '&gearboxType=' + params.gearboxType
     if (params.engineType) request += '&engineType=' + params.engineType
+    if (params.driveType) request += '&driveType=' + params.driveType
+
 
 
 
@@ -97,6 +99,14 @@ export function api_getGearboxTypes(){
 }
 export function api_getEngineTypes(){
     let request = server + '/api/Auto/GetEngineTypes'
+    return fetch(request).then(res => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
+        return res.json();
+    }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
+}
+
+export function api_getDriveTypes(){
+    let request = server + '/api/Auto/getDriveTypes'
     return fetch(request).then(res => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
         return res.json();

@@ -1,6 +1,7 @@
 import {
     api_GetBrandList,
     api_getCities,
+    api_getDriveTypes,
     api_getEngineTypes,
     api_getGearboxTypes,
     api_GetModelList
@@ -115,3 +116,8 @@ api_getEngineTypes().then(res=>{
     items['Тип КПП'] = res.map(el=>el.title)
     globalValues.engineTypes.push(...res)
 })
+api_getDriveTypes().then(res=>{
+    items['Тип двигателя'] = res.map(el=>el.title)
+    globalValues.driveTypes.push(...res)
+})
+

@@ -38,6 +38,11 @@ export function filter_changed(items, name) {
         let element = globalValues.engineTypes.find(el=>el.title === items[name].value)
         filterParams.engineType = element.name
     }
+    if (name === 'Тип двигателя') {
+        let element = globalValues.driveTypes.find(el=>el.title === items[name].value)
+        filterParams.driveType = element.name
+    }
+
 
 
     getVitrina('ishandEvent')
@@ -202,6 +207,7 @@ window.goToCars = function () {
     if (filterParams.city) link += '&city=' + filterParams.city
     if (filterParams.gearboxType) link += '&gearboxType=' + filterParams.gearboxType
     if (filterParams.engineType) link += '&engineType=' + filterParams.engineType
+    if (filterParams.driveType) link += '&driveType=' + filterParams.driveType
 
    location.href = '/cars/'+link
 }
