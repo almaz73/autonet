@@ -379,6 +379,16 @@
 .main__card-product--top .link{
     display: flex;
     gap: 24px;
+    position: relative;
+}
+.main__card-product--top .link #share_text{
+    position: absolute;
+    display: none;
+    top: -30px;
+    background: var(--color-red);
+    color: white;
+    padding: 3px 12px;
+    left: -100px;
 }
 
 .main__card-product--accordion .complect ul {

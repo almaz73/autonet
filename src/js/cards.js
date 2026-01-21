@@ -25,9 +25,9 @@ function createNode(item, N) {
               <a class="big_link" href='${item.href}' title="перейти">
                   <div class='name'>
                       <br>                      
-                      ${item.name}
+                      ${item.name}, ${item.yearReleased}
                   </div>
-                  <img src="/svg/icon_spines.svg" alt="Шипованная рещина" class="tyres_icon " 
+                  <img src="/svg/icon_spines.svg" alt="Шипованная резина" class="tyres_icon " 
                        style="display: ${item.type === 'tyres' ? 'block' : 'none'}; 
                        opacity: ${item.type === 'tyres' && item.winter ? 1 : 0}">
                        

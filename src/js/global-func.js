@@ -26,7 +26,8 @@ export function prepareCars(res) {
             price: formatterShowPrice(el.price),
             fromPerMonth: fromPerMonth,
             info: info,
-            photos: el.images
+            photos: el.images,
+            yearReleased: el.yearReleased
         })
     })
     return cars

@@ -40,5 +40,6 @@ function getFavoriteCars() {
     let cars = localStorage.getItem('FavoriteCars')
     if (cars) cars = JSON.parse(cars)
     else cars = []
+    // window.compareCars = cars
     return cars
 }
