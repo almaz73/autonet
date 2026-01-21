@@ -1,13 +1,13 @@
 // обработка location.pathname === '/cars/
 import {api_getList} from "@/js/API-base/apibase.js"
 import {declOfNum, getUrlParam, prepareCars} from '@/js/global-func.js'
-import {getModelList} from "@/js/filter-ctrl-filling.js";
 
 const countPerPage = 20
 
 function FillFilterFromAddressBar(filterParams) {
     const brandId = getUrlParam('brandId')
     const brand = getUrlParam('brand')
+    const city = getUrlParam('city')
     if (brandId) {
         filterParams['brandId'] = brandId
         filterParams['brand'] = brand
@@ -21,9 +21,10 @@ function FillFilterFromAddressBar(filterParams) {
         filterParams['model'] = model
         setCombName('Модель', model)
     }
+    if (city) filterParams.city = city
 
-    const page = getUrlParam('page')
-    filterParams['offset'] = page
+
+    filterParams['offset'] = getUrlParam('page')
 }
 
 function setCombName(name, value) {

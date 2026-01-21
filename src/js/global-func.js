@@ -34,14 +34,8 @@ export function prepareCars(res) {
 }
 
 export function declOfNum(number, titles) {
-    const cases = [2, 0, 1, 1, 1, 2]; // Массив для определения падежей
-    // Определяем индекс слова из массива titles
-    // Применяем 'cases[number % 10]' для чисел до 20
-    // Для 11-19 (где number % 10 = 1, 2, 3, 4) используется 'cases[1]', "минуты"
-    // В случае с 1, 21, 31 будет 'cases[1]' (ошибка, исправлено ниже)
-    // Корректнее: 1 -> 1, 2 -> 2, 3 -> 3, 4 -> 4, 5-20 -> 0
-    const caseIndex = (number % 100 > 4 && number % 100 < 20) ? 2 : cases[number % 10];
-    return titles[caseIndex];
+    const cases = [2, 0, 1, 1, 1, 2];
+    return titles[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
 }
 
 export function getUrlParam(val) {

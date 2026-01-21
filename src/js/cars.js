@@ -135,14 +135,7 @@ const carVitrina = `<div class="car_vitrina">
 
 
 let brandName = getUrlParam('brand');
-const id = getUrlParam('id');
 const hasId = getUrlParam('id');
-// console.log('id = ', id)
-
-// for (const [key, value] of urlParams.entries()) {
-//     console.log(`${key}: ${value}`);
-// }
-
 
 if (!hasId) document.querySelector('#filter_cars').innerHTML = whiteFilter
 if (!hasId) document.querySelector('#car-vitrina').innerHTML = carVitrina

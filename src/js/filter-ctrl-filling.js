@@ -1,4 +1,4 @@
-import {api_GetBrandList, api_GetModelList} from "@/js/API-base/apibase.js"
+import {api_GetBrandList, api_getCities, api_GetModelList} from "@/js/API-base/apibase.js"
 import {getUrlParam, global_brandsIds, global_modelsIds} from '@/js/global-func.js'
 
 
@@ -85,8 +85,6 @@ api_GetBrandList().then(res=>{
 
     fillFields()
 })
-
-
 export function getModelList(brandName) {
     let brand = global_brandsIds.find(el=>el.name.toUpperCase()===brandName.toUpperCase())
 
@@ -102,3 +100,4 @@ export function getModelList(brandName) {
     }
 }
 
+api_getCities().then(res=>items['Город'] = res)

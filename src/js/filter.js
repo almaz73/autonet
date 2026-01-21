@@ -29,6 +29,8 @@ export function filter_changed(items, name) {
             filterParams['model='] = model.name
         }
     }
+    if (name === 'Город') filterParams.city = items[name].value
+
 
     getVitrina('ishandEvent')
 }
@@ -189,6 +191,8 @@ window.goToCars = function () {
         link += '&model=' + filterParams['Модель']
         link += '&modelId=' + filterParams.modelId
     }
+    if (filterParams.city) link += '&city=' + filterParams.city
+
    location.href = '/cars/'+link
 }
 window.clearFilter = function () {

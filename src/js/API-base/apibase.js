@@ -25,6 +25,7 @@ export function api_getList(limit, params) {
     if (params.brandId) request += '&brandId=' + params.brandId
     if (params.modelId) request += '&modelId=' + params.modelId
     if (params.offset) request += '&offset=' + params.offset
+    if (params.city) request += '&city=' + params.city
 
     return fetch(request).then(response => {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
@@ -68,6 +69,14 @@ export function api_GetBrandList() {
 /** Поолучение моделей автомобилей по бренду */
 export function api_GetModelList(brandId) {
     let request = server + '/api/auto/getModelList?brandId=' + brandId
+    return fetch(request).then(res => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
+        return res.json();
+    }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
+}
+
+export function api_getCities() {
+    let request = server + '/api/Auto/GetCities'
     return fetch(request).then(res => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
         return res.json();
