@@ -31,6 +31,7 @@ export function api_getList(limit, params) {
     if (params.engineType) request += '&engineType=' + params.engineType
     if (params.driveType) request += '&driveType=' + params.driveType
     if (params.wheelType) request += '&wheelType=' + params.wheelType
+    if (params.bodyType) request += '&bodyType=' + params.bodyType
 
 
 
@@ -121,13 +122,13 @@ export function api_getWheelTypes(){
         return res.json();
     }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
 }
-// export function api_getEngineTypes(){
-//     let request = server + '/api/Auto/getEngineTypes'
-//     return fetch(request).then(res => {
-//         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
-//         return res.json();
-//     }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
-// }
+export function api_getBodyTypes(){
+    let request = server + '/api/Auto/getBodyTypes'
+    return fetch(request).then(res => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
+        return res.json();
+    }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
+}
 
 
 

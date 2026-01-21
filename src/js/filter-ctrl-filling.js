@@ -1,4 +1,5 @@
 import {
+    api_getBodyTypes,
     api_GetBrandList,
     api_getCities,
     api_getDriveTypes,
@@ -107,39 +108,44 @@ Promise.all([
             const brand = getUrlParam('brand')
             if (brand) getModelList(brand)
 
-            resolve(1)
+            resolve()
         })
     }),
     new Promise(resolve => {
         api_getCities().then(res => {
             items['Город'] = res
-            resolve(2)
+            resolve()
         })
     }),new Promise(resolve => {
         api_getGearboxTypes().then(res => {
             items['Тип КПП'] = res.map(el => el.title)
             globalValues.gearboxTypes.push(...res)
-            resolve(3)
+            resolve()
         })
     }), new Promise(resolve => {
         api_getEngineTypes().then(res => {
             items['Тип двигателя'] = res.map(el => el.title)
             globalValues.engineTypes.push(...res)
-            resolve(4)
+            resolve()
         })
     }), new Promise(resolve => {
         api_getDriveTypes().then(res => {
             items['Тип привода'] = res.map(el => el.title)
             globalValues.driveTypes.push(...res)
-            resolve(5)
+            resolve()
         })
     }), new Promise(resolve => {
         api_getWheelTypes().then(res => {
             items['Руль'] = res.map(el => el.title)
             globalValues.wheelTypes.push(...res)
-            resolve(6)
+            resolve()
         })
-
+    }), new Promise(resolve => {
+        api_getBodyTypes().then(res => {
+            items['Тип кузова'] = res.map(el => el.title)
+            globalValues.bodyTypes.push(...res)
+            resolve()
+        })
     }),
 
 
