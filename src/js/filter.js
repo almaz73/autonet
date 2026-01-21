@@ -38,9 +38,13 @@ export function filter_changed(items, name) {
         let element = globalValues.engineTypes.find(el=>el.title === items[name].value)
         filterParams.engineType = element.name
     }
-    if (name === 'Тип двигателя') {
+    if (name === 'Тип привода') {
         let element = globalValues.driveTypes.find(el=>el.title === items[name].value)
         filterParams.driveType = element.name
+    }
+    if (name === 'Руль') {
+        let element = globalValues.wheelTypes.find(el=>el.title === items[name].value)
+        filterParams.wheelType = element.name
     }
 
 
@@ -208,6 +212,7 @@ window.goToCars = function () {
     if (filterParams.gearboxType) link += '&gearboxType=' + filterParams.gearboxType
     if (filterParams.engineType) link += '&engineType=' + filterParams.engineType
     if (filterParams.driveType) link += '&driveType=' + filterParams.driveType
+    if (filterParams.wheelType) link += '&wheelType=' + filterParams.wheelType
 
    location.href = '/cars/'+link
 }

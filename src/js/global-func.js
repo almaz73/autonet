@@ -6,6 +6,7 @@ export let globalValues = {
     gearboxTypes: [],
     engineTypes: [],
     driveTypes: [],
+    wheelTypes:[]
 }
 
 export function formatterShowPrice(val){

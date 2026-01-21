@@ -4,7 +4,7 @@ import {
     api_getDriveTypes,
     api_getEngineTypes,
     api_getGearboxTypes,
-    api_GetModelList
+    api_GetModelList, api_getWheelTypes
 } from "@/js/API-base/apibase.js"
 import {getUrlParam, globalValues} from '@/js/global-func.js'
 
@@ -23,9 +23,9 @@ items['Город'] = [] //
 items['Тип кузова'] = [] //
 items['Цвет'] = ['Все', 'Бежевый', 'Белый', 'Голубой', 'Желтый', 'Зелёный', 'Золотой', 'Коричневый', 'Красный', 'Оранжевый', 'Серебряный', 'Серый', 'Синий', 'Фиолетовый', 'Чёрный']
 items['Тип КПП'] = ['Все', 'Автоматическая', 'Вариатор', 'Механическая', 'Робот']
-items['Тип двигателя'] = ['Все', 'Бензиновый', 'Гибридный', 'Дизельный', 'Электро']
-items['Тип привода'] = ['Все', 'Задний', 'Передний', 'Полный']
-items['Руль'] = ['Все', 'Левый']
+items['Тип двигателя'] = [] // 'Все', 'Бензиновый', 'Гибридный', 'Дизельный', 'Электро'
+items['Тип привода'] = []// ['Все', 'Задний', 'Передний', 'Полный']
+items['Руль'] = [] //
 items['Диски'] = ['Все', 'Отсутствуют']
 
 
@@ -129,18 +129,19 @@ Promise.all([
         })
     }), new Promise(resolve => {
         api_getDriveTypes().then(res => {
-            items['Тип двигателя'] = res.map(el => el.title)
+            items['Тип привода'] = res.map(el => el.title)
             globalValues.driveTypes.push(...res)
             resolve(5)
         })
+    }), new Promise(resolve => {
+        api_getWheelTypes().then(res => {
+            items['Руль'] = res.map(el => el.title)
+            globalValues.wheelTypes.push(...res)
+            resolve(6)
+        })
     }),
-    // new Promise(resolve => {
-    //
-    // }), new Promise(resolve => {
-    //
-    // }), new Promise(resolve => {
-    //
-    // }),
+
+
 
 ]).then(responses => {
     console.log('555 555')
