@@ -8,6 +8,7 @@ function FillFilterFromAddressBar(filterParams) {
     const brandId = getUrlParam('brandId')
     const brand = getUrlParam('brand')
     const city = getUrlParam('city')
+    const gearboxType = getUrlParam('gearboxType')
     if (brandId) {
         filterParams['brandId'] = brandId
         filterParams['brand'] = brand
@@ -22,6 +23,7 @@ function FillFilterFromAddressBar(filterParams) {
         setCombName('Модель', model)
     }
     if (city) filterParams.city = city
+    if (gearboxType) filterParams.gearboxType = gearboxType
 
 
     filterParams['offset'] = getUrlParam('page')

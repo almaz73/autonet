@@ -1,8 +1,8 @@
 import {fill} from '@/js/cards.js';
 import {api_getList} from "@/js/API-base/apibase.js"
-import {global_brandsIds, prepareCars, declOfNum} from '@/js/global-func.js'
+import {prepareCars, declOfNum, globalValues} from '@/js/global-func.js'
 import {getModelList} from '@/js/filter-ctrl-filling.js'
-import {global_modelsIds, getUrlParam} from '@/js/global-func.js'
+import { getUrlParam} from '@/js/global-func.js'
 import {run} from '@/js/filCars.js'
 
 export function filter_changed(items, name) {
@@ -12,7 +12,7 @@ export function filter_changed(items, name) {
     filterParams[name] = items[name].value
 
     if (name === 'Марка') {
-        let brand = global_brandsIds.find(el=>el.name === items[name].value)
+        let brand = globalValues.brandsIds.find(el=>el.name === items[name].value)
 
         if (brand) {
             filterParams['brandId'] = brand.id
@@ -23,13 +23,17 @@ export function filter_changed(items, name) {
         getModelList(items[name].value)
     }
     if (name === 'Модель') {
-        let model = global_modelsIds.find(el=>el.name === items[name].value)
+        let model = globalValues.modelsIds.find(el=>el.name === items[name].value)
         if(model) {
             filterParams['modelId'] = model.id
             filterParams['model='] = model.name
         }
     }
     if (name === 'Город') filterParams.city = items[name].value
+    if (name === 'Тип кузова') {
+        let gearboxType = globalValues.gearboxTypes.find(el=>el.title === items[name].value)
+        filterParams.gearboxType = gearboxType.name
+    }
 
 
     getVitrina('ishandEvent')
@@ -192,6 +196,7 @@ window.goToCars = function () {
         link += '&modelId=' + filterParams.modelId
     }
     if (filterParams.city) link += '&city=' + filterParams.city
+    if (filterParams.gearboxType) link += '&gearboxType=' + filterParams.gearboxType
 
    location.href = '/cars/'+link
 }

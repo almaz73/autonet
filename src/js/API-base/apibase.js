@@ -21,11 +21,14 @@ export function api_GetCarCount() {
 
 /*** Получение автомобилей по заданным фильтрам ***/
 export function api_getList(limit, params) {
+    console.log('params', params)
     let request = server + '/api/Auto/GetList?Limit=' + limit
     if (params.brandId) request += '&brandId=' + params.brandId
     if (params.modelId) request += '&modelId=' + params.modelId
     if (params.offset) request += '&offset=' + params.offset
     if (params.city) request += '&city=' + params.city
+    if (params.gearboxType) request += '&gearboxType=' + params.gearboxType
+
 
     return fetch(request).then(response => {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
@@ -77,6 +80,14 @@ export function api_GetModelList(brandId) {
 
 export function api_getCities() {
     let request = server + '/api/Auto/GetCities'
+    return fetch(request).then(res => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
+        return res.json();
+    }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
+}
+
+export function api_getGearboxTypes(){
+    let request = server + '/api/Auto/GetGearboxTypes'
     return fetch(request).then(res => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
         return res.json();

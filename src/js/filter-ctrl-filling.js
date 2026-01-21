@@ -1,19 +1,19 @@
-import {api_GetBrandList, api_getCities, api_GetModelList} from "@/js/API-base/apibase.js"
-import {getUrlParam, global_brandsIds, global_modelsIds} from '@/js/global-func.js'
+import {api_GetBrandList, api_getCities, api_getGearboxTypes, api_GetModelList} from "@/js/API-base/apibase.js"
+import {getUrlParam, globalValues} from '@/js/global-func.js'
 
 
 export let items = {}; // некоторые поля нужно запросить с обюновляемой базы
-items['Марка'] = ['Все', 'AUDI', 'BMV', 'Brilliance', 'BYD', 'Cadilac'] // todo нужно запросить с сервера
+items['Марка'] = [] //
 items['Марка'].value=''; // тут будут выбранные значения
-items['Модель'] = ['Все', '3 серия', '5 серия', 'X1', 'X3', 'X5'] // todo нужно запросить с сервера после изменения марки
+items['Модель'] = [] //
 
 items['Производитель'] = ['Amtel', 'Bfgoodrich', 'Cordiant', 'Formula', 'Gislaved', 'Hankook', 'Kormoran', 'Kumho', 'Nokian'];
 items['Ширина профиля'] = ['Все', '155', '185', '195', '205', '215', '225'];
 items['Высота профиля'] = ['Все', '45', '55', '60', '65', '70']
 items['Диаметр'] = ['Все', '13', '14', '15', '16', '17']
 items['Сезон'] = ['Все', 'Зима Шип', 'Лето']
-items['Город'] = ['Все', 'Альметьевск', 'Казань', 'Набережные Челны', 'Нижнекамск', 'Стерлитамак']
-items['Тип кузова'] = ['Все', 'Автобус', 'Внедорожник', 'Кроссовер', 'Купе', 'Лифтбек', 'Минивэн', 'Пикап', 'Седан', 'Универсал', 'Фургон', 'Хетчбэк']
+items['Город'] = [] //
+items['Тип кузова'] = [] //
 items['Цвет'] = ['Все', 'Бежевый', 'Белый', 'Голубой', 'Желтый', 'Зелёный', 'Золотой', 'Коричневый', 'Красный', 'Оранжевый', 'Серебряный', 'Серый', 'Синий', 'Фиолетовый', 'Чёрный']
 items['Тип КПП'] = ['Все', 'Автоматическая', 'Вариатор', 'Механическая', 'Робот']
 items['Тип двигателя'] = ['Все', 'Бензиновый', 'Гибридный', 'Дизельный', 'Электро']
@@ -78,7 +78,7 @@ function fillFields() {
 
 api_GetBrandList().then(res=>{
     items['Марка'] = res.map(el=>el.name)
-    global_brandsIds.push(...res)
+    globalValues.brandsIds.push(...res)
 
     const brand = getUrlParam('brand')
     if (brand) getModelList(brand)
@@ -86,11 +86,11 @@ api_GetBrandList().then(res=>{
     fillFields()
 })
 export function getModelList(brandName) {
-    let brand = global_brandsIds.find(el=>el.name.toUpperCase()===brandName.toUpperCase())
+    let brand = globalValues.brandsIds.find(el=>el.name.toUpperCase()===brandName.toUpperCase())
 
     brand && api_GetModelList(brand.id).then(res=>{
         items['Модель'] = res.map(el=>el.name)
-        global_modelsIds.push(...res)
+        globalValues.modelsIds.push(...res)
         fillFields()
     })
 
@@ -101,3 +101,10 @@ export function getModelList(brandName) {
 }
 
 api_getCities().then(res=>items['Город'] = res)
+api_getGearboxTypes().then(res=>{
+    console.log(333, res)
+    items['Тип кузова'] = res.map(el=>el.title)
+    globalValues.gearboxTypes.push(...res)
+    console.log('items', items)
+    console.log(items)
+})
