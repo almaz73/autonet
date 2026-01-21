@@ -31,8 +31,12 @@ export function filter_changed(items, name) {
     }
     if (name === 'Город') filterParams.city = items[name].value
     if (name === 'Тип кузова') {
-        let gearboxType = globalValues.gearboxTypes.find(el=>el.title === items[name].value)
-        filterParams.gearboxType = gearboxType.name
+        let element = globalValues.gearboxTypes.find(el=>el.title === items[name].value)
+        filterParams.gearboxType = element.name
+    }
+    if (name === 'Тип КПП') {
+        let element = globalValues.engineTypes.find(el=>el.title === items[name].value)
+        filterParams.engineType = element.name
     }
 
 
@@ -197,6 +201,7 @@ window.goToCars = function () {
     }
     if (filterParams.city) link += '&city=' + filterParams.city
     if (filterParams.gearboxType) link += '&gearboxType=' + filterParams.gearboxType
+    if (filterParams.engineType) link += '&engineType=' + filterParams.engineType
 
    location.href = '/cars/'+link
 }

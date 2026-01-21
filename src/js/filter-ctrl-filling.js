@@ -1,4 +1,10 @@
-import {api_GetBrandList, api_getCities, api_getGearboxTypes, api_GetModelList} from "@/js/API-base/apibase.js"
+import {
+    api_GetBrandList,
+    api_getCities,
+    api_getEngineTypes,
+    api_getGearboxTypes,
+    api_GetModelList
+} from "@/js/API-base/apibase.js"
 import {getUrlParam, globalValues} from '@/js/global-func.js'
 
 
@@ -102,9 +108,10 @@ export function getModelList(brandName) {
 
 api_getCities().then(res=>items['Город'] = res)
 api_getGearboxTypes().then(res=>{
-    console.log(333, res)
     items['Тип кузова'] = res.map(el=>el.title)
     globalValues.gearboxTypes.push(...res)
-    console.log('items', items)
-    console.log(items)
+})
+api_getEngineTypes().then(res=>{
+    items['Тип КПП'] = res.map(el=>el.title)
+    globalValues.engineTypes.push(...res)
 })

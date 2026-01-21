@@ -1,6 +1,11 @@
 // export let global_brandsIds= [];
 
-export let globalValues={brandsIds:[],modelsIds:[], gearboxTypes:[]}
+export let globalValues = {
+    brandsIds: [],
+    modelsIds: [],
+    gearboxTypes: [],
+    engineTypes: [],
+}
 
 export function formatterShowPrice(val){
     return parseInt(val).toLocaleString('ru-RU')
