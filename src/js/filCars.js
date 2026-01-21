@@ -1,28 +1,28 @@
 // обработка location.pathname === '/cars/
 import {api_getList} from "@/js/API-base/apibase.js"
-import {declOfNum, prepareCars} from '@/js/global-func.js'
+import {declOfNum, getUrlParam, prepareCars} from '@/js/global-func.js'
+import {getModelList} from "@/js/filter-ctrl-filling.js";
 
 const countPerPage = 20
 
-function FillOldFilter(filterParams) {
-    const urlParams = new URLSearchParams(window.location.search);
-    const brandId = urlParams.get('brandId')
-    const brand = urlParams.get('brand')
+function FillFilterFromAddressBar(filterParams) {
+    const brandId = getUrlParam('brandId')
+    const brand = getUrlParam('brand')
     if (brandId) {
         filterParams['brandId'] = brandId
         filterParams['brand'] = brand
         setCombName('Марка', brand)
     }
 
-    const modelId = urlParams.get('modelId')
-    const model = urlParams.get('model')
+    const modelId = getUrlParam('modelId')
+    const model = getUrlParam('model')
     if (modelId) {
         filterParams['modelId'] = modelId
         filterParams['model'] = model
         setCombName('Модель', model)
     }
 
-    const page = urlParams.get('page')
+    const page = getUrlParam('page')
     filterParams['offset'] = page
 }
 
@@ -38,12 +38,7 @@ function setCombName(name, value) {
 }
 
 export function run(cars, ishandEvent, filterParams, fill) {
-
-    console.log('999 99 ishandEvent', ishandEvent)
-
-    if (!ishandEvent) FillOldFilter(filterParams)
-
-    console.log('#222 ##### filterParams', filterParams)
+    if (!ishandEvent) FillFilterFromAddressBar(filterParams)
 
 
     api_getList(countPerPage, filterParams).then(res => {

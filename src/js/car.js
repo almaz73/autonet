@@ -1,11 +1,10 @@
 import {api_getFullAutoInfo} from "@/js/API-base/apibase.js"
-import {formatterShowPrice, prepareCars} from "@/js/global-func.js";
+import {formatterShowPrice, prepareCars, getUrlParam} from "@/js/global-func.js";
 import {initSwipper} from "@/js/swiper-starter.js";
 import {initFavotite} from "@/js/favoriteCars.js";
 import {initChosen} from "@/js/compareCars.js";
 
-const urlParams = new URLSearchParams(window.location.search);
-const id = urlParams.get('id');
+const id = getUrlParam('id');
 
 api_getFullAutoInfo(id).then(res => {
     /** Имя и зарактеристики  b Хлебные крошки */

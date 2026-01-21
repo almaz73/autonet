@@ -1,3 +1,5 @@
+import {getUrlParam} from "@/js/global-func.js";
+
 const whiteFilter = `<div  class="filter-white">
 <div class="filter-white-back filter-fields">
         <div class="frame-filter__item">
@@ -132,11 +134,9 @@ const carVitrina = `<div class="car_vitrina">
 
 
 
-const urlParams = new URLSearchParams(window.location.search);
-// console.log('urlParams = ', urlParams)
-let brandName = urlParams.get('brand');
-const id = urlParams.get('id');
-const hasId = urlParams.has('id');
+let brandName = getUrlParam('brand');
+const id = getUrlParam('id');
+const hasId = getUrlParam('id');
 // console.log('id = ', id)
 
 // for (const [key, value] of urlParams.entries()) {

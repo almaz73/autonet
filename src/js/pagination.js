@@ -1,3 +1,4 @@
+import {getUrlParam} from "@/js/global-func.js"
 /** Очень тонко  настроенная работает Пагинации*/
 let currentPage = 1
 
@@ -9,10 +10,9 @@ function getLink() {
 export function preparePager(pages) {
     const pager = document.querySelector('#pager')
     if (!pager) return false
-    const urlParams = new URLSearchParams(window.location.search);
     let pagerText = ''
 
-    currentPage = +urlParams.get('page') || 1;
+    currentPage = +getUrlParam('page') || 1;
     const delta = currentPage > 3 ? currentPage - 3 : 0
 
     if (delta > 0) pagerText += `<a href=${getLink()}> 1</a> <span> | </span> ... <span> | </span>`

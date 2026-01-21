@@ -1,5 +1,7 @@
 // Новые новости нужно добавлять в конец списка
 
+import {getUrlParam} from "@/js/global-func.js"
+
 let news = [
     {
         img: '/photo/news/a1.webp',
@@ -297,8 +299,7 @@ window.preparePage = function (next) {
     /** На первой странице последние 15 новостей **/
     /** На последующих по 15  **/
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const PAGEN_2 = urlParams.get('PAGEN_2');
+    const PAGEN_2 = getUrlParam('PAGEN_2');
     const length = news.length
     const step = 15
     const maxPage = Math.ceil(length / step)

@@ -1,5 +1,5 @@
 import {api_GetBrandList, api_GetModelList} from "@/js/API-base/apibase.js"
-import {global_brandsIds, global_modelsIds} from '@/js/global-func.js'
+import {getUrlParam, global_brandsIds, global_modelsIds} from '@/js/global-func.js'
 
 
 export let items = {}; // некоторые поля нужно запросить с обюновляемой базы
@@ -79,12 +79,17 @@ function fillFields() {
 api_GetBrandList().then(res=>{
     items['Марка'] = res.map(el=>el.name)
     global_brandsIds.push(...res)
+
+    const brand = getUrlParam('brand')
+    if (brand) getModelList(brand)
+
     fillFields()
 })
 
 
 export function getModelList(brandName) {
-    let brand = global_brandsIds.find(el=>el.name===brandName)
+    let brand = global_brandsIds.find(el=>el.name.toUpperCase()===brandName.toUpperCase())
+
     brand && api_GetModelList(brand.id).then(res=>{
         items['Модель'] = res.map(el=>el.name)
         global_modelsIds.push(...res)

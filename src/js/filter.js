@@ -2,7 +2,7 @@ import {fill} from '@/js/cards.js';
 import {api_getList} from "@/js/API-base/apibase.js"
 import {global_brandsIds, prepareCars, declOfNum} from '@/js/global-func.js'
 import {getModelList} from '@/js/filter-ctrl-filling.js'
-import {global_modelsIds} from '@/js/global-func.js'
+import {global_modelsIds, getUrlParam} from '@/js/global-func.js'
 import {run} from '@/js/filCars.js'
 
 export function filter_changed(items, name) {
@@ -17,6 +17,8 @@ export function filter_changed(items, name) {
         if (brand) {
             filterParams['brandId'] = brand.id
             filterParams['brand'] = brand.name
+            filterParams['modelId'] =''
+            filterParams['model'] =''
         }
         getModelList(items[name].value)
     }
@@ -35,9 +37,6 @@ let filterParams = {}
 
 /** Запрос сервера и отображения витрины **/
 function getVitrina(ishandEvent) {
-
-    console.log('ishandEvent', ishandEvent)
-
     let cars_link = document.querySelector('.cars_link')
     let view_buttons = document.querySelector('.view_buttons')
 
@@ -175,8 +174,7 @@ function getVitrina(ishandEvent) {
     }
 }
 
-const urlParams = new URLSearchParams(window.location.search);
-const id = urlParams.get('id');
+const id = getUrlParam('id');
 
 if (!id) getVitrina()
 window.getVitrina = getVitrina
@@ -184,7 +182,7 @@ window.getVitrina = getVitrina
 window.goToCars = function () {
     let link  = `?`
     if (filterParams.brandId) {
-        link = '?brand=' + filterParams['Марка']
+        link = '?brand=' + (filterParams['Марка']|| filterParams['brand'])
         link += '&brandId=' + filterParams.brandId
     }
     if (filterParams.modelId) {
@@ -195,14 +193,6 @@ window.goToCars = function () {
 }
 window.clearFilter = function () {
     location.href = location.pathname
-
-    // if (location.pathname !== '/') location.href = location.pathname
-    // else {
-    //     console.log(items)
-    //     Object.keys(items).forEach(el=>{
-    //         items[el].value = ''
-    //     })
-    // }
 }
 
 

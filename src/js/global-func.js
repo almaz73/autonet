@@ -43,3 +43,8 @@ export function declOfNum(number, titles) {
     const caseIndex = (number % 100 > 4 && number % 100 < 20) ? 2 : cases[number % 10];
     return titles[caseIndex];
 }
+
+export function getUrlParam(val) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(val)
+}

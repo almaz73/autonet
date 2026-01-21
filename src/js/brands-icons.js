@@ -1,7 +1,7 @@
 import {api_GetCarCount} from "@/js/API-base/apibase.js"
+import {getUrlParam} from  "@/js/global-func.js"
 
-const urlParams = new URLSearchParams(window.location.search);
-const hasBrand = urlParams.has('brand');
+const hasBrand = getUrlParam('brand');
 
 document.addEventListener('DOMContentLoaded', () => {
     let brands_dynamic = document.querySelector('#brands_dynamic')
