@@ -4,7 +4,7 @@ import {
     api_getDriveTypes,
     api_getEngineTypes,
     api_getGearboxTypes,
-    api_GetModelList, api_getWheelTypes
+    api_GetModelList, api_getWheelTypes,
 } from "@/js/API-base/apibase.js"
 import {getUrlParam, globalValues} from '@/js/global-func.js'
 
@@ -117,13 +117,13 @@ Promise.all([
         })
     }),new Promise(resolve => {
         api_getGearboxTypes().then(res => {
-            items['Тип кузова'] = res.map(el => el.title)
+            items['Тип КПП'] = res.map(el => el.title)
             globalValues.gearboxTypes.push(...res)
             resolve(3)
         })
     }), new Promise(resolve => {
         api_getEngineTypes().then(res => {
-            items['Тип КПП'] = res.map(el => el.title)
+            items['Тип двигателя'] = res.map(el => el.title)
             globalValues.engineTypes.push(...res)
             resolve(4)
         })
@@ -139,6 +139,7 @@ Promise.all([
             globalValues.wheelTypes.push(...res)
             resolve(6)
         })
+
     }),
 
 

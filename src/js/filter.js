@@ -30,11 +30,11 @@ export function filter_changed(items, name) {
         }
     }
     if (name === 'Город') filterParams.city = items[name].value
-    if (name === 'Тип кузова') {
+    if (name === 'Тип КПП') {
         let element = globalValues.gearboxTypes.find(el=>el.title === items[name].value)
         filterParams.gearboxType = element.name
     }
-    if (name === 'Тип КПП') {
+    if (name === 'Тип двигателя') {
         let element = globalValues.engineTypes.find(el=>el.title === items[name].value)
         filterParams.engineType = element.name
     }
