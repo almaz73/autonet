@@ -11,8 +11,8 @@ import {getUrlParam, globalValues} from '@/js/global-func.js'
 
 export let items = {}; // некоторые поля нужно запросить с обюновляемой базы
 items['Марка'] = [] //
-items['Марка'].value=''; // тут будут выбранные значения
-items['Модель'] = [] //
+items['Марка'].value = ''; // тут будут выбранные значения
+items['Модель'] = ['е выбрана марка '] //
 
 items['Производитель'] = ['Amtel', 'Bfgoodrich', 'Cordiant', 'Formula', 'Gislaved', 'Hankook', 'Kormoran', 'Kumho', 'Nokian'];
 items['Ширина профиля'] = ['Все', '155', '185', '195', '205', '215', '225'];
@@ -36,8 +36,8 @@ function fillFields() {
     combs.forEach(comb => {
         let comb_name = comb.dataset.placeholder
         let the_Items = items[comb_name];
-        if(the_Items) {
-            let items_list = the_Items.map(item =>  '<div data-parent="'+comb_name+'">'+item+'</div>')
+        if (the_Items) {
+            let items_list = the_Items.map(item => '<div data-parent="' + comb_name + '">' + item + '</div>')
 
             comb.innerHTML = `<div class='big-combo' tabindex='1'>
         <span class='big-comb__selected'>
@@ -82,42 +82,69 @@ function fillFields() {
 
 ///////////////////////////
 
-
-api_GetBrandList().then(res=>{
-    items['Марка'] = res.map(el=>el.name)
-    globalValues.brandsIds.push(...res)
-
-    const brand = getUrlParam('brand')
-    if (brand) getModelList(brand)
-
-    fillFields()
-})
 export function getModelList(brandName) {
-    let brand = globalValues.brandsIds.find(el=>el.name.toUpperCase()===brandName.toUpperCase())
+    let brand = globalValues.brandsIds.find(el => el.name.toUpperCase() === brandName.toUpperCase())
 
-    brand && api_GetModelList(brand.id).then(res=>{
-        items['Модель'] = res.map(el=>el.name)
+    brand && api_GetModelList(brand.id).then(res => {
+        items['Модель'] = res.map(el => el.name)
         globalValues.modelsIds.push(...res)
         fillFields()
     })
 
-    if(!brand) {
+    if (!brand) {
         items['Модель'] = ['Неизвестный бренд']
         fillFields()
     }
 }
 
-api_getCities().then(res=>items['Город'] = res)
-api_getGearboxTypes().then(res=>{
-    items['Тип кузова'] = res.map(el=>el.title)
-    globalValues.gearboxTypes.push(...res)
-})
-api_getEngineTypes().then(res=>{
-    items['Тип КПП'] = res.map(el=>el.title)
-    globalValues.engineTypes.push(...res)
-})
-api_getDriveTypes().then(res=>{
-    items['Тип двигателя'] = res.map(el=>el.title)
-    globalValues.driveTypes.push(...res)
-})
 
+Promise.all([
+    new Promise(resolve => {
+        api_GetBrandList().then(res => {
+            items['Марка'] = res.map(el => el.name)
+            globalValues.brandsIds.push(...res)
+
+            const brand = getUrlParam('brand')
+            if (brand) getModelList(brand)
+
+            resolve(1)
+        })
+    }),
+    new Promise(resolve => {
+        api_getCities().then(res => {
+            items['Город'] = res
+            resolve(2)
+        })
+    }),new Promise(resolve => {
+        api_getGearboxTypes().then(res => {
+            items['Тип кузова'] = res.map(el => el.title)
+            globalValues.gearboxTypes.push(...res)
+            resolve(3)
+        })
+    }), new Promise(resolve => {
+        api_getEngineTypes().then(res => {
+            items['Тип КПП'] = res.map(el => el.title)
+            globalValues.engineTypes.push(...res)
+            resolve(4)
+        })
+    }), new Promise(resolve => {
+        api_getDriveTypes().then(res => {
+            items['Тип двигателя'] = res.map(el => el.title)
+            globalValues.driveTypes.push(...res)
+            resolve(5)
+        })
+    }),
+    // new Promise(resolve => {
+    //
+    // }), new Promise(resolve => {
+    //
+    // }), new Promise(resolve => {
+    //
+    // }),
+
+]).then(responses => {
+    console.log('555 555')
+    fillFields() // вот это должно сработать  в конце
+}).catch(error => {
+    console.error('Произошла ошибка:', error);
+});

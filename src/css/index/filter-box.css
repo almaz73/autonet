@@ -161,3 +161,13 @@
 .filter-fields.active .no_advanced {
     display: block;
 }
+
+.frame-filter__controls-reset {
+    padding: 11px 20px;
+    border-radius: 5px;
+}
+
+.frame-filter__controls-reset:hover {
+    background: var(--color-red);
+    color: white;
+}
