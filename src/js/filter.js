@@ -6,11 +6,6 @@ import { getUrlParam} from '@/js/global-func.js'
 import {run} from '@/js/filCars.js'
 
 export function filter_changed(items, name) {
-
-    console.log('<> <> <> value  = ', items[name].value)
-
-    filterParams[name] = items[name].value
-
     if (name === 'Марка') {
         let brand = globalValues.brandsIds.find(el=>el.name === items[name].value)
 
@@ -52,6 +47,11 @@ export function filter_changed(items, name) {
     }
 
 
+    getVitrina('ishandEvent')
+}
+
+export function filter_changed_text(type, val) {
+    filterParams[type] = val
     getVitrina('ishandEvent')
 }
 
@@ -217,6 +217,9 @@ window.goToCars = function () {
     if (filterParams.driveType) link += '&driveType=' + filterParams.driveType
     if (filterParams.wheelType) link += '&wheelType=' + filterParams.wheelType
     if (filterParams.bodyType) link += '&bodyType=' + filterParams.bodyType
+
+    if (filterParams.yearReleasedFrom) link += '&yearReleasedFrom=' + filterParams.yearReleasedFrom
+
 
    location.href = '/cars/'+link
 }

@@ -33,6 +33,9 @@ export function api_getList(limit, params) {
     if (params.wheelType) request += '&wheelType=' + params.wheelType
     if (params.bodyType) request += '&bodyType=' + params.bodyType
 
+    if (params.yearReleasedFrom) request += '&yearReleasedFrom=' + params.yearReleasedFrom
+
+
 
 
 

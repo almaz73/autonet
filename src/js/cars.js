@@ -18,7 +18,8 @@ const whiteFilter = `<div  class="filter-white">
         <div style="flex-grow: 1">
             <div class="big-combo control-flex">
                 <span style="width: 60px">Год от:</span>
-                <input class="big-comb__input" style="width: 40px" value="1997" onclick="this.select()">
+                <input class="big-comb__input" style="width: 40px" 
+                onchange="input_chamged('yearReleasedFrom', this.value)" onclick="this.select()">
             </div>
         </div>
 
@@ -33,14 +34,14 @@ const whiteFilter = `<div  class="filter-white">
             <comb data-placeholder='Цвет'/>
         </div>
 
-        <div>
+        <div class="no_advanced">
             <div class="big-combo control-flex">
                 <span style="width: 80px">Цена от: </span>
                 <input class="big-comb__input" style="width: 70px" value="6882400" onclick="this.select()">
             </div>
         </div>
 
-        <div class="no_advanced">
+        <div>
             <div class="big-combo control-flex">
                 <span style="width: 80px">Цена до: </span>
                 <input class="big-comb__input" style="width: 70px" value="6882400" onclick="this.select()">
@@ -100,7 +101,7 @@ const whiteFilter = `<div  class="filter-white">
         <a href="javascript:void(0)" onclick="clearFilter()" class="frame-filter__controls-reset">Сбросить</a>
 
         <button class="frame-filter__submit" id="set_filter" onclick="goToCars()">
-            Показать&nbsp;<span class="number"></span>
+            Найдено&nbsp;<span class="number"></span>
         </button>
     </div>
 </div>`

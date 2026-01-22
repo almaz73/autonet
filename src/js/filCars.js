@@ -14,7 +14,6 @@ function FillFilterFromAddressBar(filterParams) {
         filterParams['brand'] = brand
         setCombName('Марка', brand)
     }
-
     const modelId = getUrlParam('modelId')
     const model = getUrlParam('model')
     if (modelId) {
@@ -22,9 +21,17 @@ function FillFilterFromAddressBar(filterParams) {
         filterParams['model'] = model
         setCombName('Модель', model)
     }
-    if (city) filterParams.city = city
+    if (city) {
+        filterParams.city = city
+        setCombName('Город', city)
+    }
     if (gearboxType) filterParams.gearboxType = gearboxType
 
+    const yearReleasedFrom = getUrlParam('yearReleasedFrom')
+    if (yearReleasedFrom) {
+        filterParams.yearReleasedFrom = yearReleasedFrom
+        setInputName('yearReleasedFrom', yearReleasedFrom)
+    }
 
     filterParams['offset'] = getUrlParam('page')
 }
@@ -36,6 +43,17 @@ function setCombName(name, value) {
         if (comb) {
             comb.querySelector('.big-comb__placeholder').innerText = value
             comb.querySelector('.big-comb__placeholder').classList.add('bold')
+        }
+    }, 2000)
+}
+
+function setInputName(name, value) {
+    setTimeout(()=>{
+        console.log(name)
+        let inp = document.querySelector(`[onchange="input_chamged('${name}', this.value)"]`)
+        if (inp) {
+            inp.value = value
+            inp.classList.add('bold')
         }
     }, 2000)
 }
