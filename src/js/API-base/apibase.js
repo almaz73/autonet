@@ -36,7 +36,9 @@ export function api_getList(limit, params) {
     if (params.yearReleasedFrom) request += '&yearReleasedFrom=' + params.yearReleasedFrom
     if (params.yearReleasedTo) request += '&yearReleasedTo=' + params.yearReleasedTo    
     if (params.priceTo) request += '&priceTo=' + params.priceTo
-    if (params.priceFrom) request += '&priceFrom=' + params.priceFrom
+    if (params.milleageFrom) request += '&milleageFrom=' + params.milleageFrom
+    if (params.milleageTo) request += '&milleageTo=' + params.milleageTo
+
 
 
 

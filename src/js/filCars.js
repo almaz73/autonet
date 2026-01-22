@@ -79,9 +79,22 @@ function FillFilterFromAddressBar(filterParams) {
         setInputName('priceTo', priceTo)
     }
 
+    const milleageFrom = getUrlParam('milleageFrom')
+    if (milleageFrom) {
+        filterParams.milleageFrom = milleageFrom
+        setInputName('milleageFrom', milleageFrom)
+    }
+
+    const milleageTo = getUrlParam('milleageTo')
+    if (milleageTo) {
+        filterParams.milleageTo = milleageTo
+        setInputName('milleageTo', milleageTo)
+    }
+
+
     const priceFrom = getUrlParam('priceFrom')
     if (priceFrom) {
-        filterParams.priceTo = priceFrom
+        filterParams.priceFrom= priceFrom
         setInputName('priceFrom', priceFrom)
     }
 

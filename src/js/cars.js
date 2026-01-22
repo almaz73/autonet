@@ -53,8 +53,17 @@ const whiteFilter = `<div  class="filter-white">
 
         <div class="no_advanced">
             <div class="big-combo control-flex">
+                <span style="width: 85px">Пробег от: </span>
+                 <input class="big-comb__input" style="width: 70px" 
+                onchange="input_chamged('milleageFrom', this.value)" onclick="this.select()">      
+            </div>
+        </div>
+        
+        <div class="no_advanced">
+            <div class="big-combo control-flex">
                 <span style="width: 85px">Пробег до: </span>
-                <input class="big-comb__input" style="width: 70px" onclick="this.select()">                
+                 <input class="big-comb__input" style="width: 70px" 
+                onchange="input_chamged('milleageTo', this.value)" onclick="this.select()">                    
             </div>
         </div>
 
