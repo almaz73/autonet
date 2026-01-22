@@ -43,8 +43,9 @@ const whiteFilter = `<div  class="filter-white">
 
         <div>
             <div class="big-combo control-flex">
-                <span style="width: 80px">Цена до: </span>
-                <input class="big-comb__input" style="width: 70px" value="6882400" onclick="this.select()">
+                <span style="width: 80px">Цена до: </span>                 
+                <input class="big-comb__input" style="width: 40px" 
+                onchange="input_chamged('priceTo', this.value)" onclick="this.select()">
             </div>
         </div>
 

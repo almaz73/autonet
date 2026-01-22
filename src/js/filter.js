@@ -219,7 +219,7 @@ window.goToCars = function () {
     if (filterParams.bodyType) link += '&bodyType=' + filterParams.bodyType
 
     if (filterParams.yearReleasedFrom) link += '&yearReleasedFrom=' + filterParams.yearReleasedFrom
-
+    if (filterParams.priceTo) link += '&priceTo=' + filterParams.priceTo
 
    location.href = '/cars/'+link
 }

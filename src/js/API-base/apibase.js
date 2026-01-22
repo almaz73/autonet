@@ -34,7 +34,7 @@ export function api_getList(limit, params) {
     if (params.bodyType) request += '&bodyType=' + params.bodyType
 
     if (params.yearReleasedFrom) request += '&yearReleasedFrom=' + params.yearReleasedFrom
-
+    if (params.priceTo) request += '&priceTo=' + params.priceTo
 
 
 

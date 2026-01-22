@@ -5,15 +5,15 @@ import {declOfNum, getUrlParam, prepareCars} from '@/js/global-func.js'
 const countPerPage = 20
 
 function FillFilterFromAddressBar(filterParams) {
+    // заполнение фильтра по параметрам адресной строки
     const brandId = getUrlParam('brandId')
     const brand = getUrlParam('brand')
-    const city = getUrlParam('city')
-    const gearboxType = getUrlParam('gearboxType')
     if (brandId) {
         filterParams['brandId'] = brandId
         filterParams['brand'] = brand
         setCombName('Марка', brand)
     }
+
     const modelId = getUrlParam('modelId')
     const model = getUrlParam('model')
     if (modelId) {
@@ -21,17 +21,59 @@ function FillFilterFromAddressBar(filterParams) {
         filterParams['model'] = model
         setCombName('Модель', model)
     }
+
+    const city = getUrlParam('city')
     if (city) {
         filterParams.city = city
         setCombName('Город', city)
     }
-    if (gearboxType) filterParams.gearboxType = gearboxType
+
+    const gearboxType = getUrlParam('gearboxType')
+    if (gearboxType) {
+        filterParams.gearboxType = gearboxType
+        setCombName('Тип КПП', gearboxType)
+    }
+
+    const engineType = getUrlParam('engineType')
+    if (engineType) {
+        filterParams.engineType = engineType
+        setCombName('Тип двигателя', engineType)
+    }
+
+    const bodyType = getUrlParam('bodyType')
+    if (bodyType) {
+        filterParams.bodyType = bodyType
+        setCombName('Тип кузова', bodyType)
+    }
+
+    const wheelType = getUrlParam('wheelType')
+    if (wheelType) {
+        filterParams.wheelType = wheelType
+        setCombName('Руль', wheelType)
+    }
+
+    const driveType = getUrlParam('driveType')
+    if (driveType) {
+        filterParams.driveType = driveType
+        setCombName('Тип привода', driveType)
+    }
+
+
+
 
     const yearReleasedFrom = getUrlParam('yearReleasedFrom')
     if (yearReleasedFrom) {
         filterParams.yearReleasedFrom = yearReleasedFrom
         setInputName('yearReleasedFrom', yearReleasedFrom)
     }
+
+    const priceTo = getUrlParam('priceTo')
+    if (priceTo) {
+        filterParams.priceTo = priceTo
+        setInputName('priceTo', priceTo)
+    }
+
+
 
     filterParams['offset'] = getUrlParam('page')
 }

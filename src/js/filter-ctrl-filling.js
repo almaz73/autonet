@@ -17,7 +17,7 @@ items['Модель'] = ['е выбрана марка '] //
 items['Город'] = [] //
 items['Тип кузова'] = [] //
 items['Цвет'] = ['Все', 'Бежевый', 'Белый', 'Голубой', 'Желтый', 'Зелёный', 'Золотой', 'Коричневый', 'Красный', 'Оранжевый', 'Серебряный', 'Серый', 'Синий', 'Фиолетовый', 'Чёрный']
-items['Тип КПП'] = ['Все', 'Автоматическая', 'Вариатор', 'Механическая', 'Робот']
+items['Тип КПП'] = []
 items['Тип двигателя'] = [] // 'Все', 'Бензиновый', 'Гибридный', 'Дизельный', 'Электро'
 items['Тип привода'] = []// ['Все', 'Задний', 'Передний', 'Полный']
 items['Руль'] = [] //
@@ -38,16 +38,16 @@ function fillFields() {
         if (the_Items) {
             let items_list = the_Items.map(item => '<div data-parent="' + comb_name + '">' + item + '</div>')
 
-            comb.innerHTML = `<div class='big-combo' tabindex='1'>
-        <span class='big-comb__selected'>
-          <span class='big-comb__placeholder'>${the_Items.value || comb_name}</span>
-          <input class='big-comb__input' type="text">
-        </span>
-        <img src='/svg/arrow-down.svg' alt='arrow' loading='lazy' width='10' height='18'>            
-        <div class='big_comb__items' onclick='big_comb_select(event)'>
-            ${items_list.join('')}
-        </div>
-    </div>`
+            comb.innerHTML = `<div class='big-combo' tabindex='1' title="${the_Items.value || comb_name}">
+    <span class='big-comb__selected'>
+      <span class='big-comb__placeholder'>${the_Items.value || comb_name}</span>
+      <input class='big-comb__input' type="text">
+    </span>
+    <img src='/svg/arrow-down.svg' alt='arrow' loading='lazy' width='10' height='18'>            
+    <div class='big_comb__items' onclick='big_comb_select(event)'>
+        ${items_list.join('')}
+    </div>
+</div>`
         }
 
         let bigCombo = comb.querySelector('.big-combo')
