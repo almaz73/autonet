@@ -67,6 +67,13 @@ function FillFilterFromAddressBar(filterParams) {
         setInputName('yearReleasedFrom', yearReleasedFrom)
     }
 
+    const yearReleasedTo = getUrlParam('yearReleasedTo')
+    if (yearReleasedTo) {
+        filterParams.yearReleasedTo = yearReleasedTo
+        setInputName('yearReleasedTo', yearReleasedTo)
+    }
+    
+
     const priceTo = getUrlParam('priceTo')
     if (priceTo) {
         filterParams.priceTo = priceTo

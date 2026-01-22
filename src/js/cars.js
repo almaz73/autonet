@@ -26,7 +26,8 @@ const whiteFilter = `<div  class="filter-white">
         <div class="no_advanced">
             <div class="big-combo control-flex">
                 <span style="width: 60px">Год до:</span>
-                <input class="big-comb__input" style="width: 40px" value="2025" onclick="this.select()">
+                <input class="big-comb__input" style="width: 40px" 
+                onchange="input_chamged('yearReleasedTo', this.value)" onclick="this.select()">
             </div>
         </div>
 
