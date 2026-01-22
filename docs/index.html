@@ -21,13 +21,13 @@
 
   <script type="module" crossorigin src="./assets/main-D6G3P3ZD.js"></script>
   <script type="module" crossorigin src="./assets/contacts-BncfXAlD.js"></script>
-  <script type="module" crossorigin src="./assets/favoriteCars-D3BlehqI.js"></script>
+  <script type="module" crossorigin src="./assets/favoriteCars-jr1hwINq.js"></script>
   <script type="module" crossorigin src="./assets/global-func-BLfbnEIy.js"></script>
-  <script type="module" crossorigin src="./assets/brands-icons-ds3S4EWx.js"></script>
+  <script type="module" crossorigin src="./assets/brands-icons-Dudce8X_.js"></script>
   <script type="module" crossorigin src="./assets/swiper-starter-DAQO3WFk.js"></script>
   <script type="module" crossorigin src="./assets/whereSeeParams-BuT6MZzX.js"></script>
   <script type="module" crossorigin src="./assets/compareCars-aUEkwXup.js"></script>
-  <script type="module" crossorigin src="./assets/filter-controls-DeKuDqtR.js"></script>
+  <script type="module" crossorigin src="./assets/filter-controls-BNbu41Xi.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/main-Cac7nGpR.css">
   <link rel="stylesheet" crossorigin href="./assets/contacts-DJ-x8OFk.css">
   <link rel="stylesheet" crossorigin href="./assets/swiper-bundle-CcLVQX3U.css">
@@ -272,19 +272,19 @@
                     <label>Модель</label>
                 </div>
 
-                <div class="frame-filter__item no_advanced">
+                <div class="frame-filter__item">
                     <comb data-placeholder='Город' />
                 </div>
 
                 <div style="flex-grow: 1">
                     <div class="big-combo control-flex">
                         <span style="width: 60px">Год от:</span>
-                        <input class="big-comb__input" style="width: 40px" value="1997" onclick="this.select()">
+                      <input class="big-comb__input" style="width: 40px" onchange="input_chamged('yearReleasedFrom', this.value)">
                     </div>
                 </div>
 
                 <div style="flex-grow: 1">
-                    <div class="big-combo control-flex">
+                    <div class="big-combo control-flex no_advanced">
                         <span style="width: 60px">Год до:</span>
                         <input class="big-comb__input" style="width: 40px" value="1997" onclick="this.select()">
                     </div>
@@ -301,10 +301,10 @@
                     </div>
                 </div>
 
-                <div class="no_advanced">
+                <div >
                     <div class="big-combo control-flex">
                         <span style="width: 100px">Цена до: </span>
-                        <input class="big-comb__input" style="width: 70px" onclick="this.select()">
+                        <input class="big-comb__input"  onclick="this.select()">
                     </div>
                 </div>
 
@@ -380,7 +380,7 @@
                 <a href="javascript:void(0)" onclick="clearFilter()" class="frame-filter__controls-reset">Сбросить</a>
 
                 <button class="frame-filter__submit" id="set_filter" onclick="goToCars()">
-                    Показать&nbsp;<span class="number"/></span>&
+                    Найдено&nbsp;<span class="number"/></span>
                 </button>
             </div>
 
