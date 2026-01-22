@@ -46,14 +46,16 @@
                 <div class="no_advanced">
                     <div class="big-combo control-flex">
                         <span style="width: 100px">Цена от: </span>
-                        <input class="big-comb__input" style="width: 70px" onclick="this.select()">
+                        <input class="big-comb__input" style="width: 60px"
+                             onchange="input_chamged('priceFrom', this.value)" onclick="this.select()">
                     </div>
                 </div>
 
                 <div >
                     <div class="big-combo control-flex">
                         <span style="width: 100px">Цена до: </span>
-                        <input class="big-comb__input"  onclick="this.select()">
+                        <input class="big-comb__input" style="width: 60px"
+                             onchange="input_chamged('priceTo', this.value)" onclick="this.select()">
                     </div>
                 </div>
 

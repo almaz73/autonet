@@ -221,6 +221,7 @@ window.goToCars = function () {
     if (filterParams.yearReleasedFrom) link += '&yearReleasedFrom=' + filterParams.yearReleasedFrom
     if (filterParams.yearReleasedTo) link += '&yearReleasedTo=' + filterParams.yearReleasedTo    
     if (filterParams.priceTo) link += '&priceTo=' + filterParams.priceTo
+    if (filterParams.priceFrom) link += '&priceFrom=' + filterParams.priceFrom
 
    location.href = '/cars/'+link
 }

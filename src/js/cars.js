@@ -38,14 +38,15 @@ const whiteFilter = `<div  class="filter-white">
         <div class="no_advanced">
             <div class="big-combo control-flex">
                 <span style="width: 80px">Цена от: </span>
-                <input class="big-comb__input" style="width: 70px" value="6882400" onclick="this.select()">
+                 <input class="big-comb__input" style="width: 60px" 
+                onchange="input_chamged('priceFrom', this.value)" onclick="this.select()">                
             </div>
         </div>
 
         <div>
             <div class="big-combo control-flex">
                 <span style="width: 80px">Цена до: </span>                 
-                <input class="big-comb__input" style="width: 40px" 
+                <input class="big-comb__input" style="width: 60px" 
                 onchange="input_chamged('priceTo', this.value)" onclick="this.select()">
             </div>
         </div>
@@ -53,7 +54,7 @@ const whiteFilter = `<div  class="filter-white">
         <div class="no_advanced">
             <div class="big-combo control-flex">
                 <span style="width: 85px">Пробег до: </span>
-                <input class="big-comb__input" style="width: 70px" onclick="this.select()">
+                <input class="big-comb__input" style="width: 70px" onclick="this.select()">                
             </div>
         </div>
 
