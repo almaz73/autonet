@@ -107,7 +107,7 @@ function setCombName(name, value) {
     setTimeout(()=>{
         console.log(name)
         let comb = document.querySelector(`[data-placeholder="${name}"]`)
-        if (comb) {
+        if (comb && comb.querySelector('.big-comb__placeholder')) {
             comb.querySelector('.big-comb__placeholder').innerText = value
             comb.querySelector('.big-comb__placeholder').classList.add('bold')
         }
@@ -116,7 +116,6 @@ function setCombName(name, value) {
 
 function setInputName(name, value) {
     setTimeout(()=>{
-        console.log(name)
         let inp = document.querySelector(`[onchange="input_chamged('${name}', this.value)"]`)
         if (inp) {
             inp.value = value

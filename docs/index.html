@@ -21,17 +21,17 @@
 
   <script type="module" crossorigin src="./assets/main-D6G3P3ZD.js"></script>
   <script type="module" crossorigin src="./assets/contacts-BncfXAlD.js"></script>
-  <script type="module" crossorigin src="./assets/favoriteCars-jr1hwINq.js"></script>
+  <script type="module" crossorigin src="./assets/favoriteCars-UyRy5S1X.js"></script>
   <script type="module" crossorigin src="./assets/global-func-BLfbnEIy.js"></script>
-  <script type="module" crossorigin src="./assets/brands-icons-Dudce8X_.js"></script>
+  <script type="module" crossorigin src="./assets/brands-icons-B0LeJyEa.js"></script>
   <script type="module" crossorigin src="./assets/swiper-starter-DAQO3WFk.js"></script>
   <script type="module" crossorigin src="./assets/whereSeeParams-BuT6MZzX.js"></script>
   <script type="module" crossorigin src="./assets/compareCars-aUEkwXup.js"></script>
-  <script type="module" crossorigin src="./assets/filter-controls-BNbu41Xi.js"></script>
+  <script type="module" crossorigin src="./assets/filter-controls-BsOkqyXP.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/main-Cac7nGpR.css">
   <link rel="stylesheet" crossorigin href="./assets/contacts-DJ-x8OFk.css">
   <link rel="stylesheet" crossorigin href="./assets/swiper-bundle-CcLVQX3U.css">
-  <link rel="stylesheet" crossorigin href="./assets/index-DXd-KlOM.css">
+  <link rel="stylesheet" crossorigin href="./assets/index-BEKm6mNx.css">
   <link rel="stylesheet" crossorigin href="./assets/ourservice-Bhv2pcd3.css">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 </head>
@@ -286,39 +286,43 @@
                 <div style="flex-grow: 1">
                     <div class="big-combo control-flex no_advanced">
                         <span style="width: 60px">Год до:</span>
-                        <input class="big-comb__input" style="width: 40px" value="1997" onclick="this.select()">
+                        <input class="big-comb__input" style="width: 40px" onchange="input_chamged('yearReleasedTo', this.value)">
                     </div>
                 </div>
 
-                <div class="frame-filter__item no_advanced">
-                    <comb data-placeholder='Цвет'/>
-                </div>
+<!--                <div class="frame-filter__item no_advanced">-->
+<!--                    <comb data-placeholder='Цвет'/>-->
+<!--                </div>-->
 
                 <div class="no_advanced">
                     <div class="big-combo control-flex">
                         <span style="width: 100px">Цена от: </span>
-                        <input class="big-comb__input" style="width: 70px" onclick="this.select()">
+                        <input class="big-comb__input" style="width: 60px"
+                             onchange="input_chamged('priceFrom', this.value)" onclick="this.select()">
                     </div>
                 </div>
 
                 <div >
                     <div class="big-combo control-flex">
-                        <span style="width: 100px">Цена до: </span>
-                        <input class="big-comb__input"  onclick="this.select()">
-                    </div>
-                </div>
-
-                <div class="no_advanced">
-                    <div class="big-combo control-flex">
-                        <span style="width: 100px">Пробег от: </span>
-                        <input class="big-comb__input" style="width: 70px" onclick="this.select()">
+                        <span style="width: 100px">Цена от: </span>
+                        <input class="big-comb__input" style="width: 60px"
+                             onchange="input_chamged('priceTo', this.value)" onclick="this.select()">
                     </div>
                 </div>
 
                 <div class="no_advanced">
                     <div class="big-combo control-flex">
                         <span style="width: 100px">Пробег до: </span>
-                        <input class="big-comb__input" style="width: 70px" onclick="this.select()">
+                        <input class="big-comb__input" style="width: 70px"
+                               onchange="input_chamged('milleageFrom', this.value)" onclick="this.select()">
+                    </div>
+                </div>
+
+                <div class="no_advanced">
+                    <div class="big-combo control-flex">
+                        <span style="width: 100px">Пробег до: </span>
+                      <input class="big-comb__input" style="width: 70px"
+                             onchange="input_chamged('milleageTo', this.value)" onclick="this.select()">
                     </div>
                 </div>
 

@@ -16,27 +16,27 @@ const whiteFilter = `<div  class="filter-white">
         </div>
 
         <div style="flex-grow: 1">
-            <div class="big-combo control-flex">
+            <div class="big-combo control-flex" onmouseenter="this.querySelector('input').focus()">
                 <span style="width: 60px">Год от:</span>
                 <input class="big-comb__input" style="width: 40px" 
-                onchange="input_chamged('yearReleasedFrom', this.value)" onclick="this.select()">
+                onchange="input_chamged('yearReleasedFrom', this.value)">
             </div>
         </div>
 
         <div class="no_advanced">
-            <div class="big-combo control-flex">
+            <div class="big-combo control-flex" onmouseenter="this.querySelector('input').focus()">
                 <span style="width: 60px">Год до:</span>
                 <input class="big-comb__input" style="width: 40px" 
                 onchange="input_chamged('yearReleasedTo', this.value)" onclick="this.select()">
             </div>
         </div>
 
-        <div class="frame-filter__item no_advanced">
-            <comb data-placeholder='Цвет'/>
-        </div>
+<!--        <div class="frame-filter__item no_advanced">-->
+<!--            <comb data-placeholder='Цвет'/>-->
+<!--        </div>-->
 
         <div class="no_advanced">
-            <div class="big-combo control-flex">
+            <div class="big-combo control-flex" onmouseenter="this.querySelector('input').focus()">
                 <span style="width: 80px">Цена от: </span>
                  <input class="big-comb__input" style="width: 60px" 
                 onchange="input_chamged('priceFrom', this.value)" onclick="this.select()">                
@@ -44,15 +44,15 @@ const whiteFilter = `<div  class="filter-white">
         </div>
 
         <div>
-            <div class="big-combo control-flex">
+            <div class="big-combo control-flex" onmouseenter="this.querySelector('input').focus()">
                 <span style="width: 80px">Цена до: </span>                 
                 <input class="big-comb__input" style="width: 60px" 
-                onchange="input_chamged('priceTo', this.value)" onclick="this.select()">
+                onchange="input_chamged('priceTo', this.value)">
             </div>
         </div>
 
         <div class="no_advanced">
-            <div class="big-combo control-flex">
+            <div class="big-combo control-flex" onmouseenter="this.querySelector('input').focus()">
                 <span style="width: 85px">Пробег от: </span>
                  <input class="big-comb__input" style="width: 70px" 
                 onchange="input_chamged('milleageFrom', this.value)" onclick="this.select()">      
@@ -60,7 +60,7 @@ const whiteFilter = `<div  class="filter-white">
         </div>
         
         <div class="no_advanced">
-            <div class="big-combo control-flex">
+            <div class="big-combo control-flex" onmouseenter="this.querySelector('input').focus()">
                 <span style="width: 85px">Пробег до: </span>
                  <input class="big-comb__input" style="width: 70px" 
                 onchange="input_chamged('milleageTo', this.value)" onclick="this.select()">                    
@@ -81,19 +81,19 @@ const whiteFilter = `<div  class="filter-white">
             <comb data-placeholder='Тип двигателя'/>
         </div>
 
-        <div class="no_advanced">
-            <div class="big-combo control-flex">
-                <span style="width: 160px">Объем двигателя до: </span>
-                <input class="big-comb__input" style="width: 60px" value="" onclick="this.select()">
-            </div>
-        </div>
+<!--        <div class="no_advanced">-->
+<!--            <div class="big-combo control-flex" onmouseenter="this.querySelector('input').focus()">-->
+<!--                <span style="width: 160px">Объем двигателя до: </span>-->
+<!--                <input class="big-comb__input" style="width: 60px" value="" onclick="this.select()">-->
+<!--            </div>-->
+<!--        </div>-->
 
-        <div class="no_advanced">
-            <div class="big-combo control-flex">
-                <span style="width: 187px">Мощность двигателя до: </span>
-                <input class="big-comb__input" style="width: 60px" value="" onclick="this.select()">
-            </div>
-        </div>
+<!--        <div class="no_advanced">-->
+<!--            <div class="big-combo control-flex" onmouseenter="this.querySelector('input').focus()">-->
+<!--                <span style="width: 187px">Мощность двигателя до: </span>-->
+<!--                <input class="big-comb__input" style="width: 60px" value="" onclick="this.select()">-->
+<!--            </div>-->
+<!--        </div>-->
 
         <div class="frame-filter__item no_advanced">
             <comb data-placeholder='Тип привода'/>

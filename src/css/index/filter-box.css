@@ -148,10 +148,22 @@
     margin-left: 10px;
     color: #6d6c6c;
 }
+
 .control-flex input:hover{
-    border-bottom: 1px solid #ccc;
-    margin-bottom: -1px;
+    border-bottom: 2px solid #999;
+    margin-bottom: -4px;
 }
+
+
+.control-flex:hover{
+    background: #fce6e9;
+}
+
+.control-flex input{
+    background: white !important;
+    padding: 0 4px;
+}
+
 
 .no_advanced{
     display: none;
