@@ -1,5 +1,5 @@
 import {filter_changed, filter_changed_text} from '@/js/filter.js';
-import {items} from '@/js/filter-ctrl-filling.js'
+import {items, setExtention} from '@/js/filter-ctrl-filling.js'
 
 
 window.big_comb_select = function(val) {
@@ -32,6 +32,7 @@ advanced && advanced.addEventListener('click', () => {
   if (advanced.classList.length === 1) {
     advanced.classList.add("active")
     filterAdvanced.classList.add("active")
+    setExtention(true)
   } else {
     advanced.classList.remove("active")
     filterAdvanced.classList.remove("active")

@@ -10,6 +10,14 @@ import {
 import {getUrlParam, globalValues} from '@/js/global-func.js'
 
 
+// В зависимости от состояния фильтра загружаем кобобоксы
+let extention = false
+export let setExtention = function (val) {
+    extention = val
+    getDatas()
+}
+
+
 export let items = {}; // некоторые поля нужно запросить с обюновляемой базы
 items['Марка'] = [] //
 items['Марка'].value = ''; // тут будут выбранные значения
@@ -28,6 +36,7 @@ items['Ширина профиля'] = ['Все', '155', '185', '195', '205', '2
 items['Высота профиля'] = ['Все', '45', '55', '60', '65', '70']
 items['Диаметр'] = ['Все', '13', '14', '15', '16', '17']
 items['Сезон'] = ['Все', 'Зима Шип', 'Лето']
+
 ///////////////////////////
 
 function fillFields() {
@@ -97,60 +106,60 @@ export function getModelList(brandName) {
 }
 
 
-Promise.all([
-    new Promise(resolve => {
-        api_GetBrandList().then(res => {
-            items['Марка'] = res.map(el => el.name)
-            globalValues.brandsIds.push(...res)
+function getDatas() {
+    Promise.all([
+        new Promise(resolve => {
+            api_GetBrandList().then(res => {
+                items['Марка'] = res.map(el => el.name)
+                globalValues.brandsIds.push(...res)
 
-            const brand = getUrlParam('brand')
-            if (brand) getModelList(brand)
+                const brand = getUrlParam('brand')
+                if (brand) getModelList(brand)
 
-            resolve()
-        })
-    }),
-    new Promise(resolve => {
-        api_getCities().then(res => {
-            items['Город'] = res
-            resolve()
-        })
-    }),new Promise(resolve => {
-        api_getGearboxTypes().then(res => {
-            items['Тип КПП'] = res.map(el => el.title)
-            globalValues.gearboxTypes.push(...res)
-            resolve()
-        })
-    }), new Promise(resolve => {
-        api_getEngineTypes().then(res => {
-            items['Тип двигателя'] = res.map(el => el.title)
-            globalValues.engineTypes.push(...res)
-            resolve()
-        })
-    }), new Promise(resolve => {
-        api_getDriveTypes().then(res => {
-            items['Тип привода'] = res.map(el => el.title)
-            globalValues.driveTypes.push(...res)
-            resolve()
-        })
-    }), new Promise(resolve => {
-        api_getWheelTypes().then(res => {
-            items['Руль'] = res.map(el => el.title)
-            globalValues.wheelTypes.push(...res)
-            resolve()
-        })
-    }), new Promise(resolve => {
-        api_getBodyTypes().then(res => {
-            items['Тип кузова'] = res.map(el => el.title)
-            globalValues.bodyTypes.push(...res)
-            resolve()
-        })
-    }),
+                resolve()
+            })
+        }),
+        new Promise(resolve => {
+            api_getCities().then(res => {
+                items['Город'] = res
+                resolve()
+            })
+        }), extention && new Promise(resolve => {
+            api_getGearboxTypes().then(res => {
+                items['Тип КПП'] = res.map(el => el.title)
+                globalValues.gearboxTypes.push(...res)
+                resolve()
+            })
+        }), extention && new Promise(resolve => {
+            api_getEngineTypes().then(res => {
+                items['Тип двигателя'] = res.map(el => el.title)
+                globalValues.engineTypes.push(...res)
+                resolve()
+            })
+        }), extention && new Promise(resolve => {
+            api_getDriveTypes().then(res => {
+                items['Тип привода'] = res.map(el => el.title)
+                globalValues.driveTypes.push(...res)
+                resolve()
+            })
+        }), extention && new Promise(resolve => {
+            api_getWheelTypes().then(res => {
+                items['Руль'] = res.map(el => el.title)
+                globalValues.wheelTypes.push(...res)
+                resolve()
+            })
+        }), extention && new Promise(resolve => {
+            api_getBodyTypes().then(res => {
+                items['Тип кузова'] = res.map(el => el.title)
+                globalValues.bodyTypes.push(...res)
+                resolve()
+            })
+        }),
 
 
-
-]).then(responses => {
-    console.log('555 555')
-    fillFields() // вот это должно сработать  в конце
-}).catch(error => {
-    console.error('Произошла ошибка:', error);
-});
+    ]).then(responses => {
+        fillFields() // вот это должно сработать  в конце
+    }).catch(error => {
+        console.error('Произошла ошибка:', error);
+    });
+}

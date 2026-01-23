@@ -1,8 +1,10 @@
 // обработка location.pathname === '/cars/
 import {api_getList} from "@/js/API-base/apibase.js"
 import {declOfNum, getUrlParam, prepareCars} from '@/js/global-func.js'
+import {setExtention} from  "@/js/filter-ctrl-filling.js"
 
 const countPerPage = 20
+let extention = false
 
 function FillFilterFromAddressBar(filterParams) {
     // заполнение фильтра по параметрам адресной строки
@@ -30,35 +32,38 @@ function FillFilterFromAddressBar(filterParams) {
 
     const gearboxType = getUrlParam('gearboxType')
     if (gearboxType) {
+        extention = true
         filterParams.gearboxType = gearboxType
         setCombName('Тип КПП', gearboxType)
     }
 
     const engineType = getUrlParam('engineType')
     if (engineType) {
+        extention = true
         filterParams.engineType = engineType
         setCombName('Тип двигателя', engineType)
     }
 
     const bodyType = getUrlParam('bodyType')
     if (bodyType) {
+        extention = true
         filterParams.bodyType = bodyType
         setCombName('Тип кузова', bodyType)
     }
 
     const wheelType = getUrlParam('wheelType')
     if (wheelType) {
+        extention = true
         filterParams.wheelType = wheelType
         setCombName('Руль', wheelType)
     }
 
     const driveType = getUrlParam('driveType')
     if (driveType) {
+        extention = true
         filterParams.driveType = driveType
         setCombName('Тип привода', driveType)
     }
-
-
 
 
     const yearReleasedFrom = getUrlParam('yearReleasedFrom')
@@ -69,6 +74,7 @@ function FillFilterFromAddressBar(filterParams) {
 
     const yearReleasedTo = getUrlParam('yearReleasedTo')
     if (yearReleasedTo) {
+        extention = true
         filterParams.yearReleasedTo = yearReleasedTo
         setInputName('yearReleasedTo', yearReleasedTo)
     }
@@ -81,12 +87,14 @@ function FillFilterFromAddressBar(filterParams) {
 
     const milleageFrom = getUrlParam('milleageFrom')
     if (milleageFrom) {
+        extention = true
         filterParams.milleageFrom = milleageFrom
         setInputName('milleageFrom', milleageFrom)
     }
 
     const milleageTo = getUrlParam('milleageTo')
     if (milleageTo) {
+        extention = true
         filterParams.milleageTo = milleageTo
         setInputName('milleageTo', milleageTo)
     }
@@ -94,13 +102,21 @@ function FillFilterFromAddressBar(filterParams) {
 
     const priceFrom = getUrlParam('priceFrom')
     if (priceFrom) {
+        extention = true
         filterParams.priceFrom= priceFrom
         setInputName('priceFrom', priceFrom)
     }
 
-
+    if(extention) {
+        // Раширенный фильтр
+        let advanced = document.querySelector('.frame-filter__controls-advanced')
+        let filterAdvanced = document.querySelector('.filter-fields')
+        advanced.classList.add("active")
+        filterAdvanced.classList.add("active")
+    }
 
     filterParams['offset'] = getUrlParam('page')
+    setExtention(extention)
 }
 
 function setCombName(name, value) {

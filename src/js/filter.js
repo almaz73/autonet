@@ -1,9 +1,9 @@
 import {fill} from '@/js/cards.js';
 import {api_getList} from "@/js/API-base/apibase.js"
 import {prepareCars, declOfNum, globalValues} from '@/js/global-func.js'
+import {run} from '@/js/filCars.js'
 import {getModelList} from '@/js/filter-ctrl-filling.js'
 import { getUrlParam} from '@/js/global-func.js'
-import {run} from '@/js/filCars.js'
 
 export function filter_changed(items, name) {
     if (name === 'Марка') {
