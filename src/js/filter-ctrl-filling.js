@@ -85,6 +85,10 @@ function fillFields() {
             if (comb_field_img) comb_field_img.style.rotate = '0deg'
             if (bigCombPlaceholder) bigCombPlaceholder.style.display = ''
         }
+
+        if (!['Марка', 'Тип кузова', 'Тип КПП', 'Тип двигателя', 'Тип привода', 'Руль', 'Модель', 'Город'].includes(bigCombPlaceholder.innerText)) {
+            bigCombPlaceholder.classList.add('bold')
+        }
     })
 }
 

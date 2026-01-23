@@ -30,7 +30,7 @@
     min-width: 135px;
     padding: 13px 25px;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 5px;
     border-radius: 10px;
     border: 1px solid #dcdcdc;
     cursor: pointer;
@@ -144,7 +144,7 @@
 }
 
 .control-flex span{
-    font-size: 14px;
+    font-size: 16px;
     margin-left: 10px;
     color: #6d6c6c;
 }

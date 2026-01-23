@@ -21,7 +21,7 @@ export function filter_changed(items, name) {
         let model = globalValues.modelsIds.find(el=>el.name === items[name].value)
         if(model) {
             filterParams['modelId'] = model.id
-            filterParams['model='] = model.name
+            filterParams['model'] = model.name
         }
     }
     if (name === 'Город') filterParams.city = items[name].value
@@ -204,11 +204,11 @@ window.getVitrina = getVitrina
 window.goToCars = function () {
     let link  = `?`
     if (filterParams.brandId) {
-        link = '?brand=' + (filterParams['Марка']|| filterParams['brand'])
+        link = '?brand=' + (filterParams['Марка'] || filterParams['brand'])
         link += '&brandId=' + filterParams.brandId
     }
     if (filterParams.modelId) {
-        link += '&model=' + filterParams['Модель']
+        link += '&model=' + (filterParams['Модель'] || filterParams['model'])
         link += '&modelId=' + filterParams.modelId
     }
     if (filterParams.city) link += '&city=' + filterParams.city

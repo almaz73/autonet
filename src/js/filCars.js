@@ -156,7 +156,7 @@ export function run(cars, ishandEvent, filterParams, fill) {
             document.getElementById('set_filter').scrollIntoView({behavior: 'smooth', block: 'start'}); // прокрутка
             document.getElementById('brands_dynamic').style.display = 'none'
             document.querySelector('.filter-white').style.marginBottom = 0
-            document.querySelector('#vitrina_name').innerHTML = 'Автомобили ' + (filterParams.brand || '')
+            document.querySelector('#vitrina_name').innerHTML = 'Автомобили ' + (filterParams.brand || '')  +' '+ (filterParams.model || '')
         }
     })
 }
