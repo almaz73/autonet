@@ -86,7 +86,22 @@ function fillFields() {
             if (bigCombPlaceholder) bigCombPlaceholder.style.display = ''
         }
 
-        if (!['Марка', 'Тип кузова', 'Тип КПП', 'Тип двигателя', 'Тип привода', 'Руль', 'Модель', 'Город'].includes(bigCombPlaceholder.innerText)) {
+        if (![
+            'Марка',
+            'Тип кузова',
+            'Тип КПП',
+            'Тип двигателя',
+            'Тип привода',
+            'Руль',
+            'Модель',
+            'Город',
+            'Производитель',
+            'Ширина профиля',
+            'Высота профиля',
+            'Диаметр',
+            'Сезон',
+            'Диски',
+        ].includes(bigCombPlaceholder.innerText)) {
             bigCombPlaceholder.classList.add('bold')
         }
     })

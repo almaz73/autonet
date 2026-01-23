@@ -140,7 +140,7 @@ function setInputName(name, value) {
     }, 2000)
 }
 
-export function run(cars, ishandEvent, filterParams, fill) {
+export function fillCars(cars, ishandEvent, filterParams, fill) {
     if (!ishandEvent) FillFilterFromAddressBar(filterParams)
 
 

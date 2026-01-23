@@ -1,8 +1,8 @@
 import {fill} from '@/js/cards.js';
 import {api_getList} from "@/js/API-base/apibase.js"
 import {prepareCars, declOfNum, globalValues} from '@/js/global-func.js'
-import {run} from '@/js/filCars.js'
-import {getModelList} from '@/js/filter-ctrl-filling.js'
+import {fillCars} from '@/js/filCars.js'
+import {getModelList, setExtention} from '@/js/filter-ctrl-filling.js'
 import { getUrlParam} from '@/js/global-func.js'
 
 export function filter_changed(items, name) {
@@ -77,7 +77,7 @@ function getVitrina(ishandEvent) {
     if (location.pathname === '/') {
         // Пока берем первые семь, а надо бы спецпредложения от организации
         document.querySelector('#vitrina_name').innerHTML = 'Специальные предложения по цене'
-
+        if (!ishandEvent) setExtention(false)
         api_getList(7, filterParams).then(res => {
             cars = prepareCars(res.items)
             declOfNum(res.totalCount, ['предложение', 'предложений', 'предложений'])
@@ -183,7 +183,7 @@ function getVitrina(ishandEvent) {
         ]
         setTimeout(()=>fill(cars))
     } else if (location.pathname === '/cars/') {
-        run(cars, ishandEvent, filterParams, fill)
+        fillCars(cars, ishandEvent, filterParams, fill)
     } else if (location.pathname === '/personal/favorite-cars/') {
         document.querySelector('#vitrina_name').innerHTML = 'Избранные автомобили'
 
