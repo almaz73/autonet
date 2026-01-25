@@ -1,10 +1,12 @@
 // обработка location.pathname === '/cars/
 import {api_getList} from "@/js/API-base/apibase.js"
-import {declOfNum, getUrlParam, prepareCars} from '@/js/global-func.js'
-import {setExtention} from  "@/js/filter-ctrl-filling.js"
+import {declOfNum, getUrlParam, prepareCars, eventBus} from '@/js/global-func.js'
+import {setExtention} from "@/js/filter/filter-ctrl-filling.js"
 
 const countPerPage = 20
-let extention = false
+const combValuesForAfterUpdate = []
+let ishandEvent
+let extention = false //  Есть ли выбранные элементы в параметрах аждреса
 
 function FillFilterFromAddressBar(filterParams) {
     // заполнение фильтра по параметрам адресной строки
@@ -120,27 +122,35 @@ function FillFilterFromAddressBar(filterParams) {
 }
 
 function setCombName(name, value) {
-    setTimeout(()=>{
-        console.log(name)
-        let comb = document.querySelector(`[data-placeholder="${name}"]`)
+    if (ishandEvent) return false
+    combValuesForAfterUpdate.push({name, value})
+}
+
+eventBus.on('dataUpdated', handleData);
+function handleData() {
+    combValuesForAfterUpdate.forEach(el=>{
+        let comb = document.querySelector(`[data-placeholder="${el.name}"]`)
         if (comb && comb.querySelector('.big-comb__placeholder')) {
-            comb.querySelector('.big-comb__placeholder').innerText = value
+            comb.querySelector('.big-comb__placeholder').innerText = el.value
             comb.querySelector('.big-comb__placeholder').classList.add('bold')
         }
-    }, 2000)
+    })
+    // eventBus.off('dataUpdated', handleData);
 }
 
 function setInputName(name, value) {
-    setTimeout(()=>{
-        let inp = document.querySelector(`[onchange="input_chamged('${name}', this.value)"]`)
-        if (inp) {
-            inp.value = value
-            inp.classList.add('bold')
-        }
-    }, 2000)
+    if (ishandEvent) return false
+    let inp = document.querySelector(`[onchange="input_chamged('${name}', this.value)"]`)
+    if (inp) {
+        inp.value = value
+        inp.classList.add('bold')
+    }
 }
 
-export function fillCars(cars, ishandEvent, filterParams, fill) {
+
+
+export function fillCars(cars, ishandEvent_, filterParams, fill) {
+    ishandEvent = ishandEvent_
     if (!ishandEvent) FillFilterFromAddressBar(filterParams)
 
 

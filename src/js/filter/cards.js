@@ -109,6 +109,7 @@ function galeryEvents(id, images) {
 export function fill(cars, currentCars, totalPages) {
     window.compareCars = currentCars
     window.favorCars = cars
+    if (!cards) return false
     cards.innerHTML = ''
 
     cars.forEach((el, i) => {

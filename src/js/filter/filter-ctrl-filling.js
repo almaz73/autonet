@@ -8,6 +8,7 @@ import {
     api_GetModelList, api_getWheelTypes,
 } from "@/js/API-base/apibase.js"
 import {getUrlParam, globalValues} from '@/js/global-func.js'
+import {eventBus} from '@/js/global-func.js'
 
 
 // В зависимости от состояния фильтра загружаем кобобоксы
@@ -39,9 +40,10 @@ items['Сезон'] = ['Все', 'Зима Шип', 'Лето']
 
 ///////////////////////////
 
-function fillFields() {
+function fillFields(onlyModels) {
     let combs = document.querySelectorAll('comb');
     combs.forEach(comb => {
+        if (onlyModels && comb.dataset.placeholder !== 'Модель') return false
         let comb_name = comb.dataset.placeholder
         let the_Items = items[comb_name];
         if (the_Items) {
@@ -105,6 +107,7 @@ function fillFields() {
             bigCombPlaceholder.classList.add('bold')
         }
     })
+    eventBus.emit('dataUpdated', {});
 }
 
 ///////////////////////////
@@ -115,13 +118,10 @@ export function getModelList(brandName) {
     brand && api_GetModelList(brand.id).then(res => {
         items['Модель'] = res.map(el => el.name)
         globalValues.modelsIds.push(...res)
-        fillFields()
+        fillFields('onlyModel')
     })
 
-    if (!brand) {
-        items['Модель'] = ['Неизвестный бренд']
-        fillFields()
-    }
+    if (!brand) items['Модель'] = ['Неизвестный бренд']
 }
 
 

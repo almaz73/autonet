@@ -1,16 +1,45 @@
 // export let global_brandsIds= [];
 
+export const eventBus = {
+    // Хранилище событий: { 'event_name': [callback1, callback2] }
+    events: {},
+
+    // Подписка на событие
+    on(event, callback) {
+        if (!this.events[event]) {
+            this.events[event] = [];
+        }
+        this.events[event].push(callback);
+    },
+
+    // Отправка события (вызов всех подписчиков)
+    emit(event, data) {
+        if (this.events[event]) {
+            this.events[event].forEach(callback => callback(data));
+        }
+    },
+
+    // Отписка от события
+    off(event, callbackToRemove) {
+        if (this.events[event]) {
+            this.events[event] = this.events[event].filter(
+                callback => callback !== callbackToRemove
+            );
+        }
+    }
+};
+
 export let globalValues = {
     brandsIds: [],
     modelsIds: [],
     gearboxTypes: [],
     engineTypes: [],
     driveTypes: [],
-    wheelTypes:[],
-    bodyTypes:[],
+    wheelTypes: [],
+    bodyTypes: [],
 }
 
-export function formatterShowPrice(val){
+export function formatterShowPrice(val) {
     return parseInt(val).toLocaleString('ru-RU')
 }
 

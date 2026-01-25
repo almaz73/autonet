@@ -183,3 +183,12 @@
     background: var(--color-red);
     color: white;
 }
+
+/**/
+#deleter{
+    color: var(--color-red);
+    padding: 10px 7px;
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
+}

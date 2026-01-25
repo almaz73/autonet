@@ -4,8 +4,12 @@
     border-radius: 5px;
     position: relative;
     height: 18px;
+    position: relative;
 }
 
+.big-combo span {
+    pointer-events: none;
+}
 .big-combo img {
     float: right;
     opacity: 0.5;

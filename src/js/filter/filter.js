@@ -1,8 +1,8 @@
-import {fill} from '@/js/cards.js';
+import {fill} from '@/js/filter/cards.js';
 import {api_getList} from "@/js/API-base/apibase.js"
 import {prepareCars, declOfNum, globalValues} from '@/js/global-func.js'
-import {fillCars} from '@/js/filCars.js'
-import {getModelList, setExtention} from '@/js/filter-ctrl-filling.js'
+import {fillCars} from '@/js/filter/filCars.js'
+import {getModelList, setExtention} from '@/js/filter/filter-ctrl-filling.js'
 import { getUrlParam} from '@/js/global-func.js'
 
 export function filter_changed(items, name) {
@@ -52,6 +52,26 @@ export function filter_changed(items, name) {
 
 export function filter_changed_text(type, val) {
     filterParams[type] = val
+    getVitrina('ishandEvent')
+}
+export function filter_cleaned_comb(name) {
+    filterParams[name] = ''
+    if (name === 'Марка') {
+        filterParams['brand'] = null
+        filterParams['brandId'] = null
+        filterParams['model'] = null
+        filterParams['modelId'] = null
+    }
+    if (name === 'Модель') {
+        filterParams['model'] = null
+        filterParams['modelId'] = null
+    }
+    if (name === 'Тип двигателя') filterParams['engineType'] = null
+    if (name === 'Город') filterParams['city'] = null
+    if (name === 'Тип КПП') filterParams['gearboxType'] = null
+    if (name === 'Тип привода') filterParams['driveType'] = null
+    if (name === 'Руль') filterParams['wheelType'] = null
+    if (name === 'Тип кузова') filterParams['bodyType'] = null
     getVitrina('ishandEvent')
 }
 

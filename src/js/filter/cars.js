@@ -2,41 +2,42 @@ import {getUrlParam} from "@/js/global-func.js";
 
 const whiteFilter = `<div  class="filter-white">
 <div class="filter-white-back filter-fields">
-        <div class="frame-filter__item">
+        <div class="frame-filter__item"
+             onmouseenter="onCard(this)">
             <comb data-placeholder='Марка' />
             <label>Марка</label>
         </div>
-        <div class="frame-filter__item">
+        <div class="frame-filter__item" onmouseenter="onCard(this)">
             <comb data-placeholder='Модель' />
             <label>Модель</label>
         </div>
-        <div class="frame-filter__item">
+        <div class="frame-filter__item" onmouseenter="onCard(this)">
             <comb data-placeholder='Город' />
             <label>Город</label>
         </div>
 
         <div style="flex-grow: 1">
-            <div class="big-combo control-flex" onmouseenter="this.querySelector('input').focus()">
+            <div class="big-combo control-flex" onmouseenter="onCard(this)">
                 <span style="width: 60px">Год от:</span>
                 <input class="big-comb__input" style="width: 40px" 
                 onchange="input_chamged('yearReleasedFrom', this.value)">
             </div>
-        </div>
+        </div> 
 
         <div class="no_advanced">
-            <div class="big-combo control-flex" onmouseenter="this.querySelector('input').focus()">
+            <div class="big-combo control-flex" onmouseenter="onCard(this)">
                 <span style="width: 60px">Год до:</span>
                 <input class="big-comb__input" style="width: 40px" 
                 onchange="input_chamged('yearReleasedTo', this.value)" onclick="this.select()">
             </div>
         </div>
 
-<!--        <div class="frame-filter__item no_advanced">-->
+<!--        <div class="frame-filter__item no_advanced" onmouseenter="onCard(this)">-->
 <!--            <comb data-placeholder='Цвет'/>-->
 <!--        </div>-->
 
         <div class="no_advanced">
-            <div class="big-combo control-flex" onmouseenter="this.querySelector('input').focus()">
+            <div class="big-combo control-flex" onmouseenter="onCard(this)">
                 <span style="width: 80px">Цена от: </span>
                  <input class="big-comb__input" style="width: 60px" 
                 onchange="input_chamged('priceFrom', this.value)" onclick="this.select()">                
@@ -44,7 +45,7 @@ const whiteFilter = `<div  class="filter-white">
         </div>
 
         <div>
-            <div class="big-combo control-flex" onmouseenter="this.querySelector('input').focus()">
+            <div class="big-combo control-flex" onmouseenter="onCard(this)">
                 <span style="width: 80px">Цена до: </span>                 
                 <input class="big-comb__input" style="width: 60px" 
                 onchange="input_chamged('priceTo', this.value)">
@@ -52,7 +53,7 @@ const whiteFilter = `<div  class="filter-white">
         </div>
 
         <div class="no_advanced">
-            <div class="big-combo control-flex" onmouseenter="this.querySelector('input').focus()">
+            <div class="big-combo control-flex" onmouseenter="onCard(this)">
                 <span style="width: 85px">Пробег от: </span>
                  <input class="big-comb__input" style="width: 70px" 
                 onchange="input_chamged('milleageFrom', this.value)" onclick="this.select()">      
@@ -60,46 +61,46 @@ const whiteFilter = `<div  class="filter-white">
         </div>
         
         <div class="no_advanced">
-            <div class="big-combo control-flex" onmouseenter="this.querySelector('input').focus()">
+            <div class="big-combo control-flex" onmouseenter="onCard(this)">
                 <span style="width: 85px">Пробег до: </span>
                  <input class="big-comb__input" style="width: 70px" 
                 onchange="input_chamged('milleageTo', this.value)" onclick="this.select()">                    
             </div>
         </div>
 
-        <div class="frame-filter__item no_advanced">
+        <div class="frame-filter__item no_advanced" onmouseenter="onCard(this)">
             <comb data-placeholder='Тип кузова'/>
         </div>
 
 
 
-        <div class="frame-filter__item no_advanced">
+        <div class="frame-filter__item no_advanced" onmouseenter="onCard(this)">
             <comb data-placeholder='Тип КПП'/>
         </div>
 
-        <div class="frame-filter__item no_advanced">
+        <div class="frame-filter__item no_advanced" onmouseenter="onCard(this)">
             <comb data-placeholder='Тип двигателя'/>
         </div>
 
 <!--        <div class="no_advanced">-->
-<!--            <div class="big-combo control-flex" onmouseenter="this.querySelector('input').focus()">-->
+<!--            <div class="big-combo control-flex" onmouseenter="onCard(this)">-->
 <!--                <span style="width: 160px">Объем двигателя до: </span>-->
 <!--                <input class="big-comb__input" style="width: 60px" value="" onclick="this.select()">-->
 <!--            </div>-->
 <!--        </div>-->
 
 <!--        <div class="no_advanced">-->
-<!--            <div class="big-combo control-flex" onmouseenter="this.querySelector('input').focus()">-->
+<!--            <div class="big-combo control-flex" onmouseenter="onCard(this)">-->
 <!--                <span style="width: 187px">Мощность двигателя до: </span>-->
 <!--                <input class="big-comb__input" style="width: 60px" value="" onclick="this.select()">-->
 <!--            </div>-->
 <!--        </div>-->
 
-        <div class="frame-filter__item no_advanced">
+        <div class="frame-filter__item no_advanced" onmouseenter="onCard(this)">
             <comb data-placeholder='Тип привода'/>
         </div>
 
-        <div class="frame-filter__item no_advanced">
+        <div class="frame-filter__item no_advanced" onmouseenter="onCard(this)">
             <comb data-placeholder='Руль'/>
         </div>
     </div>
@@ -116,7 +117,8 @@ const whiteFilter = `<div  class="filter-white">
             Найдено&nbsp;<span class="number"></span>
         </button>
     </div>
-</div>`
+</div>
+<div id="deleter" title="Очистить">x</div>`
 const carVitrina = `<div class="car_vitrina">
         <h2 id="vitrina_name">Автомобили</h2>
 
@@ -146,7 +148,6 @@ const carVitrina = `<div class="car_vitrina">
     </div><cards class='cards dot4' data-col='dot4'></cards>`
 
 
-
 let brandName = getUrlParam('brand');
 const hasId = getUrlParam('id');
 
@@ -166,4 +167,54 @@ if (hasId) {
 
 }
 
+let deleter = document.querySelector('#deleter')
+let currentInput = null
+let currentComb = null
+
+window.onCard = function (val) {
+    let inp = val.querySelector('input')
+    currentInput = null
+    currentComb = null
+    let xy = val.getBoundingClientRect()
+    if (inp) {
+        let value = val.querySelector('input').value
+        if (value) {
+            currentInput = inp.onchange.toString().slice(42, -16)
+            deleter.style.left = xy.x + 'px'
+            deleter.style.top = (xy.y + window.scrollY) + 'px'
+        }
+    }
+    let select = val.querySelector('.big-comb__selected')
+
+    if (select && select.querySelector('span').classList.contains('bold')) {
+        deleter.style.left = xy.x + 'px'
+        deleter.style.top = (xy.y + window.scrollY) + 'px'
+        currentComb = select.parentElement
+    }
+
+    if (val.querySelector('input')) val.querySelector('input').focus()
+}
+document.querySelector('#deleter').addEventListener('click', () => {
+    if (currentInput) {
+        input_chamged(currentInput, '')
+        cleanImpField(currentInput)
+    }
+    if (currentComb) {
+        currentComb.querySelector('.big-comb__placeholder').innerText = ''
+        if (currentComb.title === 'Марка') {
+            document.querySelector('[data-placeholder="Модель"] .big-comb__placeholder').innerText = ''
+        }
+        cleanCombField(currentComb.title)
+    }
+})
+
+function cleanImpField(name) {
+    let inp = document.querySelector(`[onchange="input_chamged('${name}', this.value)"]`)
+    if (inp) inp.value = ''
+    let comb = document.querySelector(`[data-placeholder="${name}"]`)
+    if (comb) comb.querySelector('.big-comb__placeholder').innerText = ''
+}
+function cleanCombField(name) {
+    comb_cleaned(name)
+}
 
