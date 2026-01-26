@@ -215,6 +215,30 @@ function cleanImpField(name) {
     if (comb) comb.querySelector('.big-comb__placeholder').innerText = ''
 }
 function cleanCombField(name) {
-    comb_cleaned(name)
+    let parts = location.search.split('&')
+    // тут лучше нужно отредактировать адреснуя стрку и нужно перезагрущить
+
+    if (name === 'Марка') {
+        parts[getPartByName(parts, 'brand=')] = '?'
+        parts[getPartByName(parts, 'brandId=')] = ''
+        parts[getPartByName(parts, 'model=')] = ''
+        parts[getPartByName(parts, 'modelId=')] = ''
+    }
+    if (name === 'Модель') {
+        parts[getPartByName(parts, 'model=')] = ''
+        parts[getPartByName(parts, 'modelId=')] = ''
+    }
+    if (name === 'Тип двигателя') parts[getPartByName(parts, 'engineType=')] = ''
+    if (name === 'Город') parts[getPartByName(parts, 'city=')] = ''
+    if (name === 'Тип КПП') parts[getPartByName(parts, 'gearboxType=')] = ''
+    if (name === 'Тип привода') parts[getPartByName(parts, 'driveType=')] = ''
+    if (name === 'Руль') parts[getPartByName(parts, 'wheelType=')] = ''
+    if (name === 'Тип кузова') parts[getPartByName(parts, 'bodyType=')] = ''
+
+    location.href = location.origin + '/cars/' + parts.join('&')
+}
+
+function getPartByName(parts, name) {
+    return parts.findIndex(el => el.includes(name))
 }
 

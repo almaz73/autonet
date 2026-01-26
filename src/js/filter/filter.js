@@ -54,26 +54,6 @@ export function filter_changed_text(type, val) {
     filterParams[type] = val
     getVitrina('ishandEvent')
 }
-export function filter_cleaned_comb(name) {
-    filterParams[name] = ''
-    if (name === 'Марка') {
-        filterParams['brand'] = null
-        filterParams['brandId'] = null
-        filterParams['model'] = null
-        filterParams['modelId'] = null
-    }
-    if (name === 'Модель') {
-        filterParams['model'] = null
-        filterParams['modelId'] = null
-    }
-    if (name === 'Тип двигателя') filterParams['engineType'] = null
-    if (name === 'Город') filterParams['city'] = null
-    if (name === 'Тип КПП') filterParams['gearboxType'] = null
-    if (name === 'Тип привода') filterParams['driveType'] = null
-    if (name === 'Руль') filterParams['wheelType'] = null
-    if (name === 'Тип кузова') filterParams['bodyType'] = null
-    getVitrina('ishandEvent')
-}
 
 let filterParams = {}
 

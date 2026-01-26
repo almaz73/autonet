@@ -1,4 +1,4 @@
-import {filter_changed, filter_changed_text, filter_cleaned_comb} from '@/js/filter/filter.js';
+import {filter_changed, filter_changed_text} from '@/js/filter/filter.js';
 import {items, setExtention} from '@/js/filter/filter-ctrl-filling.js'
 
 
@@ -18,12 +18,6 @@ window.big_comb_select = function(val) {
 window.input_chamged = function(type, val) {
   filter_changed_text(type, val)
 }
-
-window.comb_cleaned = function (name) {
-  filter_cleaned_comb(name)
-}
-
-/* Реагирование текстовых кнопок*/
 
 
 

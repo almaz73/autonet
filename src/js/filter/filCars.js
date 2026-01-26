@@ -153,7 +153,6 @@ export function fillCars(cars, ishandEvent_, filterParams, fill) {
     ishandEvent = ishandEvent_
     if (!ishandEvent) FillFilterFromAddressBar(filterParams)
 
-
     api_getList(countPerPage, filterParams).then(res => {
         // по кнопке Показать
         cars = prepareCars(res.items)
