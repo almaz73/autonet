@@ -19,7 +19,8 @@ export let setExtention = function (val) {
 }
 
 
-export let items = {}; // некоторые поля нужно запросить с обюновляемой базы
+export const items = {}; // некоторые поля нужно запросить с обюновляемой базы
+let items_memory = {}
 items['Марка'] = [] //
 items['Марка'].value = ''; // тут будут выбранные значения
 items['Модель'] = ['е выбрана марка '] //
@@ -47,8 +48,7 @@ function fillFields(onlyModels) {
         let comb_name = comb.dataset.placeholder
         let the_Items = items[comb_name];
         if (the_Items) {
-            let items_list = the_Items.map(item => '<div data-parent="' + comb_name + '">' + item + '</div>')
-
+            let items_list = createFiledsForList(the_Items, comb_name)
             comb.innerHTML = `<div class='big-combo' tabindex='1' title="${the_Items.value || comb_name}">
     <span class='big-comb__selected'>
       <span class='big-comb__placeholder'>${the_Items.value || comb_name}</span>
@@ -79,6 +79,17 @@ function fillFields(onlyModels) {
             bigCombInput.addEventListener('blur', () => blur())
             bigCombInput.addEventListener('click', () => blur())
             bigCombInput.addEventListener('keydown', (e) => e.key === 'Escape' && blur())
+            bigCombInput.addEventListener('input', val=>{
+                let tx = val.target.value
+                if (!items_memory['Марка']) items_memory = JSON.parse(JSON.stringify(items))
+                items[comb_name] = items_memory[comb_name].filter(el => el.includes(val.target.value))
+                if (tx.length > 1) bigCombItems.innerHTML = createFiledsForList(items[comb_name], comb_name).join('')
+                else bigCombItems.innerHTML = createFiledsForList(items_memory[comb_name], comb_name).join('')
+            })
+        }
+
+        function createFiledsForList(list, comb_name) {
+            return list.map(item => '<div data-parent="' + comb_name + '">' + item + '</div>')
         }
 
         function blur() {
@@ -117,6 +128,7 @@ export function getModelList(brandName) {
 
     brand && api_GetModelList(brand.id).then(res => {
         items['Модель'] = res.map(el => el.name)
+        items_memory = {}
         globalValues.modelsIds.push(...res)
         fillFields('onlyModel')
     })
