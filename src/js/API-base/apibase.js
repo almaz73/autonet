@@ -129,5 +129,13 @@ export function api_getBodyTypes(){
     }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
 }
 
+export function api_getYearGap() {
+    let request = server + '/api/Auto/GetYearGap'
+    return fetch(request).then(res => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
+        return res.json();
+    }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
+}
+
 
 

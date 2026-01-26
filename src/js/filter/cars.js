@@ -1,4 +1,5 @@
 import {getUrlParam} from "@/js/global-func.js";
+import {api_getYearGap} from "@/js/API-base/apibase.js";
 
 const whiteFilter = `<div  class="filter-white">
 <div class="filter-white-back filter-fields">
@@ -118,6 +119,10 @@ const whiteFilter = `<div  class="filter-white">
         </button>
     </div>
 </div>
+
+<div  class="date-list" id="list1"></div>
+<div  class="date-list" id="list2"></div>
+
 <div id="deleter" title="Очистить">x</div>`
 const carVitrina = `<div class="car_vitrina">
         <h2 id="vitrina_name">Автомобили</h2>
@@ -163,16 +168,21 @@ if (brandName && !hasId) {
 if (hasId) {
     // document.querySelector('#alone').innerHTML = alone
 
-    console.log('66445',121212)
+    console.log('66445', 121212)
 
 }
 
 let deleter = document.querySelector('#deleter')
 let currentInput = null
 let currentComb = null
+let yearGap = []
+api_getYearGap().then(res => yearGap = res)
 
 window.onCard = function (val) {
     let inp = val.querySelector('input')
+    let datelist1 = document.querySelector('#list1')
+    let datelist2 = document.querySelector('#list2')
+
     currentInput = null
     currentComb = null
     let xy = val.getBoundingClientRect()
@@ -190,6 +200,49 @@ window.onCard = function (val) {
         deleter.style.left = xy.x + 'px'
         deleter.style.top = (xy.y + window.scrollY) + 'px'
         currentComb = select.parentElement
+    }
+
+
+    // Если  поля годов, показываем панели
+    if (val.querySelector('span').innerHTML && ['Год от:'].includes(val.querySelector('span').innerHTML)) {
+        if (!datelist1.innerHTML) {
+            for (let i = +yearGap.from; i < +yearGap.to; i++) {
+                datelist1.innerHTML += `<a>${i}</a>`
+            }
+            let yearsList = datelist1.querySelectorAll('a')
+            yearsList.forEach(el => {
+                el.addEventListener('click', val => {
+                    inp.value = val.target.innerText
+                    input_chamged('yearReleasedFrom', val.target.innerText)
+                    datelist1.style.left = '-1000px'
+                })
+            })
+        }
+        datelist1.style.left = xy.x + 'px'
+        datelist1.style.top = (45 + xy.y + window.scrollY) + 'px'
+        datelist2.style.left = '-1000px'
+
+    } else if (val.querySelector('span').innerHTML && ['Год до:'].includes(val.querySelector('span').innerHTML)) {
+        if (!datelist2.innerHTML) {
+            for (let i = +yearGap.from; i < +yearGap.to; i++) {
+                datelist2.innerHTML += `<a>${i}</a>`
+            }
+            let yearsList = datelist2.querySelectorAll('a')
+            yearsList.forEach(el => {
+                el.addEventListener('click', val => {
+                    inp.value = val.target.innerText
+                    input_chamged('yearReleasedTo', val.target.innerText)
+                    datelist2.style.left = '-1000px'
+                })
+            })
+        }
+
+        datelist2.style.left = xy.x + 'px'
+        datelist2.style.top = (45 + xy.y + window.scrollY) + 'px'
+        datelist1.style.left = '-1000px'
+    } else {
+        datelist1.style.left = '-1000px'
+        datelist2.style.left = '-1000px'
     }
 
     if (val.querySelector('input')) val.querySelector('input').focus()
@@ -214,6 +267,7 @@ function cleanImpField(name) {
     let comb = document.querySelector(`[data-placeholder="${name}"]`)
     if (comb) comb.querySelector('.big-comb__placeholder').innerText = ''
 }
+
 function cleanCombField(name) {
     let parts = location.search.split('&')
     // тут лучше нужно отредактировать адреснуя стрку и нужно перезагрущить
