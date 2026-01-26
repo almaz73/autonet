@@ -410,6 +410,12 @@ document.addEventListener('DOMContentLoaded', () => {
         //     text: "СЕАЗ",
         //     brandId:
         // }
+        {
+            url: "/cars/?brand=jetta",
+            imgSrc: "/icons/jetta.png",
+            text: "JETTA",
+            brandId:"b89675e4-eb1b-4598-8a8f-48e921fed6f6"
+        },
     ]
 
 
@@ -438,13 +444,12 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < 20; i++) {
             let brandName = res[i].name.toUpperCase()
             let brand = brandDatas.find(el => el.text === brandName)
-
-            let url = '/cars/?brand='+brandName+'&brandId='+brand.brandId
+            let url
 
             if (!brand) {
-                console.log("%c Новый НЕнастроенный бренд = ","background: orange; color: black", "", res[i].name)
+                console.log("%c Новый бренд = ","background: orange; color: black", "", res[i].name)
                 // тоже нужно логировать
-            }
+            } else  url = '/cars/?brand='+brandName+'&brandId='+brand.brandId
 
             newList.push({
                 url: brand ? url : `/cars/${brandName}/`,

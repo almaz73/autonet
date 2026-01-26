@@ -204,7 +204,9 @@ window.onCard = function (val) {
 
 
     // Если  поля годов, показываем панели
-    if (val.querySelector('span').innerHTML && ['Год от:'].includes(val.querySelector('span').innerHTML)) {
+    if (val.querySelector('span') &&
+        val.querySelector('span').innerHTML &&
+        ['Год от:'].includes(val.querySelector('span').innerHTML)) {
         if (!datelist1.innerHTML) {
             for (let i = +yearGap.from; i < +yearGap.to; i++) {
                 datelist1.innerHTML += `<a>${i}</a>`
@@ -222,7 +224,9 @@ window.onCard = function (val) {
         datelist1.style.top = (45 + xy.y + window.scrollY) + 'px'
         datelist2.style.left = '-1000px'
 
-    } else if (val.querySelector('span').innerHTML && ['Год до:'].includes(val.querySelector('span').innerHTML)) {
+    } else if (val.querySelector('span') &&
+        val.querySelector('span').innerHTML &&
+        ['Год до:'].includes(val.querySelector('span').innerHTML)) {
         if (!datelist2.innerHTML) {
             for (let i = +yearGap.from; i < +yearGap.to; i++) {
                 datelist2.innerHTML += `<a>${i}</a>`

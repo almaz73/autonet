@@ -173,6 +173,7 @@ export function fillCars(cars, ishandEvent_, filterParams, fill) {
 }
 
 function gotoShowCars() {
+    setTimeout(() => document.querySelector('#filter_cars').removeEventListener('mouseleave', go), 3000)
     document.querySelector('#filter_cars').addEventListener('mouseleave', go)
     function go() {
         document.getElementById('set_filter').scrollIntoView({behavior: 'smooth', block: 'start'}); // прокрутка

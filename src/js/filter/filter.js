@@ -14,6 +14,7 @@ export function filter_changed(items, name) {
             filterParams['brand'] = brand.name
             filterParams['modelId'] =''
             filterParams['model'] =''
+            setTimeout(()=>document.querySelector('[data-placeholder="Модель"] .big-comb__placeholder').innerText = '', 2000)
         }
         getModelList(items[name].value)
     }
