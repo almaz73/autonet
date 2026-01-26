@@ -28,7 +28,7 @@ api_getFullAutoInfo(id).then(res => {
         autoMill[0].innerHTML = autoMill[1].innerHTML = formatterShowPrice(res.milleage) + ' км'
 
         let autoEngine = document.querySelectorAll('.auto-engine')
-        autoEngine[0].innerHTML = autoEngine[1].innerHTML = res.engineCapacity + ' л / ' + res.enginePower + ' люс / ' + res.engineType
+        autoEngine[0].innerHTML = autoEngine[1].innerHTML = res.engineCapacity + ' л / ' + res.enginePower + ' л.с / ' + res.engineType
 
         let autoGear = document.querySelectorAll('.auto-gear')
         autoGear[0].innerHTML = autoGear[1].innerHTML = res.gearboxType || ''
