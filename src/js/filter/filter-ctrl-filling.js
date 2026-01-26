@@ -83,7 +83,7 @@ function fillFields(onlyModels) {
                 let tx = val.target.value
                 if (!items_memory['Марка']) items_memory = JSON.parse(JSON.stringify(items))
                 items[comb_name] = items_memory[comb_name].filter(el => el.includes(val.target.value))
-                if (tx.length > 1) bigCombItems.innerHTML = createFiledsForList(items[comb_name], comb_name).join('')
+                if (tx) bigCombItems.innerHTML = createFiledsForList(items[comb_name], comb_name).join('')
                 else bigCombItems.innerHTML = createFiledsForList(items_memory[comb_name], comb_name).join('')
             })
         }

@@ -179,7 +179,7 @@ window.onCard = function (val) {
     if (inp) {
         let value = val.querySelector('input').value
         if (value) {
-            currentInput = inp.onchange.toString().slice(42, -16)
+            currentInput = inp.onchange && inp.onchange.toString().slice(42, -16)
             deleter.style.left = xy.x + 'px'
             deleter.style.top = (xy.y + window.scrollY) + 'px'
         }

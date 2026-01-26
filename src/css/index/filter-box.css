@@ -191,4 +191,5 @@
     position: absolute;
     z-index: 1;
     cursor: pointer;
+    left: -1000px
 }

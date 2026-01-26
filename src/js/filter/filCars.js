@@ -162,10 +162,20 @@ export function fillCars(cars, ishandEvent_, filterParams, fill) {
         document.querySelector('#set_filter span.number').innerHTML = res.totalCount
             + ' ' +declOfNum(res.totalCount, ['предложение', 'предложения', 'предложений'])
         if (ishandEvent || filterParams['brandId']) {
-            document.getElementById('set_filter').scrollIntoView({behavior: 'smooth', block: 'start'}); // прокрутка
+            gotoShowCars()
             document.getElementById('brands_dynamic').style.display = 'none'
             document.querySelector('.filter-white').style.marginBottom = 0
-            document.querySelector('#vitrina_name').innerHTML = 'Автомобили ' + (filterParams.brand || '')  +' '+ (filterParams.model || '')
+            document.querySelector('#vitrina_name').innerHTML = 'Автомобили ' + (filterParams.brand || '')
+                +' '+ (filterParams.model || '')
+                + ' ' + (filterParams.city ? `(город ${filterParams.city})` : ``)
         }
     })
+}
+
+function gotoShowCars() {
+    document.querySelector('#filter_cars').addEventListener('mouseleave', go)
+    function go() {
+        document.getElementById('set_filter').scrollIntoView({behavior: 'smooth', block: 'start'}); // прокрутка
+        document.querySelector('#filter_cars').removeEventListener('mouseleave', go)
+    }
 }
