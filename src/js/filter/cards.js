@@ -78,17 +78,18 @@ function galeryEvents(id, images) {
     photo.addEventListener('mousemove', (e) => {
         let z = parseInt(e.layerX * 100 / pieceWidth / 20);
         if (z_zona !== z) {
+            getWidth()
             let loader = e.target.parentNode.parentNode.querySelector('.smallloader')
             photo.src = images[z]; // меняем, если только сменится зона
-            loader.classList.remove('hide')
-            photo.onload = () => loader.classList.add('hide')
+            loader.classList.remove('hide') // показываю ромашку
+            photo.onload = () => loader.classList.add('hide') // скрываю, если уже загружено
             z_zona = z
         }
         red.style.left = z * 20 + '%';
     });
     gallery.addEventListener('mouseleave', () => {
         photo.src = images[0];
-        red.style.left = '0%';
+        red.style.left = '0';
     });
     gallery.addEventListener('touchstart', e => offset1 = e.targetTouches[0].pageX - gallery.offsetLeft);
     gallery.addEventListener('touchmove', e => offset2 = e.targetTouches[0].pageX - gallery.offsetLeft);
@@ -139,12 +140,13 @@ export function fill(cars, currentCars, totalPages) {
 let type_views;
 let pieceWidth = 285;
 let getWidth = () => {
+    console.log(111)
     let cart__slide = document.querySelector('cards .cart__slide')
     if (cart__slide) pieceWidth = cart__slide.clientWidth;
 
     if (window.current_slide) pieceWidth = window.current_slide.clientWidth;
 };
-document.addEventListener('DOMContentLoaded', () => setTimeout(getWidth, 500));
+// document.addEventListener('DOMContentLoaded', () => setTimeout(getWidth, 500));
 window.addEventListener('resize', () => window.current_slide && window.current_slide.classList.remove('watch'));
 
 setTimeout(() => {
