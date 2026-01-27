@@ -24,7 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
     /* Сюда же добавим управление видом фильтров */
     let advanced = document.querySelector('.frame-filter__controls-advanced')
     let filterAdvanced = document.querySelector('.filter-fields')
+    let carVitrina= document.querySelector('#car-vitrina')
+    let datelist1 = document.querySelector('#list1')
+    let datelist2 = document.querySelector('#list2')
 
+    carVitrina && carVitrina.addEventListener('mousemove', () => {
+        if (datelist1) datelist1.style.left = '-1000px'
+        if (datelist2) datelist2.style.left = '-1000px'
+    })
 
     advanced && advanced.addEventListener('click', () => {
         if (advanced.classList.length === 1) {
@@ -35,6 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
             advanced.classList.remove("active")
             filterAdvanced.classList.remove("active")
         }
+        let deleter = document.querySelector('#deleter')
+        if (deleter) deleter.style.left = '-1000px'
     })
 
 // Переключение на шины

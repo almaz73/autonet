@@ -62,7 +62,7 @@ api_getFullAutoInfo(id).then(res => {
         autoMore.innerHTML = `<div class="fotos_black" onclick="showMore()">${res.images.length} фото</div>`
 
         res.images.forEach((el, index) => {
-            autoMore.innerHTML += `<div onClick="showSlide(${index + 1})"><img src="${el}" alt=""></div>`
+            autoMore.innerHTML += `<div onClick="showSlide(${index})"><img src="${el}" alt=""></div>`
         })
     }
 

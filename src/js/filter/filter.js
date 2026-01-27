@@ -224,8 +224,6 @@ window.goToCars = function () {
     if (filterParams.milleageFrom) link += '&milleageFrom=' + filterParams.milleageFrom
     if (filterParams.milleageTo) link += '&milleageTo=' + filterParams.milleageTo
 
-
-
    location.href = '/cars/'+link
 }
 window.clearFilter = function () {

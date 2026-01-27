@@ -20,7 +20,7 @@ const whiteFilter = `<div  class="filter-white">
         <div style="flex-grow: 1">
             <div class="big-combo control-flex" onmouseenter="onCard(this)">
                 <span style="width: 60px">Год от:</span>
-                <input class="big-comb__input" style="width: 40px" 
+                <input class="big-comb__input" type="number" style="width: 80px" 
                 onchange="input_chamged('yearReleasedFrom', this.value)">
             </div>
         </div> 
@@ -28,7 +28,7 @@ const whiteFilter = `<div  class="filter-white">
         <div class="no_advanced">
             <div class="big-combo control-flex" onmouseenter="onCard(this)">
                 <span style="width: 60px">Год до:</span>
-                <input class="big-comb__input" style="width: 40px" 
+                <input class="big-comb__input" type="number" style="width: 80px" 
                 onchange="input_chamged('yearReleasedTo', this.value)" onclick="this.select()">
             </div>
         </div>

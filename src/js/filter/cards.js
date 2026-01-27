@@ -173,6 +173,7 @@ function setTypeView(e) {
     if (e.srcElement.classList.value === 'dot1') cards.classList.add('cards', 'dot1');
 
     if (e.srcElement.classList.add) {
+        console.log('333')
         for (let childrenKey in type_views.children) type_views.children[childrenKey].classList && type_views.children[childrenKey].classList.remove('active');
         e.srcElement.classList.add('active');
     }

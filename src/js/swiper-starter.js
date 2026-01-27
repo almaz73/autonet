@@ -23,7 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
 export function initSwipper() {
     let params = {
         spaceBetween: 30,
-        loop: true,
+        // loop: true,
+        utoplay: {delay: 5000, disableOnInteraction: false},
         autoHeight: true,
         centeredSlides: true,
         pagination: {
@@ -48,7 +49,6 @@ export function initSwipper() {
         }
     }
 
-    if (!location.pathname.includes('car.html')) params.autoplay = {delay: 5000, disableOnInteraction: false}
     swiper = new Swiper('.mySwiper', params)
 }
 

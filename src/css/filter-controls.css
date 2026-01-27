@@ -203,20 +203,19 @@
     left: -1000px;
     padding: 12px;
     display: flex;
-    border-radius: 5px;
+    border-radius: 10px;
     flex-wrap: wrap;
-    max-width: 80px;
+    max-width: 190px;
     row-gap: 8px;
     max-height: 300px;
     overflow-y: auto;
 }
 
 .date-list a {
-    background: #efefef;
-    padding: 8px;
+    padding: 10px;
     cursor: pointer;
 }
 
 .date-list a:hover {
-    background: #ffdee4;
+    background: #efefef;
 }
