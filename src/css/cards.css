@@ -22,7 +22,19 @@
     font-weight: 600;
     display: grid;
     grid-template-columns: 47% auto;
-    grid-template-areas: 'c_slide name' 'c_slide c_price' 'c_slide c_info' 'c_slide  c_box'
+    grid-template-areas: 'c_slide name' 'c_slide c_price' 'c_slide c_info' 'c_slide  c_box';
+    position: relative;
+}
+
+.smallloader {
+    position: absolute;
+    width: 40px;
+    right: 0;
+    z-index: 10;
+}
+
+.smallloader.hide {
+    display: none;
 }
 
 .cart .penta_img {

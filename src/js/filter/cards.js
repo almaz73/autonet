@@ -14,13 +14,14 @@ function createNode(item, N) {
     let txt
     if (!isNaN(N)) {
         txt = `<div class='cart' id='galery_${N}' >
-              <div class='cart__slide'>                    
+              <img src="/src/images/load.gif" alt="" class="smallloader hide"/>
+              <div class='cart__slide'>            
                   <img class='photo' alt=''>
                   <div class='cart__blank'>${item.address}</div>
                   <div class='field'>
                       <div class='red'></div>
                   </div>
-                  <span class='dark-fon'/>                    
+                  <span class='dark-fon'/>
               </div>
               <a class="big_link" href='${item.href}' title="перейти">
                   <div class='name'>
@@ -65,8 +66,6 @@ function createNode(item, N) {
 }
 
 function galeryEvents(id, images) {
-
-
     const gallery = document.querySelector('#galery_' + id + ' .cart__slide');
     window.current_slide = null;
 
@@ -79,7 +78,10 @@ function galeryEvents(id, images) {
     photo.addEventListener('mousemove', (e) => {
         let z = parseInt(e.layerX * 100 / pieceWidth / 20);
         if (z_zona !== z) {
+            let loader = e.target.parentNode.parentNode.querySelector('.smallloader')
             photo.src = images[z]; // меняем, если только сменится зона
+            loader.classList.remove('hide')
+            photo.onload = () => loader.classList.add('hide')
             z_zona = z
         }
         red.style.left = z * 20 + '%';
@@ -120,22 +122,22 @@ export function fill(cars, currentCars, totalPages) {
 
     if (!cards.innerHTML && location.pathname.includes('favorite')) cards.innerHTML = '<div class="nodata" style="width: 200%;text-align:center">HЕТ ИЗБРАННЫХ АВТОМОБИЛЕЙ </div>'
 
-    if (location.pathname !== '/') cards.innerHTML += `<div class="pager">Страницы: <span id="pager"></span></div>`
+    if (location.pathname !== '/' && location.pathname !== '/personal/favorite-cars/') cards.innerHTML += `<div class="pager">1111 Страницы: <span id="pager"></span></div>`
 
-    preparePager( totalPages ) // todo СЕРВЕР ОТДАСТ
+    preparePager(totalPages)
     initChosen()
     initFavotite()
 
     cars.forEach((el, i) => galeryEvents(i + 1, el.photos)); // прикрепляем события
     type_views = document.querySelector('.type_views');
-    type_views.addEventListener('click', (e) => {
+    type_views && type_views.addEventListener('click', (e) => {
         setTypeView(e)
         localStorage.setItem('TYPE_VIEW', e.srcElement.classList.value.slice(0, 4))
     })
 }
 
 let type_views;
-let pieceWidth= 285;
+let pieceWidth = 285;
 let getWidth = () => {
     let cart__slide = document.querySelector('cards .cart__slide')
     if (cart__slide) pieceWidth = cart__slide.clientWidth;
