@@ -127,9 +127,14 @@ export function fill(cars, currentCars, totalPages) {
     initFavotite()
 
     cars.forEach((el, i) => galeryEvents(i + 1, el.photos)); // прикрепляем события
+    type_views = document.querySelector('.type_views');
+    type_views.addEventListener('click', (e) => {
+        setTypeView(e)
+        localStorage.setItem('TYPE_VIEW', e.srcElement.classList.value.slice(0, 4))
+    })
 }
 
-let type_views = document.querySelector('.type_views');
+let type_views;
 let pieceWidth= 285;
 let getWidth = () => {
     let cart__slide = document.querySelector('cards .cart__slide')
@@ -147,10 +152,6 @@ setTimeout(() => {
     dot && setTypeView({srcElement: {classList: {value: TYPE_VIEW}}})
 })
 
-type_views && type_views.addEventListener('click', (e) => {
-    setTypeView(e)
-    localStorage.setItem('TYPE_VIEW', e.srcElement.classList.value.slice(0, 4))
-})
 
 function setTypeView(e) {
     // выбор варианта отображения галерии

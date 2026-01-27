@@ -61,7 +61,6 @@ let filterParams = {}
 /** Запрос сервера и отображения витрины **/
 function getVitrina(ishandEvent) {
     let cars_link = document.querySelector('.cars_link')
-    let view_buttons = document.querySelector('.view_buttons')
 
     if (location.pathname === '/') {
         if (cars_link) cars_link.style.display = 'block'
@@ -69,7 +68,6 @@ function getVitrina(ishandEvent) {
         localStorage.removeItem('TYPE_VIEW')
     } else {
         if (cars_link) cars_link.style.display = 'none'
-        if (view_buttons) view_buttons.style.display = 'block'
         if (!localStorage.getItem('TYPE_VIEW')) localStorage.setItem('TYPE_VIEW', 'dot8')
     }
 
@@ -192,7 +190,7 @@ function getVitrina(ishandEvent) {
         cars = cars ? JSON.parse(cars) : []
         setTimeout(()=>fill(cars))
     } else {
-        document.querySelector('#vitrina_name').innerHTML = '111 Автомобили'
+        document.querySelector('#vitrina_name').innerHTML = 'Автомобили'
         console.log(' тут карточек нет, либо не сформированы')
     }
 }

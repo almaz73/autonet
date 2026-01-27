@@ -127,12 +127,7 @@ const whiteFilter = `<div  class="filter-white">
 const carVitrina = `<div class="car_vitrina">
         <h2 id="vitrina_name">Автомобили</h2>
 
-        <a href="/cars#vitrina_name" class="page__link cars_link" style="display: none">
-            <img src="/src/svg/red_arrow.svg" loading='lazy' alt=''>
-            <span>Все предложения</span>
-        </a>
-
-        <span class="view_buttons" style="display: none">
+        <span class="view_buttons">
              <span class='type_views'>
                 <div class='dot8'>
                     <img src='/svg/dot8.svg' alt="">
@@ -146,8 +141,8 @@ const carVitrina = `<div class="car_vitrina">
             </span>
 
             <span class='coin'>
-                цена&nbsp;
-                <img src="/src/svg/arrow-down.svg" alt="arrow" loading="lazy" width='10' height='18'>
+                цена&nbsp;&nbsp;
+                <img src="/svg/arrow-down.svg" alt="arrow" loading="lazy" width='10' height='18'>
             </span>
         </span>
     </div><cards class='cards dot4' data-col='dot4'></cards>`

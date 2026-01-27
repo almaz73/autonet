@@ -157,11 +157,6 @@ main h2, main h1 {
     align-items: center
 }
 
-@media (max-width: 500px) {
-    .car_vitrina{
-        display: ruby;
-    }
-}
 
 .pager{
     grid-column: 1 / -1
