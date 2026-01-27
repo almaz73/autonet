@@ -14,14 +14,16 @@ function createNode(item, N) {
     let txt
     if (!isNaN(N)) {
         txt = `<div class='cart' id='galery_${N}' >
-              <img src="/src/images/load.gif" alt="" class="smallloader hide"/>
+              <img src="/icons/load.gif" alt="" class="smallloader hide"/>
               <div class='cart__slide'>            
                   <img class='photo' alt=''>
                   <div class='cart__blank'>${item.address}</div>
                   <div class='field'>
                       <div class='red'></div>
                   </div>
-                  <span class='dark-fon'/>
+                  <span class='dark-fon'>
+                    <img src="/icons/load.gif" alt="" class="gloaballoader"/>
+                  </span>
               </div>
               <a class="big_link" href='${item.href}' title="перейти">
                   <div class='name'>
@@ -79,10 +81,15 @@ function galeryEvents(id, images) {
         let z = parseInt(e.layerX * 100 / pieceWidth / 20);
         if (z_zona !== z) {
             getWidth()
+            let gloaballoader = e.target.parentNode.querySelector('.gloaballoader')
             let loader = e.target.parentNode.parentNode.querySelector('.smallloader')
             photo.src = images[z]; // меняем, если только сменится зона
             loader.classList.remove('hide') // показываю ромашку
-            photo.onload = () => loader.classList.add('hide') // скрываю, если уже загружено
+            gloaballoader.classList.remove('hide')
+            photo.onload = () => { // скрываю, если уже загружено
+                loader.classList.add('hide')
+                gloaballoader.classList.add('hide')
+            }
             z_zona = z
         }
         red.style.left = z * 20 + '%';
@@ -140,7 +147,6 @@ export function fill(cars, currentCars, totalPages) {
 let type_views;
 let pieceWidth = 285;
 let getWidth = () => {
-    console.log(111)
     let cart__slide = document.querySelector('cards .cart__slide')
     if (cart__slide) pieceWidth = cart__slide.clientWidth;
 
