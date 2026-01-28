@@ -19,11 +19,23 @@ window.addFavorite = function (val) {
     }
 
     if (cars) {
-        cars = cars.filter(el=>el)
+        cars = cars.filter(el => el)
         localStorage.setItem('FavoriteCars', JSON.stringify(cars))
         initFavotite(cars)
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    let bt = document.querySelector('#noFavotite')
+    let noFavotiteDelete = document.querySelector('#noFavotiteDelete')
+    if (!bt) return false
+    let cars = getFavoriteCars()
+    if (!cars.length) {
+        bt.style.display = 'block'
+        noFavotiteDelete.style.display = 'none'
+    }
+    else bt.style.display = 'none'
+})
 
 export function initFavotite(cars_) {
     let cars = cars_ || getFavoriteCars()
@@ -42,4 +54,9 @@ function getFavoriteCars() {
     else cars = []
     // window.compareCars = cars
     return cars
+}
+
+window.deleteAllFavoriteCar = function () {
+    localStorage.setItem('FavoriteCars', JSON.stringify([]))
+    window.getVitrina()
 }

@@ -128,7 +128,6 @@ export function fill(cars, currentCars, totalPages) {
         if (i === 0 && (location.pathname === '/cars/' || location.pathname === '/autosite/cars/')) createNode(null, 'swiper_buy')
     }); // прикручиваем html
 
-    if (!cards.innerHTML && location.pathname.includes('favorite')) cards.innerHTML = '<div class="nodata" style="width: 200%;text-align:center">HЕТ ИЗБРАННЫХ АВТОМОБИЛЕЙ </div>'
 
     if (location.pathname !== '/' && location.pathname !== '/personal/favorite-cars/') cards.innerHTML += `<div class="pager">1111 Страницы: <span id="pager"></span></div>`
 

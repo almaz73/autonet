@@ -15,6 +15,7 @@
     <meta name='robots' content='index, follow'>
     <link rel='stylesheet' href='/src/css/style.css' />
     <link rel='stylesheet' href='/src/css/index/index.css' />
+    <link rel='stylesheet' href='/src/css/compared.css'/>
     <script type='module' src='/src/js/main.js'></script>
     <script type='module'  src="/src/js/filter/filter-controls.js"></script>
 
@@ -32,6 +33,13 @@
     </div>
 
     {{> car-vitrina}}
+    <div class="compare-clear" id="noFavotite" >
+        <div class="favotite">HЕТ ИЗБРАННЫХ АВТОМОБИЛЕЙ</div>
+    </div>
+
+    <div class="compare-clear" id="noFavotiteDelete">
+        <button id="delete-all" onclick="deleteAllFavoriteCar()">Удалить все избранные автомобили</button>
+    </div>
 </main>
 
 {{> "footer/footer" }}
