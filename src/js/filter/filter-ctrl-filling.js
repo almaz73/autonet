@@ -5,7 +5,10 @@ import {
     api_getDriveTypes,
     api_getEngineTypes,
     api_getGearboxTypes,
-    api_GetModelList, api_getWheelTypes, api_пetColorList,
+    api_GetModelList,
+    api_getWheelTypes,
+    api_getColorList,
+
 } from "@/js/API-base/apibase.js"
 import {getUrlParam, globalValues} from '@/js/global-func.js'
 import {eventBus} from '@/js/global-func.js'
@@ -187,7 +190,7 @@ function getDatas() {
                 resolve()
             })
         }), extention && new Promise(resolve => {
-            api_пetColorList().then(res => {
+            api_getColorList().then(res => {
                 items['Цвет'] = res.map(el => el.name)
                 globalValues.bodyColors.push(...res)
                 resolve()

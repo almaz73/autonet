@@ -138,7 +138,7 @@ export function api_getYearGap() {
     }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
 }
 
-export function api_пetColorList() {
+export function api_getColorList() {
     let request = server + '/api/Auto/GetColorList'
     return fetch(request).then(res => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
