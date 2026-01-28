@@ -87,7 +87,7 @@ function showChosen(storage_) {
 
         storage.forEach(el => {
             DELETE += `<td><a href="javascript:deleteCar('${el.id}')">Удалить</a></td>`
-            PREVIEW_PICTURE += `<td><a href="${el.href}"><img src="${el.images}" alt=""></a></td>`
+            PREVIEW_PICTURE += `<td><a href="/cars/car.html?id=${el.id}"><img src="${el.images}" alt=""></a></td>`
             NAME += `<td><a href="/cars/car.html?id=${el.id}">"${el.brand} ${el.model}</a></td>`
             PRICE += `<td>${formatterShowPrice(el.price)} руб.</td>`
             if (el.milleage) PROBEG += `<td>${formatterShowPrice(el.milleage) || ''} км</td>`

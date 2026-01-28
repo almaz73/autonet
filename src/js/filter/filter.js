@@ -243,9 +243,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let statePriceOrder = null
     let price_order = document.querySelector('.coin');
     price_order && price_order.addEventListener('click', () => {
-        if (statePriceOrder === false) statePriceOrder = null
-        else if (statePriceOrder === null) statePriceOrder = true
-        else if (statePriceOrder === true) statePriceOrder = false
+        if (statePriceOrder === false) statePriceOrder = true
+        else if (statePriceOrder === null) statePriceOrder = false
+        else if (statePriceOrder === true) statePriceOrder = null
         setPriceOrder(statePriceOrder)
         filter_changed_text('priceOrder', statePriceOrder)
     });
