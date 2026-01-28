@@ -186,11 +186,3 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-let price_order = document.querySelector('.type_views.coin');
-
-if (price_order) price_order.addEventListener('click', () => {
-    let more = price_order.querySelector('img').style.rotate !== '180deg';
-    price_order.querySelector('img').style.rotate = more ? '180deg' : '0deg';
-    console.log('запрос нужен more = ', more);
-    // запрос нужен
-});

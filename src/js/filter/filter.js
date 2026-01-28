@@ -1,6 +1,6 @@
 import {fill} from '@/js/filter/cards.js';
 import {api_getList} from "@/js/API-base/apibase.js"
-import {prepareCars, declOfNum, globalValues} from '@/js/global-func.js'
+import {prepareCars, declOfNum, globalValues, setPriceOrder} from '@/js/global-func.js'
 import {fillCars} from '@/js/filter/filCars.js'
 import {getModelList, setExtention} from '@/js/filter/filter-ctrl-filling.js'
 import { getUrlParam} from '@/js/global-func.js'
@@ -225,13 +225,13 @@ window.goToCars = function () {
         link += '&colorId=' + filterParams.colorId
         link += '&color=' + filterParams.color
     }
-
     if (filterParams.yearReleasedFrom) link += '&yearReleasedFrom=' + filterParams.yearReleasedFrom
     if (filterParams.yearReleasedTo) link += '&yearReleasedTo=' + filterParams.yearReleasedTo    
     if (filterParams.priceTo) link += '&priceTo=' + filterParams.priceTo
     if (filterParams.priceFrom) link += '&priceFrom=' + filterParams.priceFrom
     if (filterParams.milleageFrom) link += '&milleageFrom=' + filterParams.milleageFrom
     if (filterParams.milleageTo) link += '&milleageTo=' + filterParams.milleageTo
+    if (filterParams.priceOrder!==null) link += '&priceOrder=' + filterParams.priceOrder
 
    location.href = '/cars/'+link
 }
@@ -239,4 +239,14 @@ window.clearFilter = function () {
     location.href = location.pathname
 }
 
-
+document.addEventListener('DOMContentLoaded', () => {
+    let statePriceOrder = null
+    let price_order = document.querySelector('.coin');
+    price_order && price_order.addEventListener('click', () => {
+        if (statePriceOrder === false) statePriceOrder = null
+        else if (statePriceOrder === null) statePriceOrder = true
+        else if (statePriceOrder === true) statePriceOrder = false
+        setPriceOrder(statePriceOrder)
+        filter_changed_text('priceOrder', statePriceOrder)
+    });
+})

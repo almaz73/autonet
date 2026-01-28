@@ -298,6 +298,16 @@ cards.dot1 .cart__box--bottom {
     cursor: pointer;
 }
 
+.coin span {
+    display: flex;
+    gap: 8px;
+}
+
+.coin span:hover {
+    font-weight: bold;
+    cursor: pointer;
+}
+
 @media (max-width: 600px) {
     .type_views {
         display: none;

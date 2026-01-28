@@ -81,3 +81,20 @@ export function getUrlParam(val) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(val)
 }
+
+export function setPriceOrder(statePriceOrder){
+    let price_order = document.querySelector('.coin');
+
+    if(statePriceOrder===false) {
+        price_order.querySelector('span').title='По возрастанию'
+        price_order.querySelector('img').style.transform = 'rotate(180deg)'
+    }
+    if(statePriceOrder===null) {
+        price_order.querySelector('span').title='Не упорядоченно'
+        price_order.querySelector('img').style.transform = 'rotate(270deg)';
+    }
+    if(statePriceOrder===true) {
+        price_order.querySelector('span').title='По убыванию'
+        price_order.querySelector('img').style.transform = 'rotate(0deg)'
+    }
+}

@@ -1,6 +1,6 @@
 // обработка location.pathname === '/cars/
 import {api_getList} from "@/js/API-base/apibase.js"
-import {declOfNum, getUrlParam, prepareCars, eventBus} from '@/js/global-func.js'
+import {declOfNum, getUrlParam, prepareCars, eventBus, setPriceOrder} from '@/js/global-func.js'
 import {setExtention} from "@/js/filter/filter-ctrl-filling.js"
 
 const countPerPage = 20
@@ -124,6 +124,12 @@ function FillFilterFromAddressBar(filterParams) {
         filterAdvanced.classList.add("active")
     }
 
+    const priceOrder = getUrlParam('priceOrder')
+    if (priceOrder) {
+        filterParams['priceOrder'] = getUrlParam('priceOrder') === 'true'
+        setPriceOrder(filterParams['priceOrder'])
+    }
+
     filterParams['offset'] = getUrlParam('page')
     setExtention(extention)
 }
@@ -133,7 +139,7 @@ function setCombName(name, value) {
     combValuesForAfterUpdate.push({name, value})
 }
 
-eventBus.on('dataUpdated', handleData);
+eventBus.on('dataUpdated', handleData); // событие загрузки всех комбобоксов из сервера
 function handleData() {
     combValuesForAfterUpdate.forEach(el=>{
         let comb = document.querySelector(`[data-placeholder="${el.name}"]`)
