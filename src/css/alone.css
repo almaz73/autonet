@@ -317,17 +317,24 @@
 
 .alone .mySwiper:hover .open_all {
     display: block;
+    opacity: 1;
 }
 
 .open_all {
     position: absolute;
-    display: none;
+    opacity: 0;
     z-index: 1000;
     color: white;
-    background: black;
-    padding: 2px 12px;
-    right: 0;
+    background: #99999999;
+    padding: 12px 24px;
+    right: 3px;
+    top: 3px;
     cursor: pointer;
+    border-radius: 10px;
+    transition: opacity .4s;
+}
+.open_all:hover {
+    background: black;
 }
 
 .big.big_viewer .open_all {

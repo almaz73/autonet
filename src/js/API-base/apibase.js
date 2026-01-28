@@ -38,6 +38,7 @@ export function api_getList(limit, params) {
     if (params.priceTo) request += '&priceTo=' + params.priceTo
     if (params.milleageFrom) request += '&milleageFrom=' + params.milleageFrom
     if (params.milleageTo) request += '&milleageTo=' + params.milleageTo
+    if (params.colorId) request += '&colorId=' + params.colorId
 
 
 
@@ -137,5 +138,11 @@ export function api_getYearGap() {
     }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
 }
 
-
+export function api_пetColorList() {
+    let request = server + '/api/Auto/GetColorList'
+    return fetch(request).then(res => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
+        return res.json();
+    }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
+}
 

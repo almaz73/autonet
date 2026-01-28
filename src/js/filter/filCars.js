@@ -32,6 +32,13 @@ function FillFilterFromAddressBar(filterParams) {
         setCombName('Город', city)
     }
 
+    const colorId = getUrlParam('colorId')
+    const color = getUrlParam('color')
+    if (colorId) {
+        filterParams.colorId = colorId
+        setCombName('Цвет', color)
+    }
+
     const gearboxType = getUrlParam('gearboxType')
     if (gearboxType) {
         extention = true

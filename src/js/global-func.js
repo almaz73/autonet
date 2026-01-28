@@ -37,6 +37,7 @@ export let globalValues = {
     driveTypes: [],
     wheelTypes: [],
     bodyTypes: [],
+    bodyColors:[]
 }
 
 export function formatterShowPrice(val) {

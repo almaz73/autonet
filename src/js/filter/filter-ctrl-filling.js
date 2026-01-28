@@ -5,7 +5,7 @@ import {
     api_getDriveTypes,
     api_getEngineTypes,
     api_getGearboxTypes,
-    api_GetModelList, api_getWheelTypes,
+    api_GetModelList, api_getWheelTypes, api_пetColorList,
 } from "@/js/API-base/apibase.js"
 import {getUrlParam, globalValues} from '@/js/global-func.js'
 import {eventBus} from '@/js/global-func.js'
@@ -23,10 +23,10 @@ export const items = {}; // некоторые поля нужно запрос�
 let items_memory = {}
 items['Марка'] = [] //
 items['Марка'].value = ''; // тут будут выбранные значения
-items['Модель'] = ['е выбрана марка '] //
+items['Модель'] = ['Не выбрана марка '] //
 items['Город'] = [] //
 items['Тип кузова'] = [] //
-items['Цвет'] = ['Все', 'Бежевый', 'Белый', 'Голубой', 'Желтый', 'Зелёный', 'Золотой', 'Коричневый', 'Красный', 'Оранжевый', 'Серебряный', 'Серый', 'Синий', 'Фиолетовый', 'Чёрный']
+items['Цвет'] = [] //
 items['Тип КПП'] = []
 items['Тип двигателя'] = [] // 'Все', 'Бензиновый', 'Гибридный', 'Дизельный', 'Электро'
 items['Тип привода'] = []// ['Все', 'Задний', 'Передний', 'Полный']
@@ -108,6 +108,7 @@ function fillFields(onlyModels) {
             'Руль',
             'Модель',
             'Город',
+            'Цвет',
             'Производитель',
             'Ширина профиля',
             'Высота профиля',
@@ -183,6 +184,12 @@ function getDatas() {
             api_getBodyTypes().then(res => {
                 items['Тип кузова'] = res.map(el => el.title)
                 globalValues.bodyTypes.push(...res)
+                resolve()
+            })
+        }), extention && new Promise(resolve => {
+            api_пetColorList().then(res => {
+                items['Цвет'] = res.map(el => el.name)
+                globalValues.bodyColors.push(...res)
                 resolve()
             })
         }),

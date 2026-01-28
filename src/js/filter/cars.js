@@ -32,10 +32,11 @@ const whiteFilter = `<div  class="filter-white">
                 onchange="input_chamged('yearReleasedTo', this.value)" onclick="this.select()">
             </div>
         </div>
-
-<!--        <div class="frame-filter__item no_advanced" onmouseenter="onCard(this)">-->
-<!--            <comb data-placeholder='Цвет'/>-->
-<!--        </div>-->
+        
+        <div class="frame-filter__item no_advanced"  onmouseenter="onCard(this)">
+            <comb data-placeholder='Цвет' />
+            <label>Цвет</label>
+        </div> 
 
         <div class="no_advanced">
             <div class="big-combo control-flex" onmouseenter="onCard(this)">
@@ -287,6 +288,10 @@ function cleanCombField(name) {
     if (name === 'Тип привода') parts[getPartByName(parts, 'driveType=')] = ''
     if (name === 'Руль') parts[getPartByName(parts, 'wheelType=')] = ''
     if (name === 'Тип кузова') parts[getPartByName(parts, 'bodyType=')] = ''
+    if (name === 'Цвет') {
+        parts[getPartByName(parts, 'color=')] = ''
+        parts[getPartByName(parts, 'colorId=')] = ''
+    }
 
     location.href = location.origin + '/cars/' + parts.join('&')
 }

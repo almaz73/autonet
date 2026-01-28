@@ -46,6 +46,11 @@ export function filter_changed(items, name) {
         let element = globalValues.bodyTypes.find(el=>el.title === items[name].value)
         filterParams.bodyType = element.name
     }
+    if (name === 'Цвет') {
+        let element = globalValues.bodyColors.find(el=> el.name === items[name].value)
+        filterParams.colorId = element.id
+        filterParams.color = element.name
+    }
 
 
     getVitrina('ishandEvent')
@@ -216,6 +221,10 @@ window.goToCars = function () {
     if (filterParams.driveType) link += '&driveType=' + filterParams.driveType
     if (filterParams.wheelType) link += '&wheelType=' + filterParams.wheelType
     if (filterParams.bodyType) link += '&bodyType=' + filterParams.bodyType
+    if (filterParams.colorId) {
+        link += '&colorId=' + filterParams.colorId
+        link += '&color=' + filterParams.color
+    }
 
     if (filterParams.yearReleasedFrom) link += '&yearReleasedFrom=' + filterParams.yearReleasedFrom
     if (filterParams.yearReleasedTo) link += '&yearReleasedTo=' + filterParams.yearReleasedTo    
