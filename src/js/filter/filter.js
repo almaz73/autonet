@@ -231,7 +231,8 @@ window.goToCars = function () {
     if (filterParams.priceFrom) link += '&priceFrom=' + filterParams.priceFrom
     if (filterParams.milleageFrom) link += '&milleageFrom=' + filterParams.milleageFrom
     if (filterParams.milleageTo) link += '&milleageTo=' + filterParams.milleageTo
-    if (filterParams.priceOrder!==null) link += '&priceOrder=' + filterParams.priceOrder
+    if (filterParams.engineCapacity) link += '&engineCapacity=' + filterParams.engineCapacity
+    if (filterParams.priceOrder!==null && filterParams.priceOrder!==undefined) link += '&priceOrder=' + filterParams.priceOrder
 
    location.href = '/cars/'+link
 }

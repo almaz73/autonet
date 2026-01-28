@@ -84,12 +84,13 @@ const whiteFilter = `<div  class="filter-white">
             <comb data-placeholder='Тип двигателя'/>
         </div>
 
-<!--        <div class="no_advanced">-->
-<!--            <div class="big-combo control-flex" onmouseenter="onCard(this)">-->
-<!--                <span style="width: 160px">Объем двигателя до: </span>-->
-<!--                <input class="big-comb__input" style="width: 60px" value="" onclick="this.select()">-->
-<!--            </div>-->
-<!--        </div>-->
+        <div class="no_advanced">
+           <div class="big-combo control-flex" onmouseenter="onCard(this)">
+            <span style="width: 160px">Объем двигателя до: </span>
+             <input class="big-comb__input" style="width: 60px" 
+            onchange="input_chamged('engineCapacity', this.value)" onclick="this.select()">      
+          </div>
+        </div>
 
 <!--        <div class="no_advanced">-->
 <!--            <div class="big-combo control-flex" onmouseenter="onCard(this)">-->

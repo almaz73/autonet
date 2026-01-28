@@ -33,15 +33,14 @@ export function api_getList(limit, params) {
     if (params.driveType) request += '&driveType=' + params.driveType
     if (params.wheelType) request += '&wheelType=' + params.wheelType
     if (params.bodyType) request += '&bodyType=' + params.bodyType
+    if (params.colorId) request += '&colorId=' + params.colorId
 
     if (params.yearReleasedFrom) request += '&yearReleasedFrom=' + params.yearReleasedFrom
     if (params.yearReleasedTo) request += '&yearReleasedTo=' + params.yearReleasedTo    
     if (params.priceTo) request += '&priceTo=' + params.priceTo
     if (params.milleageFrom) request += '&milleageFrom=' + params.milleageFrom
     if (params.milleageTo) request += '&milleageTo=' + params.milleageTo
-    if (params.colorId) request += '&colorId=' + params.colorId
-
-
+    if (params.engineCapacity) request += '&engineCapacity=' + params.engineCapacity
 
 
 

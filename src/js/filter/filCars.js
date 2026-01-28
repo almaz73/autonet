@@ -108,6 +108,12 @@ function FillFilterFromAddressBar(filterParams) {
         setInputName('milleageTo', milleageTo)
     }
 
+    const engineCapacity = getUrlParam('engineCapacity')
+    if (engineCapacity) {
+        extention = true
+        filterParams.engineCapacity = engineCapacity
+        setInputName('engineCapacity', engineCapacity)
+    }
 
     const priceFrom = getUrlParam('priceFrom')
     if (priceFrom) {
