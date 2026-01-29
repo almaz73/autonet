@@ -3,6 +3,7 @@ import {formatterShowPrice, prepareCars, getUrlParam} from "@/js/global-func.js"
 import {initSwipper} from "@/js/swiper-starter.js";
 import {initFavotite} from "@/js/favoriteCars.js";
 import {initChosen} from "@/js/compareCars.js";
+import {calculator} from "@/js/slider.js"
 
 const id = getUrlParam('id');
 
@@ -92,6 +93,7 @@ api_getFullAutoInfo(id).then(res => {
 
         initFavotite()
         initChosen()
+        calculator(res.price) // покажем на слайдере
     }
 })
 
