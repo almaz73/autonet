@@ -1,4 +1,4 @@
-import"./main-CnetR8Gc.js";/* empty css              */import"./brands-icons-BNerEG5_.js";import{g as h}from"./global-func-DUNaBt0x.js";import{a as y}from"./favoriteCars-CC-tudLi.js";import"./filter-controls-DNxRePLo.js";/* empty css                          */import"./swiper_buy-CDu4HQCt.js";import"./swiper-starter-DZVLhqYS.js";import"./compareCars-2XmigLAs.js";const _=`<div  class="filter-white">
+import"./main-d0NEtNi6.js";/* empty css                        */import"./brands-icons-DA9kZvfx.js";import{g as h}from"./global-func-DUNaBt0x.js";import{a as y}from"./favoriteCars-D9vwcQjx.js";import"./filter-controls-29FCQWxR.js";/* empty css                          */import"./swiper_buy-CDu4HQCt.js";import"./swiper-starter-DZVLhqYS.js";import"./compareCars-2XmigLAs.js";const _=`<div  class="filter-white">
 <div class="filter-white-back filter-fields">
         <div class="frame-filter__item"
              onmouseenter="onCard(this)">
@@ -81,12 +81,13 @@ import"./main-CnetR8Gc.js";/* empty css              */import"./brands-icons-BNe
             <comb data-placeholder='Тип двигателя'/>
         </div>
 
-<!--        <div class="no_advanced">-->
-<!--            <div class="big-combo control-flex" onmouseenter="onCard(this)">-->
-<!--                <span style="width: 160px">Объем двигателя до: </span>-->
-<!--                <input class="big-comb__input" style="width: 60px" value="" onclick="this.select()">-->
-<!--            </div>-->
-<!--        </div>-->
+        <div class="no_advanced">
+           <div class="big-combo control-flex" onmouseenter="onCard(this)">
+            <span style="width: 160px">Объем двигателя до: </span>
+             <input class="big-comb__input" style="width: 60px" 
+            onchange="input_chamged('engineCapacity', this.value)" onclick="this.select()">      
+          </div>
+        </div>
 
 <!--        <div class="no_advanced">-->
 <!--            <div class="big-combo control-flex" onmouseenter="onCard(this)">-->
