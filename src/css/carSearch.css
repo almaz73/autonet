@@ -1,8 +1,8 @@
-.car-search{
-    max-width: 1180px;
-    margin: 0 auto;
+/*.car-search{*/
+/*    max-width: 1180px;*/
+/*    margin: 0 auto;*/
 
-}
+/*}*/
 .tires_sizes{
     position: fixed;
     top: 100px;
@@ -15,12 +15,12 @@
 /*    display: none;*/
 /*}*/
 
-.car-search__content{
-    border-radius: 15px;
-    background: var(--color-grey);
-    width: 100%;
-    min-height: 60px;
-}
+/*.car-search__content{*/
+/*    border-radius: 15px;*/
+/*    background: var(--color-grey);*/
+/*    width: 100%;*/
+/*    min-height: 60px;*/
+/*}*/
 
 .tires_sizes .tires-flex {
     display: none; /*grid*/

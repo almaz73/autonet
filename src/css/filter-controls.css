@@ -1,3 +1,10 @@
+
+@import url('@/css/index/brands-icons.css');
+@import url('@/css/cards.css');
+@import url('@/css/index/filter-box.css');
+@import url('@/css/abdulnasyrov.css');
+@import url('@/css/carSearch.css');
+
 .big-combo {
     background: white;
     padding: 12px;

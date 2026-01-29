@@ -1,0 +1,125 @@
+.main_cred {
+    margin-top: 60px;
+}
+
+.main_cred-col {
+    padding: 16px;
+    background: white;
+    float: left;
+    display: inline;
+    width: calc(50% - 32px);
+}
+
+@media (max-width: 575px) {
+    .main_cred-col {
+        width: calc(100% - 32px);
+    }
+
+    .main_cred-col.first {
+        width: calc(50% - 32px);
+    }
+}
+
+
+.cred-small {
+    font-size: 0.8125em;
+}
+
+.cred-big {
+    color: #000;
+    font-size: 1.33em;
+    line-height: 1.4em;
+    font-weight: 600;
+}
+
+.slider__ui {
+    margin-top: 16px;
+
+    height: 4px;
+    background-color: #CACACA;
+    border-radius: 3px;
+    position: relative;
+}
+
+.slider__ui .slider__ui-range {
+    position: absolute;
+    height: 4px;
+    background-color: var(--color-red);
+}
+
+.slider__ui .slider__ui-handle {
+    cursor: pointer;
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    top: -8px;
+    background-color: var(--color-red);
+    border-radius: 50%;
+}
+
+.main_cred-col.field {
+    position: relative;
+}
+
+.main_cred-col.field input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 7px 10px;
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 0.875em;
+    font-weight: 600;
+    outline: none;
+    border: none;
+    height: 2.8125rem;
+    background-color: #f2f2f7;
+}
+
+.main_cred-col.field input:hover .main_cred-col.field label {
+    left: -1000px;
+}
+
+.main_cred-col.field label {
+    position: absolute;
+    left: 27px;
+    top: 28px;
+    pointer-events: none;
+}
+
+.main_cred-col input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+    margin-top: 2px;
+    transition: all 0.2s ease;
+}
+
+.main_cred-col.sender {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #7d7d7d;
+}
+
+.main_cred-col.sender a {
+    white-space: nowrap;
+    color: #000;
+}
+
+.main_cred-col.desk {
+    font-weight: 600;
+    font-size: 0.75em;
+    color: #7d7d7d;
+}
+
+.main_cred-col.desk a {
+    outline: none;
+    border: none;
+    text-decoration: none;
+    color: #000;
+    white-space: nowrap;
+}
