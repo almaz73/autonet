@@ -30,53 +30,49 @@
     <link rel="stylesheet" href="/src/css/swiper.css"/>
 </head>
 <body>
+{{> "header/header" }}
 <main>
-{{> "alone/cred"}}
+    <div class='page_padding_20'>
+        <div class='bread_cranbs'>
+            <a href='/'>Главная</a>
+            <a href='/cars/'>Автомобили</a>
+            <span id="auto-brand-path">
+                <!-- <a href='/cars/'>
+                  Автомобили ВАЗ (LADA) с пробегом
+                </a>-->
+            </span>
+            <span class="auto-name">
+              <!--ВАЗ (LADA) 2106-->
+            </span>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="alone">
+            <div class="left">
+                {{> "alone/big-photo"}}
+
+                {{> "alone/address"}}
+
+                <div class="sticky-left">
+                    {{> "alone/charaсteristiс"}}
+                </div>
+
+                {{> "alone/equipment"}}
+                <abdul></abdul>
+                {{> "alone/cred"}}
+            </div>
+            <div class="right">
+                <div class="sticky">
+                    {{> "alone/charaсteristiс"}}
+                </div>
+            </div>
+        </div>
+    </div>
+
 </main>
 
-<!--{{> "header/header" }}-->
-<!--<main>-->
-<!--    <div class='page_padding_20'>-->
-<!--        <div class='bread_cranbs'>-->
-<!--            <a href='/'>Главная</a>-->
-<!--            <a href='/cars/'>Автомобили</a>-->
-<!--            <span id="auto-brand-path">-->
-<!--                &lt;!&ndash; <a href='/cars/'>-->
-<!--                  Автомобили ВАЗ (LADA) с пробегом-->
-<!--                </a>&ndash;&gt;-->
-<!--            </span>-->
-<!--            <span class="auto-name">-->
-<!--              &lt;!&ndash;ВАЗ (LADA) 2106&ndash;&gt;-->
-<!--            </span>-->
-<!--        </div>-->
-<!--    </div>-->
-
-<!--    <div class="container">-->
-<!--        <div class="alone">-->
-<!--            <div class="left">-->
-<!--                {{> "alone/big-photo"}}-->
-
-<!--                {{> "alone/address"}}-->
-
-<!--                <div class="sticky-left">-->
-<!--                    {{> "alone/charaсteristiс"}}-->
-<!--                </div>-->
-
-<!--                {{> "alone/equipment"}}-->
-<!--                <abdul></abdul>-->
-<!--                {{> "alone/cred"}}-->
-<!--            </div>-->
-<!--            <div class="right">-->
-<!--                <div class="sticky">-->
-<!--                    {{> "alone/charaсteristiс"}}-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-
-<!--</main>-->
-
-<!--{{> "footer/footer" }}-->
+{{> "footer/footer" }}
 
 <script defer src='../../../swiper-bundle.min.js'></script>
 </body>
