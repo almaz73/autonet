@@ -1,5 +1,5 @@
 import {api_getFullAutoInfo} from "@/js/API-base/apibase.js"
-import {formatterShowPrice, prepareCars, getUrlParam} from "@/js/global-func.js";
+import {formatterShowPrice, prepareCars, getUrlParam, } from "@/js/global-func.js";
 import {initSwipper} from "@/js/swiper-starter.js";
 import {initFavotite} from "@/js/favoriteCars.js";
 import {initChosen} from "@/js/compareCars.js";

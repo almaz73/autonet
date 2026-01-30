@@ -1,16 +1,36 @@
 const server = 'https://ext.cartat.ru/exchange'
 
+export function api_postCallToSell(params) {
+    let request = server + '/api/Feedback/PostCallToSell'
+
+    return fetch(request, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify({body: params})
+    })
+        .then(res => res.json())
+        .then(res => res)
+        .catch(error => console.error('Ошибка:', error));
+
+    return fetch(request).then(res => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
+        return res.json();
+    }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
+}
+
 /*** Получение кол-во автомобилей разбитых по бренду. Отсортированно от большего к меньшему ***/
 export function api_GetCarCount() {
     let request = server + '/api/Auto/GetCarCount'
 
-    return fetch(request).then(response => {
-        if (!response.ok) {
+    return fetch(request).then(res => {
+        if (!res.ok) {
             // Если статус ответа не находится в диапазоне 2xx, генерируется ошибка.
-            throw new Error(`HTTP error! status: ${response.status}`);
+            throw new Error(`HTTP error! status: ${res.status}`);
             // todo нужно бы логировать все клиентские ошибки на сервере
         }
-        return response.json();
+        return res.json();
     }).then(res => {
         return res
     }).catch(error => {
@@ -36,23 +56,21 @@ export function api_getList(limit, params) {
     if (params.colorId) request += '&colorId=' + params.colorId
 
     if (params.yearReleasedFrom) request += '&yearReleasedFrom=' + params.yearReleasedFrom
-    if (params.yearReleasedTo) request += '&yearReleasedTo=' + params.yearReleasedTo    
+    if (params.yearReleasedTo) request += '&yearReleasedTo=' + params.yearReleasedTo
     if (params.priceTo) request += '&priceTo=' + params.priceTo
     if (params.milleageFrom) request += '&milleageFrom=' + params.milleageFrom
     if (params.milleageTo) request += '&milleageTo=' + params.milleageTo
     if (params.engineCapacity) request += '&engineCapacity=' + params.engineCapacity
 
 
-
-
-    return fetch(request).then(response => {
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
+    return fetch(request).then(res => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
 
         /** убираем крутилку */
         let preload_getList = document.querySelector('#preload_getList')
         if (preload_getList) preload_getList.style.display = 'none'
 
-        return response.json();
+        return res.json();
     }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
 }
 
@@ -92,14 +110,15 @@ export function api_getCities() {
     }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
 }
 
-export function api_getGearboxTypes(){
+export function api_getGearboxTypes() {
     let request = server + '/api/Auto/GetGearboxTypes'
     return fetch(request).then(res => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
         return res.json();
     }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
 }
-export function api_getEngineTypes(){
+
+export function api_getEngineTypes() {
     let request = server + '/api/Auto/GetEngineTypes'
     return fetch(request).then(res => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
@@ -107,7 +126,7 @@ export function api_getEngineTypes(){
     }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
 }
 
-export function api_getDriveTypes(){
+export function api_getDriveTypes() {
     let request = server + '/api/Auto/getDriveTypes'
     return fetch(request).then(res => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
@@ -115,14 +134,15 @@ export function api_getDriveTypes(){
     }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
 }
 
-export function api_getWheelTypes(){
+export function api_getWheelTypes() {
     let request = server + '/api/Auto/getWheelTypes'
     return fetch(request).then(res => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
         return res.json();
     }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
 }
-export function api_getBodyTypes(){
+
+export function api_getBodyTypes() {
     let request = server + '/api/Auto/getBodyTypes'
     return fetch(request).then(res => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)

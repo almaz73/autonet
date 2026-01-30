@@ -41,15 +41,13 @@
 
 
   <div class="main_cred_row">
-    <div class="main_cred-col field">
-      <label for="you_name"> Ваше имя</label>
-      <input id="you_name">
-
+    <div class="main_cred-col field name">
+      <label class="placehold" for="you_name"> Ваше имя *</label>
+      <input placeholder=" " onmouseenter="this.focus()">
     </div>
-    <div class="main_cred-col field">
-      <label for="your_tel"> Ваше телефон</label>
-      <input id="your_tel">
-
+    <div class="main_cred-col field tel">
+      <label class="placehold"> Ваше телефон *</label>
+      <input placeholder=" " onmouseenter="this.focus()" oninput="formattingPhone(this)">
     </div>
   </div>
   <div style="clear: both"></div>
@@ -67,16 +65,19 @@
 
 
   <div class="main_cred_row">
-    <div class="main_cred-col sender" style="display: flex; gap: 8px">
+    <div class="main_cred-col sender">
       <input type="checkbox" id="personal_ag">
       <label for="personal_ag">
         Нажав кнопку «Отправить» я даю согласие
         на обработку
         <a href="/privacy-policy/" target="_blank">персональных данных</a>
       </label>
+
     </div>
     <div class="main_cred-col">
-
+      <div class="attent">
+        Вы должны дать согласие на обработку персональных данных
+      </div>
     </div>
   </div>
   <div style="clear: both"></div>

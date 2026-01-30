@@ -1,4 +1,8 @@
-import {declOfNum, formatterShowPrice} from '@/js/global-func.js'
+import {declOfNum, formatterShowPrice, formattingPhone, simplePhone} from '@/js/global-func.js'
+import {api_postCallToSell} from "@/js/API-base/apibase.js";
+import {message} from "@/js/message.js"
+
+window.formattingPhone = formattingPhone
 
 /** slide1 **/
 const slider1 = document.querySelector('.slider__ui.slider1');
@@ -74,14 +78,15 @@ function slider_mover(slider1, sliderКange, sliderHandle, type) {
 let price = 0
 let year = 5
 let credit = 0
+let forMonth = 0
 
 export function calculator(val) {
-    val = 2000000
     price = parseInt(val)
     credit = price / 2
     field1.innerHTML = formatterShowPrice(price / 2) + ' ₽'
     field2.innerHTML = formatterShowPrice(credit) + ' ₽'
-    field3.innerHTML = 'от ' + formatterShowPrice(credit / 60 * 1.149) + ' ₽/мес'
+    forMonth = credit / 60 * 1.149
+    field3.innerHTML = 'от ' + formatterShowPrice(forMonth) + ' ₽/мес'
 }
 
 function changePrice(val) {
@@ -102,3 +107,56 @@ function changeYear(val) {
     if (val === 5) field3.innerHTML = 'от ' + formatterShowPrice(credit / 60 * 1.149) + ' ₽/мес'
     year = val
 }
+
+/** раздел отправки данных формы **/
+let input_name = document.querySelector('.main_cred-col.name input')
+let input_tel = document.querySelector('.main_cred-col.tel input')
+
+
+function clearFields() {
+    input_name.value = ''
+    input_tel.value = ''
+}
+
+function check() {
+    let check = false
+    if (!input_name.value) {
+        input_name.style.background = 'pink'
+        check = true
+    } else input_name.style.background = '#f2f2f7'
+
+    if (!input_tel.value) {
+        input_tel.style.background = 'pink'
+        check = true
+    } else input_tel.style.background = '#f2f2f7'
+    if (!document.getElementById('personal_ag').checked) {
+        document.querySelector('.attent').style.display = 'block'
+        document.querySelector('.main_cred-col.sender').style.background = 'pink'
+        check = true
+    } else document.querySelector('.main_cred-col.sender').style.background = 'initial'
+
+    return check
+}
+
+document.querySelector('.page__btn--main').addEventListener('click', res => {
+
+    if (check()) return false
+
+    let params = {
+        formName: 'spesialCredit',
+        price: price,
+        credit: credit,
+        forMonth: forMonth,
+        year: field4.innerHTML,
+        fio: input_name.value,
+        tel: simplePhone(input_tel.value),
+    }
+
+    api_postCallToSell(params).then(res => {
+        if (res && res.ok)message('Запрос успешно отправлен')
+        else message('Ошибка при отправки запроса', 'error')
+        clearFields()
+    })
+
+})
+

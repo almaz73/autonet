@@ -37,7 +37,7 @@ export let globalValues = {
     driveTypes: [],
     wheelTypes: [],
     bodyTypes: [],
-    bodyColors:[]
+    bodyColors: []
 }
 
 export function formatterShowPrice(val) {
@@ -82,19 +82,51 @@ export function getUrlParam(val) {
     return urlParams.get(val)
 }
 
-export function setPriceOrder(statePriceOrder){
+export function setPriceOrder(statePriceOrder) {
     let price_order = document.querySelector('.coin');
 
-    if(statePriceOrder===false) {
-        price_order.querySelector('span').title='По возрастанию'
+    if (statePriceOrder === false) {
+        price_order.querySelector('span').title = 'По возрастанию'
         price_order.querySelector('img').style.transform = 'rotate(180deg)'
     }
-    if(statePriceOrder===null) {
-        price_order.querySelector('span').title='Не упорядоченно'
+    if (statePriceOrder === null) {
+        price_order.querySelector('span').title = 'Не упорядоченно'
         price_order.querySelector('img').style.transform = 'rotate(270deg)';
     }
-    if(statePriceOrder===true) {
-        price_order.querySelector('span').title='По убыванию'
+    if (statePriceOrder === true) {
+        price_order.querySelector('span').title = 'По убыванию'
         price_order.querySelector('img').style.transform = 'rotate(0deg)'
     }
+}
+
+
+export const formattingPhone = function (self) {
+    let val = self.value
+
+    if (!val) return ''
+
+    let txt = val.replace(/\D/g, ''),
+        res = "";
+
+    if (val.length < 2) return txt
+
+    if (["7", "8", "9"].indexOf(txt[0]) > -1) {
+        if (txt[0] == "9") txt = "7" + txt;
+        const firstSymbols = (txt[0] == "8") ? "8" : "+7";
+        res = firstSymbols + " ";
+        if (txt.length > 1) res += '(' + txt.substring(1, 4);
+        if (txt.length >= 5) res += ') ' + txt.substring(4, 7);
+        if (txt.length >= 8) res += '-' + txt.substring(7, 9);
+        if (txt.length >= 10) res += '-' + txt.substring(9, 11);
+    } else {
+        res = txt.substring(0, 11)
+    }
+    self.value = res
+}
+
+// телефон должен состоять только из цифр
+export const simplePhone = function (val) {
+    if (!val) return ''
+    if (val.slice(0, 2) == '+7') val = val.replaceAll('+7', '8')
+    return val.replaceAll(' ', '').replaceAll('+', '').replaceAll('(', '').replaceAll(')', '').replaceAll('-', '')
 }
