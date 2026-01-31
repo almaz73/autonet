@@ -1,27 +1,38 @@
-const parent = document.querySelector('.capctha-div')
-if (parent) {
-    parent.innerHTML = `<p class="instructions">
+// капчу можно использовать сразу несколько на одной странице.
+// для улучшения можно добавить назначение секретного числа серверу.
+document.addEventListener('DOMContentLoaded', () => {
+    const parents = document.querySelectorAll('.capctha-div')
+
+    parents.forEach((el, ind) => {
+        let order = '_' + ind
+        let parent = el
+
+        if (parent) {
+            parent.innerHTML = `<p class="instructions ${order}">
           Подтвердите, что вы <b style="font-size: larger">не робот</b><br>
           Перетащите квадрат в белую область</p>
-        <p class="result ">✅<span>Спасибо !</span></p>
-        <div class="target-area" id="targetArea"></div>
-        <div class="puzzle-piece" id="puzzlePiece">⇦ ⇨</div>`
-}
+        <p class="result">✅<span>Спасибо !</span></p>
+        <div class="target-area ${order}"></div>
+        <div class="puzzle-piece ${order}">⇦ ⇨</div>`
+
+            new PuzzleCaptcha(order, parent);
+        }
+    })
+});
+
 
 class PuzzleCaptcha {
-    constructor() {
-        this.puzzlePiece = document.getElementById('puzzlePiece');
-        this.targetArea = document.querySelector('.target-area');
-        this.instructions = document.querySelector('.instructions');
-        this.resultMessage = document.getElementById('resultMessage');
-
+    constructor(order, parent) {
+        this.parent = parent
+        this.puzzlePiece = document.querySelector(`.puzzle-piece.${order}`);
+        this.targetArea = document.querySelector(`.target-area.${order}`);
+        this.instructions = document.querySelector(`.instructions.${order}`);
         this.isDragging = false;
         this.initialX = 0;
         this.currentX = 0; // Начальная позиция X
         this.offsetX = 0;
         this.targetX = parseInt(Math.random() * 73) + 5; // Позиция цели X (300px ширина контейнера - 40px правая граница - 80px ширина элемента)
-
-        parent && this.init();
+        this.parent && this.init();
     }
 
     init() {
@@ -88,18 +99,14 @@ class PuzzleCaptcha {
     }
 
     verify() {
-        const parentRect = parent.getBoundingClientRect();
+        const parentRect = this.parent.getBoundingClientRect();
         const childRect = this.puzzlePiece.getBoundingClientRect();
         const result = document.querySelector('.result')
         const offsetLeftPercent = ((childRect.left - parentRect.left) / parentRect.width) * 100;
         if (Math.abs(this.targetX - offsetLeftPercent) < 1) {
-            parent.style.border = ''
-            parent.classList.add('checked')
+            this.parent.style.border = ''
+            this.parent.classList.add('checked')
         }
     }
 }
 
-// Инициализация капчи после загрузки страницы
-document.addEventListener('DOMContentLoaded', () => {
-    new PuzzleCaptcha();
-});
