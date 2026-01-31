@@ -337,7 +337,7 @@
     transition: opacity .4s;
 }
 .open_all:hover {
-    background: black;
+    background:  #00000099;
 }
 
 .big.big_viewer .open_all {

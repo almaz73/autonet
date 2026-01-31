@@ -3,7 +3,7 @@ import {formatterShowPrice, prepareCars, getUrlParam, } from "@/js/global-func.j
 import {initSwipper} from "@/js/swiper-starter.js";
 import {initFavotite} from "@/js/favoriteCars.js";
 import {initChosen} from "@/js/compareCars.js";
-import {calculator} from "@/js/slider.js"
+import {calculator} from "@/js/credit.js"
 
 const id = getUrlParam('id');
 

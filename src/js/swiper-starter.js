@@ -57,7 +57,8 @@ window.showSlide = function (val) {
 }
 
 window.showMore = function (){
-    fotos.style.height = 'inherit';
+    if (fotos.style.height === 'inherit') fotos.style.height = '73px'
+    else fotos.style.height = 'inherit';
     if (fotos_black) fotos_black.style.display = 'none'
 }
 

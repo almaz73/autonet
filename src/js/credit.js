@@ -133,12 +133,20 @@ function check() {
         document.querySelector('.attent').style.display = 'block'
         document.querySelector('.main_cred-col.sender').style.background = 'pink'
         check = true
-    } else document.querySelector('.main_cred-col.sender').style.background = 'initial'
+    } else {
+        document.querySelector('.main_cred-col.sender').style.background = 'initial'
+        document.querySelector('.attent').style.display = 'none'
+    }
+    let captcha = document.querySelector('.capctha-div')
+    if (!captcha.classList.contains('checked')) {
+        captcha.style.border = '1px solid red';
+        check = true
+    } else captcha.style.border = '';
 
     return check
 }
 
-document.querySelector('.page__btn--main').addEventListener('click', res => {
+document.querySelector('.bid').addEventListener('click', res => {
 
     if (check()) return false
 
