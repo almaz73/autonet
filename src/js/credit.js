@@ -35,44 +35,49 @@ function slider_mover(slider1, sliderКange, sliderHandle, type) {
     });
     document.addEventListener('mousemove', (e) => {
         if (isDragging) {
-            let newLeft = startLeft + (e.clientX - startX);
-
-            if (newLeft < 0) newLeft = 0
-            if (newLeft > slider1.offsetWidth) newLeft = slider1.offsetWidth
-
-            let w = slider1.offsetWidth
-            let tx = ''
-            if (type === 'second') {
-                if (newLeft < w / 8) {
-                    newLeft = 0
-                    changeYear(1)
-                }
-                if (newLeft >= w / 8 && newLeft < w / 8 * 3) {
-                    newLeft = w / 4
-                    changeYear(2)
-                }
-                if (newLeft >= w / 8 * 3 && newLeft < w / 8 * 5) {
-                    newLeft = w / 2
-                    changeYear(3)
-                }
-                if (newLeft >= w / 8 * 5 && newLeft < w / 8 * 7) {
-                    newLeft = w / 4 * 3
-                    changeYear(4)
-                }
-                if (newLeft >= w / 8 * 7) {
-                    newLeft = w
-                    changeYear(5)
-                }
-            } else changePrice(newLeft / slider1.offsetWidth)
-
-            sliderКange.style.width = newLeft + 'px'
-            sliderHandle.style.left = (newLeft - 10) + 'px';
+            setPoint(e, type)
         }
     });
     document.addEventListener('mouseup', () => {
         isDragging = false;
         sliderHandle.style.cursor = 'grab';
     });
+    slider1.addEventListener('click', (e) => setPoint(e))
+
+    function setPoint(e, type) {
+        let newLeft = startLeft + (e.clientX - startX);
+        if (isNaN(newLeft)) return false
+
+        if (newLeft < 0) newLeft = 0
+        if (newLeft > slider1.offsetWidth) newLeft = slider1.offsetWidth
+
+        let w = slider1.offsetWidth
+        if (type === 'second') {
+            if (newLeft < w / 8) {
+                newLeft = 0
+                changeYear(1)
+            }
+            if (newLeft >= w / 8 && newLeft < w / 8 * 3) {
+                newLeft = w / 4
+                changeYear(2)
+            }
+            if (newLeft >= w / 8 * 3 && newLeft < w / 8 * 5) {
+                newLeft = w / 2
+                changeYear(3)
+            }
+            if (newLeft >= w / 8 * 5 && newLeft < w / 8 * 7) {
+                newLeft = w / 4 * 3
+                changeYear(4)
+            }
+            if (newLeft >= w / 8 * 7) {
+                newLeft = w
+                changeYear(5)
+            }
+        } else changePrice(newLeft / slider1.offsetWidth)
+
+        sliderКange.style.width = newLeft + 'px'
+        sliderHandle.style.left = (newLeft - 10) + 'px';
+    }
 }
 
 let price = 0
@@ -161,7 +166,7 @@ document.querySelector('.bid').addEventListener('click', res => {
     }
 
     api_postCallToSell(params).then(res => {
-        if (res && res.ok)message('Запрос успешно отправлен')
+        if (res && res.ok) message('Запрос успешно отправлен')
         else message('Ошибка при отправки запроса', 'error')
         clearFields()
     })

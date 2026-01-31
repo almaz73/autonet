@@ -92,6 +92,10 @@
     color: #7d7d7d;
 }
 
+.main_cred-col.sender label{
+    cursor: pointer;
+}
+
 .attent {
     color: var(--color-red);
     display: none;

@@ -75,6 +75,10 @@
     background: white;
 }
 
+.capctha-div.checked .result {
+    display: flex;
+}
+
 .result span {
     color: black;
     font-size: 18px;

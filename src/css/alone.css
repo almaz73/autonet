@@ -406,6 +406,5 @@
 @media  (max-width: 640px) {
     .main__card-product--accordion .complect ul {
         columns: 1;
-        background: orange;
     }
 }

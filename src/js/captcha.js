@@ -93,7 +93,6 @@ class PuzzleCaptcha {
         const result = document.querySelector('.result')
         const offsetLeftPercent = ((childRect.left - parentRect.left) / parentRect.width) * 100;
         if (Math.abs(this.targetX - offsetLeftPercent) < 1) {
-            result.style.display = 'flex'
             parent.style.border = ''
             parent.classList.add('checked')
         }
