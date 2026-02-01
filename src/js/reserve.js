@@ -55,7 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let parans = {
             name: fio.value,
             phone: simplePhone(tel.value),
-            email: email.value
+            email: email.value,
+            id: id
         }
         api_postCallToSell(parans).then(res => {
             if (res && res.ok) {
