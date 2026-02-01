@@ -1,4 +1,5 @@
 // export let global_brandsIds= [];
+import {message} from "@/js/message.js";
 
 export const eventBus = {
     // Хранилище событий: { 'event_name': [callback1, callback2] }
@@ -129,4 +130,10 @@ export const simplePhone = function (val) {
     if (!val) return ''
     if (val.slice(0, 2) == '+7') val = val.replaceAll('+7', '8')
     return val.replaceAll(' ', '').replaceAll('+', '').replaceAll('(', '').replaceAll(')', '').replaceAll('-', '')
+}
+
+export const emailValidate = function (val) {
+    const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+    const err = EMAIL_REGEXP.test(val)
+    if (!err && val) return message('Ошибочный Email ', 'warning')
 }

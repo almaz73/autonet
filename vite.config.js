@@ -136,7 +136,8 @@ export default defineConfig({
 				akpp: resolve(__dirname, './services/remont-akpp/index.html'),
 				masla: resolve(__dirname, './services/zamena-masla/index.html'),
 				compared: resolve(__dirname, './personal/list-compared/index.html'),
-				favorite: resolve(__dirname, './personal/favorite-cars/index.html')
+				favorite: resolve(__dirname, './personal/favorite-cars/index.html'),
+				reserve: resolve(__dirname, './reserve/index.html')
 			},
 		},
 

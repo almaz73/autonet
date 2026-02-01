@@ -1,32 +1,19 @@
 export function message(text, type) {
-    console.log('text', text)
-
     let color = 'green'
+    if (type === 'warning') color = 'orangered'
     if (type === 'error') color = 'red'
 
-    // 1. Создаем элемент уведомления
-    const notification = document.createElement('div');
+    let notification = document.createElement('div');
     notification.innerText = text;
-
-    // 2. Стилизуем его (можно вынести в CSS файл)
-    notification.style.position = 'fixed';
-    notification.style.top = '20px';
-    notification.style.right = '20px';
+    notification.classList.add('message-span')
     notification.style.backgroundColor = color;
-    notification.style.color = '#fff';
-    notification.style.padding = '15px 20px';
-    notification.style.borderRadius = '5px';
-    notification.style.zIndex = '10000';
-    notification.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
-    notification.style.transition = 'all 0.5s ease';
-
-    // 3. Добавляем на страницу
     document.body.appendChild(notification);
+    setTimeout(() => notification.classList.add('show'), 100)
 
-    // 4. Убираем уведомление через 3 секунды
+    //  Убираем уведомление через 3 секунды
     setTimeout(() => {
         notification.style.opacity = '0';
-        setTimeout(() => notification.remove(), 1000);
+        notification.classList.remove('show')
     }, 3000);
 }
 

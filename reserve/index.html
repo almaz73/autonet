@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+    <meta charset='UTF-8' />
+    <link rel='icon' type='image/svg+xml' sizes='any' href='/src/svg/Favicon_as.svg'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Забронировать автомобиль - Автосеть.РФ</title>
+    <meta property='og:type' content='website'>
+    <meta property='og:title'
+          content='Забронировать автомобиль'>
+    <meta property='og:url' content='https://автосетьрф.рф'>
+    <meta property='og:locale' content='ru_RU'>
+    <meta property='og:site_name' content='https://xn--80aej9aped4f.xn--p1ai/reserve/'>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+    <meta name='robots' content='index, follow'>
+    <meta name='keywords' content='Купить автомобили с пробегом, авто в Казани'>
+
+    <link rel='stylesheet' href='../src/css/style.css' />
+    <link rel="stylesheet" href="../src/css/reserve.css">
+    <script type='module' src='/src/js/main.js'></script>
+    <script type='module' src='/src/js/reserve.js'></script>
+
+</head>
+<body>
+{{> "header/header" }}
+<main>
+
+    <div class='page_padding_20'>
+        <div class='bread_cranbs'>
+            <a href='/'>Главная</a>
+            <span>Бронирование автомобиля </span>
+        </div>
+    </div>
+
+    <div class="reserve-wrap">
+        <h3 id="h3-place">
+            Вы бронируете автомобиль:
+            <a href="/cars/santa-fe/653277/" target="_blank">Hyundai Santa Fe</a>
+        </h3>
+
+        <div class="row">
+            <input type="text" placeholder="Имя">
+            <input placeholder="Телефон"
+                   onmouseenter="this.focus()"
+                   oninput="formattingPhone(this)">
+            <input name="email" type="email" placeholder="E-mail"
+                   onchange="emailValidate(this)">
+            <button class="but_red">Заказать звонок</button>
+        </div>
+        <div class="info">
+            <input type="checkbox" id="personal_agree">
+            <label for="personal_agree">
+                Нажав кнопку «Продолжить» я даю согласие на обработку
+                <a href="/privacy-policy/" target="_blank">персональных данных</a>
+            </label>
+            <div class="modal__error">
+                Вы должны дать согласие на обработку персональных данных
+            </div>
+        </div>
+    </div>
+</main>
+
+{{> "footer/footer" }}
+
+</body>
+</html>

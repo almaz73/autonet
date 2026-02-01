@@ -183,3 +183,24 @@ main h2, main h1 {
     font-weight: bold;
     font-size: large;
 }
+
+
+.message-span{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    border-radius: 8px;
+    z-index: 10000;
+    box-shadow: 0 0 10px black;
+    border: 2px solid white;
+    opacity: 0;
+    transform: translateY(32px);
+    transition: all 0.3s ease-out;
+}
+
+.message-span.show { /*всплытие*/
+    opacity: 1;
+    transform: translateY(0);
+}

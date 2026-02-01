@@ -1,22 +1,28 @@
 import {api_getFullAutoInfo} from "@/js/API-base/apibase.js"
-import {formatterShowPrice, prepareCars, getUrlParam, } from "@/js/global-func.js";
+import {formatterShowPrice, prepareCars, getUrlParam,} from "@/js/global-func.js";
 import {initSwipper} from "@/js/swiper-starter.js";
 import {initFavotite} from "@/js/favoriteCars.js";
 import {initChosen} from "@/js/compareCars.js";
 import {calculator} from "@/js/credit.js"
 
 const id = getUrlParam('id');
+let autoName = ''
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('#share').addEventListener('click', copyUrlToClipboard) // делиться ссылкой
+    document.querySelectorAll('.reserving').forEach(el => el.addEventListener('click', reserve))
+})
 
 api_getFullAutoInfo(id).then(res => {
     /** Имя и зарактеристики  b Хлебные крошки */
     {
         if ((!res || !res.brand) && confirm("Данный автомобиль снят с продажи")) window.history.back()
 
-        let autoName = document.querySelectorAll('.auto-name')
+        autoName = document.querySelectorAll('.auto-name')
         autoName[0].innerHTML = autoName[1].innerHTML = autoName[2].innerHTML = res.brand + ' ' + res.model + ', ' + res.yearReleased
 
         let brandPath = document.querySelector('#auto-brand-path')
-        brandPath.innerHTML = `<a href='/cars/?brand=${res.brand}&brandId=${res.brandId||''}'>Автомобили ${res.brand} с пробегом</a>`
+        brandPath.innerHTML = `<a href='/cars/?brand=${res.brand}&brandId=${res.brandId || ''}'>Автомобили ${res.brand} с пробегом</a>`
 
         let autoPrice = document.querySelectorAll('.auto-price')
         autoPrice[0].innerHTML = autoPrice[1].innerHTML = formatterShowPrice(res.price) + ' ₽'
@@ -98,9 +104,6 @@ api_getFullAutoInfo(id).then(res => {
 })
 
 
-// делиться ссылкой
-document.querySelector('#share').addEventListener('click', copyUrlToClipboard)
-
 async function copyUrlToClipboard() {
     if (navigator.clipboard) {
         const url = window.location.href;
@@ -127,4 +130,11 @@ function showShareText() {
     setTimeout(() => {
         document.querySelector('.link #share_text').style.display = 'none'
     }, 3000)
+}
+
+
+function reserve() {
+    /* бронирование */
+    let link = '?name=' + autoName[0].innerHTML + '&id=' + id
+    location.href = '/reserve/' + link
 }
