@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <div class="capctha-div"></div>
             </div>
 
-            <button class="page__btn page__btn--current" type="submit">
+            <button class="page__btn page__btn--current">
                 <span> Отправить</span>
             </button>
 
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <div class="capctha-div"></div>
             </div>
 
-            <button class="page__btn page__btn--current" type="submit">
+            <button class="page__btn page__btn--current">
                 <span> Отправить заявку </span>
             </button>
 

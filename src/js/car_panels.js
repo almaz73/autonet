@@ -19,7 +19,7 @@ let form_date_show = `<div>
         <div class="formBlock">
             <div class="form__modal--group">
                 <div class="form__group">
-                    <input size="25" placeholder="Как ваше имя *">
+                    <input size="25" required="true" placeholder="Как ваше имя *">
                 </div>
             </div>
             
@@ -39,7 +39,7 @@ let form_date_show = `<div>
               <div class="capctha-div"></div>
             </div>
 
-            <button class="page__btn page__btn--current">
+            <button class="page__btn page__btn--current ">
                 <span> Отправить заявку </span>
             </button>
 
