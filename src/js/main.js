@@ -5,4 +5,3 @@ import '@/js/question.js';
 import '@/js/abdul.js';
 import '@/js/global-func.js'
 import '@/js/captcha.js'
-

@@ -4,6 +4,8 @@ import {initSwipper} from "@/js/swiper-starter.js";
 import {initFavotite} from "@/js/favoriteCars.js";
 import {initChosen} from "@/js/compareCars.js";
 import {calculator} from "@/js/credit.js"
+import "@/js/car_panels.js"
+
 
 const id = getUrlParam('id');
 let autoName = ''
@@ -53,6 +55,9 @@ api_getFullAutoInfo(id).then(res => {
 
         let autoColor = document.querySelectorAll('.auto-color')
         autoColor[0].innerHTML = autoColor[1].innerHTML = res.color || ''
+
+        let addr = document.querySelector('.main__card-product--top .address')
+        addr.innerHTML = res.fullAddress
     }
 
     /** Фотки */

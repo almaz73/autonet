@@ -1,6 +1,10 @@
 // капчу можно использовать сразу несколько на одной странице.
 // для улучшения можно добавить назначение секретного числа серверу.
 document.addEventListener('DOMContentLoaded', () => {
+    initCaptcha()
+});
+
+export function initCaptcha(){
     const parents = document.querySelectorAll('.capctha-div')
 
     parents.forEach((el, ind) => {
@@ -18,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             new PuzzleCaptcha(order, parent);
         }
     })
-});
+}
 
 
 class PuzzleCaptcha {
