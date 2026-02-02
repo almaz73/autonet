@@ -283,12 +283,12 @@
 
 
 /* Выезжающие форомы */
-.main-nav.request {
-    background: #0000008a !important;
+.main-nav.rightpanel {
+    background: linear-gradient(to right, #00000000, #0000008a);
     transition: all ease-in-out 1s;
 }
 
-.main-nav.request .right {
+.main-nav.rightpanel .right {
     background: white;
     width: 450px;
     height: 100vh;
@@ -320,7 +320,7 @@
         top: 100px;
     }
 
-    .main-nav.request .right {
+    .main-nav.rightpanel .right {
         width: 100%;
         right: 0;
     }
