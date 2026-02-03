@@ -141,7 +141,7 @@ export const emailValidate = function (val) {
 export function checkFormFields(arr) {
     let exist = false
     arr.forEach(el => {
-        if (el.required) {
+        if (el && el.required) {
             el.style.background = !el.value ? 'pink' : ''
             if (!el.value) exist = true
 
@@ -151,16 +151,17 @@ export function checkFormFields(arr) {
                 el.removeEventListener('change', filled)
             }
         }
-        if (el.classList.contains('capctha-div') && !el.classList.contains('checked')) {
+        if (el && el.classList.contains('capctha-div') && !el.classList.contains('checked')) {
             el.style.border = '1px solid red';
             exist = true
         }
-        if (el.type === 'checkbox') {
+        if (el && el.type === 'checkbox') {
             let checked = el.checked
             el.parentNode.style.border = checked ? '' : '1px solid red';
             if (!checked) exist = true
         }
-        if (el.name === 'email' && el.value) return emailValidate(el.value)
+        if (el && el.name === 'email' && el.value) return emailValidate(el.value)
+        if (el && el.name === 'phone' && el.value && simplePhone(el.value).length!==11) message('Телефон не содержит 11 цифр', 'warning')
     })
 
     if (exist) message('Есть незаполненные поля', 'warning')

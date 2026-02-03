@@ -1,6 +1,6 @@
 import {initCaptcha} from "@/js/captcha.js";
 import {message} from "@/js/message.js";
-import {checkFormFields} from "@/js/global-func.js"
+import {checkFormFields, formattingPhone} from "@/js/global-func.js"
 import {api_postCallToSell} from "@/js/API-base/apibase.js";
 
 /***** выезжающая правая маленькая панель *****/
@@ -64,51 +64,51 @@ let form_profitable = `<div>
         <div class="formBlock">
             <div class="form__modal--group">
                 <div class="form__group">
-                    <input size="25" placeholder="Ваше имя *">
+                    <input name="name" required placeholder="Ваше имя *">
                 </div>
             </div>
             
             <div class="form__modal--group">
                 <div class="form__group">
-                    <input size="25" placeholder="Телефон *">
+                    <input name="phone" required placeholder="Телефон *" oninput="formattingPhone(this)">
                 </div>
             </div>
             
             <div class="form__modal--group">
                 <div class="form__group">
-                    <input size="25" placeholder="Город">
+                    <input  name="city" placeholder="Город">
                 </div>
             </div>
             
             <div class="form__modal--group">
                 <div class="form__group">
-                    <input size="25" placeholder="Марка">
+                    <input  name="bramd" placeholder="Марка">
                 </div>
             </div>
             
             <div class="form__modal--group">
                 <div class="form__group">
-                    <input size="25" placeholder="Модель">
+                    <input  name="model" placeholder="Модель">
                 </div>
             </div>
             
             <div class="form__modal--group">
                 <div class="form__group">
-                    <input size="25" placeholder="Год выпуска">
+                    <input  name="year" placeholder="Год выпуска">
                 </div>
             </div>
 
             <div class="form__modal--group">
-              <div class="capctha-div"></div>
+              <div class="capctha-div n2"></div>
             </div>
 
-            <button class="page__btn page__btn--current">
+            <button class="page__btn page__btn--current" onclick="applyBid2()">
                 <span> Отправить заявку </span>
             </button>
 
             <div class="modal__personal">
-                <input type="checkbox">
-                <label> Нажав кнопку «Отправить заявку» я даю согласие на обработку
+                <input type="checkbox" id="n2">
+                <label for="n2"> Нажав кнопку «Отправить заявку» я даю согласие на обработку
                     <a href="/privacy-policy/" target="_blank">персональных данных</a>
                 </label>
             </div>
@@ -150,6 +150,29 @@ window.applyBid = function () {
     }
     api_postCallToSell(params).then(res => {
         if (res && res.ok) message('Заявка оптарвлена')
-        else message('Проблема сервера', 'error')
+        else message('Сервер не принял', 'error')
+    })
+}
+
+window.applyBid2 = function () {
+    let capcthadiv = document.querySelector('.capctha-div.n2')
+    let name = document.querySelector('[name="name"]')
+    let phone = document.querySelector('[name="phone"]')
+    let city = document.querySelector('[name="city"]')
+    let brand = document.querySelector('[name="brand"]')
+    let model = document.querySelector('[name="model"]')
+    let year = document.querySelector('[name="year"]')
+    let checkbox = document.querySelector('#n2')
+
+    if (checkFormFields([capcthadiv, name, phone, checkbox])) return false
+
+    let params = {
+        name: name.value,
+        year: year.value,
+    }
+    console.log('params', params)
+    api_postCallToSell(params).then(res => {
+        if (res && res.ok) message('Заявка оптарвлена')
+        else message('Сервер не принял', 'error')
     })
 }
