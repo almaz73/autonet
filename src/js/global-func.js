@@ -135,5 +135,33 @@ export const simplePhone = function (val) {
 export const emailValidate = function (val) {
     const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
     const err = EMAIL_REGEXP.test(val)
-    if (!err && val) return message('Ошибочный Email ', 'warning')
+    if (!err && val) return message('Ошибочный Email ', 'error')
+}
+
+export function checkFormFields(arr) {
+    let exist = false
+    arr.forEach(el => {
+        if (el.required) {
+            el.style.background = !el.value ? 'pink' : ''
+            if (!el.value) exist = true
+
+            el.addEventListener('change', filled)
+            function filled(){
+                el.style.background = ''
+                el.removeEventListener('change', filled)
+            }
+        }
+        if (el.classList.contains('capctha-div') && !el.classList.contains('checked')) {
+            el.style.border = '1px solid red';
+            exist = true
+        }
+        if (el.type === 'checkbox') {
+            let checked = el.checked
+            el.parentNode.style.border = checked ? '' : '1px solid red';
+            if (!checked) exist = true
+        }
+        if (el.name === 'email' && el.value) return emailValidate(el.value)
+    })
+
+    if (exist) message('Есть незаполненные поля', 'warning')
 }

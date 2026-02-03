@@ -286,6 +286,7 @@
 .main-nav.rightpanel {
     background: linear-gradient(to right, #00000000, #0000008a);
     transition: all ease-in-out 1s;
+    z-index: 100;
 }
 
 .main-nav.rightpanel .right {
