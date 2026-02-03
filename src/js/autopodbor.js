@@ -30,11 +30,11 @@ window.podbor_bid_f = function (self) {
 
     let capcthadiv = document.querySelector(`.${ver} .capctha-div`)
     let name = document.querySelector(`.${ver} [name="name"]`)
-    let year = document.querySelector(`.${ver} [name="year"]`)
+    let phone = document.querySelector(`.${ver} [name="phone"]`)
     let email = document.querySelector(`.${ver} [name="email"]`)
     let checkbox = document.querySelector(`.${ver} [type="checkbox" ]`)
 
-    if (checkFormFields([capcthadiv, name, year, email, checkbox])) return false
+    if (checkFormFields([capcthadiv, name, phone, email, checkbox])) return false
 
     let params = {
         name: name.value,

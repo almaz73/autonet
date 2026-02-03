@@ -170,4 +170,5 @@ export function checkFormFields(arr) {
     })
 
     if (exist) message('Есть незаполненные поля', 'warning')
+    return exist
 }

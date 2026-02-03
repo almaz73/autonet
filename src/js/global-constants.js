@@ -192,3 +192,61 @@ export const podbor_bid_1_2 = `
             </div>
 
         </div>`
+
+export const vykuo_otcenka = `
+    <div class="wrap">
+        <div class="title">
+          Оценить <strong style="color: var(--color-red)">автомобиль</strong>
+        </div>
+        <div>
+            <div class="form__modal--group">
+                <div class="form__group">
+                    <input name="name" required placeholder="Ваше имя *">
+                </div>
+            </div>
+            <div class="form__modal--group">
+                <div class="form__group">
+                   <input name="phone" required placeholder="Телефон *" oninput="formattingPhone(this)">
+                </div>
+            </div>
+            <div class="form__modal--group">
+                <div class="form__group">
+                  <input name="city" placeholder="Горолд">
+                </div>
+            </div>
+            <div class="form__modal--group">
+                <div class="form__group">
+                  <input name="brand"  placeholder="Марка">
+                </div>
+            </div>
+            <div class="form__modal--group">
+                <div class="form__group">
+                  <input name="model"  placeholder="Модель">
+                </div>
+            </div>
+            <div class="form__modal--group">
+                <div class="form__group">
+                  <input name="year"  placeholder="Год выпуска">
+                </div>
+            </div>
+
+            <div class="form__modal--group">
+              <div class="capctha-div"></div>
+            </div>
+
+            <button class="page__btn page__btn--current" onclick="sendBid(this)">
+                <span> Отправить заявку </span>
+            </button>
+
+            <div class="modal__personal">
+                <input type="checkbox">
+                <label>
+                    Нажав кнопку «Отправить заявку» я даю согласие
+                    на обработку
+                    <a href="/privacy-policy/" target="_blank">персональных данных</a>
+                </label>
+            </div>
+
+        </div>
+    </div>
+`
