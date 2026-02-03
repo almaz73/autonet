@@ -250,3 +250,143 @@ export const vykuo_otcenka = `
         </div>
     </div>
 `
+
+export const franshiza = `
+ <div class="wrap">
+        <div>
+            <div class="title">
+                <strong style="color: #e5393b">
+                    Получите расчет</strong> прибыли автосалона АВТОСЕТЬ.РФ в своем городе
+            </div>
+
+            <div class=" form__modal--group">
+                <div class="form__group ">
+                    <input name="name" required placeholder="Имя *">
+                </div>
+            </div>
+
+            <div class="form__modal--group">
+                <div class="form__group">
+                  <input name="phone" required placeholder="Ваш телефон *" oninput="formattingPhone(this)">
+                </div>
+            </div>
+
+            <div class="block S  form__modal--group">
+                <div class="form__group">
+                  <input name="city" placeholder="Город">
+                </div>
+            </div>
+
+            <div class="block S  form__modal--group">
+                      <div class="capctha-div"></div>
+            </div>
+            <div>
+                <button class="page__btn page__btn--current" onclick="callMe()">
+                    Перезвоните мне
+                </button>
+            </div>
+            <div class="modal__personal">
+                <input type="checkbox" id="dd2">
+                <label for="dd2">
+                    Нажав кнопку «Отправить» я даю согласие
+                    на обработку
+                    <a href="/privacy-policy/" target="_blank">персональных данных</a>
+                </label>
+            </div>
+        </div>
+
+        <div class="formBottom" style="color:#555">
+            <p>или позвоните по номеру</p>
+            <a href="tel:88005001156">8-800-500-11-56</a>
+        </div>
+    </div>`
+
+export const franshiza2 = `<div class="promo-detail-call__wrap">
+    <div class="div">
+        <h3><span style="color: var(--color-red)"> Получите расчет</span> прибыли автосалона АВТОСЕТЬ.РФ в своем городе </h3>
+    </div>
+
+
+    <div class="div promo-form">
+        <div class="formBlock">
+            <div class="form__modal--group">
+                <div class="form__group">
+                    <input name="name" required placeholder="Имя *">
+                </div>
+            </div>
+            <div class="form__modal--group">
+                <div class="form__group">
+                    <input name="phone" required placeholder="Ваш телефон *" oninput="formattingPhone(this)">
+                </div>
+            </div>
+            
+            <div class="form__modal--group">
+                <div class="form__group">
+                    <input placeholder="Город">
+                </div>
+            </div>
+
+            <div class="form__modal--group">
+              <div class="capctha-div"></div>
+            </div>
+
+            <button class="page__btn page__btn--current" onclick="getQuoite(this)">
+                <span> Отправить заявку </span>
+            </button>
+
+            <div class="modal__personal">
+                <input type="checkbox" id="dd4">
+                <label for="dd4"> Нажав кнопку «Отправить заявку» я даю согласие на обработку
+                    <a href="/privacy-policy/" target="_blank">персональных данных</a>
+                </label>
+            </div>
+        </form>
+    </div>
+
+</div>`
+
+export const question_boss_form= `
+<div class="promo-detail-call__wrap boss">
+    <div class="div">
+        <h3>Задать <span style="color: var(--color-red)">вопрос</span></h3>
+
+        <p>Просто оставьте свои контактные данные и мы сами вам перезвоним!</p>
+    </div>
+
+
+    <div class="div promo-form">
+        <div class="formBlock">
+            <div class="form__modal--group">
+                <div class="form__group">
+                    <input placeholder="Имя *" name="name" required>
+                </div>
+            </div>
+            <div class="form__modal--group">
+                <div class="form__group">
+                    <input name=phone" required placeholder="Ваш телефон *" oninput="formattingPhone(this)">
+                </div>
+            </div>
+           <div class="form__modal--group">
+                <div class="form__group">
+                    <input name="message" required placeholder="Сообщение *">
+                </div>
+            </div>
+
+            <div class="form__modal--group">
+              <div class="capctha-div"></div>
+            </div>
+
+            <button class="page__btn page__btn--current" onclick="questionBoss()">
+                <span> Отправить</span>
+            </button>
+
+            <div class="modal__personal">
+                <input type="checkbox" id="dd5">
+                <label for="dd5"> Нажав кнопку «Отправить заявку» я даю согласие на обработку
+                    <a href="/privacy-policy/" target="_blank">персональных данных</a>
+                </label>
+            </div>
+        </div>
+    </div>
+
+</div>`

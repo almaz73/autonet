@@ -45,7 +45,7 @@
                 <p style="font-size: 1em; margin-top: 30px;">Анна Шилова, исполнительный директор: <a
                         href="tel:+79178893565">+7 917 889-35-65</a></p>
             </div>
-            {{> form_franshiza}}
+            <div class="formBlock v1"></div>
         </div>
     </div>
 </div>
@@ -97,30 +97,24 @@
 </main>
 
 <main>
-    <div class="formFranshizaCheck formBlock">
-        <div>
+    <div class="formFranshizaCheck formBlock pkace">
         <h2>Проверь, есть ли места <span>в твоем городе</span>?</h2>
-        <div class="nextFormLoad">
-            <span class=" page__btn page__btn--current">
-                Получить расчет
-            </span>
-        </div>
         <form action="" class="form__modal" enctype="multipart/form-data" method="POST">
             <div class="block S  form__modal--group">
                 <div class="form__group form__group--label">
-                    <input size="25"> <label >Имя <sup class="starrequired">*</sup></label>
+                    <input name="name" required placeholder="Имя *">
                 </div>
             </div>
 
             <div class="block S  form__modal--group">
                 <div class="form__group form__group--label">
-                    <input size="25" > <label>Ваш телефон <sup class="starrequired">*</sup></label>
+                    <input name="phone" required placeholder="Ваш телефон *" oninput="formattingPhone(this)">
                 </div>
             </div>
 
             <div class="block S  form__modal--group">
                 <div class="form__group form__group--label">
-                    <input size="25"> <label>Город <sup class="starrequired">*</sup></label>
+                    <input name="city" placeholder="Город">
                 </div>
             </div>
 
@@ -129,7 +123,7 @@
             </div>
 
             <div class="form__modal--button">
-                <button class="page__btn page__btn--current f-9">
+                <button class="page__btn page__btn--current f-9" onclick="checkPlaceCity()">
                     <span>Отправить</span>
                 </button>
             </div>
@@ -141,18 +135,6 @@
                     <a href="/privacy-policy/" target="_blank">персональных данных</a>
                 </label>
             </div>
-<!--            <div class="modal__error" id="personal_error_75373">Вы должны дать согласие на обработку персональных-->
-<!--                данных-->
-<!--            </div>-->
-
-
-<!--            <div class="success" data-wtf="1" style="display: none;">-->
-<!--                Сообщение успешно отправлено-->
-<!--            </div>-->
-<!--            <div class="form_loading">-->
-<!--                <span>Идет отправка сообщения...</span>-->
-<!--            </div>-->
-
         </form>
     </div>
 </main>
