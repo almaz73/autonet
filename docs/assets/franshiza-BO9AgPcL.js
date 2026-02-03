@@ -1,4 +1,4 @@
-import{i as a}from"./main-X3fqOo_L.js";/* empty css                *//* empty css                */console.log("franshiza.js ----");document.addEventListener("DOMContentLoaded",()=>{let e=document.querySelector(".question_to_boss"),l=document.querySelector(".count_business_plan"),o=document.querySelector("#right_panel_content"),r=document.querySelector(".who_can_become_partner"),s=`<div class="promo-detail-call__wrap">
+import{i as a}from"./main-DDG4M_xQ.js";/* empty css                *//* empty css                */console.log("franshiza.js ----");document.addEventListener("DOMContentLoaded",()=>{let e=document.querySelector(".question_to_boss"),l=document.querySelector(".count_business_plan"),o=document.querySelector("#right_panel_content"),r=document.querySelector(".who_can_become_partner"),s=`<div class="promo-detail-call__wrap">
     <div class="div">
         <h3>Задать <span style="color: var(--color-red)">вопрос</span></h3>
 

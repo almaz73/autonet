@@ -1,4 +1,4 @@
-import{i as d}from"./main-X3fqOo_L.js";/* empty css                *//* empty css                     *//* empty css                *//* empty css                *//* empty css                   *//* empty css                          */import"./swiper-starter-Bjhk_3sq.js";document.addEventListener("DOMContentLoaded",()=>{let i=document.querySelector("#right_panel_content"),o=document.querySelector(".apply_bid"),a=`<div>
+import{i as d}from"./main-DDG4M_xQ.js";/* empty css                *//* empty css                     *//* empty css                *//* empty css                *//* empty css                   *//* empty css                          */import"./swiper-starter-Bjhk_3sq.js";document.addEventListener("DOMContentLoaded",()=>{let i=document.querySelector("#right_panel_content"),o=document.querySelector(".apply_bid"),a=`<div>
     <div class="div">
         <h2>Заявка на <span style="color: var(--color-red)">автоподбор</span></h2>
     </div>
