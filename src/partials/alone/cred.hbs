@@ -43,11 +43,11 @@
   <div class="main_cred_row">
     <div class="main_cred-col field name">
       <label class="placehold" for="you_name"> Ваше имя *</label>
-      <input placeholder=" " onmouseenter="this.focus()">
+      <input placeholder=" " name="name" required onmouseenter="this.focus()">
     </div>
     <div class="main_cred-col field tel">
       <label class="placehold"> Ваше телефон *</label>
-      <input placeholder=" " onmouseenter="this.focus()" oninput="formattingPhone(this)">
+      <input placeholder=" "  name="phone" required onmouseenter="this.focus()" oninput="formattingPhone(this)">
     </div>
   </div>
   <div style="clear: both"></div>
@@ -58,7 +58,7 @@
       <button class="page__btn page__btn--main bid" style="width: 100%"> Оставить заявку</button>
     </div>
     <div class="main_cred-col" style="text-align: right">
-      <div class="capctha-div"></div>
+      <div class="capctha-div n3"></div>
     </div>
   </div>
   <div style="clear: both"></div>
@@ -66,8 +66,8 @@
 
   <div class="main_cred_row">
     <div class="main_cred-col sender">
-      <input type="checkbox" id="personal_ag">
-      <label for="personal_ag">
+      <input type="checkbox" id="n3">
+      <label for="n3">
         Нажав кнопку «Отправить» я даю согласие
         на обработку
         <a href="/privacy-policy/" target="_blank">персональных данных</a>
@@ -75,7 +75,7 @@
 
     </div>
     <div class="main_cred-col">
-      <div class="attent">
+      <div class="attent n3">
         Вы должны дать согласие на обработку персональных данных
       </div>
     </div>

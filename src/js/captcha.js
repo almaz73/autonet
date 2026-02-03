@@ -13,8 +13,8 @@ export function initCaptcha(){
 
         if (parent) {
             parent.innerHTML = `<p class="instructions ${order}">
-          Подтвердите, что вы <b style="font-size: larger">не робот</b><br>
-          Перетащите квадрат в белую область</p>
+          Подтвердите, что вы не робот<br>
+          Сдвиньте квадрат в белую область</p>
         <p class="result">✅<span>Спасибо !</span></p>
         <div class="target-area ${order}"></div>
         <div class="puzzle-piece ${order}">⇦ ⇨</div>`

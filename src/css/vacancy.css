@@ -1,6 +1,5 @@
 .vacancy {
     position: relative;
-    background: linear-gradient(90deg, white, #ffffff00);
     background: linear-gradient(90deg, white 40%, #ffffff00, #ffffff00);
     z-index: 1;
 

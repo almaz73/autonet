@@ -140,13 +140,15 @@ export const emailValidate = function (val) {
 
 export function checkFormFields(arr) {
     let exist = false
+    let forAttent = false
     arr.forEach(el => {
         if (el && el.required) {
             el.style.background = !el.value ? 'pink' : ''
             if (!el.value) exist = true
 
             el.addEventListener('change', filled)
-            function filled(){
+
+            function filled() {
                 el.style.background = ''
                 el.removeEventListener('change', filled)
             }
@@ -159,9 +161,12 @@ export function checkFormFields(arr) {
             let checked = el.checked
             el.parentNode.style.border = checked ? '' : '1px solid red';
             if (!checked) exist = true
+            forAttent = exist
         }
+
+        if (el.classList.contains('attent')) el.style.display = forAttent ? 'block' : 'none'
         if (el && el.name === 'email' && el.value) return emailValidate(el.value)
-        if (el && el.name === 'phone' && el.value && simplePhone(el.value).length!==11) message('Телефон не содержит 11 цифр', 'warning')
+        if (el && el.name === 'phone' && el.value && simplePhone(el.value).length !== 11) message('Телефон не содержит 11 цифр', 'warning')
     })
 
     if (exist) message('Есть незаполненные поля', 'warning')

@@ -55,7 +55,8 @@
 .instructions {
     color: #000;
     padding: 10px 0;
-    font-size: 0.73em;
+    /*font-size: 0.73em;*/
+    font-size: 0.8125em;
     top: -15px;
     left: 20px;
     position: absolute;

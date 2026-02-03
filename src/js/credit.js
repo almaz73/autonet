@@ -1,4 +1,4 @@
-import {declOfNum, formatterShowPrice, formattingPhone, simplePhone} from '@/js/global-func.js'
+import {declOfNum, formatterShowPrice, formattingPhone, simplePhone, checkFormFields} from '@/js/global-func.js'
 import {api_postCallToSell} from "@/js/API-base/apibase.js";
 import {message} from "@/js/message.js"
 
@@ -113,47 +113,17 @@ function changeYear(val) {
     year = val
 }
 
-/** раздел отправки данных формы **/
-let input_name = document.querySelector('.main_cred-col.name input')
-let input_tel = document.querySelector('.main_cred-col.tel input')
 
 
-function clearFields() {
-    input_name.value = ''
-    input_tel.value = ''
-}
-
-function check() {
-    let check = false
-    if (!input_name.value) {
-        input_name.style.background = 'pink'
-        check = true
-    } else input_name.style.background = '#f2f2f7'
-
-    if (!input_tel.value) {
-        input_tel.style.background = 'pink'
-        check = true
-    } else input_tel.style.background = '#f2f2f7'
-    if (!document.getElementById('personal_ag').checked) {
-        document.querySelector('.attent').style.display = 'block'
-        document.querySelector('.main_cred-col.sender').style.background = 'pink'
-        check = true
-    } else {
-        document.querySelector('.main_cred-col.sender').style.background = 'initial'
-        document.querySelector('.attent').style.display = 'none'
-    }
-    let captcha = document.querySelector('.capctha-div')
-    if (!captcha.classList.contains('checked')) {
-        captcha.style.border = '1px solid red';
-        check = true
-    } else captcha.style.border = '';
-
-    return check
-}
 
 document.querySelector('.bid').addEventListener('click', res => {
+    let input_name = document.querySelector('.main_cred-col.name input')
+    let input_tel = document.querySelector('.main_cred-col.tel input')
+    let captcha = document.querySelector('.capctha-div.n3')
+    let checkbox = document.getElementById('n3')
+    let attent = document.querySelector('.attent.n3')
 
-    if (check()) return false
+    if (checkFormFields([input_name, input_tel, captcha, checkbox, attent]))return false
 
     let params = {
         formName: 'spesialCredit',
@@ -165,11 +135,18 @@ document.querySelector('.bid').addEventListener('click', res => {
         tel: simplePhone(input_tel.value),
     }
 
+    console.log(params)
+
     api_postCallToSell(params).then(res => {
         if (res && res.ok) message('Запрос успешно отправлен')
         else message('Ошибка при отправки запроса', 'error')
         clearFields()
     })
+
+    function clearFields() {
+        input_name.value = ''
+        input_tel.value = ''
+    }
 
 })
 
