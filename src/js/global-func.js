@@ -164,7 +164,7 @@ export function checkFormFields(arr) {
             forAttent = exist
         }
 
-        if (el.classList.contains('attent')) el.style.display = forAttent ? 'block' : 'none'
+        if (el && el.classList.contains('attent')) el.style.display = forAttent ? 'block' : 'none'
         if (el && el.name === 'email' && el.value) return emailValidate(el.value)
         if (el && el.name === 'phone' && el.value && simplePhone(el.value).length !== 11) message('Телефон не содержит 11 цифр', 'warning')
     })

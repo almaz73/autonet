@@ -1,57 +1,48 @@
 import {initCaptcha} from "@/js/captcha.js";
+import {podbor_bid_1_2, podbor_bid} from "@/js/global-constants.js";
+import {checkFormFields} from "@/js/global-func.js";
+import {formattingPhone} from "@/js/global-func.js"
+
+window.formattingPhone = formattingPhone
+
 
 document.addEventListener('DOMContentLoaded', () => {
     let right_panel_content = document.querySelector('#right_panel_content')
     let apply_bid = document.querySelector('.apply_bid')
 
-    let form_podbor = `<div>
-    <div class="div">
-        <h2>Заявка на <span style="color: var(--color-red)">автоподбор</span></h2>
-    </div>
+    let form1 = document.querySelector('.formBlock .v1')
+    form1.innerHTML = podbor_bid_1_2
 
-    <div class="div promo-form">
-        <div class="formBlock">
-            <div class="form__modal--group">
-                <div class="form__group">
-                    <input size="25" placeholder="Имя *">
-                </div>
-            </div>
-            
-            <div class="form__modal--group">
-                <div class="form__group">
-                    <input size="25" placeholder="Телефон *">
-                </div>
-            </div>
-                  
-            <div class="form__modal--group">
-                <div class="form__group">
-                    <input size="25" placeholder="E-mail">
-                </div>
-            </div>
+    let form2 = document.querySelector('.formBlock .v2')
+    form2.innerHTML = podbor_bid_1_2
+    initCaptcha()
 
-            <div class="form__modal--group">
-              <div class="capctha-div"></div>
-            </div>
-
-            <button class="page__btn page__btn--current">
-                <span> Отправить заявку </span>
-            </button>
-
-            <div class="modal__personal">
-                <input type="checkbox">
-                <label> Нажав кнопку «Отправить заявку» я даю согласие на обработку
-                    <a href="/privacy-policy/" target="_blank">персональных данных</a>
-                </label>
-            </div>
-        </div>
-    </div>
-
-</div>`
-
-    apply_bid.addEventListener('click', ()=>{
+    let form3 = `<div class="v5 v3">${podbor_bid}</div>`
+    apply_bid.addEventListener('click', () => { // авезжпеь панель
         openRightPanel()
-        right_panel_content.innerHTML = form_podbor
+        right_panel_content.innerHTML = form3
         initCaptcha()
     })
 })
 
+window.podbor_bid_f = function (self) {
+    let ver = self.parentNode.parentNode.parentNode.classList[1]
+
+    let capcthadiv = document.querySelector(`.${ver} .capctha-div`)
+    let name = document.querySelector(`.${ver} [name="name"]`)
+    let year = document.querySelector(`.${ver} [name="year"]`)
+    let email = document.querySelector(`.${ver} [name="email"]`)
+    let checkbox = document.querySelector(`.${ver} [type="checkbox" ]`)
+
+    if (checkFormFields([capcthadiv, name, year, email, checkbox])) return false
+
+    let params = {
+        name: name.value,
+        email: email.value,
+    }
+    console.log('params', params)
+    // api_postCallToSell(params).then(res => {
+    //     if (res && res.ok) message('Заявка оптарвлена')
+    //     else message('Сервер не принял', 'error')
+    // })
+}

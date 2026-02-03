@@ -1,71 +1,12 @@
 import {initCaptcha} from "@/js/captcha.js";
+import {form_profitable} from "@/js/global-constants.js";
+import {checkFormFields} from "@/js/global-func.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     let right_panel_content = document.querySelector('#right_panel_content')
     let apply_bid = document.querySelector('.apply_bid')
     let order_buy = document.querySelector('.order_buy')
 
-    let form_profitable = `<div>
-    <div class="div" style="margin-top: -120px;">
-        <h2>Заявка на <span style="color: var(--color-red)">выкуп</span></h2>
-    </div>
-
-    <div class="div promo-form">
-        <div class="formBlock">
-            <div class="form__modal--group">
-                <div class="form__group">
-                    <input size="25" placeholder="Ваше имя *">
-                </div>
-            </div>
-            
-            <div class="form__modal--group">
-                <div class="form__group">
-                    <input size="25" placeholder="Телефон *">
-                </div>
-            </div>
-            
-            <div class="form__modal--group">
-                <div class="form__group">
-                    <input size="25" placeholder="Город">
-                </div>
-            </div>
-            
-            <div class="form__modal--group">
-                <div class="form__group">
-                    <input size="25" placeholder="Марка">
-                </div>
-            </div>
-            
-            <div class="form__modal--group">
-                <div class="form__group">
-                    <input size="25" placeholder="Модель">
-                </div>
-            </div>
-            
-            <div class="form__modal--group">
-                <div class="form__group">
-                    <input size="25" placeholder="Год выпуска">
-                </div>
-            </div>
-
-            <div class="form__modal--group">
-              <div class="capctha-div"></div>
-            </div>
-
-            <button class="page__btn page__btn--current">
-                <span> Отправить заявку </span>
-            </button>
-
-            <div class="modal__personal">
-                <input type="checkbox">
-                <label> Нажав кнопку «Отправить заявку» я даю согласие на обработку
-                    <a href="/privacy-policy/" target="_blank">персональных данных</a>
-                </label>
-            </div>
-        </div>
-    </div>
-
-</div>`
 
     apply_bid.addEventListener('click', ()=>{
         openRightPanel()
@@ -78,4 +19,27 @@ document.addEventListener('DOMContentLoaded', () => {
         initCaptcha()
     })
 })
+
+window.applyBid = function () {
+    let capcthadiv = document.querySelector('.bid .capctha-div')
+    let name = document.querySelector('.bid  [name="name"]')
+    let phone = document.querySelector('.bid  [name="phone"]')
+    let city = document.querySelector('.bid [name="city"]')
+    let brand = document.querySelector('.bid [name="brand"]')
+    let model = document.querySelector('.bid [name="model"]')
+    let year = document.querySelector('.bid [name="year"]')
+    let checkbox = document.querySelector('.bid [type="checkbox" ]')
+
+    if (checkFormFields([capcthadiv, name, phone, checkbox])) return false
+
+    let params = {
+        name: name.value,
+        year: year.value,
+    }
+    console.log('params', params)
+    // api_postCallToSell(params).then(res => {
+    //     if (res && res.ok) message('Заявка оптарвлена')
+    //     else message('Сервер не принял', 'error')
+    // })
+}
 

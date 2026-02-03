@@ -3,35 +3,24 @@
         <div class="title" style="text-align: left;">
             Оставьте заявку на <strong>подбор</strong> автомобиля
         </div>
-        <form action="/" name="popup_form" class="form__modal"
-              enctype="multipart/form-data" method="POST">
+        <div>
             <div class="block S  form__modal--group">
-                <div class="form__group form__group--label">
-                    <input type="text" rel="NAME" class="input js-used"
-                           size="25" value="">
-                    <label>Имя <sup class="starrequired">*</sup></label>
+                <div class="form__group">
+                    <input name="name" required placeholder="Имя *">
                 </div>
             </div>
 
-
             <div class="block S  form__modal--group">
-                <div class="form__group form__group--label">
-                    <input type="text" rel="PHONE" class="input js-used mobile_pole"
-                           size="25" value=""> <label>Телефон <sup
-                        class="starrequired">*</sup></label>
+                <div class="form__group">
+                  <input name="phone" required placeholder="Телефон *" oninput="formattingPhone(this)">
                 </div>
             </div>
 
             <div class="block S  form__modal--group">
                 <div class="form__group form__group--label">
-                    <input type="text" rel="PHONE" class="input js-used mobile_pole"
-                           size="25" value=""> <label>E-mail</label>
+                    <input name="email" placeholder="E-mail">
                 </div>
             </div>
-
-
-
-
 
             <div class="form__modal--group">
               <div class="capctha-div"></div>
@@ -42,14 +31,14 @@
                 </button>
             </div>
             <div class="modal__personal">
-                <input type="checkbox">
-                <label>
+                <input type="checkbox" id="dd1">
+                <label for="dd1">
                     Нажав кнопку «Отправить заявку» я даю согласие
                     на обработку
                     <a href="/privacy-policy/" target="_blank">персональных данных</a>
                 </label>
             </div>
 
-        </form>
+        </div>
     </div>
 </div>
