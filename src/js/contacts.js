@@ -473,6 +473,7 @@ let mapModalmap = document.querySelector('.map-modal .map')
 let photoModal = document.querySelector('.photo-modal')
 let photoModalPic = document.querySelector('.photo-modal .pic')
 
+console.log('>>>> photoModalPic', photoModalPic)
 
 if (mapModal) {
     window.openMap = function (val) {
@@ -481,6 +482,7 @@ if (mapModal) {
     }
 
     window.openPhoto = function (val) {
+        console.log('val', val)
         photoModal.style.display = val ? 'grid' : 'none'
         photoModalPic.innerHTML = `<img src ="${val}">`
     }

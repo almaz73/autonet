@@ -23,7 +23,7 @@
     justify-content: left;
     text-align: left;
     flex-wrap: wrap;
-    background-image: url(@/images/abdulnasyrov_light.webp);
+    background-image: url(/public/abdulnasyrov_light.webp);
     background-repeat: no-repeat;
     background-position: right top;
 }
