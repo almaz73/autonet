@@ -172,3 +172,33 @@ export function checkFormFields(arr) {
     if (exist) message('Есть незаполненные поля', 'warning')
     return exist
 }
+
+/* Работа с sub_field **/
+export function initSubField() {
+    let with_sub_field = document.querySelectorAll('.with_sub_field')
+
+    with_sub_field.forEach(item => {
+        let select = item.querySelector('.with_sub_field .select')
+        select.querySelectorAll('.field').forEach(el => {
+            el.addEventListener('click', res => newSelect(res.target.innerHTML))
+        })
+
+        function newSelect(value) {
+            select.querySelectorAll('.field').forEach(el => {
+                el && el.classList.contains('active') && el.classList.remove('active')
+            })
+            select.querySelectorAll('.field').forEach(el => {
+                el && el.innerHTML === value && el.classList.add('active')
+            })
+            item.querySelector('input').value = value
+        }
+
+        item.addEventListener('click', () => {
+            let state = select.style.display !== 'block'
+            select.style.display = state ? 'block' : 'none'
+        })
+
+    })
+
+
+}

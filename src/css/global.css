@@ -246,3 +246,43 @@ main h2, main h1 {
     max-width: 350px;
     text-align: center
 }
+
+/**/
+
+.with_sub_field input {
+    pointer-events: none;
+}
+
+.with_sub_field .select {
+    position: absolute;
+    background: var(--color-grey);
+    border: 1px solid #999;
+    width: 99%;
+    display: initial;
+    z-index: 10;
+    left: 1px;
+    top: 45px;
+    color: black;
+    box-shadow: 0 10px 10px #bbb;
+    display: none;
+}
+
+.with_sub_field:after {
+    display: block;
+    position: absolute;
+    right: 8px;
+    top: 20px;
+    margin-top: 1px;
+    line-height: 0;
+    content: url(/svg/arrow-down.svg);
+}
+
+.with_sub_field .select div {
+    padding: 2px 0;
+    border: 1px solid #ddd;
+}
+
+.with_sub_field .select div:hover, .with_sub_field .select div.active {
+    background: #0e70c0;
+    color: white;
+}

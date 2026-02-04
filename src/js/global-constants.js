@@ -390,3 +390,65 @@ export const question_boss_form= `
     </div>
 
 </div>`
+
+export const insurance_form = `
+<div class="wrap">
+                    <div class="title">
+                        Заявка  на <strong style="color: var(--color-red)">страхование</strong>
+                    </div>
+                    <div>
+                        <div class="form__modal--group">
+                            <div class="form__group">
+                                <input name="name" required placeholder="Имя *">
+                            </div>
+                        </div>
+                        <div class="form__modal--group">
+                            <div class="form__group">
+                                <input name="phone" required placeholder="Ваш телефон *" oninput="formattingPhone(this)">
+                            </div>
+                        </div>
+                        <div class="form__modal--group">
+                            <div class="form__group">
+                                <input name="city" required placeholder="Город *">
+                            </div>
+                        </div>
+                        <div class="form__modal--group" style="position: relative">
+                            <div class="form__group with_sub_field">
+                                <input name="osago"  placeholder="ОСАГО">
+
+                                <div class="select">
+                                    <div class="field">КАСКО</div>
+                                    <div class="field active">ОСАГО</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form__modal--group">
+                            <div class="form__group">
+                                <input name="brand"  placeholder="Марка">
+                            </div>
+                        </div>
+                        <div class="form__modal--group">
+                            <div class="form__group">
+                                <input name="model"  placeholder="Модель">
+                            </div>
+                        </div>
+
+                        <div class="form__modal--group">
+                            <div class="capctha-div"></div>
+                        </div>
+
+                        <button class="page__btn page__btn--current" onclick="sendInsurance(this)">
+                            <span> Отправить заявку </span>
+                        </button>
+
+                        <div class="modal__personal">
+                            <input type="checkbox">
+                            <label>
+                                Нажав кнопку «Отправить заявку» я даю согласие
+                                на обработку
+                                <a href="/privacy-policy/" target="_blank">персональных данных</a>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>`
