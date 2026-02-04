@@ -108,6 +108,7 @@
     transition: transform ease-in-out 0.3s;
     transform: translateX(150vw);
     overflow: auto;
+    z-index: 99;
 }
 
 .main-nav_bondazh {

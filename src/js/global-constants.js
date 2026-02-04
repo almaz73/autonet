@@ -211,7 +211,7 @@ export const vykuo_otcenka = `
             </div>
             <div class="form__modal--group">
                 <div class="form__group">
-                  <input name="city" placeholder="Горолд">
+                  <input name="city" required placeholder="Город *">
                 </div>
             </div>
             <div class="form__modal--group">
@@ -239,8 +239,8 @@ export const vykuo_otcenka = `
             </button>
 
             <div class="modal__personal">
-                <input type="checkbox" id="dd6">
-                <label for="dd6">
+                <input type="checkbox">
+                <label>
                     Нажав кнопку «Отправить заявку» я даю согласие
                     на обработку
                     <a href="/privacy-policy/" target="_blank">персональных данных</a>
@@ -273,15 +273,15 @@ export const franshiza = `
 
             <div class="block S  form__modal--group">
                 <div class="form__group">
-                  <input name="city" placeholder="Город">
+                  <input name="city" required placeholder="Город *">
                 </div>
             </div>
 
             <div class="block S  form__modal--group">
-                      <div class="capctha-div"></div>
+                <div class="capctha-div"></div>
             </div>
             <div>
-                <button class="page__btn page__btn--current" onclick="callMe()">
+                <button class="page__btn page__btn--current" onclick="callMe(this)">
                     Перезвоните мне
                 </button>
             </div>
@@ -301,7 +301,7 @@ export const franshiza = `
         </div>
     </div>`
 
-export const franshiza2 = `<div class="promo-detail-call__wrap">
+export const franshiza_about_city = `<div class="promo-detail-call__wrap">
     <div class="div">
         <h3><span style="color: var(--color-red)"> Получите расчет</span> прибыли автосалона АВТОСЕТЬ.РФ в своем городе </h3>
     </div>
@@ -322,7 +322,7 @@ export const franshiza2 = `<div class="promo-detail-call__wrap">
             
             <div class="form__modal--group">
                 <div class="form__group">
-                    <input placeholder="Город">
+                    <input name="city" required placeholder="Город *">
                 </div>
             </div>
 
@@ -363,7 +363,7 @@ export const question_boss_form= `
             </div>
             <div class="form__modal--group">
                 <div class="form__group">
-                    <input name=phone" required placeholder="Ваш телефон *" oninput="formattingPhone(this)">
+                    <input name="phone" required placeholder=" Ваш телефо *" oninput="formattingPhone(this)">
                 </div>
             </div>
            <div class="form__modal--group">
