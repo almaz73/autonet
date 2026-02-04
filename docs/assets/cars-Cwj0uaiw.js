@@ -1,4 +1,4 @@
-import"./main-DDG4M_xQ.js";/* empty css                        */import"./brands-icons-BHSv51pm.js";import{g as h}from"./global-func-BLwj3tow.js";import{a as y}from"./apibase-BsWjPdUp.js";import"./filter-controls-oN1Fx126.js";/* empty css                          */import"./swiper_buy-CDu4HQCt.js";import"./swiper-starter-Bjhk_3sq.js";import"./favoriteCars-B6JjzAIO.js";import"./compareCars-DqQQ4gNw.js";const _=`<div  class="filter-white">
+import"./main-C9oo1mEA.js";/* empty css                        */import"./brands-icons-BePIz-tn.js";import{g as h}from"./global-func-CsbevmTp.js";import{a as y}from"./apibase-BsWjPdUp.js";import"./filter-controls-D84yxGFB.js";/* empty css                          */import"./swiper_buy-CDu4HQCt.js";import"./swiper-starter-Bjhk_3sq.js";import"./favoriteCars-B6JjzAIO.js";import"./compareCars-BYEXZc_Q.js";const _=`<div  class="filter-white">
 <div class="filter-white-back filter-fields">
         <div class="frame-filter__item"
              onmouseenter="onCard(this)">

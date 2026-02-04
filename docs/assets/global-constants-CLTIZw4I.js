@@ -1,4 +1,4 @@
-let o=`<div class="bid">
+let a=`<div class="bid">
     <div class="div" style="margin-top: -120px;">
         <h2>Заявка на <span style="color: var(--color-red)">выкуп</span></h2>
     </div>
@@ -58,7 +58,7 @@ let o=`<div class="bid">
         </div>
     </div>
 
-</div>`;const a=`
+</div>`;const o=`
 <div class="look-auto">
     <div class="div" style="margin-top: -73px;">
         <h2>Записаться <br> на <span style="color: var(--color-red)">осмотр</span> автомобиля</h2>
@@ -103,7 +103,7 @@ let o=`<div class="bid">
         </div>
     </div>
 
-</div>`,d=`
+</div>`,i=`
 <div class="div form333">
         <h2>Заявка на <span style="color: var(--color-red)">автоподбор</span></h2>
     </div>
@@ -143,7 +143,7 @@ let o=`<div class="bid">
                 </label>
             </div>
         </div>
-    </div>`,i=`
+    </div>`,d=`
 <div class="title form333" style="text-align: left;">
             Оставьте заявку на <strong>подбор</strong> автомобиля
         </div>
@@ -201,7 +201,7 @@ let o=`<div class="bid">
             </div>
             <div class="form__modal--group">
                 <div class="form__group">
-                  <input name="city" placeholder="Горолд">
+                  <input name="city" required placeholder="Город *">
                 </div>
             </div>
             <div class="form__modal--group">
@@ -261,15 +261,15 @@ let o=`<div class="bid">
 
             <div class="block S  form__modal--group">
                 <div class="form__group">
-                  <input name="city" placeholder="Город">
+                  <input name="city" required placeholder="Город *">
                 </div>
             </div>
 
             <div class="block S  form__modal--group">
-                      <div class="capctha-div"></div>
+                <div class="capctha-div"></div>
             </div>
             <div>
-                <button class="page__btn page__btn--current" onclick="callMe()">
+                <button class="page__btn page__btn--current" onclick="callMe(this)">
                     Перезвоните мне
                 </button>
             </div>
@@ -308,7 +308,7 @@ let o=`<div class="bid">
             
             <div class="form__modal--group">
                 <div class="form__group">
-                    <input placeholder="Город">
+                    <input name="city" required placeholder="Город *">
                 </div>
             </div>
 
@@ -347,7 +347,7 @@ let o=`<div class="bid">
             </div>
             <div class="form__modal--group">
                 <div class="form__group">
-                    <input name=phone" required placeholder="Ваш телефон *" oninput="formattingPhone(this)">
+                    <input name="phone" required placeholder=" Ваш телефо *" oninput="formattingPhone(this)">
                 </div>
             </div>
            <div class="form__modal--group">
@@ -373,4 +373,64 @@ let o=`<div class="bid">
         </div>
     </div>
 
-</div>`;export{a,d as b,s as c,r as d,o as f,i as p,e as q,l as v};
+</div>`,v=`
+<div class="wrap">
+                    <div class="title">
+                        Заявка  на <strong style="color: var(--color-red)">страхование</strong>
+                    </div>
+                    <div>
+                        <div class="form__modal--group">
+                            <div class="form__group">
+                                <input name="name" required placeholder="Имя *">
+                            </div>
+                        </div>
+                        <div class="form__modal--group">
+                            <div class="form__group">
+                                <input name="phone" required placeholder="Ваш телефон *" oninput="formattingPhone(this)">
+                            </div>
+                        </div>
+                        <div class="form__modal--group">
+                            <div class="form__group">
+                                <input name="city" required placeholder="Город *">
+                            </div>
+                        </div>
+                        <div class="form__modal--group" style="position: relative">
+                            <div class="form__group with_sub_field">
+                                <input name="osago"  placeholder="ОСАГО">
+
+                                <div class="select">
+                                    <div class="field">КАСКО</div>
+                                    <div class="field active">ОСАГО</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form__modal--group">
+                            <div class="form__group">
+                                <input name="brand"  placeholder="Марка">
+                            </div>
+                        </div>
+                        <div class="form__modal--group">
+                            <div class="form__group">
+                                <input name="model"  placeholder="Модель">
+                            </div>
+                        </div>
+
+                        <div class="form__modal--group">
+                            <div class="capctha-div"></div>
+                        </div>
+
+                        <button class="page__btn page__btn--current" onclick="sendInsurance(this)">
+                            <span> Отправить заявку </span>
+                        </button>
+
+                        <div class="modal__personal">
+                            <input type="checkbox">
+                            <label>
+                                Нажав кнопку «Отправить заявку» я даю согласие
+                                на обработку
+                                <a href="/privacy-policy/" target="_blank">персональных данных</a>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>`;export{o as a,i as b,s as c,r as d,a as f,v as i,d as p,e as q,l as v};
