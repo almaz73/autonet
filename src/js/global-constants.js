@@ -414,7 +414,7 @@ export const insurance_form = `
                         </div>
                         <div class="form__modal--group" style="position: relative">
                             <div class="form__group with_sub_field">
-                                <input name="osago"  placeholder="ОСАГО">
+                                <input name="osago"  value="ОСАГО">
 
                                 <div class="select">
                                     <div class="field">КАСКО</div>
@@ -452,3 +452,62 @@ export const insurance_form = `
 
                     </div>
                 </div>`
+
+export const servObs = `
+    <div class="wrap">
+        <div class="title">
+          Оставьте заявку на <span style="color:red">техосмотр</span> автомобиля
+        </div>
+        <div>
+            <div class="form__modal--group">
+                <div class="form__group">
+                    <input name="name" required placeholder="Имя *">
+                </div>
+            </div>
+            <div class="form__modal--group">
+                <div class="form__group">
+                   <input name="phone" required placeholder="Телефон *" oninput="formattingPhone(this)">
+                </div>
+            </div>
+            <div class="form__modal--group">
+                <div class="form__group">
+                  <input name="city" required placeholder="Город *">
+                </div>
+            </div>        
+            <div class="form__modal--group">                
+                <div class="form__group with_sub_field">
+                    <input name="select"  placeholder="Выберите услугу">
+
+                    <div class="select">
+                        <div class="field">Диагностика</div>
+                        <div class="field ">Техническое обслуживание</div>
+                        <div class="field">Ремонт двинателя</div>
+                        <div class="field">Ремонт трансмиссии</div>
+                        <div class="field">Ремонт подвески</div>
+                        <div class="field">Ремонт рулевого управления</div>
+                        <div class="field">Ремонт тормозной системы</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form__modal--group">
+              <div class="capctha-div"></div>
+            </div>
+
+            <button class="page__btn page__btn--current" onclick="send_obsl(this)">
+                <span> Отправить заявку </span>
+            </button>
+
+            <div class="modal__personal">
+                <input type="checkbox">
+                <label>
+                    Нажав кнопку «Отправить заявку» я даю согласие
+                    на обработку
+                    <a href="/privacy-policy/" target="_blank">персональных данных</a>
+                </label>
+            </div>
+
+        </div>
+    </div>
+`

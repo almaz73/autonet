@@ -68,7 +68,7 @@
 
 .result {
     position: absolute;
-    z-index: 100;
+    z-index: 80;
     top: -48px;
     font-size: 42px;
     width: 100%;

@@ -9,13 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     stateForrm1.innerHTML = vykuo_otcenka
     stateForrm1.querySelector('[name="year"]').parentNode.style.display='none'
-    stateForrm1.querySelector('.title').innerHTML = `Оставьте заявку и получите <span style="color:red">бесплатную замену масла в АКПП</span> в подарок!*`
+    stateForrm1.querySelector('.title').innerHTML = `Заявка на <span style="color:red">ремонт двигателя</span>`
 
     let stateForrm2 = document.querySelector('.formBlock.v2')
-    console.log('stateForrm2', stateForrm2)
     stateForrm2.innerHTML = vykuo_otcenka
     stateForrm2.querySelector('[name="year"]').parentNode.style.display='none'
-    stateForrm2.querySelector('.title').innerHTML = `Оставьте заявку и получите <span style="color:red">бесплатную замену масла в АКПП</span> в подарок!*`
+    stateForrm1.querySelector('.title').innerHTML = `Заявка на <span style="color:red">ремонт двигателя</span>`
     initCaptcha()
 
     let right_panel_content = document.querySelector('#right_panel_content')
@@ -29,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 window.applyBid = function () {
-    console.log('555??? ')
     let capcthadiv = document.querySelector('.bid .capctha-div')
     let name = document.querySelector('.bid  [name="name"]')
     let phone = document.querySelector('.bid  [name="phone"]')
@@ -44,6 +42,7 @@ window.applyBid = function () {
     let params = {
         name: name.value,
         year: year.value,
+        brand:brand.value
     }
     console.log('params', params)
     // api_postCallToSell(params).then(res => {
@@ -69,7 +68,9 @@ window.sendBid = function (self) {
     let params = {
         name: name.value,
         year: year.value,
-        phone: phone.value
+        phone: phone.value,
+        brand: brand.value,
+        model: model.value
     }
     console.log('params', params)
     // api_postCallToSell(params).then(res => {

@@ -19,16 +19,17 @@
           content='Записаться на сервисное обслуживание, ремонт или компьютерную диагностику авто. 🚗 Цены на услуги
           в автосервисах Автосеть.рф. ⚡ Ремонт ГУР, ЭУР, рулевых реек, тормозов, подвески, трансмиссии автомобилей
           в Казани, Екатеринбурге, Уфе, Туле, Самаре и других городах России. ☎ Звоните по телефону 8-800-500-11-56.'>
-    <link rel='stylesheet' href='/src/css/style.css'/>
-    <link rel='stylesheet' href='/src/css/Blocks4.css'/>
-    <link rel='stylesheet' href='/src/css/index/ourservice.css'/>
-    <link rel='stylesheet' href='/src/css/ourprices.css'/>
+    <link rel='stylesheet' href='../../src/css/style.css'/>
+    <link rel='stylesheet' href='../../src/css/Blocks4.css'/>
+    <link rel='stylesheet' href='../../src/css/index/ourservice.css'/>
+    <link rel='stylesheet' href='../../src/css/ourprices.css'/>
 
 
-    <link rel="stylesheet" href="/src/css/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="/src/css/swiper.css"/>
+    <link rel="stylesheet" href="../../src/css/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="../../src/css/swiper.css"/>
 
-    <script type='module' src='/src/js/main.js'></script>
+    <script type='module' src='../../src/js/main.js'></script>
+    <script type="module" src="../../src/js/servise_obs.js"></script>
 
 </head>
 <body>
@@ -50,7 +51,7 @@
                     Почему ремонтировать автомобиль в АВТОСЕТЬ.РФ выгодно?
                 </p>
             </div>
-            {{> form_vykup}}
+            <div class="formBlock v1"></div>
         </div>
     </div>
 </div>
@@ -450,7 +451,7 @@
                     <a href="tel:+78005001156" class="phoneLink">8 800 500 11 56</a>
                 </p>
             </div>
-            {{> form_vykup}}
+            <div  style="margin-top: 20px" class="formBlock v2"></div>
         </div>
 
     </div>
@@ -508,7 +509,7 @@
 
 
 <script defer src='../../swiper-bundle.min.js'></script>
-<script type="module" src='/src/js/swiper-starter.js'></script>
+<script type="module" src='../../src/js/swiper-starter.js'></script>
 
 </body>
 </html>

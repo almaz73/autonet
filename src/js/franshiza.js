@@ -44,7 +44,7 @@ window.callMe = function () {
 
     let params = {
         name: name.value,
-        dity: dity.value,
+       city: city.value,
     }
     console.log('params',params)
     // api_postCallToSell(params).then(res => {

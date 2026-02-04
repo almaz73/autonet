@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="../../src/css/swiper.css"/>
 
     <script type='module' src='../../src/js/main.js'></script>
+    <script type="module" src="../../src/js/engine.js"></script>
 
 </head>
 <body>
@@ -51,7 +52,7 @@
                     Почему ремонтировать автомобиль в АВТОСЕТЬ.РФ выгодно?
                 </p>
             </div>
-            {{> form_vykup}}
+            <div class="formBlock v1"></div>
         </div>
     </div>
 </div>
@@ -152,7 +153,7 @@
             <p>
                 Записываем на удобное время
             </p>
-            <a href="javascript:;" class="nextFormLoad page__btn page__btn--current">
+            <a href="javascript:void(0)" class="nextFormLoad page__btn page__btn--current apply_bid">
                 Отправить заявку
             </a>
         </div>
@@ -199,7 +200,7 @@
                     <a href="tel:+79033400050" class="phoneLink">8 903 340 00 50</a>
                 </p>
             </div>
-            {{> form_vykup}}
+            <div style="margin-top: 40px" class="formBlock v2"></div>
         </div>
 
     </div>

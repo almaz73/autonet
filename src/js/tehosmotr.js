@@ -1,27 +1,11 @@
 import {initCaptcha} from "@/js/captcha.js";
 import {checkFormFields , formattingPhone} from "@/js/global-func.js";
-import {franshiza, franshiza_about_city, question_boss_form} from "@/js/global-constants.js";
+import {franshiza} from "@/js/global-constants.js";
 
 window.formattingPhone = formattingPhone
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    // let count_business_plan = document.querySelector('.count_business_plan')
-    // let right_panel_content = document.querySelector('#right_panel_content')
-    // let who_can_become_partner = document.querySelector('.who_can_become_partner')
-
-
-    // count_business_plan.addEventListener('click', () => {
-    //     openRightPanel()
-    //     right_panel_content.innerHTML = '<div class="vv1">'+franshiza_about_city+'</div>'
-    //     initCaptcha()
-    // })
-    // who_can_become_partner.addEventListener('click', () => {
-    //     openRightPanel()
-    //     right_panel_content.innerHTML = '<div class="vv2">'+franshiza_about_city+'</div>'
-    //     initCaptcha()
-    // })
-
     let form1 = document.querySelector('.formBlock.v1')
     form1.innerHTML = franshiza
     form1.querySelector('.formBottom').style.display ='none'
@@ -48,7 +32,7 @@ window.callMe = function (self) {
 
     let params = {
         name: name.value,
-        dity: dity.value,
+       city: city.value,
     }
     console.log('params',params)
     // api_postCallToSell(params).then(res => {
