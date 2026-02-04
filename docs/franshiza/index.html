@@ -18,8 +18,10 @@
 
 
 
-  <script type="module" crossorigin src="../assets/franshiza-BO9AgPcL.js"></script>
+  <script type="module" crossorigin src="../assets/franshiza-CozGgJSi.js"></script>
   <link rel="modulepreload" crossorigin href="../assets/main-DDG4M_xQ.js">
+  <link rel="modulepreload" crossorigin href="../assets/global-func-BLwj3tow.js">
+  <link rel="modulepreload" crossorigin href="../assets/global-constants-CavHXwe5.js">
   <link rel="stylesheet" crossorigin href="../assets/main-DUU3xwSD.css">
   <link rel="stylesheet" crossorigin href="../assets/franshiza-BW6poFx-.css">
   <link rel="stylesheet" crossorigin href="../assets/column3-BEegFoaW.css">
@@ -198,92 +200,8 @@
                 <p style="font-size: 1em; margin-top: 30px;">Анна Шилова, исполнительный директор: <a
                         href="tel:+79178893565">+7 917 889-35-65</a></p>
             </div>
-            <div class="formBlock">
-    <div class="wrap">
-        <form action="/bitrix/components/befa/popup.form/.ajax.php" name="popup_form" id="popup_form_75655"
-              class="form__modal" enctype="multipart/form-data" method="POST">
-            <!--            <input type="hidden" name="iblock_id" value="5">-->
-            <!--            <input type="hidden" name="success_msg" value="Сообщение успешно отправлено">-->
-            <!--            <input type="hidden" name="req" value="12,NAME">-->
-            <!--            <input type="hidden" name="validate_email" value="0">-->
-            <!--            <input type="hidden" name="send_email" value="">-->
-            <!--            <input type="hidden" name="copy_email" value="">-->
-            <!--            <input type="hidden" name="email_event_type" value="POPUP">-->
-            <!--            <input type="hidden" name="email_event_template_admin" value="50">-->
-            <!--            <input type="hidden" name="status_new" value="N">-->
-            <!--            <input type="hidden" name="FORM_URL" value="/franshiza/">-->
-            <!--            <input type="hidden" name="SUBJECT" value="Получить расчет (франшиза)">-->
-
-
-            <div class="title">
-                <strong style="color: #e5393b">
-                    Получите расчет</strong> прибыли автосалона АВТОСЕТЬ.РФ в своем городе
-            </div>
-
-            <div class="form_error"></div>
-
-
-            <div class=" form__modal--group">
-                <div class="form__group ">
-                    <input size="25">
-                    <label id="text_NAME">Имя
-                        <sup class="starrequired">*</sup>
-                    </label>
-                </div>
-            </div>
-
-
-            <div class="form__modal--group">
-                <div class="form__group">
-                    <input size="25">
-                    <label id="text_12">Ваш телефон
-                        <sup class="starrequired">*</sup>
-                    </label>
-                </div>
-            </div>
-
-
-            <div class="block S  form__modal--group">
-                <div class="form__group">
-                    <input size="25">
-                    <label>Город</label>
-                </div>
-            </div>
-
-
-            <div class="block S  form__modal--group">
-                      <div class="capctha-div"></div>
-            </div>
-            <div>
-                <button class="page__btn page__btn--current">
-                    Перезвоните мне
-                </button>
-            </div>
-            <div class="modal__personal">
-                <input type="checkbox">
-                <label>
-                    Нажав кнопку «Отправить» я даю согласие
-                    на обработку
-                    <a href="/privacy-policy/" target="_blank">персональных данных</a>
-                </label>
-            </div>
-<!--            <div class="modal__error">Вы должны дать согласие на обработку персональных данных</div>-->
-
-<!--            <div class="success">-->
-<!--                Сообщение успешно отправлено-->
-<!--            </div>-->
-<!--            <div class="form_loading">-->
-<!--                <span>Идет отправка сообщения...</span>-->
-<!--            </div>-->
-
-        </form>
-
-        <div class="formBottom">
-            <p>или позвоните по номеру</p>
-            <a href="tel:88005001156">8-800-500-11-56</a>
+            <div class="formBlock v1"></div>
         </div>
-    </div>
-</div>        </div>
     </div>
 </div>
 
@@ -359,30 +277,24 @@
 </main>
 
 <main>
-    <div class="formFranshizaCheck formBlock">
-        <div>
+    <div class="formFranshizaCheck formBlock pkace">
         <h2>Проверь, есть ли места <span>в твоем городе</span>?</h2>
-        <div class="nextFormLoad">
-            <span class=" page__btn page__btn--current">
-                Получить расчет
-            </span>
-        </div>
         <form action="" class="form__modal" enctype="multipart/form-data" method="POST">
             <div class="block S  form__modal--group">
                 <div class="form__group form__group--label">
-                    <input size="25"> <label >Имя <sup class="starrequired">*</sup></label>
+                    <input name="name" required placeholder="Имя *">
                 </div>
             </div>
 
             <div class="block S  form__modal--group">
                 <div class="form__group form__group--label">
-                    <input size="25" > <label>Ваш телефон <sup class="starrequired">*</sup></label>
+                    <input name="phone" required placeholder="Ваш телефон *" oninput="formattingPhone(this)">
                 </div>
             </div>
 
             <div class="block S  form__modal--group">
                 <div class="form__group form__group--label">
-                    <input size="25"> <label>Город <sup class="starrequired">*</sup></label>
+                    <input name="city" placeholder="Город">
                 </div>
             </div>
 
@@ -391,7 +303,7 @@
             </div>
 
             <div class="form__modal--button">
-                <button class="page__btn page__btn--current f-9">
+                <button class="page__btn page__btn--current f-9" onclick="checkPlaceCity()">
                     <span>Отправить</span>
                 </button>
             </div>
@@ -403,18 +315,6 @@
                     <a href="/privacy-policy/" target="_blank">персональных данных</a>
                 </label>
             </div>
-<!--            <div class="modal__error" id="personal_error_75373">Вы должны дать согласие на обработку персональных-->
-<!--                данных-->
-<!--            </div>-->
-
-
-<!--            <div class="success" data-wtf="1" style="display: none;">-->
-<!--                Сообщение успешно отправлено-->
-<!--            </div>-->
-<!--            <div class="form_loading">-->
-<!--                <span>Идет отправка сообщения...</span>-->
-<!--            </div>-->
-
         </form>
     </div>
 </main>

@@ -1,6 +1,4 @@
-import {formattingPhone} from "@/js/global-func.js"
-
-export let form_profitable = `<div class="bid">
+let o=`<div class="bid">
     <div class="div" style="margin-top: -120px;">
         <h2>Заявка на <span style="color: var(--color-red)">выкуп</span></h2>
     </div>
@@ -60,9 +58,7 @@ export let form_profitable = `<div class="bid">
         </div>
     </div>
 
-</div>`
-
-export const form_date_show = `
+</div>`;const a=`
 <div class="look-auto">
     <div class="div" style="margin-top: -73px;">
         <h2>Записаться <br> на <span style="color: var(--color-red)">осмотр</span> автомобиля</h2>
@@ -107,9 +103,7 @@ export const form_date_show = `
         </div>
     </div>
 
-</div>`
-
-export const podbor_bid = `
+</div>`,d=`
 <div class="div form333">
         <h2>Заявка на <span style="color: var(--color-red)">автоподбор</span></h2>
     </div>
@@ -149,9 +143,7 @@ export const podbor_bid = `
                 </label>
             </div>
         </div>
-    </div>`
-
-export const podbor_bid_1_2 = `
+    </div>`,i=`
 <div class="title form333" style="text-align: left;">
             Оставьте заявку на <strong>подбор</strong> автомобиля
         </div>
@@ -191,9 +183,7 @@ export const podbor_bid_1_2 = `
                 </label>
             </div>
 
-        </div>`
-
-export const vykuo_otcenka = `
+        </div>`,l=`
     <div class="wrap">
         <div class="title">
           Оценить <strong style="color: var(--color-red)">автомобиль</strong>
@@ -239,8 +229,8 @@ export const vykuo_otcenka = `
             </button>
 
             <div class="modal__personal">
-                <input type="checkbox" id="dd6">
-                <label for="dd6">
+                <input type="checkbox">
+                <label>
                     Нажав кнопку «Отправить заявку» я даю согласие
                     на обработку
                     <a href="/privacy-policy/" target="_blank">персональных данных</a>
@@ -249,9 +239,7 @@ export const vykuo_otcenka = `
 
         </div>
     </div>
-`
-
-export const franshiza = `
+`,r=`
  <div class="wrap">
         <div>
             <div class="title">
@@ -299,9 +287,7 @@ export const franshiza = `
             <p>или позвоните по номеру</p>
             <a href="tel:88005001156">8-800-500-11-56</a>
         </div>
-    </div>`
-
-export const franshiza2 = `<div class="promo-detail-call__wrap">
+    </div>`,s=`<div class="promo-detail-call__wrap">
     <div class="div">
         <h3><span style="color: var(--color-red)"> Получите расчет</span> прибыли автосалона АВТОСЕТЬ.РФ в своем городе </h3>
     </div>
@@ -343,9 +329,7 @@ export const franshiza2 = `<div class="promo-detail-call__wrap">
         </form>
     </div>
 
-</div>`
-
-export const question_boss_form= `
+</div>`,e=`
 <div class="promo-detail-call__wrap boss">
     <div class="div">
         <h3>Задать <span style="color: var(--color-red)">вопрос</span></h3>
@@ -389,4 +373,4 @@ export const question_boss_form= `
         </div>
     </div>
 
-</div>`
+</div>`;export{a,d as b,s as c,r as d,o as f,i as p,e as q,l as v};
