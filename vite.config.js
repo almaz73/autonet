@@ -123,6 +123,12 @@ export default defineConfig({
 				n655170: resolve(__dirname,'./news/655170/index.html'),
 				n655171: resolve(__dirname,'./news/655171/index.html'),
 
+				n657189: resolve(__dirname,'./nres/657189/index.html'),
+				n657190: resolve(__dirname,'./nres/657190/index.html'),
+				n657191: resolve(__dirname,'./nres/657191/index.html'),
+				n657192: resolve(__dirname,'./nres/657192/index.html'),
+				n657193: resolve(__dirname,'./nres/657193/index.html'),
+
 
 				franshiza: resolve(__dirname, './franshiza/index.html'),
 				contacts: resolve(__dirname, './contacts/index.html'),
