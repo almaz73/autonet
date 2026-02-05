@@ -129,7 +129,7 @@ export function fill(cars, currentCars, totalPages) {
     }); // прикручиваем html
 
 
-    if (location.pathname !== '/' && location.pathname !== '/personal/favorite-cars/') cards.innerHTML += `<div class="pager">1111 Страницы: <span id="pager"></span></div>`
+    if (location.pathname !== '/' && location.pathname !== '/personal/favorite-cars/') cards.innerHTML += `<div class="pager">Страницы: <span id="pager"></span></div>`
 
     preparePager(totalPages)
     initChosen()

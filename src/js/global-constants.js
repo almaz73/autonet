@@ -1,6 +1,42 @@
 import {formattingPhone} from "@/js/global-func.js"
 
-export let form_profitable = `<div class="bid">
+export const gl_Call = `
+<div class="div form333">
+        <h2>Заказать звонок</h2>
+    </div>
+
+    <div class="div promo-form">
+        <div class="formBlock">
+            <div class="form__modal--group">
+                <div class="form__group">
+                    <input name="name" required placeholder="Ваее имя *">
+                </div>
+            </div>
+            
+            <div class="form__modal--group">
+                <div class="form__group">
+                    <input name="phone" required placeholder=" Ваш телефон *" oninput="formattingPhone(this)">
+                </div>
+            </div>
+                  
+            <div class="form__modal--group">
+              <div class="capctha-div"></div>
+            </div>
+
+            <button class="page__btn page__btn--current" onclick="glob_call()">
+                <span> Отправить заявку </span>
+            </button>
+
+            <div class="modal__personal">
+                <input type="checkbox" id="v3">
+                <label for="v3"> Нажав кнопку «Отправить заявку» я даю согласие на обработку
+                    <a href="/privacy-policy/" target="_blank">персональных данных</a>
+                </label>
+            </div>
+        </div>
+    </div>`
+export let form_profitable = `
+<div class="bid">
     <div class="div" style="margin-top: -120px;">
         <h2>Заявка на <span style="color: var(--color-red)">выкуп</span></h2>
     </div>
