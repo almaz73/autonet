@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 export function initSwipper() {
     let params = {
         spaceBetween: 30,
-        // loop: true,
+        loop: true,
         utoplay: {delay: 5000, disableOnInteraction: false},
         autoHeight: true,
         centeredSlides: true,
