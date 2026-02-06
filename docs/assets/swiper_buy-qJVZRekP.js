@@ -2,17 +2,18 @@ document.addEventListener("DOMContentLoaded",()=>{window.reloadLittleSwiper()});
     <section class="swiper mySwiper buy_swiper" style="z-index: 1">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
-            <img class="buy_lg" src="../photo-buy/1/585х200.webp" alt="">
-            <img class="buy_mg" src="../photo-buy/1/278х402.webp" alt="">
-        </div>
-         <div class="swiper-slide">
             <img class="buy_lg" src="../photo-buy/2/585х200.webp" alt="">
             <img class="buy_mg" src="../photo-buy/2/278х402.webp" alt="">
         </div>
-         <div class="swiper-slide">
-            <img class="buy_lg" src="../photo-buy/3/585х200.webp" alt="">
-            <img class="buy_mg" src="../photo-buy/3/278х402.webp" alt="">
+        <div class="swiper-slide">
+            <img class="buy_lg" src="../photo-buy/1/585х200.webp" alt="">
+            <img class="buy_mg" src="../photo-buy/1/278х402.webp" alt="">
         </div>
+
+<!--         <div class="swiper-slide">-->
+<!--            <img class="buy_lg" src="../photo-buy/3/585х200.webp" alt="">-->
+<!--            <img class="buy_mg" src="../photo-buy/3/278х402.webp" alt="">-->
+<!--        </div>-->
          <div class="swiper-slide">
             <img class="buy_lg" src="../photo-buy/4/585х200.webp" alt="">
             <img class="buy_mg" src="../photo-buy/4/278х402.webp" alt="">
@@ -45,10 +46,10 @@ document.addEventListener("DOMContentLoaded",()=>{window.reloadLittleSwiper()});
             <img class="buy_lg" src="../photo-buy/11/585х200.webp" alt="">
             <img class="buy_mg" src="../photo-buy/11/278х402.webp" alt="">
         </div>
-         <div class="swiper-slide">
-            <img class="buy_lg" src="../photo-buy/12/585х200.webp" alt="">
-            <img class="buy_mg" src="../photo-buy/12/278х402.webp" alt="">
-        </div>
+<!--         <div class="swiper-slide">-->
+<!--            <img class="buy_lg" src="../photo-buy/12/585х200.webp" alt="">-->
+<!--            <img class="buy_mg" src="../photo-buy/12/278х402.webp" alt="">-->
+<!--        </div>-->
          <div class="swiper-slide">
             <img class="buy_lg" src="../photo-buy/13/585х200.webp" alt="">
             <img class="buy_mg" src="../photo-buy/13/278х402.webp" alt="">
@@ -73,14 +74,22 @@ document.addEventListener("DOMContentLoaded",()=>{window.reloadLittleSwiper()});
             <img class="buy_lg" src="../photo-buy/18/585х200.webp" alt="">
             <img class="buy_mg" src="../photo-buy/18/278х402.webp" alt="">
         </div>
+<!--         <div class="swiper-slide">-->
+<!--            <img class="buy_lg" src="../photo-buy/19/585х200.webp" alt="">-->
+<!--            <img class="buy_mg" src="../photo-buy/19/278х402.webp" alt="">-->
+<!--        </div>-->
          <div class="swiper-slide">
-            <img class="buy_lg" src="../photo-buy/19/585х200.webp" alt="">
-            <img class="buy_mg" src="../photo-buy/19/278х402.webp" alt="">
+            <img class="buy_lg" src="../photo-buy/21/585х200.webp" alt="">
+            <img class="buy_mg" src="../photo-buy/21/278х402.webp" alt="">
         </div>
          <div class="swiper-slide">
-            <img class="buy_lg" src="../photo-buy/20/585х200.webp" alt="">
-            <img class="buy_mg" src="../photo-buy/20/278х402.webp" alt="">
+            <img class="buy_lg" src="../photo-buy/22/585х200.webp" alt="">
+            <img class="buy_mg" src="../photo-buy/22/278х402.webp" alt="">
         </div>
+<!--         <div class="swiper-slide">-->
+<!--            <img class="buy_lg" src="../photo-buy/20/585х200.webp" alt="">-->
+<!--            <img class="buy_mg" src="../photo-buy/20/278х402.webp" alt="">-->
+<!--        </div>-->
     </div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
