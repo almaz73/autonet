@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let form1 = document.querySelector('.formBlock.v1')
     form1.innerHTML = franshiza
     form1.querySelector('.formBottom').style.display = 'none'
+    form1.querySelector('[name="city"]').style.display = 'none'
     form1.querySelector('.title').innerHTML = `Записаться на шиномонтаж. Диагностика колес <span style="color:red">бесплатно</span>`
 
     initCaptcha()

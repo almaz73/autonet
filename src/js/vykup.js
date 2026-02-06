@@ -64,7 +64,7 @@ window.sendBid = function (self) {
     let year = document.querySelector(`.${ver} [name="year"]`)
     let checkbox = document.querySelector(`.${ver} [type="checkbox" ]`)
 
-    if (checkFormFields([capcthadiv, name, phone, checkbox])) return false
+    if (checkFormFields([capcthadiv, city, name, phone, checkbox])) return false
 
     let params = {
         name: name.value,

@@ -1,6 +1,6 @@
 import {initCaptcha} from "@/js/captcha.js";
 import {checkFormFields, formattingPhone, initSubField} from "@/js/global-func.js";
-import {servObs} from "@/js/global-constants.js";
+import { servObs, servObsPanel} from "@/js/global-constants.js";
 
 window.formattingPhone = formattingPhone
 
@@ -16,11 +16,18 @@ document.addEventListener('DOMContentLoaded', () => {
     initCaptcha()
     initSubField()
 
+    let apply_bid = document.querySelector('.apply_bid')
+    apply_bid.addEventListener('click', ()=>{
+        openRightPanel()
+        right_panel_content.innerHTML = '<div class="_v v3" style="margin-top: -50px">'+servObsPanel+'</div>'
+        initCaptcha()
+        initSubField()
+    })
+
 })
 
 window.send_obsl = function (self) {
     let ver = self.parentNode.parentNode.parentNode.classList[1]
-    console.log('send_obsl ver', ver)
     let capcthadiv = document.querySelector(`.${ver} .capctha-div`)
     let name = document.querySelector(`.${ver} [name="name"]`)
     let phone = document.querySelector(`.${ver} [name="phone"]`)

@@ -404,7 +404,7 @@ export const services = [
 
 
 export const gl_Call = `
-<div class="div form333">
+<div class="div ">
         <h2>Заказать звонок</h2>
     </div>
 
@@ -412,7 +412,7 @@ export const gl_Call = `
         <div class="formBlock">
             <div class="form__modal--group">
                 <div class="form__group">
-                    <input name="name" required placeholder="Ваее имя *">
+                    <input name="name" required placeholder="Ваше имя *">
                 </div>
             </div>
             
@@ -549,7 +549,7 @@ export const form_date_show = `
 </div>`
 
 export const podbor_bid = `
-<div class="div form333">
+<div class="div ">
         <h2>Заявка на <span style="color: var(--color-red)">автоподбор</span></h2>
     </div>
 
@@ -591,7 +591,7 @@ export const podbor_bid = `
     </div>`
 
 export const podbor_bid_1_2 = `
-<div class="title form333" style="text-align: left;">
+<div class="title " style="text-align: left;">
             Оставьте заявку на <strong>подбор</strong> автомобиля
         </div>
         <div>
@@ -1000,6 +1000,66 @@ export const credit_dib = `
                 </label>
             </div>
 
+        </div>
+    </div>
+`
+
+export const servObsPanel = `
+    <div class="div" >
+        <h2>Оставьте заявку на  <span style="color: var(--color-red)">техосмотр</span> автомобиля</h2>
+    </div>
+
+    <div class="div promo-form">
+        <div class="formBlock">
+            <div class="form__modal--group">
+                <div class="form__group">
+                    <input name="name" required placeholder="Имя *">
+                </div>
+            </div>
+            
+            <div class="form__modal--group">
+                <div class="form__group">
+                    <input name="phone" required placeholder="Телефон *" oninput="formattingPhone(this)">
+                </div>
+            </div>
+            
+            <div class="form__modal--group">
+                <div class="form__group">
+                    <input  name="city"  required placeholder="Город *">
+                </div>
+            </div>
+            
+            <div class="form__modal--group">                
+                <div class="form__group with_sub_field">
+                    <input name="select"  placeholder="Выберите услугу">
+
+                    <div class="select">
+                        <div class="field">Диагностика</div>
+                        <div class="field ">Техническое обслуживание</div>
+                        <div class="field">Ремонт двинателя</div>
+                        <div class="field">Ремонт трансмиссии</div>
+                        <div class="field">Ремонт подвески</div>
+                        <div class="field">Ремонт рулевого управления</div>
+                        <div class="field">Ремонт тормозной системы</div>
+                    </div>
+                </div>
+            </div>
+            
+          
+            <div class="form__modal--group">
+              <div class="capctha-div"></div>
+            </div>
+
+            <button class="page__btn page__btn--current" onclick="send_obsl(this)">
+                <span> Отправить заявку </span>
+            </button>
+
+            <div class="modal__personal">
+                <input type="checkbox" id="id_">
+                <label for="id_"> Нажав кнопку «Отправить заявку» я даю согласие на обработку
+                    <a href="/privacy-policy/" target="_blank">персональных данных</a>
+                </label>
+            </div>
         </div>
     </div>
 `

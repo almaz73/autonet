@@ -126,8 +126,8 @@ function FillFilterFromAddressBar(filterParams) {
         // Раширенный фильтр
         let advanced = document.querySelector('.frame-filter__controls-advanced')
         let filterAdvanced = document.querySelector('.filter-fields')
-        advanced.classList.add("active")
-        filterAdvanced.classList.add("active")
+        advanced && advanced.classList.add("active")
+        filterAdvanced && filterAdvanced.classList.add("active")
     }
 
     const priceOrder = getUrlParam('priceOrder')

@@ -39,7 +39,6 @@ export function initSwipper() {
             init() {
                 let isUsed = false
                 this.autoplay.start()
-                console.log('swip init')
                 // Если один раз нажали на прокрутку - автопрокрутку выключаем
                 this.el.addEventListener('click', () => {
                     this.autoplay.stop();
@@ -54,7 +53,6 @@ export function initSwipper() {
     swiper = new Swiper('.mySwiper', params)
 }
 
-console.log(999)
 
 window.showSlide = function (val) {
     swiper.slideTo(val);

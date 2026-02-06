@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     advanced && advanced.addEventListener('click', () => {
         if (advanced.classList.length === 1) {
-            advanced.classList.add("active")
+            advanced && advanced.classList.add("active")
             filterAdvanced && filterAdvanced.classList.add("active")
             setExtention(true)
         } else {
@@ -56,8 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         f_auto.addEventListener('click', () => {
-            f_auto.classList.add("active")
-            f_tire.classList.remove("active")
+            f_auto && f_auto.classList.add("active")
+            f_tire && f_tire.classList.remove("active")
             if (f_tire_buttons) f_tire_buttons.style.display = 'none'
             if (f_auto_buttons) f_auto_buttons.style.display = 'flex'
             if (tireSizeInfo) tireSizeInfo.style.display = 'none'
