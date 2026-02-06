@@ -7,7 +7,7 @@ let buttonBurger = document.querySelector('.button__burger');
 let cities = document.querySelector('.main-nav.cities');
 let cityButton = document.querySelector('.footer-city-button');
 let cityB_contacts = document.querySelector('#city-contacts')
-let select_div = document.querySelector('.comb__selected');
+
 let cityClose = document.querySelector('.modal-place__close');
 let mySwiper = document.querySelector('.mySwiper')
 let isOpened;
@@ -50,15 +50,6 @@ cityClose && cityClose.addEventListener('click', () => {
   cities.style.transform = 'translateX(150vw)';
 });
 
-cityButton.innerHTML = localStorage.getItem('selectedCity') || 'Россия';
-if (cityB_contacts) cityB_contacts.innerHTML = localStorage.getItem('selectedCity') || 'Россия';
-window.setCity = function (val) {
-  localStorage.setItem('selectedCity', val);
-  cities.style.transform = 'translateX(150vw)';
-  select_div.innerHTML = cityButton.innerHTML = val
-  if (cityB_contacts) cityB_contacts.innerHTML = val
-  window.setCityContacts && window.setCityContacts(val)
-}
 
 /* работа с cookie-banner */
 let cookieAccept = document.querySelector('#cookie-accept');

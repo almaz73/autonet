@@ -286,3 +286,28 @@ main h2, main h1 {
     background: #0e70c0;
     color: white;
 }
+/***/
+.map-modal, .photo-modal {
+    /*display: grid;*/
+    place-items: center;
+    background: #00000099;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 100;
+    display: none;
+}
+
+.map-modal > .closer{
+    position: absolute;
+    top: 60px;
+    padding: 20px;
+    cursor: pointer;
+    z-index: 100000000;
+}
+.map-modal > .closer:hover{
+    background: #ccc;
+}

@@ -36,11 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
     advanced && advanced.addEventListener('click', () => {
         if (advanced.classList.length === 1) {
             advanced.classList.add("active")
-            filterAdvanced.classList.add("active")
+            filterAdvanced && filterAdvanced.classList.add("active")
             setExtention(true)
         } else {
             advanced.classList.remove("active")
-            filterAdvanced.classList.remove("active")
+            filterAdvanced && filterAdvanced.classList.remove("active")
         }
         let deleter = document.querySelector('#deleter')
         if (deleter) deleter.style.left = '-1000px'

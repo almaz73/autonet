@@ -6,3 +6,4 @@ import '@/js/abdul.js';
 import '@/js/global-func.js'
 import '@/js/captcha.js'
 import '@/js/globalCall.js'
+import '@/js/contacts_footer.js'

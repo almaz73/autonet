@@ -1,5 +1,408 @@
 import {formattingPhone} from "@/js/global-func.js"
 
+/** АДРЕСА */
+export const dealers = [
+    {
+        city: 'Альметьевски',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '54.912580,52.320238',
+        address: 'ул. Герцена, 1б',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Aef6e8fca746164e348adf860145722f5a890983a47408dc685ab04b8076a0f7b&amp;source=constructor'
+    },
+    {
+        city: 'Альметьевски',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '54.912580,52.320238',
+        address: 'ул. Советская, 182/1',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Aa48691a6bc05dd67e7bcfb1ad8e429acaff3cf13a292a8f4a69e512dbacb7fda&amp;source=constructor'
+    },
+    {
+        city: 'Астрахань',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '46.288304, 47.971339',
+        address: 'ул. Адмирала Нахимова, 76',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A4e8033de51901c5bd7b5a457e33850072459acff83441bcc859c3b297b337a01&amp;source=constructor'
+    },
+    {
+        city: 'Буинск',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '54.952455, 48.286585',
+        address: 'ул. Ефремова, 2а',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Ac38e150dd8e42257ca0c6d684e1265b29fe99ae6c77dc11c29773e5e85c015d4&amp;source=constructor'
+    },
+    {
+        city: 'Екатеринбург',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '56.789579, 60.607625',
+        address: 'ул. 8 марта, 205А',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A7d97dc8bafe4d372c2b3d4cf1cb634f3835520141a7310296d2f363580c2075f&amp;source=constructor'
+    },
+    {
+        city: 'Казань',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '55.823581, 49.159553',
+        address: 'пр. Ямашева, 115а',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A0740fee9f6396ff8f4aa3048c10c417b7f2be4ce61e41f46d69a4627f97951c7&amp;source=constructor'
+    },
+
+    {
+        city: 'Казань',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '55.826655, 49.022026',
+        address: 'Горьковское шоссе, 55',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Af4c7baecf06e4154b6bbd13632c95edc600e2482b332190b262776928450e25f&amp;source=constructor'
+    },
+
+    {
+        city: 'Казань',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '55.803967, 49.208709',
+        address: 'пр. Победы, 212к2',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A169e10ae037f14065a213eecd07e24f9a9d53659f4170e2d3c90d579d7b544bd&amp;source=constructor'
+    },
+
+
+    {
+        city: 'Магнитогорск',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '53.367384, 59.063538',
+        address: 'Шоссе Космонавтов 59А',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A5034cda35a547f1137730dd647fb151bce1c2d0ab1202a8241bcf7eebda0ceda&amp;source=constructor'
+    },
+    {
+        city: 'Набережные Челны',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '55.734962, 52.421602',
+        address: 'пр. Хасана Туфана, 3',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Af388f618621b0c96a1f876db4250b86a7d605a4dd2620aa26e0c9e68a27cc8fa&amp;source=constructor'
+    },
+    {
+        city: 'Набережные Челны',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '55.674714, 52.281223',
+        address: 'пр. Мусы Джалиля, 15',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A1f2ed0dd2ffe0c767cc59e635f514c05fb40bf75730bef48fd3c5ca1bedc9ff5&amp;source=constructor'
+    },
+    {
+        city: 'Нижнекамск',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '55.613672, 51.779136',
+        address: 'ул. Южная, 5г',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A07be9d83adb6c7f5a6f64ec6589361c02dffcaf76a77c2d1f3bc90495bdad97c&amp;source=constructor'
+    },
+    {
+        city: 'Нижнекамск',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '55.614353, 51.969439',
+        address: 'ул. Промзона,10/22',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A35da28743b493552af8ed2fb472dcfc555d07bff1d302851e5caf07330deab72&amp;source=constructor'
+    },
+    {
+        city: 'Нижнекамск',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '55.631989,51.828178',
+        address: 'ул. Спортивная, 4а',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A5ca83ddacf20c9ebed72ec201052cfb4ed286b32f8c00f7d7c4da38b89af08dd&amp;source=constructor'
+    },
+    {
+        city: 'Нижний Тагил',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '57.946923, 59.916489',
+        address: 'ул. Краснознаменная, 134',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A6f60d8f689946cf10bc949fb4319b3edb1ee1218a7ec8c9f3d3b00d0c7dcafb7&amp;source=constructor'
+    },
+    {
+        city: 'Нижний Тагил',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '57.879827, 59.932685',
+        address: 'Черноисточинское ш, 68с2',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Abfdeb70911627e4f5364dc9f99d07b51c2126f962b56eccbc5f36dc0dfdef20a&amp;source=constructor'
+    },
+    {
+        city: 'Самара',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '53.141011, 50.181024',
+        address: 'Южное шоссе, 10а',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Ac49f6a300c736bd719acb3376728ee628dc7d9d371781ac444e51fb63a37fa82&amp;source=constructor'
+    },
+    {
+        city: 'Серов',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '59.586669, 60.570884',
+        address: 'ул. Каквинская, 29',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A9a5736f0d49c86e9d3d38d16cd609e413a2b2838b483e64f9d9d336f044c89c8&amp;source=constructor'
+    },
+    {
+        city: 'Стерлитамак',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '53.639303,55.911492',
+        address: 'ул. Шаймуратова, 12',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A6d26f637308738722b92d9f7211e78b4410c02bcb4ed096449da348add2097b4&amp;source=constructor'
+    },
+    {
+        city: 'Тверь',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '56.823085, 35.874940',
+        address: 'ул. Оснабрюксая, 39,<br> пом. 111Б',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A2d25b65df6c8d0b7cf749b5e83c7168ee79f3f3ff2a62d7defed0609f1b4aee0&amp;source=constructor'
+    },
+    {
+        city: 'Тольятти',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '53.570484, 49.469034',
+        address: 'Обводное ш., 71',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A5ab93efaa670c0a4ecc603f0a719e58bd389221aa688a384893cba9d5657b4f4&amp;source=constructor'
+    },
+    {
+        city: 'Уфа',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '54.741061, 55.987866',
+        address: 'пр. Октября, 4/1, ТЦ Мир, <br> 3 уровень',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Ae6fc36ea5faa5164e18586cc2c35b1d09f1401830b27c11438377d20143a9303&amp;source=constructor'
+    },
+    {
+        city: 'Уфа',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '54.773538, 56.065914',
+        address: 'ул. Маршала Жукова, 16',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Ae77ab1daaa8f743e51e23372676cf7785ea83ffeaf29df86d7cec91039b41deb&amp;source=constructor'
+    }
+]
+export const punkts = [
+    {
+        city: 'Ижевск',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '56.886263, 53.309622',
+        address: 'ул. Автозаводская, 5а/3<br> (Рулевой)',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A7a0aa8d3c0916b54b822ec3ef1b00b9a27b44491cd4c8d77c59098b1bcffa211&amp;source=constructor'
+    },
+    {
+        city: 'Йошкар-Ола',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '56.643243, 47.927752',
+        address: 'Сернурский тракт, 23<br> (здание "Гарант Авто")',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A53fc65c2944e3744e91206e42120ad5319866b9bffb8f276fda6762447aab99c&amp;source=constructor'
+    },
+    {
+        city: 'Киров',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '58.61728733640516, 49.629800881945016',
+        address: 'ул. Лепсе, 25/4',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A7889c8a92ec01c9122a48ddcaec1a8ac753bd68146338a1c4deed34d90f9aeab&amp;source=constructor'
+    },
+    {
+        city: 'Магнитогорск',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '53.430389, 58.973231',
+        address: 'ул. Герцена 6, <br>БЦ АльфаЦентр , офис 103',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A5a56a953780b0e40fbf31ddf65b7633b6e20bbdb0bed23e6fb4c1f3993229fdf&amp;source=constructor'
+    },
+    {
+        city: 'Нижний Новгород',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '56.311626, 44.070441',
+        address: 'ул.Родионова, 167 <br>("Тайм Сервис")',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A4ce9ad24bc1a339b419f7b5069aeb4503efc432c074ce7a41b2683995b08826d&amp;source=constructor'
+    },
+    {
+        city: 'Пенза',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '53.18924053714283, 45.0405558150391',
+        address: 'ул. Измайлова, 26',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A32cbf070a2316cbc09c1d3d0d8399b6f3e035b51070bad0e7c3041e6d8845213&amp;source=constructor'
+    },
+    {
+        city: 'Пермь',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '57.989155, 56.207758',
+        address: 'ул.Стахановская, 54а',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A8267dbdd95bb5fc764758e7ff0b66cf403880143d4dade949af88e5bcc1fa334&amp;source=constructor'
+    },
+    {
+        city: 'Самара',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '53.21473485688437, 50.18689756337296',
+        address: 'ул. Авроры, 156в',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A8c201bb0fff1372a85f28f25de2c77cc80ea1d7272516bce6abd368c91324f6e&amp;source=constructor'
+    },
+    {
+        city: 'Чебоксары',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '56.115825, 47.270554',
+        address: 'пр. Мира, 54б (Автомания)',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A68e72e069da58fd0337460e493c87575afafd93789bd40d35e1b5a606e335d3b&amp;source=constructor'
+    },
+    {
+        city: 'Челябинск',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '55.154239, 61.303793',
+        address: 'БЦ Спиридонов, <br>ул. Ленина 21в , офис 1052',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A711b921703be62b7b6bb60f4a3a08775c26e9862880855f1d0f16835be8a4003&amp;source=constructor'
+    }
+]
+export const tyres = [
+    {
+        city: 'Казань',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '55.823581, 49.159553',
+        address: 'пр. Ямашева, 115а',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A6986b3ac4ba556c34180924eebb64192ba4696b58dab9b1e9fd7f5e34560aaa5&amp;source=constructor'
+    },
+    {
+        city: 'Казань',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '55.803967, 49.208709',
+        address: 'пр. Победы, 212к2',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Abcb084f68946abe81affde230c329b47e53ab28d9d6c28a5ff039f8454f9d8b8&amp;source=constructor'
+    }
+]
+export const services = [
+    {
+        city: 'Альметьевск',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '54.903324, 52.324269',
+        address: 'ул. Герцена, 1б',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Ad3a953bdeec5c742d7c5ad9a6e976789cccf67c719c5fb7841e40199048de33a&amp;source=constructor'
+    },
+    {
+        city: 'Казань',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '54.903324, 52.324269',
+        address: 'пр. Победы, 212к2',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Ac830f4cc623c4400e1c1b19b83f5edb3e4fa15d40a10d6885a4eb121c287eaa6&amp;source=constructor'
+    },
+    {
+        city: 'Набережные Челны',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '55.734962, 52.421602',
+        address: 'пр. Хасана Туфана, 3',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Ab30605670e79544549f3861c9d7fde3f5f302058711dd433dcdbc73d83863a48&amp;source=constructor'
+    },
+    {
+        city: 'Набережные Челны',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '55.674714, 52.281223',
+        address: 'пр. Мусы Джалиля, 15',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A459a0443c44b3d9771b776391ae96d4b6aa8c35aad7db04db13030bd2f4537e0&amp;source=constructor'
+    },
+    {
+        city: 'Нижнекамск',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '55.614353, 51.969439',
+        address: 'ул. Промзона,10/22',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Af7472f97221ff01d1cf41cc2c93557af5d73b5297d3b7a9fd50e40d50cf3f857&amp;source=constructor'
+    },
+    {
+        city: 'Нижнекамск',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '55.631989,51.828178',
+        address: 'ул. Спортивная, 4а',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A9778e202e4bfa133570d5b0a62f34e827e97f7e934cee1738b3ca0326469efb8&amp;source=constructor'
+    },
+    {
+        city: 'Нижнекамск',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '55.613672, 51.779136',
+        address: 'ул. Южная, 5г',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A8e2039178922dc29b2ef2a87fa30d1e15d2a8ef5c67388cb3741dc608c9e3e4d&amp;source=constructor'
+    },
+    {
+        city: 'Уфа',
+        url: '/photo/contacts/chelna_myra.webp',
+        coords: '54.773538, 56.065914',
+        address: 'ул. Маршала Жукова, 16',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A7281c97a9571a78d8adcf25c3ec6bab5c14cfcd042ccab43cc1078dd2cf40504&amp;source=constructor'
+    },
+]
+/** end АДРЕСА*/
+
+
 export const gl_Call = `
 <div class="div form333">
         <h2>Заказать звонок</h2>
@@ -381,7 +784,7 @@ export const franshiza_about_city = `<div class="promo-detail-call__wrap">
 
 </div>`
 
-export const question_boss_form= `
+export const question_boss_form = `
 <div class="promo-detail-call__wrap boss">
     <div class="div">
         <h3>Задать <span style="color: var(--color-red)">вопрос</span></h3>
