@@ -64,7 +64,7 @@ window.checkPlaceCity = function () {
     let params = {
         name: name.value,
         city: city.value,
-        phone: phone.value
+        phone: simplePhone(phone.value)
     }
     console.log('params',params)
     api_postCallToSell(params).then(res => {
@@ -84,7 +84,7 @@ window.getQuoite = function (fName) {
 
     let params = {
         name: name.value,
-        phone: phone.value,
+        phone: simplePhone(phone.value),
         city: city.value,
     }
     console.log('params',params)
