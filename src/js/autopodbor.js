@@ -1,7 +1,7 @@
 import {initCaptcha} from "@/js/captcha.js";
-import {podbor_bid_1_2, podbor_bid} from "@/js/global-constants.js";
-import {checkFormFields} from "@/js/global-func.js";
+import {checkFormFields, constructorForm, simplePhone} from "@/js/global-func.js";
 import {formattingPhone} from "@/js/global-func.js"
+import {api_postCallToSell} from "@/js/API-base/apibase.js";
 
 window.formattingPhone = formattingPhone
 
@@ -10,39 +10,52 @@ document.addEventListener('DOMContentLoaded', () => {
     let right_panel_content = document.querySelector('#right_panel_content')
     let apply_bid = document.querySelector('.apply_bid')
 
-    let form1 = document.querySelector('.formBlock .v1')
-    form1.innerHTML = podbor_bid_1_2
+    let stateForrm1 = document.querySelector('.formBlock .v1')
+    let stateForrm2 = document.querySelector('.formBlock .v2')
+    stateForrm1.innerHTML = constructorForm('st1',
+        ['name*','phone*','email'],
+        'sendBid',
+        'Отправить заявку',
+        'Оставьте заявку на <span class="red">подбор</span> автомобиля'
+    )
+    stateForrm2.innerHTML = constructorForm('st2',
+        ['name*','phone*','email'],
+        'sendBid',
+        'Отправить заявку',
+        'Оставьте заявку на <span class="red">подбор</span> автомобиля'
+    )
 
-    let form2 = document.querySelector('.formBlock .v2')
-    form2.innerHTML = podbor_bid_1_2
     initCaptcha()
 
-    let form3 = `<div class="v5 v3">${podbor_bid}</div>`
     apply_bid.addEventListener('click', () => { // авезжпеь панель
         openRightPanel()
-        right_panel_content.innerHTML = form3
+        right_panel_content.innerHTML =  constructorForm('v4',
+            ['name*','phone*','email'],
+            'sendBid',
+            'Отправить заявку',
+            'Заявка на <span class="red">автоподбор</span>')
         initCaptcha()
     })
 })
 
-window.podbor_bid_f = function (self) {
-    let ver = self.parentNode.parentNode.parentNode.classList[1]
 
-    let capcthadiv = document.querySelector(`.${ver} .capctha-div`)
-    let name = document.querySelector(`.${ver} [name="name"]`)
-    let phone = document.querySelector(`.${ver} [name="phone"]`)
-    let email = document.querySelector(`.${ver} [name="email"]`)
-    let checkbox = document.querySelector(`.${ver} [type="checkbox" ]`)
+window.sendBid = function (fName) {
+    let capcthadiv = document.querySelector(`.${fName} .capctha-div`)
+    let name = document.querySelector(`.${fName} [name="name"]`)
+    let phone = document.querySelector(`.${fName} [name="phone"]`)
+    let email = document.querySelector(`.${fName} [name="email"]`)
+    let checkbox = document.querySelector(`.${fName} [type="checkbox" ]`)
 
     if (checkFormFields([capcthadiv, name, phone, email, checkbox])) return false
 
     let params = {
         name: name.value,
-        email: email.value,
+        phone: simplePhone(phone.value),
+        email: email.value
     }
     console.log('params', params)
-    // api_postCallToSell(params).then(res => {
-    //     if (res && res.ok) message('Заявка оптарвлена')
-    //     else message('Сервер не принял', 'error')
-    // })
+    api_postCallToSell(params).then(res => {
+        if (res && res.ok) message('Заявка оптарвлена')
+        else message('Сервер не принял', 'error')
+    })
 }

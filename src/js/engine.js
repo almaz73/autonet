@@ -1,5 +1,4 @@
 import {initCaptcha} from "@/js/captcha.js";
-import {form_profitable, vykuo_otcenka} from "@/js/global-constants.js";
 import {checkFormFields, constructorForm, formattingPhone, simplePhone} from "@/js/global-func.js";
 import {api_postCallToSell} from "@/js/API-base/apibase.js";
 

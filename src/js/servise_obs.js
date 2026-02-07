@@ -1,6 +1,5 @@
 import {initCaptcha} from "@/js/captcha.js";
 import {checkFormFields, constructorForm, formattingPhone, initSubField, simplePhone} from "@/js/global-func.js";
-import { servObs, servObsPanel} from "@/js/global-constants.js";
 import {api_postCallToSell} from "@/js/API-base/apibase.js";
 
 window.formattingPhone = formattingPhone

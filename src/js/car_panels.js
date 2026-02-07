@@ -1,8 +1,5 @@
 import {initCaptcha} from "@/js/captcha.js";
-import {message} from "@/js/message.js";
-import {checkFormFields, formattingPhone} from "@/js/global-func.js"
-import {api_postCallToSell} from "@/js/API-base/apibase.js";
-import {form_profitable, form_date_show} from "@/js/global-constants.js"
+import {checkFormFields, constructorForm} from "@/js/global-func.js"
 
 /***** выезжающая правая маленькая панель *****/
 let right_panel_content = document.querySelector('#right_panel_content')
@@ -13,21 +10,35 @@ let addr = document.querySelector('.main__card-product--top .address')
 
 
 
-select_show_date && select_show_date.forEach(el => {
+select_show_date && select_show_date.forEach((el, ind) => {
     el.addEventListener('click', () => {
         openRightPanel()
-        right_panel_content.innerHTML = form_date_show
 
-        let address = document.querySelector('.look-auto [ class="address"]')
-        address.innerHTML=`Адрес: ${addr.innerHTML}`
+        right_panel_content.innerHTML = constructorForm('vv'+ind,
+            ['name*', 'year', 'email'],
+            'sendBid',
+            'Отправить заявку',
+            'Записаться  на <span class="red">осмотр</span> автомобиля '
+        )
+
+        let address = document.querySelector(' .form__group')
+        let h3 = document.querySelector(' h3')
+        const newElement = document.createElement('br');
+        h3.after(`Адрес: ${addr.innerHTML} `,newElement)
+        address.before(newElement)
         initCaptcha()
     })
 })
 
-profitable && profitable.forEach(el => {
+profitable && profitable.forEach((el,ind) => {
     el.addEventListener('click', () => {
         openRightPanel()
-        right_panel_content.innerHTML = form_profitable
+        right_panel_content.innerHTML = constructorForm('vv'+ind,
+            ['name*', 'phone*', 'city', 'brand', 'model', 'year'],
+            'sendBid',
+            'Отправить заявку',
+            'Заявка на <span class="red">выкуп</span>'
+        )
         initCaptcha()
     })
 })
