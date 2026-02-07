@@ -121,9 +121,7 @@
 .main-nav .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding-top: 150px;
-    /*padding-bottom: 20px;*/
-    /*box-sizing: border-box;*/
+    padding-top: 73px;
 }
 
 .main-nav__wrapper {

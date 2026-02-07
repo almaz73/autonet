@@ -1,7 +1,25 @@
+import {message} from "@/js/message.js";
+
 const server = 'https://ext.cartat.ru/exchange'
 
 export function api_postCallToSell(params) {
     let request = server + '/api/Feedback/PostCallToSell'
+       /* /api/Email/PostCallToSell   - Отправка заявки на оценку автомобиля
+          /api/Email/PostCallToBuy    - Отправка заявки на подбор автомобиля
+          /api/Email/PostCallToFranchise - Отправка заявки на франшизу
+          /api/Email/PostCallToWork - Отправка резюме
+
+          {
+              "city": "string",
+              "brand": "string",
+              "model": "string",
+              "yearReleased": "string",
+              "fullName": "string",
+              "phone": "string"
+            }
+        */
+
+
 
     return fetch(request, {
         method: 'POST',
@@ -12,7 +30,7 @@ export function api_postCallToSell(params) {
     })
         .then(res => res.json())
         .then(res => res)
-        .catch(error => console.error('Ошибка:', error));
+        .catch(error => message('Сервер отказал!', 'error'));
 
     return fetch(request).then(res => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)

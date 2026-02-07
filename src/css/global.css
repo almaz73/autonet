@@ -311,3 +311,7 @@ main h2, main h1 {
 .map-modal > .closer:hover{
     background: #ccc;
 }
+
+.red {
+    color: var(--color-red);
+}

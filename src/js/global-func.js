@@ -202,3 +202,89 @@ export function initSubField() {
 
 
 }
+
+/** Констпуктор полей форм*/
+export function constructorForm(fName, fields, methodNAme, buttonText, legenda) {
+    buttonText = buttonText || 'Отправить заявку'
+    legenda = legenda ||`_ _ _ _ _ _ `
+
+    let random = parseInt(Math.random()*1000)
+    let html = `<div class="wrap ${fName}"><h3>${legenda}</h3><div><div class="formBlock">`
+    let titles = {
+        'name':'Имя',
+        "name*":'Ваше имя *',
+        'year':'Год выпуска',
+        'year*':'Год выпуска *',
+        'city':'Город',
+        'city*':'Город *',
+        'brand':'Марка',
+        'brand*':'Марка *',
+        'model':'Модель',
+        'model*':'Модель *',
+        'phone':'Телефон',
+        'phone*':'Ваш телефон *',
+        'message':'Сообщение',
+        'message*':'Сообщение *',
+        'email':'E-mail',
+        'email*':'E-mail *',
+        'osago':'ОСАГО',
+        'select':'Выберите услугу',
+
+    }
+
+
+    fields.forEach(el=>{
+        let required  = el.includes('*')
+        let field = required?el.slice(0,-1):el
+        if (el==='osago'){
+            html+=`<div class="form__modal--group" style="position: relative">
+                            <div class="form__group with_sub_field">
+                                <input name="osago"  value="ОСАГО">
+                                <div class="select">
+                                    <div class="field">КАСКО</div>
+                                    <div class="field active">ОСАГО</div>
+                                </div>
+                            </div>
+                        </div>`
+        }else if(el==='select'){
+            html+=`<div class="form__modal--group">                
+                <div class="form__group with_sub_field">
+                    <input name="select"  placeholder="Выберите услугу">
+                    <div class="select">
+                        <div class="field">Диагностика</div>
+                        <div class="field ">Техническое обслуживание</div>
+                        <div class="field">Ремонт двинателя</div>
+                        <div class="field">Ремонт трансмиссии</div>
+                        <div class="field">Ремонт подвески</div>
+                        <div class="field">Ремонт рулевого управления</div>
+                        <div class="field">Ремонт тормозной системы</div>
+                    </div>
+                </div>
+            </div>`
+        }else {
+            html += `<div class="form__modal--group">
+                <div class="form__group">
+                  <input name="${field}" ${required ? 'required' : ''} autocomplete="off" placeholder="${titles[el]}" 
+${field==='phone'?'oninput="formattingPhone(this)"':''}>
+                </div>
+            </div>`
+        }
+    })
+
+    html +=`
+<div class="form__modal--group">
+              <div class="capctha-div"></div>
+            </div>
+            <button class="page__btn page__btn--current" onclick="${methodNAme}('${fName}')">
+                <span> ${buttonText} </span>
+            </button>
+            <div class="modal__personal">
+                <input type="checkbox" id="dd${random}">
+                <label for="dd${random}">
+                    Нажав кнопку «Отправить заявку» я даю согласие
+                    на обработку
+                    <a href="/privacy-policy/" target="_blank">персональных данных</a>
+                </label>
+            </div></div></div></div>`
+    return html
+}

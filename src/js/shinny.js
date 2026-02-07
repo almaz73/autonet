@@ -1,5 +1,5 @@
 import {initCaptcha} from "@/js/captcha.js";
-import {checkFormFields, formattingPhone} from "@/js/global-func.js";
+import {constructorForm, checkFormFields, formattingPhone} from "@/js/global-func.js";
 import {franshiza} from "@/js/global-constants.js";
 
 window.formattingPhone = formattingPhone

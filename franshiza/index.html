@@ -23,8 +23,6 @@
 
     <script type='module' src='../src/js/main.js'></script>
     <script type='module' src="../src/js/franshiza.js"></script>
-
-
 </head>
 <body>
 {{> "header/header" }}
@@ -45,7 +43,7 @@
                 <p style="font-size: 1em; margin-top: 30px;">Анна Шилова, исполнительный директор: <a
                         href="tel:+79178893565">+7 917 889-35-65</a></p>
             </div>
-            <div class="formBlock v1"></div>
+            <div class="formBlock fix v1"></div>
         </div>
     </div>
 </div>
@@ -61,34 +59,35 @@
         <h2>В чем <span>выгода сотрудничества</span><br>с АВТОСЕТЬ.РФ?</h2>
         <div class="iconSetList">
             <div>
-                <img src="/src/svg/icon_money.svg" alt="">
+                <img src="../src/svg/icon_money.svg" alt="">
                 <p><strong>Готовая прибыльная модель бизнеса</strong></p>
                 <p>Доход <em>с 3 месяца</em> - от 3 млн ₽/мес</p>
             </div>
             <div>
-                <img src="/src/svg/icon_carkey.svg" alt="">
+                <img src="../src/svg/icon_carkey.svg" alt="">
                 <p><strong>Пополнение склада ликвидными автомобилями</strong></p>
                 <p><em>Организация выкупа</em> от физических лиц и федеральные поставки корпоративных флитов</p>
             </div>
             <div>
-                <img src="/src/svg/icon_monitor.svg" alt="">
+                <img src="../src/svg/icon_monitor.svg" alt="">
                 <p><strong>Собственная ERP-система</strong></p>
                 <p>Управление и контроль более 80% всего бизнеса. <em>Сквозная аналитика</em> по всем процессам и
                     показателям</p>
             </div>
             <div>
-                <img src="/src/svg/icon_analytics.svg" alt="">
+                <img src="../src/svg/icon_analytics.svg" alt="">
                 <p><strong>Аналитический центр</strong></p>
                 <p>Оценка автомобиля по 168 показателям всего <em>за 5 минут</em>, с высокой ликвидностью и минимальным
                     сроком продаж</p>
             </div>
             <div>
-                <img src="/src/svg/icon_handshake.svg" alt="">
+                <img src="../src/svg/icon_handshake.svg" alt="">
                 <p><strong>Персональный менеджер</strong></p>
                 <p><em>Развитие</em> бизнеса, операционная поддержка и контроль качества</p>
             </div>
             <div>
-                <img src="/src/svg/icon_stafgroup.svg" alt="">
+                <img src="../src/svg/icon_stafgroup.svg" alt="">
+
                 <p><strong>Академия АВТОСЕТЬ.РФ</strong></p>
                 <p>Эффективная программа обучения на старте, онлайн и оффлайн <em>обучение</em></p>
             </div>
@@ -99,7 +98,7 @@
 <main>
     <div class="formFranshizaCheck formBlock pkace">
         <h2>Проверь, есть ли места <span>в твоем городе</span>?</h2>
-        <form action="" class="form__modal" enctype="multipart/form-data" method="POST">
+        <div class="form__modal">
             <div class="block S  form__modal--group">
                 <div class="form__group form__group--label">
                     <input name="name" required placeholder="Имя *">
@@ -135,7 +134,7 @@
                     <a href="/privacy-policy/" target="_blank">персональных данных</a>
                 </label>
             </div>
-        </form>
+        </div>
     </div>
 </main>
 
