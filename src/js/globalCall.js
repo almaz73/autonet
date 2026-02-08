@@ -27,7 +27,7 @@ window.sendBid = function (fName) {
 
     let params = {
         name: name.value,
-        phone: simplePhone(phone.value),
+        phone: phone.value,
     }
     console.log('params', params)
     api_postCallToSell(params).then(res => {

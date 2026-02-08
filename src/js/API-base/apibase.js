@@ -2,7 +2,38 @@ import {message} from "@/js/message.js";
 
 const server = 'https://ext.cartat.ru/exchange'
 
-export function api_postCallToSell(params) {
+export function api_mail(params){
+    if(params.type==='grade'){
+        let newParams={
+            fullName: params.name,
+            phone: params.phone,
+            city: params.city,
+            brand: params.brand,
+            model: params.model,
+            yearReleased: params.year
+        }
+        api_postCallToSell(newParams)
+    }
+    if(params.type==='podbor'){
+        let newParams={
+            fullName: params.name,
+            phone: params.phone,
+            email: params.email
+        }
+        api_PostCallToBuy(newParams)
+    }
+    if(params.type==='franshiza' || params.type==='boss' ){
+        let newParams={
+            fullName: params.name,
+            phone: params.phone,
+            city: params.city
+        }
+        api_PostCallToFranchise(newParams)
+    }
+}
+
+ export function api_postCallToSell(params) {
+    // отправка заявки на оценку автомобиля
     let request = server + '/api/Feedback/PostCallToSell'
        /* /api/Email/PostCallToSell   - Отправка заявки на оценку автомобиля
           /api/Email/PostCallToBuy    - Отправка заявки на подбор автомобиля
@@ -26,6 +57,60 @@ export function api_postCallToSell(params) {
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
         },
+        body: JSON.stringify({body: params})
+    })
+        .then(res => res.json())
+        .then(res => res)
+        .catch(error => message('Сервер отказал!', 'error'));
+
+    return fetch(request).then(res => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
+        return res.json();
+    }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
+}
+ function api_PostCallToBuy(params) {
+     // - Отправка заявки на подбор автомобиля
+    let request = server + '/api/Email/PostCallToBuy'
+
+    return fetch(request, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json;charset=utf-8'},
+        body: JSON.stringify({body: params})
+    })
+        .then(res => res.json())
+        .then(res => res)
+        .catch(error => message('Сервер отказал!', 'error'));
+
+    return fetch(request).then(res => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
+        return res.json();
+    }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
+}
+ function api_PostCallToFranchise(params) {
+    // - Отпарвка заявки на фарншизу
+    let request = server + '/api/Email/PostCallToFranchise'
+
+    return fetch(request, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json;charset=utf-8'},
+        body: JSON.stringify({body: params})
+    })
+        .then(res => res.json())
+        .then(res => res)
+        .catch(error => message('Сервер отказал!', 'error'));
+
+    return fetch(request).then(res => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
+        return res.json();
+    }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
+}
+ function api_PostCallToWork(params) {
+    // - Отправка резюме
+    let request = server + '/api/Email/PostCallToWork'
+
+    return fetch(request, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json;charset=utf-8'},
         body: JSON.stringify({body: params})
     })
         .then(res => res.json())

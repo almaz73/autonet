@@ -1,6 +1,6 @@
 import {initCaptcha} from "@/js/captcha.js";
-import {constructorForm, checkFormFields, formattingPhone, simplePhone} from "@/js/global-func.js";
-import {api_postCallToSell} from "@/js/API-base/apibase.js"
+import {constructorForm, checkFormFields, formattingPhone} from "@/js/global-func.js";
+import {api_mail} from "@/js/API-base/apibase.js"
 
 window.formattingPhone = formattingPhone
 
@@ -12,12 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     question_to_boss && question_to_boss.addEventListener('click', (id) => {
         openRightPanel()
-        let form = constructorForm('boss',
+        right_panel_content.innerHTML = constructorForm('boss',
             ['name*','phone*','message*'],
-            'questionBoss',
+            'questionFranshiza',
             'Отправить',
-            'Задать <span class="red">опрос</span>')
-        right_panel_content.innerHTML = form
+            'Задать <span class="red">вопрос</span>')
         initCaptcha()
     })
 
@@ -51,28 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initCaptcha()
 })
 
-window.checkPlaceCity = function () {
-    let name = document.querySelector('.pkace [name="name"]')
-    let phone = document.querySelector('.pkace [name="phone"]')
-    let city = document.querySelector('.pkace [name="city"]')
-    let capcthadiv = document.querySelector('.pkace .capctha-div')
-    let checkbox = document.querySelector('.pkace [type="checkbox" ]')
-
-
-    if (checkFormFields([capcthadiv, name, phone, city, checkbox])) return false
-
-    let params = {
-        name: name.value,
-        city: city.value,
-        phone: simplePhone(phone.value)
-    }
-    console.log('params',params)
-    api_postCallToSell(params).then(res => {
-        if (res && res.ok) message('Заявка оптарвлена')
-        else message('Сервер не принял', 'error')
-    })
-}
-
 window.getQuoite = function (fName) {
     let name = document.querySelector(`.${fName} [name="name"]`)
     let phone = document.querySelector(`.${fName} [name="phone"]`)
@@ -83,33 +60,37 @@ window.getQuoite = function (fName) {
     if (checkFormFields([capcthadiv, name, phone, city, checkbox])) return false
 
     let params = {
+        type: 'franshiza',
         name: name.value,
-        phone: simplePhone(phone.value),
+        phone: phone.value,
         city: city.value,
     }
     console.log('params',params)
-    api_postCallToSell(params).then(res => {
+    api_mail(params).then(res => {
         if (res && res.ok) message('Заявка оптарвлена')
         else message('Сервер не принял', 'error')
     })
 }
 
-window.questionBoss = function (fName) {
+window.questionFranshiza = function (fName) {
     let name = document.querySelector(`.${fName} [name="name"]`)
     let phone = document.querySelector(`.${fName} [name="phone"]`)
+    let city = document.querySelector(`.${fName} [name="city"]`)
     let message = document.querySelector(`.${fName} [name="message"]`)
     let capcthadiv = document.querySelector(`.${fName} .capctha-div`)
     let checkbox = document.querySelector(`.${fName} [type="checkbox" ]`)
 
-    if (checkFormFields([capcthadiv, name, phone, message, checkbox])) return false
+    if (checkFormFields([capcthadiv, name, phone, city, checkbox])) return false
 
     let params = {
+        type: 'boss',
         name: name.value,
         message: message.value,
-        phone: simplePhone(phone.value)
+        phone: phone.value,
+        city: city.value
     }
     console.log('params',params)
-    api_postCallToSell(params).then(res => {
+    api_mail(params).then(res => {
         if (res && res.ok) message('Заявка оптарвлена')
         else message('Сервер не принял', 'error')
     })

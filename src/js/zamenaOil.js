@@ -1,5 +1,5 @@
 import {initCaptcha} from "@/js/captcha.js";
-import {checkFormFields, constructorForm, formattingPhone, simplePhone} from "@/js/global-func.js";
+import {checkFormFields, constructorForm, formattingPhone} from "@/js/global-func.js";
 import {api_postCallToSell} from "@/js/API-base/apibase.js"
 
 window.formattingPhone = formattingPhone
@@ -52,7 +52,7 @@ window.sendBid = function (fName) {
 
     let params = {
         name: name.value,
-        phone: simplePhone(phone.value),
+        phone: phone.value,
         city: city.value,
         brand: brand.value,
         model: model.value,

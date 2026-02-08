@@ -1,7 +1,7 @@
 import {initCaptcha} from "@/js/captcha.js";
 import {checkFormFields, constructorForm, simplePhone} from "@/js/global-func.js";
 import {formattingPhone} from "@/js/global-func.js"
-import {api_postCallToSell} from "@/js/API-base/apibase.js";
+import {api_mail} from "@/js/API-base/apibase.js";
 
 window.formattingPhone = formattingPhone
 
@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let right_panel_content = document.querySelector('#right_panel_content')
     let apply_bid = document.querySelector('.apply_bid')
 
-    let stateForrm1 = document.querySelector('.formBlock .v1')
-    let stateForrm2 = document.querySelector('.formBlock .v2')
+    let stateForrm1 = document.querySelector('.formBlock.v1')
+    let stateForrm2 = document.querySelector('.formBlock.v2')
     stateForrm1.innerHTML = constructorForm('st1',
         ['name*','phone*','email'],
         'sendBid',
@@ -49,12 +49,13 @@ window.sendBid = function (fName) {
     if (checkFormFields([capcthadiv, name, phone, email, checkbox])) return false
 
     let params = {
+        type:'podbor',
         name: name.value,
-        phone: simplePhone(phone.value),
+        phone: phone.value,
         email: email.value
     }
     console.log('params', params)
-    api_postCallToSell(params).then(res => {
+    api_mail(params).then(res => {
         if (res && res.ok) message('Заявка оптарвлена')
         else message('Сервер не принял', 'error')
     })

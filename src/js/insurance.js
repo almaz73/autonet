@@ -65,7 +65,7 @@ window.sendBid = function (fName) {
 
     let params = {
         name: name.value,
-        phone: simplePhone(phone.value),
+        phone: phone.value,
         city: city.value,
         osago: osago.value,
         brand: brand.value,

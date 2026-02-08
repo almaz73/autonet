@@ -59,7 +59,7 @@ window.send_obsl = function (fName ) {
 
     let params = {
         name: name.value,
-        phone: simplePhone(phone.value),
+        phone: phone.value,
         city: city.value,
         select: select.value
     }

@@ -281,10 +281,10 @@ ${field === 'phone' ? 'oninput="formattingPhone(this)"' : ''}>
             </button>
             <div class="modal__personal">
                 <input type="checkbox" id="dd${random}">
-                <label for="dd${random}">
+                <label for="dd${random}" style="cursor: pointer">
                     Нажав кнопку «Отправить заявку» я даю согласие
                     на обработку
-                    <a href="/privacy-policy/" target="_blank">персональных данных</a>
+                    персональных <a href="/privacy-policy/" target="_blank">данных</a>
                 </label>
             </div></div></div></div>`
     return html
