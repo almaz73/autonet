@@ -71,9 +71,9 @@ function initVacancies() {
                 </div>
                 <div class="details checkbox-line">
                     <label class="cont">
-                      <input type="checkbox" id="dds">
+                      <input type="checkbox" id="d${ind}">
                     </label>
-                    <div class="check text"><label for="dds">Отправляя данные, вы даете согласие на обработку
+                    <div class="check text"><label for="d${ind}">Отправляя данные, вы даете согласие на обработку
                         персональных <a href="/privacy-policy/" target="_blank">данных</a> в соответствии с политикой&nbsp;конфиденциальности.</label>
                     </div>
                 </div>
