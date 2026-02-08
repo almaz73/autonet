@@ -1,3 +1,6 @@
+import {api_PostCallToWork} from "@/js/API-base/apibase.js";
+import {message} from "@/js/message.js";
+
 window.addEventListener('DOMContentLoaded', () => {
     let comb = document.querySelector('comb');
 
@@ -73,10 +76,9 @@ window.addEventListener('DOMContentLoaded', () => {
             else detail.after(form)
 
 
-
             const detailHeight = content ? content.offsetHeight : 0;
-            
-            console.log('document.body.offsetWidth = ',document.body.offsetWidth)
+
+            console.log('document.body.offsetWidth = ', document.body.offsetWidth)
 
             this.classList.toggle('expanded');
             this.style.maxHeight = (firstLineHeight + detailHeight) + 'px';
@@ -93,6 +95,63 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addEventListener('resize', toSmall);
+
+
+    const resume = document.querySelector(`#generalForm [name="resume"]`)
+    const placeForFileName = document.querySelector(`#fN`)
+    resume.addEventListener('change', function (res) {
+        if (this.files && this.files[0]) placeForFileName.textContent = this.files[0].name;
+        else placeForFileName.textContent = 'Загрузить файл';
+    });
+
+
+    function check(fio, phone) {
+        let err = false
+        if (!fio.value) {
+            fio.style.border = '1px solid red'
+            message('Не заполнено поле ФИО', 'warning')
+            err = true
+        } else fio.style.border = ''
+        if (!phone.value) {
+            phone.style.border = '1px solid red'
+            message('Не заполнен Телефон', 'warning')
+            err = true
+        } else phone.style.border = ''
+        return err
+    }
+
+    // нажатие кнопок отправки
+    window.sendResume = function (formId) {
+        const fio = document.querySelector(`#${formId} [name="fio"]`)
+        const city = document.querySelector(`#${formId} [name="city"]`)
+        const phone = document.querySelector(`#${formId} [name="phone"]`)
+        const email = document.querySelector(`#${formId} [name="email"]`)
+        const text = document.querySelector(`#${formId} [name="text"]`)
+        const resume = document.querySelector(`#${formId} [name="resume"]`)
+
+        if (check(fio, phone)) return false
+        if (formId === 'generalForm') {
+            const personal_agree_vacancy = document.getElementById('personal_agree_vacancy')
+            const modal__error = document.querySelector('.modal__error')
+            modal__error.style.display = personal_agree_vacancy.checked ? 'none' : 'block'
+            if (!personal_agree_vacancy.checked) return false
+        }
+
+        let params = {
+            fullName: fio.value,
+            phone: phone.value,
+            email: email && email.value,
+            city: city && city.value,
+            aboutYourself: text && text.value,
+            resume: resume && resume.files[0],
+        }
+
+        api_PostCallToWork(params).then(res => {
+            if (res && res.ok) message('Ваше сообщение успешно получено!')
+            else message('Сервер не принял', 'error')
+        })
+
+    }
 })
 
 

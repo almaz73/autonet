@@ -122,7 +122,7 @@
 
     <div style="position: fixed; right: 1000px; ">
         <div class="request_vac">
-            <div class="ttl_a"><span>Откликнуться</span> на вакансию</div>
+            <div class="ttl_a">Откликнуться на вакансию</div>
             <div class="smForm" id="request_vac">
                 <div class="details"><input placeholder="Ваше имя" type="text" data-check="Y" name="fio"></div>
                 <div class="details"><input placeholder="Телефон" type="text" data-check="Y" name="phone"></div>
@@ -244,15 +244,17 @@
 <div class="page__wrap">
     <div class="vacancyFormBlock">
         <div class="ttl_a">Не нашли подходящую <strong>вакансию</strong>? Оставьте свои данные:</div>
-        <div  class="smForm" id="vacancyReq">
+        <div  class="smFormGen" id="generalForm">
             <div>
-                <div class="details"><input placeholder="Имя и фамилия" type="text" name="fio"></div>
-                <div class="details"><input placeholder="Телефон" type="text" name="phone"></div>
+                <div class="details">
+                    <input placeholder="Имя и фамилия" name="fio">
+                </div>
+                <div class="details"><input placeholder="Телефон" name="phone" oninput="formattingPhone(this)"></div>
             </div>
             <div>
-                <div class="details"><input placeholder="Город" type="text" name="city"></div>
+                <div class="details"><input placeholder="Город" name="city"></div>
                 <div class="details fileInpt fileLabel">
-                    <span>Загрузить файл</span>
+                    <span id="fN">Загрузить файл</span>
                     <a href="javascript:void(0)">
                         <input
                                 style="margin-left: -130px"
@@ -261,16 +263,17 @@
                     </a>
                 </div>
             </div>
-            <div class="details"><textarea placeholder="Расскажите нам о себе" rows="5" name="mess"></textarea></div>
+            <div class="details">
+                <textarea placeholder="Расскажите нам о себе" name="text" rows="7"></textarea>
+            </div>
             <div class="btm">
-                <button onclick="document.getElementById('check_vac').value = 'vacancy_a';"
-                        class="uk-button a-button-add a-button-warning ng-scope punch-button">
+                <button onclick="sendResume('generalForm')" class="page__btn page__btn--current">
                     Отправить данные
                 </button>
             </div>
 
 
-            <div style="all: initial;">
+            <div>
                 <div class="modal__personal">
                     <input type="checkbox" id="personal_agree_vacancy">
                     <label for="personal_agree_vacancy">
@@ -279,7 +282,7 @@
                         <a href="/privacy-policy/" target="_blank">персональных данных</a>
                     </label>
                 </div>
-                <!--   <div class="modal__error" id="personal_error_vacancy">Вы должны дать согласие на обработку персональных данных</div>-->
+                <div class="modal__error">Вы должны дать согласие на обработку персональных данных</div>
             </div>
         </div>
     </div>

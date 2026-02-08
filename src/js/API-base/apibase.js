@@ -104,14 +104,22 @@ export function api_mail(params){
         return res.json();
     }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
 }
- function api_PostCallToWork(params) {
-    // - Отправка резюме
+ export function api_PostCallToWork(params) {
+    // - Отправка файла резюме
     let request = server + '/api/Email/PostCallToWork'
+
+     // 2. Создаем FormData и добавляем файл
+     const formData = new FormData();
+     formData.append('resume', params.resume); 
+     formData.append('fullName', params.fullName); 
+     formData.append('phone', params.phone); 
+     formData.append('city', params.city);
+     formData.append('email', params.email);
+     formData.append('aboutYourself', params.aboutYourself);
 
     return fetch(request, {
         method: 'POST',
-        headers: {'Content-Type': 'application/json;charset=utf-8'},
-        body: JSON.stringify({body: params})
+        body: formData
     })
         .then(res => res.json())
         .then(res => res)
