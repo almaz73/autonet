@@ -21,7 +21,7 @@
 }
 
 body {
-    font-family: 'Gilroy', sans-serif;
+    font-family: 'Gilroy', system-ui;
     margin: 0;
     padding: 0;
     scrollbar-gutter: stable;
@@ -40,7 +40,7 @@ main {
 }
 
 main h2, main h1 {
-    font-family: Gilroy-Bold, sans-serif;
+    font-family: Gilroy-Bold, system-ui;
 }
 
 
@@ -60,7 +60,7 @@ main h2, main h1 {
 }
 
 .page_padding_20 h2 {
-    font-family: system-ui, Gilroy-Bold;
+    font-family: Gilroy-Bold, system-ui;
 }
 
 .page_padding_20 a {

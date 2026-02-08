@@ -1,8 +1,7 @@
 import {initCaptcha} from "@/js/captcha.js";
-import {constructorForm, checkFormFields, formattingPhone} from "@/js/global-func.js";
+import {constructorForm, checkFormFields} from "@/js/global-func.js";
 import {api_postCallToSell} from "@/js/API-base/apibase.js";
 
-window.formattingPhone = formattingPhone
 document.addEventListener('DOMContentLoaded', () => {
 
     let stateForrm1 = document.querySelector('.formBlock.v1')

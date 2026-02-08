@@ -76,7 +76,7 @@
 }
 
 .tires-flex .red_strong{
-    font-family: 'Gilroy-Bold', sans-serif;
+    font-family: Gilroy-Bold, system-ui;
     color: var(--color-red);
 }
 

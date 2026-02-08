@@ -291,7 +291,7 @@ cards.dot1 .cart__box--bottom {
 
 .coin {
     font-size: 16px;
-    font-family: 'Gilroy';
+    font-family: Gilroy, system-ui;
     margin: 6px 50px 0;
     float: right;
     display: flex;

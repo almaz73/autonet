@@ -43,7 +43,7 @@
 }
 
 .big-comb__placeholder.bold {
-    font-family: 'Gilroy-Bold', sans-serif;
+    font-family: Gilroy-Bold, system-ui;
 }
 
 .big-combo:focus {

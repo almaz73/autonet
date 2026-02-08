@@ -1,8 +1,7 @@
-import {declOfNum, formatterShowPrice, formattingPhone, simplePhone, checkFormFields} from '@/js/global-func.js'
+import {declOfNum, formatterShowPrice, checkFormFields} from '@/js/global-func.js'
 import {api_postCallToSell} from "@/js/API-base/apibase.js";
 import {message} from "@/js/message.js"
 
-window.formattingPhone = formattingPhone
 
 /** slide1 **/
 const slider1 = document.querySelector('.slider__ui.slider1');
@@ -132,7 +131,7 @@ document.querySelector('.bid').addEventListener('click', res => {
         forMonth: forMonth,
         year: field4.innerHTML,
         fio: input_name.value,
-        tel: simplePhone(input_tel.value),
+        tel: input_tel.value,
     }
 
     console.log(params)

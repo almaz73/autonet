@@ -131,20 +131,25 @@
     color: var(--color-red);
 }
 
-#vacancyReq > div:nth-child(3) {
+.smFormGen > div:nth-child(3) {
     flex: 0 0 100%;
     max-width: 100%;
 }
 
-#vacancyReq .btm {
+.smFormGen .btm {
     display: flex;
     align-items: center;
     flex: 0 0 100%;
     max-width: 100%;
 }
 
+.smFormGen .modal__error {
+    color: red;
+    display: none;
+}
+
 @media (min-width: 576px) {
-    #vacancyReq {
+    .smFormGen {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -187,7 +192,7 @@
 }
 
 @media (min-width: 576px) {
-    #vacancyReq > div:nth-child(1), #vacancyReq > div:nth-child(2), #vacancyReq > div:nth-child(3) {
+    .smFormGen > div:nth-child(1), .smFormGen > div:nth-child(2), .smFormGen > div:nth-child(3) {
         flex: 0 0 48%;
         max-width: 48%;
     }
@@ -199,7 +204,7 @@
         padding: 18px;
     }
 
-    #vacancyReq > div:nth-child(1), #vacancyReq > div:nth-child(2), #vacancyReq > div:nth-child(3) {
+    .smFormGen > div:nth-child(1), .smFormGen > div:nth-child(2), .smFormGen > div:nth-child(3) {
         flex: 0 0 31%;
         max-width: 31%;
     }
@@ -244,6 +249,8 @@ form .modal__personal {
     color: #545454;
     font-size: 0.75em;
     display: inline-block;
+    font-family: Gilroy, Gilroy, system-ui;
+    margin-top: 25px;
 }
 
 @media (min-width: 600px) {
@@ -278,6 +285,7 @@ form .modal__personal {
     background-color: #000;
     bottom: 0;
 }
+
 
 /****/
 

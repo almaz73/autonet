@@ -1,9 +1,7 @@
 import {initCaptcha} from "@/js/captcha.js";
-import {checkFormFields, constructorForm, simplePhone} from "@/js/global-func.js";
-import {formattingPhone} from "@/js/global-func.js"
+import {checkFormFields, constructorForm} from "@/js/global-func.js";
 import {api_mail} from "@/js/API-base/apibase.js";
 
-window.formattingPhone = formattingPhone
 
 
 document.addEventListener('DOMContentLoaded', () => {

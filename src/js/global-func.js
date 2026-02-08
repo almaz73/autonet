@@ -124,6 +124,7 @@ export const formattingPhone = function (self) {
     }
     self.value = res
 }
+window.formattingPhone = formattingPhone
 
 // телефон должен состоять только из цифр
 export const simplePhone = function (val) {

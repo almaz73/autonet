@@ -1,8 +1,7 @@
-import {formattingPhone, emailValidate, simplePhone, getUrlParam} from "@/js/global-func.js"
+import {emailValidate, simplePhone, getUrlParam} from "@/js/global-func.js"
 import {api_postCallToSell} from "@/js/API-base/apibase.js";
 import {message} from "@/js/message.js";
 
-window.formattingPhone = formattingPhone
 window.emailValidate = emailValidate
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -54,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let parans = {
             name: fio.value,
-            phone: simplePhone(tel.value),
+            phone: tel.value,
             email: email.value,
             id: id
         }

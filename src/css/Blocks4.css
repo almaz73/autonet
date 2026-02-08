@@ -90,7 +90,7 @@
 
 .fourBlocks b {
     color: var(--color-red);
-    font-family: Gilroy-Bold, sans-serif;
+    font-family: Gilroy-Bold, system-ui;
 }
 
 @media (min-width: 992px) {

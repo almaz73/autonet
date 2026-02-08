@@ -134,7 +134,7 @@
     color: var(--color-red);
 }
 .question_panel b{
-    font-family: 'Gilroy-Bold', sans-serif;
+    font-family: Gilroy-Bold, system-ui;
 }
 .question_panel .contentedit{
     margin: 20px -20px 0;

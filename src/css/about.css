@@ -20,8 +20,7 @@
 }
 
 .main__company--box h1, .main__company--box h2, .main__company--box strong {
-    font-family: Gilroy-Bold, sans-serif
-
+    font-family: Gilroy-Bold, system-ui;
 }
 
 .main__company--play {

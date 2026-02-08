@@ -1,5 +1,5 @@
 .juicy h2 {
-    font-family: Gilroy-Bold, sans-serif;
+    font-family: Gilroy-Bold, system-ui;
     margin: 80px 0 60px;
 }
 
@@ -268,7 +268,7 @@
 
 .shadowTable.podbor .ttl {
     font-size: 1rem;
-    font-family: Gilroy-Bold, sans-serif;
+    font-family: Gilroy-Bold, system-ui;
 }
 
 .shadowTable.podbor .row.R1, .shadowTable.podbor .row.R2, .shadowTable.podbor .row.R3{
