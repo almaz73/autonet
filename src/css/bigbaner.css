@@ -122,6 +122,7 @@
     border-radius: 5px;
     float: right;
     text-align: center;
+    color: black;
 }
 
 .formBlock .wrap h3, .container .wrap h3{

@@ -403,6 +403,12 @@ form .modal__personal {
     font-weight: 600;
     margin-bottom: 15px;
 }
+.request_vac .checkbox-line{
+    display: flex;
+    gap: 8px;
+    font-size: .6rem;
+    margin-bottom: 8px;
+}
 
 
 .request_vac input, .request_vac textarea {

@@ -1,18 +1,14 @@
 import {api_PostCallToWork} from "@/js/API-base/apibase.js";
 import {message} from "@/js/message.js";
+import {datas} from "@/js/global-constants.js"
+import {formatterShowPrice} from "@/js/global-func.js";
 
-window.addEventListener('DOMContentLoaded', () => {
+function initChangeCity() {
     let comb = document.querySelector('comb');
-
-    // нужно все города поучать откуда-то централизованно
     let items = {'Город': ['Все', 'Альметьевск', 'Казань', 'Набережные Челны', 'Нижнекамск', 'Стерлитамак']}
 
     items['Город'].value = localStorage.getItem('selectedCity')
     selectedCity(items['Город'].value)
-
-
-    //заполняем исходя из настроек
-
 
     let comb_name = comb.dataset.placeholder
     let the_Items = items[comb_name];
@@ -51,61 +47,116 @@ window.addEventListener('DOMContentLoaded', () => {
     function selectedCity(val) {
         console.log('!!!selectedCity val = ', val)
     }
+}
 
+function initVacancies() {
+    let html = ''
+    initListeners(false)
+    datas.forEach((item, ind) => {
+        let formVacancy = `
+<div class="request_vac">
+            <div class="ttl_a">Откликнуться на вакансию</div>
+            <div class="smForm" id="lettleForm">
+                <div class="details"><input placeholder="Ваше имя" name="fio"></div>
+                <div class="details"><input placeholder="Телефон" name="phone" oninput="formattingPhone(this)"></div>
+                <div class="details"><input placeholder="Эл. почта" name="email"></div>
+                <div class="details">
+                <span class="fileLabel">
+                    <input placeholder="Резюме" type="file" name="resume">
+                    Резюме
+                </span>
+                </div>
+                <div class="details">
+                  <textarea placeholder="Дополнительная информация и контактные данные" rows="5" name="text"></textarea>
+                </div>
+                <div class="details checkbox-line">
+                    <label class="cont">
+                      <input type="checkbox" id="dds">
+                    </label>
+                    <div class="check text"><label for="dds">Отправляя данные, вы даете согласие на обработку
+                        персональных <a href="/privacy-policy/" target="_blank">данных</a> в соответствии с политикой&nbsp;конфиденциальности.</label>
+                    </div>
+                </div>
+                <button class="vacansyButton"  onclick="sendResume('fff${ind}')"
+                        class="uk-button a-button-add a-button-warning ng-scope punch-button">
+                    Отправить отклик
+                </button>
+            </div>
+        </div>`
 
-    /** высота узлов **/
+        html += `<div class="vacancy_item fff${ind}">
+        <div class="fst_desc">
+            <div class="ttl">
+                <span>${item.vacancyName}</span>
+            </div>
+            <div class="zp">
+                от <span>${formatterShowPrice(item.salary)} ₽</span>
+            </div>
+            <span class="show_detail">
+                <img src="/red_arrow.svg" loading='lazy' alt=''>
+                Подробнее
+            </span>
+        </div>
+        <div class="content">
+            ${document.body.offsetWidth > 992 ? formVacancy : ''}
+            <div class="detail">
+               ${item.content}
+            </div>
+           ${document.body.offsetWidth > 992 ? '' : formVacancy}
+        </div>
+    </div>`
 
+    })
+    document.querySelector('#vacancyPlace').innerHTML = html
+    initListeners(true) // слушатели  снова добавляем
+}
+
+function initListeners(state) {
     document.querySelectorAll('.vacancy_item').forEach(block => {
         // Сохраняем исходную высоту для анимации
         const firstLine = block.querySelector('.fst_desc');
-        const content = block.querySelector('.content');
-        const detail = block.querySelector('.detail');
-
-
-        // Вычисляем высоту первой строки
         const firstLineHeight = firstLine.offsetHeight;
-        const detailHeight = content ? content.offsetHeight : 0;
 
-        console.log('detailHeight = ', detailHeight)
         block.style.maxHeight = firstLineHeight + 'px';
-        block.addEventListener('click', function () {
-            toSmall()
+        if (state) block.querySelector('.fst_desc').addEventListener('click', openVacancy);
+        else block.querySelector('.fst_desc').removeEventListener('click', openVacancy);
 
-            const form = document.querySelector('.request_vac');
-            if (document.body.offsetWidth > 992) detail.before(form)
-            else detail.after(form)
-
-
-            const detailHeight = content ? content.offsetHeight : 0;
-
-            console.log('document.body.offsetWidth = ', document.body.offsetWidth)
-
-            this.classList.toggle('expanded');
-            this.style.maxHeight = (firstLineHeight + detailHeight) + 'px';
-        });
+        function openVacancy() {
+            if (block.classList.contains('expanded')) {
+                block.classList.remove('expanded');
+                block.style.maxHeight = firstLineHeight + 'px';
+            } else {
+                block.classList.add('expanded');
+                block.style.maxHeight = 'inherit'
+            }
+        }
     });
+}
 
-    function toSmall() {
-        document.querySelectorAll('.vacancy_item').forEach(block => {
-            block.classList.remove('expanded');
-            const firstLine = block.querySelector('.fst_desc');
-            const firstLineHeight = firstLine.offsetHeight;
-            block.style.maxHeight = firstLineHeight + 'px';
-        });
-    }
+function toSmall() {
+    initVacancies()
+    document.querySelectorAll('.vacancy_item').forEach(block => {
+        block.classList.remove('expanded');
+        const firstLine = block.querySelector('.fst_desc');
+        const firstLineHeight = firstLine.offsetHeight;
+        block.style.maxHeight = firstLineHeight + 'px';
+    });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    initChangeCity()
+    initVacancies()
 
     window.addEventListener('resize', toSmall);
 
-
-    const resume = document.querySelector(`#generalForm [name="resume"]`)
+    const resume = document.querySelector(`.generalForm [name="resume"]`)
     const placeForFileName = document.querySelector(`#fN`)
     resume.addEventListener('change', function (res) {
         if (this.files && this.files[0]) placeForFileName.textContent = this.files[0].name;
         else placeForFileName.textContent = 'Загрузить файл';
     });
 
-
-    function check(fio, phone) {
+    function check(fio, phone, checkbox) {
         let err = false
         if (!fio.value) {
             fio.style.border = '1px solid red'
@@ -117,25 +168,30 @@ window.addEventListener('DOMContentLoaded', () => {
             message('Не заполнен Телефон', 'warning')
             err = true
         } else phone.style.border = ''
+        if (!checkbox.checked) {
+            checkbox.parentNode.style.border = '1px solid red'
+            message('Вы должны дать согласие на обработку персональных данных', 'warning')
+            err = true
+        } else checkbox.parentNode.style.border = ''
         return err
     }
 
     // нажатие кнопок отправки
     window.sendResume = function (formId) {
-        const fio = document.querySelector(`#${formId} [name="fio"]`)
-        const city = document.querySelector(`#${formId} [name="city"]`)
-        const phone = document.querySelector(`#${formId} [name="phone"]`)
-        const email = document.querySelector(`#${formId} [name="email"]`)
-        const text = document.querySelector(`#${formId} [name="text"]`)
-        const resume = document.querySelector(`#${formId} [name="resume"]`)
+        const fio = document.querySelector(`.${formId} [name="fio"]`)
+        const city = document.querySelector(`.${formId} [name="city"]`)
+        const phone = document.querySelector(`.${formId} [name="phone"]`)
+        const email = document.querySelector(`.${formId} [name="email"]`)
+        const text = document.querySelector(`.${formId} [name="text"]`)
+        const resume = document.querySelector(` [name="resume"]`)
+        const checkbox = document.querySelector(`.${formId} [type="checkbox"]`)
 
-        if (check(fio, phone)) return false
         if (formId === 'generalForm') {
-            const personal_agree_vacancy = document.getElementById('personal_agree_vacancy')
             const modal__error = document.querySelector('.modal__error')
-            modal__error.style.display = personal_agree_vacancy.checked ? 'none' : 'block'
-            if (!personal_agree_vacancy.checked) return false
+            modal__error.style.display = checkbox.checked ? 'none' : 'block'
         }
+
+        if (check(fio, phone, checkbox)) return false
 
         let params = {
             fullName: fio.value,
