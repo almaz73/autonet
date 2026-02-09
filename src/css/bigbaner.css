@@ -8,6 +8,12 @@
     justify-content: flex-end;
 }
 
+@media (min-width: 1600px){
+    .bigbaner {
+        min-height: initial;
+    }
+}
+
 .bigbaner.shadow:before {
     content: '';
     position: absolute;

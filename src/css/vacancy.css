@@ -5,7 +5,7 @@
 
 }
 
-.alsu {
+.elizaveta {
     height: 100vh;
     overflow: hidden;
     top: 87px;
@@ -13,13 +13,24 @@
     position: absolute;
 }
 
-.alsupic {
+
+
+.elizavetaHide{
+    height: 100vh;
+    top:-30px;
+    left: -100%;
+    width: 100%;
+    position: absolute;
+    background: white;
+}
+
+.elizavetapic {
     display: none;
     margin: 0 -20px;
     width: 100vw;
 }
 
-.alsufon {
+.elizavetafon {
     background-image: url(/photo/vacancy/vacancy_bnr_01.webp);
     background-position: center center;
     background-size: cover;
@@ -37,8 +48,14 @@
     position: relative;
 }
 
+@media (min-width: 1600px){
+    .elizaveta, .desc {
+        height: 800px;
+    }
+}
+
 @media (max-width: 1020px) {
-    .alsufon {
+    .elizavetafon {
         display: none;
     }
 
@@ -48,7 +65,7 @@
 }
 
 @media (max-width: 600px) {
-    .alsupic {
+    .elizavetapic {
         display: block;
     }
 }

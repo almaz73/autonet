@@ -9,7 +9,7 @@ function initChangeCity() {
 
     items['Город'].value = localStorage.getItem('selectedCity')
 
-    items['Город'].value = items['Город'].value  || 'Казань' // todo для тестирования временно всегда при открытии Казань
+    items['Город'].value = 'Казань' // todo для тестирования временно всегда при открытии Казань
 
     selectedCity(items['Город'].value)
 
