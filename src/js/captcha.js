@@ -66,6 +66,8 @@ class PuzzleCaptcha {
     }
 
     startDraggingTouch(e) {
+        this.instructions.style.left = '-10000px'
+        this.targetArea.style.left = this.targetX + '%'
         this.isDragging = true;
         const touch = e.touches[0];
         this.initialX = touch.clientX - this.offsetX;
@@ -88,7 +90,6 @@ class PuzzleCaptcha {
 
         if (this.currentX < 0) this.currentX = 0
         this.updatePosition();
-        e.preventDefault();
     }
 
     stopDragging() {

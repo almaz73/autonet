@@ -317,7 +317,8 @@
 
 @media (max-width: 450px) {
     .modal-closer.form {
-        top: 100px;
+        top: 10px;
+        background: #f5f5f5;
     }
 
     .main-nav.rightpanel .right {
