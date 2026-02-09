@@ -1,5 +1,5 @@
 import {initCaptcha} from "@/js/captcha.js";
-import {checkFormFields, constructorForm, simplePhone} from "@/js/global-func.js";
+import {checkFormFields, constructorForm} from "@/js/global-func.js";
 import {api_postCallToSell} from "@/js/API-base/apibase.js";
 
 
@@ -16,11 +16,12 @@ globalcall.addEventListener('click', () => { // авезжпеь панель
     initCaptcha()
 })
 
-/** Для кнопки с меню Обратный звонок */
+/** Для кнопки с меню Обратный звонок и для Отдельного авто */
 window.sendBid = function (fName) {
     let capcthadiv = document.querySelector(`.${fName} .capctha-div`)
     let name = document.querySelector(`.${fName} [name="name"]`)
     let phone = document.querySelector(`.${fName} [name="phone"]`)
+    let email = document.querySelector(`.${fName} [name="email"]`)
     let checkbox = document.querySelector(`.${fName} [type="checkbox" ]`)
 
     if (checkFormFields([capcthadiv, name, phone, checkbox])) return false
@@ -29,6 +30,8 @@ window.sendBid = function (fName) {
         name: name.value,
         phone: phone.value,
     }
+    if (email && email.value) params.email = email.value
+
     console.log('params', params)
     api_postCallToSell(params).then(res => {
         if (res && res.ok) message('Заявка оптарвлена')
@@ -37,12 +40,10 @@ window.sendBid = function (fName) {
 }
 
 
-
-
 initCaptcha()
 
 /** для промо-акций */
-window.sendBidPromo = function (fName) {
+window.sendBidPromo = function () {
     let capcthadiv = document.querySelector(`.capctha-div`)
     let name = document.querySelector(`[name="name"]`)
     let year = document.querySelector(`[name="year"]`)

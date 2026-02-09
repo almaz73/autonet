@@ -15,7 +15,7 @@ select_show_date && select_show_date.forEach((el, ind) => {
         openRightPanel()
 
         right_panel_content.innerHTML = constructorForm('vv'+ind,
-            ['name*', 'year', 'email'],
+            ['name*', 'phone*', 'email'],
             'sendBid',
             'Отправить заявку',
             'Записаться  на <span class="red">осмотр</span> автомобиля '

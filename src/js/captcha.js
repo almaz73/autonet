@@ -106,7 +106,6 @@ class PuzzleCaptcha {
     verify() {
         const parentRect = this.parent.getBoundingClientRect();
         const childRect = this.puzzlePiece.getBoundingClientRect();
-        const result = document.querySelector('.result')
         const offsetLeftPercent = ((childRect.left - parentRect.left) / parentRect.width) * 100;
         if (Math.abs(this.targetX - offsetLeftPercent) < 1) {
             this.parent.style.border = ''

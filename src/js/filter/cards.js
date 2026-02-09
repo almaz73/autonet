@@ -167,9 +167,9 @@ function setTypeView(e) {
     if (!e || !cards) return false
     cards.classList = [];
     getWidth();
-    if (e.srcElement.classList.value === 'dot8') cards.classList.add('cards', 'dot8');
-    if (e.srcElement.classList.value === 'dot4') cards.classList.add('cards', 'dot4');
-    if (e.srcElement.classList.value === 'dot1') cards.classList.add('cards', 'dot1');
+    if (e.srcElement.classList.value.includes('dot8')) cards.classList.add('cards', 'dot8');
+    if (e.srcElement.classList.value.includes('dot4')) cards.classList.add('cards', 'dot4');
+    if (e.srcElement.classList.value .includes('dot1')) cards.classList.add('cards', 'dot1');
 
     if (e.srcElement.classList.add) {
         for (let childrenKey in type_views.children) type_views.children[childrenKey].classList && type_views.children[childrenKey].classList.remove('active');

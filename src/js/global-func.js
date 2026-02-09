@@ -112,8 +112,8 @@ export const formattingPhone = function (self) {
     if (val.length < 2) return txt
 
     if (["7", "8", "9"].indexOf(txt[0]) > -1) {
-        if (txt[0] == "9") txt = "7" + txt;
-        const firstSymbols = (txt[0] == "8") ? "8" : "+7";
+        if (txt[0] === "9") txt = "7" + txt;
+        const firstSymbols = (txt[0] === "8") ? "8" : "+7";
         res = firstSymbols + " ";
         if (txt.length > 1) res += '(' + txt.substring(1, 4);
         if (txt.length >= 5) res += ') ' + txt.substring(4, 7);
@@ -129,7 +129,7 @@ window.formattingPhone = formattingPhone
 // телефон должен состоять только из цифр
 export const simplePhone = function (val) {
     if (!val) return ''
-    if (val.slice(0, 2) == '+7') val = val.replaceAll('+7', '8')
+    if (val.slice(0, 2) === '+7') val = val.replaceAll('+7', '8')
     return val.replaceAll(' ', '').replaceAll('+', '').replaceAll('(', '').replaceAll(')', '').replaceAll('-', '')
 }
 
