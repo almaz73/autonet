@@ -16,7 +16,7 @@ globalcall.addEventListener('click', () => { // авезжпеь панель
     initCaptcha()
 })
 
-
+/** Для кнопки с меню Обратный звонок */
 window.sendBid = function (fName) {
     let capcthadiv = document.querySelector(`.${fName} .capctha-div`)
     let name = document.querySelector(`.${fName} [name="name"]`)
@@ -30,6 +30,30 @@ window.sendBid = function (fName) {
         phone: phone.value,
     }
     console.log('params', params)
+    api_postCallToSell(params).then(res => {
+        if (res && res.ok) message('Заявка оптарвлена')
+        else message('Сервер не принял', 'error')
+    })
+}
+
+
+
+
+initCaptcha()
+
+/** для промо-акций */
+window.sendBidPromo = function (fName) {
+    let capcthadiv = document.querySelector(`.capctha-div`)
+    let name = document.querySelector(`[name="name"]`)
+    let year = document.querySelector(`[name="year"]`)
+    let checkbox = document.querySelector(`[type="checkbox" ]`)
+
+    if (checkFormFields([capcthadiv, name, checkbox])) return false
+
+    let params = {
+        name: name.value,
+        yearReleased: year.value,
+    }
     api_postCallToSell(params).then(res => {
         if (res && res.ok) message('Заявка оптарвлена')
         else message('Сервер не принял', 'error')
