@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const email = document.querySelector('[placeholder="E-mail"]')
     const button = document.querySelector('button.but_red')
     const personal_agree = document.querySelector('#personal_agree')
+    const capcthadiv = document.querySelector(`.capctha-div`)
     const modal__error = document.querySelector('.modal__error')
     const id = getUrlParam('id');
     const name = getUrlParam('name');
@@ -30,6 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
             message('Телефон не правильный, \nожидается 11 символов', 'warning')
             err = true
         } else tel.style.background = ''
+
+        if (!capcthadiv.classList.contains('checked')) {
+            capcthadiv.style.border = '1px solid red';
+            err = true
+        }
 
         if (!email.value) {
             err = true;
