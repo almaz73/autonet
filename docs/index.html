@@ -19,15 +19,15 @@
         Подробная информация по телефону: ☎ 8-800-500-11-56. Звоните!'>
 
 
-  <script type="module" crossorigin src="./assets/main-CVI4uFy9.js"></script>
-  <script type="module" crossorigin src="./assets/contacts-gslnEPRT.js"></script>
-  <script type="module" crossorigin src="./assets/brands-icons-Cmkw41bc.js"></script>
+  <script type="module" crossorigin src="./assets/main-BhZLmK3Z.js"></script>
+  <script type="module" crossorigin src="./assets/contacts-BzkA0gla.js"></script>
+  <script type="module" crossorigin src="./assets/brands-icons-B3DkHO0x.js"></script>
   <script type="module" crossorigin src="./assets/swiper-starter-BitlMDKb.js"></script>
   <script type="module" crossorigin src="./assets/whereSeeParams-BuT6MZzX.js"></script>
   <script type="module" crossorigin src="./assets/favoriteCars-B6JjzAIO.js"></script>
-  <script type="module" crossorigin src="./assets/compareCars-CS9rJ_a6.js"></script>
-  <script type="module" crossorigin src="./assets/filter-controls-m6_-_PGp.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/main-B6NLRrHK.css">
+  <script type="module" crossorigin src="./assets/compareCars-CEGgUYRk.js"></script>
+  <script type="module" crossorigin src="./assets/filter-controls-CUCg9jtX.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/main-cF9QJnSc.css">
   <link rel="stylesheet" crossorigin href="./assets/contacts-CqOA9HG6.css">
   <link rel="stylesheet" crossorigin href="./assets/swiper-bundle-CcLVQX3U.css">
   <link rel="stylesheet" crossorigin href="./assets/ourservice-Bhv2pcd3.css">
@@ -269,17 +269,21 @@
                     <comb data-placeholder='Город' />
                 </div>
 
-                <div style="flex-grow: 1">
-                    <div class="big-combo control-flex">
+                <div style="flex-grow: 1" >
+                    <div class="big-combo control-flex" >
                         <span style="width: 60px">Год от:</span>
-                      <input class="big-comb__input" style="width: 80px" onchange="input_chamged('yearReleasedFrom', this.value)">
+                      <input class="big-comb__input" style="width: 80px"
+                             oninput="input_on('yearReleasedFrom', this.value)"
+                             onchange="input_chamged('yearReleasedFrom', this.value)">
                     </div>
                 </div>
 
                 <div style="flex-grow: 1" class="no_advanced">
                     <div class="big-combo control-flex no_advanced">
                         <span style="width: 60px">Год до:</span>
-                        <input class="big-comb__input" style="width: 80px" onchange="input_chamged('yearReleasedTo', this.value)">
+                        <input class="big-comb__input" style="width: 80px"
+                               oninput="input_on('yearReleasedTo', this.value)"
+                               onchange="input_chamged('yearReleasedTo', this.value)">
                     </div>
                 </div>
 
@@ -287,7 +291,8 @@
                     <div class="big-combo control-flex">
                         <span style="width: 100px">Цена от: </span>
                         <input class="big-comb__input" style="width: 60px"
-                             onchange="input_chamged('priceFrom', this.value)" onclick="this.select()">
+                               oninput="input_on('priceFrom', this.value)"
+                               onchange="input_chamged('priceFrom', this.value)" onclick="this.select()">
                     </div>
                 </div>
 
@@ -295,7 +300,8 @@
                     <div class="big-combo control-flex">
                         <span style="width: 100px">Цена до: </span>
                         <input class="big-comb__input" style="width: 60px"
-                             onchange="input_chamged('priceTo', this.value)" onclick="this.select()">
+                               oninput="input_on('priceTo', this.value)"
+                               onchange="input_chamged('priceTo', this.value)" onclick="this.select()">
                     </div>
                 </div>
 
@@ -303,6 +309,7 @@
                     <div class="big-combo control-flex">
                         <span style="width: 100px">Пробег до: </span>
                         <input class="big-comb__input" style="width: 70px"
+                               oninput="input_on('milleageFrom', this.value)"
                                onchange="input_chamged('milleageFrom', this.value)" onclick="this.select()">
                     </div>
                 </div>
@@ -311,6 +318,7 @@
                     <div class="big-combo control-flex">
                         <span style="width: 100px">Пробег до: </span>
                       <input class="big-comb__input" style="width: 70px"
+                             oninput="input_on('milleageTo', this.value)"
                              onchange="input_chamged('milleageTo', this.value)" onclick="this.select()">
                     </div>
                 </div>

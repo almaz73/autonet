@@ -16,9 +16,9 @@
     <meta name='description' content='Специальные предложения и акции в автосалонах Автосеть.рф.'>
 
 
-  <script type="module" crossorigin src="../../assets/main-CVI4uFy9.js"></script>
+  <script type="module" crossorigin src="../../assets/main-BhZLmK3Z.js"></script>
   <script type="module" crossorigin src="../../assets/promo-random-0ybF-eqr.js"></script>
-  <link rel="stylesheet" crossorigin href="../../assets/main-B6NLRrHK.css">
+  <link rel="stylesheet" crossorigin href="../../assets/main-cF9QJnSc.css">
   <link rel="stylesheet" crossorigin href="../../assets/promo-DvXvnqJ-.css">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 </head>
@@ -243,16 +243,15 @@
 
 
     <div class="div promo-form">
-        <form action="/" name="popup_form" enctype="multipart/form-data" method="POST" class="formBlock">
+        <div class="formBlock">
             <div class="form__modal--group">
                 <div class="form__group">
-                    <input size="25">
-                    <label>Ваше имя <sup class="starrequired">*</sup></label>
+                    <input name="name"  required  placeholder="Ваше имя *">
                 </div>
             </div>
             <div class="form__modal--group">
                 <div class="form__group">
-                    <input size="25"> <label>Год выпуска</label>
+                  <input name="year" placeholder="Год выпуска">
                 </div>
             </div>
 
@@ -260,17 +259,17 @@
               <div class="capctha-div"></div>
             </div>
 
-            <button class="page__btn page__btn--current">
+            <button class="page__btn page__btn--current" onclick="sendBidPromo()">
                 <span> Отправить заявку </span>
             </button>
 
             <div class="modal__personal">
-                <input type="checkbox">
-                <label> Нажав кнопку «Отправить заявку» я даю согласие на обработку
-                    <a href="/privacy-policy/" target="_blank">персональных данных</a>
+                <input type="checkbox" id="dd1d">
+                <label for="dd1d"> Нажав кнопку «Отправить заявку» я даю согласие на обработку
+                    персональных <a href="/privacy-policy/" target="_blank">данных</a>
                 </label>
             </div>
-        </form>
+        </div>
     </div>
 
 </div>    </div>
