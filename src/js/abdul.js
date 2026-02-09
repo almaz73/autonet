@@ -25,7 +25,7 @@ export const block=`
                 <div style="display: inline-flex;direction: initial;float: right">
                     <a href="http://vk.me/avtoset_rf" target="_blank">
                             <span class="icon">
-                              <img src="/src/svg/vk_2.svg" alt="" style="width: 16px">
+                              <img src="/svg/vk_2.svg" alt="" style="width: 16px">
                             </span>
                         <span class="text"> ВКонтакте</span>
                     </a>

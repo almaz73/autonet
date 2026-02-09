@@ -315,3 +315,7 @@ main h2, main h1 {
 .red {
     color: var(--color-red);
 }
+
+.cart__box--bottom img.chosen {
+    filter: sepia(100%) saturate(6860%) !important;
+}

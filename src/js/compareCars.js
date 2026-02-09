@@ -5,7 +5,7 @@ window.addCompare = function (val) {
 
     let storage = getComparedCars()
     let car = currentCar
-    car.images = currentCar.images[0]
+    if (currentCar.images) car.images = currentCar.images[0]
 
     let compareButton = document.querySelector("#compareId_" + val)
     let isChosen = compareButton.classList.contains('chosen')

@@ -91,11 +91,12 @@ api_getFullAutoInfo(id).then(res => {
     {
         let favorite_chosen = document.querySelector('#favorite_chosen')
         if (favorite_chosen) {
-            favorite_chosen.innerHTML = `<a href="javascript:addCompare('${res.id}')" ondblclick="dblCompare('${res.id}')">
-        <img id="compareId_${res.id}" src='/icons/compare_cars.svg' alt=''>
+            favorite_chosen.innerHTML = `
+<a href="javascript:addCompare('${res.id}')" ondblclick="dblCompare('${res.id}')">
+        <img id="compareId_${res.id}" src='/icons/compare_cars.svg' alt='' style="width: 23px; margin-right: 18px">
       </a>
       <a href="javascript:addFavorite('${res.id}')">
-        <img id="favoriteId_${res.id}" src='/icons/penta.svg' alt=''>
+        <img id="favoriteId_${res.id}" src='/icons/penta.svg' alt='' style="width: 20px">
       </a>`
         }
 

@@ -294,6 +294,7 @@ ${field === 'phone' ? 'oninput="formattingPhone(this)"' : ''}>
 /**  Глобальный дизаблинг кнопок, во время обращения к серверу **/
 /* не всегда кнопки сами сообщают чтоон нажат (фильтре) дизаблить надо их тоже */
 export function toDisable(button, state) {
+    if (!button) return false
     button.style.opacity = state ? .5 : 1
     button.disabled = state
 }
