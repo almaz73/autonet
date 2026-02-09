@@ -20,6 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
         filter_changed_text(type, val)
     }
 
+    let timer1 = null
+    window.input_on = function (type, val) {
+        if (timer1) clearTimeout(timer1)
+        timer1 = setTimeout(() => input_chamged(type, val), 1000)
+    }
+
 
     /* Сюда же добавим управление видом фильтров */
     let advanced = document.querySelector('.frame-filter__controls-advanced')

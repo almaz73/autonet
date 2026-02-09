@@ -21,7 +21,8 @@ const whiteFilter = `<div  class="filter-white">
             <div class="big-combo control-flex" onmouseenter="onCard(this)">
                 <span style="width: 60px">Год от:</span>
                 <input class="big-comb__input" type="number" style="width: 80px" 
-                onchange="input_chamged('yearReleasedFrom', this.value)">
+                 oninput="input_on('yearReleasedFrom', this.value)"  
+                 onchange="input_chamged('yearReleasedFrom', this.value)">
             </div>
         </div> 
 
@@ -29,7 +30,8 @@ const whiteFilter = `<div  class="filter-white">
             <div class="big-combo control-flex" onmouseenter="onCard(this)">
                 <span style="width: 60px">Год до:</span>
                 <input class="big-comb__input" type="number" style="width: 80px" 
-                onchange="input_chamged('yearReleasedTo', this.value)" onclick="this.select()">
+                  oninput="input_on('yearReleasedTo', this.value)"  
+                  onchange="input_chamged('yearReleasedTo', this.value)" onclick="this.select()">
             </div>
         </div>
         
@@ -42,6 +44,7 @@ const whiteFilter = `<div  class="filter-white">
             <div class="big-combo control-flex" onmouseenter="onCard(this)">
                 <span style="width: 80px">Цена от: </span>
                  <input class="big-comb__input" style="width: 60px" 
+                oninput="input_on('priceFrom', this.value)"  
                 onchange="input_chamged('priceFrom', this.value)" onclick="this.select()">                
             </div>
         </div>
@@ -50,6 +53,7 @@ const whiteFilter = `<div  class="filter-white">
             <div class="big-combo control-flex" onmouseenter="onCard(this)">
                 <span style="width: 80px">Цена до: </span>                 
                 <input class="big-comb__input" style="width: 60px" 
+                oninput="input_on('priceTo', this.value)" 
                 onchange="input_chamged('priceTo', this.value)">
             </div>
         </div>
@@ -58,7 +62,8 @@ const whiteFilter = `<div  class="filter-white">
             <div class="big-combo control-flex" onmouseenter="onCard(this)">
                 <span style="width: 85px">Пробег от: </span>
                  <input class="big-comb__input" style="width: 70px" 
-                onchange="input_chamged('milleageFrom', this.value)" onclick="this.select()">      
+                   oninput="input_on('milleageFrom', this.value)"  
+                   onchange="input_chamged('milleageFrom', this.value)" onclick="this.select()">      
             </div>
         </div>
         
@@ -66,7 +71,8 @@ const whiteFilter = `<div  class="filter-white">
             <div class="big-combo control-flex" onmouseenter="onCard(this)">
                 <span style="width: 85px">Пробег до: </span>
                  <input class="big-comb__input" style="width: 70px" 
-                onchange="input_chamged('milleageTo', this.value)" onclick="this.select()">                    
+                  oninput="input_on('milleageTo', this.value)"  
+                  onchange="input_chamged('milleageTo', this.value)" onclick="this.select()">                    
             </div>
         </div>
 
@@ -88,7 +94,8 @@ const whiteFilter = `<div  class="filter-white">
            <div class="big-combo control-flex" onmouseenter="onCard(this)">
             <span style="width: 160px">Объем двигателя до: </span>
              <input class="big-comb__input" style="width: 60px" 
-            onchange="input_chamged('engineCapacity', this.value)" onclick="this.select()">      
+              oninput="input_on('engineCapacity', this.value)"  
+              onchange="input_chamged('engineCapacity', this.value)" onclick="this.select()">      
           </div>
         </div>
 

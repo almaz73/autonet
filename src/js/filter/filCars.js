@@ -1,6 +1,6 @@
 // обработка location.pathname === '/cars/
 import {api_getList} from "@/js/API-base/apibase.js"
-import {declOfNum, getUrlParam, prepareCars, eventBus, setPriceOrder} from '@/js/global-func.js'
+import {declOfNum, getUrlParam, prepareCars, eventBus, setPriceOrder, toDisable} from '@/js/global-func.js'
 import {setExtention} from "@/js/filter/filter-ctrl-filling.js"
 
 const countPerPage = 20
@@ -172,11 +172,15 @@ export function fillCars(cars, ishandEvent_, filterParams, fill) {
     ishandEvent = ishandEvent_
     if (!ishandEvent) FillFilterFromAddressBar(filterParams)
 
+    let bt = document.querySelector('#set_filter')
+    toDisable(bt, true)
+
     api_getList(countPerPage, filterParams).then(res => {
         // по кнопке Показать
         cars = prepareCars(res.items)
         let totalPages = Math.ceil(res.totalCount/countPerPage)
         fill(cars, res.items, totalPages)
+        toDisable(bt, false)
 
         document.querySelector('#set_filter span.number').innerHTML = res.totalCount
             + ' ' +declOfNum(res.totalCount, ['предложение', 'предложения', 'предложений'])

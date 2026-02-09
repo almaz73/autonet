@@ -290,3 +290,10 @@ ${field === 'phone' ? 'oninput="formattingPhone(this)"' : ''}>
             </div></div></div></div>`
     return html
 }
+
+/**  Глобальный дизаблинг кнопок, во время обращения к серверу **/
+/* не всегда кнопки сами сообщают чтоон нажат (фильтре) дизаблить надо их тоже */
+export function toDisable(button, state) {
+    button.style.opacity = state ? .5 : 1
+    button.disabled = state
+}
