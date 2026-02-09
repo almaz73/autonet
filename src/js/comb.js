@@ -1,3 +1,5 @@
+import {cities} from "@/js/global-constants.js";
+
 let option_div = document.querySelector('.comb__items');
 let comb_field = document.querySelector('.comb_field');
 let select_div = document.querySelector('.comb__selected');
@@ -7,6 +9,10 @@ let comb_arrow = document.querySelector('.comb_field img');
 let mySwiper = document.querySelector('.mySwiper')
 
 let selectedCity = localStorage.getItem('selectedCity');
+
+option_div.innerHTML = ''
+cities.forEach(el=>option_div.innerHTML += `<div class="comb__item">${el}</div>`)
+
 if (comb_field) {
   select_div.innerHTML = selectedCity || 'Россия';
   document.addEventListener('click', () => openOptions(false));

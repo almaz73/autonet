@@ -86,7 +86,6 @@
 
 .faqList .item:target {
     display: block;
-    background: yellow;
 }
 
 /*.faqList .answer*/

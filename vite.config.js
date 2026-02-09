@@ -146,7 +146,9 @@ export default defineConfig({
 				masla: resolve(__dirname, './services/zamena-masla/index.html'),
 				compared: resolve(__dirname, './personal/list-compared/index.html'),
 				favorite: resolve(__dirname, './personal/favorite-cars/index.html'),
-				reserve: resolve(__dirname, './reserve/index.html')
+				reserve: resolve(__dirname, './reserve/index.html'),
+
+				vacancyAdmin: resolve(__dirname, './vacancy/index.html')
 			},
 		},
 

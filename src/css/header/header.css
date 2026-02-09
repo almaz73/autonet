@@ -38,7 +38,6 @@ nav .header__nav-a:hover {
 @media (max-width: 640px) {
     .header {
         padding: 0;
-        background: yellow;
         z-index: 100;
     }
 

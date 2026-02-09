@@ -98,6 +98,7 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .filter-white .big-combo, .filter-white .big-comb__input {
@@ -322,6 +323,10 @@ form .modal__personal {
     font-weight: 600;
 }
 
+.vacancy_item .fst_desc:hover {
+    background: #fafafa
+}
+
 
 .vacancy_item .ttl {
     font-size: 1.2em;
@@ -403,7 +408,8 @@ form .modal__personal {
     font-weight: 600;
     margin-bottom: 15px;
 }
-.request_vac .checkbox-line{
+
+.request_vac .checkbox-line {
     display: flex;
     gap: 8px;
     font-size: .6rem;
@@ -437,7 +443,7 @@ form .modal__personal {
     border-radius: 5px;
     position: relative;
 
-        color: #777;
+    color: #777;
 }
 
 .fileLabel input {
@@ -467,5 +473,33 @@ form .modal__personal {
 }
 
 .request_vac .ppDesc a {
-    color: black ;
+    color: black;
+}
+
+.request_vac.admin input, .request_vac.admin textarea {
+    background-color: #fff;
+    box-shadow: 0 0 40px #0003;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.request_vac.admin textarea {
+    field-sizing: content
+}
+
+.admin-edit {
+    display: flex;
+    gap: 12px;
+}
+
+.admin-edit button {
+    cursor: pointer;
+    height: 19px;
+}
+
+.editor{
+    display: none;
+}
+.editor.edit{
+    display: block;
 }

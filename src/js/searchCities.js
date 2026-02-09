@@ -1,11 +1,8 @@
+import {cities} from "@/js/global-constants.js"
+
 let innerCity = document.querySelector('#innerCity');
 let cityInput = document.querySelector('.form__modal-place--group input');
 
-let cities = ['Альметьевск', 'Астрахань', 'Бугульма', 'Буинск',
-  'Екатеринбург', 'Казань', 'Магнитогорск', 'Набережные Челны',
-  'Нижнекамск', 'Нижний Тагил', 'Оренбург', 'Самара',
-  'Саранск', 'Стерлитамак', 'Тольятти', 'Тула', 'Ульяновск', 'Уфа'
-];
 let letters = ['А', 'Б', 'Е', 'К', 'М', 'Н', 'О', 'С', 'Т', 'У'];
 
 export function fillCities(txt) {

@@ -1,18 +1,20 @@
 import {api_PostCallToWork} from "@/js/API-base/apibase.js";
 import {message} from "@/js/message.js";
-import {datas} from "@/js/global-constants.js"
+import {cities, vacanciesList} from "@/js/global-constants.js"
 import {formatterShowPrice} from "@/js/global-func.js";
 
 function initChangeCity() {
     let comb = document.querySelector('comb');
-    let items = {'Город': ['Все', 'Альметьевск', 'Казань', 'Набережные Челны', 'Нижнекамск', 'Стерлитамак']}
+    let items = {'Город': cities}
 
     items['Город'].value = localStorage.getItem('selectedCity')
+
+    items['Город'].value = items['Город'].value  || 'Казань' // todo для тестирования временно всегда при открытии Казань
+
     selectedCity(items['Город'].value)
 
     let comb_name = comb.dataset.placeholder
     let the_Items = items[comb_name];
-
 
     if (the_Items) {
         let items_list = the_Items.map(item => '<div data-parent="' + comb_name + '">' + item + '</div>')
@@ -27,7 +29,6 @@ function initChangeCity() {
         </div>
     </div>`
     }
-
 
     document.querySelector('.big_comb__items').addEventListener('click', function vacancyCitySelected(val) {
         let combName = 'Город'
@@ -44,15 +45,25 @@ function initChangeCity() {
         // высветить нужную вакансию
     })
 
-    function selectedCity(val) {
-        console.log('!!!selectedCity val = ', val)
+    function selectedCity(city) {
+        console.log('!!!selectedCity val = ', city)
+        let bigCombo = document.querySelector('.big-combo')
+        bigCombo && bigCombo.blur()
+        setTimeout(()=>initVacancies(city))
     }
 }
 
-function initVacancies() {
+function initVacancies(city) {
+
+    console.log(4444)
+
     let html = ''
     initListeners(false)
-    datas.forEach((item, ind) => {
+    let newDatas = []
+    if (!city) newDatas = vacanciesList
+    else newDatas = vacanciesList.filter(el => el.city === city)
+
+    newDatas.forEach((item, ind) => {
         let formVacancy = `
 <div class="request_vac">
             <div class="ttl_a">Откликнуться на вакансию</div>

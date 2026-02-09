@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /admin/vacancy.html
 
 Sitemap: https://xn--80aej9alefdt2f.xn--p1ai/sitemap.xml
+Sitemap: http://xn--80aej9alefdt2f.xn--p1ai/sitemap.xml
