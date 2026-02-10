@@ -29,6 +29,7 @@ slider_mover(slider1, sliderКange1, sliderHandle1, 'first')
 slider_mover(slider2, sliderКange2, sliderHandle2, 'second')
 
 function slider_mover(slider, sliderКange, sliderHandle, type) {
+    if (!slider) return false
     let isDragging = false;
     let startX; // Начальная позиция курсора
     let startLeft; // Начальная позиция элемента
@@ -92,7 +93,7 @@ let price = 1500000
 let year = 5
 let credit = 0
 let forMonth = 0
-field0.innerHTML = formatterShowPrice(price) + ' ₽'
+if (field0) field0.innerHTML = formatterShowPrice(price) + ' ₽'
 
 export function calculator(val) {
     price = parseInt(val)

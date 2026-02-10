@@ -1,4 +1,4 @@
-import{l as a,n as o,t as u,s as v}from"./main-CNBYApHP.js";function c(s,t){let r="";t&&s.sort((e,i)=>e.city>i.city?1:-1);let n="";return s.forEach(e=>{let i=e.city.slice(0,1);t&&i!==n&&(r+=`<div class="letter">${i}</div>`,n=i),r+=`
+import{j as l,k as o,t as u,s as v}from"./main-DzZIxVIP.js";function c(s,t){let r="";t&&s.sort((e,i)=>e.city>i.city?1:-1);let n="";return s.forEach(e=>{let i=e.city.slice(0,1);t&&i!==n&&(r+=`<div class="letter">${i}</div>`,n=i),r+=`
         <div class="contact_p"  style="background: url(${e.url})">
             <div class="contact__flex">
                 <div class="city">${e.city}</div>
@@ -23,4 +23,4 @@ import{l as a,n as o,t as u,s as v}from"./main-CNBYApHP.js";function c(s,t){let 
                     ${e.days}                    
                 </div>
             </div>
-        </div>`}),r}document.querySelector("#currentCity");document.addEventListener("DOMContentLoaded",()=>{let s=document.querySelector("#search-field");s&&s.addEventListener("input",()=>{let i=s.value.toLowerCase(),l=a.filter(d=>d.city.toLowerCase().includes(i));l.length?t.innerHTML=c(l,"withAlphabet"):t.innerHTML="Такой город не найден."});let t=document.querySelector("#dealers");t&&(t.innerHTML=c(a,"withAlphabet"));let r=document.querySelector("#punkts");r&&(r.innerHTML=c(o));let n=document.querySelector("#tyres");n&&(n.innerHTML=c(u));let e=document.querySelector("#services");e&&(e.innerHTML=c(v))});
+        </div>`}),r}document.querySelector("#currentCity");document.addEventListener("DOMContentLoaded",()=>{let s=document.querySelector("#search-field");s&&s.addEventListener("input",()=>{let i=s.value.toLowerCase(),a=l.filter(d=>d.city.toLowerCase().includes(i));a.length?t.innerHTML=c(a,"withAlphabet"):t.innerHTML="Такой город не найден."});let t=document.querySelector("#dealers");t&&(t.innerHTML=c(l,"withAlphabet"));let r=document.querySelector("#punkts");r&&(r.innerHTML=c(o));let n=document.querySelector("#tyres");n&&(n.innerHTML=c(u));let e=document.querySelector("#services");e&&(e.innerHTML=c(v))});

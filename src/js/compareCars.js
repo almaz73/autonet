@@ -200,6 +200,9 @@ export function initChosen() {
     if (preload_getList) preload_getList.style.display = 'none'
 }
 
+window.initChosen = initChosen
+setTimeout(initChosen)
+
 window.dblCompare = function () {
     location.href = '/personal/list-compared/'
 }
