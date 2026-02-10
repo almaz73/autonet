@@ -33,7 +33,6 @@ window.sendBid = function (fName) {
     let city = document.querySelector(`.${fName} [name="city"]`)
     let brand = document.querySelector(`.${fName} [name="brand"]`)
     let model = document.querySelector(`.${fName} [name="model"]`)
-    let year = document.querySelector(`.${fName} [name="year"]`)
     let checkbox = document.querySelector(`.${fName} [type="checkbox" ]`)
 
     if (checkFormFields([capcthadiv, name, city, phone, checkbox])) return false

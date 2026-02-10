@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let right_panel_content = document.querySelector('#right_panel_content')
     let who_can_become_partner = document.querySelector('.who_can_become_partner')
 
-    question_to_boss && question_to_boss.addEventListener('click', (id) => {
+    question_to_boss && question_to_boss.addEventListener('click', () => {
         openRightPanel()
         right_panel_content.innerHTML = constructorForm('boss',
             ['name*','phone*','message*'],

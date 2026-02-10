@@ -162,7 +162,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const resume = document.querySelector(`.generalForm [name="resume"]`)
     const placeForFileName = document.querySelector(`#fN`)
-    resume.addEventListener('change', function (res) {
+    resume.addEventListener('change', function () {
         if (this.files && this.files[0]) placeForFileName.textContent = this.files[0].name;
         else placeForFileName.textContent = 'Загрузить файл';
     });

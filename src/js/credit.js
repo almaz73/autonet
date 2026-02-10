@@ -4,15 +4,15 @@ import {sendMessage} from "@/js/sendMessage.js"
 
 
 const slider0 = document.querySelector('.slider__ui.slider0');
-const sliderКange0 = document.querySelector('.slider__ui.slider0 .slider__ui-range');
+const sliderRange0 = document.querySelector('.slider__ui.slider0 .slider__ui-range');
 const sliderHandle0 = document.querySelector('.slider__ui.slider0 .slider__ui-handle');
 /** slide1 **/
 const slider1 = document.querySelector('.slider__ui.slider1');
-const sliderКange1 = document.querySelector('.slider__ui.slider1 .slider__ui-range');
+const sliderRange1 = document.querySelector('.slider__ui.slider1 .slider__ui-range');
 const sliderHandle1 = document.querySelector('.slider__ui.slider1 .slider__ui-handle');
 /** slide2 **/
 const slider2 = document.querySelector('.slider__ui.slider2');
-const sliderКange2 = document.querySelector('.slider__ui.slider2 .slider__ui-range');
+const sliderRange2 = document.querySelector('.slider__ui.slider2 .slider__ui-range');
 const sliderHandle2 = document.querySelector('.slider__ui.slider2 .slider__ui-handle');
 /** fields **/
 const field0 = document.querySelector('#field0')
@@ -24,11 +24,11 @@ const field4 = document.querySelector('#field4')
 const bid_for_car = document.querySelector('.bid')
 
 // одну функцию для оживления дважды используем
-slider_mover(slider0, sliderКange0, sliderHandle0, 'zero')
-slider_mover(slider1, sliderКange1, sliderHandle1, 'first')
-slider_mover(slider2, sliderКange2, sliderHandle2, 'second')
+slider_mover(slider0, sliderRange0, sliderHandle0, 'zero')
+slider_mover(slider1, sliderRange1, sliderHandle1, 'first')
+slider_mover(slider2, sliderRange2, sliderHandle2, 'second')
 
-function slider_mover(slider, sliderКange, sliderHandle, type) {
+function slider_mover(slider, sliderRange, sliderHandle, type) {
     if (!slider) return false
     let isDragging = false;
     let startX; // Начальная позиция курсора
@@ -84,7 +84,7 @@ function slider_mover(slider, sliderКange, sliderHandle, type) {
             changeStart(newLeft / slider.offsetWidth)
         } else changePrice(newLeft / slider.offsetWidth)
 
-        sliderКange.style.width = newLeft + 'px'
+        sliderRange.style.width = newLeft + 'px'
         sliderHandle.style.left = (newLeft - 10) + 'px';
     }
 }
@@ -132,7 +132,7 @@ function changeYear(val) {
 
 
 
-bid_for_car && bid_for_car.addEventListener('click', res => {
+bid_for_car && bid_for_car.addEventListener('click', () => {
     let input_name = document.querySelector('.main_cred-col.name input')
     let input_tel = document.querySelector('.main_cred-col.tel input')
     let captcha = document.querySelector('.capctha-div.n3')

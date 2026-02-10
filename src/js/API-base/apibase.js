@@ -80,11 +80,6 @@ export function api_mail(params){
         .then(res => res.json())
         .then(res => res)
         .catch(error => sendMessage('Сервер отказал!', 'error'));
-
-    return fetch(request).then(res => {
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
-        return res.json();
-    }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
 }
  function api_PostCallToFranchise(params) {
     // - Отпарвка заявки на фарншизу
@@ -98,11 +93,6 @@ export function api_mail(params){
         .then(res => res.json())
         .then(res => res)
         .catch(error => sendMessage('Сервер отказал!', 'error'));
-
-    return fetch(request).then(res => {
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
-        return res.json();
-    }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
 }
  export function api_PostCallToWork(params) {
     // - Отправка файла резюме
@@ -124,11 +114,6 @@ export function api_mail(params){
         .then(res => res.json())
         .then(res => res)
         .catch(error => sendMessage('Сервер отказал!', 'error'));
-
-    return fetch(request).then(res => {
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
-        return res.json();
-    }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
 }
 
 /*** Получение кол-во автомобилей разбитых по бренду. Отсортированно от большего к меньшему ***/
