@@ -1,4 +1,4 @@
-import {message} from "@/js/message.js";
+import {sendMessage} from "@/js/sendMessage.js";
 
 const server = 'https://ext.cartat.ru/exchange'
 
@@ -61,7 +61,7 @@ export function api_mail(params){
     })
         .then(res => res.json())
         .then(res => res)
-        .catch(error => message('Сервер отказал!', 'error'));
+        .catch(error => sendMessage('Сервер отказал!', 'error'));
 
     return fetch(request).then(res => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
@@ -79,7 +79,7 @@ export function api_mail(params){
     })
         .then(res => res.json())
         .then(res => res)
-        .catch(error => message('Сервер отказал!', 'error'));
+        .catch(error => sendMessage('Сервер отказал!', 'error'));
 
     return fetch(request).then(res => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
@@ -97,7 +97,7 @@ export function api_mail(params){
     })
         .then(res => res.json())
         .then(res => res)
-        .catch(error => message('Сервер отказал!', 'error'));
+        .catch(error => sendMessage('Сервер отказал!', 'error'));
 
     return fetch(request).then(res => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
@@ -123,7 +123,7 @@ export function api_mail(params){
     })
         .then(res => res.json())
         .then(res => res)
-        .catch(error => message('Сервер отказал!', 'error'));
+        .catch(error => sendMessage('Сервер отказал!', 'error'));
 
     return fetch(request).then(res => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)

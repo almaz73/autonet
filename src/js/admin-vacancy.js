@@ -1,5 +1,5 @@
 import {api_PostCallToWork} from "@/js/API-base/apibase.js";
-import {message} from "@/js/message.js";
+import {sendMessage} from "@/js/sendMessage.js";
 import {cities, vacanciesList} from "@/js/global-constants.js"
 import {formatterShowPrice} from "@/js/global-func.js";
 
@@ -143,17 +143,17 @@ window.addEventListener('DOMContentLoaded', () => {
         let err = false
         if (!vacancyName.value) {
             vacancyName.style.border = '1px solid red'
-            message('Не заполнено поле Вакансия', 'warning')
+            sendMessage('Не заполнено поле Вакансия', 'warning')
             err = true
         } else vacancyName.style.border = ''
         if (!salary.value) {
             salary.style.border = '1px solid red'
-            message('Не заполнено поле Зарплата', 'warning')
+            sendMessage('Не заполнено поле Зарплата', 'warning')
             err = true
         } else salary.style.border = ''
         if (!text0.value) {
             text.parentNode.style.border = '1px solid red'
-            message('Не заполнено поле Условия', 'warning')
+            sendMessage('Не заполнено поле Условия', 'warning')
             err = true
         } else text0.parentNode.style.border = ''
         return err

@@ -1,6 +1,6 @@
 import {declOfNum, formatterShowPrice, checkFormFields} from '@/js/global-func.js'
 import {api_postCallToSell} from "@/js/API-base/apibase.js";
-import {message} from "@/js/message.js"
+import {sendMessage} from "@/js/sendMessage.js"
 
 
 const slider0 = document.querySelector('.slider__ui.slider0');
@@ -154,8 +154,8 @@ bid_for_car && bid_for_car.addEventListener('click', res => {
     console.log(params)
 
     api_postCallToSell(params).then(res => {
-        if (res && res.ok) message('Запрос успешно отправлен')
-        else message('Ошибка при отправки запроса', 'error')
+        if (res && res.ok) sendMessage('Запрос успешно отправлен')
+        else sendMessage('Ошибка при отправки запроса', 'error')
         clearFields()
     })
 

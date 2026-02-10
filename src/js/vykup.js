@@ -77,8 +77,8 @@ window.sendBid = function (fName) {
     }
     console.log('params', params)
     api_mail(params).then(res => {
-        if (res && res.ok) message('Заявка оптарвлена')
-        else message('Сервер не принял', 'error')
+        if (res && res.ok) sendMessage('Заявка оптарвлена')
+        else sendMessage('Сервер не принял', 'error')
     })
 }
 

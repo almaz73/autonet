@@ -63,8 +63,8 @@ window.send_obsl = function (fName ) {
     }
     console.log('params', params)
     api_postCallToSell(params).then(res => {
-        if (res && res.ok) message('Заявка оптарвлена')
-        else message('Сервер не принял', 'error')
+        if (res && res.ok) sendMessage('Заявка оптарвлена')
+        else sendMessage('Сервер не принял', 'error')
     })
 }
 

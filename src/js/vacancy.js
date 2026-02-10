@@ -1,5 +1,5 @@
 import {api_PostCallToWork} from "@/js/API-base/apibase.js";
-import {message} from "@/js/message.js";
+import {sendMessage} from "@/js/sendMessage.js";
 import {cities, vacanciesList} from "@/js/global-constants.js"
 import {formatterShowPrice} from "@/js/global-func.js";
 
@@ -171,17 +171,17 @@ window.addEventListener('DOMContentLoaded', () => {
         let err = false
         if (!fio.value) {
             fio.style.border = '1px solid red'
-            message('Не заполнено поле ФИО', 'warning')
+            sendMessage('Не заполнено поле ФИО', 'warning')
             err = true
         } else fio.style.border = ''
         if (!phone.value) {
             phone.style.border = '1px solid red'
-            message('Не заполнен Телефон', 'warning')
+            sendMessage('Не заполнен Телефон', 'warning')
             err = true
         } else phone.style.border = ''
         if (!checkbox.checked) {
             checkbox.parentNode.style.border = '1px solid red'
-            message('Вы должны дать согласие на обработку персональных данных', 'warning')
+            sendMessage('Вы должны дать согласие на обработку персональных данных', 'warning')
             err = true
         } else checkbox.parentNode.style.border = ''
         return err
@@ -214,8 +214,8 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         api_PostCallToWork(params).then(res => {
-            if (res && res.ok) message('Ваше сообщение успешно получено!')
-            else message('Сервер не принял', 'error')
+            if (res && res.ok) sendMessage('Ваше сообщение успешно получено!')
+            else sendMessage('Сервер не принял', 'error')
         })
 
     }

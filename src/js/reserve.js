@@ -1,6 +1,6 @@
 import {emailValidate, simplePhone, getUrlParam} from "@/js/global-func.js"
 import {api_postCallToSell} from "@/js/API-base/apibase.js";
-import {message} from "@/js/message.js";
+import {sendMessage} from "@/js/sendMessage.js";
 
 window.emailValidate = emailValidate
 
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!tel.value || simplePhone(tel.value).length > 1 && simplePhone(tel.value).length < 11) {
             tel.style.background = 'pink'
-            message('Телефон не правильный, \nожидается 11 символов', 'warning')
+            sendMessage('Телефон не правильный, \nожидается 11 символов', 'warning')
             err = true
         } else tel.style.background = ''
 
@@ -65,11 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         api_postCallToSell(parans).then(res => {
             if (res && res.ok) {
-                message('Бронирование успешно отправлено')
+                sendMessage('Бронирование успешно отправлено')
                 button.disabled = true
                 button.style.opacity = .5
             } else {
-                message('Ошибка при отправки запроса', 'warning')
+                sendMessage('Ошибка при отправки запроса', 'warning')
                 button.disabled = true
                 button.style.opacity = .5
             }

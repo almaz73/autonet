@@ -1,5 +1,5 @@
 // export let global_brandsIds= [];
-import {message} from "@/js/message.js";
+import {sendMessage} from "@/js/sendMessage.js";
 
 export const eventBus = {
     // Хранилище событий: { 'event_name': [callback1, callback2] }
@@ -136,7 +136,7 @@ export const simplePhone = function (val) {
 export const emailValidate = function (val) {
     const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
     const err = EMAIL_REGEXP.test(val)
-    if (!err && val) return message('Ошибочный Email ', 'error')
+    if (!err && val) return sendMessage('Ошибочный Email ', 'error')
 }
 
 export function checkFormFields(arr) {
@@ -167,10 +167,10 @@ export function checkFormFields(arr) {
 
         if (el && el.classList.contains('attent')) el.style.display = forAttent ? 'block' : 'none'
         if (el && el.name === 'email' && el.value) return emailValidate(el.value)
-        if (el && el.name === 'phone' && el.value && simplePhone(el.value).length !== 11) message('Телефон не содержит 11 цифр', 'warning')
+        if (el && el.name === 'phone' && el.value && simplePhone(el.value).length !== 11) sendMessage('Телефон не содержит 11 цифр', 'warning')
     })
 
-    if (exist) message('Есть незаполненные поля', 'warning')
+    if (exist) sendMessage('Есть незаполненные поля', 'warning')
     return exist
 }
 
