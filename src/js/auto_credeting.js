@@ -11,25 +11,25 @@ document.addEventListener('DOMContentLoaded', () => {
         ['name*','phone*','city', 'price',  'year',],
         'sendBid',
         'Отправить заявку',
-        ' ТУТ НУЖНО СВОЮ ФОРМУ С КАЛБКУЛЯТОРМ ДЕЛАТЬ'
-    )
+        ' ТУТ НУЖНО СВОЮ ФОРМУ С КАЛБКУЛЯТОРМ ДЕЛАТЬ')
     stateForrm2.innerHTML = constructorForm('st2',
-        ['name*','phone*','city', 'price',  'year',],
+        ['name*','phone*','city', 'price'],
         'sendBid',
         'Отправить заявку',
-        'Заявка на <span class="red">автокредит </span>'
-    )
-
+        'Заявка на <span class="red">автокредит </span>')
     initCaptcha()
 
-    // let right_panel_content = document.querySelector('#right_panel_content')
-    // let apply_bid = document.querySelector('.apply_bid')
-    // apply_bid.addEventListener('click', ()=>{
-    //     openRightPanel()
-    //     right_panel_content.innerHTML = form_profitable
-    //     right_panel_content.querySelector('[name="year"]').style.display='none'
-    //     initCaptcha()
-    // })
+    let right_panel_content = document.querySelector('#right_panel_content')
+    let apply_bid = document.querySelector('.apply_bid')
+    apply_bid.addEventListener('click', ()=>{
+        openRightPanel()
+        right_panel_content.innerHTML = constructorForm('ff1',
+            ['name*','phone*','city', 'price'],
+            'sendBid',
+            'Отправить заявку',
+            'Заявка на <span class="red">автокредит </span>')
+        initCaptcha()
+    })
 })
 
 
