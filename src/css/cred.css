@@ -92,7 +92,7 @@
     color: #7d7d7d;
 }
 
-.main_cred-col.sender label{
+.main_cred-col.sender label {
     cursor: pointer;
 }
 
@@ -120,4 +120,18 @@
     text-decoration: none;
     color: #000;
     white-space: nowrap;
+}
+
+/** для автокредита**/
+.autoCre {
+    margin-top: 20px;
+    display: flex;
+}
+
+.autoCre > div {
+    flex: 1;
+}
+
+.autoCre .slider__ui, .autoCre.slider__ui {
+    margin-top: 8px;
 }

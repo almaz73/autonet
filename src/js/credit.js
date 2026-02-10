@@ -3,6 +3,9 @@ import {api_postCallToSell} from "@/js/API-base/apibase.js";
 import {message} from "@/js/message.js"
 
 
+const slider0 = document.querySelector('.slider__ui.slider0');
+const sliderКange0 = document.querySelector('.slider__ui.slider0 .slider__ui-range');
+const sliderHandle0 = document.querySelector('.slider__ui.slider0 .slider__ui-handle');
 /** slide1 **/
 const slider1 = document.querySelector('.slider__ui.slider1');
 const sliderКange1 = document.querySelector('.slider__ui.slider1 .slider__ui-range');
@@ -12,16 +15,20 @@ const slider2 = document.querySelector('.slider__ui.slider2');
 const sliderКange2 = document.querySelector('.slider__ui.slider2 .slider__ui-range');
 const sliderHandle2 = document.querySelector('.slider__ui.slider2 .slider__ui-handle');
 /** fields **/
+const field0 = document.querySelector('#field0')
 const field1 = document.querySelector('#field1')
 const field2 = document.querySelector('#field2')
 const field3 = document.querySelector('#field3')
 const field4 = document.querySelector('#field4')
 
+const bid_for_car = document.querySelector('.bid')
+
 // одну функцию для оживления дважды используем
+slider_mover(slider0, sliderКange0, sliderHandle0, 'zero')
 slider_mover(slider1, sliderКange1, sliderHandle1, 'first')
 slider_mover(slider2, sliderКange2, sliderHandle2, 'second')
 
-function slider_mover(slider1, sliderКange, sliderHandle, type) {
+function slider_mover(slider, sliderКange, sliderHandle, type) {
     let isDragging = false;
     let startX; // Начальная позиция курсора
     let startLeft; // Начальная позиция элемента
@@ -41,16 +48,16 @@ function slider_mover(slider1, sliderКange, sliderHandle, type) {
         isDragging = false;
         sliderHandle.style.cursor = 'grab';
     });
-    slider1.addEventListener('click', (e) => setPoint(e))
+    slider.addEventListener('click', (e) => setPoint(e))
 
     function setPoint(e, type) {
         let newLeft = startLeft + (e.clientX - startX);
         if (isNaN(newLeft)) return false
 
         if (newLeft < 0) newLeft = 0
-        if (newLeft > slider1.offsetWidth) newLeft = slider1.offsetWidth
+        if (newLeft > slider.offsetWidth) newLeft = slider.offsetWidth
 
-        let w = slider1.offsetWidth
+        let w = slider.offsetWidth
         if (type === 'second') {
             if (newLeft < w / 8) {
                 newLeft = 0
@@ -72,17 +79,20 @@ function slider_mover(slider1, sliderКange, sliderHandle, type) {
                 newLeft = w
                 changeYear(5)
             }
-        } else changePrice(newLeft / slider1.offsetWidth)
+        } else if (type === 'zero') {
+            changeStart(newLeft / slider.offsetWidth)
+        } else changePrice(newLeft / slider.offsetWidth)
 
         sliderКange.style.width = newLeft + 'px'
         sliderHandle.style.left = (newLeft - 10) + 'px';
     }
 }
 
-let price = 0
+let price = 1500000
 let year = 5
 let credit = 0
 let forMonth = 0
+field0.innerHTML = formatterShowPrice(price) + ' ₽'
 
 export function calculator(val) {
     price = parseInt(val)
@@ -92,6 +102,7 @@ export function calculator(val) {
     forMonth = credit / 60 * 1.149
     field3.innerHTML = 'от ' + formatterShowPrice(forMonth) + ' ₽/мес'
 }
+calculator(price)
 
 function changePrice(val) {
     credit = (price / 10) + (price - price / 10) * val
@@ -99,6 +110,11 @@ function changePrice(val) {
     field1.innerHTML = formatterShowPrice(price - credit) + ' ₽'
 
     changeYear()
+}
+function changeStart(val) {
+    credit = (price / 10) + (price - price / 10) * val
+    field0.innerHTML = formatterShowPrice(credit) + ' ₽'
+    changePrice(val)
 }
 
 function changeYear(val) {
@@ -115,7 +131,7 @@ function changeYear(val) {
 
 
 
-document.querySelector('.bid').addEventListener('click', res => {
+bid_for_car && bid_for_car.addEventListener('click', res => {
     let input_name = document.querySelector('.main_cred-col.name input')
     let input_tel = document.querySelector('.main_cred-col.tel input')
     let captcha = document.querySelector('.capctha-div.n3')

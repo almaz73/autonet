@@ -4,16 +4,10 @@ import {api_postCallToSell} from "@/js/API-base/apibase.js";
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    let stateForrm1 = document.querySelector('.formBlock.v1')
     let stateForrm2 = document.querySelector('.formBlock.v2')
 
-    stateForrm1.innerHTML = constructorForm('st1',
-        ['name*','phone*','city', 'price',  'year',],
-        'sendBid',
-        'Отправить заявку',
-        ' ТУТ НУЖНО СВОЮ ФОРМУ С КАЛБКУЛЯТОРМ ДЕЛАТЬ')
     stateForrm2.innerHTML = constructorForm('st2',
-        ['name*','phone*','city', 'price'],
+        ['name*', 'phone*', 'city', 'price'],
         'sendBid',
         'Отправить заявку',
         'Заявка на <span class="red">автокредит </span>')
@@ -21,10 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let right_panel_content = document.querySelector('#right_panel_content')
     let apply_bid = document.querySelector('.apply_bid')
-    apply_bid.addEventListener('click', ()=>{
+    apply_bid.addEventListener('click', () => {
         openRightPanel()
         right_panel_content.innerHTML = constructorForm('ff1',
-            ['name*','phone*','city', 'price'],
+            ['name*', 'phone*', 'city', 'price'],
             'sendBid',
             'Отправить заявку',
             'Заявка на <span class="red">автокредит </span>')
@@ -34,6 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 window.sendBid = function (fName) {
+    const priceCred = document.querySelector('#field0')
+    const credit = document.querySelector('#field1')
+    const payment = document.querySelector('#field2')
+    const yearCred = document.querySelector('#field3')
+    const perMont = document.querySelector('#field4')
+
     let capcthadiv = document.querySelector(`.${fName} .capctha-div`)
     let name = document.querySelector(`.${fName} [name="name"]`)
     let phone = document.querySelector(`.${fName} [name="phone"]`)
@@ -47,10 +47,17 @@ window.sendBid = function (fName) {
     let params = {
         name: name.value,
         phone: phone.value,
-        city: city.value,
-        price: price.value,
-        year: year.value,
     }
+    if (price) params.price = price.innerHTML
+    if (year) params.year = year.innerHTML
+    if (city) params.city = city.innerHTML
+
+    if (priceCred) params.priceCred = priceCred.innerHTML
+    if (credit) params.credit = credit.innerHTML
+    if (payment) params.payment = payment.innerHTML
+    if (yearCred) params.yearCred = yearCred.innerHTML
+    if (perMont) params.perMont = perMont.innerHTML
+
     console.log('params', params)
     api_postCallToSell(params).then(res => {
         if (res && res.ok) message('Заявка оптарвлена')

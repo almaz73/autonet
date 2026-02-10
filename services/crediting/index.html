@@ -24,9 +24,11 @@
     <link rel='stylesheet' href='../../src/css/index/ourservice.css'/>
     <link rel='stylesheet' href='../../src/css/faqlist.css'/>
     <link rel="stylesheet" href="../../src/css/autocredit.css">
+    <link rel="stylesheet" href="../../src/css/cred.css">
 
     <script type='module' src='../../src/js/main.js'></script>
     <script type="module" src="../../src/js/auto_credeting.js"></script>
+    <script type="module" src="../../src/js/credit.js"></script>
 
 </head>
 <body>
@@ -48,7 +50,85 @@
                     Почему брать автокредит через АВТОСЕТЬ.РФ выгодно?
                 </p>
             </div>
-            <div class="formBlock v1"></div>
+            <div class="formBlock v1">
+                    <div class="wrap aut_cred">
+                        <h3>Рассчитать <span class="red">автокредит </span></h3>
+                        <div class="cred-small">Стоимость автомобиля</div>
+                        <div class="cred-big" id="field0"></div>
+
+                        <div class="autoCre slider__ui slider0">
+                            <div class="slider__ui-range" style="width: 50%"></div>
+                            <span tabindex="0" class="slider__ui-handle" style="left: calc(50% - 10px)"></span>
+                        </div>
+
+                        <div class="autoCre">
+                            <div >
+                                <div class="cred-small">Cумма кредита</div>
+                                <div class="cred-big" id="field2"></div>
+
+                                <div class="slider__ui slider1">
+                                    <div class="slider__ui-range" style="width: 50%"></div>
+                                    <span tabindex="0" class="slider__ui-handle" style="left: calc(50% - 10px)"></span>
+                                </div>
+                            </div>
+                            <div>
+                                    <div class="cred-small">Первый взнос</div>
+                                    <div class="cred-big" id="field1"></div>
+                            </div>
+                        </div>
+
+                        <div class="autoCre">
+                            <div >
+                                <div class="cred-small">Срок кредита</div>
+                                <div class="cred-big" id="field4">5 лет</div>
+
+                                <div class="slider__ui slider2">
+                                    <div class="slider__ui-range" style="width: 100%"></div>
+                                    <span tabindex="0" class="slider__ui-handle" style="left: calc(100% - 10px)"></span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="cred-small">Ежемесячный платеж</div>
+                                <div class="cred-big" id="field3"></div>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div>
+                            <div class="formBlock v1">
+                                <div class="form__modal--group">
+                                    <div class="form__group">
+                                        <input name="name" required="" autocomplete="off" placeholder="Ваше имя *">
+                                    </div>
+                                </div><div class="form__modal--group">
+                                <div class="form__group">
+                                    <input name="phone" required="" autocomplete="off" placeholder="Ваш телефон *" oninput="formattingPhone(this)">
+                                </div>
+                            </div>
+                            <div class="form__modal--group">
+                                <div class="capctha-div"><p class="instructions _0">
+                                    Подтвердите, что вы не робот<br>
+                                    Сдвиньте квадрат в белую область</p>
+                                    <p class="result">✅<span>Спасибо !</span></p>
+                                    <div class="target-area _0"></div>
+                                    <div class="puzzle-piece _0" style="transform: translateX(0px); cursor: move;">⇦ ⇨</div></div>
+                            </div>
+                            <button class="page__btn page__btn--current" onclick="sendBid('aut_cred')">
+                                <span> Отправить заявку </span>
+                            </button>
+                            <div class="modal__personal">
+                                <input type="checkbox" id="dd321">
+                                <label for="dd321" style="cursor: pointer">
+                                    Нажав кнопку «Отправить заявку» я даю согласие
+                                    на обработку
+                                    персональных <a href="/privacy-policy/" target="_blank">данных</a>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
