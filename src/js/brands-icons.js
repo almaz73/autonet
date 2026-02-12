@@ -441,13 +441,13 @@ document.addEventListener('DOMContentLoaded', () => {
     api_GetCarCount(res => {
         let newList = []
 
-        for (let i = 0; i < 20; i++) {
-            let brandName = res[i].name.toUpperCase()
+        for (let i = 0; i < res.length; i++) {
+            let brandName = res[i] && res[i].name.toUpperCase()
             let brand = brandDatas.find(el => el.text === brandName)
             let url
 
             if (!brand) {
-                console.log("%c Новый бренд = ","background: orange; color: black", "", res[i].name)
+                console.log("%c Новый бренд = ","background: orange; color: black", "", res[i] && res[i].name)
                 // тоже нужно логировать
             } else  url = '/cars/?brand='+brandName+'&brandId='+brand.brandId
 
@@ -455,7 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 url: brand ? url : `/cars/${brandName}/`,
                 imgSrc: brand ? brand.imgSrc : "/icons/compare_cars.svg",
                 text: brandName,
-                total: res[i].count
+                total: res[i] && res[i].count
             })
         }
 

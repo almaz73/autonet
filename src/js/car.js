@@ -64,7 +64,7 @@ api_getFullAutoInfo(id, res => {
         let autoSwip = document.querySelector('#auto-swip')
         res.images.forEach(el => {
             autoSwip.innerHTML += `
-    <div class="swiper-slide">
+    <div class="swiper-slide" ondblclick="toBig('big')">
         <img src="${el}" alt="">
     </div>`
         })

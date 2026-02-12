@@ -185,9 +185,11 @@ export function fillCars(cars, ishandEvent_, filterParams, fill) {
         carCountText(res.totalCount)
         if (ishandEvent || filterParams['brandId']) {
             gotoShowCars()
+            let fw = document.querySelector('.filter-white')
+            let  vn = document.querySelector('#vitrina_name')
             document.getElementById('brands_dynamic').style.display = 'none'
-            document.querySelector('.filter-white').style.marginBottom = 0
-            document.querySelector('#vitrina_name').innerHTML = 'Автомобили ' + (filterParams.brand || '')
+            if (fw) fw.style.marginBottom = 0
+            if (vn) vn.innerHTML = 'Автомобили ' + (filterParams.brand || '')
                 +' '+ (filterParams.model || '')
                 + ' ' + (filterParams.city ? `(город ${filterParams.city})` : ``)
         }

@@ -22,10 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 export function initSwipper() {
+    let isCarPage = location.pathname.includes('car.html')
+
     let params = {
         spaceBetween: 30,
         loop: true,
-        utoplay: {delay: 5000, disableOnInteraction: false},
+        utoplay: isCarPage ? "" : {delay: 5000, disableOnInteraction: false},
         autoHeight: true,
         centeredSlides: true,
         pagination: {
@@ -39,7 +41,7 @@ export function initSwipper() {
         on: {
             init() {
                 let isUsed = false
-                this.autoplay.start()
+                if (!isCarPage) this.autoplay.start()
                 // Если один раз нажали на прокрутку - автопрокрутку выключаем
                 this.el.addEventListener('click', () => {
                     this.autoplay.stop();
@@ -51,15 +53,20 @@ export function initSwipper() {
         }
     }
 
-    swiper = new Swiper('.mySwiper', params)
+    setTimeout(() => {
+        swiper = new Swiper('.mySwiper', params)
+        if (!swiper) setTimeout(() => {
+            swiper = new Swiper('.mySwiper', params)
+            if (!swiper) setTimeout(() => swiper = new Swiper('.mySwiper', params), 730)
+        }, 120)
+    })
+
 }
 
 
-window.showSlide = function (val) {
-    swiper.slideTo(val);
-}
+window.showSlide = val => swiper.slideTo(val + 1)
 
-window.showMore = function (){
+window.showMore = function () {
     if (fotos.style.height === 'inherit') fotos.style.height = '73px'
     else fotos.style.height = 'inherit';
     if (fotos_black) fotos_black.style.display = 'none'
@@ -73,5 +80,8 @@ window.toBig = function (val) {
     }
 
     if (window.innerWidth > 1000) setTimeout(() => swiperSection.classList.remove('rotated'))
-    else swiperSection.classList.add('rotated')
+    else {
+        console.log('uuuuu')
+        // swiperSection.classList.add('rotated')
+    }
 }

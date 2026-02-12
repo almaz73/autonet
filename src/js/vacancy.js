@@ -59,7 +59,7 @@ function initVacancies(city) {
 
     let html = ''
     initListeners(false)
-    let newDatas = []
+    let newDatas
     if (!city) newDatas = vacanciesList
     else newDatas = vacanciesList.filter(el => el.city === city)
 
