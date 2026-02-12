@@ -205,7 +205,8 @@ window.addEventListener('DOMContentLoaded', () => {
                 li.forEach((pp, ind) => {
                     alltx+=`${pp.innerHTML}\n`
                 })
-                eval('text'+ind).value = alltx
+                // eval('text'+ind).value = alltx
+                console.log(' В разработке  ')
             })
 
 
