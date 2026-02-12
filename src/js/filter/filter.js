@@ -1,5 +1,5 @@
 import {fill} from '@/js/filter/cards.js';
-import {api_getList} from "@/js/API-base/apibase.js"
+import {api_getList} from "@/js/apibase.js"
 import {prepareCars, declOfNum, globalValues, setPriceOrder, toDisable} from '@/js/global-func.js'
 import {fillCars} from '@/js/filter/filCars.js'
 import {getModelList, setExtention} from '@/js/filter/filter-ctrl-filling.js'
@@ -86,7 +86,8 @@ function getVitrina(ishandEvent) {
         let bt = document.querySelector('#set_filter')
         toDisable(bt, true)
 
-        api_getList(7, filterParams).then(res => {
+        filterParams.limit = 7
+        api_getList(filterParams, res => {
             toDisable(bt, false) // раздизаблим кнопку
             cars = prepareCars(res.items)
             declOfNum(res.totalCount, ['предложение', 'предложений', 'предложений'])

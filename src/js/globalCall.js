@@ -1,6 +1,6 @@
 import {initCaptcha} from "@/js/captcha.js";
 import {checkFormFields, constructorForm} from "@/js/global-func.js";
-import {api_postCallToSell} from "@/js/API-base/apibase.js";
+import {api_postCallToSell} from "@/js/apibase.js";
 
 
 let globalcall = document.querySelector('.global-call')

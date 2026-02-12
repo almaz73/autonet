@@ -1,6 +1,6 @@
 import {initCaptcha} from "@/js/captcha.js";
 import {constructorForm, checkFormFields} from "@/js/global-func.js";
-import {api_mail} from "@/js/API-base/apibase.js"
+import {api_mail} from "@/js/apibase.js"
 
 document.addEventListener('DOMContentLoaded', () => {
     let question_to_boss = document.querySelector('.question_to_boss')

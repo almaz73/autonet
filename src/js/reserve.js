@@ -1,5 +1,5 @@
 import {emailValidate, simplePhone, getUrlParam} from "@/js/global-func.js"
-import {api_postCallToSell} from "@/js/API-base/apibase.js";
+import {api_postCallToSell} from "@/js/apibase.js";
 import {sendMessage} from "@/js/sendMessage.js";
 
 window.emailValidate = emailValidate

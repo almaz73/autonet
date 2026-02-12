@@ -1,0 +1,43 @@
+const server = 'https://ext.cartat.ru/exchange'
+const Cache_serv = localStorage.getItem('CACHE_SERV')
+let CACHE = Cache_serv ? JSON.parse(Cache_serv) : {}
+if (CACHE instanceof Array) CACHE = {}
+
+Object.keys(CACHE).map(key => {
+    if (CACHE[key].hour && CACHE[key].hour < Date.now()) delete CACHE[key] // сразу чистим устаревшие по времени
+})
+
+
+/**************************************/
+/* Некоторые методы кэшируем на определенное время, задаем в минутах*/
+/* Некоторые методы кэшируем  пока не загрузится основной, для мгновенного показа, если нет времени ожидания */
+
+export function withCache(request, callback, hour) {
+    if (CACHE[request]) {
+        if (hour && CACHE[request].hour > Date.now()) {
+            // console.log(`${request}_${hour}м.`)
+            return callback(CACHE[request].data)
+        }
+        // console.log(' > > > > > > отдаю РАЗ')
+        callback(CACHE[request].data)
+    }
+
+    setTimeout(() => {
+        // console.warn('Н А  С Е Р В Е Р   ! ! !')
+        return fetch(server + request).then(res => {
+            if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
+            let preload_getList = document.querySelector('#preload_getList') // убираем дизаблед с кнопки
+            if (preload_getList) preload_getList.style.display = 'none'
+            return res.json();
+        })
+            .then(res => {
+                CACHE[request] = {data: res}
+                if (hour) CACHE[request].hour = Date.now() + hour * 60 * 1000
+                if (res && Object.keys(res).length) localStorage.setItem('CACHE_SERV', JSON.stringify(CACHE))
+                // console.log('!!!! отдаю ДВА ')
+
+                return callback(CACHE[request].data)
+            })
+            .catch(error => console.error('Произошла ошибка:', error));
+    })
+}

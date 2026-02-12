@@ -1,4 +1,4 @@
-import {api_getFullAutoInfo} from "@/js/API-base/apibase.js"
+import {api_getFullAutoInfo} from "@/js/apibase.js"
 import {formatterShowPrice, prepareCars, getUrlParam,} from "@/js/global-func.js";
 import {initSwipper} from "@/js/swiper-starter.js";
 import {initFavotite} from "@/js/favoriteCars.js";
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.reserving').forEach(el => el.addEventListener('click', reserve))
 })
 
-api_getFullAutoInfo(id).then(res => {
+api_getFullAutoInfo(id, res => {
     /** Имя и зарактеристики  b Хлебные крошки */
     {
         if ((!res || !res.brand) && confirm("Данный автомобиль снят с продажи")) window.history.back()

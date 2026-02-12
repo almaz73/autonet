@@ -1,4 +1,4 @@
-import {api_GetCarCount} from "@/js/API-base/apibase.js"
+import {api_GetCarCount} from "@/js/apibase.js"
 import {getUrlParam} from  "@/js/global-func.js"
 
 const hasBrand = getUrlParam('brand');
@@ -438,7 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // filler(brandDatas)
 
-    api_GetCarCount().then(res => {
+    api_GetCarCount(res => {
         let newList = []
 
         for (let i = 0; i < 20; i++) {

@@ -1,4 +1,4 @@
-import {api_PostCallToWork} from "@/js/API-base/apibase.js";
+import {api_PostCallToWork} from "@/js/apibase.js";
 import {sendMessage} from "@/js/sendMessage.js";
 import {cities, vacanciesList} from "@/js/global-constants.js"
 import {formatterShowPrice} from "@/js/global-func.js";

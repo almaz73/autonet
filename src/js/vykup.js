@@ -1,6 +1,6 @@
 import {initCaptcha} from "@/js/captcha.js";
 import {checkFormFields, constructorForm} from "@/js/global-func.js";
-import {api_mail} from "@/js/API-base/apibase.js";
+import {api_mail} from "@/js/apibase.js";
 
 
 document.addEventListener('DOMContentLoaded', () => {

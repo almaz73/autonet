@@ -1,5 +1,5 @@
 import {getUrlParam} from "@/js/global-func.js";
-import {api_getYearGap} from "@/js/API-base/apibase.js";
+import {api_getYearGap} from "@/js/apibase.js";
 
 const whiteFilter = `<div  class="filter-white">
 <div class="filter-white-back filter-fields">
@@ -180,7 +180,7 @@ let deleter = document.querySelector('#deleter')
 let currentInput = null
 let currentComb = null
 let yearGap = []
-api_getYearGap().then(res => yearGap = res)
+api_getYearGap(res => yearGap = res)
 
 window.onCard = function (val) {
     let inp = val.querySelector('input')

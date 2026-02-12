@@ -9,7 +9,7 @@ import {
     api_getWheelTypes,
     api_getColorList,
 
-} from "@/js/API-base/apibase.js"
+} from "@/js/apibase.js"
 import {getUrlParam, globalValues} from '@/js/global-func.js'
 import {eventBus} from '@/js/global-func.js'
 
@@ -82,7 +82,7 @@ function fillFields(onlyModels) {
             bigCombInput.addEventListener('blur', () => blur())
             bigCombInput.addEventListener('click', () => blur())
             bigCombInput.addEventListener('keydown', (e) => e.key === 'Escape' && blur())
-            bigCombInput.addEventListener('input', val=>{
+            bigCombInput.addEventListener('input', val => {
                 let tx = val.target.value
                 if (!items_memory['Марка']) items_memory = JSON.parse(JSON.stringify(items))
                 items[comb_name] = items_memory[comb_name].filter(el => el.includes(val.target.value))
@@ -130,7 +130,7 @@ function fillFields(onlyModels) {
 export function getModelList(brandName) {
     let brand = globalValues.brandsIds.find(el => el.name.toUpperCase() === brandName.toUpperCase())
 
-    brand && api_GetModelList(brand.id).then(res => {
+    brand && api_GetModelList(brand.id, res => {
         items['Модель'] = res.map(el => el.name)
         items_memory = {}
         globalValues.modelsIds.push(...res)
@@ -144,7 +144,7 @@ export function getModelList(brandName) {
 function getDatas() {
     Promise.all([
         new Promise(resolve => {
-            api_GetBrandList().then(res => {
+            api_GetBrandList(res => {
                 items['Марка'] = res.map(el => el.name)
                 globalValues.brandsIds.push(...res)
 
@@ -155,42 +155,42 @@ function getDatas() {
             })
         }),
         new Promise(resolve => {
-            api_getCities().then(res => {
+            api_getCities(res => {
                 items['Город'] = res
                 resolve()
             })
         }), extention && new Promise(resolve => {
-            api_getGearboxTypes().then(res => {
+            api_getGearboxTypes(res => {
                 items['Тип КПП'] = res.map(el => el.title)
                 globalValues.gearboxTypes.push(...res)
                 resolve()
             })
         }), extention && new Promise(resolve => {
-            api_getEngineTypes().then(res => {
+            api_getEngineTypes(res => {
                 items['Тип двигателя'] = res.map(el => el.title)
                 globalValues.engineTypes.push(...res)
                 resolve()
             })
         }), extention && new Promise(resolve => {
-            api_getDriveTypes().then(res => {
+            api_getDriveTypes(res => {
                 items['Тип привода'] = res.map(el => el.title)
                 globalValues.driveTypes.push(...res)
                 resolve()
             })
         }), extention && new Promise(resolve => {
-            api_getWheelTypes().then(res => {
+            api_getWheelTypes(res => {
                 items['Руль'] = res.map(el => el.title)
                 globalValues.wheelTypes.push(...res)
                 resolve()
             })
         }), extention && new Promise(resolve => {
-            api_getBodyTypes().then(res => {
+            api_getBodyTypes(res => {
                 items['Тип кузова'] = res.map(el => el.title)
                 globalValues.bodyTypes.push(...res)
                 resolve()
             })
         }), extention && new Promise(resolve => {
-            api_getColorList().then(res => {
+            api_getColorList(res => {
                 items['Цвет'] = res.map(el => el.name)
                 globalValues.bodyColors.push(...res)
                 resolve()
