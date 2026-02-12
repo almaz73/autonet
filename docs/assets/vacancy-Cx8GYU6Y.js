@@ -7,7 +7,7 @@ import{G as h,F as r,H as b,I as p,h as g}from"./main-CHj5qVjx.js";/* empty css 
         <div class='big_comb__items'>
             ${a.join("")}
         </div>
-    </div>`}document.querySelector(".big_comb__items").addEventListener("click",function(i){let o="Город",c=i.srcElement.innerText;t[o].value=c,s(t[o].value),document.querySelector(".big-comb__placeholder").innerText=c,document.querySelector(".big-comb__placeholder").classList.add("bold"),document.querySelector(".big-comb__input").value=c,document.querySelector(".big-comb__input").blur()});function s(a){console.log("!!!selectedCity val = ",a);let i=document.querySelector(".big-combo");i&&i.blur(),setTimeout(()=>u(a))}}function u(n){console.log(4444);let t="";f(!1);let l=[];n?l=p.filter(e=>e.city===n):l=p,l.forEach((e,s)=>{let a=`
+    </div>`}document.querySelector(".big_comb__items").addEventListener("click",function(i){let o="Город",c=i.srcElement.innerText;t[o].value=c,s(t[o].value),document.querySelector(".big-comb__placeholder").innerText=c,document.querySelector(".big-comb__placeholder").classList.add("bold"),document.querySelector(".big-comb__input").value=c,document.querySelector(".big-comb__input").blur()});function s(a){console.log("!!!selectedCity val = ",a);let i=document.querySelector(".big-combo");i&&i.blur(),setTimeout(()=>u(a))}}function u(n){console.log(4444);let t="";f(!1);let l;n?l=p.filter(e=>e.city===n):l=p,l.forEach((e,s)=>{let a=`
 <div class="request_vac">
             <div class="ttl_a">Откликнуться на вакансию</div>
             <div class="smForm" id="lettleForm">
