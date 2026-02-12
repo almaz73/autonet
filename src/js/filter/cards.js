@@ -1,13 +1,10 @@
 // создает визитки, встраивает рекламные и информационные баннеры
 import {initFavotite} from "@/js/favoriteCars.js";
 import {preparePager} from '@/js/pagination.js'
+import {initSwipper} from "@/js/swiper-starter.js";
 
 
-let cards
-document.addEventListener('DOMContentLoaded', () => {
-    cards = document.querySelector('cards');
-})
-
+let cards = document.querySelector('cards');
 
 function createNode(item, N) {
     let txt
@@ -140,6 +137,7 @@ export function fill(cars, currentCars, totalPages) {
         setTypeView(e)
         localStorage.setItem('TYPE_VIEW', e.srcElement.classList.value.slice(0, 4))
     })
+    setTimeout(initSwipper)
 }
 
 let type_views;

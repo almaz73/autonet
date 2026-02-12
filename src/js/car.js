@@ -1,6 +1,6 @@
 import {api_getFullAutoInfo} from "@/js/apibase.js"
 import {formatterShowPrice, prepareCars, getUrlParam,} from "@/js/global-func.js";
-import {initSwipper} from "@/js/swiper-starter.js";
+
 import {initFavotite} from "@/js/favoriteCars.js";
 import {calculator} from "@/js/credit.js"
 import "@/js/car_panels.js"
@@ -69,7 +69,6 @@ api_getFullAutoInfo(id, res => {
     </div>`
         })
 
-        setTimeout(() => initSwipper(), 3000)  // активируем
 
         let autoMore = document.querySelector('#auto-more')
         autoMore.innerHTML = `<div class="fotos_black" onclick="showMore()">${res.images.length} фото</div>`

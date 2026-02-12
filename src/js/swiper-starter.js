@@ -6,7 +6,8 @@ let swiperSection = document.querySelector('.swiper.mySwiper')
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (!location.pathname.includes('car.html')) setTimeout(()=>initSwipper(), 3000)
+    initSwipper() // иногда отдельно нужно запускать, если отрисовка опаздала
+
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && fotos) {
             fotos.style.height = '76px';

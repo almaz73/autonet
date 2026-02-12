@@ -10,6 +10,7 @@ Object.keys(CACHE).map(key => {
 
 /**************************************/
 /* Некоторые методы кэшируем на определенное время, задаем в минутах*/
+
 /* Некоторые методы кэшируем  пока не загрузится основной, для мгновенного показа, если нет времени ожидания */
 
 export function withCache(request, callback, hour) {
@@ -22,22 +23,20 @@ export function withCache(request, callback, hour) {
         callback(CACHE[request].data)
     }
 
-    setTimeout(() => {
-        // console.warn('Н А  С Е Р В Е Р   ! ! !')
-        return fetch(server + request).then(res => {
-            if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
-            let preload_getList = document.querySelector('#preload_getList') // убираем дизаблед с кнопки
-            if (preload_getList) preload_getList.style.display = 'none'
-            return res.json();
-        })
-            .then(res => {
-                CACHE[request] = {data: res}
-                if (hour) CACHE[request].hour = Date.now() + hour * 60 * 1000
-                if (res && Object.keys(res).length) localStorage.setItem('CACHE_SERV', JSON.stringify(CACHE))
-                // console.log('!!!! отдаю ДВА ')
-
-                return callback(CACHE[request].data)
-            })
-            .catch(error => console.error('Произошла ошибка:', error));
+    // console.warn('Н А  С Е Р В Е Р   ! ! !')
+    return fetch(server + request).then(res => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
+        let preload_getList = document.querySelector('#preload_getList') // убираем дизаблед с кнопки
+        if (preload_getList) preload_getList.style.display = 'none'
+        return res.json();
     })
+        .then(res => {
+            CACHE[request] = {data: res}
+            if (hour) CACHE[request].hour = Date.now() + hour * 60 * 1000
+            if (res && Object.keys(res).length) localStorage.setItem('CACHE_SERV', JSON.stringify(CACHE))
+            // console.log('!!!! отдаю ДВА ')
+
+            return callback(CACHE[request].data)
+        })
+        .catch(error => console.error('Произошла ошибка:', error));
 }
