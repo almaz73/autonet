@@ -64,7 +64,7 @@ export function initSwipper() {
 }
 
 
-window.showSlide = val => swiper.slideTo(val + 1)
+window.showSlide = val => swiper.slideTo(val)
 
 window.showMore = function () {
     if (fotos.style.height === 'inherit') fotos.style.height = '73px'
