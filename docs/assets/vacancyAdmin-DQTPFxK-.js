@@ -1,4 +1,4 @@
-import{G as cities,H as vacanciesList,h as formatterShowPrice,E as sendMessage}from"./main-Dn9U-dqG.js";/* empty css                        *//* empty css                */function initChangeCity(){let e=document.querySelector("comb"),t={Город:cities};t.Город.value=localStorage.getItem("selectedCity"),t.Город.value="Казань",a(t.Город.value);let n=e.dataset.placeholder,i=t[n];if(i){let l=i.map(c=>'<div data-parent="'+n+'">'+c+"</div>");e.innerHTML=`<div class='big-combo' tabindex='1'>
+import{H as cities,I as vacanciesList,h as formatterShowPrice,F as sendMessage}from"./main-CHj5qVjx.js";/* empty css                        *//* empty css                */function initChangeCity(){let e=document.querySelector("comb"),t={Город:cities};t.Город.value=localStorage.getItem("selectedCity"),t.Город.value="Казань",a(t.Город.value);let n=e.dataset.placeholder,i=t[n];if(i){let l=i.map(c=>'<div data-parent="'+n+'">'+c+"</div>");e.innerHTML=`<div class='big-combo' tabindex='1'>
         <span class='big-comb__selected'>
           <span class='big-comb__placeholder'>${i.value||n}</span>
           <input class='big-comb__input' type="text">
