@@ -298,3 +298,9 @@ export function toDisable(button, state) {
     button.style.opacity = state ? .5 : 1
     button.disabled = state
 }
+
+export function carCountText(totalCount) {
+    let field = document.querySelector('#set_filter span.number')
+    if (field) field.innerHTML = totalCount
+        + ' ' + declOfNum(totalCount, ['предложение', 'предложения', 'предложений'])
+}

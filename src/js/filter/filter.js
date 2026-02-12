@@ -1,6 +1,6 @@
 import {fill} from '@/js/filter/cards.js';
 import {api_getList} from "@/js/apibase.js"
-import {prepareCars, declOfNum, globalValues, setPriceOrder, toDisable} from '@/js/global-func.js'
+import {prepareCars, declOfNum, globalValues, setPriceOrder, toDisable, carCountText} from '@/js/global-func.js'
 import {fillCars} from '@/js/filter/filCars.js'
 import {getModelList, setExtention} from '@/js/filter/filter-ctrl-filling.js'
 import { getUrlParam} from '@/js/global-func.js'
@@ -91,9 +91,7 @@ function getVitrina(ishandEvent) {
             toDisable(bt, false) // раздизаблим кнопку
             cars = prepareCars(res.items)
             declOfNum(res.totalCount, ['предложение', 'предложений', 'предложений'])
-            document.querySelector('#set_filter span.number').innerHTML = res.totalCount
-                + ' ' +declOfNum(res.totalCount, ['предложение', 'предложения', 'предложений'])
-
+            carCountText(res.totalCount)
             if (!ishandEvent) fill(cars, res.items)
         })
 

@@ -113,6 +113,7 @@ function galeryEvents(id, images) {
 }
 
 export function fill(cars, currentCars, totalPages) {
+    cards = cards || document.querySelector('cards');
     window.compareCars = currentCars
     window.favorCars = cars
     if (!cards) return false
