@@ -7,7 +7,10 @@ const countPerPage = 20
 const combValuesForAfterUpdate = []
 let ishandEvent
 let extention = false //  Есть ли выбранные элементы в параметрах аждреса
+let Cache_serv = localStorage.getItem('CACHE_SERV')
+Cache_serv = JSON.parse(Cache_serv)
 
+/* Заполнение фильтер данныеми по адресной строке */
 function FillFilterFromAddressBar(filterParams) {
     // заполнение фильтра по параметрам адресной строки
     const brandId = getUrlParam('brandId')
@@ -43,35 +46,48 @@ function FillFilterFromAddressBar(filterParams) {
     if (gearboxType) {
         extention = true
         filterParams.gearboxType = gearboxType
-        setCombName('Тип КПП', gearboxType)
+
+        let item = Cache_serv['/api/Auto/GetGearboxTypes']
+        let name = item && item.data.find(el => el.name === gearboxType)
+        setCombName('Тип КПП', (name ? name.title : gearboxType))
     }
 
     const engineType = getUrlParam('engineType')
     if (engineType) {
         extention = true
         filterParams.engineType = engineType
-        setCombName('Тип двигателя', engineType)
+
+        let item = Cache_serv['/api/Auto/GetEngineTypes']
+        let name = item && item.data.find(el => el.name === engineType)
+        setCombName('Тип двигателя', (name ? name.title : engineType))
     }
 
     const bodyType = getUrlParam('bodyType')
     if (bodyType) {
         extention = true
         filterParams.bodyType = bodyType
-        setCombName('Тип кузова', bodyType)
+        let item = Cache_serv['/api/Auto/getBodyTypes']
+        let name = item && item.data.find(el => el.name === bodyType)
+        setCombName('Тип кузова', (name ? name.title : bodyType))
     }
 
     const wheelType = getUrlParam('wheelType')
     if (wheelType) {
         extention = true
         filterParams.wheelType = wheelType
-        setCombName('Руль', wheelType)
+
+        let item = Cache_serv['/api/Auto/getWheelTypes']
+        let name = item && item.data.find(el => el.name === wheelType)
+        setCombName('Руль', (name ? name.title : wheelType))
     }
 
     const driveType = getUrlParam('driveType')
     if (driveType) {
         extention = true
         filterParams.driveType = driveType
-        setCombName('Тип привода', driveType)
+        let item = Cache_serv['/api/Auto/getDriveTypes']
+        let name = item && item.data.find(el => el.name === driveType)
+        setCombName('Тип привода',  (name ? name.title : wheelType))
     }
 
 
@@ -87,7 +103,7 @@ function FillFilterFromAddressBar(filterParams) {
         filterParams.yearReleasedTo = yearReleasedTo
         setInputName('yearReleasedTo', yearReleasedTo)
     }
-    
+
     const priceTo = getUrlParam('priceTo')
     if (priceTo) {
         filterParams.priceTo = priceTo
@@ -118,11 +134,11 @@ function FillFilterFromAddressBar(filterParams) {
     const priceFrom = getUrlParam('priceFrom')
     if (priceFrom) {
         extention = true
-        filterParams.priceFrom= priceFrom
+        filterParams.priceFrom = priceFrom
         setInputName('priceFrom', priceFrom)
     }
 
-    if(extention) {
+    if (extention) {
         // Раширенный фильтр
         let advanced = document.querySelector('.frame-filter__controls-advanced')
         let filterAdvanced = document.querySelector('.filter-fields')
@@ -147,7 +163,7 @@ function setCombName(name, value) {
 
 eventBus.on('dataUpdated', handleData); // событие загрузки всех комбобоксов из сервера
 function handleData() {
-    combValuesForAfterUpdate.forEach(el=>{
+    combValuesForAfterUpdate.forEach(el => {
         let comb = document.querySelector(`[data-placeholder="${el.name}"]`)
         if (comb && comb.querySelector('.big-comb__placeholder')) {
             comb.querySelector('.big-comb__placeholder').innerText = el.value
@@ -167,7 +183,6 @@ function setInputName(name, value) {
 }
 
 
-
 export function fillCars(cars, ishandEvent_, filterParams, fill) {
     ishandEvent = ishandEvent_
     if (!ishandEvent) FillFilterFromAddressBar(filterParams)
@@ -179,18 +194,18 @@ export function fillCars(cars, ishandEvent_, filterParams, fill) {
     api_getList(filterParams, res => {
         // по кнопке Показать
         cars = prepareCars(res.items)
-        let totalPages = Math.ceil(res.totalCount/countPerPage)
-        setTimeout(()=>fill(cars, res.items, totalPages))
+        let totalPages = Math.ceil(res.totalCount / countPerPage)
+        setTimeout(() => fill(cars, res.items, totalPages))
         toDisable(bt, false)
         carCountText(res.totalCount)
         if (ishandEvent || filterParams['brandId']) {
             gotoShowCars()
             let fw = document.querySelector('.filter-white')
-            let  vn = document.querySelector('#vitrina_name')
+            let vn = document.querySelector('#vitrina_name')
             document.getElementById('brands_dynamic').style.display = 'none'
             if (fw) fw.style.marginBottom = 0
             if (vn) vn.innerHTML = 'Автомобили ' + (filterParams.brand || '')
-                +' '+ (filterParams.model || '')
+                + ' ' + (filterParams.model || '')
                 + ' ' + (filterParams.city ? `(город ${filterParams.city})` : ``)
         }
     })
