@@ -67,7 +67,6 @@ function close_all_open_panels(show) {
   if (cities) cities.style.transform = 'translateX(150vw)';
   if (panel) panel.style.transform = 'translateX(150vw)';
   if (buttonBurger) buttonBurger.classList.remove('close');
-  closeChat()
 }
 
 window.close_all = close_all_open_panels;

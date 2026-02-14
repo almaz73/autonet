@@ -34,21 +34,39 @@ function slider_mover(slider, sliderRange, sliderHandle, type) {
     let startX; // Начальная позиция курсора
     let startLeft; // Начальная позиция элемента
 
-    sliderHandle.addEventListener('mousedown', (e) => {
+    sliderHandle.addEventListener('mousedown', dragStart);
+    sliderHandle.addEventListener('touchstart', dragStart);
+
+    document.addEventListener('mousemove', drag);
+    document.addEventListener('touchmove', drag);
+
+    document.addEventListener('mouseup', dragEnd);
+    document.addEventListener('touchend', dragEnd);
+
+    function dragStart(e) {
         isDragging = true;
         startX = e.clientX;
         startLeft = sliderHandle.offsetLeft;
         sliderHandle.style.cursor = 'grabbing';
-    });
-    document.addEventListener('mousemove', (e) => {
-        if (isDragging) {
-            setPoint(e, type)
-        }
-    });
-    document.addEventListener('mouseup', () => {
+        if (e.type === 'touchstart') startX = e.touches[0].clientX;
+    }
+
+    function drag(e) {
+        if (!isDragging) return;
+        e.preventDefault();
+
+
+        if (e.type === 'touchmove') e.clientX = parseInt(e.touches[0].clientX)
+
+        if (isDragging) setPoint(e, type)
+    }
+
+    function dragEnd() {
+        if (!isDragging) return;
         isDragging = false;
         sliderHandle.style.cursor = 'grab';
-    });
+    }
+
     slider.addEventListener('click', (e) => setPoint(e))
 
     function setPoint(e, type) {
@@ -89,11 +107,16 @@ function slider_mover(slider, sliderRange, sliderHandle, type) {
     }
 }
 
-let price = 1500000
+let price = 5000000
 let year = 5
 let credit = 0
 let forMonth = 0
-if (field0) field0.innerHTML = formatterShowPrice(price) + ' ₽'
+if (field0) {
+    field0.innerHTML = formatterShowPrice(price) + ' ₽'
+    sliderRange0.style.width = slider0.offsetWidth + 'px'
+    sliderHandle0.style.left = (slider0.offsetWidth - 10) + 'px';
+    calculator(5000000)
+}
 
 export function calculator(val) {
     price = parseInt(val)
@@ -103,7 +126,7 @@ export function calculator(val) {
     forMonth = credit / 60 * 1.149
     field3.innerHTML = 'от ' + formatterShowPrice(forMonth) + ' ₽/мес'
 }
-calculator(price)
+
 
 function changePrice(val) {
     credit = (price / 10) + (price - price / 10) * val
@@ -112,6 +135,7 @@ function changePrice(val) {
 
     changeYear()
 }
+
 function changeStart(val) {
     credit = (price / 10) + (price - price / 10) * val
     field0.innerHTML = formatterShowPrice(credit) + ' ₽'
@@ -130,8 +154,6 @@ function changeYear(val) {
 }
 
 
-
-
 bid_for_car && bid_for_car.addEventListener('click', () => {
     let input_name = document.querySelector('.main_cred-col.name input')
     let input_tel = document.querySelector('.main_cred-col.tel input')
@@ -139,7 +161,7 @@ bid_for_car && bid_for_car.addEventListener('click', () => {
     let checkbox = document.getElementById('n3')
     let attent = document.querySelector('.attent.n3')
 
-    if (checkFormFields([input_name, input_tel, captcha, checkbox, attent]))return false
+    if (checkFormFields([input_name, input_tel, captcha, checkbox, attent])) return false
 
     let params = {
         formName: 'spesialCredit',

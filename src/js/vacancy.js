@@ -194,7 +194,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const phone = document.querySelector(`.${formId} [name="phone"]`)
         const email = document.querySelector(`.${formId} [name="email"]`)
         const text = document.querySelector(`.${formId} [name="text"]`)
-        const resume = document.querySelector(` [name="resume"]`)
+        const resume = document.querySelector(`.${formId} [name="resume"]`)
         const checkbox = document.querySelector(`.${formId} [type="checkbox"]`)
 
         if (formId === 'generalForm') {
