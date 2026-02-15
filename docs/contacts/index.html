@@ -30,9 +30,9 @@
     (d.head ? d.head : d.body).appendChild(s);
 })(document,window,'Verbox')})();
 </script>
-<!-- {/literal} End Verbox -->  <script type="module" crossorigin src="../assets/main-28HHxfg3.js"></script>
-  <script type="module" crossorigin src="../assets/contacts-CATZ_jZ6.js"></script>
-  <link rel="stylesheet" crossorigin href="../assets/main-DGl7SdFU.css">
+<!-- {/literal} End Verbox -->  <script type="module" crossorigin src="../assets/main-dcPIS3_i.js"></script>
+  <script type="module" crossorigin src="../assets/contacts-BzU_C7wL.js"></script>
+  <link rel="stylesheet" crossorigin href="../assets/main-B2uGBByL.css">
   <link rel="stylesheet" crossorigin href="../assets/contacts-CqOA9HG6.css">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 </head>
@@ -50,6 +50,7 @@
       <a class="header__nav-a" href="/cars/">Купить</a>
       <a class="header__nav-a" href="/services/vykup/">Продать</a>
       <a class="header__nav-a" href="/tyres/">Каталог шин</a>
+      <a class="header__nav-a" href="/news/">Новости</a>
     </nav>
     <div class="header__select">
 <div class="comb">
@@ -193,7 +194,7 @@
 
 
     <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Adf7a5b9f4128956eabe90cafecfb5eee04956d9f68a826c2586c027a50348eea&amp;source=constructor"
-            style="width: 100%; background: #efefef" height="610" frameborder="0">
+            style="width: 100%; background: #efefef; height: 320px" frameborder="0">
     </iframe>
 
 
@@ -271,21 +272,30 @@
   <div class="fix__foot">
   <div class="fix__flex">
     <div class="fix__foot--box">
-      <a href="/cars/">
+      <a href="/news/">
+        <img src="../icons/volvo.png">
+        <span class="text">
+          Новости
+        </span>
+      </a>
+    </div>
+
+    <div class="fix__foot--box">
+      <a href="/cars/#vitrina_name">
         <div class="fix__foot_img car"></div>
         <span class="text">
           Каталог
         </span>
       </a>
     </div>
-    <div class="fix__foot--box">
-      <a href="/personal/favorite-cars/">
-        <div class="fix__foot_img zvezda"></div>
-        <span class="text">
-          Сохраненные
-        </span>
-      </a>
-    </div>
+<!--    <div class="fix__foot--box">-->
+<!--      <a href="/personal/favorite-cars/">-->
+<!--        <div class="fix__foot_img zvezda"></div>-->
+<!--        <span class="text">-->
+<!--          Сохраненные-->
+<!--        </span>-->
+<!--      </a>-->
+<!--    </div>-->
     <div class="fix__foot--box">
       <a href="https://telegram.me/Autoset_RF_bot" target="_blank">
         <div class="fix__foot_img comment"></div>
@@ -342,9 +352,11 @@
     </p>
     <button id="cookie-accept">Прекрасно</button>
 </div><div class="attention">
-    <div id="compareCount" class="question compare"  title="Сравнить автомобили" onclick="location.href='/personal/list-compared/'"></div>
+  <div id="favoriteCount" class="question favorite" title="Выбранные автомобили"
+       onclick="location.href='/personal/favorite-cars/'"></div>
 
-    <div id="favoriteCount" class="question favorite"  title="Выбранные автомобили" onclick="location.href='/personal/favorite-cars/'"></div>
+  <div id="compareCount" class="question compare" title="Сравнить автомобили"
+       onclick="location.href='/personal/list-compared/'"></div>
 </div>
 
 <div class="map-modal" onclick="openMap(false)">

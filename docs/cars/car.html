@@ -36,11 +36,11 @@
     (d.head ? d.head : d.body).appendChild(s);
 })(document,window,'Verbox')})();
 </script>
-<!-- {/literal} End Verbox -->  <script type="module" crossorigin src="../assets/car-Deo6QJ7Z.js"></script>
-  <link rel="modulepreload" crossorigin href="../assets/main-28HHxfg3.js">
-  <link rel="modulepreload" crossorigin href="../assets/swiper-starter-BbhTmDld.js">
-  <link rel="modulepreload" crossorigin href="../assets/credit-CK5R0jak.js">
-  <link rel="stylesheet" crossorigin href="../assets/main-DGl7SdFU.css">
+<!-- {/literal} End Verbox -->  <script type="module" crossorigin src="../assets/car-6ICFQZT-.js"></script>
+  <link rel="modulepreload" crossorigin href="../assets/main-dcPIS3_i.js">
+  <link rel="modulepreload" crossorigin href="../assets/swiper-starter-B-WiKKw-.js">
+  <link rel="modulepreload" crossorigin href="../assets/credit-B8IFqun2.js">
+  <link rel="stylesheet" crossorigin href="../assets/main-B2uGBByL.css">
   <link rel="stylesheet" crossorigin href="../assets/car-tScaERI_.css">
   <link rel="stylesheet" crossorigin href="../assets/swiper-bundle-CcLVQX3U.css">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
@@ -59,6 +59,7 @@
       <a class="header__nav-a" href="/cars/">Купить</a>
       <a class="header__nav-a" href="/services/vykup/">Продать</a>
       <a class="header__nav-a" href="/tyres/">Каталог шин</a>
+      <a class="header__nav-a" href="/news/">Новости</a>
     </nav>
     <div class="header__select">
 <div class="comb">
@@ -653,21 +654,30 @@
   <div class="fix__foot">
   <div class="fix__flex">
     <div class="fix__foot--box">
-      <a href="/cars/">
+      <a href="/news/">
+        <img src="../icons/volvo.png">
+        <span class="text">
+          Новости
+        </span>
+      </a>
+    </div>
+
+    <div class="fix__foot--box">
+      <a href="/cars/#vitrina_name">
         <div class="fix__foot_img car"></div>
         <span class="text">
           Каталог
         </span>
       </a>
     </div>
-    <div class="fix__foot--box">
-      <a href="/personal/favorite-cars/">
-        <div class="fix__foot_img zvezda"></div>
-        <span class="text">
-          Сохраненные
-        </span>
-      </a>
-    </div>
+<!--    <div class="fix__foot--box">-->
+<!--      <a href="/personal/favorite-cars/">-->
+<!--        <div class="fix__foot_img zvezda"></div>-->
+<!--        <span class="text">-->
+<!--          Сохраненные-->
+<!--        </span>-->
+<!--      </a>-->
+<!--    </div>-->
     <div class="fix__foot--box">
       <a href="https://telegram.me/Autoset_RF_bot" target="_blank">
         <div class="fix__foot_img comment"></div>
@@ -724,9 +734,11 @@
     </p>
     <button id="cookie-accept">Прекрасно</button>
 </div><div class="attention">
-    <div id="compareCount" class="question compare"  title="Сравнить автомобили" onclick="location.href='/personal/list-compared/'"></div>
+  <div id="favoriteCount" class="question favorite" title="Выбранные автомобили"
+       onclick="location.href='/personal/favorite-cars/'"></div>
 
-    <div id="favoriteCount" class="question favorite"  title="Выбранные автомобили" onclick="location.href='/personal/favorite-cars/'"></div>
+  <div id="compareCount" class="question compare" title="Сравнить автомобили"
+       onclick="location.href='/personal/list-compared/'"></div>
 </div>
 
 <div class="map-modal" onclick="openMap(false)">
