@@ -63,6 +63,38 @@
     cursor: pointer;
 }
 
+@media (max-width: 700px) {
+    .menunews{
+        display: none;
+    }
+}
+
+@media (max-width: 1140px) AND (min-width: 1020px) {
+    .button__callback {
+        padding: 0;
+        width: 40px;
+        background: url(@/svg/call.svg) center no-repeat;
+        background-color: var(--color-red);
+    }
+
+    .button__callback span {
+        display: none;
+    }
+}
+
+@media (max-width: 820px) {
+    .button__callback {
+        padding: 0;
+        width: 40px;
+        background: url(@/svg/call.svg) center no-repeat;
+        background-color: var(--color-red);
+    }
+
+    .button__callback span {
+        display: none;
+    }
+}
+
 @media (width < 640px) {
     .butt {
         margin: -23px 12px;
@@ -78,16 +110,6 @@
         width: 36px;
     }
 
-    .button__callback {
-        padding: 0;
-        width: 36px;
-        background: url(@/svg/call.svg) center no-repeat;
-        background-color: var(--color-red);
-    }
-
-    .button__callback span {
-        display: none;
-    }
 
     .button__burger {
         height: 36px;

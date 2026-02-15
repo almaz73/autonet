@@ -66,7 +66,7 @@ nav .header__nav-a:hover {
     margin: 0 auto;
     display: grid;
     grid-template-areas: "logo nav comb buttons";
-    grid-template-columns: auto auto auto 300px;
+    grid-template-columns: auto auto auto auto;
     align-items: center;
 }
 
@@ -79,8 +79,8 @@ nav .header__nav-a:hover {
     .header__container {
         grid-template-columns: auto auto auto;
         grid-template-areas:
-                "logo comb buttons"
-                "nav nav nav";
+                "logo logo buttons"
+                "nav nav comb";
         grid-template-rows: 45px 28px;
         width: 100%;
         text-align: center;
@@ -98,7 +98,7 @@ nav .header__nav-a:hover {
     }
 
     .header__logo-image {
-        max-width: 192px;
+        max-width: 220px;
         margin-left: 16px;
     }
 }
@@ -117,6 +117,8 @@ nav .header__nav-a:hover {
     grid-area: nav;
     margin-left: 12px;
     white-space: nowrap;
+    display: flex;
+    justify-content: space-between;
 }
 
 .header__select {
