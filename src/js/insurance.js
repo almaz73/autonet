@@ -8,14 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let stateForrm2 = document.querySelector('.formBlock.v2')
 
     stateForrm1.innerHTML = constructorForm('st1',
-        ['name*','phone*','city*', 'osago',  'brand', 'model'],
+        ['name*', 'phone*', 'city*', 'osago', 'brand', 'model'],
         'sendBid',
         'Отправить заявку',
         'Заявка на <span class="red">страхование </span>'
     )
 
     stateForrm2.innerHTML = constructorForm('st2',
-        ['name*','phone*','city*', 'osago',  'brand', 'model'],
+        ['name*', 'phone*', 'city*', 'osago', 'brand', 'model'],
         'sendBid',
         'Отправить заявку',
         'Заявка на <span class="red">страхование </span>'
@@ -63,12 +63,16 @@ window.sendBid = function (fName) {
     if (checkFormFields([capcthadiv, name, city, phone, checkbox])) return false
 
     let params = {
-        name: name.value,
-        phone: phone.value,
-        city: city.value,
-        osago: osago.value,
-        brand: brand.value,
-        model: model.value,
+        form: '/services/insurance/',
+        description: 'Автострахование, ОСАГО или КАСКО',
+        record: {
+            name: name.value,
+            phone: phone.value,
+            city: city.value,
+            osago: osago.value,
+            brand: brand.value,
+            model: model.value,
+        }
     }
     console.log('params', params)
     api_postCallToSell(params).then(res => {

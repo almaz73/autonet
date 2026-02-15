@@ -1,6 +1,6 @@
 import {initCaptcha} from "@/js/captcha.js";
 import {constructorForm, checkFormFields} from "@/js/global-func.js";
-import {api_mail} from "@/js/apibase.js"
+import {api_postCallToSell} from "@/js/apibase.js"
 
 document.addEventListener('DOMContentLoaded', () => {
     let question_to_boss = document.querySelector('.question_to_boss')
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     question_to_boss && question_to_boss.addEventListener('click', () => {
         openRightPanel()
         right_panel_content.innerHTML = constructorForm('boss',
-            ['name*','phone*','message*'],
+            ['name*', 'phone*', 'message*'],
             'questionFranshiza',
             'Отправить',
             'Задать <span class="red">вопрос</span>')
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let legenda = '<span class="red"> Получите расчет</span> прибыли автосалона АВТОСЕТЬ.РФ в своем городе '
     let form = constructorForm(
         'quet',
-        [ 'name*','phone*','city*'],
+        ['name*', 'phone*', 'city*'],
         'getQuoite',
         null,
         legenda)
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let formstate = constructorForm(
         'state1',
-        [ 'name*','phone*','city*'],
+        ['name*', 'phone*', 'city*'],
         'getQuoite',
         null,
         legenda)
@@ -58,13 +58,17 @@ window.getQuoite = function (fName) {
     if (checkFormFields([capcthadiv, name, phone, city, checkbox])) return false
 
     let params = {
-        type: 'franshiza',
-        name: name.value,
-        phone: phone.value,
-        city: city.value,
+        orm: '/franshiza/',
+        description: 'Страница Партнерам. Вероятные будущие владельцы франшизы в новом городе ',
+        record: {
+            type: 'franshiza',
+            name: name.value,
+            phone: phone.value,
+            city: city.value
+        }
     }
-    console.log('params',params)
-    api_mail(params).then(res => {
+    console.log('params', params)
+    api_postCallToSell(params).then(res => {
         if (res && res.ok) sendMessage('Заявка оптарвлена')
         else sendMessage('Сервер не принял', 'error')
     })
@@ -81,14 +85,18 @@ window.questionFranshiza = function (fName) {
     if (checkFormFields([capcthadiv, name, phone, city, checkbox])) return false
 
     let params = {
-        type: 'boss',
-        name: name.value,
-        message: message.value,
-        phone: phone.value,
-        city: city.value
+        form: '/franshiza/',
+        description: 'Вопрос генеральному директору',
+        record: {
+            type: 'boss',
+            name: name.value,
+            message: message.value,
+            phone: phone.value,
+            city: city.value
+        }
     }
-    console.log('params',params)
-    api_mail(params).then(res => {
+    console.log('params', params)
+    api_postCallToSell(params).then(res => {
         if (res && res.ok) message('Заявка оптарвлена')
         else message('Сервер не принял', 'error')
     })

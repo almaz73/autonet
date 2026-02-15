@@ -7,13 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let stateForrm1 = document.querySelector('.formBlock.v1')
     let stateForrm2 = document.querySelector('.formBlock.v2')
     stateForrm1.innerHTML = constructorForm('st1',
-        ['name*','phone*','city*'],
+        ['name*', 'phone*', 'city*'],
         'sendBid',
         'Перезвоните мне',
         'Оставьте заявку на <span class="red">техосмотр</span> автомобиля'
     )
     stateForrm2.innerHTML = constructorForm('st2',
-        ['name*','phone*','city*'],
+        ['name*', 'phone*', 'city*'],
         'sendBid',
         'Перезвоните мне',
         'Оставьте заявку на <span class="red">техосмотр</span> автомобиля'
@@ -33,9 +33,13 @@ window.sendBid = function (fName) {
     if (checkFormFields([capcthadiv, name, city, phone, checkbox])) return false
 
     let params = {
-        name: name.value,
-        phone: phone.value,
-        city: city.value,
+        form: '/services/tehnicheskiy-osmotr/',
+        description: 'Техосмотр. ',
+        record: {
+            name: name.value,
+            phone: phone.value,
+            city: city.value
+        }
     }
     console.log('params', params)
     api_postCallToSell(params).then(res => {

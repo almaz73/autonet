@@ -144,7 +144,7 @@ export function checkFormFields(arr) {
     let forAttent = false
     arr.forEach(el => {
         if (el && el.required) {
-            el.style.background = !el.value ? 'pink' : ''
+            el.style.border = !el.value ? '1px solid red' : ''
             if (!el.value) exist = true
 
             el.addEventListener('change', filled)

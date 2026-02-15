@@ -8,14 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let stateForrm2 = document.querySelector('.formBlock.v2')
 
     stateForrm1.innerHTML = constructorForm('st1',
-        ['name*','phone*','city*', 'brand', 'model'],
+        ['name*', 'phone*', 'city*', 'brand', 'model'],
         'sendBid',
         'Отправить заявку',
         'Заявка на ремонт <span class="red">двигателя</span>'
     )
 
     stateForrm2.innerHTML = constructorForm('st2',
-        ['name*','phone*','city*', 'brand', 'model'],
+        ['name*', 'phone*', 'city*', 'brand', 'model'],
         'sendBid',
         'Отправить заявку',
         'Заявка на ремонт <span class="red">двигателя</span>'
@@ -24,10 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let right_panel_content = document.querySelector('#right_panel_content')
     let apply_bid = document.querySelector('.apply_bid')
-    apply_bid.addEventListener('click', ()=>{
+    apply_bid.addEventListener('click', () => {
         openRightPanel()
         right_panel_content.innerHTML = constructorForm('v3',
-            ['name*','phone*','city*', 'brand', 'model'],
+            ['name*', 'phone*', 'city*', 'brand', 'model'],
             'sendBid',
             'Отправить заявку',
             'Запишитесь на ремонт')
@@ -48,11 +48,15 @@ window.sendBid = function (fName) {
     if (checkFormFields([capcthadiv, name, city, phone, checkbox])) return false
 
     let params = {
-        name: name.value,
-        phone: phone.value,
-        city: city.value,
-        brand: brand.value,
-        model: model.value,
+        form: '/services/remont-dvigatel/',
+        description: 'Ремонт двигателя',
+        record: {
+            name: name.value,
+            phone: phone.value,
+            city: city.value,
+            brand: brand.value,
+            model: model.value
+        }
     }
     console.log('params', params)
     api_postCallToSell(params).then(res => {

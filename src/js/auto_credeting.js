@@ -59,7 +59,13 @@ window.sendBid = function (fName) {
     if (perMont) params.perMont = perMont.innerHTML
 
     console.log('params', params)
-    api_postCallToSell(params).then(res => {
+    let newParams = {
+        form: '/services/crediting/',
+        description: 'Автокредитование. Ждут обратного звонка, хотят узнать сколько будет автокредит, тут есть два варианта запроса',
+        record: params
+    }
+
+    api_postCallToSell(newParams).then(res => {
         if (res && res.ok) sendMessage('Заявка оптарвлена')
         else sendMessage('Сервер не принял', 'error')
     })

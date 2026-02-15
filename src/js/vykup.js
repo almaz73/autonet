@@ -1,6 +1,6 @@
 import {initCaptcha} from "@/js/captcha.js";
 import {checkFormFields, constructorForm} from "@/js/global-func.js";
-import {api_mail} from "@/js/apibase.js";
+import {api_postCallToSell} from "@/js/apibase.js";
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -67,16 +67,20 @@ window.sendBid = function (fName) {
     if (checkFormFields([capcthadiv, name, phone, city, checkbox])) return false
 
     let params = {
-        type: 'grade',
-        name: name.value,
-        phone: phone.value,
-        city: city.value,
-        brand: brand.value,
-        model: model.value,
-        year: year.value
+        form: '/services/vykup/',
+        description: ' Страница продать. Заказывают Оценку авто',
+        record: {
+            type: 'grade',
+            name: name.value,
+            phone: phone.value,
+            city: city.value,
+            brand: brand.value,
+            model: model.value,
+            year: year.value
+        }
     }
     console.log('params', params)
-    api_mail(params).then(res => {
+    api_postCallToSell(params).then(res => {
         if (res && res.ok) sendMessage('Заявка оптарвлена')
         else sendMessage('Сервер не принял', 'error')
     })

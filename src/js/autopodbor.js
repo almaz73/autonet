@@ -1,7 +1,6 @@
 import {initCaptcha} from "@/js/captcha.js";
 import {checkFormFields, constructorForm} from "@/js/global-func.js";
-import {api_mail} from "@/js/apibase.js";
-
+import {api_postCallToSell} from "@/js/apibase.js";
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,13 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let stateForrm1 = document.querySelector('.formBlock.v1')
     let stateForrm2 = document.querySelector('.formBlock.v2')
     stateForrm1.innerHTML = constructorForm('st1',
-        ['name*','phone*','email'],
+        ['name*', 'phone*', 'email'],
         'sendBid',
         'Отправить заявку',
         'Оставьте заявку на <span class="red">подбор</span> автомобиля'
     )
     stateForrm2.innerHTML = constructorForm('st2',
-        ['name*','phone*','email'],
+        ['name*', 'phone*', 'email'],
         'sendBid',
         'Отправить заявку',
         'Оставьте заявку на <span class="red">подбор</span> автомобиля'
@@ -27,8 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     apply_bid.addEventListener('click', () => { // авезжпеь панель
         openRightPanel()
-        right_panel_content.innerHTML =  constructorForm('v4',
-            ['name*','phone*','email'],
+        right_panel_content.innerHTML = constructorForm('v4',
+            ['name*', 'phone*', 'email'],
             'sendBid',
             'Отправить заявку',
             'Заявка на <span class="red">автоподбор</span>')
@@ -47,13 +46,17 @@ window.sendBid = function (fName) {
     if (checkFormFields([capcthadiv, name, phone, email, checkbox])) return false
 
     let params = {
-        type:'podbor',
-        name: name.value,
-        phone: phone.value,
-        email: email.value
+        form: '/services/autopodbor/',
+        description: 'Автоподбор. Ждут Ждут обратного звонка, чтобы им помоглли найти авто',
+        record: {
+            type: 'podbor',
+            name: name.value,
+            phone: phone.value,
+            email: email.value
+        }
     }
     console.log('params', params)
-    api_mail(params).then(res => {
+    api_postCallToSell(params).then(res => {
         if (res && res.ok) sendMessage('Заявка оптарвлена')
         else sendMessage('Сервер не принял', 'error')
     })

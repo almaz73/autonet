@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let stateForrm1 = document.querySelector('.formBlock.v1')
 
     stateForrm1.innerHTML = constructorForm('st1',
-        ['name*','phone*'],
+        ['name*', 'phone*'],
         'sendBid',
         'Перезвоните мне',
         'Записаться на шиномонтаж. Диагностика колес <span class="red">бесплатно</span>'
@@ -25,8 +25,12 @@ window.sendBid = function (fName) {
     if (checkFormFields([capcthadiv, name, phone, checkbox])) return false
 
     let params = {
-        name: name.value,
-        phone: phone.value,
+        form: '/services/shinnyy-сentr/',
+        description: 'Шинный центр. Подарок по диагностике колес, если сюда пишут',
+        record: {
+            name: name.value,
+            phone: phone.value,
+        }
     }
     console.log('params', params)
     api_postCallToSell(params).then(res => {

@@ -23,11 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
         let err = false
         if (!fio.value) {
             err = true;
-            fio.style.background = 'pink'
+            fio.style.border = '1px solid red';
         } else fio.style.background = ''
 
         if (!tel.value || simplePhone(tel.value).length > 1 && simplePhone(tel.value).length < 11) {
-            tel.style.background = 'pink'
+            tel.style.border = '1px solid red';
             sendMessage('Телефон не правильный, \nожидается 11 символов', 'warning')
             err = true
         } else tel.style.background = ''
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!email.value) {
             err = true;
-            email.style.background = 'pink'
+            email.style.border = '1px solid red';
         } else email.style.background = ''
 
         if (!personal_agree.checked) {

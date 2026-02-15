@@ -1,4 +1,4 @@
-import {api_PostCallToWork} from "@/js/apibase.js";
+import {api_postCallToSell} from "@/js/apibase.js";
 import {sendMessage} from "@/js/sendMessage.js";
 import {cities, vacanciesList} from "@/js/global-constants.js"
 import {formatterShowPrice} from "@/js/global-func.js";
@@ -49,7 +49,7 @@ function initChangeCity() {
         console.log('!!!selectedCity val = ', city)
         let bigCombo = document.querySelector('.big-combo')
         bigCombo && bigCombo.blur()
-        setTimeout(()=>initVacancies(city))
+        setTimeout(() => initVacancies(city))
     }
 }
 
@@ -205,15 +205,19 @@ window.addEventListener('DOMContentLoaded', () => {
         if (check(fio, phone, checkbox)) return false
 
         let params = {
-            fullName: fio.value,
-            phone: phone.value,
-            email: email && email.value,
-            city: city && city.value,
-            aboutYourself: text && text.value,
-            resume: resume && resume.files[0],
+            form: '/work-in-autosite/',
+            description: 'Вакансии. Сюда придут прикрепленные ваканчии',
+            record: {
+                fullName: fio.value,
+                phone: phone.value,
+                email: email && email.value,
+                city: city && city.value,
+                aboutYourself: text && text.value,
+                resume: resume && resume.files[0]
+            }
         }
 
-        api_PostCallToWork(params).then(res => {
+        api_postCallToSell(params).then(res => {
             if (res && res.ok) sendMessage('Ваше сообщение успешно получено!')
             else sendMessage('Сервер не принял', 'error')
         })

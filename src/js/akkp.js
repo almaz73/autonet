@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let stateForrm1 = document.querySelector('.formBlock.v1')
 
     stateForrm1.innerHTML = constructorForm('st1',
-        ['name*','phone*','city*', 'brand', 'model'],
+        ['name*', 'phone*', 'city*', 'brand', 'model'],
         'sendBid',
         'Отправить заявку',
         'Запишитесь на <span class="red">бесплатную диагностику</span> АКПП'
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let stateForrm2 = document.querySelector('.formBlock.v2')
 
     stateForrm2.innerHTML = constructorForm('st2',
-        ['name*','phone*','city*', 'brand', 'model'],
+        ['name*', 'phone*', 'city*', 'brand', 'model'],
         'sendBid',
         'Отправить заявку',
         'Запишитесь на <span class="red">бесплатную диагностику</span> АКПП'
@@ -38,11 +38,15 @@ window.sendBid = function (fName) {
     if (checkFormFields([capcthadiv, name, city, phone, checkbox])) return false
 
     let params = {
-        name: name.value,
-        phone: phone.value,
-        city: city.value,
-        brand: brand.value,
-        model: model.value,
+        form: '/services/remont-akpp/',
+        description: 'АКПП ',
+        record: {
+            name: name.value,
+            phone: phone.value,
+            city: city.value,
+            brand: brand.value,
+            model: model.value
+        }
     }
     console.log('params', params)
     api_postCallToSell(params).then(res => {
