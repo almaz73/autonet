@@ -254,6 +254,12 @@ window.onCard = function (val) {
     }
 
     if (val.querySelector('input')) val.querySelector('input').focus()
+
+    setTimeout(()=>{
+        datelist1.style.left = '-1000px'
+        datelist2.style.left = '-1000px'
+    }, 6000)
+
 }
 document.querySelector('#deleter').addEventListener('click', () => {
     if (currentInput) {

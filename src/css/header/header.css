@@ -12,6 +12,9 @@
         font-size: 13px;
         margin: 0 5px;
     }
+    nav .header__nav-a:last-child {
+        display: none;
+    }
 }
 
 nav .header__nav-a:hover {

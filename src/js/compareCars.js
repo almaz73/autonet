@@ -86,6 +86,23 @@ function showChosen(storage_) {
         let MODEL = ''
 
         storage.forEach(el => {
+            if (el.photos) el.images = el.photos[0]
+            if (el.address) el.fullAddress = el.address
+            if (el.name) {
+                el.brand = el.name.split(' ')[0]
+                el.model = el.name.split(' ')[1]
+            }
+
+            if (el.info) {
+                let q = el.info.split(',')
+                console.log(q)
+                el.milleage = parseInt(q[0].replace(/\s/g, ''))
+                el.engineCapacity = q[1]
+                el.bodyType = q[2]
+                el.driveType = q[3]
+                el.engineType = q[4]
+            }
+
             DELETE += `<td><a href="javascript:deleteCar('${el.id}')">Удалить</a></td>`
             PREVIEW_PICTURE += `<td><a href="/cars/car.html?id=${el.id}"><img src="${el.images}" alt=""></a></td>`
             NAME += `<td><a href="/cars/car.html?id=${el.id}">"${el.brand} ${el.model}</a></td>`
@@ -110,7 +127,7 @@ function showChosen(storage_) {
                 ${DELETE}
             </tr>
             <tr class="PREVIEW_PICTURE">
-                <td style="text-align: center"> Нет фото </td>
+                <td> фото </td>
                 ${PREVIEW_PICTURE}            
             </tr>
             <tr class="NAME">
@@ -194,8 +211,7 @@ export function initChosen() {
     }
 
 
-    let storage = getComparedCars()
-    showCountButton(storage)
+    showChosen()
 
     let preload_getList = document.querySelector('#preload_getList')
     if (preload_getList) preload_getList.style.display = 'none'
@@ -208,5 +224,5 @@ window.dblCompare = function () {
     location.href = '/personal/list-compared/'
 }
 
-if (location.href.includes('list-compared')) initChosen()
+
 
