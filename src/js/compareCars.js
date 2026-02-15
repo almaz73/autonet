@@ -110,7 +110,7 @@ function showChosen(storage_) {
                 ${DELETE}
             </tr>
             <tr class="PREVIEW_PICTURE">
-                <td>Картинка для анонса</td>
+                <td style="text-align: center"> Нет фото </td>
                 ${PREVIEW_PICTURE}            
             </tr>
             <tr class="NAME">
@@ -194,7 +194,8 @@ export function initChosen() {
     }
 
 
-    showChosen()
+    let storage = getComparedCars()
+    showCountButton(storage)
 
     let preload_getList = document.querySelector('#preload_getList')
     if (preload_getList) preload_getList.style.display = 'none'

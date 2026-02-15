@@ -23,6 +23,7 @@ window.addFavorite = function (val) {
         localStorage.setItem('FavoriteCars', JSON.stringify(cars))
         initFavotite(cars)
     }
+    showCountButton(cars)
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -52,6 +53,7 @@ function getFavoriteCars() {
     let cars = localStorage.getItem('FavoriteCars')
     if (cars) cars = JSON.parse(cars)
     else cars = []
+    showCountButton(cars)
     return cars
 }
 
@@ -59,3 +61,14 @@ window.deleteAllFavoriteCar = function () {
     localStorage.setItem('FavoriteCars', JSON.stringify([]))
     window.getVitrina()
 }
+
+function showCountButton(cars) {
+    let countDiv = document.querySelector('#favoriteCount')
+    if (countDiv && cars.length) {
+        countDiv.innerHTML = '<img src="/icons/penta.svg">' + cars.length
+        countDiv.style.display = 'flex'
+    } else if (countDiv) countDiv.style.display = 'none'
+}
+
+window.initFavotite = initFavotite
+setTimeout(initFavotite)

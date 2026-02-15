@@ -1,7 +1,6 @@
 import {api_getFullAutoInfo} from "@/js/apibase.js"
 import {formatterShowPrice, prepareCars, getUrlParam,} from "@/js/global-func.js";
 
-import {initFavotite} from "@/js/favoriteCars.js";
 import {calculator} from "@/js/credit.js"
 import "@/js/car_panels.js"
 

@@ -1,5 +1,4 @@
 // создает визитки, встраивает рекламные и информационные баннеры
-import {initFavotite} from "@/js/favoriteCars.js";
 import {preparePager} from '@/js/pagination.js'
 import {initSwipper} from "@/js/swiper-starter.js";
 

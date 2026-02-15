@@ -27,11 +27,16 @@
     max-width: 150px;
 }
 
+#compare-field{
+    cursor:  col-resize ;
+}
+
 #compare-field .nodata {
     width: 100%;
     height: 300px;
     display: grid;
     place-items: center;
+    text-align: center;
 }
 
 .compare-clear #delete-all{

@@ -1,13 +1,8 @@
 .attention {
     position: fixed; /* Задает фиксированное позиционирование */
     bottom: 0; /* Прикрепляет к нижней границе экрана */
-    width: 100%; /* Растягивает элемент на всю ширину */
-    height: 33px;
-    display: flex;
-    justify-content: center;
-    gap: 12px;
+    width: 33px; /* Растягивает элемент на всю ширину */
     z-index: 10;
-    background: white;
 }
 
 @media (min-width: 1020px) {
@@ -19,22 +14,24 @@
 
 .question {
     background: var(--color-red);
-    padding: 7px 30px;
+    padding: 12px 10px 20px 8px;
     display: flex;
-    gap: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
     color: white;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 15px;
     cursor: pointer;
-    box-shadow: 0 0 20px #c9c9c9e6;
-    position: relative;
-
-
-    background: linear-gradient(to right, #ff0000, #000000, #000000, #0048ff);
-    background-size: 500% auto;
-    animation: moveGradient 5s linear infinite;
-    /*animation: pulse 2s infinite;*/
+    width: 22px;
+    height: 38px;
+    justify-content: center;
 }
+
+.question.favorite{
+    background: black;
+    filter: brightness(1.7);
+}
+
 
 
 @keyframes moveGradient {
@@ -55,14 +52,14 @@
 /*    100% { transform: scale(1); }*/
 /*}*/
 
-.compare {
-    background: black;
-}
-
-/*.question img, .compare img {*/
-/*    width: 20px;*/
-/*    height: 20px;*/
+/*.compare {*/
+/*    !*background: black;*!*/
 /*}*/
+
+.question img, .compare img {
+    width: 20px;
+    height: 20px;
+}
 
 /*.question_info {*/
 /*    display: none;*/
@@ -145,15 +142,15 @@
 /*    outline: none;*/
 /*}*/
 
-.contentedit img{
-    width: 15px;
-    position: absolute;
-    right: 15px;
-    bottom: 42px;
-}
+/*.contentedit img{*/
+/*    width: 15px;*/
+/*    position: absolute;*/
+/*    right: 15px;*/
+/*    bottom: 42px;*/
+/*}*/
 
-.question_panel .history{
-    max-height: 340px;
-    overflow: hidden;
-    overflow-y: auto;
-}
+/*.question_panel .history{*/
+/*    max-height: 340px;*/
+/*    overflow: hidden;*/
+/*    overflow-y: auto;*/
+/*}*/
