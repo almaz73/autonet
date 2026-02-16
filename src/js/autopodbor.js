@@ -47,13 +47,13 @@ window.sendBid = function (fName) {
 
     let params = {
         form: '/services/autopodbor/',
-        description: 'Автоподбор. Ждут Ждут обратного звонка, чтобы им помоглли найти авто',
-        record: {
+        // description: 'Автоподбор. Ждут Ждут обратного звонка, чтобы им помоглли найти авто',
+        text: JSON.stringify({
             type: 'podbor',
             name: name.value,
             phone: phone.value,
             email: email.value
-        }
+        })
     }
     console.log('params', params)
     api_postCallToSell(params).then(res => {

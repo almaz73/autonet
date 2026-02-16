@@ -61,8 +61,8 @@ window.sendBid = function (fName) {
     console.log('params', params)
     let newParams = {
         form: '/services/crediting/',
-        description: 'Автокредитование. Ждут обратного звонка, хотят узнать сколько будет автокредит, тут есть два варианта запроса',
-        record: params
+        // description: 'Автокредитование. Ждут обратного звонка, хотят узнать сколько будет автокредит, тут есть два варианта запроса',
+        text: JSON.stringify(params)
     }
 
     api_postCallToSell(newParams).then(res => {

@@ -34,12 +34,12 @@ window.sendBid = function (fName) {
 
     let params = {
         form: '/services/tehnicheskiy-osmotr/',
-        description: 'Техосмотр. ',
-        record: {
+        // description: 'Техосмотр. ',
+        text: JSON.stringify({
             name: name.value,
             phone: phone.value,
             city: city.value
-        }
+        })
     }
     console.log('params', params)
     api_postCallToSell(params).then(res => {

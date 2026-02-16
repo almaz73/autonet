@@ -59,13 +59,13 @@ window.getQuoite = function (fName) {
 
     let params = {
         orm: '/franshiza/',
-        description: 'Страница Партнерам. Вероятные будущие владельцы франшизы в новом городе ',
-        record: {
+        // description: 'Страница Партнерам. Вероятные будущие владельцы франшизы в новом городе ',
+        text: JSON.stringify({
             type: 'franshiza',
             name: name.value,
             phone: phone.value,
             city: city.value
-        }
+        })
     }
     console.log('params', params)
     api_postCallToSell(params).then(res => {
@@ -86,14 +86,14 @@ window.questionFranshiza = function (fName) {
 
     let params = {
         form: '/franshiza/',
-        description: 'Вопрос генеральному директору',
-        record: {
+        // description: 'Вопрос генеральному директору',
+        text: JSON.stringify({
             type: 'boss',
             name: name.value,
             message: message.value,
             phone: phone.value,
             city: city.value
-        }
+        })
     }
     console.log('params', params)
     api_postCallToSell(params).then(res => {

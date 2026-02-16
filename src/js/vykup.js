@@ -68,8 +68,8 @@ window.sendBid = function (fName) {
 
     let params = {
         form: '/services/vykup/',
-        description: ' Страница продать. Заказывают Оценку авто',
-        record: {
+        // description: ' Страница продать. Заказывают Оценку авто',
+        text: JSON.stringify({
             type: 'grade',
             name: name.value,
             phone: phone.value,
@@ -77,7 +77,7 @@ window.sendBid = function (fName) {
             brand: brand.value,
             model: model.value,
             year: year.value
-        }
+        })
     }
     console.log('params', params)
     api_postCallToSell(params).then(res => {

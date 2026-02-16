@@ -48,14 +48,14 @@ window.sendBid = function (fName) {
 
     let params = {
         form: '/services/zamena-masla/',
-        description: 'ЗХамена масла в подарок',
-        record: {
+        // description: 'ЗХамена масла в подарок',
+        text: JSON.stringify({
             name: name.value,
             phone: phone.value,
             city: city.value,
             brand: brand.value,
             model: model.value
-        }
+        })
     }
     console.log('params', params)
     api_postCallToSell(params).then(res => {

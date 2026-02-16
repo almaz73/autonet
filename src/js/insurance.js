@@ -64,15 +64,15 @@ window.sendBid = function (fName) {
 
     let params = {
         form: '/services/insurance/',
-        description: 'Автострахование, ОСАГО или КАСКО',
-        record: {
+        // description: 'Автострахование, ОСАГО или КАСКО',
+        text: JSON.stringify({
             name: name.value,
             phone: phone.value,
             city: city.value,
             osago: osago.value,
             brand: brand.value,
             model: model.value,
-        }
+        })
     }
     console.log('params', params)
     api_postCallToSell(params).then(res => {

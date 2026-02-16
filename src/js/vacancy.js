@@ -206,15 +206,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
         let params = {
             form: '/work-in-autosite/',
-            description: 'Вакансии. Сюда придут прикрепленные ваканчии',
-            record: {
+            // description: 'Вакансии. Сюда придут прикрепленные ваканчии',
+            text: JSON.stringify({
                 fullName: fio.value,
                 phone: phone.value,
                 email: email && email.value,
                 city: city && city.value,
                 aboutYourself: text && text.value,
                 resume: resume && resume.files[0]
-            }
+            })
         }
 
         api_postCallToSell(params).then(res => {

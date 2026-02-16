@@ -26,11 +26,11 @@ window.sendBid = function (fName) {
 
     let params = {
         form: '/services/shinnyy-сentr/',
-        description: 'Шинный центр. Подарок по диагностике колес, если сюда пишут',
-        record: {
+        // description: 'Шинный центр. Подарок по диагностике колес, если сюда пишут',
+        text: JSON.stringify({
             name: name.value,
             phone: phone.value,
-        }
+        })
     }
     console.log('params', params)
     api_postCallToSell(params).then(res => {

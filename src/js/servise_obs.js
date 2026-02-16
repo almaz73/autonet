@@ -57,13 +57,13 @@ window.send_obsl = function (fName) {
 
     let params = {
         form: '/services/servisnoe-obsluzhivanie/',
-        description: 'Сервисное обслуживание, техосмотр по перечню услуг',
-        record: {
+        // description: 'Сервисное обслуживание, техосмотр по перечню услуг',
+        text: JSON.stringify({
             name: name.value,
             phone: phone.value,
             city: city.value,
             select: select.value
-        }
+        })
     }
     console.log('params', params)
     api_postCallToSell(params).then(res => {
