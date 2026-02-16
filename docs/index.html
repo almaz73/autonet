@@ -32,17 +32,17 @@
     (d.head ? d.head : d.body).appendChild(s);
 })(document,window,'Verbox')})();
 </script>
-<!-- {/literal} End Verbox -->  <script type="module" crossorigin src="./assets/main-05GiMAoW.js"></script>
-  <script type="module" crossorigin src="./assets/contacts-DONRaF2r.js"></script>
-  <script type="module" crossorigin src="./assets/brands-icons-DOphK1KX.js"></script>
-  <script type="module" crossorigin src="./assets/swiper-starter-B-WiKKw-.js"></script>
+<!-- {/literal} End Verbox -->  <script type="module" crossorigin src="./assets/main-YQ6_D0J1.js"></script>
+  <script type="module" crossorigin src="./assets/contacts-Df6Wet5G.js"></script>
+  <script type="module" crossorigin src="./assets/brands-icons-De17xwbs.js"></script>
+  <script type="module" crossorigin src="./assets/swiper-starter-C7y6MEyK.js"></script>
   <script type="module" crossorigin src="./assets/whereSeeParams-BuT6MZzX.js"></script>
-  <script type="module" crossorigin src="./assets/filter-controls-CJBqwhAw.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/main-D2fAd0NL.css">
+  <script type="module" crossorigin src="./assets/filter-controls-BMP4SR2A.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/main-Cretr-_w.css">
   <link rel="stylesheet" crossorigin href="./assets/contacts-CqOA9HG6.css">
   <link rel="stylesheet" crossorigin href="./assets/swiper-bundle-CcLVQX3U.css">
   <link rel="stylesheet" crossorigin href="./assets/ourservice-Bhv2pcd3.css">
-  <link rel="stylesheet" crossorigin href="./assets/filter-controls-TME2mMzY.css">
+  <link rel="stylesheet" crossorigin href="./assets/filter-controls-BOKVLBoe.css">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 </head>
 <body>
@@ -257,6 +257,9 @@
     <section class="container">
     <div class="filter">
 
+        <div  class="date-list" id="list1_1"></div>
+        <div  class="date-list" id="list2_2"></div>
+
         <div class="filter__wrapper filter-fields">
             <div class="filter__controls">
                 <button class="filter__controls-button f_auto active">Автомобили</button>
@@ -281,7 +284,7 @@
                     <comb data-placeholder='Город' />
                 </div>
 
-                <div style="flex-grow: 1"  class="no_advanced">
+                <div style="flex-grow: 1"  class="no_advanced" onmouseenter="onCard_0(this)">
                     <div class="big-combo control-flex" >
                         <span style="width: 60px">Год от:</span>
                       <input class="big-comb__input" style="width: 80px"
@@ -291,7 +294,7 @@
                 </div>
 
                 <div style="flex-grow: 1">
-                    <div class="big-combo control-flex">
+                    <div class="big-combo control-flex" onmouseenter="onCard_0(this)">
                         <span style="width: 60px">Год до:</span>
                         <input class="big-comb__input" style="width: 80px"
                                oninput="input_on('yearReleasedTo', this.value)"
