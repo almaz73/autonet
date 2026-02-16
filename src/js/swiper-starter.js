@@ -54,12 +54,11 @@ export function initSwipper() {
     }
 
     setTimeout(() => {
-        if (!Swiper) return false
         swiper = new Swiper('.mySwiper', params)
         if (!swiper) setTimeout(() => {
             swiper = new Swiper('.mySwiper', params)
             if (!swiper) setTimeout(() => swiper = new Swiper('.mySwiper', params), 730)
-        }, 120)
+        }, 730)
     })
 
 }

@@ -130,7 +130,7 @@ export function api_getList(params, callback) {
     if (params.modelId) request += '&modelId=' + params.modelId
     if (params.offset) request += '&offset=' + params.offset
     if (params.priceOrder !== null && params.priceOrder !== undefined) request += '&priceOrder=' + params.priceOrder
-    if (params.city) request += '&city=' + params.city
+    if (params.city && params.city !== 'Все') request += '&city=' + params.city
     if (params.gearboxType) request += '&gearboxType=' + params.gearboxType
     if (params.engineType) request += '&engineType=' + params.engineType
     if (params.driveType) request += '&driveType=' + params.driveType

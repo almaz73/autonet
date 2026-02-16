@@ -156,6 +156,7 @@ function getDatas() {
         }),
         new Promise(resolve => {
             api_getCities(res => {
+                if (!res.includes('Все')) res.unshift('Все')
                 items['Город'] = res
                 resolve()
             })

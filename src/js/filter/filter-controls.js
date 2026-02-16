@@ -1,5 +1,6 @@
 import {filter_changed, filter_changed_text} from '@/js/filter/filter.js';
 import {items, setExtention} from '@/js/filter/filter-ctrl-filling.js'
+import {api_getYearGap} from "@/js/apibase.js";
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -33,6 +34,72 @@ document.addEventListener('DOMContentLoaded', () => {
     let carVitrina= document.querySelector('#car-vitrina')
     let datelist1 = document.querySelector('#list1')
     let datelist2 = document.querySelector('#list2')
+
+    let yearGap = []
+    api_getYearGap(res => yearGap = res)
+
+    window.onCard_0 = function (val) {
+        // console.log('val', val)
+        let inp = val.querySelector('input')
+        let datelist1 = document.querySelector('#list1_1')
+        let datelist2 = document.querySelector('#list2_2')
+        let xy = val.getBoundingClientRect()
+        let qqq = document.body.offsetWidth > 1200 ? 140 : 40
+
+        // Если  поля годов, показываем панели
+        if (val.querySelector('span') &&
+            val.querySelector('span').innerHTML &&
+            ['Год от:'].includes(val.querySelector('span').innerHTML)) {
+            if (!datelist1.innerHTML) {
+                for (let i = +yearGap.from; i < +yearGap.to; i++) {
+                    datelist1.innerHTML += `<a>${i}</a>`
+                }
+                let yearsList = datelist1.querySelectorAll('a')
+                yearsList.forEach(el => {
+                    el.addEventListener('click', val => {
+                        inp.value = val.target.innerText
+                        input_chamged('yearReleasedFrom', val.target.innerText)
+                        datelist1.style.left = '-1000px'
+                    })
+                })
+            }
+            datelist1.style.left = (xy.x - qqq) + 'px'
+            datelist1.style.top = (xy.y + window.scrollY - 473) + 'px'
+            datelist2.style.left = '-1000px'
+        } else if (val.querySelector('span') &&
+            val.querySelector('span').innerHTML &&
+            ['Год до:'].includes(val.querySelector('span').innerHTML)) {
+            if (!datelist2.innerHTML) {
+                for (let i = +yearGap.from; i < +yearGap.to; i++) {
+                    datelist2.innerHTML += `<a>${i}</a>`
+                }
+                let yearsList = datelist2.querySelectorAll('a')
+                yearsList.forEach(el => {
+                    el.addEventListener('click', val => {
+                        inp.value = val.target.innerText
+                        input_chamged('yearReleasedTo', val.target.innerText)
+                        datelist2.style.left = '-1000px'
+                    })
+                })
+            }
+
+            datelist2.style.left = (xy.x - qqq) + 'px'
+            datelist2.style.top = (xy.y + window.scrollY - 473) + 'px'
+            datelist1.style.left = '-1000px'
+        } else {
+            datelist1.style.left = '-1000px'
+            datelist2.style.left = '-1000px'
+        }
+
+        if (val.querySelector('input')) val.querySelector('input').focus()
+
+        setTimeout(() => {
+            datelist1.style.left = '-1000px'
+            datelist2.style.left = '-1000px'
+        }, 5000)
+
+    }
+
 
     carVitrina && carVitrina.addEventListener('mousemove', () => {
         if (datelist1) datelist1.style.left = '-1000px'

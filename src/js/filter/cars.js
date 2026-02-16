@@ -137,7 +137,7 @@ const carVitrina = `<div class="car_vitrina">
         <h2 id="vitrina_name">Автомобили</h2>
 
         <span class="view_buttons">
-             <span class='type_views'>
+            <span class='type_views'>
                 <div class='dot8'>
                     <img src='/svg/dot8.svg' alt="">
                 </div>
