@@ -1,4 +1,4 @@
-import{g as f,a as _}from"./main-05GiMAoW.js";/* empty css                        */import"./brands-icons-DOphK1KX.js";import"./filter-controls-CJBqwhAw.js";/* empty css                          */import"./swiper_buy-qJVZRekP.js";import"./swiper-starter-B-WiKKw-.js";const y=`<div  class="filter-white">
+import{g as f,a as _}from"./main-YQ6_D0J1.js";/* empty css                        */import"./brands-icons-De17xwbs.js";import"./filter-controls-BMP4SR2A.js";/* empty css                          */import"./swiper_buy-qJVZRekP.js";import"./swiper-starter-C7y6MEyK.js";const y=`<div  class="filter-white">
 <div class="filter-white-back filter-fields">
         <div class="frame-filter__item"
              onmouseenter="onCard(this)">
@@ -133,7 +133,7 @@ import{g as f,a as _}from"./main-05GiMAoW.js";/* empty css                      
         <h2 id="vitrina_name">Автомобили</h2>
 
         <span class="view_buttons">
-             <span class='type_views'>
+            <span class='type_views'>
                 <div class='dot8'>
                     <img src='/svg/dot8.svg' alt="">
                 </div>
