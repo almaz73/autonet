@@ -1,6 +1,6 @@
 import {initCaptcha} from "@/js/captcha.js";
 import {constructorForm, checkFormFields} from "@/js/global-func.js";
-import {api_postCallToSell} from "@/js/apibase.js"
+import {api_postEmail} from "@/js/apibase.js"
 
 document.addEventListener('DOMContentLoaded', () => {
     let question_to_boss = document.querySelector('.question_to_boss')
@@ -58,17 +58,16 @@ window.getQuoite = function (fName) {
     if (checkFormFields([capcthadiv, name, phone, city, checkbox])) return false
 
     let params = {
-        orm: '/franshiza/',
         // description: 'Страница Партнерам. Вероятные будущие владельцы франшизы в новом городе ',
+        type: 15,
         text: JSON.stringify({
-            type: 'franshiza',
             name: name.value,
             phone: phone.value,
             city: city.value
         })
     }
     console.log('params', params)
-    api_postCallToSell(params).then(res => {
+    api_postEmail(params).then(res => {
         if (res && res.ok) sendMessage('Заявка оптарвлена')
         else sendMessage('Сервер не принял', 'error')
     })
@@ -85,8 +84,9 @@ window.questionFranshiza = function (fName) {
     if (checkFormFields([capcthadiv, name, phone, city, checkbox])) return false
 
     let params = {
-        form: '/franshiza/',
+        // form: '/franshiza/',
         // description: 'Вопрос генеральному директору',
+        type: 10,
         text: JSON.stringify({
             type: 'boss',
             name: name.value,
@@ -96,7 +96,7 @@ window.questionFranshiza = function (fName) {
         })
     }
     console.log('params', params)
-    api_postCallToSell(params).then(res => {
+    api_postEmail(params).then(res => {
         if (res && res.ok) message('Заявка оптарвлена')
         else message('Сервер не принял', 'error')
     })

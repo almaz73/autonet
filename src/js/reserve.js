@@ -1,5 +1,5 @@
 import {emailValidate, simplePhone, getUrlParam} from "@/js/global-func.js"
-import {api_postCallToSell} from "@/js/apibase.js";
+import {api_postEmail} from "@/js/apibase.js";
 import {sendMessage} from "@/js/sendMessage.js";
 
 window.emailValidate = emailValidate
@@ -58,12 +58,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (check()) return false
 
         let parans = {
-            name: fio.value,
-            phone: tel.value,
-            email: email.value,
-            id: id
+            type: 2,
+            text: JSON.stringify({
+                name: fio.value,
+                phone: tel.value,
+                email: email.value,
+                id: id
+            })
         }
-        api_postCallToSell(parans).then(res => {
+        api_postEmail(parans).then(res => {
             if (res && res.ok) {
                 sendMessage('Бронирование успешно отправлено')
                 button.disabled = true

@@ -1,5 +1,5 @@
 import {declOfNum, formatterShowPrice, checkFormFields} from '@/js/global-func.js'
-import {api_postCallToSell} from "@/js/apibase.js";
+import {api_postEmail} from "@/js/apibase.js";
 import {sendMessage} from "@/js/sendMessage.js"
 
 
@@ -164,18 +164,21 @@ bid_for_car && bid_for_car.addEventListener('click', () => {
     if (checkFormFields([input_name, input_tel, captcha, checkbox, attent])) return false
 
     let params = {
-        formName: 'spesialCredit',
-        price: price,
-        credit: credit,
-        forMonth: forMonth,
-        year: field4.innerHTML,
-        fio: input_name.value,
-        tel: input_tel.value,
+        // formName: 'spesialCredit',
+        type: 6,
+        text: JSON.stringify({
+            price: price,
+            credit: credit,
+            forMonth: forMonth,
+            year: field4.innerHTML,
+            fio: input_name.value,
+            tel: input_tel.value,
+        })
     }
 
     console.log(params)
 
-    api_postCallToSell(params).then(res => {
+    api_postEmail(params).then(res => {
         if (res && res.ok) sendMessage('Запрос успешно отправлен')
         else sendMessage('Ошибка при отправки запроса', 'error')
         clearFields()

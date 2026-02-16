@@ -1,6 +1,6 @@
 import {initCaptcha} from "@/js/captcha.js";
 import {checkFormFields, constructorForm} from "@/js/global-func.js";
-import {api_postCallToSell} from "@/js/apibase.js";
+import {api_postEmail} from "@/js/apibase.js";
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -53,8 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 window.sendBid = function (fName) {
-    console.log('fName', fName)
-
     let capcthadiv = document.querySelector(`.${fName} .capctha-div`)
     let name = document.querySelector(`.${fName} [name="name"]`)
     let phone = document.querySelector(`.${fName} [name="phone"]`)
@@ -67,10 +65,10 @@ window.sendBid = function (fName) {
     if (checkFormFields([capcthadiv, name, phone, city, checkbox])) return false
 
     let params = {
-        form: '/services/vykup/',
+        // form: '/services/vykup/',
         // description: ' Страница продать. Заказывают Оценку авто',
+        type: 3,
         text: JSON.stringify({
-            type: 'grade',
             name: name.value,
             phone: phone.value,
             city: city.value,
@@ -80,7 +78,7 @@ window.sendBid = function (fName) {
         })
     }
     console.log('params', params)
-    api_postCallToSell(params).then(res => {
+    api_postEmail(params).then(res => {
         if (res && res.ok) sendMessage('Заявка оптарвлена')
         else sendMessage('Сервер не принял', 'error')
     })

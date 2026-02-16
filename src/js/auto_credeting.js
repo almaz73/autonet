@@ -1,6 +1,6 @@
 import {initCaptcha} from "@/js/captcha.js";
 import {checkFormFields, constructorForm} from "@/js/global-func.js";
-import {api_postCallToSell} from "@/js/apibase.js";
+import {api_postEmail} from "@/js/apibase.js";
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -51,7 +51,6 @@ window.sendBid = function (fName) {
     if (price) params.price = price.innerHTML
     if (year) params.year = year.innerHTML
     if (city) params.city = city.innerHTML
-
     if (priceCred) params.priceCred = priceCred.innerHTML
     if (credit) params.credit = credit.innerHTML
     if (payment) params.payment = payment.innerHTML
@@ -60,12 +59,13 @@ window.sendBid = function (fName) {
 
     console.log('params', params)
     let newParams = {
-        form: '/services/crediting/',
+        // form: '/services/crediting/',
         // description: 'Автокредитование. Ждут обратного звонка, хотят узнать сколько будет автокредит, тут есть два варианта запроса',
+        type: 6,
         text: JSON.stringify(params)
     }
 
-    api_postCallToSell(newParams).then(res => {
+    api_postEmail(newParams).then(res => {
         if (res && res.ok) sendMessage('Заявка оптарвлена')
         else sendMessage('Сервер не принял', 'error')
     })

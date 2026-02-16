@@ -1,6 +1,6 @@
 import {initCaptcha} from "@/js/captcha.js";
 import {checkFormFields, constructorForm, initSubField} from "@/js/global-func.js";
-import {api_postCallToSell} from "@/js/apibase.js";
+import {api_postEmail} from "@/js/apibase.js";
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,30 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initCaptcha()
 })
 
-window.sendInsurance = function (self) {
-    let ver = self.parentNode.parentNode.parentNode.classList[1]
-    let capcthadiv = document.querySelector(`.${ver} .capctha-div`)
-    let name = document.querySelector(`.${ver} [name="name"]`)
-    let phone = document.querySelector(`.${ver} [name="phone"]`)
-    let city = document.querySelector(`.${ver} [name="city"]`)
-    let brand = document.querySelector(`.${ver} [name="brand"]`)
-    let model = document.querySelector(`.${ver} [name="model"]`)
-    let osago = document.querySelector(`.${ver} [name="osago"]`)
-    let checkbox = document.querySelector(`.${ver} [type="checkbox" ]`)
-
-    if (checkFormFields([capcthadiv, name, city, phone, checkbox])) return false
-
-    let params = {
-        name: name.value,
-        phone: phone.value,
-        osago: osago.value
-    }
-    console.log('params', params)
-    // api_postCallToSell(params).then(res => {
-    //     if (res && res.ok) message('Заявка оптарвлена')
-    //     else message('Сервер не принял', 'error')
-    // })
-}
 
 window.sendBid = function (fName) {
     let capcthadiv = document.querySelector(`.${fName} .capctha-div`)
@@ -63,8 +39,9 @@ window.sendBid = function (fName) {
     if (checkFormFields([capcthadiv, name, city, phone, checkbox])) return false
 
     let params = {
-        form: '/services/insurance/',
+        // form: '/services/insurance/',
         // description: 'Автострахование, ОСАГО или КАСКО',
+        type: 17,
         text: JSON.stringify({
             name: name.value,
             phone: phone.value,
@@ -75,7 +52,7 @@ window.sendBid = function (fName) {
         })
     }
     console.log('params', params)
-    api_postCallToSell(params).then(res => {
+    api_postEmail(params).then(res => {
         if (res && res.ok) sendMessage('Заявка оптарвлена')
         else sendMessage('Сервер не принял', 'error')
     })

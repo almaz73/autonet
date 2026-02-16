@@ -1,4 +1,4 @@
-import {api_postCallToSell} from "@/js/apibase.js";
+import {api_PostEmailWithAttachement} from "@/js/apibase.js";
 import {sendMessage} from "@/js/sendMessage.js";
 import {cities, vacanciesList} from "@/js/global-constants.js"
 import {formatterShowPrice} from "@/js/global-func.js";
@@ -205,19 +205,20 @@ window.addEventListener('DOMContentLoaded', () => {
         if (check(fio, phone, checkbox)) return false
 
         let params = {
-            form: '/work-in-autosite/',
+            // form: '/work-in-autosite/',
             // description: 'Вакансии. Сюда придут прикрепленные ваканчии',
-            text: JSON.stringify({
+            // type: 11,
+            // text: JSON.stringify({
                 fullName: fio.value,
                 phone: phone.value,
                 email: email && email.value,
                 city: city && city.value,
                 aboutYourself: text && text.value,
                 resume: resume && resume.files[0]
-            })
+            // })
         }
 
-        api_postCallToSell(params).then(res => {
+        api_PostEmailWithAttachement(params).then(res => {
             if (res && res.ok) sendMessage('Ваше сообщение успешно получено!')
             else sendMessage('Сервер не принял', 'error')
         })

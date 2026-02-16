@@ -3,55 +3,8 @@ import {withCache} from "@/js/apibase_cache.js"
 
 const server = 'https://ext.cartat.ru/exchange'
 
-
-export function api_mail(params) {
-    if (params.type === 'grade') {
-        let newParams = {
-            fullName: params.name,
-            phone: params.phone,
-            city: params.city,
-            brand: params.brand,
-            model: params.model,
-            yearReleased: params.year
-        }
-        api_postCallToSell(newParams)
-    }
-    if (params.type === 'podbor') {
-        let newParams = {
-            fullName: params.name,
-            phone: params.phone,
-            email: params.email
-        }
-        api_PostCallToBuy(newParams)
-    }
-    if (params.type === 'franshiza' || params.type === 'boss') {
-        let newParams = {
-            fullName: params.name,
-            phone: params.phone,
-            city: params.city
-        }
-        api_PostCallToFranchise(newParams)
-    }
-}
-
-export function api_postCallToSell(params) {
-    // отправка заявки на оценку автомобиля
-    let request = '/api/Feedback/PostCallToSell'
-    /* /api/Email/PostCallToSell   - Отправка заявки на оценку автомобиля
-       /api/Email/PostCallToBuy    - Отправка заявки на подбор автомобиля
-       /api/Email/PostCallToFranchise - Отправка заявки на франшизу
-       /api/Email/PostCallToWork - Отправка резюме
-
-       {
-           "city": "string",
-           "brand": "string",
-           "model": "string",
-           "yearReleased": "string",
-           "fullName": "string",
-           "phone": "string"
-         }
-     */
-
+export function api_postEmail(params) {
+    let request = '/api/Feedback/postEmail'
 
     return fetch(server + request, {
         method: 'POST',
@@ -70,37 +23,10 @@ export function api_postCallToSell(params) {
     }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
 }
 
-function api_PostCallToBuy(params) {
-    // - Отправка заявки на подбор автомобиля
-    let request = '/api/Email/PostCallToBuy'
 
-    return fetch(server + request, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json;charset=utf-8'},
-        body: JSON.stringify({body: params})
-    })
-        .then(res => res.json())
-        .then(res => res)
-        .catch(error => sendMessage('Сервер отказал!', 'error'));
-}
-
-function api_PostCallToFranchise(params) {
-    // - Отпарвка заявки на фарншизу
-    let request = '/api/Email/PostCallToFranchise'
-
-    return fetch(server + request, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json;charset=utf-8'},
-        body: JSON.stringify({body: params})
-    })
-        .then(res => res.json())
-        .then(res => res)
-        .catch(error => sendMessage('Сервер отказал!', 'error'));
-}
-
-export function api_PostCallToWork(params) {
+export function api_PostEmailWithAttachement(params) {
     // - Отправка файла резюме
-    let request = '/api/Email/PostCallToWork'
+    let request = '/api/Email/PostEmailWithAttachement'
 
     // 2. Создаем FormData и добавляем файл
     const formData = new FormData();

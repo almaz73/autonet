@@ -56,15 +56,18 @@ window.lookAuto = function () {
     if (checkFormFields([capcthadiv, name, year, email, checkbox])) return false
 
     let params = {
-        name: name.value,
-        email: email.value,
-        year: year.value,
+        type: 14,
+        text: JSON.stringify({
+            name: name.value,
+            email: email.value,
+            year: year.value,
+        })
     }
-    console.log('params',params)
-    // api_postCallToSell(params).then(res => {
-    //     if (res && res.ok) message('Заявка оптарвлена')
-    //     else message('Сервер не принял', 'error')
-    // })
+    console.log('params', params)
+    api_postEmail(params).then(res => {
+        if (res && res.ok) sendMessage('Заявка оптарвлена')
+        else sendMessage('Сервер не принял', 'error')
+    })
 }
 
 window.applyBid = function () {
@@ -80,12 +83,19 @@ window.applyBid = function () {
     if (checkFormFields([capcthadiv, name, phone, checkbox])) return false
 
     let params = {
-        name: name.value,
-        year: year.value,
+        type: 3,
+        text: JSON.stringify({
+            name: name.value,
+            phone: phone.value,
+            city: city.value,
+            brand: brand.value,
+            model: model.value,
+            year: year.value
+        })
     }
     console.log('params', params)
-    // api_postCallToSell(params).then(res => {
-    //     if (res && res.ok) message('Заявка оптарвлена')
-    //     else message('Сервер не принял', 'error')
-    // })
+    api_postEmail(params).then(res => {
+        if (res && res.ok) sendMessage('Заявка оптарвлена')
+        else sendMessage('Сервер не принял', 'error')
+    })
 }

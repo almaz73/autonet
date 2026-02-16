@@ -1,6 +1,6 @@
 import {initCaptcha} from "@/js/captcha.js";
 import {checkFormFields, constructorForm} from "@/js/global-func.js";
-import {api_postCallToSell} from "@/js/apibase.js";
+import {api_postEmail} from "@/js/apibase.js";
 
 
 let globalcall = document.querySelector('.global-call')
@@ -27,13 +27,16 @@ window.sendBid = function (fName) {
     if (checkFormFields([capcthadiv, name, phone, checkbox])) return false
 
     let params = {
-        name: name.value,
-        phone: phone.value,
+        type: 1,
+        text: JSON.stringify({
+            name: name.value,
+            phone: phone.value,
+        })
     }
     if (email && email.value) params.email = email.value
 
     console.log('params', params)
-    api_postCallToSell(params).then(res => {
+    api_postEmail(params).then(res => {
         if (res && res.ok) sendMessage('Заявка оптарвлена')
         else sendMessage('Сервер не принял', 'error')
     })
@@ -52,10 +55,13 @@ window.sendBidPromo = function () {
     if (checkFormFields([capcthadiv, name, checkbox])) return false
 
     let params = {
-        name: name.value,
-        yearReleased: year.value,
+        type: 16,
+        text: JSON.stringify({
+            name: name.value,
+            yearReleased: year.value,
+        })
     }
-    api_postCallToSell(params).then(res => {
+    api_postEmail(params).then(res => {
         if (res && res.ok) sendMessage('Заявка оптарвлена')
         else sendMessage('Сервер не принял', 'error')
     })
