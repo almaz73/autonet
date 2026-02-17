@@ -31,74 +31,89 @@ document.addEventListener('DOMContentLoaded', () => {
     /* Сюда же добавим управление видом фильтров */
     let advanced = document.querySelector('.frame-filter__controls-advanced')
     let filterAdvanced = document.querySelector('.filter-fields')
-    let carVitrina= document.querySelector('#car-vitrina')
+    let carVitrina = document.querySelector('#car-vitrina')
     let datelist1 = document.querySelector('#list1')
     let datelist2 = document.querySelector('#list2')
 
-    let yearGap = []
-    api_getYearGap(res => yearGap = res)
+    if (!datelist1) {
+        // только для главной страницы
+        datelist1 = document.querySelector('#list1_1')
+        datelist2 = document.querySelector('#list2_2')
 
-    window.onCard_0 = function (val) {
-        // console.log('val', val)
-        let inp = val.querySelector('input')
-        let datelist1 = document.querySelector('#list1_1')
-        let datelist2 = document.querySelector('#list2_2')
-        let xy = val.getBoundingClientRect()
-        let qqq = document.body.offsetWidth > 1200 ? 140 : 40
+        let yearGap = []
+        api_getYearGap(res => yearGap = res)
 
-        // Если  поля годов, показываем панели
-        if (val.querySelector('span') &&
-            val.querySelector('span').innerHTML &&
-            ['Год от:'].includes(val.querySelector('span').innerHTML)) {
-            if (!datelist1.innerHTML) {
-                for (let i = +yearGap.from; i < +yearGap.to; i++) {
-                    datelist1.innerHTML += `<a>${i}</a>`
-                }
-                let yearsList = datelist1.querySelectorAll('a')
-                yearsList.forEach(el => {
-                    el.addEventListener('click', val => {
-                        inp.value = val.target.innerText
-                        input_chamged('yearReleasedFrom', val.target.innerText)
-                        datelist1.style.left = '-1000px'
-                    })
-                })
-            }
-            datelist1.style.left = (xy.x - qqq) + 'px'
-            datelist1.style.top = (xy.y + window.scrollY - 473) + 'px'
-            datelist2.style.left = '-1000px'
-        } else if (val.querySelector('span') &&
-            val.querySelector('span').innerHTML &&
-            ['Год до:'].includes(val.querySelector('span').innerHTML)) {
-            if (!datelist2.innerHTML) {
-                for (let i = +yearGap.from; i < +yearGap.to; i++) {
-                    datelist2.innerHTML += `<a>${i}</a>`
-                }
-                let yearsList = datelist2.querySelectorAll('a')
-                yearsList.forEach(el => {
-                    el.addEventListener('click', val => {
-                        inp.value = val.target.innerText
-                        input_chamged('yearReleasedTo', val.target.innerText)
-                        datelist2.style.left = '-1000px'
-                    })
-                })
+        window.onCard = function (val) {
+            let inp = val.querySelector('input')
+
+            let qqq_X, qqq_Y
+            let xy = val.getBoundingClientRect()
+
+            qqq_X = document.body.offsetWidth > 1200 ? 180 : 40
+            qqq_Y = document.body.offsetWidth > 1200 ? 40 : -10
+
+            if (document.body.offsetWidth < 600) {
+                qqq_X = -10
+                qqq_Y = 150
             }
 
-            datelist2.style.left = (xy.x - qqq) + 'px'
-            datelist2.style.top = (xy.y + window.scrollY - 473) + 'px'
-            datelist1.style.left = '-1000px'
-        } else {
-            datelist1.style.left = '-1000px'
-            datelist2.style.left = '-1000px'
+
+            // Если  поля годов, показываем панели
+            if (val.querySelector('span') &&
+                val.querySelector('span').innerHTML &&
+                ['Год от:'].includes(val.querySelector('span').innerHTML)) {
+                if (!datelist1.innerHTML) {
+                    for (let i = +yearGap.from; i < +yearGap.to; i++) {
+                        datelist1.innerHTML += `<a>${i}</a>`
+                    }
+                    let yearsList = datelist1.querySelectorAll('a')
+                    yearsList.forEach(el => {
+                        el.addEventListener('click', val => {
+                            inp.value = val.target.innerText
+                            input_chamged('yearReleasedFrom', val.target.innerText)
+                            datelist1.style.left = '-1000px'
+                        })
+                    })
+                }
+                datelist1.style.left = (xy.x - qqq_X) + 'px'
+                datelist1.style.top = (xy.y - qqq_Y + window.scrollY - 473) + 'px'
+                datelist2.style.left = '-1000px'
+            } else if (val.querySelector('span') &&
+                val.querySelector('span').innerHTML &&
+                ['Год до:'].includes(val.querySelector('span').innerHTML)) {
+                if (!datelist2.innerHTML) {
+                    for (let i = +yearGap.from; i < +yearGap.to; i++) {
+                        datelist2.innerHTML += `<a>${i}</a>`
+                    }
+                    let yearsList = datelist2.querySelectorAll('a')
+                    yearsList.forEach(el => {
+                        el.addEventListener('click', val => {
+                            inp.value = val.target.innerText
+                            input_chamged('yearReleasedTo', val.target.innerText)
+                            datelist2.style.left = '-1000px'
+                        })
+                    })
+                }
+
+                datelist2.style.left = (xy.x - qqq_X) + 'px'
+                datelist2.style.top = (xy.y - qqq_Y + window.scrollY - 473) + 'px'
+                datelist1.style.left = '-1000px'
+            } else {
+                datelist1.style.left = '-1000px'
+                datelist2.style.left = '-1000px'
+            }
+
+            if (val.querySelector('input')) val.querySelector('input').focus()
+
+            setTimeout(() => {
+                datelist1.style.left = '-1000px'
+                datelist2.style.left = '-1000px'
+            }, 5000)
+
         }
-
-        if (val.querySelector('input')) val.querySelector('input').focus()
-
-        setTimeout(() => {
-            datelist1.style.left = '-1000px'
-            datelist2.style.left = '-1000px'
-        }, 5000)
-
     }
+
+
 
 
     carVitrina && carVitrina.addEventListener('mousemove', () => {

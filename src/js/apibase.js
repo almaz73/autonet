@@ -37,9 +37,14 @@ export function api_PostEmailWithAttachement(params) {
     formData.append('email', params.email);
     formData.append('aboutYourself', params.aboutYourself);
 
+    let param = {
+        type: 11,
+        text: JSON.stringify(formData)
+    }
+
     return fetch(server + request, {
         method: 'POST',
-        body: formData
+        body: param
     })
         .then(res => res.json())
         .then(res => res)
@@ -67,6 +72,7 @@ export function api_getList(params, callback) {
     if (params.yearReleasedFrom) request += '&yearReleasedFrom=' + params.yearReleasedFrom
     if (params.yearReleasedTo) request += '&yearReleasedTo=' + params.yearReleasedTo
     if (params.priceTo) request += '&priceTo=' + params.priceTo
+    if (params.priceFrom) request += '&priceFrom=' + params.priceFrom
     if (params.milleageFrom) request += '&milleageFrom=' + params.milleageFrom
     if (params.milleageTo) request += '&milleageTo=' + params.milleageTo
     if (params.engineCapacity) request += '&engineCapacity=' + params.engineCapacity
