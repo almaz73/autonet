@@ -87,7 +87,12 @@ function getVitrina(ishandEvent) {
         let bt = document.querySelector('#set_filter')
         toDisable(bt, true)
 
-        filterParams.limit = 7
+        filterParams.limit = 5
+        let currentCity = localStorage.getItem('selectedCity')
+        if (currentCity && currentCity !== 'Россия') filterParams.city = currentCity
+        filterParams.priceFrom = 400000
+        filterParams.priceTo = 800000
+
         api_getList(filterParams, res => {
             toDisable(bt, false) // раздизаблим кнопку
             cars = prepareCars(res.items)
