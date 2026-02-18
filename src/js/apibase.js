@@ -80,6 +80,11 @@ export function api_getList(params, callback) {
     return withCache(request, callback, null) // ЗВ 10 минут авто не подменят
 }
 
+export function api_getSpecials(city, callback) {
+    let request = '/api/Auto/GetSpecials?city=' + city
+    return withCache(request, callback, 60) // ЗВ 10 минут авто не подменят
+}
+
 /*** Все данные по одной машине ***/
 export function api_getFullAutoInfo(guid, callback) {
     let request = '/api/Auto/GetFullAutoInfo?guid=' + guid

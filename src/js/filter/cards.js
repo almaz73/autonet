@@ -123,6 +123,7 @@ export function fill(cars, currentCars, totalPages) {
         if (i === 2 && (location.pathname !== '/personal/favorite-cars/')) createNode(null, 'abdul')
         if (i === 0 && (location.pathname === '/cars/' || location.pathname === '/autosite/cars/')) createNode(null, 'swiper_buy')
     }); // прикручиваем html
+    if (!cars.length) cards.innerHTML += `<abdul></abdul>`
 
 
     if (location.pathname !== '/' && location.pathname !== '/personal/favorite-cars/') cards.innerHTML += `<div class="pager">Страницы: <span id="pager"></span></div>`

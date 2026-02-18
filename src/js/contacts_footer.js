@@ -26,7 +26,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 </a>
             </div>`
         })
-
+        getVitrina()
     }
 
     window.setCity = function (cityName) {

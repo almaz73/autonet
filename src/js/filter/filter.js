@@ -1,5 +1,5 @@
 import {fill} from '@/js/filter/cards.js';
-import {api_getList} from "@/js/apibase.js"
+import {api_getSpecials, api_getList} from "@/js/apibase.js"
 import {prepareCars, declOfNum, globalValues, setPriceOrder, toDisable, carCountText} from '@/js/global-func.js'
 import {fillCars} from '@/js/filter/filCars.js'
 import {getModelList, setExtention} from '@/js/filter/filter-ctrl-filling.js'
@@ -87,14 +87,17 @@ function getVitrina(ishandEvent) {
         let bt = document.querySelector('#set_filter')
         toDisable(bt, true)
 
-        filterParams.limit = 7
-
+        filterParams.limit = 0
         api_getList(filterParams, res => {
             toDisable(bt, false) // раздизаблим кнопку
-            cars = prepareCars(res.items)
             declOfNum(res.totalCount, ['предложение', 'предложений', 'предложений'])
             carCountText(res.totalCount)
-            if (!ishandEvent) fill(cars, res.items)
+        })
+
+        let currentCity = localStorage.getItem('selectedCity')
+        api_getSpecials(currentCity, res => {
+            cars = prepareCars(res)
+            if (!ishandEvent) fill(cars, res)
         })
 
     } else if (location.pathname === '/tyres/') {

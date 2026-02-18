@@ -107,7 +107,7 @@ function slider_mover(slider, sliderRange, sliderHandle, type) {
     }
 }
 
-let price = 5000000
+let price = 2000000
 let year = 5
 let credit = 0
 let forMonth = 0
@@ -115,7 +115,7 @@ if (field0) {
     field0.innerHTML = formatterShowPrice(price) + ' ₽'
     sliderRange0.style.width = slider0.offsetWidth + 'px'
     sliderHandle0.style.left = (slider0.offsetWidth - 10) + 'px';
-    calculator(5000000)
+    calculator(2000000)
 }
 
 export function calculator(val) {
