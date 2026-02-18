@@ -26,7 +26,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 </a>
             </div>`
         })
-        getVitrina()
+        window.getVitrina && getVitrina()
     }
 
     window.setCity = function (cityName) {
@@ -46,7 +46,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         window.openPhoto = function (val) {
             if (photoModal) photoModal.style.display = val ? 'grid' : 'none'
-            if (photoModalPic) photoModalPic.innerHTML = `<img src ="${val}">`
+            if (photoModalPic) photoModalPic.innerHTML = `<img alt="" src ="${val}">`
         }
 
         document.addEventListener('keydown', (e) => {

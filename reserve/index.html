@@ -41,11 +41,13 @@
         </h3>
 
         <div class="row">
-            <input type="text" placeholder="Имя">
-            <input placeholder="Телефон"
+            <input type="text" placeholder="Имя *" name="name" required>
+            <input placeholder="Телефон *"
+                   name="phone"
+                   required
                    onmouseenter="this.focus()"
                    oninput="formattingPhone(this)">
-            <input name="email" type="email" placeholder="E-mail"
+            <input name="email" required type="email" placeholder="E-mail *"
                    onchange="emailValidate(this)">
 
             <button class="but_red">Заказать звонок</button>
@@ -54,14 +56,11 @@
 
             <div class="capctha-div" style="width: 260px; background: white"></div>
             <br>
-            <input type="checkbox" id="personal_agree">
+            <span><input type="checkbox" id="personal_agree"></span>
             <label for="personal_agree">
                 Нажав кнопку «Продолжить» я даю согласие на обработку
                 <a href="/privacy-policy/" target="_blank">персональных данных</a>
             </label>
-            <div class="modal__error">
-                Вы должны дать согласие на обработку персональных данных
-            </div>
         </div>
     </div>
 </main>

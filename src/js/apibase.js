@@ -11,16 +11,11 @@ export function api_postEmail(params) {
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
         },
-        body: JSON.stringify({body: params})
+        body: JSON.stringify( params)
     })
         .then(res => res.json())
         .then(res => res)
         .catch(error => sendMessage('Сервер отказал!', 'error'));
-
-    return fetch(request).then(res => {
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
-        return res.json();
-    }).then(res => res).catch(error => console.error('Произошла ошибка:', error));
 }
 
 
@@ -37,14 +32,9 @@ export function api_PostEmailWithAttachement(params) {
     formData.append('email', params.email);
     formData.append('aboutYourself', params.aboutYourself);
 
-    let param = {
-        type: 11,
-        text: JSON.stringify(formData)
-    }
-
     return fetch(server + request, {
         method: 'POST',
-        body: param
+        body:  formData //   body:  JSON.stringify(param)
     })
         .then(res => res.json())
         .then(res => res)

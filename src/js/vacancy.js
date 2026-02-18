@@ -1,7 +1,7 @@
 import {api_PostEmailWithAttachement} from "@/js/apibase.js";
 import {sendMessage} from "@/js/sendMessage.js";
 import {cities, vacanciesList} from "@/js/global-constants.js"
-import {formatterShowPrice} from "@/js/global-func.js";
+import {checkFormFields, formatterShowPrice} from "@/js/global-func.js";
 
 function initChangeCity() {
     let comb = document.querySelector('comb');
@@ -68,12 +68,12 @@ function initVacancies(city) {
 <div class="request_vac">
             <div class="ttl_a">Откликнуться на вакансию</div>
             <div class="smForm" id="lettleForm">
-                <div class="details"><input placeholder="Ваше имя" name="fio"></div>
-                <div class="details"><input placeholder="Телефон" name="phone" oninput="formattingPhone(this)"></div>
+                <div class="details"><input placeholder="Ваше имя *" required name="fio"></div>
+                <div class="details"><input placeholder="Телефон *" required name="phone" oninput="formattingPhone(this)"></div>
                 <div class="details"><input placeholder="Эл. почта" name="email"></div>
                 <div class="details">
                 <span class="fileLabel">
-                    <input placeholder="Резюме" type="file" name="resume">
+                    <input placeholder="Резюме *" type="file" name="resume">
                     Резюме
                 </span>
                 </div>
@@ -167,28 +167,10 @@ window.addEventListener('DOMContentLoaded', () => {
         else placeForFileName.textContent = 'Загрузить файл';
     });
 
-    function check(fio, phone, checkbox) {
-        let err = false
-        if (!fio.value) {
-            fio.style.border = '1px solid red'
-            sendMessage('Не заполнено поле ФИО', 'warning')
-            err = true
-        } else fio.style.border = ''
-        if (!phone.value) {
-            phone.style.border = '1px solid red'
-            sendMessage('Не заполнен Телефон', 'warning')
-            err = true
-        } else phone.style.border = ''
-        if (!checkbox.checked) {
-            checkbox.parentNode.style.border = '1px solid red'
-            sendMessage('Вы должны дать согласие на обработку персональных данных', 'warning')
-            err = true
-        } else checkbox.parentNode.style.border = ''
-        return err
-    }
 
     // нажатие кнопок отправки
     window.sendResume = function (formId) {
+        const capcthadiv = document.querySelector(`.${formId} .capctha-div`)
         const fio = document.querySelector(`.${formId} [name="fio"]`)
         const city = document.querySelector(`.${formId} [name="city"]`)
         const phone = document.querySelector(`.${formId} [name="phone"]`)
@@ -202,20 +184,17 @@ window.addEventListener('DOMContentLoaded', () => {
             modal__error.style.display = checkbox.checked ? 'none' : 'block'
         }
 
-        if (check(fio, phone, checkbox)) return false
+
+        if (checkFormFields([capcthadiv, fio, city, phone, checkbox])) return false
+        if( resume && !resume.files[0]) return sendMessage('Прикрепите файл с резюме', 'warning')
 
         let params = {
-            // form: '/work-in-autosite/',
-            // description: 'Вакансии. Сюда придут прикрепленные ваканчии',
-            // type: 11,
-            // text: JSON.stringify({
-                fullName: fio.value,
-                phone: phone.value,
-                email: email && email.value,
-                city: city && city.value,
-                aboutYourself: text && text.value,
-                resume: resume && resume.files[0]
-            // })
+            fullName: fio.value,
+            phone: phone.value,
+            email: email && email.value,
+            city: city && city.value,
+            aboutYourself: text && text.value,
+            resume: resume && resume.files[0]
         }
 
         api_PostEmailWithAttachement(params).then(res => {

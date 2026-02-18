@@ -1,17 +1,16 @@
-import {emailValidate, simplePhone, getUrlParam} from "@/js/global-func.js"
+import {emailValidate, getUrlParam, checkFormFields} from "@/js/global-func.js"
 import {api_postEmail} from "@/js/apibase.js";
 import {sendMessage} from "@/js/sendMessage.js";
 
 window.emailValidate = emailValidate
 
 document.addEventListener('DOMContentLoaded', () => {
-    const fio = document.querySelector('[placeholder="Имя"]')
-    const tel = document.querySelector('[placeholder="Телефон"]')
-    const email = document.querySelector('[placeholder="E-mail"]')
+    const fio = document.querySelector('[name="name"]')
+    const phone = document.querySelector('[name="phone"]')
+    const email = document.querySelector('[name="email"]')
     const button = document.querySelector('button.but_red')
-    const personal_agree = document.querySelector('#personal_agree')
+    const checkbox = document.querySelector(`[type="checkbox" ]`)
     const capcthadiv = document.querySelector(`.capctha-div`)
-    const modal__error = document.querySelector('.modal__error')
     const id = getUrlParam('id');
     const name = getUrlParam('name');
     const h3_place = document.querySelector('#h3-place')
@@ -19,49 +18,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     button.addEventListener('click', save)
 
-    function check() {
-        let err = false
-        if (!fio.value) {
-            err = true;
-            fio.style.border = '1px solid red';
-        } else fio.style.background = ''
-
-        if (!tel.value || simplePhone(tel.value).length > 1 && simplePhone(tel.value).length < 11) {
-            tel.style.border = '1px solid red';
-            sendMessage('Телефон не правильный, \nожидается 11 символов', 'warning')
-            err = true
-        } else tel.style.background = ''
-
-        if (!capcthadiv.classList.contains('checked')) {
-            capcthadiv.style.border = '1px solid red';
-            err = true
-        }
-
-        if (!email.value) {
-            err = true;
-            email.style.border = '1px solid red';
-        } else email.style.background = ''
-
-        if (!personal_agree.checked) {
-            err = true;
-            modal__error.style.display = 'block'
-        } else modal__error.style.display = 'none'
-
-        if (emailValidate(email.value)) {
-            err = true
-        }
-
-        return err
-    }
 
     function save() {
-        if (check()) return false
+        if (checkFormFields([capcthadiv, fio, phone, email, checkbox])) return false
 
         let parans = {
             type: 2,
             text: JSON.stringify({
                 name: fio.value,
-                phone: tel.value,
+                phone: phone.value,
                 email: email.value,
                 id: id
             })

@@ -167,10 +167,10 @@ export function checkFormFields(arr) {
 
         if (el && el.classList.contains('attent')) el.style.display = forAttent ? 'block' : 'none'
         if (el && el.name === 'email' && el.value) return emailValidate(el.value)
-        if (el && el.name === 'phone' && el.value && simplePhone(el.value).length !== 11) sendMessage('Телефон не содержит 11 цифр', 'warning')
+        if (el && el.name === 'phone' && el.value && simplePhone(el.value).length !== 11) sendMessage('Телефон неправильный', 'warning')
     })
 
-    if (exist) sendMessage('Есть незаполненные поля', 'warning')
+    if (exist) sendMessage('Остались обязательные поля', 'warning')
     return exist
 }
 
