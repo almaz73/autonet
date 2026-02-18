@@ -30,8 +30,8 @@
     (d.head ? d.head : d.body).appendChild(s);
 })(document,window,'Verbox')})();
 </script>
-<!-- {/literal} End Verbox -->  <script type="module" crossorigin src="../assets/vacancy-Bv5_lDmP.js"></script>
-  <link rel="modulepreload" crossorigin href="../assets/main-aUBKheOG.js">
+<!-- {/literal} End Verbox -->  <script type="module" crossorigin src="../assets/vacancy-B9QftWbz.js"></script>
+  <link rel="modulepreload" crossorigin href="../assets/main-Cfe6JPLd.js">
   <link rel="stylesheet" crossorigin href="../assets/main-Cretr-_w.css">
   <link rel="stylesheet" crossorigin href="../assets/filter-controls-BOKVLBoe.css">
   <link rel="stylesheet" crossorigin href="../assets/vacancy-CZedrL6A.css">
@@ -187,7 +187,7 @@
             <span>Работа в Автосеть.рф</span>
         </div>
     </div>
-    <img class="elizavetapic" src="../photo/vacancy/elizaveta.webp">
+    <img class="elizavetapic" src="../photo/vacancy/elizaveta.webp" alt="">
     <div class="desc">
         <h1 class="title">ПРИСОЕДИНЯЙТЕСЬ<span class="sub"> К НАШЕЙ КОМАНДЕ</span></h1>
         <div style="font-size:1em; line-height: 1.7em;">
@@ -281,14 +281,16 @@
         <div  class="smFormGen generalForm">
             <div>
                 <div class="details">
-                    <input placeholder="Имя и фамилия" name="fio">
+                    <input placeholder="Имя и фамилия *" required name="fio">
                 </div>
-                <div class="details"><input placeholder="Телефон" name="phone" oninput="formattingPhone(this)"></div>
+                <div class="details">
+                    <input placeholder="Телефон *" required name="phone" oninput="formattingPhone(this)">
+                </div>
             </div>
             <div>
                 <div class="details"><input placeholder="Город" name="city"></div>
-                <div class="details fileInpt fileLabel">
-                    <span id="fN">Загрузить файл</span>
+                <div class="details fileInpt fileLabel" name="file" required>
+                    <span id="fN" >Загрузить файл *</span>
                     <a href="javascript:void(0)">
                         <input
                                 style="margin-left: -130px"

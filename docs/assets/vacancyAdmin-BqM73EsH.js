@@ -1,4 +1,4 @@
-import{H as L,I as v,h as w,F as y}from"./main-aUBKheOG.js";/* empty css                        *//* empty css                */function q(){let i=document.querySelector("comb"),e={Город:L};e.Город.value=localStorage.getItem("selectedCity"),e.Город.value="Казань",a(e.Город.value);let c=i.dataset.placeholder,t=e[c];if(t){let s=t.map(l=>'<div data-parent="'+c+'">'+l+"</div>");i.innerHTML=`<div class='big-combo' tabindex='1'>
+import{I as L,J as v,h as w,G as y}from"./main-Cfe6JPLd.js";/* empty css                        *//* empty css                */function q(){let i=document.querySelector("comb"),e={Город:L};e.Город.value=localStorage.getItem("selectedCity"),e.Город.value="Казань",a(e.Город.value);let c=i.dataset.placeholder,t=e[c];if(t){let s=t.map(l=>'<div data-parent="'+c+'">'+l+"</div>");i.innerHTML=`<div class='big-combo' tabindex='1'>
         <span class='big-comb__selected'>
           <span class='big-comb__placeholder'>${t.value||c}</span>
           <input class='big-comb__input' type="text">
