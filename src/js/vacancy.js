@@ -54,9 +54,6 @@ function initChangeCity() {
 }
 
 function initVacancies(city) {
-
-    console.log(4444)
-
     let html = ''
     initListeners(false)
     let newDatas
@@ -75,6 +72,7 @@ function initVacancies(city) {
                 <span class="fileLabel">
                     <input placeholder="Резюме *" type="file" name="resume">
                     Резюме
+<!--                    <span class="filePlace"> Файл выбран </span>-->
                 </span>
                 </div>
                 <div class="details">
@@ -178,6 +176,8 @@ window.addEventListener('DOMContentLoaded', () => {
         const text = document.querySelector(`.${formId} [name="text"]`)
         const resume = document.querySelector(`.${formId} [name="resume"]`)
         const checkbox = document.querySelector(`.${formId} [type="checkbox"]`)
+        // const filePlace =  document.querySelector(`.${formId} .filePlace`)
+        // console.log('filePlace',filePlace)
 
         if (formId === 'generalForm') {
             const modal__error = document.querySelector('.modal__error')
@@ -189,7 +189,7 @@ window.addEventListener('DOMContentLoaded', () => {
         if( resume && !resume.files[0]) return sendMessage('Прикрепите файл с резюме', 'warning')
 
         let params = {
-            fullName: fio.value,
+            fio: fio.value,
             phone: phone.value,
             email: email && email.value,
             city: city && city.value,

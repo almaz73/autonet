@@ -25,12 +25,16 @@ export function api_PostEmailWithAttachement(params) {
 
     // 2. Создаем FormData и добавляем файл
     const formData = new FormData();
+
+    formData.append('type', 11);
+    formData.append('text', JSON.stringify({
+        fio: params.fio,
+        phone: params.phone,
+        city: params.city,
+        email: params.email,
+        aboutYourself: params.aboutYourself,
+    }));
     formData.append('resume', params.resume);
-    formData.append('fullName', params.fullName);
-    formData.append('phone', params.phone);
-    formData.append('city', params.city);
-    formData.append('email', params.email);
-    formData.append('aboutYourself', params.aboutYourself);
 
     return fetch(server + request, {
         method: 'POST',
