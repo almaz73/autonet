@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 val.querySelector('span').innerHTML &&
                 ['Год от:'].includes(val.querySelector('span').innerHTML)) {
                 if (!datelist1.innerHTML) {
-                    for (let i = +yearGap.from; i < +yearGap.to; i++) {
+                    for (let i = +yearGap.from; i <= +yearGap.to; i++) {
                         datelist1.innerHTML += `<a>${i}</a>`
                     }
                     let yearsList = datelist1.querySelectorAll('a')
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 val.querySelector('span').innerHTML &&
                 ['Год до:'].includes(val.querySelector('span').innerHTML)) {
                 if (!datelist2.innerHTML) {
-                    for (let i = +yearGap.from; i < +yearGap.to; i++) {
+                    for (let i = +yearGap.from; i <= +yearGap.to; i++) {
                         datelist2.innerHTML += `<a>${i}</a>`
                     }
                     let yearsList = datelist2.querySelectorAll('a')

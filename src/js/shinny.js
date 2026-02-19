@@ -28,14 +28,14 @@ window.sendBid = function (fName) {
         // form: '/services/shinnyy-сentr/',
         // description: 'Шинный центр. Подарок по диагностике колес, если сюда пишут',
         type: 5,
-        text: JSON.stringify({
-            name: name.value,
-            phone: phone.value,
-        })
+        name: name.value,
+        phone: phone.value,
     }
-    console.log('params', params)
     api_postEmail(params).then(res => {
-        if (res && res.ok) sendMessage('Заявка оптарвлена')
-        else sendMessage('Сервер не принял', 'error')
+        if (res) {
+            setTimeout(() => sendMessage('Ваша заявка успешно отправлена'), 500);
+            document.querySelector(`.${fName} .formBlock`).innerHTML =
+                '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
+        }
     })
 }

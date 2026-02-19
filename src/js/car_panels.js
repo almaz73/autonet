@@ -8,13 +8,11 @@ let profitable = document.querySelectorAll('.profitable')
 let addr = document.querySelector('.main__card-product--top .address')
 
 
-
-
 select_show_date && select_show_date.forEach((el, ind) => {
     el.addEventListener('click', () => {
         openRightPanel()
 
-        right_panel_content.innerHTML = constructorForm('vv'+ind,
+        right_panel_content.innerHTML = constructorForm('vv' + ind,
             ['name*', 'phone*', 'email'],
             'sendBid',
             'Отправить заявку',
@@ -24,16 +22,16 @@ select_show_date && select_show_date.forEach((el, ind) => {
         let address = document.querySelector(' .form__group')
         let h3 = document.querySelector(' h3')
         const newElement = document.createElement('br');
-        h3.after(`Адрес: ${addr.innerHTML} `,newElement)
+        h3.after(`Адрес: ${addr.innerHTML} `, newElement)
         address.before(newElement)
         initCaptcha()
     })
 })
 
-profitable && profitable.forEach((el,ind) => {
+profitable && profitable.forEach((el, ind) => {
     el.addEventListener('click', () => {
         openRightPanel()
-        right_panel_content.innerHTML = constructorForm('vv'+ind,
+        right_panel_content.innerHTML = constructorForm('vv' + ind,
             ['name*', 'phone*', 'city', 'brand', 'model', 'year'],
             'sendBid',
             'Отправить заявку',
@@ -42,7 +40,6 @@ profitable && profitable.forEach((el,ind) => {
         initCaptcha()
     })
 })
-
 
 
 window.lookAuto = function () {
@@ -57,16 +54,17 @@ window.lookAuto = function () {
 
     let params = {
         type: 14,
-        text: JSON.stringify({
-            name: name.value,
-            email: email.value,
-            year: year.value,
-        })
+        name: name.value,
+        email: email.value,
+        year: year.value
     }
-    console.log('params', params)
+
     api_postEmail(params).then(res => {
-        if (res && res.ok) sendMessage('Заявка оптарвлена')
-        else sendMessage('Сервер не принял', 'error')
+        if (res) {
+            setTimeout(() => sendMessage('Ваша заявка успешно отправлена'), 500);
+            document.querySelector(`.look-auto .formBlock`).innerHTML =
+                '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
+        }
     })
 }
 
@@ -84,18 +82,18 @@ window.applyBid = function () {
 
     let params = {
         type: 3,
-        text: JSON.stringify({
-            name: name.value,
-            phone: phone.value,
-            city: city.value,
-            brand: brand.value,
-            model: model.value,
-            year: year.value
-        })
+        name: name.value,
+        phone: phone.value,
+        city: city.value,
+        brand: brand.value,
+        model: model.value,
+        year: year.value
     }
-    console.log('params', params)
     api_postEmail(params).then(res => {
-        if (res && res.ok) sendMessage('Заявка оптарвлена')
-        else sendMessage('Сервер не принял', 'error')
+        if (res) {
+            setTimeout(() => sendMessage('Ваша заявка успешно отправлена'), 500);
+            document.querySelector(`.bid .formBlock`).innerHTML =
+                '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
+        }
     })
 }

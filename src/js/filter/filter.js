@@ -94,7 +94,7 @@ function getVitrina(ishandEvent) {
             carCountText(res.totalCount)
         })
 
-        let currentCity = localStorage.getItem('selectedCity')
+        let currentCity = localStorage.getItem('selectedCity') || ''
         api_getSpecials(currentCity, res => {
             cars = prepareCars(res)
             if (!ishandEvent) fill(cars, res)

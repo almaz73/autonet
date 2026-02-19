@@ -49,15 +49,16 @@ window.sendBid = function (fName) {
         // form: '/services/autopodbor/',
         // description: 'Автоподбор. Ждут Ждут обратного звонка, чтобы им помоглли найти авто',
         type: 9,
-        text: JSON.stringify({
-            type: 'podbor',
-            name: name.value,
-            phone: phone.value,
-            email: email.value
-        })
+        name: name.value,
+        phone: phone.value,
+        email: email.value
     }
-    console.log('params', params)
+
     api_postEmail(params).then(res => {
-        if (res && res.ok) sendMessage('Заявка оптарвлена')
+        if (res) {
+            setTimeout(() => sendMessage('Ваша заявка успешно отправлена'), 500);
+            document.querySelector(`.${fName} .formBlock`).innerHTML =
+                '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
+        }
     })
 }

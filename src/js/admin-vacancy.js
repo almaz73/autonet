@@ -1,4 +1,4 @@
-import {sendMessage} from "@/js/sendMessage.js";
+
 import {cities, vacanciesList} from "@/js/global-constants.js"
 import {formatterShowPrice} from "@/js/global-func.js";
 
@@ -54,7 +54,7 @@ function initChangeCity() {
 function initVacancies(city) {
     let html = ''
     initListeners(false)
-    let newDatas = []
+    let newDatas
     if (!city) newDatas = vacanciesList
     else newDatas = vacanciesList.filter(el => el.city === city)
 

@@ -1,7 +1,7 @@
 let counter = 0
 let messages = []
 
-export function sendMessage(text, type) {
+window.sendMessage = function(text, type) {
 
     let color = 'green'
     if (type === 'warning') color = 'orangered'

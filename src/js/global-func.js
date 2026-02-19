@@ -1,5 +1,4 @@
 // export let global_brandsIds= [];
-import {sendMessage} from "@/js/sendMessage.js";
 
 export const eventBus = {
     // Хранилище событий: { 'event_name': [callback1, callback2] }
@@ -166,9 +165,7 @@ export function checkFormFields(arr) {
         }
 
         if (el && el.classList.contains('attent')) el.style.display = forAttent ? 'block' : 'none'
-        if (el && el.name === 'email' && el.value) {
-            if (emailValidate(el.value)) exist = true
-        }
+        if (el && el.name === 'email' && el.value && emailValidate(el.value)) exist = true
         if (el && el.name === 'phone' && el.value && simplePhone(el.value).length !== 11) {
             sendMessage('Телефон неправильный', 'warning')
             el.style.border = '1px solid red';
@@ -176,7 +173,7 @@ export function checkFormFields(arr) {
         }
     })
 
-    if (exist) sendMessage('Остались обязательные поля', 'warning')
+    if (exist) sendMessage('Заполните обязательные поля', 'warning')
     return exist
 }
 
@@ -257,7 +254,7 @@ export function constructorForm(fName, fields, methodNAme, buttonText, legenda) 
         } else if (el === 'select') {
             html += `<div class="form__modal--group">                
                 <div class="form__group with_sub_field">
-                    <input name="select"  placeholder="Выберите услугу">
+                    <input name="selection"  placeholder="Выберите услугу">
                     <div class="select">
                         <div class="field">Диагностика</div>
                         <div class="field ">Техническое обслуживание</div>

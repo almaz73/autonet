@@ -28,17 +28,17 @@ window.sendBid = function (fName) {
 
     let params = {
         type: 1,
-        text: JSON.stringify({
-            name: name.value,
-            phone: phone.value,
-        })
+        name: name.value,
+        phone: phone.value,
+        email: email.value
     }
-    if (email && email.value) params.email = email.value
 
-    console.log('params', params)
     api_postEmail(params).then(res => {
-        if (res && res.ok) sendMessage('Заявка оптарвлена')
-        else sendMessage('Сервер не принял', 'error')
+        if (res) {
+            setTimeout(() => sendMessage('Ваша заявка успешно отправлена'), 500);
+            document.querySelector(`.${fName} .formBlock`).innerHTML =
+                '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
+        }
     })
 }
 
@@ -56,13 +56,14 @@ window.sendBidPromo = function () {
 
     let params = {
         type: 16,
-        text: JSON.stringify({
-            name: name.value,
-            yearReleased: year.value,
-        })
+        name: name.value,
+        year: year.value,
     }
     api_postEmail(params).then(res => {
-        if (res && res.ok) sendMessage('Заявка оптарвлена')
-        else sendMessage('Сервер не принял', 'error')
+        if (res) {
+            setTimeout(() => sendMessage('Ваша заявка успешно отправлена'), 500);
+            document.querySelector(`.formBlock`).innerHTML =
+                '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
+        }
     })
 }

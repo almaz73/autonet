@@ -36,16 +36,16 @@ window.sendBid = function (fName) {
         // form: '/services/tehnicheskiy-osmotr/',
         // description: 'Техосмотр. ',
         type: 4,
-        text: JSON.stringify({
-            name: name.value,
-            phone: phone.value,
-            city: city.value
-        })
+        name: name.value,
+        phone: phone.value,
+        city: city.value
     }
-    console.log('params', params)
     api_postEmail(params).then(res => {
-        if (res && res.ok) sendMessage('Заявка оптарвлена')
-        else sendMessage('Сервер не принял', 'error')
+        if (res) {
+            setTimeout(() => sendMessage('Ваша заявка успешно отправлена'), 500);
+            document.querySelector(`.${fName} .formBlock`).innerHTML =
+                '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
+        }
     })
 }
 

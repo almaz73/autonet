@@ -1,6 +1,5 @@
 import {declOfNum, formatterShowPrice, checkFormFields} from '@/js/global-func.js'
 import {api_postEmail} from "@/js/apibase.js";
-import {sendMessage} from "@/js/sendMessage.js"
 
 
 const slider0 = document.querySelector('.slider__ui.slider0');
@@ -166,22 +165,21 @@ bid_for_car && bid_for_car.addEventListener('click', () => {
     let params = {
         // formName: 'spesialCredit',
         type: 6,
-        text: JSON.stringify({
-            price: price,
-            credit: credit,
-            forMonth: forMonth,
-            year: field4.innerHTML,
-            fio: input_name.value,
-            tel: input_tel.value,
-        })
+        price: price,
+        credit: credit,
+        forMonth: forMonth,
+        year: field4.innerHTML,
+        fio: input_name.value,
+        phone: input_tel.value,
     }
 
-    console.log(params)
-
     api_postEmail(params).then(res => {
-        if (res && res.ok) sendMessage('Запрос успешно отправлен')
-        else sendMessage('Ошибка при отправки запроса', 'error')
-        clearFields()
+        if (res) {
+            setTimeout(() => sendMessage('Ваша заявка успешно отправлена'), 500);
+            document.querySelector(`.bid .formBlock`).innerHTML =
+                '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
+            clearFields()
+        }
     })
 
     function clearFields() {

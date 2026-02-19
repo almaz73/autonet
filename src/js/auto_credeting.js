@@ -32,7 +32,7 @@ window.sendBid = function (fName) {
     const credit = document.querySelector('#field1')
     const payment = document.querySelector('#field2')
     const yearCred = document.querySelector('#field3')
-    const perMont = document.querySelector('#field4')
+    const forMonth = document.querySelector('#field4')
 
     let capcthadiv = document.querySelector(`.${fName} .capctha-div`)
     let name = document.querySelector(`.${fName} [name="name"]`)
@@ -51,23 +51,20 @@ window.sendBid = function (fName) {
     if (price) params.price = price.innerHTML
     if (year) params.year = year.innerHTML
     if (city) params.city = city.innerHTML
-    if (priceCred) params.priceCred = priceCred.innerHTML
+    if (priceCred) params.price = priceCred.innerHTML
     if (credit) params.credit = credit.innerHTML
     if (payment) params.payment = payment.innerHTML
     if (yearCred) params.yearCred = yearCred.innerHTML
-    if (perMont) params.perMont = perMont.innerHTML
+    if (forMonth) params.forMonth = forMonth.innerHTML
 
-    console.log('params', params)
-    let newParams = {
-        // form: '/services/crediting/',
-        // description: 'Автокредитование. Ждут обратного звонка, хотят узнать сколько будет автокредит, тут есть два варианта запроса',
-        type: 6,
-        text: JSON.stringify(params)
-    }
+    params.type = 6
 
-    api_postEmail(newParams).then(res => {
-        if (res && res.ok) sendMessage('Заявка оптарвлена')
-        else sendMessage('Сервер не принял', 'error')
+    api_postEmail(params).then(res => {
+        if (res) {
+            setTimeout(()=>sendMessage('Ваша заявка успешно отправлена'), 500);
+            document.querySelector(`.${fName} .formBlock`).innerHTML =
+                '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
+        }
     })
 }
 

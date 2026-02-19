@@ -1,6 +1,5 @@
 import {emailValidate, getUrlParam, checkFormFields} from "@/js/global-func.js"
 import {api_postEmail} from "@/js/apibase.js";
-import {sendMessage} from "@/js/sendMessage.js";
 
 window.emailValidate = emailValidate
 
@@ -24,23 +23,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let parans = {
             type: 2,
-            text: JSON.stringify({
-                name: fio.value,
-                phone: phone.value,
-                email: email.value,
-                id: id
-            })
+            name: fio.value,
+            phone: phone.value,
+            email: email.value,
+            id: id
         }
         api_postEmail(parans).then(res => {
-            if (res && res.ok) {
-                sendMessage('Бронирование успешно отправлено')
-                button.disabled = true
-                button.style.opacity = .5
-            } else {
-                sendMessage('Ошибка при отправки запроса', 'warning')
-                button.disabled = true
-                button.style.opacity = .5
-            }
+            setTimeout(()=>sendMessage('Ваша заявка успешно отправлена'), 500);
+            document.querySelector(`.formBlock`).innerHTML =
+                '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
         })
     }
 })

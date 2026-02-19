@@ -1,5 +1,4 @@
 import {api_PostEmailWithAttachement} from "@/js/apibase.js";
-import {sendMessage} from "@/js/sendMessage.js";
 import {cities, vacanciesList} from "@/js/global-constants.js"
 import {checkFormFields, formatterShowPrice} from "@/js/global-func.js";
 

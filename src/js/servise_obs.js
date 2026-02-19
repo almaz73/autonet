@@ -1,5 +1,5 @@
 import {initCaptcha} from "@/js/captcha.js";
-import {checkFormFields, constructorForm, initSubField, simplePhone} from "@/js/global-func.js";
+import {checkFormFields, constructorForm, initSubField} from "@/js/global-func.js";
 import {api_postEmail} from "@/js/apibase.js";
 
 
@@ -42,34 +42,32 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 window.send_obsl = function (fName) {
-    let capcthadiv = document.querySelector(`.${fName} .capctha-div`)
-    let checkbox = document.querySelector(`.${fName} [type="checkbox" ]`)
-    let name = document.querySelector(`.${fName} [name="name"]`)
-    let phone = document.querySelector(`.${fName} [name="phone"]`)
-    let city = document.querySelector(`.${fName} [name="city"]`)
-    let brand = document.querySelector(`.${fName} [name="brand"]`)
-    let model = document.querySelector(`.${fName} [name="model"]`)
-    let year = document.querySelector(`.${fName} [name="year"]`)
-    let select = document.querySelector(`.${fName} [name="select"]`)
-
+    const capcthadiv = document.querySelector(`.${fName} .capctha-div`)
+    const checkbox = document.querySelector(`.${fName} [type="checkbox" ]`)
+    const name = document.querySelector(`.${fName} [name="name"]`)
+    const phone = document.querySelector(`.${fName} [name="phone"]`)
+    const city = document.querySelector(`.${fName} [name="city"]`)
+    const selection = document.querySelector(`.${fName} [name="selection"]`)
 
     if (checkFormFields([capcthadiv, name, phone, city, checkbox])) return false
 
-    let params = {
+    const params = {
         // form: '/services/servisnoe-obsluzhivanie/',
         // description: 'Сервисное обслуживание, техосмотр по перечню услуг',
         type: 13,
-        text: JSON.stringify({
-            name: name.value,
-            phone: phone.value,
-            city: city.value,
-            select: select.value
-        })
+        name: name.value,
+        phone: phone.value,
+        city: city.value,
+        selection: selection.value
     }
-    console.log('params', params)
+
+
     api_postEmail(params).then(res => {
-        if (res && res.ok) sendMessage('Заявка оптарвлена')
-        else sendMessage('Сервер не принял', 'error')
+        if (res) {
+            setTimeout(()=>sendMessage('Ваша заявка успешно отправлена'), 500);
+            document.querySelector(`.${fName} .formBlock`).innerHTML =
+                '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
+        }
     })
 }
 

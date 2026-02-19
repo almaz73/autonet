@@ -1,4 +1,4 @@
-import {sendMessage} from "@/js/sendMessage.js";
+
 import {withCache} from "@/js/apibase_cache.js"
 
 const server = 'https://ext.cartat.ru/exchange'
@@ -6,16 +6,35 @@ const server = 'https://ext.cartat.ru/exchange'
 export function api_postEmail(params) {
     let request = '/api/Email/PostEmail'
 
+    // собираем текст для письма
+    let letter = ''
+    if (params.fio || params.name) letter += 'Имя: ' + (params.fio || params.name) + '\n'
+    if (params.phone) letter += 'Телефон: ' + params.phone + '\n'
+    if (params.city) letter += 'Город: ' + params.city + '\n'
+    if (params.email) letter += 'Email: ' + params.email + '\n'
+    if (params.aboutYourself) letter += 'О себе: ' + params.aboutYourself + '\n'
+    if (params.credit) letter += 'Сумма кредита: ' + params.credit + '\n'
+    if (params.payment) letter += 'Первый платеж: ' + params.payment + '\n'
+    if (params.yearCred) letter += 'Годов кредита: ' + params.yearCred + '\n'
+    if (params.forMonth) letter += 'Платеж в месяц: ' + params.forMonth + '\n'
+    if (params.price) letter += 'Стоиомрсть автомобиля: ' + params.price + '\n'
+    if (params.text) letter += 'Текст: ' + params.text + '\n'
+    if (params.selection) letter += 'Выбор сервиса: ' + params.selection + '\n'
+    if (params.brand) letter += 'Марка: ' + params.brand + '\n'
+    if (params.model) letter += 'Модель: ' + params.model + '\n'
+    if (params.year) letter += 'Год: ' + params.year + '\n'
+    if (params.osago) letter += 'Автострахование: ' + params.osago + '\n'
+
     return fetch(server + request, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
         },
-        body: JSON.stringify( params)
+        body: JSON.stringify({type: params.type || 10, text: letter})
     })
         .then(res => res.json())
         .then(res => res)
-        .catch(error => sendMessage('Сервер отказал!', 'error'));
+        .catch(() => sendMessage('Сервер не принял письмо!', 'error'));
 }
 
 
@@ -27,22 +46,26 @@ export function api_PostEmailWithAttachement(params) {
     const formData = new FormData();
 
     formData.append('type', 11);
-    formData.append('text', JSON.stringify({
-        fio: params.fio,
-        phone: params.phone,
-        city: params.city,
-        email: params.email,
-        aboutYourself: params.aboutYourself,
-    }));
+
+    // собираем текст для письма
+    let letter = ''
+    if (params.fio || params.name) letter += 'Имя: ' + (params.fio || params.name) + '\n'
+    if (params.phone) letter += 'Телефон: ' + params.phone + '\n'
+    if (params.city) letter += 'Город: ' + params.city + '\n'
+    if (params.email) letter += 'Email: ' + params.email + '\n'
+    if (params.aboutYourself) letter += 'О себе: ' + params.aboutYourself + '\n'
+
+
+    formData.append('text', letter);
     formData.append('resume', params.resume);
 
     return fetch(server + request, {
         method: 'POST',
-        body:  formData //   body:  JSON.stringify(param)
+        body: formData //   body:  JSON.stringify(param)
     })
         .then(res => res.json())
         .then(res => res)
-        .catch(error => sendMessage('Сервер отказал!', 'error'));
+        .catch(() => sendMessage('Сервер отказал!', 'error'));
 }
 
 

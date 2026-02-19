@@ -38,13 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let form1 = document.querySelector('.formBlock.v1')
 
-    let formstate = constructorForm(
+    form1.innerHTML = constructorForm(
         'state1',
         ['name*', 'phone*', 'city*'],
         'getQuoite',
         null,
         legenda)
-    form1.innerHTML = formstate
     initCaptcha()
 })
 
@@ -60,16 +59,16 @@ window.getQuoite = function (fName) {
     let params = {
         // description: 'Страница Партнерам. Вероятные будущие владельцы франшизы в новом городе ',
         type: 15,
-        text: JSON.stringify({
-            name: name.value,
-            phone: phone.value,
-            city: city.value
-        })
+        name: name.value,
+        phone: phone.value,
+        city: city.value
     }
-    console.log('params', params)
     api_postEmail(params).then(res => {
-        if (res && res.ok) sendMessage('Заявка оптарвлена')
-        else sendMessage('Сервер не принял', 'error')
+        if (res) {
+            setTimeout(() => sendMessage('Ваша заявка успешно отправлена'), 500);
+            document.querySelector(`.${fName} .formBlock`).innerHTML =
+                '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
+        }
     })
 }
 
@@ -87,17 +86,16 @@ window.questionFranshiza = function (fName) {
         // form: '/franshiza/',
         // description: 'Вопрос генеральному директору',
         type: 10,
-        text: JSON.stringify({
-            type: 'boss',
-            name: name.value,
-            message: message.value,
-            phone: phone.value,
-            city: city.value
-        })
+        name: name.value,
+        message: message.value,
+        phone: phone.value,
+        city: city.value
     }
-    console.log('params', params)
     api_postEmail(params).then(res => {
-        if (res && res.ok) message('Заявка оптарвлена')
-        else message('Сервер не принял', 'error')
+        if (res) {
+            setTimeout(() => sendMessage('Ваша заявка успешно отправлена'), 500);
+            document.querySelector(`.${fName} .formBlock`).innerHTML =
+                '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
+        }
     })
 }
