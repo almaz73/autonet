@@ -46,7 +46,6 @@ function initChangeCity() {
     })
 
     function selectedCity(city) {
-        console.log('!!!selectedCity val = ', city)
         let bigCombo = document.querySelector('.big-combo')
         bigCombo && bigCombo.blur()
         setTimeout(() => initVacancies(city))
@@ -72,7 +71,7 @@ function initVacancies(city) {
                 <span class="fileLabel">
                     <input placeholder="Резюме *" type="file" name="resume">
                     Резюме
-<!--                    <span class="filePlace"> Файл выбран </span>-->
+                    <span class="filePlace"> Выберите файйл </span>
                 </span>
                 </div>
                 <div class="details">
@@ -158,13 +157,21 @@ window.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('resize', toSmall);
 
-    const resume = document.querySelector(`.generalForm [name="resume"]`)
-    const placeForFileName = document.querySelector(`#fN`)
-    resume.addEventListener('change', function () {
-        if (this.files && this.files[0]) placeForFileName.textContent = this.files[0].name;
-        else placeForFileName.textContent = 'Загрузить файл';
-    });
+    // Функция для добавления слушателей
+    function addFileInputListeners() {
+        console.log(0)
+        const resumes = document.querySelectorAll(`[name="resume"]`);
+        resumes.forEach((resume) => {
+            resume.addEventListener('change', function () {
+                const filePlace = this.closest('.details').querySelector('.filePlace');
+                if (this.files && this.files[0] && filePlace) {
+                    filePlace.textContent = this.files[0].name;
+                }
+            });
+        });
+    }
 
+    setTimeout(addFileInputListeners, 500)
 
     // нажатие кнопок отправки
     window.sendResume = function (formId) {
@@ -176,17 +183,18 @@ window.addEventListener('DOMContentLoaded', () => {
         const text = document.querySelector(`.${formId} [name="text"]`)
         const resume = document.querySelector(`.${formId} [name="resume"]`)
         const checkbox = document.querySelector(`.${formId} [type="checkbox"]`)
-        // const filePlace =  document.querySelector(`.${formId} .filePlace`)
-        // console.log('filePlace',filePlace)
 
         if (formId === 'generalForm') {
             const modal__error = document.querySelector('.modal__error')
             modal__error.style.display = checkbox.checked ? 'none' : 'block'
         }
 
-
+        if (resume && !resume.files[0]) {
+            if (formId === 'generalForm') resume.parentNode.parentNode.style.border = '1px solid red'
+            else resume.parentNode.style.border = '1px solid red'
+        }
         if (checkFormFields([capcthadiv, fio, city, phone, checkbox])) return false
-        if( resume && !resume.files[0]) return sendMessage('Прикрепите файл с резюме', 'warning')
+        if (resume && !resume.files[0]) return sendMessage('Прикрепите файл с резюме', 'warning')
 
         let params = {
             fio: fio.value,
@@ -199,7 +207,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         api_PostEmailWithAttachement(params).then(res => {
             if (res && res.ok) sendMessage('Ваше сообщение успешно получено!')
-            else sendMessage('Сервер не принял', 'error')
+            else sendMessage('Сервер вакансию не принял', 'error')
         })
 
     }
