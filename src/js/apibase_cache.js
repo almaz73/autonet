@@ -14,14 +14,16 @@ Object.keys(CACHE).map(key => {
 /* Некоторые методы кэшируем  пока не загрузится основной, для мгновенного показа, если нет времени ожидания */
 
 export function withCache(request, callback, hour) {
-    if (CACHE[request]) {
+   /* if (CACHE[request]) {
         if (hour && CACHE[request].hour > Date.now()) {
             // console.log(`${request}_${hour}м.`)
             return callback(CACHE[request].data)
         }
         // console.log(' > > > > > > отдаю РАЗ')
         callback(CACHE[request].data)
-    }
+    }*/
+    //TODO пока временно во время разработки отключаем кэш
+
 
     // console.warn('Н А  С Е Р В Е Р   ! ! !')
     return fetch(server + request).then(res => {
