@@ -166,8 +166,14 @@ export function checkFormFields(arr) {
         }
 
         if (el && el.classList.contains('attent')) el.style.display = forAttent ? 'block' : 'none'
-        if (el && el.name === 'email' && el.value) return emailValidate(el.value)
-        if (el && el.name === 'phone' && el.value && simplePhone(el.value).length !== 11) sendMessage('Телефон неправильный', 'warning')
+        if (el && el.name === 'email' && el.value) {
+            if (emailValidate(el.value)) exist = true
+        }
+        if (el && el.name === 'phone' && el.value && simplePhone(el.value).length !== 11) {
+            sendMessage('Телефон неправильный', 'warning')
+            el.style.border = '1px solid red';
+            exist = true
+        }
     })
 
     if (exist) sendMessage('Остались обязательные поля', 'warning')

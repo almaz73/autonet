@@ -4,7 +4,7 @@ import {withCache} from "@/js/apibase_cache.js"
 const server = 'https://ext.cartat.ru/exchange'
 
 export function api_postEmail(params) {
-    let request = '/api/Feedback/postEmail'
+    let request = '/api/Email/PostEmail'
 
     return fetch(server + request, {
         method: 'POST',

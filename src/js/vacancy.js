@@ -69,7 +69,7 @@ function initVacancies(city) {
                 <div class="details"><input placeholder="Эл. почта" name="email"></div>
                 <div class="details">
                 <span class="fileLabel">
-                    <input placeholder="Резюме *" type="file" name="resume">
+                    <input placeholder="Резюме *" type="file" name="resume" accept=".doc, .docx, .odt, .pdf, .rtf, .tex, .wpd">
                     Резюме
                     <span class="filePlace"> Выберите файйл </span>
                 </span>
@@ -166,6 +166,8 @@ window.addEventListener('DOMContentLoaded', () => {
                 const filePlace = this.closest('.details').querySelector('.filePlace');
                 if (this.files && this.files[0] && filePlace) {
                     filePlace.textContent = this.files[0].name;
+                    resume.parentNode.parentNode.style.border = ''
+                    resume.parentNode.style.border = ''
                 }
             });
         });
@@ -199,11 +201,11 @@ window.addEventListener('DOMContentLoaded', () => {
         let params = {
             fio: fio.value,
             phone: phone.value,
-            email: email && email.value,
-            city: city && city.value,
-            aboutYourself: text && text.value,
             resume: resume && resume.files[0]
         }
+        if (city && city.value) params.city = city.value
+        if (text && text.value) params.aboutYourself = text.value
+        if (email && email.value) params.email = email.value
 
         api_PostEmailWithAttachement(params).then(res => {
             if (res && res.ok) sendMessage('Ваше сообщение успешно получено!')
