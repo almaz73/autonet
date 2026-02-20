@@ -9,3 +9,4 @@ import '@/js/contacts_footer.js'
 import '@/js/compareCars.js'
 import '@/js/favoriteCars.js'
 import "@/js/sendMessage.js"
+import '@/js/preloader.js'

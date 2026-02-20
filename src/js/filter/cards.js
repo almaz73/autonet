@@ -112,7 +112,12 @@ function galeryEvents(id, images) {
 }
 
 export function fill(cars, currentCars, totalPages) {
-    cards = cards || document.querySelector('cards');
+    console.log(11111111)
+
+    cards = document.querySelector('cards');
+
+    console.log(cards, cards)
+
     window.compareCars = currentCars
     window.favorCars = cars
     if (!cards) return false
@@ -126,7 +131,9 @@ export function fill(cars, currentCars, totalPages) {
     if (!cars.length) cards.innerHTML += `<abdul></abdul>`
 
 
-    if (location.pathname !== '/' && location.pathname !== '/personal/favorite-cars/') cards.innerHTML += `<div class="pager">Страницы: <span id="pager"></span></div>`
+    if (location.pathname !== '/' && location.pathname !== '/personal/favorite-cars/') {
+        cards.innerHTML += `<div class="pager">Страницы: <span id="pager"></span></div>`
+    }
 
     preparePager(totalPages)
     initChosen()

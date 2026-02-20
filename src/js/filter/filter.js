@@ -1,9 +1,8 @@
 import {fill} from '@/js/filter/cards.js';
 import {api_getSpecials, api_getList} from "@/js/apibase.js"
-import {prepareCars, declOfNum, globalValues, setPriceOrder, toDisable, carCountText} from '@/js/global-func.js'
+import {prepareCars, declOfNum, globalValues, setPriceOrder, carCountText} from '@/js/global-func.js'
 import {fillCars} from '@/js/filter/filCars.js'
 import {getModelList, setExtention} from '@/js/filter/filter-ctrl-filling.js'
-import { getUrlParam} from '@/js/global-func.js'
 import {tyresForList} from "@/js/global-constants.js";
 
 export function filter_changed(items, name) {
@@ -85,11 +84,11 @@ function getVitrina(ishandEvent) {
         if (!ishandEvent) setExtention(false)
 
         let bt = document.querySelector('#set_filter')
-        toDisable(bt, true)
+        showPreloader(true, bt)
 
         filterParams.limit = 0
         api_getList(filterParams, res => {
-            toDisable(bt, false) // раздизаблим кнопку
+            showPreloader(false, bt)
             declOfNum(res.totalCount, ['предложение', 'предложений', 'предложений'])
             carCountText(res.totalCount)
         })
@@ -118,11 +117,7 @@ function getVitrina(ishandEvent) {
     }
 }
 
-const id = getUrlParam('id');
-
-if (!id) getVitrina()
 window.getVitrina = getVitrina
-
 window.goToCars = function () {
     let link  = `?`
     if (filterParams.brandId) {

@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const id = getUrlParam('id');
     const name = getUrlParam('name');
     const h3_place = document.querySelector('#h3-place')
+    showPreloader(true, button)
+
     h3_place.innerHTML = `Вы бронируете автомобиль: <a href="/cars/car.html?id=${id}" target="_blank">${name}</a>`
 
     button.addEventListener('click', save)
@@ -28,10 +30,14 @@ document.addEventListener('DOMContentLoaded', () => {
             email: email.value,
             id: id
         }
+        showPreloader(true, button)
         api_postEmail(parans).then(res => {
-            setTimeout(()=>sendMessage('Ваша заявка успешно отправлена'), 500);
-            document.querySelector(`.formBlock`).innerHTML =
-                '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
+            if(res) {
+                setTimeout(() => sendMessage('Ваша заявка успешно отправлена'), 500);
+                document.querySelector(`.formBlock`).innerHTML =
+                    '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
+            }
+            showPreloader(false, button)
         })
     }
 })

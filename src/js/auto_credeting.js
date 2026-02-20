@@ -34,17 +34,19 @@ window.sendBid = function (fName) {
     const yearCred = document.querySelector('#field3')
     const forMonth = document.querySelector('#field4')
 
-    let capcthadiv = document.querySelector(`.${fName} .capctha-div`)
-    let name = document.querySelector(`.${fName} [name="name"]`)
-    let phone = document.querySelector(`.${fName} [name="phone"]`)
-    let city = document.querySelector(`.${fName} [name="city"]`)
-    let price = document.querySelector(`.${fName} [name="price"]`)
-    let year = document.querySelector(`.${fName} [name="year"]`)
-    let checkbox = document.querySelector(`.${fName} [type="checkbox" ]`)
+    const capcthadiv = document.querySelector(`.${fName} .capctha-div`)
+    const name = document.querySelector(`.${fName} [name="name"]`)
+    const phone = document.querySelector(`.${fName} [name="phone"]`)
+    const city = document.querySelector(`.${fName} [name="city"]`)
+    const price = document.querySelector(`.${fName} [name="price"]`)
+    const year = document.querySelector(`.${fName} [name="year"]`)
+    const checkbox = document.querySelector(`.${fName} [type="checkbox" ]`)
+    const button = document.querySelector(`.${fName} button`)
+
 
     if (checkFormFields([capcthadiv, name, city, phone, checkbox])) return false
 
-    let params = {
+    const params = {
         name: name.value,
         phone: phone.value,
     }
@@ -58,13 +60,14 @@ window.sendBid = function (fName) {
     if (forMonth) params.forMonth = forMonth.innerHTML
 
     params.type = 6
-
+    showPreloader(true, button)
     api_postEmail(params).then(res => {
         if (res) {
             setTimeout(()=>sendMessage('Ваша заявка успешно отправлена'), 500);
             document.querySelector(`.${fName} .formBlock`).innerHTML =
                 '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
         }
+        showPreloader(false, button)
     })
 }
 

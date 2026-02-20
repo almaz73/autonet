@@ -48,41 +48,45 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 window.getQuoite = function (fName) {
-    let name = document.querySelector(`.${fName} [name="name"]`)
-    let phone = document.querySelector(`.${fName} [name="phone"]`)
-    let city = document.querySelector(`.${fName} [name="city"]`)
-    let capcthadiv = document.querySelector(`.${fName} .capctha-div`)
-    let checkbox = document.querySelector(`.${fName} [type="checkbox" ]`)
+    const name = document.querySelector(`.${fName} [name="name"]`)
+    const phone = document.querySelector(`.${fName} [name="phone"]`)
+    const city = document.querySelector(`.${fName} [name="city"]`)
+    const capcthadiv = document.querySelector(`.${fName} .capctha-div`)
+    const checkbox = document.querySelector(`.${fName} [type="checkbox"]`)
+    const button = document.querySelector(`.${fName} button`)
 
     if (checkFormFields([capcthadiv, name, phone, city, checkbox])) return false
 
-    let params = {
+    const params = {
         // description: 'Страница Партнерам. Вероятные будущие владельцы франшизы в новом городе ',
         type: 15,
         name: name.value,
         phone: phone.value,
         city: city.value
     }
+    showPreloader(true, button)
     api_postEmail(params).then(res => {
         if (res) {
             setTimeout(() => sendMessage('Ваша заявка успешно отправлена'), 500);
             document.querySelector(`.${fName} .formBlock`).innerHTML =
                 '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
         }
+        showPreloader(false, button)
     })
 }
 
 window.questionFranshiza = function (fName) {
-    let name = document.querySelector(`.${fName} [name="name"]`)
-    let phone = document.querySelector(`.${fName} [name="phone"]`)
-    let city = document.querySelector(`.${fName} [name="city"]`)
-    let message = document.querySelector(`.${fName} [name="message"]`)
-    let capcthadiv = document.querySelector(`.${fName} .capctha-div`)
-    let checkbox = document.querySelector(`.${fName} [type="checkbox" ]`)
+    const name = document.querySelector(`.${fName} [name="name"]`)
+    const phone = document.querySelector(`.${fName} [name="phone"]`)
+    const city = document.querySelector(`.${fName} [name="city"]`)
+    const message = document.querySelector(`.${fName} [name="message"]`)
+    const capcthadiv = document.querySelector(`.${fName} .capctha-div`)
+    const checkbox = document.querySelector(`.${fName} [type="checkbox"]`)
+    const button = document.querySelector(`.${fName} button`)
 
     if (checkFormFields([capcthadiv, name, phone, city, checkbox])) return false
 
-    let params = {
+    const params = {
         // form: '/franshiza/',
         // description: 'Вопрос генеральному директору',
         type: 10,
@@ -91,11 +95,13 @@ window.questionFranshiza = function (fName) {
         phone: phone.value,
         city: city.value
     }
+    showPreloader(true, button)
     api_postEmail(params).then(res => {
         if (res) {
             setTimeout(() => sendMessage('Ваша заявка успешно отправлена'), 500);
             document.querySelector(`.${fName} .formBlock`).innerHTML =
                 '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
         }
+        showPreloader(false, button)
     })
 }

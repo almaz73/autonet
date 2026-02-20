@@ -17,25 +17,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 window.sendBid = function (fName) {
-    let capcthadiv = document.querySelector(`.${fName} .capctha-div`)
-    let name = document.querySelector(`.${fName} [name="name"]`)
-    let phone = document.querySelector(`.${fName} [name="phone"]`)
-    let checkbox = document.querySelector(`.${fName} [type="checkbox" ]`)
+    const capcthadiv = document.querySelector(`.${fName} .capctha-div`)
+    const name = document.querySelector(`.${fName} [name="name"]`)
+    const phone = document.querySelector(`.${fName} [name="phone"]`)
+    const checkbox = document.querySelector(`.${fName} [type="checkbox"]`)
+    const button = document.querySelector(`.${fName} button`)
 
     if (checkFormFields([capcthadiv, name, phone, checkbox])) return false
 
-    let params = {
+    const params = {
         // form: '/services/shinnyy-сentr/',
         // description: 'Шинный центр. Подарок по диагностике колес, если сюда пишут',
         type: 5,
         name: name.value,
         phone: phone.value,
     }
+    showPreloader(true, button)
     api_postEmail(params).then(res => {
         if (res) {
             setTimeout(() => sendMessage('Ваша заявка успешно отправлена'), 500);
             document.querySelector(`.${fName} .formBlock`).innerHTML =
                 '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
         }
+        showPreloader(false, button)
     })
 }

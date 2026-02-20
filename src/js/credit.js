@@ -154,15 +154,16 @@ function changeYear(val) {
 
 
 bid_for_car && bid_for_car.addEventListener('click', () => {
-    let input_name = document.querySelector('.main_cred-col.name input')
-    let input_tel = document.querySelector('.main_cred-col.tel input')
-    let captcha = document.querySelector('.capctha-div.n3')
-    let checkbox = document.getElementById('n3')
-    let attent = document.querySelector('.attent.n3')
+    const input_name = document.querySelector('.main_cred-col.name input')
+    const input_tel = document.querySelector('.main_cred-col.tel input')
+    const captcha = document.querySelector('.capctha-div.n3')
+    const button = document.querySelector('.main_cred-col button')
+    const checkbox = document.getElementById('n3')
+    const attent = document.querySelector('.attent.n3')
 
     if (checkFormFields([input_name, input_tel, captcha, checkbox, attent])) return false
 
-    let params = {
+    const params = {
         // formName: 'spesialCredit',
         type: 6,
         price: price,
@@ -172,14 +173,15 @@ bid_for_car && bid_for_car.addEventListener('click', () => {
         fio: input_name.value,
         phone: input_tel.value,
     }
-
+    showPreloader(true, button)
     api_postEmail(params).then(res => {
         if (res) {
             setTimeout(() => sendMessage('Ваша заявка успешно отправлена'), 500);
-            document.querySelector(`.bid .formBlock`).innerHTML =
+            document.querySelector(`.fileds`).innerHTML =
                 '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
             clearFields()
         }
+        showPreloader(false, button)
     })
 
     function clearFields() {

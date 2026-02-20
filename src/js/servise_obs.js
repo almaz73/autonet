@@ -48,6 +48,7 @@ window.send_obsl = function (fName) {
     const phone = document.querySelector(`.${fName} [name="phone"]`)
     const city = document.querySelector(`.${fName} [name="city"]`)
     const selection = document.querySelector(`.${fName} [name="selection"]`)
+    const button =  document.querySelector(`.${fName} button`)
 
     if (checkFormFields([capcthadiv, name, phone, city, checkbox])) return false
 
@@ -61,13 +62,14 @@ window.send_obsl = function (fName) {
         selection: selection.value
     }
 
-
+    showPreloader(true, button)
     api_postEmail(params).then(res => {
         if (res) {
             setTimeout(()=>sendMessage('Ваша заявка успешно отправлена'), 500);
             document.querySelector(`.${fName} .formBlock`).innerHTML =
                 '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
         }
+        showPreloader(false, button)
     })
 }
 

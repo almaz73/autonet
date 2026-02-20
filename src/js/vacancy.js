@@ -62,7 +62,7 @@ function initVacancies(city) {
         let formVacancy = `
 <div class="request_vac">
             <div class="ttl_a">Откликнуться на вакансию</div>
-            <div class="smForm" id="lettleForm">
+            <div class="smForm fff${ind}">
                 <div class="details"><input placeholder="Ваше имя *" required name="fio"></div>
                 <div class="details"><input placeholder="Телефон *" required name="phone" oninput="formattingPhone(this)"></div>
                 <div class="details"><input placeholder="Эл. почта" name="email"></div>
@@ -122,7 +122,7 @@ function initListeners(state) {
     document.querySelectorAll('.vacancy_item').forEach(block => {
         // Сохраняем исходную высоту для анимации
         const firstLine = block.querySelector('.fst_desc');
-        const firstLineHeight = firstLine.offsetHeight;
+        const firstLineHeight = firstLine && firstLine.offsetHeight;
 
         block.style.maxHeight = firstLineHeight + 'px';
         if (state) block.querySelector('.fst_desc').addEventListener('click', openVacancy);
@@ -175,23 +175,25 @@ window.addEventListener('DOMContentLoaded', () => {
     setTimeout(addFileInputListeners, 500)
 
     // нажатие кнопок отправки
-    window.sendResume = function (formId) {
-        const capcthadiv = document.querySelector(`.${formId} .capctha-div`)
-        const fio = document.querySelector(`.${formId} [name="fio"]`)
-        const city = document.querySelector(`.${formId} [name="city"]`)
-        const phone = document.querySelector(`.${formId} [name="phone"]`)
-        const email = document.querySelector(`.${formId} [name="email"]`)
-        const text = document.querySelector(`.${formId} [name="text"]`)
-        const resume = document.querySelector(`.${formId} [name="resume"]`)
-        const checkbox = document.querySelector(`.${formId} [type="checkbox"]`)
+    window.sendResume = function (fName) {
+        const capcthadiv = document.querySelector(`.${fName} .capctha-div`)
+        const fio = document.querySelector(`.${fName} [name="fio"]`)
+        const city = document.querySelector(`.${fName} [name="city"]`)
+        const phone = document.querySelector(`.${fName} [name="phone"]`)
+        const email = document.querySelector(`.${fName} [name="email"]`)
+        const text = document.querySelector(`.${fName} [name="text"]`)
+        const resume = document.querySelector(`.${fName} [name="resume"]`)
+        const checkbox = document.querySelector(`.${fName} [type="checkbox"]`)
+        const button =  document.querySelector(`.${fName} button`)
 
-        if (formId === 'generalForm') {
+
+        if (fName === 'generalForm') {
             const modal__error = document.querySelector('.modal__error')
             modal__error.style.display = checkbox.checked ? 'none' : 'block'
         }
 
         if (resume && !resume.files[0]) {
-            if (formId === 'generalForm') resume.parentNode.parentNode.style.border = '1px solid red'
+            if (fName === 'generalForm') resume.parentNode.parentNode.style.border = '1px solid red'
             else resume.parentNode.style.border = '1px solid red'
         }
         if (checkFormFields([capcthadiv, fio, city, phone, checkbox])) return false
@@ -206,9 +208,14 @@ window.addEventListener('DOMContentLoaded', () => {
         if (text && text.value) params.aboutYourself = text.value
         if (email && email.value) params.email = email.value
 
+        showPreloader(true, button)
         api_PostEmailWithAttachement(params).then(res => {
-            if (res && res.ok) sendMessage('Ваше сообщение успешно получено!')
-            else sendMessage('Сервер вакансию не принял', 'error')
+            if (res) {
+                setTimeout(() => sendMessage('Ваша заявка успешно отправлена'), 500);
+                document.querySelector(`.${fName}`).innerHTML =
+                    '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
+            }
+            showPreloader(false, button)
         })
 
     }

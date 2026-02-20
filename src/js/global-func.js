@@ -294,14 +294,6 @@ ${field === 'phone' ? 'oninput="formattingPhone(this)"' : ''}>
     return html
 }
 
-/**  Глобальный дизаблинг кнопок, во время обращения к серверу **/
-/* не всегда кнопки сами сообщают чтоон нажат (фильтре) дизаблить надо их тоже */
-export function toDisable(button, state) {
-    if (!button) return false
-    button.style.opacity = state ? .5 : 1
-    button.disabled = state
-}
-
 export function carCountText(totalCount) {
     let field = document.querySelector('#set_filter span.number')
     if (field) field.innerHTML = totalCount

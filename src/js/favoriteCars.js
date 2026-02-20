@@ -45,8 +45,7 @@ export function initFavotite(cars_) {
         if (favoriteButton) favoriteButton.classList.add('chosen')
     })
 
-    let preload_getList = document.querySelector('#preload_getList')
-    if (preload_getList) preload_getList.style.display = 'none'
+    showPreloader(false)
 }
 
 function getFavoriteCars() {

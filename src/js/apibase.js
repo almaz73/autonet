@@ -57,7 +57,7 @@ export function api_PostEmailWithAttachement(params) {
 
 
     formData.append('text', letter);
-    formData.append('resume', params.resume);
+    formData.append('file', params.resume);
 
     return fetch(server + request, {
         method: 'POST',

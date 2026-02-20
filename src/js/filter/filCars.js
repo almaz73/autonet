@@ -1,6 +1,6 @@
 // обработка location.pathname === '/cars/
 import {api_getList} from "@/js/apibase.js"
-import {getUrlParam, prepareCars, eventBus, setPriceOrder, toDisable, carCountText} from '@/js/global-func.js'
+import {getUrlParam, prepareCars, eventBus, setPriceOrder, carCountText} from '@/js/global-func.js'
 import {setExtention} from "@/js/filter/filter-ctrl-filling.js"
 
 const countPerPage = 20
@@ -188,7 +188,7 @@ export function fillCars(cars, ishandEvent_, filterParams, fill) {
     if (!ishandEvent) FillFilterFromAddressBar(filterParams)
 
     let bt = document.querySelector('#set_filter')
-    toDisable(bt, true)
+    showPreloader(true, bt)
 
     filterParams.limit = countPerPage
     api_getList(filterParams, res => {
@@ -196,7 +196,7 @@ export function fillCars(cars, ishandEvent_, filterParams, fill) {
         cars = prepareCars(res.items)
         let totalPages = Math.ceil(res.totalCount / countPerPage)
         setTimeout(() => fill(cars, res.items, totalPages))
-        toDisable(bt, false)
+        showPreloader(false, bt)
         carCountText(res.totalCount)
         if (ishandEvent || filterParams['brandId']) {
             gotoShowCars()

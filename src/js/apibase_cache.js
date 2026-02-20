@@ -28,8 +28,7 @@ export function withCache(request, callback, hour) {
     // console.warn('Н А  С Е Р В Е Р   ! ! !')
     return fetch(server + request).then(res => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
-        let preload_getList = document.querySelector('#preload_getList') // убираем дизаблед с кнопки
-        if (preload_getList) preload_getList.style.display = 'none'
+        showPreloader(false)
         return res.json();
     })
         .then(res => {

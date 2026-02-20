@@ -212,9 +212,7 @@ export function initChosen() {
 
 
     showChosen()
-
-    let preload_getList = document.querySelector('#preload_getList')
-    if (preload_getList) preload_getList.style.display = 'none'
+    showPreloader(false)
 }
 
 window.initChosen = initChosen
