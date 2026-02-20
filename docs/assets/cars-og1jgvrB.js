@@ -1,4 +1,4 @@
-import{g as f,a as _}from"./main-Cz0YbF_F.js";/* empty css                        */import"./brands-icons-BYuVsg3X.js";import"./filter-controls-DdY1k67J.js";/* empty css                          */import"./swiper_buy-qJVZRekP.js";import"./swiper-starter-C7y6MEyK.js";const y=`<div  class="filter-white">
+import{g as f,a as _}from"./main-Bz9XDWjt.js";/* empty css                        */import"./brands-icons-KFpTdD8y.js";import"./filter-controls-Cn97Qptd.js";/* empty css                          */import"./swiper_buy-qJVZRekP.js";import"./swiper-starter-C7y6MEyK.js";const y=`<div  class="filter-white">
 <div class="filter-white-back filter-fields">
         <div class="frame-filter__item"
              onmouseenter="onCard(this)">
