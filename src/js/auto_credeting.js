@@ -31,8 +31,8 @@ window.sendBid = function (fName) {
     const priceCred = document.querySelector('#field0')
     const credit = document.querySelector('#field1')
     const payment = document.querySelector('#field2')
-    const yearCred = document.querySelector('#field3')
-    const forMonth = document.querySelector('#field4')
+    const forMonth = document.querySelector('#field3')
+    const yearCred = document.querySelector('#field4')
 
     const capcthadiv = document.querySelector(`.${fName} .capctha-div`)
     const name = document.querySelector(`.${fName} [name="name"]`)
