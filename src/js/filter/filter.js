@@ -1,6 +1,13 @@
 import {fill} from '@/js/filter/cards.js';
 import {api_getSpecials, api_getList} from "@/js/apibase.js"
-import {prepareCars, declOfNum, globalValues, setPriceOrder, carCountText} from '@/js/global-func.js'
+import {
+    prepareCars,
+    declOfNum,
+    globalValues,
+    setPriceOrder,
+    carCountText,
+    cleanCarsWithoutPhoto
+} from '@/js/global-func.js'
 import {fillCars} from '@/js/filter/filCars.js'
 import {getModelList, setExtention} from '@/js/filter/filter-ctrl-filling.js'
 import {tyresForList} from "@/js/global-constants.js";
@@ -95,6 +102,7 @@ function getVitrina(ishandEvent) {
 
         let currentCity = localStorage.getItem('selectedCity') || ''
         api_getSpecials(currentCity, res => {
+            res = cleanCarsWithoutPhoto(res)
             cars = prepareCars(res)
             if (!ishandEvent) fill(cars, res)
         })

@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
            left: 50%;
            top: 50px;
            pointer-events: none;
-           
+           display: none;
            z-index: 10000">
     <img src="/icons/load.gif" alt="" style="width: 73px">
 </div>`

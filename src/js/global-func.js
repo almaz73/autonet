@@ -299,3 +299,14 @@ export function carCountText(totalCount) {
     if (field) field.innerHTML = totalCount
         + ' ' + declOfNum(totalCount, ['предложение', 'предложения', 'предложений'])
 }
+
+export function cleanCarsWithoutPhoto(items) {
+
+    // убираем авто без фоток
+    let startLength = items.length
+    let newitems = items.filter(el => el.images.length)
+    let startLength2 = newitems.length
+    if (startLength !== startLength2) console.log("%c без фоток БЫЛО / СТАЛО ", "background: orange; color: black", startLength + '/' + startLength2)
+
+    return newitems
+}

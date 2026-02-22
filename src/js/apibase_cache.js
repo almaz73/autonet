@@ -14,15 +14,12 @@ Object.keys(CACHE).map(key => {
 /* Некоторые методы кэшируем  пока не загрузится основной, для мгновенного показа, если нет времени ожидания */
 
 export function withCache(request, callback, hour) {
-   /* if (CACHE[request]) {
-        if (hour && CACHE[request].hour > Date.now()) {
-            // console.log(`${request}_${hour}м.`)
-            return callback(CACHE[request].data)
-        }
-        // console.log(' > > > > > > отдаю РАЗ')
+   if (CACHE[request] ) {
+        // if (hour && CACHE[request].hour > Date.now()) { //TODO пока временно во время разработки отключаем кэш
+        //     return callback(CACHE[request].data)
+        // }
         callback(CACHE[request].data)
-    }*/
-    //TODO пока временно во время разработки отключаем кэш
+    }
 
 
     // console.warn('Н А  С Е Р В Е Р   ! ! !')
@@ -35,7 +32,6 @@ export function withCache(request, callback, hour) {
             CACHE[request] = {data: res}
             if (hour) CACHE[request].hour = Date.now() + hour * 60 * 1000
             if (res && Object.keys(res).length) localStorage.setItem('CACHE_SERV', JSON.stringify(CACHE))
-            // console.log('!!!! отдаю ДВА ')
 
             return callback(CACHE[request].data)
         })

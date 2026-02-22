@@ -142,6 +142,7 @@ export function getModelList(brandName) {
 
 
 function getDatas() {
+    showPreloader(true)
     Promise.all([
         new Promise(resolve => {
             api_GetBrandList(res => {
@@ -201,6 +202,7 @@ function getDatas() {
 
     ]).then(responses => {
         fillFields() // вот это должно сработать  в конце
+        showPreloader(false)
     }).catch(error => {
         console.error('Произошла ошибка:', error);
     });

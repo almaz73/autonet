@@ -9,16 +9,14 @@ function createNode(item, N) {
     let txt
     if (!isNaN(N)) {
         txt = `<div class='cart' id='galery_${N}' >
-              <img src="/icons/load.gif" alt="" class="smallloader hide"/>
-              <div class='cart__slide'>            
+              <div class='cart__slide'>
+                  <span class='dark-fon'></span>
+                  <div class="fast_show">Быстрый просмотр</div>
                   <img class='photo' alt=''>
                   <div class='cart__blank'>${item.address}</div>
                   <div class='field'>
                       <div class='red'></div>
                   </div>
-                  <span class='dark-fon'>
-                    <img src="/icons/load.gif" alt="" class="gloaballoader"/>
-                  </span>
               </div>
               <a class="big_link" href='${item.href}' title="перейти">
                   <div class='name'>
@@ -62,8 +60,19 @@ function createNode(item, N) {
     cards.innerHTML += txt;
 }
 
+function preloadImages(urls) {
+    // act ajnrb pfhfytt gjluhe;f.
+    urls.forEach(url => {
+        const img = new Image();
+        img.src = url;
+    });
+}
+
 function galeryEvents(id, images) {
     const gallery = document.querySelector('#galery_' + id + ' .cart__slide');
+    const fastShowBt = gallery.querySelector('.fast_show')
+    const dark_fon = gallery.querySelector('.dark-fon')
+
     window.current_slide = null;
 
     if (!gallery) return false;
@@ -71,28 +80,29 @@ function galeryEvents(id, images) {
     const red = gallery.querySelector('.cart .red');
     let offset1, offset2, i = 0;
     let z_zona = 0 // чтобы менять фотку, если только меняем зону
-    photo.src = images[i];
-    photo.addEventListener('mousemove', (e) => {
-        let z = parseInt(e.layerX * 100 / pieceWidth / 20);
+
+    photo.src =  images[0];
+    photo.onerror = () => photo.src =  '/photo/tmp_auto.webp '
+
+    preloadImages([images[1],images[2],images[3],images[4]]);
+
+    function mouseMoved(e) {
+        let z = parseInt(e.layerX * 99.9 / pieceWidth / 20);
         if (z_zona !== z) {
             getWidth()
-            let gloaballoader = e.target.parentNode.querySelector('.gloaballoader')
-            let loader = e.target.parentNode.parentNode.querySelector('.smallloader')
-            photo.src = images[z]; // меняем, если только сменится зона
-            loader.classList.remove('hide') // показываю ромашку
-            gloaballoader.classList.remove('hide')
-            photo.onload = () => { // скрываю, если уже загружено
-                loader.classList.add('hide')
-                gloaballoader.classList.add('hide')
-            }
+            photo.style.opacity = 0; // мигаем
+            setTimeout(() => {
+                photo.style.opacity = 1;
+                photo.src =  '/photo/tmp_auto.webp '
+                photo.src = images[z];// Новая картинка
+            }, 73);
+            photo.onerror = () => photo.src =  '/photo/tmp_auto.webp '
             z_zona = z
         }
         red.style.left = z * 20 + '%';
-    });
-    gallery.addEventListener('mouseleave', () => {
-        photo.src = images[0];
-        red.style.left = '0';
-    });
+    }
+
+    photo.addEventListener('mousemove', mouseMoved);
     gallery.addEventListener('touchstart', e => offset1 = e.targetTouches[0].pageX - gallery.offsetLeft);
     gallery.addEventListener('touchmove', e => offset2 = e.targetTouches[0].pageX - gallery.offsetLeft);
     gallery.addEventListener('touchend', () => {
@@ -104,19 +114,25 @@ function galeryEvents(id, images) {
         red.style.left = i * 20 + '%';
     });
     gallery.addEventListener('click', () => {
+        location.href = document.querySelector('#galery_' + id + ' .big_link').href
+    });
+
+    fastShowBt.addEventListener('click', e => {
+        e.stopPropagation()
         if (document.body.clientWidth < 500) return false;
         gallery.classList.toggle('watch');
         window.current_slide = gallery;
         getWidth();
-    });
+    })
+
+    dark_fon.addEventListener('click', e => {
+        e.stopPropagation()
+        gallery.classList.remove('watch')
+    })
 }
 
 export function fill(cars, currentCars, totalPages) {
-    console.log(11111111)
-
     cards = document.querySelector('cards');
-
-    console.log(cards, cards)
 
     window.compareCars = currentCars
     window.favorCars = cars
@@ -174,7 +190,7 @@ function setTypeView(e) {
     getWidth();
     if (e.srcElement.classList.value.includes('dot8')) cards.classList.add('cards', 'dot8');
     if (e.srcElement.classList.value.includes('dot4')) cards.classList.add('cards', 'dot4');
-    if (e.srcElement.classList.value .includes('dot1')) cards.classList.add('cards', 'dot1');
+    if (e.srcElement.classList.value.includes('dot1')) cards.classList.add('cards', 'dot1');
 
     if (e.srcElement.classList.add) {
         for (let childrenKey in type_views.children) type_views.children[childrenKey].classList && type_views.children[childrenKey].classList.remove('active');

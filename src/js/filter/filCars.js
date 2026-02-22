@@ -1,6 +1,6 @@
 // обработка location.pathname === '/cars/
 import {api_getList} from "@/js/apibase.js"
-import {getUrlParam, prepareCars, eventBus, setPriceOrder, carCountText} from '@/js/global-func.js'
+import {getUrlParam, prepareCars, eventBus, setPriceOrder, carCountText, cleanCarsWithoutPhoto} from '@/js/global-func.js'
 import {setExtention} from "@/js/filter/filter-ctrl-filling.js"
 
 const countPerPage = 20
@@ -192,6 +192,7 @@ export function fillCars(cars, ishandEvent_, filterParams, fill) {
 
     filterParams.limit = countPerPage
     api_getList(filterParams, res => {
+        res.items = cleanCarsWithoutPhoto(res.items)
         // по кнопке Показать
         cars = prepareCars(res.items)
         let totalPages = Math.ceil(res.totalCount / countPerPage)
