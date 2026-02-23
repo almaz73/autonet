@@ -343,3 +343,9 @@ cards.dot1 .cart__box--bottom {
 .fast_show:hover {
     opacity: 1;
 }
+
+@media (max-width: 600px) {
+    .fast_show {
+        display: none;
+    }
+}

@@ -18,6 +18,11 @@ export function withCache(request, callback, hour) {
         // if (hour && CACHE[request].hour > Date.now()) { //TODO пока временно во время разработки отключаем кэш
         //     return callback(CACHE[request].data)
         // }
+
+       if (hour && location.href.includes('localhost')) { // для меня
+           // не брать из интернета
+           return callback(CACHE[request].data)
+       }
         callback(CACHE[request].data)
     }
 

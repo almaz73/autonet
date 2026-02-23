@@ -11,7 +11,6 @@
 }
 
 
-
 @media (width <= 1000px) and (width >= 500px) {
     .mainPage.swiper a .img_lg, .mainPage.swiper a .img_sm {
         display: none;
@@ -25,7 +24,7 @@
 }
 
 @media (width > 1200px) {
-    .mainPage.swiper{
+    .mainPage.swiper {
         min-height: 410px;
     }
 }
@@ -68,6 +67,7 @@
         margin: 30px 20px;
         width: calc(100% - 40px)
     }
+
     .mySwiper {
         min-height: inherit;
     }
@@ -131,4 +131,8 @@
         margin: 30px 15px;
         width: calc(100% - 30px);
     }
+}
+
+.swiper-pagination {
+    white-space: nowrap;
 }

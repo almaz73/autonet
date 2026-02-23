@@ -18,7 +18,10 @@ function createNode(item, N) {
                       <div class='red'></div>
                   </div>
               </div>
-              <a class="big_link" href='${item.href}' title="перейти">
+              <a class="big_link" 
+                 href="javascript:openCar('${item.href}','${item.photos[0]}')" 
+                 data-href="${item.href}"
+                 title="Перейти">
                   <div class='name'>
                       <br>                      
                       ${item.name}, ${item.yearReleased}
@@ -61,7 +64,7 @@ function createNode(item, N) {
 }
 
 function preloadImages(urls) {
-    // act ajnrb pfhfytt gjluhe;f.
+    // фсе фотки заранее подгружаю
     urls.forEach(url => {
         const img = new Image();
         img.src = url;
@@ -81,11 +84,10 @@ function galeryEvents(id, images) {
     let offset1, offset2, i = 0;
     let z_zona = 0 // чтобы менять фотку, если только меняем зону
 
-    photo.src =  images[0];
-    photo.onerror = () => photo.src =  '/photo/tmp_auto.webp '
+    photo.src = images[0];
+    photo.onerror = () => photo.src = '/photo/tmp_auto.webp '
 
-    preloadImages([images[1],images[2],images[3],images[4]]);
-
+    preloadImages([images[1], images[2], images[3], images[4]]);
     function mouseMoved(e) {
         let z = parseInt(e.layerX * 99.9 / pieceWidth / 20);
         if (z_zona !== z) {
@@ -93,10 +95,10 @@ function galeryEvents(id, images) {
             photo.style.opacity = 0; // мигаем
             setTimeout(() => {
                 photo.style.opacity = 1;
-                photo.src =  '/photo/tmp_auto.webp '
+                photo.src = '/photo/tmp_auto.webp '
                 photo.src = images[z];// Новая картинка
             }, 73);
-            photo.onerror = () => photo.src =  '/photo/tmp_auto.webp '
+            photo.onerror = () => photo.src = '/photo/tmp_auto.webp '
             z_zona = z
         }
         red.style.left = z * 20 + '%';
@@ -114,7 +116,7 @@ function galeryEvents(id, images) {
         red.style.left = i * 20 + '%';
     });
     gallery.addEventListener('click', () => {
-        location.href = document.querySelector('#galery_' + id + ' .big_link').href
+        window.openCar(document.querySelector('#galery_' + id + ' .big_link').dataset.href, images && images[0])
     });
 
     fastShowBt.addEventListener('click', e => {
@@ -131,6 +133,11 @@ function galeryEvents(id, images) {
     })
 }
 
+window.openCar = function (href, linkPhoto) {
+    localStorage.setItem('CAR_SMALLL_PHOTO', linkPhoto)
+    setTimeout(() => location.href = href)
+}
+
 export function fill(cars, currentCars, totalPages) {
     cards = document.querySelector('cards');
 
@@ -144,7 +151,11 @@ export function fill(cars, currentCars, totalPages) {
         if (i === 2 && (location.pathname !== '/personal/favorite-cars/')) createNode(null, 'abdul')
         if (i === 0 && (location.pathname === '/cars/' || location.pathname === '/autosite/cars/')) createNode(null, 'swiper_buy')
     }); // прикручиваем html
-    if (!cars.length) cards.innerHTML += `<abdul></abdul>`
+
+    if (!cars.length) {
+        cards.innerHTML += `<abdul></abdul>`
+        setTimeout(window.reloadAbdul)
+    }
 
 
     if (location.pathname !== '/' && location.pathname !== '/personal/favorite-cars/') {
