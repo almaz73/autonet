@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function preloadAndShowPhotos(urls) {
-        console.log('urls', urls)
+        if (!urls.length) return false
         // тут хотелось сразу показать маленькие уже загруженные фотки, а потом только после загрузки показать большие
         // 5  фоток заранее подгружаю
         let counter = 0
@@ -113,6 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     preloadAndShowPhotos(res.images)
 
                     let autoMore = document.querySelector('#auto-more')
+
+                    if (!res.images.length) return autoMore.style.display = 'none'
+
                     autoMore.innerHTML = `<div class="fotos_black" onclick="showMore()">${res.images.length} фото</div>`
 
                     res.images.forEach((el, index) => {
