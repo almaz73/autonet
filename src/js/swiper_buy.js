@@ -1,3 +1,5 @@
+import {initSwipper} from "./swiper-starter";
+
 document.addEventListener('DOMContentLoaded', () => {
     window.reloadLittleSwiper()
 })
@@ -5,8 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
 window.reloadLittleSwiper = function (){
     let swiper_buy = document.querySelector('swiper_buy')
     if (!swiper_buy) return false //console.warn('карусель фоток не подключен')
-
     swiper_buy.innerHTML = block
+
+    setTimeout(initSwipper, 2000)
 }
 
 let block = `

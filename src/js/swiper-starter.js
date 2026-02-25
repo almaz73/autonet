@@ -4,9 +4,11 @@ let fotos_black = document.querySelector('.fotos_black')
 let big = document.querySelector('.big')
 let swiperSection = document.querySelector('.swiper.mySwiper')
 let isCarPage = location.pathname.includes('car.html')
+const isMainPage  = location.pathname === '/'
+
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (!isCarPage) initSwipper() // иногда отдельно нужно запускать, если отрисовка опаздала
+    if (isMainPage) initSwipper()
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && fotos) {
@@ -22,12 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 export function initSwipper() {
-
-    console.log(111, swiper)
-
     if (swiper) return false
-
-    console.log('!!!!!!!!!!!!!!!!! initSwipper swiper=', swiper)
     let params = {
         spaceBetween: 30,
         loop: true,
@@ -57,17 +54,16 @@ export function initSwipper() {
         }
     }
 
-    swiper = new Swiper('.mySwiper', params)
-    console.log(222)
 
-    // setTimeout(() => {
-    //     swiper = new Swiper('.mySwiper', params)
-    //     console.log('swiper',swiper)
-    //     if (!swiper) setTimeout(() => {
-    //         swiper = new Swiper('.mySwiper', params)
-    //         if (!swiper) setTimeout(() => swiper = new Swiper('.mySwiper', params), 730)
-    //     }, 2730)
-    // }, 730)
+    setTimeout(() => {
+        swiper = new Swiper('.mySwiper', params)
+        if (!swiper) setTimeout(() => {
+            swiper = new Swiper('.mySwiper', params)
+            if (!swiper) setTimeout(() => {
+                swiper = new Swiper('.mySwiper', params)
+            }, 730)
+        }, 730)
+    })
 
 }
 

@@ -1,6 +1,5 @@
 // создает визитки, встраивает рекламные и информационные баннеры
 import {preparePager} from '@/js/pagination.js'
-import {initSwipper} from "@/js/swiper-starter.js";
 
 
 let cards = document.querySelector('cards');
@@ -172,7 +171,6 @@ export function fill(cars, currentCars, totalPages) {
         setTypeView(e)
         localStorage.setItem('TYPE_VIEW', e.srcElement.classList.value.slice(0, 4))
     })
-    setTimeout(initSwipper)
 }
 
 let type_views;
