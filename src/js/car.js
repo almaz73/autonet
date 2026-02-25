@@ -25,22 +25,29 @@ document.addEventListener('DOMContentLoaded', () => {
         // 5  фоток заранее подгружаю
         let counter = 0
         let errors = 0
+        let isAlready = false
         for (let i = 0; i < 5; i++) {
             const photo = new Image();
             photo.src = urls[i];
             photo.onload = () => { // скрываю, если уже загружено
                 counter++
-                if (counter === 5) return setPhotosInSwiper(urls)
+                if (counter === 5) {
+                    isAlready = true
+                    return setPhotosInSwiper(urls)
+                }
             }
             photo.onerror = () => {
                 errors++
-                if (errors > 2) return setPhotosInSwiper(urls)
+                if (errors > 2) {
+                    isAlready = true
+                    return setPhotosInSwiper(urls)
+                }
             }
         }
         setTimeout(() => {
             console.log('counter', counter)
             console.log('errors', errors)
-            if (counter !== 5 || errors < 3) setPhotosInSwiper(urls, true)
+            if (!isAlready) setPhotosInSwiper(urls, true)
         }, 7000)
     }
 

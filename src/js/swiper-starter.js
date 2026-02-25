@@ -3,10 +3,10 @@ let fotos = document.querySelector('.alone .fotos')
 let fotos_black = document.querySelector('.fotos_black')
 let big = document.querySelector('.big')
 let swiperSection = document.querySelector('.swiper.mySwiper')
-
+let isCarPage = location.pathname.includes('car.html')
 
 document.addEventListener('DOMContentLoaded', () => {
-    initSwipper() // иногда отдельно нужно запускать, если отрисовка опаздала
+    if (!isCarPage) initSwipper() // иногда отдельно нужно запускать, если отрисовка опаздала
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && fotos) {
@@ -22,8 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 export function initSwipper() {
-    let isCarPage = location.pathname.includes('car.html')
 
+    console.log(111, swiper)
+
+    if (swiper) return false
+
+    console.log('!!!!!!!!!!!!!!!!! initSwipper swiper=', swiper)
     let params = {
         spaceBetween: 30,
         loop: true,
@@ -48,23 +52,27 @@ export function initSwipper() {
                     isUsed = true
                 })
                 this.el.addEventListener('mouseenter', () => this.autoplay.stop())
-                this.el.addEventListener('mouseleave', () => !isUsed && this.autoplay.start())
+                this.el.addEventListener('mouseleave', () => !isUsed && !isCarPage && this.autoplay.start())
             }
         }
     }
 
-    setTimeout(() => {
-        swiper = new Swiper('.mySwiper', params)
-        if (!swiper) setTimeout(() => {
-            swiper = new Swiper('.mySwiper', params)
-            if (!swiper) setTimeout(() => swiper = new Swiper('.mySwiper', params), 730)
-        }, 730)
-    })
+    swiper = new Swiper('.mySwiper', params)
+    console.log(222)
+
+    // setTimeout(() => {
+    //     swiper = new Swiper('.mySwiper', params)
+    //     console.log('swiper',swiper)
+    //     if (!swiper) setTimeout(() => {
+    //         swiper = new Swiper('.mySwiper', params)
+    //         if (!swiper) setTimeout(() => swiper = new Swiper('.mySwiper', params), 730)
+    //     }, 2730)
+    // }, 730)
 
 }
 
 
-window.showSlide = val => swiper.slideTo(val)
+window.showSlide = val => swiper.slideTo(val + 1)
 
 window.showMore = function () {
     if (fotos.style.height === 'inherit') fotos.style.height = '73px'
