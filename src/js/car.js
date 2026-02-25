@@ -104,6 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     autoColor[0].innerHTML = autoColor[1].innerHTML = res.color || ''
 
                     let addr = document.querySelector('.main__card-product--top .address')
+                    addr.addEventListener('click', () => openInYndx(res.fullAddress))
+
                     addr.innerHTML = res.fullAddress
                 }
 
@@ -153,6 +155,11 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         }
     )
+
+    function openInYndx(address) {
+        const yandexMapsUrl = `https://yandex.ru/maps/?text=${encodeURIComponent(address)}`;
+        window.open(yandexMapsUrl, '_blank');
+    }
 })
 
 

@@ -340,6 +340,7 @@
     padding-left: 1.25em;
     width: 60%;
     max-width: 200px;
+    cursor: pointer;
 }
 
 .main__card-product--top .address::before {
