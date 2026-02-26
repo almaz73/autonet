@@ -72,7 +72,11 @@ document.addEventListener('DOMContentLoaded', () => {
             api_getFullAutoInfo(id, res => {
                 /** Имя и зарактеристики  b Хлебные крошки */
                 {
-                    if ((!res || !res.brand) && confirm("Данный автомобиль снят с продажи")) window.history.back()
+                    if (!res || !res.brand) {
+                        sendMessage('Данный автомобиль снят с продажи ', 'error')
+                        setTimeout(() => sendMessage('Вернуться назад ', 'error'), 1000)
+                        setTimeout(() => window.history.back(), 3000)
+                    }
 
                     autoName = document.querySelectorAll('.auto-name')
                     autoName[0].innerHTML = autoName[1].innerHTML = autoName[2].innerHTML = res.brand + ' ' + res.model + ', ' + res.yearReleased

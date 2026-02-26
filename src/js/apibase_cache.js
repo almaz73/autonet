@@ -29,7 +29,7 @@ export function withCache(request, callback, hour) {
 
     // console.warn('Н А  С Е Р В Е Р   ! ! !')
     return fetch(server + request).then(res => {
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
+        if (!res.ok) console.log(`HTTP error! status: ${res.status}`)
         showPreloader(false)
         return res.json();
     })

@@ -33,11 +33,12 @@
 
 .slider__ui {
     margin-top: 16px;
-
     height: 4px;
     background-color: #CACACA;
     border-radius: 3px;
     position: relative;
+    border: 10px solid #ffffffff;
+    cursor: pointer;
 }
 
 .slider__ui .slider__ui-range {
