@@ -14,47 +14,47 @@ import {tyresForList} from "@/js/global-constants.js";
 
 export function filter_changed(items, name) {
     if (name === 'Марка') {
-        let brand = globalValues.brandsIds.find(el=>el.name === items[name].value)
+        let brand = globalValues.brandsIds.find(el => el.name === items[name].value)
 
         if (brand) {
             filterParams['brandId'] = brand.id
             filterParams['brand'] = brand.name
-            filterParams['modelId'] =''
-            filterParams['model'] =''
-            setTimeout(()=>document.querySelector('[data-placeholder="Модель"] .big-comb__placeholder').innerText = '', 2000)
+            filterParams['modelId'] = ''
+            filterParams['model'] = ''
+            setTimeout(() => document.querySelector('[data-placeholder="Модель"] .big-comb__placeholder').innerText = '', 2000)
         }
         getModelList(items[name].value)
     }
     if (name === 'Модель') {
-        let model = globalValues.modelsIds.find(el=>el.name === items[name].value)
-        if(model) {
+        let model = globalValues.modelsIds.find(el => el.name === items[name].value)
+        if (model) {
             filterParams['modelId'] = model.id
             filterParams['model'] = model.name
         }
     }
     if (name === 'Город') filterParams.city = items[name].value
     if (name === 'Тип КПП') {
-        let element = globalValues.gearboxTypes.find(el=>el.title === items[name].value)
+        let element = globalValues.gearboxTypes.find(el => el.title === items[name].value)
         filterParams.gearboxType = element.name
     }
     if (name === 'Тип двигателя') {
-        let element = globalValues.engineTypes.find(el=>el.title === items[name].value)
+        let element = globalValues.engineTypes.find(el => el.title === items[name].value)
         filterParams.engineType = element.name
     }
     if (name === 'Тип привода') {
-        let element = globalValues.driveTypes.find(el=>el.title === items[name].value)
+        let element = globalValues.driveTypes.find(el => el.title === items[name].value)
         filterParams.driveType = element.name
     }
     if (name === 'Руль') {
-        let element = globalValues.wheelTypes.find(el=>el.title === items[name].value)
+        let element = globalValues.wheelTypes.find(el => el.title === items[name].value)
         filterParams.wheelType = element.name
     }
     if (name === 'Тип кузова') {
-        let element = globalValues.bodyTypes.find(el=>el.title === items[name].value)
+        let element = globalValues.bodyTypes.find(el => el.title === items[name].value)
         filterParams.bodyType = element.name
     }
     if (name === 'Цвет') {
-        let element = globalValues.bodyColors.find(el=> el.name === items[name].value)
+        let element = globalValues.bodyColors.find(el => el.name === items[name].value)
         filterParams.colorId = element.id
         filterParams.color = element.name
     }
@@ -110,15 +110,15 @@ function getVitrina(ishandEvent) {
     } else if (location.pathname === '/tyres/') {
         document.querySelector('#vitrina_name').innerHTML = 'Каталог шин'
         cars = tyresForList
-        setTimeout(()=>fill(cars))
-    } else if (location.pathname === '/cars/') {
+        setTimeout(() => fill(cars))
+    } else if (location.pathname.includes('/cars/')) {
         fillCars(cars, ishandEvent, filterParams, fill)
     } else if (location.pathname === '/personal/favorite-cars/') {
         document.querySelector('#vitrina_name').innerHTML = 'Избранные автомобили'
 
         cars = localStorage.getItem('FavoriteCars')
         cars = cars ? JSON.parse(cars) : []
-        setTimeout(()=>fill(cars, cars))
+        setTimeout(() => fill(cars, cars))
     } else {
         document.querySelector('#vitrina_name').innerHTML = 'Автомобили'
         console.log(' тут карточек нет, либо не сформированы')
@@ -127,7 +127,7 @@ function getVitrina(ishandEvent) {
 
 window.getVitrina = getVitrina
 window.goToCars = function () {
-    let link  = `?`
+    let link = `?`
     if (filterParams.brandId) {
         link = '?brand=' + (filterParams['Марка'] || filterParams['brand'])
         link += '&brandId=' + filterParams.brandId
@@ -147,15 +147,15 @@ window.goToCars = function () {
         link += '&color=' + filterParams.color
     }
     if (filterParams.yearReleasedFrom) link += '&yearReleasedFrom=' + filterParams.yearReleasedFrom
-    if (filterParams.yearReleasedTo) link += '&yearReleasedTo=' + filterParams.yearReleasedTo    
+    if (filterParams.yearReleasedTo) link += '&yearReleasedTo=' + filterParams.yearReleasedTo
     if (filterParams.priceTo) link += '&priceTo=' + filterParams.priceTo
     if (filterParams.priceFrom) link += '&priceFrom=' + filterParams.priceFrom
     if (filterParams.milleageFrom) link += '&milleageFrom=' + filterParams.milleageFrom
     if (filterParams.milleageTo) link += '&milleageTo=' + filterParams.milleageTo
     if (filterParams.engineCapacity) link += '&engineCapacity=' + filterParams.engineCapacity
-    if (filterParams.priceOrder!==null && filterParams.priceOrder!==undefined) link += '&priceOrder=' + filterParams.priceOrder
+    if (filterParams.priceOrder !== null && filterParams.priceOrder !== undefined) link += '&priceOrder=' + filterParams.priceOrder
 
-   location.href = '/cars/'+link
+    location.href = '/cars/' + link
 }
 window.clearFilter = function () {
     location.href = location.pathname

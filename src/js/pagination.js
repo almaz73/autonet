@@ -3,8 +3,9 @@ import {getUrlParam} from "@/js/global-func.js"
 let currentPage = 1
 
 function getLink() {
-    if (location.href.includes('&page')) return location.href.slice(0, location.href.lastIndexOf('&page'))
-    else return location.href
+    let link = location.href
+    if (location.href.includes('&page')) link = location.href.slice(0, location.href.lastIndexOf('&page'))
+    return link + (link.includes('?') ? '' : '?')
 }
 
 export function preparePager(pages) {
@@ -23,7 +24,7 @@ export function preparePager(pages) {
     }
     if (pages > 5) pagerText += ` ... <span> | </span>  <a href=${getLink()}&page=${pages}>${pages}</a><span> | </span> `
     else if (pages === '1') pagerText += `<a class="active">1</a>`
-    else pagerText += ` <a href=${getLink()}&page=${pages} class=${pages !== currentPage?"":"active"}>${pages}</a><span> | </span> `
+    else pagerText += ` <a href=${getLink()}&page=${pages} class=${pages !== currentPage ? "" : "active"}>${pages}</a><span> | </span> `
     if (pages && pages !== currentPage && window.screen.width > 500) pagerText += `<a href="javascript:nextPage('${currentPage}')"> След.</a>`
     pager.innerHTML = pagerText
 }
