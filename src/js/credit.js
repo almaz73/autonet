@@ -166,10 +166,11 @@ bid_for_car && bid_for_car.addEventListener('click', () => {
     const params = {
         // formName: 'spesialCredit',
         type: 6,
-        price: price,
-        credit: credit,
-        forMonth: forMonth,
-        year: field4.innerHTML,
+        price: formatterShowPrice(price) + ' ₽',
+        credit: field2.innerHTML,
+        forMonth: field3.innerHTML,
+        payment: field1.innerHTML,
+        yearCred: field4.innerHTML,
         fio: input_name.value,
         phone: input_tel.value,
     }

@@ -127,7 +127,7 @@ function showChosen(storage_) {
                 ${DELETE}
             </tr>
             <tr class="PREVIEW_PICTURE">
-                <td> фото </td>
+                <td style="border: 22px solid white; background: #eee"></td>
                 ${PREVIEW_PICTURE}            
             </tr>
             <tr class="NAME">

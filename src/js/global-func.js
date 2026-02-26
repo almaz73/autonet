@@ -47,6 +47,7 @@ export function formatterShowPrice(val) {
 export function prepareCars(res) {
     let cars = []
     res && res.forEach(el => {
+        if (!el) return false
         let info = formatterShowPrice(el.milleage) + ' км, '
         if (el.engineCapacity) info += el.engineCapacity
         if (el.gearboxType) info += ' ' + el.gearboxType
@@ -314,7 +315,7 @@ export function cleanCarsWithoutPhoto(items) {
 export function acceprtWithoutPhoto(items) {
     // Если нет фоток, теперь подставляю временную фотку, чтобы не было проблем с версткой и не отсеивались авто
     return items.map(el=>{
-        if (!el.images.length){
+        if (el && !el.images.length){
             el.images = ['/photo/nophoto.webp','/photo/nophoto.webp','/photo/nophoto.webp','/photo/nophoto.webp','/photo/nophoto.webp']
             console.log("%c было без фото ", "background: orange; color: black")
         }
