@@ -119,10 +119,11 @@ function getVitrina(ishandEvent) {
         cars = localStorage.getItem('FavoriteCars')
         cars = cars ? JSON.parse(cars) : []
         setTimeout(() => fill(cars, cars))
-    } else {
-        document.querySelector('#vitrina_name').innerHTML = 'Автомобили'
-        console.log(' тут карточек нет, либо не сформированы')
     }
+    // else {
+        // document.querySelector('#vitrina_name').innerHTML = 'Автомобили'
+        // console.log(' тут карточек нет, либо не сформированы')
+    // }
 }
 
 window.getVitrina = getVitrina

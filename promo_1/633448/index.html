@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+    <meta charset='UTF-8'/>
+    <link rel='icon' type='image/svg+xml' sizes='any' href='/Favicon_as.svg'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Премиум авто - Автосеть.РФ</title>
+    <meta property='og:type' content='website'>
+    <meta property='og:title' content='Премиум авто'>
+    <meta property='og:url' content='https://автосеть.рф/promo/633448'>
+    <meta property='og:locale' content='ru_RU'>
+    <meta property='og:site_name' content='АВТОСЕТЬ.РФ'>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+    <meta name='robots' content='index, follow'>
+    <meta name='description' content='Специальные предложения и акции в автосалонах Автосеть.рф.'>
+    <link rel='stylesheet' href='/src/css/style.css'/>
+    <link rel="stylesheet" href="/src/css/promo.css"/>
+
+    <script type='module' src='/src/js/main.js'></script>
+    <script  type='module' src="/src/js/promo-random.js"></script>
+
+    {{> verbox_chat}}
+</head>
+<body>
+{{> "header/header" }}
+<main>
+
+    <div class='page_padding_20'>
+        <div class='bread_cranbs'>
+            <a href='/'>Главная</a>
+            <a href="/promo/" title="Акции и спецпредложения">Акции и спецпредложения</a>
+            <span>Премиум авто</span>
+        </div>
+    </div>
+
+    <div class="container promo-banner">
+        <img src="/photo-main/1/1200х501.webp" alt="Премиум авто" class="big">
+        <img src="/photo-main/1/250x362.webp" alt="Премиум авто" class="small">
+    </div>
+
+
+    <div class="container" style="padding: 40px 0 0">
+        <h2>Премиум авто</h2>
+    </div>
+
+    <div class="container">
+        {{> 'promo/promo-form'}}
+    </div>
+
+
+    <div class="container">
+        <h2>Другие акции</h2>
+    </div>
+
+    <div class="container promo-photos"></div>
+</main>
+
+{{> "footer/footer" }}
+
+
+</body>
+</html>

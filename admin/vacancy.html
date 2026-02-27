@@ -10,136 +10,136 @@
     <meta property='og:locale' content='ru_RU'>
     <meta property='og:site_name' content='АВТОСЕТЬ.РФ'>
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
-    <meta name="robots" content="noindex">
+    <meta name='robots' content='noindex'>
 
     <link rel='stylesheet' href='../src/css/style.css'/>
-    <link rel="stylesheet" href="../src/css/filter-controls.css"/>
+    <link rel='stylesheet' href='../src/css/filter-controls.css'/>
     <link rel='stylesheet' href='../src/css/vacancy.css'/>
     <script type='module' src='../src/js/main.js'></script>
-    <script type='module' src="../src/js/admin-vacancy.js"></script>
+    <script type='module' src='../src/js/admin-vacancy.js'></script>
 
   {{> verbox_chat}}
 </head>
-<body style="margin-top: 40px">
-{{> "header/header" }}
+<body style='margin-top: 40px'>
+{{> 'header/header' }}
 
-<h3 style="position: fixed; top: 0; width: 100%; color: red; padding: 9px;
+<h3 style='position: fixed; top: 0; width: 100%; color: red; padding: 9px;
 margin-top: 0;
 border-bottom: 10px solid pink;
-text-align: center; z-index: 1000; background: white">
+text-align: center; z-index: 1000; background: white'>
   Админка. Редактирование вакансий.
 </h3>
 
-<main class="vacancy">
+<main class='vacancy'>
 
   <h1>  Редактирование вакансий </h1>
   Вы вошли как <b>Мкакрова Елена</b>
 
 
-    <div class="choice_comb filter-white" style="gap: 50px">
+    <div class='choice_comb filter-white' style='gap: 50px'>
         <span> Выберите город</span>
-        <div style="width: 220px">
+        <div style='width: 220px'>
             <comb data-placeholder='Город'/>
         </div>
 
-      <button class="page__btn page__btn--current" style="padding: 12px 30px" id="addBt">
+      <button class='page__btn page__btn--current' style='padding: 12px 30px' id='addBt'>
         Добавить новую вакансию
       </button>
     </div>
 
-    <div class="editor" style="background: #e3e3e3">
-      <div class="request_vac admin" style="padding: 20px; max-width: calc(100% - 60px)">
+    <div class='editor' style='background: #e3e3e3'>
+      <div class='request_vac admin' style='padding: 20px; max-width: calc(100% - 60px)'>
 
-        <div style="display: flex; gap: 30px; width: 100%; align-items: center ">
-          <div style="width: 330px">
-            <input placeholder="Введите вакансию" list="vacan" name="vacancyNamw">
-            <datalist id="vacan">
-              <option value="Автомеханик">
-              <option value="Администратор">
-              <option value="Автоэлектрик-диагност">
-              <option value="Ассистент сервисного центра">
-              <option value="Бухгалтер-кассир">
-              <option value="Дворник">
-              <option value="Логист">
-              <option value="Мастер-приёмщик">
-              <option value="Мойщик автомобилей">
-              <option value="Менеджер по продаже автомобилей">
-              <option value="Менеджер по привлечению автомобилей на комиссию">
-              <option value="Специалист контактного центра">
-              <option value="Специалист по продаже автомобилей">
-              <option value="Специалист по выкупу автомобилей">
-              <option value="Специалист отдела финансовых услуг">
-              <option value="Специалист отдела комиссии">
-              <option value="Специалист по выкупу автомобилей">
-              <option value="Старший менеджер по продажам">
-              <option value="Старший техник отдела продаж">
-              <option value="Техник отдела продаж">
-              <option value="Техник по подготовке автомобилей к продаже">
-              <option value="Кладовщик">
-              <option value="Техник">
+        <div style='display: flex; gap: 30px; width: 100%; align-items: center '>
+          <div style='width: 330px'>
+            <input placeholder='Введите вакансию' list='vacan' name='vacancyNamw'>
+            <datalist id='vacan'>
+              <option value='Автомеханик'>
+              <option value='Администратор'>
+              <option value='Автоэлектрик-диагност'>
+              <option value='Ассистент сервисного центра'>
+              <option value='Бухгалтер-кассир'>
+              <option value='Дворник'>
+              <option value='Логист'>
+              <option value='Мастер-приёмщик'>
+              <option value='Мойщик автомобилей'>
+              <option value='Менеджер по продаже автомобилей'>
+              <option value='Менеджер по привлечению автомобилей на комиссию'>
+              <option value='Специалист контактного центра'>
+              <option value='Специалист по продаже автомобилей'>
+              <option value='Специалист по выкупу автомобилей'>
+              <option value='Специалист отдела финансовых услуг'>
+              <option value='Специалист отдела комиссии'>
+              <option value='Специалист по выкупу автомобилей'>
+              <option value='Старший менеджер по продажам'>
+              <option value='Старший техник отдела продаж'>
+              <option value='Техник отдела продаж'>
+              <option value='Техник по подготовке автомобилей к продаже'>
+              <option value='Кладовщик'>
+              <option value='Техник'>
             </datalist>
           </div>
-          <div><input placeholder="Введите зарплату" type="number" name="salary" ></div>
-          &nbsp; &nbsp; &nbsp; Город:<span id="placeCity"></span>
+          <div><input placeholder='Введите зарплату' type='number' name='salary' ></div>
+          &nbsp; &nbsp; &nbsp; Город:<span id='placeCity'></span>
         </div>
-          <div class="details" >
+          <div class='details' >
             <h4>Обязанности</h4>
-            <textarea name="text0"></textarea>
+            <textarea name='text0'></textarea>
             <h4>Требования</h4>
-            <textarea name="text1"></textarea>
+            <textarea name='text1'></textarea>
             <h4>Условия</h4>
-            <textarea name="text2"></textarea>
+            <textarea name='text2'></textarea>
             <h4>Дополнительные преимущества</h4>
-            <textarea name="tex3"></textarea>
+            <textarea name='tex3'></textarea>
           </div>
         <br>
-          <div style="width: 200px; margin: auto">
-            <button onclick="saveVacancy()" class="page__btn page__btn--current" style="padding: 12px 30px">  Сохранить вакансию</button>
+          <div style='width: 200px; margin: auto'>
+            <button onclick='saveVacancy()' class='page__btn page__btn--current' style='padding: 12px 30px'>  Сохранить вакансию</button>
           </div>
         <br><br>
         <br>
       </div>
     </div>
 
-    <div id="vacancyPlace">
+    <div id='vacancyPlace'>
 
     </div>
 </main>
 
-<hr style="border-top: 10px solid pink">
-<div class="page__wrap" >
-  <div class="boons">
+<hr style='border-top: 10px solid pink'>
+<div class='page__wrap' >
+  <div class='boons'>
     <h2>
       Преимущества работы в&nbsp;Автосеть.рф
     </h2>
-    <div class="vac">
-      <div class="vac_prime">
-        <img class="vac_img" src="/photo/vacancy/1_vac.webp" alt="">
-        <div class="vac_text">
+    <div class='vac'>
+      <div class='vac_prime'>
+        <img class='vac_img' src='/photo/vacancy/1_vac.webp' alt=''>
+        <div class='vac_text'>
           Карьерный рост
         </div>
       </div>
-      <div class="vac_prime">
-        <img class="vac_img" src="/photo/vacancy/2_vac.webp" alt="">
-        <div class="vac_text">
+      <div class='vac_prime'>
+        <img class='vac_img' src='/photo/vacancy/2_vac.webp' alt=''>
+        <div class='vac_text'>
           Обучение и&nbsp;развитие персонала
         </div>
       </div>
-      <div class="vac_prime">
-        <img class="vac_img" src="/photo/vacancy/3_vac.webp" alt="">
-        <div class="vac_text">
+      <div class='vac_prime'>
+        <img class='vac_img' src='/photo/vacancy/3_vac.webp' alt=''>
+        <div class='vac_text'>
           Стабильная, развивающая компания
         </div>
       </div>
-      <div class="vac_prime">
-        <img class="vac_img" src="/photo/vacancy/4_vac.webp" alt="">
-        <div class="vac_text">
+      <div class='vac_prime'>
+        <img class='vac_img' src='/photo/vacancy/4_vac.webp' alt=''>
+        <div class='vac_text'>
           Официальное трудоустройство и&nbsp;высокая з/п
         </div>
       </div>
-      <div class="vac_prime">
-        <img class="vac_img" src="/photo/vacancy/5_vac.webp" alt="">
-        <div class="vac_text">
+      <div class='vac_prime'>
+        <img class='vac_img' src='/photo/vacancy/5_vac.webp' alt=''>
+        <div class='vac_text'>
           Дружный коллектив
         </div>
       </div>
@@ -149,7 +149,7 @@ text-align: center; z-index: 1000; background: white">
 
 
 
-{{> "footer/footer" }}
+{{> 'footer/footer' }}
 
 
 </body>
