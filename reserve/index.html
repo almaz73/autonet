@@ -17,14 +17,14 @@
     <meta name='keywords' content='Купить автомобили с пробегом, авто в Казани'>
 
     <link rel='stylesheet' href='../src/css/style.css' />
-    <link rel='stylesheet' href="../src/css/reserve.css">
+    <link rel='stylesheet' href='../src/css/reserve.css'>
     <script type='module' src='../src/js/main.js'></script>
     <script type='module' src='../src/js/reserve.js'></script>
 
     {{> verbox_chat}}
 </head>
 <body>
-{{> "header/header" }}
+{{> 'header/header' }}
 <main>
 
     <div class='page_padding_20'>
@@ -34,38 +34,38 @@
         </div>
     </div>
 
-    <div class="reserve-wrap">
-        <h3 id="h3-place">
+    <div class='reserve-wrap'>
+        <h3 id='h3-place'>
 <!--            Вы бронируете автомобиль:-->
-<!--            <a href="/cars/santa-fe/653277/" target="_blank">Hyundai Santa Fe</a>-->
+<!--            <a href='/cars/santa-fe/653277/' target='_blank'>Hyundai Santa Fe</a>-->
         </h3>
 
-        <div class="row">
-            <input type="text" placeholder="Имя *" name="name" required>
-            <input placeholder="Телефон *"
-                   name="phone"
+        <div class='row'>
+            <input type='text' placeholder='Имя *' name='name' required>
+            <input placeholder='Телефон *'
+                   name='phone'
                    required
-                   onmouseenter="this.focus()"
-                   oninput="formattingPhone(this)">
-            <input name="email" required type="email" placeholder="E-mail *"
-                   onchange="emailValidate(this)">
+                   onmouseenter='this.focus()'
+                   oninput='formattingPhone(this)'>
+            <input name='email' required type='email' placeholder='E-mail *'
+                   onchange='emailValidate(this)'>
 
-            <button class="but_red">Заказать звонок</button>
+            <button class='but_red'>Заказать звонок</button>
         </div>
-        <div class="info">
+        <div class='info'>
 
-            <div class="capctha-div" style="width: 260px; background: white"></div>
+            <div class='capctha-div' style='width: 260px; background: white'></div>
             <br>
-            <span><input type="checkbox" id="personal_agree"></span>
-            <label for="personal_agree">
+            <span><input type='checkbox' id='personal_agree'></span>
+            <label for='personal_agree'>
                 Нажав кнопку «Продолжить» я даю согласие на обработку
-                <a href="/privacy-policy/" target="_blank">персональных данных</a>
+                <a href='/privacy-policy/' target='_blank'>персональных данных</a>
             </label>
         </div>
     </div>
 </main>
 
-{{> "footer/footer" }}
+{{> 'footer/footer' }}
 
 </body>
 </html>

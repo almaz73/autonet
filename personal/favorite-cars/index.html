@@ -15,14 +15,14 @@
     <meta name='robots' content='index, follow'>
     <link rel='stylesheet' href='../../src/css/style.css' />
     <link rel='stylesheet' href='../../src/css/compared.css'/>
-    <link rel='stylesheet' href="../../src/css/filter-controls.css"/>
+    <link rel='stylesheet' href='../../src/css/filter-controls.css'/>
     <script type='module' src='../../src/js/main.js'></script>
     <script type='module'  src='../../src/js/filter/filter-controls.js'></script>
 
     {{> verbox_chat}}
 </head>
 <body>
-{{> "header/header" }}
+{{> 'header/header' }}
 <main>
 
     <div class='page_padding_20'>
@@ -34,16 +34,16 @@
     </div>
 
     {{> car-vitrina}}
-    <div class="compare-clear" id="noFavotite" >
-        <div class="favotite">HЕТ ИЗБРАННЫХ АВТОМОБИЛЕЙ</div>
+    <div class='compare-clear' id='noFavotite' >
+        <div class='favotite'>HЕТ ИЗБРАННЫХ АВТОМОБИЛЕЙ</div>
     </div>
 
-    <div class="compare-clear" id="noFavotiteDelete">
-        <button id="delete-all" onclick="deleteAllFavoriteCar()">Удалить все избранные автомобили</button>
+    <div class='compare-clear' id='noFavotiteDelete'>
+        <button id='delete-all' onclick='deleteAllFavoriteCar()'>Удалить все избранные автомобили</button>
     </div>
 </main>
 
-{{> "footer/footer" }}
+{{> 'footer/footer' }}
 
 
 </body>

@@ -15,47 +15,47 @@
     <meta name='robots' content='index, follow'>
     <meta name='description' content='Специальные предложения и акции в автосалонах Автосеть.рф.'>
     <link rel='stylesheet' href='/src/css/style.css'/>
-    <link rel="stylesheet" href="/src/css/promo.css"/>
+    <link rel='stylesheet' href='/src/css/promo.css'/>
 
     {{> verbox_chat}}
 </head>
 <body>
-{{> "header/header" }}
+{{> 'header/header' }}
 <main>
 
     <div class='page_padding_20'>
         <div class='bread_cranbs'>
             <a href='/'>Главная</a>
-                <a href="/promo/" title="Акции и спецпредложения">Акции и спецпредложения</a>
+                <a href='/promo/' title='Акции и спецпредложения'>Акции и спецпредложения</a>
             <span>Постановка на учёт в ГИБДД</span>
         </div>
     </div>
 
-    <div class="container promo-banner">
-        <img src="/photo-main/2/1200х501.webp" alt="Постановка на учёт в ГИБДД" class="big">
-        <img src="/photo-main/2/250x362.webp" alt="Постановка на учёт в ГИБДД" class="small">
+    <div class='container promo-banner'>
+        <img src='/photo-main/2/1200х501.webp' alt='Постановка на учёт в ГИБДД' class='big'>
+        <img src='/photo-main/2/250x362.webp' alt='Постановка на учёт в ГИБДД' class='small'>
     </div>
 
 
-    <div class="container" style="padding: 40px 0 0">
+    <div class='container' style='padding: 40px 0 0'>
         <h2>Постановка на учёт в ГИБДД</h2>
     </div>
 
-    <div class="container">
+    <div class='container'>
         {{> 'promo/promo-form'}}
     </div>
 
 
-    <div class="container">
+    <div class='container'>
         <h2>Другие акции</h2>
     </div>
 
-    <div class="container promo-photos"></div>
+    <div class='container promo-photos'></div>
 </main>
 
-{{> "footer/footer" }}
+{{> 'footer/footer' }}
 
 <script type='module' src='/src/js/main.js'></script>
-<script  type='module' src="/src/js/promo-random.js"></script>
+<script  type='module' src='/src/js/promo-random.js'></script>
 </body>
 </html>

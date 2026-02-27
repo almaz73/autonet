@@ -15,7 +15,7 @@
     <meta name='robots' content='index, follow'>
     <meta name='description' content='Контактная информация компании Автосеть.РФ. Адреса дилерских и сервисных центров. Получить подробную информацию вы можете по телефону: 8-800-500-11-56. Звоните!'>
     <link rel='stylesheet' href='../src/css/style.css'/>
-    <link rel='stylesheet' href="../src/css/contacts.css"/>
+    <link rel='stylesheet' href='../src/css/contacts.css'/>
 
     <script type='module' src='../src/js/main.js'></script>
     <script type='module' src='../src/js/contacts.js'></script>
@@ -23,8 +23,8 @@
     {{> verbox_chat}}
 </head>
 <body>
-{{> "header/header" }}
-<main class="contacts">
+{{> 'header/header' }}
+<main class='contacts'>
 
     <div class='page_padding_20'>
         <div class='bread_cranbs'>
@@ -35,40 +35,40 @@
 
     <h1>Адреса дилерских центров</h1>
 
-    <div class="main__dealership--city">
-        Ваш город: <div class="city yourcity" id="city-contacts">Казань</div>
+    <div class='main__dealership--city'>
+        Ваш город: <div class='city yourcity' id='city-contacts'>Казань</div>
     </div>
-    <div class="contact_items" id="currentCity"></div>
+    <div class='contact_items' id='currentCity'></div>
 
-    <div class="photo-modal" onclick="openPhoto(false)">
-        <div class="pic"></div>
+    <div class='photo-modal' onclick='openPhoto(false)'>
+        <div class='pic'></div>
     </div>
 
 
-    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Adf7a5b9f4128956eabe90cafecfb5eee04956d9f68a826c2586c027a50348eea&amp;source=constructor"
-            style="width: 100%; background: #efefef; height: 320px" frameborder="0">
+    <iframe src='https://yandex.ru/map-widget/v1/?um=constructor%3Adf7a5b9f4128956eabe90cafecfb5eee04956d9f68a826c2586c027a50348eea&amp;source=constructor'
+            style='width: 100%; background: #efefef; height: 320px' frameborder='0'>
     </iframe>
 
 
 
 
     <h2>Дилерские центры в других городах</h2>
-    <input placeholder="Название города" id="search-field">
-    <div class="contact_items" id="dealers"></div>
+    <input placeholder='Название города' id='search-field'>
+    <div class='contact_items' id='dealers'></div>
 
     <h2>Пункты выкупа авто</h2>
-    <div class="contact_items" id="punkts"></div>
+    <div class='contact_items' id='punkts'></div>
 
     <h2>Шинные центры</h2>
-    <div class="contact_items" id="tyres"></div>
+    <div class='contact_items' id='tyres'></div>
 
     <h2>Сервисные  центры</h2>
-    <div class="contact_items" id="services"></div>
+    <div class='contact_items' id='services'></div>
 
 
 </main>
 
-{{> "footer/footer" }}
+{{> 'footer/footer' }}
 
 
 </body>

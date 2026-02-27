@@ -15,27 +15,27 @@
     <meta name='robots' content='index, follow'>
     <meta name='description' content='Специальные предложения и акции в автосалонах Автосеть.рф.'>
     <link rel='stylesheet' href='/src/css/style.css'/>
-    <link rel="stylesheet" href="/src/css/promo.css"/>
+    <link rel='stylesheet' href='/src/css/promo.css'/>
 
     {{> verbox_chat}}
 </head>
 <body>
-{{> "header/header" }}
+{{> 'header/header' }}
 <main>
 
     <div class='page_padding_20'>
         <div class='bread_cranbs'>
             <a href='/'>Главная</a>
-            <a href="/promo/" title="Акции и спецпредложения">Акции и спецпредложения</a>
+            <a href='/promo/' title='Акции и спецпредложения'>Акции и спецпредложения</a>
             <span>Автосеть РФ теперь и в Ульяновске! </span>
         </div>
     </div>
 
 
 
-    <div class="container promo-banner">
-       <img src="/photo-action/big/657018.webp" alt="Автосеть РФ теперь и в Ульяновске! " class="big">
-       <img src="/photo-action/big/657018_small.webp" alt="Автосеть РФ теперь и в Ульяновске! " class="small">
+    <div class='container promo-banner'>
+       <img src='/photo-action/big/657018.webp' alt='Автосеть РФ теперь и в Ульяновске! ' class='big'>
+       <img src='/photo-action/big/657018_small.webp' alt='Автосеть РФ теперь и в Ульяновске! ' class='small'>
     </div>
 
 
@@ -87,7 +87,7 @@
         <p>
             <strong>Адрес:</strong> ул. Урицкого, д. 37а, Ульяновск.<br>
             <strong>Режим работы:</strong> ежедневно с 08:00.<br>
-            <strong>Телефон для справок:</strong> <a href="tel:+78422505455">+7 (8422) 505455.</a>
+            <strong>Телефон для справок:</strong> <a href='tel:+78422505455'>+7 (8422) 505455.</a>
         </p>
         <p>
             <strong>«Автосеть РФ» — ваш надёжный партнёр в мире автомобилей с пробегом.</strong>
@@ -95,21 +95,21 @@
 
     </div>
 
-    <div class="container">
+    <div class='container'>
         {{> 'promo/promo-form'}}
     </div>
 
 
-    <div class="container">
+    <div class='container'>
         <h2>Другие акции</h2>
     </div>
 
-    <div class="container promo-photos"></div>
+    <div class='container promo-photos'></div>
 </main>
 
-{{> "footer/footer" }}
+{{> 'footer/footer' }}
 
 <script type='module' src='/src/js/main.js'></script>
-<script  type='module' src="/src/js/promo-random.js"></script>
+<script  type='module' src='/src/js/promo-random.js'></script>
 </body>
 </html>
