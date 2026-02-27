@@ -10,3 +10,10 @@ npx playwright test --debug — с отладкой
 npx playwright test e2e/Обновляемый сайт.spec.ts — запустить конкретный тест файл
 npx playwright test --headed — запустить в видимом браузере (не headless)
 Рекомендую также добавить скрипты в package.json для удобства.
+
+ПРОЩЕ :
+
+перейти на cd docs_test
+
+запустить yarn test
+
