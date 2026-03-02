@@ -68,8 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     setTimeout(() => {
-
+            showPreloader(true)
             api_getFullAutoInfo(id, res => {
+                showPreloader(false)
                 /** Имя и зарактеристики  b Хлебные крошки */
                 {
                     if (!res || !res.brand) {
