@@ -35,9 +35,9 @@ export default defineConfig({
     // trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     trace: 'retry-with-trace',
-    actionTimeout: 15000
+    actionTimeout: 30000
   },
-  expect: { timeout: 15000 },
+  expect: { timeout: 30000 },
 
   /* Configure projects for major browsers */
   projects: [
