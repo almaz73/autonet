@@ -32,7 +32,7 @@
     left: 0;
     width: 14px;
     height: 10px;
-    background: url(/src/svg/car.svg) left top no-repeat;
+    background: url(/svg/car.svg) left top no-repeat;
 }
 
 .imgNumsBlock {

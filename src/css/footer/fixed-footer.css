@@ -43,15 +43,15 @@
     height: 20px;
 }
 .fix__foot .fix__foot_img.zvezda{
-    background: url(/src/svg/zvezda.svg) center no-repeat;
+    background: url(/svg/zvezda.svg) center no-repeat;
 }
 .fix__foot .fix__foot_img.car{
-    background: url(/src/svg/car.svg) center no-repeat;
+    background: url(/svg/car.svg) center no-repeat;
 }
 .fix__foot .fix__foot_img.comment{
-    background: url(/src/svg/comment.svg) center no-repeat;
+    background: url(/svg/comment.svg) center no-repeat;
 }
 .fix__foot .fix__foot_img.adress{
-    background: url(/src/svg/adress.svg) center no-repeat;
+    background: url(/svg/adress.svg) center no-repeat;
 }
 

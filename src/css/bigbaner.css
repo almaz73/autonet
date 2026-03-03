@@ -89,7 +89,7 @@
     left: 10px;
     width: 24px;
     height: 24px;
-    background: url(/src/svg/icon_pdf.svg) center center no-repeat;
+    background: url(/svg/icon_pdf.svg) center center no-repeat;
     background-size: contain;
     margin-top: -12px;
 }
@@ -101,7 +101,7 @@
     right: 0;
     width: 24px;
     height: 24px;
-    background: url(/src/svg/icon_download.svg) center center no-repeat;
+    background: url(/svg/icon_download.svg) center center no-repeat;
     margin-top: -12px;
 }
 
@@ -306,7 +306,7 @@
 /*}*/
 
 .bigbaner p.grey {
-    background: url(/src/svg/icon_mouse.svg) left center no-repeat;
+    background: url(/svg/icon_mouse.svg) left center no-repeat;
     font-size: 0.9em !important;
     font-family: Gilro, sans-serif;
     opacity: 0.6;

@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const id = getUrlParam('id');
     const name = getUrlParam('name');
     const h3_place = document.querySelector('#h3-place')
-    showPreloader(true, button)
 
     h3_place.innerHTML = `Вы бронируете автомобиль: <a href="/cars/car.html?id=${id}" target="_blank">${name}</a>`
 

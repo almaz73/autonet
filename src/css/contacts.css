@@ -21,7 +21,7 @@
     position: absolute;
     left: -16px;
     top: 10%;
-    content: url(/src/svg/city-icon.svg);
+    content: url(/svg/city-icon.svg);
 }
 
 /****/
@@ -67,7 +67,7 @@
     left: 0;
     top: 145px;
     line-height: 0;
-    content: url(/src/svg//address-point.svg);
+    content: url(/svg//address-point.svg);
     transform: translateX(20px) translateY(-90px);
 }
 
