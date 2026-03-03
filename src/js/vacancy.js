@@ -65,7 +65,7 @@ function initVacancies(city) {
             <div class="smForm fff${ind}">
                 <div class="details"><input placeholder="Ваше имя *" required name="fio"></div>
                 <div class="details"><input placeholder="Телефон *" required name="phone" oninput="formattingPhone(this)"></div>
-                <div class="details"><input placeholder="Эл. почта" name="email"></div>
+                <div class="details"><input placeholder="E-mail" name="email"></div>
                 <div class="details">
                 <span class="fileLabel">
                     <input placeholder="Резюме *" type="file" name="resume" accept=".doc, .docx, .odt, .pdf, .rtf, .tex, .wpd">

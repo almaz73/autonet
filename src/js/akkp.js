@@ -24,6 +24,18 @@ document.addEventListener('DOMContentLoaded', () => {
     )
 
     initCaptcha()
+
+    let right_panel_content = document.querySelector('#right_panel_content')
+    let apply_bid = document.querySelector('.apply_bid')
+    apply_bid.addEventListener('click', () => {
+        openRightPanel()
+        right_panel_content.innerHTML = constructorForm('v3',
+            ['name*', 'phone*', 'city*', 'brand', 'model'],
+            'sendBid',
+            'Отправить заявку',
+            'Запишитесь на ремонт')
+        initCaptcha()
+    })
 })
 
 window.sendBid = function (fName) {

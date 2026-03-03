@@ -39,7 +39,7 @@ window.sendBid = function (fName) {
     const phone = document.querySelector(`.${fName} [name="phone"]`)
     const city = document.querySelector(`.${fName} [name="city"]`)
     const price = document.querySelector(`.${fName} [name="price"]`)
-    const year = document.querySelector(`.${fName} [name="year"]`)
+    // const year = document.querySelector(`.${fName} [name="year"]`)
     const checkbox = document.querySelector(`.${fName} [type="checkbox" ]`)
     const button = document.querySelector(`.${fName} button`)
 
@@ -50,14 +50,15 @@ window.sendBid = function (fName) {
         name: name.value,
         phone: phone.value,
     }
-    if (price) params.price = price.innerHTML
-    if (year) params.year = year.innerHTML
-    if (city) params.city = city.innerHTML
-    if (priceCred) params.price = priceCred.innerHTML
-    if (credit) params.credit = credit.innerHTML
-    if (payment) params.payment = payment.innerHTML
-    if (yearCred) params.yearCred = yearCred.innerHTML
-    if (forMonth) params.forMonth = forMonth.innerHTML
+
+    if (price) params.price = price.value
+    // if (year) params.year = year.innerHTML
+    if (city) params.city = city.value
+    if (priceCred  && fName === 'aut_cred') params.price = priceCred.innerHTML
+    if (credit && fName === 'aut_cred') params.credit = credit.innerHTML
+    if (payment && fName === 'aut_cred') params.payment = payment.innerHTML
+    if (yearCred && fName === 'aut_cred') params.yearCred = yearCred.innerHTML
+    if (forMonth && fName === 'aut_cred') params.forMonth = forMonth.innerHTML
 
     params.type = 6
     showPreloader(true, button)
