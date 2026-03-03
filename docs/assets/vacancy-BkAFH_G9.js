@@ -1,4 +1,4 @@
-import{d as y,H as h,I as b,J as p,h as g}from"./main-Bp0XVZVC.js";/* empty css                        *//* empty css                */function _(){let a=document.querySelector("comb"),e={Город:b};e.Город.value=localStorage.getItem("selectedCity"),e.Город.value="Казань",i(e.Город.value);let t=a.dataset.placeholder,s=e[t];if(s){let n=s.map(o=>'<div data-parent="'+t+'">'+o+"</div>");a.innerHTML=`<div class='big-combo' tabindex='1'>
+import{d as y,H as h,I as b,J as p,h as g}from"./main-BNOZLHJ4.js";/* empty css                        *//* empty css                */function _(){let a=document.querySelector("comb"),e={Город:b};e.Город.value=localStorage.getItem("selectedCity"),e.Город.value="Казань",i(e.Город.value);let t=a.dataset.placeholder,s=e[t];if(s){let n=s.map(o=>'<div data-parent="'+t+'">'+o+"</div>");a.innerHTML=`<div class='big-combo' tabindex='1'>
         <span class='big-comb__selected'>
           <span class='big-comb__placeholder'>${s.value||t}</span>
           <input class='big-comb__input' type="text">
@@ -13,7 +13,7 @@ import{d as y,H as h,I as b,J as p,h as g}from"./main-Bp0XVZVC.js";/* empty css 
             <div class="smForm fff${i}">
                 <div class="details"><input placeholder="Ваше имя *" required name="fio"></div>
                 <div class="details"><input placeholder="Телефон *" required name="phone" oninput="formattingPhone(this)"></div>
-                <div class="details"><input placeholder="Эл. почта" name="email"></div>
+                <div class="details"><input placeholder="E-mail" name="email"></div>
                 <div class="details">
                 <span class="fileLabel">
                     <input placeholder="Резюме *" type="file" name="resume" accept=".doc, .docx, .odt, .pdf, .rtf, .tex, .wpd">
