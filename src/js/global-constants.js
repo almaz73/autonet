@@ -150,7 +150,7 @@ export const dealers = [
         coords: '53.141011, 50.181024',
         address: 'Южное шоссе, 10а',
         tel: '8–800–500–11–56',
-        days: 'ПН-ВС с 9:00 до 21:00',
+        days: 'ПН-ВС с 9:00 до 20:00',
         map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Ac49f6a300c736bd719acb3376728ee628dc7d9d371781ac444e51fb63a37fa82&amp;source=constructor'
     },
     {

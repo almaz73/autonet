@@ -25,7 +25,6 @@ let promos = [
     '<a href="/promo/651616/" class="ver"> <img src="../../photo-action/p_16.webp" loading="lazy" alt="Первый взнос 0 рублей"></a>',
     '<a href="/promo/651615/" class="ver"><img src="../../photo-action/p_17.webp" loading="lazy" alt="Обмен или возврат"></a>',
     '<a href="/promo/651613/" class="ver"><img src="../../photo-action/p_19.webp" loading="lazy" alt="Скидака на 20% на аренду авто"></a>',
-    '<a href="/promo/651612/" class="ver"><img src="../../photo-action/p_20.webp" loading="lazy" alt="2 сертификата в сервис">',
     '<a href="/promo/657231/" class="ver"><img src="../../photo-action/p_21.webp" loading="lazy" alt="Коммерческий транспорт с пробегом">',
     '<a href="/promo/655683/" class="ver"><img src="../../photo-action/p_22.webp" loading="lazy" alt="Cнижение цен на нормо-час до 20%">'
 ]
