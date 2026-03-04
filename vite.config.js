@@ -60,7 +60,6 @@ export default defineConfig({
 				promo: resolve(__dirname, './promo/index.html'),
 				p644223: resolve(__dirname, './promo/644223/index.html'),
 				p644340: resolve(__dirname, './promo/644340/index.html'),
-				p633448: resolve(__dirname, './promo/633448/index.html'),
 				p647168: resolve(__dirname, './promo/647168/index.html'),
 				p647169: resolve(__dirname, './promo/647169/index.html'),
 				p651612: resolve(__dirname, './promo/651612/index.html'),
