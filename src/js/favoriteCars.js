@@ -67,7 +67,7 @@ window.deleteAllFavoriteCar = function () {
 function showCountButton(cars) {
     let countDiv = document.querySelector('#favoriteCount')
     if (countDiv && cars.length) {
-        countDiv.innerHTML = '<img src="/icons/penta.svg">' + cars.length
+        countDiv.innerHTML = '<img src="/icons/penta.svg" alt="">' + cars.length
         countDiv.style.display = 'flex'
     } else if (countDiv) countDiv.style.display = 'none'
 }

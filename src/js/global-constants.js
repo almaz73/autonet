@@ -1,5 +1,3 @@
-import {formattingPhone} from "@/js/global-func.js"
-
 /** АДРЕСА */
 export const dealers = [
     {
