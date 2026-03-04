@@ -1,20 +1,20 @@
 import { fillCities } from '@/js/searchCities.js';
 
-let burger_menu = document.querySelector('.button__burger');
-let panel = document.querySelector('.main-nav.menu');
-let buttonBurger = document.querySelector('.button__burger');
+const burger_menu = document.querySelector('.button__burger');
+const panel = document.querySelector('.main-nav.menu');
+const buttonBurger = document.querySelector('.button__burger');
 
-let cities = document.querySelector('.main-nav.cities');
-let cityButton = document.querySelector('.footer-city-button');
-let cityB_contacts = document.querySelector('#city-contacts')
+const cities = document.querySelector('.main-nav.cities');
+const cityButton = document.querySelector('.footer-city-button');
+const cityB_contacts = document.querySelector('#city-contacts')
 
-let cityClose = document.querySelector('.modal-place__close');
-let mySwiper = document.querySelector('.mySwiper')
+const cityClose = document.querySelector('.modal-place__close');
+const mySwiper = document.querySelector('.mySwiper')
 let isOpened;
 /* мелкаькая выезжающая панель для разных форм */
-let rightpanel = document.querySelector('.main-nav.rightpanel');
-let closerFon = document.querySelector('#closer-fon')
-let closerButton = document.querySelector('.modal-closer.form')
+const rightpanel = document.querySelector('.main-nav.rightpanel');
+const closerFon = document.querySelector('#closer-fon')
+const closerButton = document.querySelector('.modal-closer.form')
 /***/
 
 if (mySwiper) mySwiper.style.zIndex = 0

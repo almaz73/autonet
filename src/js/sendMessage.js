@@ -1,7 +1,7 @@
 let counter = 0
 let messages = []
 
-window.sendMessage = function(text, type) {
+window.sendMessage = function (text, type) {
 
     let color = 'green'
     if (type === 'warning') color = 'orangered'
@@ -44,3 +44,27 @@ function reorder(id) {
     })
 }
 
+window.sendConfirm = function (text) {
+    let confirm = document.createElement('div');
+    let ok = document.createElement('div');
+    confirm.innerText = text || 'Нет данных.';
+    confirm.classList.add('message-span')
+    confirm.style.backgroundColor = 'grey';
+    confirm.style.textAlign = 'center';
+    confirm.style.opacity = '1'
+    confirm.style.top = '40%'
+    confirm.style.left = '50%'
+    confirm.style.transform = 'translate(-50%, -50%)'
+    confirm.style.fontSize = '25px'
+    confirm.style.padding = '25px'
+    confirm.style.zIndex = '9999'
+
+    ok.innerHTML = '<br><button class="page__btn page__btn--current confirm" onclick="backPath()">Веррнуться назад</button>'
+    confirm.append(ok)
+    document.body.appendChild(confirm);
+}
+
+window.backPath = function (){
+    setTimeout(() => window.history.back(), 100)
+}
+document.addEventListener('keydown', (e) => e.key === 'Escape' && window.backPath());

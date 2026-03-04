@@ -73,14 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 showPreloader(false)
                 /** Имя и зарактеристики  b Хлебные крошки */
                 {
-                    if (!res || !res.brand) {
-                        sendMessage('Данный автомобиль снят с продажи ', 'error')
-                        setTimeout(() => sendMessage('Вернуться назад ', 'error'), 1000)
-                        setTimeout(() => window.history.back(), 3000)
-                    }
+                    if (!res || !res.brand) sendConfirm('💀 АВТОМОБИЛЬ СНЯТ С ПРОДАЖИ')
 
                     autoName = document.querySelectorAll('.auto-name')
-                    autoName[0].innerHTML = autoName[1].innerHTML = autoName[2].innerHTML = res.brand + ' ' + res.model + ', ' + res.yearReleased
+                    autoName[0].innerHTML = autoName[1].innerHTML = autoName[2].innerHTML = (res.brand || '') + ' ' + (res.model || '') + ', ' + (res.yearReleased || '')
 
                     let brandPath = document.querySelector('#auto-brand-path')
                     brandPath.innerHTML = `<a href='/cars/?brand=${res.brand}&brandId=${res.brandId || ''}'>Автомобили ${res.brand} с пробегом</a>`

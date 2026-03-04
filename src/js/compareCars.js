@@ -1,4 +1,5 @@
 import {formatterShowPrice} from '@/js/global-func.js'
+import {api_getFullAutoInfo} from "@/js/apibase.js"
 
 window.addCompare = function (val) {
     let currentCar = window.compareCars.find(el => el.id === val)
@@ -57,11 +58,17 @@ window.deleteCar = function (id) {
     }
 }
 
-function showChosen(storage_) {
-    let storage = storage_ || getComparedCars()
-    showCountButton(storage)
+window.openCar = function (href, linkPhoto, isDeleted) {
+    if (isDeleted === 'true') linkPhoto = '/photo/tmp_auto.webp'
+    localStorage.setItem('CAR_SMALLL_PHOTO', linkPhoto)
+    setTimeout(() => location.href = href, 400)
+}
 
-    storage.forEach(el => {
+function showChosen(storage_) {
+    let cars = storage_ || getComparedCars()
+    showCountButton(cars)
+
+    cars.forEach(el => {
         let compareButton = document.querySelector("#compareId_" + el.id)
         if (compareButton) compareButton.classList.add('chosen')
     })
@@ -82,10 +89,11 @@ function showChosen(storage_) {
         let TIP_PRIVODA = ''
         let TIP_KUZOVA = ''
         let GOROD = ''
+        let RULE = ''
         let MARKA = ''
         let MODEL = ''
 
-        storage.forEach(el => {
+        cars.forEach(el => {
             if (el.photos) el.images = el.photos[0]
             if (el.address) el.fullAddress = el.address
             if (el.name) {
@@ -104,8 +112,9 @@ function showChosen(storage_) {
             }
 
             DELETE += `<td><a href="javascript:deleteCar('${el.id}')">Удалить</a></td>`
-            PREVIEW_PICTURE += `<td><a href="/cars/car.html?id=${el.id}"><img src="${el.images}" alt=""></a></td>`
-            NAME += `<td><a href="/cars/car.html?id=${el.id}">"${el.brand} ${el.model}</a></td>`
+            if (!el.deleted) PREVIEW_PICTURE += `<td><a href="javascript:openCar('/cars/car.html?id=${el.id}','${el.images}','${el.deleted}')"><img src="${el.images}" alt=""></a></td>`
+            else PREVIEW_PICTURE += `<td> 💀 Автомобиль <br> снят с продажи </td>`
+            NAME += `<td><a href="javascript:openCar('/cars/car.html?id=${el.id}','${el.images}','${el.deleted}')">${el.brand} ${el.model}</a></td>`
             PRICE += `<td>${formatterShowPrice(el.price)} руб.</td>`
             if (el.milleage) PROBEG += `<td>${formatterShowPrice(el.milleage) || ''} км</td>`
             GOD_VYPUSKA += `<td>${el.yearReleased || ''}</td>`
@@ -116,7 +125,8 @@ function showChosen(storage_) {
             TIP_KPP += `<td>${el.gearboxType || ''}</td>`
             TIP_PRIVODA += `<td>${el.driveType || ''}</td>`
             TIP_KUZOVA += `<td>${el.bodyType || ''}</td>`
-            GOROD += `<td>${el.fullAddress || ''}</td>`
+            GOROD += `<td>${(el.fullAddress && el.fullAddress.split(',')[0]) || ''}</td>`
+            RULE += `<td>${el.wheelType || ''}</td>`
             MARKA += `<td>${el.brand || ''}</td>`
             MODEL += `<td>${el.model || ''}</td>`
         })
@@ -146,10 +156,6 @@ function showChosen(storage_) {
                 <td>Год выпуска</td>
                ${GOD_VYPUSKA}
             </tr>
-            <tr class="TSVET">
-                <td>Цвет</td>
-                ${TSVET}
-            </tr>
             <tr class="OBEM_DVIGATELYA">
                 <td>Объем двигателя</td>
                ${OBEM_DVIGATELYA}
@@ -178,6 +184,14 @@ function showChosen(storage_) {
                 <td>Город</td>
                 ${GOROD}
             </tr>
+            <tr class="TSVET">
+                <td>Цвет</td>
+                ${TSVET}
+            </tr>
+            <tr class="Руль">
+                <td>Руль</td>
+                ${RULE}
+            </tr>
             <tr class="MARKA">
                 <td>Марка</td>
                 ${MARKA}
@@ -186,10 +200,20 @@ function showChosen(storage_) {
                 <td>Модель</td>
                 ${MODEL}
             </tr>`
-        if (!storage.length) compareDiv.innerHTML = '<div class="nodata">НЕТ ВЫБРАННЫХ АВТОМОБИЛЕЙ ДЛЯ СРАВНЕНИЯ</div>'
+        if (!cars.length) compareDiv.innerHTML = '<div class="nodata">НЕТ ВЫБРАННЫХ АВТОМОБИЛЕЙ ДЛЯ СРАВНЕНИЯ</div>'
     }
 }
 
+function checkDeletedCars(cars) {
+    const fetchData = (id) => api_getFullAutoInfo(id, res => res.status === 404 ? false : res)
+    const promises = cars.map(el => fetchData(el.id));
+
+    Promise.all(promises)
+        .then(results => {
+            results.forEach((res, index) => cars[index].deleted = res === false)
+            showChosen(cars)
+        })
+}
 
 export function initChosen() {
     // Перетаскивание мышкой
@@ -213,6 +237,8 @@ export function initChosen() {
 
     showChosen()
     showPreloader(false)
+
+    if (location.pathname === '/personal/list-compared/') checkDeletedCars(getComparedCars())
 }
 
 window.initChosen = initChosen
