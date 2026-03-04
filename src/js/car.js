@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 showPreloader(false)
                 /** Имя и зарактеристики  b Хлебные крошки */
                 {
-                    if (!res || !res.brand) sendConfirm('💀 АВТОМОБИЛЬ СНЯТ С ПРОДАЖИ')
+                    if (!res || !res.brand) sendConfirm('☹ АВТОМОБИЛЬ СНЯТ С ПРОДАЖИ')
 
                     autoName = document.querySelectorAll('.auto-name')
                     autoName[0].innerHTML = autoName[1].innerHTML = autoName[2].innerHTML = (res.brand || '') + ' ' + (res.model || '') + ', ' + (res.yearReleased || '')

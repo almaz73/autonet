@@ -545,7 +545,7 @@ export const tyresForList = [
         price: '15 000',
         // fromPerMonth: '1 100',
         info: '',
-        photos: ['/photo-tyres/1/NK0_03b04be8_00002.jpg',
+        images: ['/photo-tyres/1/NK0_03b04be8_00002.jpg',
             '/photo-tyres/1/NK0_351bedd2_00002.jpg',
             '/photo-tyres/1/NK0_351bedd2_00003.jpg',
             '/photo-tyres/1/NK0_ff8cd2b6_00003.jpg',
@@ -563,7 +563,7 @@ export const tyresForList = [
         price: '21 091',
         // fromPerMonth: '1 100',
         info: '',
-        photos: [
+        images: [
             '/photo-tyres/1/NK0_351bedd2_00002.jpg',
             '/photo-tyres/1/NK0_03b04be8_00002.jpg',
             '/photo-tyres/1/NK0_351bedd2_00003.jpg',
@@ -582,7 +582,7 @@ export const tyresForList = [
         price: '15 000',
         // fromPerMonth: '1 100',
         info: '',
-        photos: [
+        images: [
             '/photo-tyres/1/NK0_351bedd2_00003.jpg',
             '/photo-tyres/1/NK0_03b04be8_00002.jpg',
             '/photo-tyres/1/NK0_351bedd2_00002.jpg',
@@ -600,7 +600,7 @@ export const tyresForList = [
         price: '21 091',
         // fromPerMonth: '1 100',
         info: '',
-        photos: [
+        images: [
             '/photo-tyres/1/NK0_ff8cd2b6_00003.jpg',
             '/photo-tyres/1/NK0_03b04be8_00002.jpg',
             '/photo-tyres/1/NK0_351bedd2_00002.jpg',
@@ -617,7 +617,7 @@ export const tyresForList = [
         price: '15 000',
         // fromPerMonth: '1 100',
         info: '',
-        photos: [
+        images: [
             '/photo-tyres/1/NK0_ff8cd2b6_00004.jpg',
             '/photo-tyres/1/NK0_03b04be8_00002.jpg',
             '/photo-tyres/1/NK0_351bedd2_00002.jpg',

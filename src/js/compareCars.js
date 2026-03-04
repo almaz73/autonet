@@ -1,12 +1,11 @@
-import {formatterShowPrice} from '@/js/global-func.js'
-import {api_getFullAutoInfo} from "@/js/apibase.js"
+import {formatterShowPrice, checkDeletedCars} from '@/js/global-func.js'
 
 window.addCompare = function (val) {
     let currentCar = window.compareCars.find(el => el.id === val)
 
     let storage = getComparedCars()
     let car = currentCar
-    if (currentCar.images) car.images = currentCar.images[0]
+    if (currentCar.images) car.images = [currentCar.images[0]]
 
     let compareButton = document.querySelector("#compareId_" + val)
     let isChosen = compareButton.classList.contains('chosen')
@@ -35,7 +34,7 @@ function getComparedCars() {
 function showCountButton(storage) {
     let countDiv = document.querySelector('#compareCount')
     if (countDiv && storage.length) {
-        countDiv.innerHTML = '<img src="/icons/car-icon_b.svg">' + storage.length
+        countDiv.innerHTML = '<img src="/icons/car-icon_b.svg" alt="">' + storage.length
         countDiv.style.display = 'flex'
     } else if (countDiv) countDiv.style.display = 'none'
 }
@@ -94,7 +93,7 @@ function showChosen(storage_) {
         let MODEL = ''
 
         cars.forEach(el => {
-            if (el.photos) el.images = el.photos[0]
+            if (el.images) el.images = el.images[0]
             if (el.address) el.fullAddress = el.address
             if (el.name) {
                 el.brand = el.name.split(' ')[0]
@@ -113,7 +112,7 @@ function showChosen(storage_) {
 
             DELETE += `<td><a href="javascript:deleteCar('${el.id}')">Удалить</a></td>`
             if (!el.deleted) PREVIEW_PICTURE += `<td><a href="javascript:openCar('/cars/car.html?id=${el.id}','${el.images}','${el.deleted}')"><img src="${el.images}" alt=""></a></td>`
-            else PREVIEW_PICTURE += `<td> 💀 Автомобиль <br> снят с продажи </td>`
+            else PREVIEW_PICTURE += `<td> ☹ Автомобиль <br> снят с продажи </td>`
             NAME += `<td><a href="javascript:openCar('/cars/car.html?id=${el.id}','${el.images}','${el.deleted}')">${el.brand} ${el.model}</a></td>`
             PRICE += `<td>${formatterShowPrice(el.price)} руб.</td>`
             if (el.milleage) PROBEG += `<td>${formatterShowPrice(el.milleage) || ''} км</td>`
@@ -200,19 +199,11 @@ function showChosen(storage_) {
                 <td>Модель</td>
                 ${MODEL}
             </tr>`
-        if (!cars.length) compareDiv.innerHTML = '<div class="nodata">НЕТ ВЫБРАННЫХ АВТОМОБИЛЕЙ ДЛЯ СРАВНЕНИЯ</div>'
+        if (cars.length === 0) {
+            compareDiv.innerHTML = '<div class="nodata">НЕТ ВЫБРАННЫХ АВТОМОБИЛЕЙ ДЛЯ СРАВНЕНИЯ</div>'
+            sendConfirm()
+        }
     }
-}
-
-function checkDeletedCars(cars) {
-    const fetchData = (id) => api_getFullAutoInfo(id, res => res.status === 404 ? false : res)
-    const promises = cars.map(el => fetchData(el.id));
-
-    Promise.all(promises)
-        .then(results => {
-            results.forEach((res, index) => cars[index].deleted = res === false)
-            showChosen(cars)
-        })
 }
 
 export function initChosen() {
@@ -238,7 +229,7 @@ export function initChosen() {
     showChosen()
     showPreloader(false)
 
-    if (location.pathname === '/personal/list-compared/') checkDeletedCars(getComparedCars())
+    if (location.pathname === '/personal/list-compared/') checkDeletedCars(getComparedCars(), showChosen)
 }
 
 window.initChosen = initChosen

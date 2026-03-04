@@ -21,7 +21,7 @@ class Carousel {
     render() {
         this.container.innerHTML = '';
 
-        this.images.forEach((image, index) => {
+        this.images.forEach((image) => {
 
             let content = `<div class="pic">
                         <img src="${image.src}" alt="${image.name}" class="carousel-image" draggable="false">

@@ -1,3 +1,6 @@
+import {checkDeletedCars} from "@/js/global-func.js";
+import {fill} from "@/js/filter/cards.js";
+
 window.addFavorite = function (val) {
     let currentCar = window.favorCars && window.favorCars.find(el => el.id === val)
     let cars = getFavoriteCars()
@@ -68,6 +71,6 @@ function showCountButton(cars) {
         countDiv.style.display = 'flex'
     } else if (countDiv) countDiv.style.display = 'none'
 }
-
+if (location.pathname === '/personal/favorite-cars/') checkDeletedCars(getFavoriteCars(), fill)
 window.initFavotite = initFavotite
 setTimeout(initFavotite)

@@ -52,6 +52,7 @@ window.sendConfirm = function (text) {
     confirm.style.backgroundColor = 'grey';
     confirm.style.textAlign = 'center';
     confirm.style.opacity = '1'
+    confirm.style.minWidth = '200px'
     confirm.style.top = '40%'
     confirm.style.left = '50%'
     confirm.style.transform = 'translate(-50%, -50%)'

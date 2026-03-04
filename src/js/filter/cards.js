@@ -11,14 +11,11 @@ function createNode(item, N) {
               <div class='cart__slide'>
                   <span class='dark-fon'></span>
                   <div class="fast_show">Быстрый просмотр</div>
-                  <img class='photo' alt=''>
-                  <div class='cart__blank'>${item.address}</div>
-                  <div class='field'>
-                      <div class='red'></div>
-                  </div>
+                  ${!item.deleted?"<img class='photo' alt=''><div class='cart__blank'>${item.address}</div>" +
+            "<div class='field'><div class='red'></div></div>":"<div style='margin:0 40px'> <br><br><br>☹ <br><br>АВТОМОБИЛЬ <br>СНЯТ <br>С ПРОДАЖИ </div>"}
               </div>
               <a class="big_link" 
-                 href="javascript:openCar('${item.href}','${item.photos[0]}')" 
+                 href="javascript:openCar('${item.href}','${item.images[0]}')" 
                  data-href="${item.href}"
                  title="Перейти">
                   <div class='name'>
@@ -82,6 +79,8 @@ function galeryEvents(id, images) {
     const red = gallery.querySelector('.cart .red');
     let offset1, offset2, i = 0;
     let z_zona = 0 // чтобы менять фотку, если только меняем зону
+
+    if (!photo) return false
 
     photo.src = images[0];
     photo.onerror = () => photo.src = '/photo/tmp_auto.webp '
@@ -165,7 +164,7 @@ export function fill(cars, currentCars, totalPages) {
     initChosen()
     initFavotite()
 
-    cars.forEach((el, i) => galeryEvents(i + 1, el.photos)); // прикрепляем события
+    cars.forEach((el, i) => galeryEvents(i + 1, el.images)); // прикрепляем события
     type_views = document.querySelector('.type_views');
     type_views && type_views.addEventListener('click', (e) => {
         setTypeView(e)

@@ -1,4 +1,5 @@
 // export let global_brandsIds= [];
+import {api_getFullAutoInfo} from "@/js/apibase.js"
 
 export const eventBus = {
     // Хранилище событий: { 'event_name': [callback1, callback2] }
@@ -66,7 +67,7 @@ export function prepareCars(res) {
             price: formatterShowPrice(el.price),
             fromPerMonth: fromPerMonth,
             info: info,
-            photos: el.images,
+            images: el.images,
             yearReleased: el.yearReleased
         })
     })
@@ -314,11 +315,23 @@ export function cleanCarsWithoutPhoto(items) {
 
 export function acceprtWithoutPhoto(items) {
     // Если нет фоток, теперь подставляю временную фотку, чтобы не было проблем с версткой и не отсеивались авто
-    return items.map(el=>{
-        if (el && !el.images.length){
-            el.images = ['/photo/nophoto.webp','/photo/nophoto.webp','/photo/nophoto.webp','/photo/nophoto.webp','/photo/nophoto.webp']
+    return items.map(el => {
+        if (el && !el.images.length) {
+            el.images = ['/photo/nophoto.webp', '/photo/nophoto.webp', '/photo/nophoto.webp', '/photo/nophoto.webp', '/photo/nophoto.webp']
             console.log("%c было без фото ", "background: orange; color: black")
         }
         return el
     })
+}
+
+/* опрашиваем авто на удаленность */
+export function checkDeletedCars(cars, callback) {
+    const fetchData = (id) => api_getFullAutoInfo(id, res => res.status === 404 ? false : res)
+    const promises = cars.map(el => fetchData(el.id));
+
+    Promise.all(promises)
+        .then(results => {
+            results.forEach((res, index) => cars[index].deleted = res === false)
+            callback(cars, cars)
+        })
 }

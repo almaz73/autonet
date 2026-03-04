@@ -118,7 +118,6 @@ function getVitrina(ishandEvent) {
 
         cars = localStorage.getItem('FavoriteCars')
         cars = cars ? JSON.parse(cars) : []
-        setTimeout(() => fill(cars, cars))
     }
     // else {
         // document.querySelector('#vitrina_name').innerHTML = 'Автомобили'

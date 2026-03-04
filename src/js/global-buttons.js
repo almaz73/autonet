@@ -62,7 +62,7 @@ cookieAccept && cookieAccept.addEventListener('click', () => {
 });
 
 
-function close_all_open_panels(show) {
+function close_all_open_panels() {
   if (rightpanel) rightpanel.style.transform = 'translateX(150vw)';
   if (cities) cities.style.transform = 'translateX(150vw)';
   if (panel) panel.style.transform = 'translateX(150vw)';
