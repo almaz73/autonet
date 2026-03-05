@@ -11,8 +11,8 @@ function createNode(item, N) {
               <div class='cart__slide'>
                   <span class='dark-fon'></span>
                   <div class="fast_show">Быстрый просмотр</div>
-                  ${!item.deleted?"<img class='photo' alt=''><div class='cart__blank'>${item.address}</div>" +
-            "<div class='field'><div class='red'></div></div>":"<div style='margin:0 40px'> <br><br><br>☹ <br><br>АВТОМОБИЛЬ <br>СНЯТ <br>С ПРОДАЖИ </div>"}
+                  ${!item.deleted?("<img class='photo' alt=''><div class='cart__blank'>"+item.address+"</div>" +
+            "<div class='field'><div class='red'></div></div>"):"<div style='margin:0 40px'> <br><br><br>☹ <br><br>АВТОМОБИЛЬ <br>СНЯТ <br>С ПРОДАЖИ </div>"}
               </div>
               <a class="big_link" 
                  href="javascript:openCar('${item.href}','${item.images[0]}')" 
