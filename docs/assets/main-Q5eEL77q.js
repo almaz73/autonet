@@ -111,7 +111,7 @@
             </div>
         </div>
 </div>
-`,Pe="https://ext.cartat.ru/exchange",ie=localStorage.getItem("CACHE_SERV");let y=ie?JSON.parse(ie):{};y instanceof Array&&(y={});Object.keys(y).map(e=>{y[e].hour&&y[e].hour<Date.now()&&delete y[e]});function f(e,o,t){if(y[e]){if(t&&location.href.includes("localhost"))return o(y[e].data);o(y[e].data)}return fetch(Pe+e).then(r=>(r.ok||console.log(`HTTP error! status: ${r.status}`),showPreloader(!1),r.json())).then(r=>(y[e]={data:r},t&&(y[e].hour=Date.now()+t*60*1e3),r&&Object.keys(r).length&&localStorage.setItem("CACHE_SERV",JSON.stringify(y)),o(y[e].data))).catch(r=>console.error("Произошла ошибка:",r))}const me="https://ext.cartat.ru/exchange";function he(e){let o="/api/Email/PostEmail",t="";return(e.fio||e.name)&&(t+="Имя: "+(e.fio||e.name)+`
+`,Pe="https://ext.cartat.ru/exchange",ie=localStorage.getItem("CACHE_SERV");let y=ie?JSON.parse(ie):{};y instanceof Array&&(y={});Object.keys(y).map(e=>{y[e].hour&&y[e].hour<Date.now()&&delete y[e]});function f(e,o,t){return y[e]&&o(y[e].data),fetch(Pe+e).then(r=>(r.ok||console.log(`HTTP error! status: ${r.status}`),showPreloader(!1),r.json())).then(r=>(y[e]={data:r},t&&(y[e].hour=Date.now()+t*60*1e3),r&&Object.keys(r).length&&localStorage.setItem("CACHE_SERV",JSON.stringify(y)),o(y[e].data))).catch(r=>console.error("Произошла ошибка:",r))}const me="https://ext.cartat.ru/exchange";function he(e){let o="/api/Email/PostEmail",t="";return(e.fio||e.name)&&(t+="Имя: "+(e.fio||e.name)+`
 `),e.phone&&(t+="Телефон: "+e.phone+`
 `),e.city&&(t+="Город: "+e.city+`
 `),e.email&&(t+="Email: "+e.email+`

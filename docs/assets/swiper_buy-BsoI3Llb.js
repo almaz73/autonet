@@ -1,4 +1,4 @@
-import{i}from"./swiper-starter-B5j2mkqB.js";document.addEventListener("DOMContentLoaded",()=>{window.reloadLittleSwiper()});window.reloadLittleSwiper=function(){let s=document.querySelector("swiper_buy");if(!s)return!1;s.innerHTML=l,setTimeout(i,2e3)};let l=`
+import{i}from"./swiper-starter-ClN_9x8K.js";document.addEventListener("DOMContentLoaded",()=>{window.reloadLittleSwiper()});window.reloadLittleSwiper=function(){let s=document.querySelector("swiper_buy");if(!s)return!1;s.innerHTML=l,setTimeout(i,2e3)};let l=`
     <section class="swiper mySwiper buy_swiper" style="z-index: 1">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
