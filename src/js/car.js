@@ -45,8 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         setTimeout(() => {
-            console.log('counter', counter)
-            console.log('errors', errors)
             if (!isAlready) setPhotosInSwiper(urls, true)
         }, 7000)
     }

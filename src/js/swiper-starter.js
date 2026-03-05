@@ -4,7 +4,7 @@ let fotos_black = document.querySelector('.fotos_black')
 let big = document.querySelector('.big')
 let swiperSection = document.querySelector('.swiper.mySwiper')
 let isCarPage = location.pathname.includes('car.html')
-const isMainPage  = location.pathname === '/'
+const isMainPage = location.pathname === '/'
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -55,20 +55,17 @@ export function initSwipper() {
     }
 
 
-    setTimeout(() => {
+    function ewcursiveWaitswiper() {
         swiper = new Swiper('.mySwiper', params)
-        if (!swiper) setTimeout(() => {
-            swiper = new Swiper('.mySwiper', params)
-            if (!swiper) setTimeout(() => {
-                swiper = new Swiper('.mySwiper', params)
-            }, 730)
-        }, 730)
-    })
+        if (!swiper) setTimeout(ewcursiveWaitswiper, 730)
+        else window.showSlide(0)
+    }
 
+    ewcursiveWaitswiper()
 }
 
 
-window.showSlide = val => swiper.slideTo(val + 1)
+window.showSlide = val => swiper.slideTo(val)
 
 window.showMore = function () {
     if (fotos.style.height === 'inherit') fotos.style.height = '73px'
@@ -80,12 +77,5 @@ window.toBig = function (val) {
     if (val) big.classList.add('big_viewer')
     else {
         big.classList.remove('big_viewer')
-        setTimeout(() => swiperSection.classList.remove('rotated'))
-    }
-
-    if (window.innerWidth > 1000) setTimeout(() => swiperSection.classList.remove('rotated'))
-    else {
-        console.log('uuuuu')
-        // swiperSection.classList.add('rotated')
     }
 }

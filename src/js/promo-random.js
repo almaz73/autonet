@@ -15,7 +15,7 @@ let promos = [
     '<a href="/promo/647168/" class="ver"> <img src="../../photo-action/p_4.webp" loading="lazy" alt="Постановка на учёт в ГИБДД"></a>',
     '<a href="/promo/647169/" class="ver"><img src="../../photo-action/p_5.webp" loading="lazy" alt="Поставьте авто на комиссию"></a>',
     '<a href="/promo/651625/" class="ver"> <img src="../../photo-action/p_7.webp" loading="lazy" alt="Установка парктроников"></a>',
-    '<a href="/promo/651624/" class="ver"> <img src="../../photo-action/p_8.webp" loading="lazy" alt="Trade-in с повышенной оценкой"></a>',
+    '<a href="/promo/651624/" class="ver"> <img src="../../photo-action/p_8.webp" loading="lazy" alt="Трейд-ин с повышенной оценкой"></a>',
     '<a href="/promo/651623/" class="ver"> <img src="../../photo-action/p_9.webp" loading="lazy" alt="Скидка 10% в День рождения"></a>',
     '<a href="/promo/651621/" class="ver"> <img src="../../photo-action/p_11.webp" loading="lazy" alt="Саквояж или EVA ковры"></a>',
     '<a href="/promo/651620/" class="ver"> <img src="../../photo-action/p_12.webp" loading="lazy" alt="Установка видеорегистратора"></a>',

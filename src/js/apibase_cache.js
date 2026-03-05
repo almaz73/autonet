@@ -19,10 +19,10 @@ export function withCache(request, callback, hour) {
         //     return callback(CACHE[request].data)
         // }
 
-       if (hour && location.href.includes('localhost')) { // для меня
-           // не брать из интернета
-           return callback(CACHE[request].data)
-       }
+       // if (hour && location.href.includes('localhost')) { // для меня
+       //     // не брать из интернета
+       //     return callback(CACHE[request].data)
+       // }
         callback(CACHE[request].data)
     }
 
