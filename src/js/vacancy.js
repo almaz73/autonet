@@ -184,6 +184,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const text = document.querySelector(`.${fName} [name="text"]`)
         const resume = document.querySelector(`.${fName} [name="resume"]`)
         const checkbox = document.querySelector(`.${fName} [type="checkbox"]`)
+        const agree = document.querySelector(`.${fName} [name="agree"]`)
         const button =  document.querySelector(`.${fName} button`)
 
 
@@ -202,7 +203,8 @@ window.addEventListener('DOMContentLoaded', () => {
         let params = {
             fio: fio.value,
             phone: phone.value,
-            resume: resume && resume.files[0]
+            resume: resume && resume.files[0],
+            agree: agree.checked
         }
         if (city && city.value) params.city = city.value
         if (text && text.value) params.aboutYourself = text.value

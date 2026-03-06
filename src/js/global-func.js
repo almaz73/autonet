@@ -292,7 +292,14 @@ ${field === 'phone' ? 'oninput="formattingPhone(this)"' : ''}>
                     на обработку
                     персональных <a href="/privacy-policy/" target="_blank">данных</a>
                 </label>
-            </div></div></div></div>`
+            </div>
+            <div class="modal__personal">
+                <input type="checkbox" name="agree" id="dd${random+1}">
+                <label for="dd${random+1}" style="cursor: pointer">
+                    Согласие на рекламную  <a href="/privacy-policy/agreement.html" target="_blank">коммуникацию</a>
+                </label>
+            </div>
+            </div></div></div>`
     return html
 }
 

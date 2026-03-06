@@ -53,6 +53,7 @@ window.getQuoite = function (fName) {
     const city = document.querySelector(`.${fName} [name="city"]`)
     const capcthadiv = document.querySelector(`.${fName} .capctha-div`)
     const checkbox = document.querySelector(`.${fName} [type="checkbox"]`)
+    const agree = document.querySelector(`.${fName} [name="agree"]`)
     const button = document.querySelector(`.${fName} button`)
 
     if (checkFormFields([capcthadiv, name, phone, city, checkbox])) return false
@@ -62,7 +63,8 @@ window.getQuoite = function (fName) {
         type: 15,
         name: name.value,
         phone: phone.value,
-        city: city.value
+        city: city.value,
+        agree: agree.checked
     }
     showPreloader(true, button)
     api_postEmail(params).then(res => {
@@ -82,6 +84,7 @@ window.questionFranshiza = function (fName) {
     const message = document.querySelector(`.${fName} [name="message"]`)
     const capcthadiv = document.querySelector(`.${fName} .capctha-div`)
     const checkbox = document.querySelector(`.${fName} [type="checkbox"]`)
+    const agree = document.querySelector(`.${fName} [name="agree"]`)
     const button = document.querySelector(`.${fName} button`)
 
     if (checkFormFields([capcthadiv, name, phone, city, checkbox])) return false
@@ -93,7 +96,8 @@ window.questionFranshiza = function (fName) {
         name: name.value,
         message: message.value,
         phone: phone.value,
-        city: city.value
+        city: city.value,
+        agree: agree.checked
     }
     showPreloader(true, button)
     api_postEmail(params).then(res => {

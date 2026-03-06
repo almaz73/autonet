@@ -42,6 +42,7 @@ window.sendBid = function (fName) {
     const phone = document.querySelector(`.${fName} [name="phone"]`)
     const email = document.querySelector(`.${fName} [name="email"]`)
     const checkbox = document.querySelector(`.${fName} [type="checkbox" ]`)
+    const agree = document.querySelector(`.${fName} [name="agree"]`)
     const button = document.querySelector(`.${fName} button`)
 
     if (checkFormFields([capcthadiv, name, phone, email, checkbox])) return false
@@ -52,7 +53,8 @@ window.sendBid = function (fName) {
         type: 9,
         name: name.value,
         phone: phone.value,
-        email: email.value
+        email: email.value,
+        agree: agree.checked
     }
 
     showPreloader(true, button)

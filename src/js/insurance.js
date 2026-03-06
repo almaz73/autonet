@@ -35,6 +35,7 @@ window.sendBid = function (fName) {
     const brand = document.querySelector(`.${fName} [name="brand"]`)
     const model = document.querySelector(`.${fName} [name="model"]`)
     const checkbox = document.querySelector(`.${fName} [type="checkbox"]`)
+    const agree = document.querySelector(`.${fName} [name="agree"]`)
     const button = document.querySelector(`.${fName} button`)
 
     if (checkFormFields([capcthadiv, name, city, phone, checkbox])) return false
@@ -49,6 +50,7 @@ window.sendBid = function (fName) {
         osago: osago.value,
         brand: brand.value,
         model: model.value,
+        agree: agree.checked
     }
     showPreloader(true, button)
     api_postEmail(params).then(res => {

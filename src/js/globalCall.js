@@ -27,6 +27,7 @@ window.sendBid = function (fName) {
     const model = document.querySelector(`.${fName} [name="model"]`)
     const year = document.querySelector(`.${fName} [name="year"]`)
     const checkbox = document.querySelector(`.${fName} [type="checkbox"]`)
+    const agree = document.querySelector(`.${fName} [name="agree"]`)
     const button = document.querySelector(`.${fName} button`)
 
     if (checkFormFields([capcthadiv, name, phone, checkbox])) return false
@@ -40,7 +41,7 @@ window.sendBid = function (fName) {
         brand: brand && brand.value,
         model: model && model.value,
         year: year && year.value,
-
+        agree: agree.checked
     }
 
     showPreloader(true, button)
@@ -63,6 +64,7 @@ window.sendBidPromo = function () {
     const name = document.querySelector(`[name="name"]`)
     const year = document.querySelector(`[name="year"]`)
     const checkbox = document.querySelector(`[type="checkbox"]`)
+    const agree = document.querySelector(`.${fName} [name="agree"]`)
     const button = document.querySelector(`button`)
 
     if (checkFormFields([capcthadiv, name, checkbox])) return false
@@ -71,6 +73,7 @@ window.sendBidPromo = function () {
         type: 16,
         name: name.value,
         year: year.value,
+        agree: agree.checked
     }
     showPreloader(true, button)
     api_postEmail(params).then(res => {

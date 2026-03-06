@@ -24,6 +24,7 @@ export function api_postEmail(params) {
     if (params.model) letter += 'Модель: ' + params.model + '\n'
     if (params.year) letter += 'Год: ' + params.year + '\n'
     if (params.osago) letter += 'Автострахование: ' + params.osago + '\n'
+    if (params.agree) letter += 'Согласие на рекламу: ДА'
 
     return fetch(server + request, {
         method: 'POST',
@@ -54,6 +55,7 @@ export function api_PostEmailWithAttachement(params) {
     if (params.city) letter += 'Город: ' + params.city + '\n'
     if (params.email) letter += 'Email: ' + params.email + '\n'
     if (params.aboutYourself) letter += 'О себе: ' + params.aboutYourself + '\n'
+    if (params.agree) letter += 'Согласие на рекламу: ДА'
 
 
     formData.append('text', letter);

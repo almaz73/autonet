@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const email = document.querySelector('[name="email"]')
     const button = document.querySelector('button.but_red')
     const checkbox = document.querySelector(`[type="checkbox" ]`)
+    const agree = document.querySelector(`.${fName} [name="agree"]`)
     const capcthadiv = document.querySelector(`.capctha-div`)
     const id = getUrlParam('id');
     const name = getUrlParam('name');
@@ -27,7 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
             name: fio.value,
             phone: phone.value,
             email: email.value,
-            id: id
+            id: id,
+            agree: agree.checked
         }
         showPreloader(true, button)
         api_postEmail(parans).then(res => {

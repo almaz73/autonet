@@ -68,4 +68,3 @@ window.sendConfirm = function (text) {
 window.backPath = function (){
     setTimeout(() => window.history.back(), 100)
 }
-document.addEventListener('keydown', (e) => e.key === 'Escape' && window.backPath());

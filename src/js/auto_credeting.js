@@ -41,6 +41,7 @@ window.sendBid = function (fName) {
     const price = document.querySelector(`.${fName} [name="price"]`)
     // const year = document.querySelector(`.${fName} [name="year"]`)
     const checkbox = document.querySelector(`.${fName} [type="checkbox" ]`)
+    const agree = document.querySelector(`.${fName} [name="agree"]`)
     const button = document.querySelector(`.${fName} button`)
 
 
@@ -49,6 +50,7 @@ window.sendBid = function (fName) {
     const params = {
         name: name.value,
         phone: phone.value,
+        agree: agree.checked
     }
 
     if (price) params.price = price.value

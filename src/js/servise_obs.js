@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 window.send_obsl = function (fName) {
     const capcthadiv = document.querySelector(`.${fName} .capctha-div`)
     const checkbox = document.querySelector(`.${fName} [type="checkbox" ]`)
+    const agree = document.querySelector(`.${fName} [name="agree"]`)
     const name = document.querySelector(`.${fName} [name="name"]`)
     const phone = document.querySelector(`.${fName} [name="phone"]`)
     const city = document.querySelector(`.${fName} [name="city"]`)
@@ -59,7 +60,8 @@ window.send_obsl = function (fName) {
         name: name.value,
         phone: phone.value,
         city: city.value,
-        selection: selection.value
+        selection: selection.value,
+        agree: agree.checked
     }
 
     showPreloader(true, button)

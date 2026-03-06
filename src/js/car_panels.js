@@ -48,6 +48,7 @@ window.lookAuto = function () {
     const year = document.querySelector('.look-auto [name="year"]')
     const email = document.querySelector('.look-auto [name="email"]')
     const checkbox = document.querySelector('.look-auto [type="checkbox"]')
+    const agree = document.querySelector(`.${fName} [name="agree"]`)
     const button = document.querySelector('.look-auto button')
 
 
@@ -57,7 +58,8 @@ window.lookAuto = function () {
         type: 14,
         name: name.value,
         email: email && email.value,
-        year: year.value
+        year: year.value,
+        agree: agree.checked
     }
     showPreloader(true, button)
     api_postEmail(params).then(res => {
@@ -79,6 +81,7 @@ window.applyBid = function () {
     const model = document.querySelector('.bid [name="model"]')
     const year = document.querySelector('.bid [name="year"]')
     const checkbox = document.querySelector('.bid [type="checkbox"]')
+    const agree = document.querySelector(`.${fName} [name="agree"]`)
     const button = document.querySelector('.bid button')
 
     if (checkFormFields([capcthadiv, name, phone, checkbox])) return false
@@ -90,7 +93,8 @@ window.applyBid = function () {
         city: city.value,
         brand: brand.value,
         model: model.value,
-        year: year.value
+        year: year.value,
+        agree: agree.checked
     }
     showPreloader(true, button)
     api_postEmail(params).then(res => {
