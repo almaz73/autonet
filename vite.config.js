@@ -51,6 +51,7 @@ export default defineConfig({
 			input: {
 				main: resolve(__dirname, 'index.html'),
 				privacyPolicy: resolve(__dirname, './privacy-policy/index.html'),
+				agreement: resolve(__dirname, './privacy-policy/agreement.html'),
 				_404: resolve(__dirname, '404.html'),
 				cars: resolve(__dirname, './cars/index.html'),
 				vykup: resolve(__dirname, './services/vykup/index.html'),
