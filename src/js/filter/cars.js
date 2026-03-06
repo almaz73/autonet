@@ -148,7 +148,7 @@ const carVitrina = `<div class="car_vitrina">
                 </div>
             </span>
 
-            <span class='coin'>
+            <span class='coin' title="Отсортируйте по цене">
                 <span>цена <img src="/svg/arrow-down.svg" alt="" loading="lazy"
                  width='10' style="transform: rotate(-90deg)"></span>
             </span>
