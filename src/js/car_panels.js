@@ -48,7 +48,7 @@ window.lookAuto = function () {
     const year = document.querySelector('.look-auto [name="year"]')
     const email = document.querySelector('.look-auto [name="email"]')
     const checkbox = document.querySelector('.look-auto [type="checkbox"]')
-    const agree = document.querySelector(`.${fName} [name="agree"]`)
+    const agree = document.querySelector(`.look-auto [name="agree"]`)
     const button = document.querySelector('.look-auto button')
 
 
@@ -81,7 +81,7 @@ window.applyBid = function () {
     const model = document.querySelector('.bid [name="model"]')
     const year = document.querySelector('.bid [name="year"]')
     const checkbox = document.querySelector('.bid [type="checkbox"]')
-    const agree = document.querySelector(`.${fName} [name="agree"]`)
+    const agree = document.querySelector(`.bid [name="agree"]`)
     const button = document.querySelector('.bid button')
 
     if (checkFormFields([capcthadiv, name, phone, checkbox])) return false

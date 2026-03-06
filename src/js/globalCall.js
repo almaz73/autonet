@@ -64,7 +64,7 @@ window.sendBidPromo = function () {
     const name = document.querySelector(`[name="name"]`)
     const year = document.querySelector(`[name="year"]`)
     const checkbox = document.querySelector(`[type="checkbox"]`)
-    const agree = document.querySelector(`.${fName} [name="agree"]`)
+    const agree = document.querySelector(`[name="agree"]`)
     const button = document.querySelector(`button`)
 
     if (checkFormFields([capcthadiv, name, checkbox])) return false

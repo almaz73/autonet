@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const email = document.querySelector('[name="email"]')
     const button = document.querySelector('button.but_red')
     const checkbox = document.querySelector(`[type="checkbox" ]`)
-    const agree = document.querySelector(`.${fName} [name="agree"]`)
+    const agree = document.querySelector(`[name="agree"]`)
     const capcthadiv = document.querySelector(`.capctha-div`)
     const id = getUrlParam('id');
     const name = getUrlParam('name');
