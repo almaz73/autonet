@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             showPreloader(true)
             api_getFullAutoInfo(id, res => {
                 showPreloader(false)
-                /** Имя и зарактеристики  b Хлебные крошки */
+                /** Имя и характеристики в Хлебные крошки */
                 {
                     if (!res || !res.brand) sendConfirm('☹ АВТОМОБИЛЬ СНЯТ С ПРОДАЖИ')
 
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     res.сonfiguration.forEach(el => equipment.innerHTML += `<li>${el}</li>`)
                 }
 
-                /** выбранные  и сраниваемые*/
+                /** выбранные и сраниваемые*/
                 {
                     let favorite_chosen = document.querySelector('#favorite_chosen')
                     if (favorite_chosen) {
