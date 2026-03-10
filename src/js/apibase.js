@@ -1,7 +1,7 @@
 
 import {withCache} from "@/js/apibase_cache.js"
+import {server} from "@/js/global-constants.js";
 
-const server = 'https://ext.cartat.ru/exchange'
 
 export function api_postEmail(params) {
     let request = '/api/Email/PostEmail'
@@ -75,7 +75,7 @@ export function api_PostEmailWithAttachement(params) {
 
 /*** Получение автомобилей по заданным фильтрам ***/
 export function api_getList(params, callback) {
-    let request = '/api/Auto/GetList?Limit=' + params.limit
+    let request = '/api/getList?Limit=' + params.limit
     if (params.brandId) request += '&brandId=' + params.brandId
     if (params.modelId) request += '&modelId=' + params.modelId
     if (params.offset) request += '&offset=' + params.offset
@@ -100,71 +100,71 @@ export function api_getList(params, callback) {
 }
 
 export function api_getSpecials(city, callback) {
-    let request = '/api/Auto/GetSpecials?city=' + city
+    let request = '/api/getSpecials?city=' + city
     return withCache(request, callback, 60) // ЗВ 10 минут авто не подменят
 }
 
 /*** Все данные по одной машине ***/
 export function api_getFullAutoInfo(guid, callback) {
-    let request = '/api/Auto/GetFullAutoInfo?guid=' + guid
+    let request = '/api/getFullAutoInfo?guid=' + guid
     return withCache(request, callback, 10) // ЗВ 10 минут авто не подменят
 }
 
 /*** Получение кол-во автомобилей разбитых по бренду. Отсортированно от большего к меньшему ***/
 export function api_GetCarCount(callback) {
-    let request = '/api/Auto/GetCarCount'
+    let request = '/api/getCarCount'
     return withCache(request, callback, 5) // тут 5 минут только кешируем
 }
 
 /** Получение брендов автомобилей */
 export function api_GetBrandList(callback) {
-    let request = '/api/auto/getBrandList'
+    let request = '/api/getBrandList'
     return withCache(request, callback, 60) // дальше уже кешироание на час, редко обновляются
 }
 
 /** Поолучение моделей автомобилей по бренду */
 export function api_GetModelList(brandId, callback) {
-    let request = '/api/auto/getModelList?brandId=' + brandId
+    let request = '/api/getModelList?brandId=' + brandId
     return withCache(request, callback, 60)
 }
 
 export function api_getCities(callback) {
-    let request = '/api/Auto/GetCities'
+    let request = '/api/getCities'
     return withCache(request, callback, 60)
 }
 
 export function api_getGearboxTypes(callback) {
-    let request = '/api/Auto/GetGearboxTypes'
+    let request = '/api/getGearboxTypes'
     return withCache(request, callback, 60)
 }
 
 export function api_getEngineTypes(callback) {
-    let request = '/api/Auto/GetEngineTypes'
+    let request = '/api/getEngineTypes'
     return withCache(request, callback, 60)
 }
 
 export function api_getDriveTypes(callback) {
-    let request = '/api/Auto/getDriveTypes'
+    let request = '/api/getDriveTypes'
     return withCache(request, callback, 60)
 }
 
 export function api_getWheelTypes(callback) {
-    let request = '/api/Auto/getWheelTypes'
+    let request = '/api/getWheelTypes'
     return withCache(request, callback, 60)
 }
 
 export function api_getBodyTypes(callback) {
-    let request = '/api/Auto/getBodyTypes'
+    let request = '/api/getBodyTypes'
     return withCache(request, callback, 60)
 }
 
 export function api_getYearGap(callback) {
-    let request = '/api/Auto/GetYearGap'
+    let request = '/api/getYearGap'
     return withCache(request, callback, 60)
 }
 
 export function api_getColorList(callback) {
-    let request = '/api/Auto/GetColorList'
+    let request = '/api/getColorList'
     return withCache(request, callback, 60)
 }
 

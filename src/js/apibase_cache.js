@@ -1,4 +1,5 @@
-const server = 'https://ext.cartat.ru/exchange'
+import {server} from "@/js/global-constants.js";
+
 const Cache_serv = localStorage.getItem('CACHE_SERV')
 let CACHE = Cache_serv ? JSON.parse(Cache_serv) : {}
 if (CACHE instanceof Array) CACHE = {}

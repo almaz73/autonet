@@ -47,7 +47,7 @@ function FillFilterFromAddressBar(filterParams) {
         extention = true
         filterParams.gearboxType = gearboxType
 
-        let item = Cache_serv['/api/Auto/GetGearboxTypes']
+        let item = Cache_serv['/api/getGearboxTypes']
         let name = item && item.data.find(el => el.name === gearboxType)
         setCombName('Тип КПП', (name ? name.title : gearboxType))
     }
@@ -57,7 +57,7 @@ function FillFilterFromAddressBar(filterParams) {
         extention = true
         filterParams.engineType = engineType
 
-        let item = Cache_serv['/api/Auto/GetEngineTypes']
+        let item = Cache_serv['/api/getEngineTypes']
         let name = item && item.data.find(el => el.name === engineType)
         setCombName('Тип двигателя', (name ? name.title : engineType))
     }
@@ -66,7 +66,7 @@ function FillFilterFromAddressBar(filterParams) {
     if (bodyType) {
         extention = true
         filterParams.bodyType = bodyType
-        let item = Cache_serv['/api/Auto/getBodyTypes']
+        let item = Cache_serv['/api/getBodyTypes']
         let name = item && item.data.find(el => el.name === bodyType)
         setCombName('Тип кузова', (name ? name.title : bodyType))
     }
@@ -76,7 +76,7 @@ function FillFilterFromAddressBar(filterParams) {
         extention = true
         filterParams.wheelType = wheelType
 
-        let item = Cache_serv['/api/Auto/getWheelTypes']
+        let item = Cache_serv['/api/getWheelTypes']
         let name = item && item.data.find(el => el.name === wheelType)
         setCombName('Руль', (name ? name.title : wheelType))
     }
@@ -85,7 +85,7 @@ function FillFilterFromAddressBar(filterParams) {
     if (driveType) {
         extention = true
         filterParams.driveType = driveType
-        let item = Cache_serv['/api/Auto/getDriveTypes']
+        let item = Cache_serv['/api/getDriveTypes']
         let name = item && item.data.find(el => el.name === driveType)
         setCombName('Тип привода',  (name ? name.title : wheelType))
     }

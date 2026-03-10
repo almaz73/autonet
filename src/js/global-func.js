@@ -57,7 +57,7 @@ export function prepareCars(res) {
         info += ', ' + el.driveType
         if (el.engineType) info += ', ' + el.engineType
 
-        let fromPerMonth = formatterShowPrice(parseInt(parseInt(el.price.replace(/ /g, '')) / 90.12))
+        let fromPerMonth = formatterShowPrice(parseInt(el.price / 90.12))
 
         cars.push({
             address: el.fullAddress,
@@ -294,8 +294,8 @@ ${field === 'phone' ? 'oninput="formattingPhone(this)"' : ''}>
                 </label>
             </div>
             <div class="modal__personal">
-                <input type="checkbox" name="agree" id="dd${random+1}">
-                <label for="dd${random+1}" style="cursor: pointer">
+                <input type="checkbox" name="agree" id="dd${random + 1}">
+                <label for="dd${random + 1}" style="cursor: pointer">
                     Согласие на рекламную  <a href="/privacy-policy/agreement.html" target="_blank">коммуникацию</a>
                 </label>
             </div>

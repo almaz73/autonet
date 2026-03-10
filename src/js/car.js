@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         autoSwip.innerHTML = ''
-        urls.forEach(el => {
+        urls.split(',').forEach(el => {
             autoSwip.innerHTML += `<div class="swiper-slide" ondblclick="toBig('big')"><img src="${el}" alt=""></div>`
         })
         initSwipper()
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             showPreloader(true)
             api_getFullAutoInfo(id, res => {
                 showPreloader(false)
-                /** Имя и зарактеристики  b Хлебные крошки */
+                /** Имя и зарактеристики и Хлебные крошки */
                 {
                     if (!res || !res.brand) sendConfirm('☹ АВТОМОБИЛЬ СНЯТ С ПРОДАЖИ')
 
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     autoPrice[0].innerHTML = autoPrice[1].innerHTML = formatterShowPrice(res.price) + ' ₽'
 
                     let autoPriceMonth = document.querySelectorAll('.auto-price-month')
-                    autoPriceMonth[0].innerHTML = autoPriceMonth[1].innerHTML = 'от ' + parseInt(parseInt(res.price.replace(/ /g, '')) / 90.12) + ' ₽/мес'
+                    autoPriceMonth[0].innerHTML = autoPriceMonth[1].innerHTML = 'от ' + parseInt(parseInt(res.price / 90.12)) + ' ₽/мес'
 
                     let autoYear = document.querySelectorAll('.auto-year')
                     autoYear[0].innerHTML = autoYear[1].innerHTML = autoYear[1].innerHTML = res.yearReleased + ' год'
@@ -121,12 +121,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     preloadAndShowPhotos(res.images)
 
                     let autoMore = document.querySelector('#auto-more')
+                    let photoLinks = res.images.split(',')
 
-                    if (!res.images.length) return autoMore.style.display = 'none'
+                    if (!photoLinks.length) return autoMore.style.display = 'none'
 
-                    autoMore.innerHTML = `<div class="fotos_black" onclick="showMore()">${res.images.length} фото</div>`
+                    autoMore.innerHTML = `<div class="fotos_black" onclick="showMore()">${photoLinks.length} фото</div>`
 
-                    res.images.forEach((el, index) => {
+                    photoLinks.forEach((el, index) => {
                         autoMore.innerHTML += `<div onClick="showSlide(${index})"><img src="${el}" alt=""></div>`
                     })
                 }
@@ -135,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 {
                     let equipment = document.querySelector('#auto-equipment')
                     equipment.innerHTML = []
-                    res.сonfiguration.forEach(el => equipment.innerHTML += `<li>${el}</li>`)
+                    res.configuration.split(',').forEach(el => equipment.innerHTML += `<li>${el}</li>`)
                 }
 
                 /** выбранные  и сраниваемые*/
