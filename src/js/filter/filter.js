@@ -93,6 +93,7 @@ function getVitrina(ishandEvent) {
         let bt = document.querySelector('#set_filter')
         showPreloader(true, bt)
 
+
         filterParams.limit = 0
         api_getList(filterParams, res => {
             showPreloader(false, bt)
@@ -101,11 +102,14 @@ function getVitrina(ishandEvent) {
         })
 
         let currentCity = localStorage.getItem('selectedCity') || ''
-        api_getSpecials(currentCity, res => {
-            res = cleanCarsWithoutPhoto(res)
-            cars = prepareCars(res)
-            if (!ishandEvent) fill(cars, res)
-        })
+
+        if (Object.keys(filterParams).length < 2) {
+            api_getSpecials(currentCity, res => {
+                res = cleanCarsWithoutPhoto(res)
+                cars = prepareCars(res)
+                if (!ishandEvent) fill(cars, res)
+            })
+        }
 
     } else if (location.pathname === '/tyres/') {
         document.querySelector('#vitrina_name').innerHTML = 'Каталог шин'
@@ -120,8 +124,8 @@ function getVitrina(ishandEvent) {
         cars = cars ? JSON.parse(cars) : []
     }
     // else {
-        // document.querySelector('#vitrina_name').innerHTML = 'Автомобили'
-        // console.log(' тут карточек нет, либо не сформированы')
+    // document.querySelector('#vitrina_name').innerHTML = 'Автомобили'
+    // console.log(' тут карточек нет, либо не сформированы')
     // }
 }
 

@@ -1,7 +1,7 @@
 /** АДРЕСА */
 
 // export const server = 'https://ext.cartat.ru/exchange'
-export const server  = 'http://localhost:5000'
+export const server  = 'http://localhost:3000'
 
 export const dealers = [
     {

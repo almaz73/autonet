@@ -146,6 +146,8 @@ function getDatas() {
     Promise.all([
         new Promise(resolve => {
             api_GetBrandList(res => {
+                if (!res.length) return console.error(items)
+
                 items['Марка'] = res.map(el => el.name)
                 globalValues.brandsIds.push(...res)
 
@@ -157,6 +159,7 @@ function getDatas() {
         }),
         new Promise(resolve => {
             api_getCities(res => {
+                if (!res.length) return console.error(items)
                 if (!res.includes('Все')) res.unshift('Все')
                 items['Город'] = res
                 resolve()

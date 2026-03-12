@@ -310,6 +310,7 @@ export function carCountText(totalCount) {
 }
 
 export function cleanCarsWithoutPhoto(items) {
+    if (!items.length) return console.error(items)
 
     // убираем авто без фоток
     let startLength = items.length
