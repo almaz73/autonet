@@ -35,23 +35,23 @@ export function filter_changed(items, name) {
     if (name === 'Город') filterParams.city = items[name].value
     if (name === 'Тип КПП') {
         let element = globalValues.gearboxTypes.find(el => el.title === items[name].value)
-        filterParams.gearboxType = element.name
+        filterParams.gearboxType = element.title
     }
     if (name === 'Тип двигателя') {
         let element = globalValues.engineTypes.find(el => el.title === items[name].value)
-        filterParams.engineType = element.name
+        filterParams.engineType = element.title
     }
     if (name === 'Тип привода') {
         let element = globalValues.driveTypes.find(el => el.title === items[name].value)
-        filterParams.driveType = element.name
+        filterParams.driveType = element.title
     }
     if (name === 'Руль') {
         let element = globalValues.wheelTypes.find(el => el.title === items[name].value)
-        filterParams.wheelType = element.name
+        filterParams.wheelType = element.title
     }
     if (name === 'Тип кузова') {
         let element = globalValues.bodyTypes.find(el => el.title === items[name].value)
-        filterParams.bodyType = element.name
+        filterParams.bodyType = element.title
     }
     if (name === 'Цвет') {
         let element = globalValues.bodyColors.find(el => el.title === items[name].value)
@@ -145,10 +145,7 @@ window.goToCars = function () {
     if (filterParams.driveType) link += '&driveType=' + filterParams.driveType
     if (filterParams.wheelType) link += '&wheelType=' + filterParams.wheelType
     if (filterParams.bodyType) link += '&bodyType=' + filterParams.bodyType
-    if (filterParams.colorId) {
-        link += '&colorId=' + filterParams.colorId
-        link += '&color=' + filterParams.color
-    }
+    if (filterParams.color) link += '&color=' + filterParams.color
     if (filterParams.yearReleasedFrom) link += '&yearReleasedFrom=' + filterParams.yearReleasedFrom
     if (filterParams.yearReleasedTo) link += '&yearReleasedTo=' + filterParams.yearReleasedTo
     if (filterParams.priceTo) link += '&priceTo=' + filterParams.priceTo

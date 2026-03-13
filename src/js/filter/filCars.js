@@ -35,10 +35,9 @@ function FillFilterFromAddressBar(filterParams) {
         setCombName('Город', city)
     }
 
-    const colorId = getUrlParam('colorId')
     const color = getUrlParam('color')
-    if (colorId) {
-        filterParams.colorId = colorId
+    if (color) {
+        filterParams.color = color
         setCombName('Цвет', color)
     }
 
@@ -58,7 +57,7 @@ function FillFilterFromAddressBar(filterParams) {
         filterParams.engineType = engineType
 
         let item = Cache_serv['/api/getEngineTypes']
-        let name = item && item.data.find(el => el.name === engineType)
+        let name = item && item.data.find(el => el.title === engineType)
         setCombName('Тип двигателя', (name ? name.title : engineType))
     }
 
@@ -67,7 +66,7 @@ function FillFilterFromAddressBar(filterParams) {
         extention = true
         filterParams.bodyType = bodyType
         let item = Cache_serv['/api/getBodyTypes']
-        let name = item && item.data.find(el => el.name === bodyType)
+        let name = item && item.data.find(el => el.title === bodyType)
         setCombName('Тип кузова', (name ? name.title : bodyType))
     }
 
@@ -77,7 +76,7 @@ function FillFilterFromAddressBar(filterParams) {
         filterParams.wheelType = wheelType
 
         let item = Cache_serv['/api/getWheelTypes']
-        let name = item && item.data.find(el => el.name === wheelType)
+        let name = item && item.data.find(el => el.title === wheelType)
         setCombName('Руль', (name ? name.title : wheelType))
     }
 
@@ -86,7 +85,7 @@ function FillFilterFromAddressBar(filterParams) {
         extention = true
         filterParams.driveType = driveType
         let item = Cache_serv['/api/getDriveTypes']
-        let name = item && item.data.find(el => el.name === driveType)
+        let name = item && item.data.find(el => el.title === driveType)
         setCombName('Тип привода',  (name ? name.title : wheelType))
     }
 
