@@ -54,9 +54,8 @@ export function filter_changed(items, name) {
         filterParams.bodyType = element.name
     }
     if (name === 'Цвет') {
-        let element = globalValues.bodyColors.find(el => el.name === items[name].value)
-        filterParams.colorId = element.id
-        filterParams.color = element.name
+        let element = globalValues.bodyColors.find(el => el.title === items[name].value)
+        filterParams.color = element.title
     }
 
 

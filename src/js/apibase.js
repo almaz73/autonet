@@ -75,8 +75,9 @@ export function api_PostEmailWithAttachement(params) {
 
 /*** Получение автомобилей по заданным фильтрам ***/
 export function api_getList(params, callback) {
-    let request = '/api/getList?Limit=' + params.limit
-    if (params.brandId) request += '&brandId=' + params.brandId
+    let request = '/api/getList?limit=' + params.limit
+    // if (params.brandId) request += '&brandId=' + params.brandId
+    if (params.brand) request += '&brand=' + params.brand
     if (params.modelId) request += '&modelId=' + params.modelId
     if (params.offset) request += '&offset=' + params.offset
     if (params.priceOrder !== null && params.priceOrder !== undefined) request += '&priceOrder=' + params.priceOrder
@@ -86,7 +87,7 @@ export function api_getList(params, callback) {
     if (params.driveType) request += '&driveType=' + params.driveType
     if (params.wheelType) request += '&wheelType=' + params.wheelType
     if (params.bodyType) request += '&bodyType=' + params.bodyType
-    if (params.colorId) request += '&colorId=' + params.colorId
+    if (params.color) request += '&color=' + params.color
 
     if (params.yearReleasedFrom) request += '&yearReleasedFrom=' + params.yearReleasedFrom
     if (params.yearReleasedTo) request += '&yearReleasedTo=' + params.yearReleasedTo

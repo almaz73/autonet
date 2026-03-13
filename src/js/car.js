@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     let addr = document.querySelector('.main__card-product--top .address')
                     addr.addEventListener('click', () => openInYndx(res.fullAddress))
 
-                    addr.innerHTML = res.fullAddress
+                    addr.innerHTML = res.city + ' ' + (res.fullAddress || '')
                 }
 
                 /** Фотки */
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 {
                     let equipment = document.querySelector('#auto-equipment')
                     equipment.innerHTML = []
-                    res.configuration.split(',').forEach(el => equipment.innerHTML += `<li>${el}</li>`)
+                    res.configuration && res.configuration.split(',').forEach(el => equipment.innerHTML += `<li>${el}</li>`)
                 }
 
                 /** выбранные  и сраниваемые*/

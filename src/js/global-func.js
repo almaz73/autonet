@@ -60,7 +60,7 @@ export function prepareCars(res) {
         let fromPerMonth = formatterShowPrice(parseInt(el.price / 90.12))
 
         cars.push({
-            address: el.fullAddress,
+            address: el.city + ' ' + (el.fullAddress||''),
             id: el.id,
             name: el.brand + ' ' + el.model,
             href: '/cars/car.html?id=' + el.id,
@@ -323,7 +323,7 @@ export function cleanCarsWithoutPhoto(items) {
 
 export function acceprtWithoutPhoto(items) {
     // Если нет фоток, теперь подставляю временную фотку, чтобы не было проблем с версткой и не отсеивались авто
-    return items.map(el => {
+    return items && items.map(el => {
         if (el && !el.images.length) {
             el.images = ['/photo/nophoto.webp', '/photo/nophoto.webp', '/photo/nophoto.webp', '/photo/nophoto.webp', '/photo/nophoto.webp']
             console.log("%c было без фото ", "background: orange; color: black")

@@ -196,7 +196,7 @@ function getDatas() {
             })
         }), extention && new Promise(resolve => {
             api_getColorList(res => {
-                items['Цвет'] = res.map(el => el.name)
+                items['Цвет'] = res.map(el => el.title)
                 globalValues.bodyColors.push(...res)
                 resolve()
             })
