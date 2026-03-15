@@ -15,10 +15,10 @@ window.reloadLittleSwiper = function (){
 let block = `
     <section class="swiper mySwiper buy_swiper" style="z-index: 1">
     <div class="swiper-wrapper">
-        <div class="swiper-slide">
-            <img class="buy_lg" src="../photo-buy/2/585х200.webp" alt="">
-            <img class="buy_mg" src="../photo-buy/2/278х402.webp" alt="">
-        </div>
+<!--        <div class="swiper-slide">-->
+<!--            <img class="buy_lg" src="../photo-buy/2/585х200.webp" alt="">-->
+<!--            <img class="buy_mg" src="../photo-buy/2/278х402.webp" alt="">-->
+<!--        </div>-->
         <div class="swiper-slide">
             <img class="buy_lg" src="../photo-buy/1/585х200.webp" alt="">
             <img class="buy_mg" src="../photo-buy/1/278х402.webp" alt="">

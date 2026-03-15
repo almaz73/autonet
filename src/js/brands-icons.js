@@ -412,7 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!brand) {
                 console.log("%c Новый бренд = ","background: orange; color: black", "", res[i] && res[i].name)
                 // тоже нужно логировать
-            } else  url = '/cars/?brand='+brandName+'&brandId='+brand.brandId
+            } else  url = '/cars/?brand='+brandName
 
             newList.push({
                 url: brand ? url : `/cars/${brandName}/`,

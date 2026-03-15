@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         autoSwip.innerHTML = ''
-        urls.split(',').forEach(el => {
+        urls.forEach(el => {
             autoSwip.innerHTML += `<div class="swiper-slide" ondblclick="toBig('big')"><img src="${el}" alt=""></div>`
         })
         initSwipper()
@@ -121,13 +121,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     preloadAndShowPhotos(res.images)
 
                     let autoMore = document.querySelector('#auto-more')
-                    let photoLinks = res.images.split(',')
 
-                    if (!photoLinks.length) return autoMore.style.display = 'none'
+                    if (!res.images.length) return autoMore.style.display = 'none'
 
-                    autoMore.innerHTML = `<div class="fotos_black" onclick="showMore()">${photoLinks.length} фото</div>`
+                    autoMore.innerHTML = `<div class="fotos_black" onclick="showMore()">${res.images.length} фото</div>`
 
-                    photoLinks.forEach((el, index) => {
+                    res.images.forEach((el, index) => {
                         autoMore.innerHTML += `<div onClick="showSlide(${index})"><img src="${el}" alt=""></div>`
                     })
                 }
