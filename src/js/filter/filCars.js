@@ -13,10 +13,8 @@ Cache_serv = JSON.parse(Cache_serv)
 /* Заполнение фильтер данныеми по адресной строке */
 function FillFilterFromAddressBar(filterParams) {
     // заполнение фильтра по параметрам адресной строки
-    const brandId = getUrlParam('brandId')
     const brand = getUrlParam('brand')
-    if (brandId) {
-        filterParams['brandId'] = brandId
+    if (brand) {
         filterParams['brand'] = brand
         setCombName('Марка', brand)
     }
@@ -198,7 +196,7 @@ export function fillCars(cars, ishandEvent_, filterParams, fill) {
         setTimeout(() => fill(cars, res.items, totalPages))
         showPreloader(false, bt)
         carCountText(res.totalCount)
-        if (ishandEvent || filterParams['brandId']) {
+        if (ishandEvent || filterParams['brand']) {
             gotoShowCars()
             let fw = document.querySelector('.filter-white')
             let vn = document.querySelector('#vitrina_name')

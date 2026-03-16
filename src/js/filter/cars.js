@@ -284,11 +284,9 @@ function cleanImpField(name) {
 
 function cleanCombField(name) {
     let parts = location.search.split('&')
-    // тут лучше нужно отредактировать адреснуя стрку и нужно перезагрущить
-
     if (name === 'Марка') {
         parts[getPartByName(parts, 'brand=')] = '?'
-        parts[getPartByName(parts, 'brandId=')] = ''
+        // parts[getPartByName(parts, 'brandId=')] = ''
         parts[getPartByName(parts, 'model=')] = ''
         parts[getPartByName(parts, 'modelId=')] = ''
     }

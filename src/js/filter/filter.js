@@ -17,7 +17,6 @@ export function filter_changed(items, name) {
         let brand = globalValues.brandsIds.find(el => el.name === items[name].value)
 
         if (brand) {
-            filterParams['brandId'] = brand.id
             filterParams['brand'] = brand.name
             filterParams['modelId'] = ''
             filterParams['model'] = ''
@@ -131,9 +130,8 @@ function getVitrina(ishandEvent) {
 window.getVitrina = getVitrina
 window.goToCars = function () {
     let link = `?`
-    if (filterParams.brandId) {
+    if (filterParams.brand) {
         link = '?brand=' + (filterParams['Марка'] || filterParams['brand'])
-        link += '&brandId=' + filterParams.brandId
     }
     if (filterParams.modelId) {
         link += '&model=' + (filterParams['Модель'] || filterParams['model'])
