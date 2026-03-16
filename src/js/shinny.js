@@ -24,7 +24,7 @@ window.sendBid = function (fName) {
     const agree = document.querySelector(`.${fName} [name="agree"]`)
     const button = document.querySelector(`.${fName} button`)
 
-    if (checkFormFields([capcthadiv, name, phone, checkbox])) return false
+    if (checkFormFields([capcthadiv, name, phone, checkbox, agree])) return false
 
     const params = {
         // form: '/services/shinnyy-сentr/',

@@ -197,7 +197,7 @@ window.addEventListener('DOMContentLoaded', () => {
             if (fName === 'generalForm') resume.parentNode.parentNode.style.border = '1px solid red'
             else resume.parentNode.style.border = '1px solid red'
         }
-        if (checkFormFields([capcthadiv, fio, city, phone, checkbox])) return false
+        if (checkFormFields([capcthadiv, fio, city, phone, checkbox, agree])) return false
         if (resume && !resume.files[0]) return sendMessage('Прикрепите файл с резюме', 'warning')
 
         let params = {

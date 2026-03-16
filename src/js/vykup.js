@@ -64,7 +64,7 @@ window.sendBid = function (fName) {
     const agree = document.querySelector(`.${fName} [name="agree"]`)
     const button = document.querySelector(`.${fName} button`)
 
-    if (checkFormFields([capcthadiv, name, phone, city, checkbox])) return false
+    if (checkFormFields([capcthadiv, name, phone, city, checkbox, agree])) return false
 
     const params = {
         // form: '/services/vykup/',

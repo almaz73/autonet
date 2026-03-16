@@ -52,7 +52,7 @@ window.lookAuto = function () {
     const button = document.querySelector('.look-auto button')
 
 
-    if (checkFormFields([capcthadiv, name, year, email, checkbox])) return false
+    if (checkFormFields([capcthadiv, name, year, email, checkbox, agree])) return false
 
     const params = {
         type: 14,
@@ -84,7 +84,7 @@ window.applyBid = function () {
     const agree = document.querySelector(`.bid [name="agree"]`)
     const button = document.querySelector('.bid button')
 
-    if (checkFormFields([capcthadiv, name, phone, checkbox])) return false
+    if (checkFormFields([capcthadiv, name, phone, checkbox, agree])) return false
 
     const params = {
         type: 3,

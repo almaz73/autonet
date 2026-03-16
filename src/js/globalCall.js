@@ -30,7 +30,7 @@ window.sendBid = function (fName) {
     const agree = document.querySelector(`.${fName} [name="agree"]`)
     const button = document.querySelector(`.${fName} button`)
 
-    if (checkFormFields([capcthadiv, name, phone, checkbox])) return false
+    if (checkFormFields([capcthadiv, name, phone, checkbox, agree])) return false
 
     const params = {
         type: 1,
@@ -67,7 +67,7 @@ window.sendBidPromo = function () {
     const agree = document.querySelector(`[name="agree"]`)
     const button = document.querySelector(`button`)
 
-    if (checkFormFields([capcthadiv, name, checkbox])) return false
+    if (checkFormFields([capcthadiv, name, checkbox, agree])) return false
 
     const params = {
         type: 16,

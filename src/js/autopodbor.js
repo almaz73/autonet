@@ -45,7 +45,7 @@ window.sendBid = function (fName) {
     const agree = document.querySelector(`.${fName} [name="agree"]`)
     const button = document.querySelector(`.${fName} button`)
 
-    if (checkFormFields([capcthadiv, name, phone, email, checkbox])) return false
+    if (checkFormFields([capcthadiv, name, phone, email, checkbox, agree])) return false
 
     const params = {
         // form: '/services/autopodbor/',

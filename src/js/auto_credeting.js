@@ -45,7 +45,7 @@ window.sendBid = function (fName) {
     const button = document.querySelector(`.${fName} button`)
 
 
-    if (checkFormFields([capcthadiv, name, city, phone, checkbox])) return false
+    if (checkFormFields([capcthadiv, name, city, phone, checkbox, agree])) return false
 
     const params = {
         name: name.value,

@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function save() {
-        if (checkFormFields([capcthadiv, fio, phone, email, checkbox])) return false
+        if (checkFormFields([capcthadiv, fio, phone, email, checkbox, agree])) return false
 
         let parans = {
             type: 2,

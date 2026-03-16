@@ -51,7 +51,7 @@ window.send_obsl = function (fName) {
     const selection = document.querySelector(`.${fName} [name="selection"]`)
     const button =  document.querySelector(`.${fName} button`)
 
-    if (checkFormFields([capcthadiv, name, phone, city, checkbox])) return false
+    if (checkFormFields([capcthadiv, name, phone, city, checkbox, agree])) return false
 
     const params = {
         // form: '/services/servisnoe-obsluzhivanie/',
