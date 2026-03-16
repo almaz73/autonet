@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Если только одна фотка -  показываю  без swiper
         if (urls.length === 1) {
             let src = urls[0]
-            if (!src) src = '/photo/tmp_auto.webp'
+            if (!src) src = '../../pub_auto/no_foto.webp'
             autoSwip.innerHTML = `<img style="aspect-ratio:600/400; width: 100%" src="${src}" alt="">`
             return false
         }

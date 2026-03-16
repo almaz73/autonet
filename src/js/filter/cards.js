@@ -83,20 +83,20 @@ function galeryEvents(id, images) {
     if (!photo) return false
 
     photo.src = images[0];
-    photo.onerror = () => photo.src = '/photo/tmp_auto.webp '
+    photo.onerror = () => photo.src = '../../pub_auto/no_foto.webp'
 
     preloadImages([images[1], images[2], images[3], images[4]]);
     function mouseMoved(e) {
         let z = parseInt(e.layerX * 99.9 / pieceWidth / 20);
         if (z_zona !== z) {
             getWidth()
-            photo.style.opacity = 0; // мигаем
+            photo.style.opacity = '0'; // мигаем
             setTimeout(() => {
-                photo.style.opacity = 1;
-                photo.src = '/photo/tmp_auto.webp '
+                photo.style.opacity = '1';
+                photo.src = '../../pub_auto/no_foto.webp '
                 photo.src = images[z];// Новая картинка
             }, 73);
-            photo.onerror = () => photo.src = '/photo/tmp_auto.webp '
+            photo.onerror = () => photo.src = '../../pub_auto/no_foto.webp '
             z_zona = z
         }
         red.style.left = z * 20 + '%';
