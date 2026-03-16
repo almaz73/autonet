@@ -189,6 +189,7 @@ export function fillCars(cars, ishandEvent_, filterParams, fill) {
 
     filterParams.limit = countPerPage
     api_getList(filterParams, res => {
+        res.totalCount = res.totalCount || 0
         res.items = acceprtWithoutPhoto(res.items)
         // по кнопке Показать
         cars = prepareCars(res.items)

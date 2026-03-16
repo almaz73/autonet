@@ -22,9 +22,6 @@ function createNode(item, N) {
                       <br>                      
                       ${item.name}, ${item.yearReleased}
                   </div>
-                  <img src="/svg/icon_spines.svg" alt="Шипованная резина" class="tyres_icon " 
-                       style="display: ${item.type === 'tyres' ? 'block' : 'none'}; 
-                       opacity: ${item.type === 'tyres' && item.winter ? 1 : 0}">
                        
                   <div class='cart__price'>
                       <div class='total'>${item.price ? item.price + ' ₽' : ''} </div>
