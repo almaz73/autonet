@@ -15,7 +15,7 @@ function createNode(item, N) {
             "<div class='field'><div class='red'></div></div>"):"<div style='margin:0 40px'> <br><br><br>☹ <br><br>АВТОМОБИЛЬ <br>СНЯТ <br>С ПРОДАЖИ </div>"}
               </div>
               <a class="big_link" 
-                 href="javascript:openCar('/auto/${item.href}','${item.images[0]}')" 
+                 href="javascript:openCar('${item.href}','${item.images[0]}')" 
                  data-href="${item.href}"
                  title="Перейти">
                   <div class='name'>
