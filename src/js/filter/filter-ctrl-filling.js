@@ -1,6 +1,6 @@
 import {
     api_getBodyTypes,
-    api_GetBrandList,
+    api_GetCarCount,
     api_getCities,
     api_getDriveTypes,
     api_getEngineTypes,
@@ -130,7 +130,7 @@ function fillFields(onlyModels) {
 export function getModelList(brandName) {
     let brand = globalValues.brandsIds.find(el => el.name.toUpperCase() === brandName.toUpperCase())
 
-    brand && api_GetModelList(brand.id, res => {
+    brand && api_GetModelList(brand.brandId, res => {
         items['Модель'] = res.map(el => el.name)
         items_memory = {}
         globalValues.modelsIds.push(...res)
@@ -145,7 +145,7 @@ function getDatas() {
     showPreloader(true)
     Promise.all([
         new Promise(resolve => {
-            api_GetBrandList(res => {
+            api_GetCarCount(res => {
                 if (!res.length) return console.error(items)
 
                 items['Марка'] = res.map(el => el.name)
