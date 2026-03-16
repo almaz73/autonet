@@ -17,12 +17,11 @@ export function filter_changed(items, name) {
         let brand = globalValues.brandsIds.find(el => el.name === items[name].value)
 
         window.globalCurrentBrandName = brand.name
-
+        window.globalCurrentModel = ''
         if (brand) {
             filterParams['brand'] = brand.name
             filterParams['modelId'] = ''
             filterParams['model'] = ''
-            setTimeout(() => document.querySelector('[data-placeholder="Модель"] .big-comb__placeholder').innerText = '', 2000)
         }
         getModelList(items[name].value)
     }
@@ -32,6 +31,7 @@ export function filter_changed(items, name) {
             filterParams['modelId'] = model.id
             filterParams['model'] = model.name
         }
+        window.globalCurrentModel = model.name
     }
     if (name === 'Город') filterParams.city = items[name].value
     if (name === 'Тип КПП') {

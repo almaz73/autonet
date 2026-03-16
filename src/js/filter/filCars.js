@@ -161,12 +161,11 @@ function setCombName(name, value) {
 eventBus.on('dataUpdated', handleData); // событие загрузки всех комбобоксов из сервера
 function handleData() {
     combValuesForAfterUpdate.forEach(el => {
-        if(el.name ==='Марка' && window.globalCurrentBrandName){
-            el.value = window.globalCurrentBrandName
-        }
-        
         let comb = document.querySelector(`[data-placeholder="${el.name}"]`)
         if (comb && comb.querySelector('.big-comb__placeholder')) {
+            if (el.name === 'Марка' && window.globalCurrentBrandName) el.value = window.globalCurrentBrandName
+            if (el.name === 'Модель' && window.globalCurrentModel!==undefined) el.value = window.globalCurrentModel
+
             // ниже строка удаляет выбранное знавение комбобокса
             comb.querySelector('.big-comb__placeholder').innerText = el.value
             comb.querySelector('.big-comb__placeholder').classList.add('bold')
