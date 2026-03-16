@@ -15,7 +15,6 @@ function FillFilterFromAddressBar(filterParams) {
     // заполнение фильтра по параметрам адресной строки
     const brand = getUrlParam('brand')
     if (brand) {
-        console.log('FillFilterFromAddressBar = ')
         filterParams['brand'] = brand
         setCombName('Марка', brand)
     }
@@ -162,10 +161,14 @@ function setCombName(name, value) {
 eventBus.on('dataUpdated', handleData); // событие загрузки всех комбобоксов из сервера
 function handleData() {
     combValuesForAfterUpdate.forEach(el => {
+        if(el.name ==='Марка' && window.globalCurrentBrandName){
+            el.value = window.globalCurrentBrandName
+        }
+        
         let comb = document.querySelector(`[data-placeholder="${el.name}"]`)
         if (comb && comb.querySelector('.big-comb__placeholder')) {
             // ниже строка удаляет выбранное знавение комбобокса
-            // comb.querySelector('.big-comb__placeholder').innerText = el.value
+            comb.querySelector('.big-comb__placeholder').innerText = el.value
             comb.querySelector('.big-comb__placeholder').classList.add('bold')
         }
     })

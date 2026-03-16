@@ -16,6 +16,8 @@ export function filter_changed(items, name) {
     if (name === 'Марка') {
         let brand = globalValues.brandsIds.find(el => el.name === items[name].value)
 
+        window.globalCurrentBrandName = brand.name
+
         if (brand) {
             filterParams['brand'] = brand.name
             filterParams['modelId'] = ''
