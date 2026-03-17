@@ -3,11 +3,7 @@
 }
 
 .footer__top {
-    padding-top: 4.375em;
-    padding-bottom: 3.75em;
-
-    padding-left: 40px;
-    padding-right: 40px;
+    padding: 4.375em 40px 3.75em;
 }
 
 

@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initCaptcha()
 
-    apply_bid.addEventListener('click', () => { // авезжпеь панель
+    apply_bid.addEventListener('click', () => {
         openRightPanel()
         right_panel_content.innerHTML = constructorForm('v4',
             ['name*', 'phone*', 'email'],
@@ -49,7 +49,7 @@ window.sendBid = function (fName) {
 
     const params = {
         // form: '/services/autopodbor/',
-        // description: 'Автоподбор. Ждут Ждут обратного звонка, чтобы им помоглли найти авто',
+        // description: 'Автоподбор. Ждут обратного звонка, чтобы им помогли найти авто',
         type: 9,
         name: name.value,
         phone: phone.value,

@@ -207,7 +207,7 @@ window.onCard = function (val) {
     }
 
 
-    // Если  поля годов, показываем панели
+    // Если поля годов, показываем панели
     if (val.querySelector('span') &&
         val.querySelector('span').innerHTML &&
         ['Год от:'].includes(val.querySelector('span').innerHTML)) {

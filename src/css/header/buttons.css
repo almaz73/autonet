@@ -16,8 +16,7 @@
 
 .button__call {
     width: 40px;
-    background: url(/svg/call2.svg) center no-repeat;
-    background-color: var(--color-red);
+    background: var(--color-red) url(/svg/call2.svg) no-repeat center;
 }
 
 .button__callback {
@@ -34,15 +33,13 @@
     height: 40px;
     width: 40px;
     border-radius: 7px;
-    background: url(/svg/burger.svg) center no-repeat;
-    background-color: #000;
+    background: #000 url(/svg/burger.svg) no-repeat center;
     cursor: pointer;
     margin-left: 30px;
 }
 
 .button__burger.close {
-    background: url(/svg/close.svg) center no-repeat;
-    background-color: #000;
+    background: #000 url(/svg/close.svg) no-repeat center;
 }
 
 .footer__subscription .social {
@@ -73,8 +70,7 @@
     .button__callback {
         padding: 0;
         width: 40px;
-        background: url(/svg/call.svg) center no-repeat;
-        background-color: var(--color-red);
+        background: var(--color-red) url(/svg/call.svg) no-repeat center;
     }
 
     .button__callback span {
@@ -86,8 +82,7 @@
     .button__callback {
         padding: 0;
         width: 40px;
-        background: url(/svg/call.svg) center no-repeat;
-        background-color: var(--color-red);
+        background: var(--color-red) url(/svg/call.svg) no-repeat center;
     }
 
     .button__callback span {
@@ -278,8 +273,7 @@
 
 .button__mail {
     width: 32px;
-    background: url(/svg/mail.svg) center no-repeat;
-    background-color: var(--color-red);
+    background: var(--color-red) url(/svg/mail.svg) no-repeat center;
 }
 
 @media (max-width: 576px) {
@@ -302,7 +296,7 @@
 }
 
 
-/* Выезжающие форомы */
+/* Выезжающие формы */
 .main-nav.rightpanel {
     background: linear-gradient(to right, #00000000, #0000008a);
     transition: all ease-in-out 1s;

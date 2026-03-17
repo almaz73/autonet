@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', () => {
     if (mapModal) {
         window.openMap = function (val) {
             mapModal.style.display = val ? 'grid' : 'none'
-            mapModalmap.innerHTML = `<iframe src="${val}" width="100%" height="720" frameborder="0"></iframe>`
+            mapModalmap.innerHTML = `<iframe src="${val}" width="100%" height="720"></iframe>`
         }
 
         window.openPhoto = function (val) {

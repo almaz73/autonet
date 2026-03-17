@@ -29,8 +29,7 @@ body {
 
 main {
     max-width: 1200px;
-    margin: auto;
-    margin-bottom: 100px;
+    margin: auto auto 100px;
 }
 
 @media (width < 1240px) {

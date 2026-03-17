@@ -60,7 +60,7 @@ window.sendConfirm = function (text) {
     confirm.style.padding = '25px'
     confirm.style.zIndex = '9999'
 
-    ok.innerHTML = '<br><button class="page__btn page__btn--current confirm" onclick="backPath()">Веррнуться назад</button>'
+    ok.innerHTML = '<br><button class="page__btn page__btn--current confirm" onclick="backPath()">Вернуться назад</button>'
     confirm.append(ok)
     document.body.appendChild(confirm);
 }

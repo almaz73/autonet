@@ -1,5 +1,5 @@
 import {getUrlParam} from "@/js/global-func.js"
-/** Очень тонко  настроенная работает Пагинации*/
+/** Очень тонко настроенная работает Пагинации*/
 let currentPage = 1
 
 function getLink() {

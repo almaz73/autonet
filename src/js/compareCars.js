@@ -58,8 +58,8 @@ window.deleteCar = function (id) {
 }
 
 window.openCar = function (href, linkPhoto, isDeleted) {
-    if (isDeleted === 'true') linkPhoto = '../../pub_auto/no_foto.webp'
-    localStorage.setItem('CAR_SMALLL_PHOTO', linkPhoto)
+    if (isDeleted === 'true') linkPhoto = '/photo/tmp_auto.webp'
+    localStorage.setItem('CAR_SMALL_PHOTO', linkPhoto)
     setTimeout(() => location.href = href, 400)
 }
 

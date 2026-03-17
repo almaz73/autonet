@@ -16,7 +16,7 @@ select_show_date && select_show_date.forEach((el, ind) => {
             ['name*', 'phone*', 'email'],
             'sendBid',
             'Отправить заявку',
-            'Записаться  на <span class="red">осмотр</span> автомобиля '
+            'Записаться на <span class="red">осмотр</span> автомобиля '
         )
 
         let address = document.querySelector(' .form__group')

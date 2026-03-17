@@ -35,7 +35,6 @@
 .modal-place__close {
     position: relative;
     outline: none;
-    border: none;
     text-decoration: none;
     width: 1em;
     height: 1em;
@@ -74,7 +73,6 @@
 
 .form__modal-place--group input {
     width: 100%;
-    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     padding: 7px 10px;
     color: rgba(0, 0, 0, 0.5);

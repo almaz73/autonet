@@ -31,7 +31,7 @@ function initChangeCity() {
 
     document.querySelector('.big_comb__items').addEventListener('click', function vacancyCitySelected(val) {
         let combName = 'Город'
-        let value = val.srcElement.innerText
+        let value = val.srcElement.innerText //todo  srcElemnt deprecated - нужно поменять
 
         items[combName].value = value
         selectedCity(items[combName].value)
@@ -88,7 +88,7 @@ function initVacancies(city) {
 
     })
     document.querySelector('#vacancyPlace').innerHTML = html
-    initListeners(true) // слушатели  снова добавляем
+    initListeners(true) // слушатели снова добавляем
 }
 
 function initListeners(state) {
@@ -194,7 +194,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
         if (vacancy.id) {
-            var htmlEl = document.createElement('html');
+            const htmlEl = document.createElement('html');
             htmlEl.innerHTML = vacancy.content
             window.DDD = htmlEl.innerHTML
             let ul = htmlEl.querySelectorAll('ul')

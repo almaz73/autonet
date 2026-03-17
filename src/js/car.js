@@ -15,14 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const autoSwip = document.querySelector('#auto-swip')
 
-    let small_image = localStorage.getItem('CAR_SMALLL_PHOTO')
+    let small_image = localStorage.getItem('CAR_SMALL_PHOTO')
     if (small_image) setPhotosInSwiper([small_image])
 
 
     function preloadAndShowPhotos(urls) {
         if (!urls.length) return false
         // тут хотелось сразу показать маленькие уже загруженные фотки, а потом только после загрузки показать большие
-        // 5  фоток заранее подгружаю
+        // 5 фоток заранее подгружаю
         let counter = 0
         let errors = 0
         let isAlready = false
@@ -50,10 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function setPhotosInSwiper(urls) {
-        // Если только одна фотка -  показываю  без swiper
+        // Если только одна фотка - показываю без swiper
         if (urls.length === 1) {
             let src = urls[0]
-            if (!src) src = '../../pub_auto/no_foto.webp'
+            if (!src) src = '/photo/tmp_auto.webp'
             autoSwip.innerHTML = `<img style="aspect-ratio:600/400; width: 100%" src="${src}" alt="">`
             return false
         }
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             showPreloader(true)
             api_getFullAutoInfo(id, res => {
                 showPreloader(false)
-                /** Имя и зарактеристики и Хлебные крошки */
+                /** Имя и характеристики и Хлебные крошки */
                 {
                     if (!res || !res.brand) sendConfirm('☹ АВТОМОБИЛЬ СНЯТ С ПРОДАЖИ')
 
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     res.configuration && res.configuration.split(',').forEach(el => equipment.innerHTML += `<li>${el}</li>`)
                 }
 
-                /** выбранные  и сраниваемые*/
+                /** выбранные и сравниваемые*/
                 {
                     let favorite_chosen = document.querySelector('#favorite_chosen')
                     if (favorite_chosen) {

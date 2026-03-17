@@ -11,7 +11,7 @@ const cityB_contacts = document.querySelector('#city-contacts')
 const cityClose = document.querySelector('.modal-place__close');
 const mySwiper = document.querySelector('.mySwiper')
 let isOpened;
-/* мелкаькая выезжающая панель для разных форм */
+/* узкая выезжающая панель для разных форм */
 const rightpanel = document.querySelector('.main-nav.rightpanel');
 const closerFon = document.querySelector('#closer-fon')
 const closerButton = document.querySelector('.modal-closer.form')

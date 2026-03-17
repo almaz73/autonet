@@ -142,7 +142,7 @@ export const emailValidate = function (val) {
 
 export function checkFormFields(arr) {
     let exist = false
-    let forAttent = false
+    let forAttention = false
     arr.forEach(el => {
         if (el && el.required) {
             el.style.border = !el.value ? '1px solid red' : ''
@@ -163,10 +163,10 @@ export function checkFormFields(arr) {
             let checked = el.checked
             el.parentNode.style.border = checked ? '' : '1px solid red';
             if (!checked) exist = true
-            forAttent = exist
+            forAttention = exist
         }
 
-        if (el && el.classList.contains('attent')) el.style.display = forAttent ? 'block' : 'none'
+        if (el && el.classList.contains('attent')) el.style.display = forAttention ? 'block' : 'none'
         if (el && el.name === 'email' && el.value && emailValidate(el.value)) exist = true
         if (el && el.name === 'phone' && el.value && simplePhone(el.value).length !== 11) {
             sendMessage('Телефон неправильный', 'warning')
@@ -209,7 +209,7 @@ export function initSubField() {
 
 }
 
-/** Констпуктор полей форм*/
+/** Конструктор полей форм*/
 export function constructorForm(fName, fields, methodNAme, buttonText, legenda) {
     buttonText = buttonText || 'Отправить заявку'
     legenda = legenda || `_ _ _ _ _ _ `
@@ -260,7 +260,7 @@ export function constructorForm(fName, fields, methodNAme, buttonText, legenda) 
                     <div class="select">
                         <div class="field">Диагностика</div>
                         <div class="field ">Техническое обслуживание</div>
-                        <div class="field">Ремонт двинателя</div>
+                        <div class="field">Ремонт двигателя</div>
                         <div class="field">Ремонт трансмиссии</div>
                         <div class="field">Ремонт подвески</div>
                         <div class="field">Ремонт рулевого управления</div>
@@ -296,7 +296,7 @@ ${field === 'phone' ? 'oninput="formattingPhone(this)"' : ''}>
             <div class="modal__personal">
                 <input type="checkbox" name="agree" id="dd${random + 1}">
                 <label for="dd${random + 1}" style="cursor: pointer">
-                    Согласие на рекламную  <a href="/privacy-policy/agreement.html" target="_blank">коммуникацию</a>
+                    Согласие на рекламную <a href="/privacy-policy/agreement.html" target="_blank">коммуникацию</a>
                 </label>
             </div>
             </div></div></div>`
@@ -321,10 +321,10 @@ export function cleanCarsWithoutPhoto(items) {
     return newitems
 }
 
-export function acceprtWithoutPhoto(items) {
+export function acceptWithoutPhoto(items) {
     // Если нет фоток, теперь подставляю временную фотку, чтобы не было проблем с версткой и не отсеивались авто
     return items.map(el => {
-        if (el && el.images) el.images = el.images.map(item => item = item || '/photo/nophoto.webp')
+        if (el && el.images) el.images = el.images.map(item => item || '/photo/nophoto.webp')
         return el
     })
 }

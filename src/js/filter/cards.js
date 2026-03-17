@@ -80,7 +80,7 @@ function galeryEvents(id, images) {
     if (!photo) return false
 
     photo.src = images[0];
-    photo.onerror = () => photo.src = '../../pub_auto/no_foto.webp'
+    photo.onerror = () => photo.src = '/photo/tmp_auto.webp'
 
     preloadImages([images[1], images[2], images[3], images[4]]);
     function mouseMoved(e) {
@@ -90,10 +90,10 @@ function galeryEvents(id, images) {
             photo.style.opacity = '0'; // мигаем
             setTimeout(() => {
                 photo.style.opacity = '1';
-                photo.src = '../../pub_auto/no_foto.webp '
+                photo.src = '/photo/tmp_auto.webp '
                 photo.src = images[z];// Новая картинка
             }, 73);
-            photo.onerror = () => photo.src = '../../pub_auto/no_foto.webp '
+            photo.onerror = () => photo.src = '/photo/tmp_auto.webp '
             z_zona = z
         }
         red.style.left = z * 20 + '%';
@@ -129,7 +129,7 @@ function galeryEvents(id, images) {
 }
 
 window.openCar = function (href, linkPhoto) {
-    localStorage.setItem('CAR_SMALLL_PHOTO', linkPhoto)
+    localStorage.setItem('CAR_SMALL_PHOTO', linkPhoto)
     setTimeout(() => location.href = href)
 }
 

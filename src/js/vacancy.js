@@ -115,7 +115,7 @@ function initVacancies(city) {
 
     })
     document.querySelector('#vacancyPlace').innerHTML = html
-    initListeners(true) // слушатели  снова добавляем
+    initListeners(true) // слушатели снова добавляем
 }
 
 function initListeners(state) {

@@ -1,6 +1,5 @@
 
 .header__nav-a {
-    /*margin: 0 25px;*/
     color: black;
     text-decoration: none;
     font-weight: 900;
@@ -12,7 +11,6 @@
         font-size: 13px;
         margin: 0 5px;
     }
-
 }
 
 nav .header__nav-a:hover {

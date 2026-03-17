@@ -13,8 +13,7 @@
 .comb__selected {
     font-weight: 600;
     color: var(--color-red);
-    padding: 0;
-    padding-left: 24px;
+    padding: 0 0 0 24px;
     background: url(../../../public/location.svg) center left no-repeat;
 }
 

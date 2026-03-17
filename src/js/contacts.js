@@ -43,7 +43,7 @@ function fillBlocks(arr, withAlphabet) {
 
 }
 
-const currentCity = document.querySelector('#currentCity')
+// const currentCity = document.querySelector('#currentCity')
 
 document.addEventListener('DOMContentLoaded', () => {
     let searchField = document.querySelector('#search-field')

@@ -1,4 +1,4 @@
-/* Код для отображения и скрытия панели 'Где смотреть параметры' для фильотра шин*/
+/* Код для отображения и скрытия панели 'Где смотреть параметры' для фильтра шин*/
 
 let filter__controlsInfoButton = document.querySelector('.filter__controls-info-button')
 
@@ -23,6 +23,6 @@ if(filter__controlsInfoButton) {
   });
 }
 
-window.goTires = function (vak) {l
+window.goTires = function (vak) {
   console.log('vak', vak)
 }

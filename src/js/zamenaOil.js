@@ -50,7 +50,7 @@ window.sendBid = function (fName) {
 
     const params = {
         // form: '/services/zamena-masla/',
-        // description: 'ЗХамена масла в подарок',
+        // description: 'Замена масла в подарок',
         type: 7,
         name: name.value,
         phone: phone.value,

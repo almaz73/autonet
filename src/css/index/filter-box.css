@@ -3,7 +3,6 @@
     background: var(--color-grey);
     width: calc(100% - 70px);
     min-height: 60px;
-    padding: 10px;
     display: flex;
     outline: none;
     position: relative;
@@ -35,6 +34,7 @@
     border: 1px solid #dcdcdc;
     cursor: pointer;
 }
+
 .filter__controls-button.active {
     color: var(--color-red);
     border-color: white;
@@ -44,7 +44,7 @@
 .filter__controls-button:hover {
     color: white;
     border-color: white;
-    background-color:var(--color-red);
+    background-color: var(--color-red);
 }
 
 .filter__controls-info-button {
@@ -55,8 +55,7 @@
     cursor: pointer;
 }
 
-.filter__controls-info{
-    display: flex;
+.filter__controls-info {
     align-items: center;
     gap: 10px;
     justify-content: right;
@@ -78,7 +77,7 @@
         display: flex;
     }
 
-    .filter__controls-info{
+    .filter__controls-info {
         position: relative;
         right: 0;
         top: 0;
@@ -86,7 +85,7 @@
 }
 
 
-.frame-filter__item{
+.frame-filter__item {
     width: 170px;
     outline: none;
     flex-grow: 1;
@@ -95,11 +94,11 @@
     background: white;
 }
 
-.filter-white-back .frame-filter__item{
+.filter-white-back .frame-filter__item {
     background: var(--color-grey);
 }
 
-.frame-filter__item label{
+.frame-filter__item label {
     position: absolute;
     top: 14px;
     left: 20px;
@@ -127,7 +126,7 @@
     flex-wrap: wrap;
 }
 
-.tyres_f .frame-filter__item{
+.tyres_f .frame-filter__item {
     min-width: 273px;
 }
 
@@ -139,33 +138,33 @@
     font-weight: bold;
 }
 
-.control-flex{
+.control-flex {
     display: flex;
 }
 
-.control-flex span{
+.control-flex span {
     font-size: 16px;
     margin-left: 10px;
     color: #6d6c6c;
 }
 
-.control-flex input:hover{
+.control-flex input:hover {
     border-bottom: 2px solid #999;
     margin-bottom: -4px;
 }
 
 
-.control-flex:hover{
+.control-flex:hover {
     background: #fce6e9;
 }
 
-.control-flex input{
+.control-flex input {
     background: white !important;
     padding: 0 4px;
 }
 
 
-.no_advanced{
+.no_advanced {
     display: none;
     flex-grow: 1;
 }
@@ -185,7 +184,7 @@
 }
 
 /**/
-#deleter{
+#deleter {
     color: var(--color-red);
     padding: 10px 7px;
     position: absolute;

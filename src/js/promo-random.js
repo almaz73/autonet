@@ -24,11 +24,11 @@ let promos = [
     '<a href="/promo/651617/" class="ver"> <img src="../../photo-action/p_15.webp" loading="lazy" alt="Скидка 2000 рублей при покупке автомобиля с пробегом"></a>',
     '<a href="/promo/651616/" class="ver"> <img src="../../photo-action/p_16.webp" loading="lazy" alt="Первый взнос 0 рублей"></a>',
     '<a href="/promo/651615/" class="ver"><img src="../../photo-action/p_17.webp" loading="lazy" alt="Обмен или возврат"></a>',
-    '<a href="/promo/651613/" class="ver"><img src="../../photo-action/p_19.webp" loading="lazy" alt="Скидака на 20% на аренду авто"></a>',
+    '<a href="/promo/651613/" class="ver"><img src="../../photo-action/p_19.webp" loading="lazy" alt="Скидка на 20% на аренду авто"></a>',
     '<a href="/promo/657231/" class="ver"><img src="../../photo-action/p_21.webp" loading="lazy" alt="Коммерческий транспорт с пробегом">',
     '<a href="/promo/655683/" class="ver"><img src="../../photo-action/p_22.webp" loading="lazy" alt="Cнижение цен на нормо-час до 20%">'
 ]
-// * тут 2 последних скрыто, так как для них нет вертикальных фоток они случаййно не будут предлагаться
+// * тут 2 последних скрыто, так как для них нет вертикальных фоток они случайно не будут предлагаться
 
 
 for (let i = 0; i < 4; i++) {

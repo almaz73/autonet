@@ -247,7 +247,7 @@ export const punkts = [
         city: 'Магнитогорск',
         url: '/photo/contacts/chelna_myra.webp',
         coords: '53.430389, 58.973231',
-        address: 'ул. Герцена 6, <br>БЦ АльфаЦентр , офис 103',
+        address: 'ул. Герцена 6, <br>БЦ АльфаЦентр, офис 103',
         tel: '8–800–500–11–56',
         days: 'ПН-ВС с 9:00 до 21:00',
         map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A5a56a953780b0e40fbf31ddf65b7633b6e20bbdb0bed23e6fb4c1f3993229fdf&amp;source=constructor'
@@ -301,7 +301,7 @@ export const punkts = [
         city: 'Челябинск',
         url: '/photo/contacts/chelna_myra.webp',
         coords: '55.154239, 61.303793',
-        address: 'БЦ Спиридонов, <br>ул. Ленина 21в , офис 1052',
+        address: 'БЦ Спиридонов, <br>ул. Ленина 21в, офис 1052',
         tel: '8–800–500–11–56',
         days: 'ПН-ВС с 9:00 до 21:00',
         map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A711b921703be62b7b6bb60f4a3a08775c26e9862880855f1d0f16835be8a4003&amp;source=constructor'

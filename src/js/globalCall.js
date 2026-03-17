@@ -5,7 +5,7 @@ import {api_postEmail} from "@/js/apibase.js";
 
 let globalcall = document.querySelector('.global-call')
 let right_panel_content = document.querySelector('#right_panel_content')
-globalcall.addEventListener('click', () => { // авезжпеь панель
+globalcall.addEventListener('click', () => {
     openRightPanel()
     right_panel_content.innerHTML = constructorForm('globC',
         ['name*', 'phone*'],

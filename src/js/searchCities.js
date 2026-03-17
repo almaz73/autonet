@@ -23,7 +23,7 @@ export function fillCities(txt) {
 }
 
 
-cityInput && cityInput.addEventListener('input', res => {
+cityInput && cityInput.addEventListener('input', () => {
   fillCities(cityInput.value.toUpperCase());
 });
 

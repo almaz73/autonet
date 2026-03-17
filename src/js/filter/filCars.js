@@ -1,16 +1,16 @@
 // обработка location.pathname === '/cars/
 import {api_getList} from "@/js/apibase.js"
-import {getUrlParam, prepareCars, eventBus, setPriceOrder, carCountText, acceprtWithoutPhoto} from '@/js/global-func.js'
+import {getUrlParam, prepareCars, eventBus, setPriceOrder, carCountText, acceptWithoutPhoto} from '@/js/global-func.js'
 import {setExtention} from "@/js/filter/filter-ctrl-filling.js"
 
 const countPerPage = 20
 const combValuesForAfterUpdate = []
 let ishandEvent
-let extention = false //  Есть ли выбранные элементы в параметрах аждреса
+let extention = false //  Есть ли выбранные элементы в параметрах адреса
 let Cache_serv = localStorage.getItem('CACHE_SERV')
 Cache_serv = JSON.parse(Cache_serv)
 
-/* Заполнение фильтер данныеми по адресной строке */
+/* Заполнение фильтр дюнными по адресной строке */
 function FillFilterFromAddressBar(filterParams) {
     // заполнение фильтра по параметрам адресной строки
     const brand = getUrlParam('brand')
@@ -136,7 +136,7 @@ function FillFilterFromAddressBar(filterParams) {
     }
 
     if (extention) {
-        // Раширенный фильтр
+        // Расширенный фильтр
         let advanced = document.querySelector('.frame-filter__controls-advanced')
         let filterAdvanced = document.querySelector('.filter-fields')
         advanced && advanced.classList.add("active")
@@ -166,7 +166,7 @@ function handleData() {
             if (el.name === 'Марка' && window.globalCurrentBrandName) el.value = window.globalCurrentBrandName
             if (el.name === 'Модель' && window.globalCurrentModel!==undefined) el.value = window.globalCurrentModel
 
-            // ниже строка удаляет выбранное знавение комбобокса
+            // ниже строка удаляет выбранное значение комбобокса
             comb.querySelector('.big-comb__placeholder').innerText = el.value
             comb.querySelector('.big-comb__placeholder').classList.add('bold')
         }
@@ -194,7 +194,7 @@ export function fillCars(cars, ishandEvent_, filterParams, fill) {
     filterParams.limit = countPerPage
     api_getList(filterParams, res => {
         res.totalCount = res.totalCount || 0
-        res.items = acceprtWithoutPhoto(res.items)
+        res.items = acceptWithoutPhoto(res.items)
         // по кнопке Показать
         cars = prepareCars(res.items)
         let totalPages = Math.ceil(res.totalCount / countPerPage)

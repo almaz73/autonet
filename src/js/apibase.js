@@ -111,19 +111,19 @@ export function api_getFullAutoInfo(guid, callback) {
     return withCache(request, callback, 10) // ЗВ 10 минут авто не подменят
 }
 
-/*** Получение кол-во автомобилей разбитых по бренду. Отсортированно от большего к меньшему ***/
+/*** Получение кол-во автомобилей разбитых по бренду. Отсортировано от большего к меньшему ***/
 export function api_GetCarCount(callback) {
     let request = '/api/getCarCount'
     return withCache(request, callback, 5) // тут 5 минут только кешируем
 }
 
-/** Получение брендов автомобилей */
-export function api_GetBrandList(callback) {
-    let request = '/api/getBrandList'
-    return withCache(request, callback, 60) // дальше уже кешироание на час, редко обновляются
-}
+/** Получение брендов автомобилей (поменяли) */
+// export function api_GetBrandList(callback) {
+//     let request = '/api/getBrandList'
+//     return withCache(request, callback, 60) // дальше уже кеширование на час, редко обновляются
+// }
 
-/** Поолучение моделей автомобилей по бренду */
+/** Получение моделей автомобилей по бренду */
 export function api_GetModelList(brandId, callback) {
     let request = '/api/getModelList?brandId=' + brandId
     return withCache(request, callback, 60)
