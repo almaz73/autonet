@@ -102,7 +102,7 @@ function fillFields(onlyModels) {
             if (bigCombPlaceholder) bigCombPlaceholder.style.display = ''
         }
 
-        if (![
+        if (bigCombPlaceholder && ![
             'Марка',
             'Тип кузова',
             'Тип КПП',

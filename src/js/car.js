@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     autoColor[0].innerHTML = autoColor[1].innerHTML = res.color || ''
 
                     let addr = document.querySelector('.main__card-product--top .address')
-                    addr.addEventListener('click', () => openInYndx(res.fullAddress))
+                    addr.addEventListener('click', () => openInYndx(res.city + ' ' + (res.fullAddress || '')))
 
                     addr.innerHTML = res.city + ' ' + (res.fullAddress || '')
                 }
