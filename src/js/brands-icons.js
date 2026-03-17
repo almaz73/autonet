@@ -384,7 +384,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function filler(arr) {
         let txt = `<div class='list_brands'>`
-        arr.forEach((el => {
+        arr.forEach((el, ind) => {
+            if (ind > 19) return false
             txt += ` <div>
               <a href='${el.url}'>
                   <span class='icon'>
@@ -394,7 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   <span class='total'>${el.total}</span>
               </a>
           </div>`
-        }))
+        })
         txt += `</div>`
         brands_dynamic.innerHTML = txt
     }
