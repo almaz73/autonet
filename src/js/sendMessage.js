@@ -18,6 +18,7 @@ window.sendMessage = function (text, type) {
 
     notification.addEventListener("click", () => {
         notification.classList.remove('show')
+        notification.style.top = '1600px'
         reorder(notification.id)
     })
     notification.addEventListener("mouseover", () => {
@@ -28,7 +29,7 @@ window.sendMessage = function (text, type) {
     //  Убираем уведомление через 3 секунды
     setTimeout(() => {
         if (!notification.stopped) {
-            notification.style.opacity = '0';
+            notification.style.top = '1600px'
             notification.classList.remove('show')
             reorder(notification.id)
         }

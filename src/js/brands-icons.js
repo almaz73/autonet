@@ -411,7 +411,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let url
 
             if (!brand) {
-                console.log("%c Новый бренд = ","background: orange; color: black", "", res[i] && res[i].name)
+                // console.log("%c Новый бренд = ","background: orange; color: black", "", res[i] && res[i].name)
                 // тоже нужно логировать
             } else  url = '/cars/?brand='+brandName
 
