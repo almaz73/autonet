@@ -14,7 +14,7 @@
     font-weight: 600;
     color: var(--color-red);
     padding: 0 0 0 24px;
-    background: url(../../../public/location.svg) center left no-repeat;
+    background: url(/st/location.svg) center left no-repeat;
 }
 
 .comb_field img , .type_views.coin img{

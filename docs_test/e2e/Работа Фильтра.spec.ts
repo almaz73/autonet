@@ -1,7 +1,7 @@
 import {test, expect} from '@playwright/test';
 
 const testPath = 'http://localhost:4173/' // НУЖНО ЗАПУСКАТЬ ЛОКАЛЬНЫЙ 4173
-// const testPath = 'http://xn--80aej9alefdt2f.xn--p1ai/'
+// const testPath = 'https://xn--80aej9aped4f.xn--p1ai/'
 
 
 

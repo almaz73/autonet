@@ -41,7 +41,7 @@ export default defineConfig({
 		sitemap({
 			// Ваши настройки, например, домен
 			hostname: 'https://xn--80aej9alefdt2f.xn--p1ai',
-			outDir: 'docs', // Выходная папка
+			outDir: 'dict', // Выходная папка
 			changefreq: 'monthly', // Устанавливаем частоту 'weekly' (еженедельно)
 		}),
 	],
@@ -151,7 +151,7 @@ export default defineConfig({
 			},
 		},
 
-		outDir: 'docs', // Выходная папка
+		outDir: 'dict', // Выходная папка
 		// sourcemap: true, // Генерация sourcemaps (путь js)
 		chunkSizeWarningLimit: 1000, // Sets the warning limit to 1000 kB (1MB)
 	},

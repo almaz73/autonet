@@ -2,7 +2,7 @@
 //
 // test.describe('Общий тест', () => {
 //   test('Наличие верхней менюшки на всех страницах', async ({ page }) => {
-//     await page.goto('http://xn--80aej9alefdt2f.xn--p1ai/');
+//     await page.goto('https://xn--80aej9aped4f.xn--p1ai/');
 //     await page.getByRole('link', { name: 'Купить' }).first().click();
 //     await expect(
 //       page.getByRole('link', { name: 'КУпить' }).first(),
@@ -127,7 +127,7 @@
 //   });
 //
 //   test('Наличие нижней менюшки на всех страницах', async ({ page }) => {
-//     await page.goto('http://xn--80aej9alefdt2f.xn--p1ai/');
+//     await page.goto('https://xn--80aej9aped4f.xn--p1ai/');
 //     await page.getByRole('link', { name: 'Купить' }).first().click();
 //     await expect(
 //       page.getByRole('contentinfo').getByRole('link', { name: 'О компании' }),
@@ -296,7 +296,7 @@
 //
 // test.describe('Проверка контролов', () => {
 //   test('Работа с локалсторажем (выбор города) ', async ({ page }) => {
-//     await page.goto('http://xn--80aej9alefdt2f.xn--p1ai/');
+//     await page.goto('https://xn--80aej9aped4f.xn--p1ai/');
 //
 //     await page.evaluate(() => localStorage.clear()); // чистим
 //     await page.getByRole('img', { name: 'arrow' }).first().click(); // менчем ород черехз верхнюю меню
@@ -327,7 +327,7 @@
 //   });
 //
 //   test('Работа комбобокса в фильтре', async ({ page }) => {
-//     await page.goto('http://xn--80aej9alefdt2f.xn--p1ai/');
+//     await page.goto('https://xn--80aej9aped4f.xn--p1ai/');
 //     await page.getByRole('img', { name: 'arrow' }).nth(1).click();
 //     await page.getByRole('img', { name: 'arrow' }).nth(1).click();
 //     await page.getByText('Все').nth(1).click();
@@ -338,12 +338,12 @@
 //   });
 //
 //   test('На весь экран элементы', async ({ page }) => {
-//     await page.goto('http://xn--80aej9alefdt2f.xn--p1ai/');
+//     await page.goto('https://xn--80aej9aped4f.xn--p1ai/');
 //     await page.locator('#mainPhoto').click();
-//     await page.goto('http://xn--80aej9alefdt2f.xn--p1ai/about-the-company/');
+//     await page.goto('https://xn--80aej9aped4f.xn--p1ai/about-the-company/');
 //     await page.locator('#mainPhoto').click();
 //     await page.goto(
-//       'http://xn--80aej9alefdt2f.xn--p1ai/services/shinnyy-%D1%81entr/',
+//       'https://xn--80aej9aped4f.xn--p1ai/services/shinnyy-%D1%81entr/',
 //     );
 //     await page.locator('#mainPhoto').click();
 //   });

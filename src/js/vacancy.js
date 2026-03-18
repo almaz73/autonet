@@ -100,7 +100,7 @@ function initVacancies(city) {
                 от <span>${formatterShowPrice(item.salary)} ₽</span>
             </div>
             <span class="show_detail">
-                <img src="/red_arrow.svg" loading='lazy' alt=''>
+                <img src="/st/red_arrow.svg" loading='lazy' alt=''>
                 Подробнее
             </span>
         </div>
