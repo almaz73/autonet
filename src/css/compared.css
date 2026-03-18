@@ -15,6 +15,11 @@
     background: #f9f9f9;
 }
 
+.bx_compare table tr:hover td{
+    background: #d1d1d8;
+    border-bottom: 1px solid #444;
+}
+
 .bx_compare table tr td {
     font-size: 13px;
     padding: 8px 5px;
