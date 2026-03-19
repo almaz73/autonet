@@ -148,9 +148,10 @@ function getDatas() {
             api_GetCarCount(res => {
                 if (!res.length) return false
 
+                let newRes = res.filter(el=>el.count)
 
-                items['Марка'] = res.map(el => el.name)
-                globalValues.brandsIds.push(...res)
+                items['Марка'] = newRes.map(el => el.name)
+                globalValues.brandsIds.push(...newRes)
 
                 const brand = getUrlParam('brand')
                 if (brand) getModelList(brand)

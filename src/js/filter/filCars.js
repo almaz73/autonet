@@ -84,7 +84,7 @@ function FillFilterFromAddressBar(filterParams) {
         filterParams.driveType = driveType
         let item = Cache_serv['/api/getDriveTypes']
         let name = item && item.data.find(el => el.title === driveType)
-        setCombName('Тип привода',  (name ? name.title : wheelType))
+        setCombName('Тип привода', (name ? name.title : wheelType))
     }
 
 
@@ -149,7 +149,9 @@ function FillFilterFromAddressBar(filterParams) {
         setPriceOrder(filterParams['priceOrder'])
     }
 
-    filterParams['offset'] = getUrlParam('page')
+    let offset = (getUrlParam('page') - 1) * 20
+    if (offset < 0) offset = 0
+    filterParams['offset'] = offset
     setExtention(extention)
 }
 
@@ -164,7 +166,7 @@ function handleData() {
         let comb = document.querySelector(`[data-placeholder="${el.name}"]`)
         if (comb && comb.querySelector('.big-comb__placeholder')) {
             if (el.name === 'Марка' && window.globalCurrentBrandName) el.value = window.globalCurrentBrandName
-            if (el.name === 'Модель' && window.globalCurrentModel!==undefined) el.value = window.globalCurrentModel
+            if (el.name === 'Модель' && window.globalCurrentModel !== undefined) el.value = window.globalCurrentModel
 
             // ниже строка удаляет выбранное значение комбобокса
             comb.querySelector('.big-comb__placeholder').innerText = el.value
