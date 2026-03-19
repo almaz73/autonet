@@ -4,7 +4,7 @@ import {server} from "@/js/global-constants.js";
 
 
 export function api_postEmail(params) {
-    let request = '/api/Email/PostEmail'
+    let request = '/api/postEmail'
 
     // собираем текст для письма
     let letter = ''
@@ -41,7 +41,7 @@ export function api_postEmail(params) {
 
 export function api_PostEmailWithAttachement(params) {
     // - Отправка файла резюме
-    let request = '/api/Email/PostEmailWithAttachement'
+    let request = '/api/PostEmailWithAttachement'
 
     // 2. Создаем FormData и добавляем файл
     const formData = new FormData();
@@ -63,6 +63,8 @@ export function api_PostEmailWithAttachement(params) {
 
     return fetch(server + request, {
         method: 'POST',
+        // 'Content-Type': 'application/octet-stream',
+        // 'Content-Type': 'application/json;charset=utf-8',
         body: formData //   body:  JSON.stringify(param)
     })
         .then(res => res.json())
