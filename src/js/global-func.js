@@ -323,7 +323,7 @@ export function cleanCarsWithoutPhoto(items) {
 
 export function acceptWithoutPhoto(items) {
     // Если нет фоток, теперь подставляю временную фотку, чтобы не было проблем с версткой и не отсеивались авто
-    return items.map(el => {
+    return items && items.map(el => {
         if (el && el.images) el.images = el.images.map(item => item || '/photo/nophoto.webp')
         return el
     })
