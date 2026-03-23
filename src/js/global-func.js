@@ -41,6 +41,19 @@ export let globalValues = {
     bodyColors: []
 }
 
+export function clearGlobalValues() {
+    globalValues = {
+        brandsIds: [],
+        modelsIds: [],
+        gearboxTypes: [],
+        engineTypes: [],
+        driveTypes: [],
+        wheelTypes: [],
+        bodyTypes: [],
+        bodyColors: []
+    }
+}
+
 export function formatterShowPrice(val) {
     return parseInt(val).toLocaleString('ru-RU')
 }
@@ -314,7 +327,7 @@ export function cleanCarsWithoutPhoto(items) {
 
     // убираем авто без фоток
     let startLength = items.length
-    let newitems = items.filter(el => el.images.length)
+    let newitems = items.filter(el => el && el.images.length)
     let startLength2 = newitems.length
     if (startLength !== startLength2) console.log("%c без фоток БЫЛО / СТАЛО ", "background: orange; color: black", startLength + '/' + startLength2)
 
@@ -323,7 +336,7 @@ export function cleanCarsWithoutPhoto(items) {
 
 export function acceptWithoutPhoto(items) {
     // Если нет фоток, теперь подставляю временную фотку, чтобы не было проблем с версткой и не отсеивались авто
-    return items.map(el => {
+    return items && items.map(el => {
         if (el && el.images) el.images = el.images.map(item => item || '/photo/nophoto.webp')
         return el
     })

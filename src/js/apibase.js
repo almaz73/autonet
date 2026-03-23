@@ -4,7 +4,7 @@ import {server} from "@/js/global-constants.js";
 
 
 export function api_postEmail(params) {
-    let request = '/api/Email/PostEmail'
+    let request = '/api/postEmail'
 
     // собираем текст для письма
     let letter = ''
@@ -34,14 +34,17 @@ export function api_postEmail(params) {
         body: JSON.stringify({type: params.type || 10, text: letter})
     })
         .then(res => res.json())
-        .then(res => res)
+        .then(res => {
+            showPreloader(false)
+            return res
+        })
         .catch(() => sendMessage('Сервер не принял письмо!', 'error'));
 }
 
 
 export function api_PostEmailWithAttachement(params) {
     // - Отправка файла резюме
-    let request = '/api/Email/PostEmailWithAttachement'
+    let request = '/api/PostEmailWithAttachement'
 
     // 2. Создаем FormData и добавляем файл
     const formData = new FormData();
@@ -66,7 +69,9 @@ export function api_PostEmailWithAttachement(params) {
         body: formData //   body:  JSON.stringify(param)
     })
         .then(res => res.json())
-        .then(res => res)
+        .then(res => {
+            showPreloader(false)
+            return res})
         .catch(() => sendMessage('Сервер отказал!', 'error'));
 }
 

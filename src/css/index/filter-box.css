@@ -86,7 +86,7 @@
 
 
 .frame-filter__item {
-    width: 170px;
+    width: 200px;
     outline: none;
     flex-grow: 1;
     border-radius: 5px;
@@ -130,6 +130,13 @@
     min-width: 273px;
 }
 
+.big-comb__input {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 18px;
+    color: #6d6c6c;
+}
+
 .filter-white .big-combo, .filter-white .big-comb__input {
     background: var(--color-grey);
 }
@@ -140,11 +147,17 @@
 
 .control-flex {
     display: flex;
+    justify-content: space-between;
+
 }
 
 .control-flex span {
-    font-size: 16px;
     margin-left: 10px;
+    color: #6d6c6c;
+
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 18px;
     color: #6d6c6c;
 }
 

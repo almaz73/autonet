@@ -113,18 +113,24 @@ function showChosen(storage_) {
             DELETE += `<td><a href="javascript:deleteCar('${el.id}')">Удалить</a></td>`
             if (!el.deleted) PREVIEW_PICTURE += `<td><a href="javascript:openCar('/cars/car.html?id=${el.id}','${el.images}','${el.deleted}')"><img src="${el.images}" alt=""></a></td>`
             else PREVIEW_PICTURE += `<td> ☹ Автомобиль <br> снят с продажи </td>`
-            NAME += `<td><a href="javascript:openCar('/cars/car.html?id=${el.id}','${el.images}','${el.deleted}')">${el.brand} ${el.model}</a></td>`
+            NAME += `<td><a href="javascript:openCar('/cars/car.html?id=${el.id}','${el.images}','${el.deleted}')">${el.brand} ${el.model || ''}</a></td>`
             PRICE += `<td>${formatterShowPrice(el.price)} руб.</td>`
             if (el.milleage) PROBEG += `<td>${formatterShowPrice(el.milleage) || ''} км</td>`
             GOD_VYPUSKA += `<td>${el.yearReleased || ''}</td>`
             TSVET += `<td>${el.color || ''}</td>`
             OBEM_DVIGATELYA += `<td>${el.engineCapacity || ''}</td>`
             TIP_DVIGATELYA += `<td>${el.engineType || ''}</td>`
-            MOSHCHNOST_DVIGATELYA += `<td>${el.enginePower || ''}</td>`
-            TIP_KPP += `<td>${el.gearboxType || ''}</td>`
+            MOSHCHNOST_DVIGATELYA += `<td>${el.enginePower || ''} л.с.</td>`
+
+            if (el.gearboxType === 'MT') el.gearboxType = 'Механическая (MT)'
+            if (el.gearboxType === 'АT') el.gearboxType = 'Автоматическая (АT)'
+            if (el.gearboxType === 'AMT') el.gearboxType = 'Робот (AMT)'
+            if (el.gearboxType === 'CVT') el.gearboxType = 'Вариатор (CVT)'
+
+            TIP_KPP += `<td title="777">${el.gearboxType || ''}</td>`
             TIP_PRIVODA += `<td>${el.driveType || ''}</td>`
             TIP_KUZOVA += `<td>${el.bodyType || ''}</td>`
-            GOROD += `<td>${(el.fullAddress && el.fullAddress.split(',')[0]) || ''}</td>`
+            GOROD += `<td>${el.city || ''}</td>`
             RULE += `<td>${el.wheelType || ''}</td>`
             MARKA += `<td>${el.brand || ''}</td>`
             MODEL += `<td>${el.model || ''}</td>`

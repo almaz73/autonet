@@ -10,7 +10,7 @@ import {
     api_getColorList,
 
 } from "@/js/apibase.js"
-import {getUrlParam, globalValues} from '@/js/global-func.js'
+import {clearGlobalValues, getUrlParam, globalValues} from '@/js/global-func.js'
 import {eventBus} from '@/js/global-func.js'
 
 
@@ -92,7 +92,7 @@ function fillFields(onlyModels) {
         }
 
         function createFiledsForList(list, comb_name) {
-            return list.map(item => '<div data-parent="' + comb_name + '">' + item + '</div>')
+            return list && list.map(item => '<div data-parent="' + comb_name + '">' + item + '</div>')
         }
 
         function blur() {
@@ -143,13 +143,17 @@ export function getModelList(brandName) {
 
 function getDatas() {
     showPreloader(true)
+    clearGlobalValues()
+
     Promise.all([
         new Promise(resolve => {
             api_GetCarCount(res => {
-                if (!res.length) return console.error(items)
+                if (!res.length) return false
 
-                items['Марка'] = res.map(el => el.name)
-                globalValues.brandsIds.push(...res)
+                let newRes = res.filter(el=>el.count)
+
+                items['Марка'] = newRes.map(el => el.name)
+                globalValues.brandsIds.push(...newRes)
 
                 const brand = getUrlParam('brand')
                 if (brand) getModelList(brand)
@@ -159,7 +163,7 @@ function getDatas() {
         }),
         new Promise(resolve => {
             api_getCities(res => {
-                if (!res.length) return console.error(items)
+                if (!res.length) return false
                 if (!res.includes('Все')) res.unshift('Все')
                 items['Город'] = res
                 resolve()

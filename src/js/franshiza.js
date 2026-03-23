@@ -68,12 +68,13 @@ window.getQuoite = function (fName) {
     }
     showPreloader(true, button)
     api_postEmail(params).then(res => {
+        showPreloader(false, button)
+        if (res.error) return sendMessage('Ошибка '+res.error, 'error')
         if (res) {
             setTimeout(() => sendMessage('Ваша заявка успешно отправлена'), 500);
             document.querySelector(`.${fName} .formBlock`).innerHTML =
                 '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
         }
-        showPreloader(false, button)
     })
 }
 
@@ -101,11 +102,12 @@ window.questionFranshiza = function (fName) {
     }
     showPreloader(true, button)
     api_postEmail(params).then(res => {
+        showPreloader(false, button)
+        if (res.error) return sendMessage('Ошибка '+res.error, 'error')
         if (res) {
             setTimeout(() => sendMessage('Ваша заявка успешно отправлена'), 500);
             document.querySelector(`.${fName} .formBlock`).innerHTML =
                 '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
         }
-        showPreloader(false, button)
     })
 }

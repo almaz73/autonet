@@ -90,6 +90,7 @@
     justify-content: center;
     text-decoration: none;
     overflow: hidden;
+    height: 25px;
 }
 
 .page__btn--main::before {

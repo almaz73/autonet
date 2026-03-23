@@ -164,12 +164,18 @@
 
 
             <div>
-                <div class='modal__personal'>
+                <div class='modal__personal' style="display: block">
                     <input type='checkbox' id='personal_agree_vacancy'>
                     <label for='personal_agree_vacancy'>
                         Нажав кнопку «Отправить данные» я даю согласие
                         на обработку
                         <a href='/privacy-policy/' target='_blank'>персональных данных</a>
+                    </label>
+                </div>
+                <div class='modal__personal'>
+                    <input type="checkbox" name="agree" id="personal_agree2">
+                    <label for="personal_agree2" style="cursor: pointer">
+                        Согласие на рекламную <a href="/privacy-policy/agreement.html" target="_blank">коммуникацию</a>
                     </label>
                 </div>
                 <div class='modal__error'>Вы должны дать согласие на обработку персональных данных</div>

@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             autoSwip.innerHTML += `<div class="swiper-slide" ondblclick="toBig('big')"><img src="${el}" alt=""></div>`
         })
         initSwipper()
+        setTimeout(() => showSlide(0), 1000)
     }
 
     setTimeout(() => {
@@ -71,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 showPreloader(false)
                 /** Имя и характеристики и Хлебные крошки */
                 {
-                    if (!res || !res.brand) sendConfirm('☹ АВТОМОБИЛЬ СНЯТ С ПРОДАЖИ')
+                    if (!res || !res.brand) sendConfirm('☹ ВОЗМОЖНО АВТОМОБИЛЬ СНЯТ С ПРОДАЖИ')
 
                     autoName = document.querySelectorAll('.auto-name')
                     autoName[0].innerHTML = autoName[1].innerHTML = autoName[2].innerHTML = (res.brand || '') + ' ' + (res.model || '') + ', ' + (res.yearReleased || '')
@@ -144,11 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (favorite_chosen) {
                         favorite_chosen.innerHTML = `
 <a href="javascript:addCompare('${res.id}')" ondblclick="dblCompare('${res.id}')">
-        <img id="compareId_${res.id}" src='/icons/compare_cars.svg' alt='' style="width: 23px; margin-right: 18px">
-      </a>
-      <a href="javascript:addFavorite('${res.id}')">
-        <img id="favoriteId_${res.id}" src='/icons/penta.svg' alt='' style="width: 20px">
-      </a>`
+<img id="compareId_${res.id}" src='/icons/compare_cars.svg' alt='' style="width: 23px; margin-right: 18px"></a>
+<a href="javascript:addFavorite('${res.id}')"><img id="favoriteId_${res.id}" src='/icons/penta.svg' alt='' style="width: 20px"></a>`
                     }
 
                     window.favorCars = prepareCars([res])

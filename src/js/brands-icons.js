@@ -1,5 +1,5 @@
 import {api_GetCarCount} from "@/js/apibase.js"
-import {getUrlParam} from  "@/js/global-func.js"
+import {eventBus, getUrlParam, globalValues} from "@/js/global-func.js"
 
 const hasBrand = getUrlParam('brand');
 
@@ -400,9 +400,10 @@ document.addEventListener('DOMContentLoaded', () => {
         brands_dynamic.innerHTML = txt
     }
 
-    // filler(brandDatas)
+    eventBus.on('dataUpdated', filBrands); // событие загрузки всех комбобоксов из сервера
+    function filBrands() {
+        let res = globalValues.brandsIds
 
-    api_GetCarCount(res => {
         let newList = []
 
         for (let i = 0; i < res.length; i++) {
@@ -424,7 +425,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         filler(newList)
-    })
+    }
 
 })
 
