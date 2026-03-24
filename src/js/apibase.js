@@ -1,4 +1,3 @@
-
 import {withCache} from "@/js/apibase_cache.js"
 import {server} from "@/js/global-constants.js";
 
@@ -13,10 +12,10 @@ export function api_postEmail(params) {
     if (params.city) letter += 'Город: ' + params.city + '\n'
     if (params.email) letter += 'Email: ' + params.email + '\n'
     if (params.aboutYourself) letter += 'О себе: ' + params.aboutYourself + '\n'
-    if (params.credit) letter += 'Сумма кредита: ' + params.credit.replaceAll('&nbsp;',' ') + '\n'
-    if (params.payment) letter += 'Первый платеж: ' + params.payment.replaceAll('&nbsp;',' ') + '\n'
-    if (params.yearCred) letter += 'Год кредита: ' + params.yearCred  + '\n'
-    if (params.forMonth) letter += 'Платеж в месяц: ' + params.forMonth.replaceAll('&nbsp;',' ') + '\n'
+    if (params.credit) letter += 'Сумма кредита: ' + params.credit.replaceAll('&nbsp;', ' ') + '\n'
+    if (params.payment) letter += 'Первый платеж: ' + params.payment.replaceAll('&nbsp;', ' ') + '\n'
+    if (params.yearCred) letter += 'Год кредита: ' + params.yearCred + '\n'
+    if (params.forMonth) letter += 'Платеж в месяц: ' + params.forMonth.replaceAll('&nbsp;', ' ') + '\n'
     if (params.price) letter += 'Стоимость автомобиля: ' + params.price.replaceAll('&nbsp;', ' ') + '\n'
     if (params.text) letter += 'Текст: ' + params.text + '\n'
     if (params.selection) letter += 'Выбор сервиса: ' + params.selection + '\n'
@@ -71,7 +70,8 @@ export function api_postEmailWithAttachement(params) {
         .then(res => res.json())
         .then(res => {
             showPreloader(false)
-            return res})
+            return res
+        })
         .catch(() => sendMessage('Сервер отказал!', 'error'));
 }
 
