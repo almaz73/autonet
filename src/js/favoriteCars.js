@@ -16,7 +16,7 @@ window.addFavorite = function (val) {
         cars = cars.filter(el => el.id !== val)
 
         localStorage.setItem('FavoriteCars', JSON.stringify(cars))
-        window.getVitrina()
+        location.reload()
     } else {
         location.href = '/personal/favorite-cars/'
     }
@@ -61,7 +61,7 @@ function getFavoriteCars() {
 
 window.deleteAllFavoriteCar = function () {
     localStorage.setItem('FavoriteCars', JSON.stringify([]))
-    window.getVitrina()
+    location.reload()
 }
 
 function showCountButton(cars) {

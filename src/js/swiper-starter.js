@@ -28,7 +28,11 @@ export function initSwipper() {
     let params = {
         spaceBetween: 30,
         loop: true,
-        utoplay: isCarPage ? "" : {delay: 5000, disableOnInteraction: false},
+        // utoplay: isCarPage ? "" : {delay: 5000, disableOnInteraction: false},
+        utoplay: {delay: 5000, disableOnInteraction: false},
+        pauseOnMouseEnter: true, // Пауза при наведении мыши
+        waitForTransition: true, // Ждать завершения анимации
+        disableOnInteraction: true, // Продолжить автоплей после свайпа
         autoHeight: true,
         centeredSlides: true,
         pagination: {
@@ -41,15 +45,7 @@ export function initSwipper() {
         },
         on: {
             init() {
-                let isUsed = false
                 if (!isCarPage) this.autoplay.start()
-                // Если один раз нажали на прокрутку - автопрокрутку выключаем
-                this.el.addEventListener('click', () => {
-                    this.autoplay.stop();
-                    isUsed = true
-                })
-                this.el.addEventListener('mouseenter', () => this.autoplay.stop())
-                this.el.addEventListener('mouseleave', () => !isUsed && !isCarPage && this.autoplay.start())
             }
         }
     }

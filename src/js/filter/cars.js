@@ -3,114 +3,113 @@ import {api_getYearGap} from "@/js/apibase.js";
 
 const whiteFilter = `<div  class="filter-white">
 <div class="filter-white-back filter-fields">
-        <div class="frame-filter__item"
-             onmouseenter="onCard(this)">
+        <div class="frame-filter__item">
             <comb data-placeholder='Марка' />
             <label>Марка</label>
         </div>
-        <div class="frame-filter__item" onmouseenter="onCard(this)">
+        <div class="frame-filter__item">
             <comb data-placeholder='Модель' />
             <label>Модель</label>
         </div>
-        <div class="frame-filter__item" onmouseenter="onCard(this)">
+        <div class="frame-filter__item">
             <comb data-placeholder='Город' />
             <label>Город</label>
         </div>
 
         <div style="flex-grow: 1">
-            <div class="big-combo control-flex" onmouseenter="onCard(this)">
+            <div class="big-combo control-flex" onmousedown="onCard(this)">
                 <span style="width: 60px">Год от:</span>
-                <input class="big-comb__input" type="number" style="width: 80px" 
+                <input class="big-comb__input" style="width: 80px" 
                  oninput="input_on('yearReleasedFrom', this.value)"  
                  onchange="input_chamged('yearReleasedFrom', this.value)">
             </div>
         </div> 
 
         <div class="no_advanced">
-            <div class="big-combo control-flex" onmouseenter="onCard(this)">
+            <div class="big-combo control-flex" onmousedown="onCard(this)">
                 <span style="width: 60px">Год до:</span>
-                <input class="big-comb__input" type="number" style="width: 80px" 
+                <input class="big-comb__input" style="width: 80px" 
                   oninput="input_on('yearReleasedTo', this.value)"  
                   onchange="input_chamged('yearReleasedTo', this.value)" onclick="this.select()">
             </div>
         </div>
         
-        <div class="frame-filter__item no_advanced"  onmouseenter="onCard(this)">
+        <div class="frame-filter__item no_advanced">
             <comb data-placeholder='Цвет' />
             <label>Цвет</label>
         </div> 
 
         <div class="no_advanced">
-            <div class="big-combo control-flex" onmouseenter="onCard(this)">
+            <div class="big-combo control-flex">
                 <span style="width: 80px">Цена от: </span>
-                 <input class="big-comb__input" style="width: 60px" 
+                 <input class="big-comb__input" style="width: 80px" 
                 oninput="input_on('priceFrom', this.value)"  
                 onchange="input_chamged('priceFrom', this.value)" onclick="this.select()">                
             </div>
         </div>
 
-        <div>
-            <div class="big-combo control-flex" onmouseenter="onCard(this)">
-                <span style="width: 80px">Цена до: </span>                 
-                <input class="big-comb__input" style="width: 60px" 
-                oninput="input_on('priceTo', this.value)" 
-                onchange="input_chamged('priceTo', this.value)">
+        
+            <div class="big-combo control-flex">
+                <span style="width: 80px">Цена до: </span>
+                 <input class="big-comb__input" style="width: 80px" 
+                  oninput="input_on('priceTo', this.value)" 
+                onchange="input_chamged('priceTo', this.value)" onclick="this.select()">                
             </div>
-        </div>
+        
 
         <div class="no_advanced">
-            <div class="big-combo control-flex" onmouseenter="onCard(this)">
-                <span style="width: 85px">Пробег от: </span>
-                 <input class="big-comb__input" style="width: 70px" 
+            <div class="big-combo control-flex">
+                <span>Пробег от:</span>
+                 <input class="big-comb__input" style="width: 78px" 
                    oninput="input_on('milleageFrom', this.value)"  
                    onchange="input_chamged('milleageFrom', this.value)" onclick="this.select()">      
             </div>
         </div>
         
         <div class="no_advanced">
-            <div class="big-combo control-flex" onmouseenter="onCard(this)">
-                <span style="width: 85px">Пробег до: </span>
+            <div class="big-combo control-flex">
+                <span style="width: 90px">Пробег до:&nbsp;</span>
                  <input class="big-comb__input" style="width: 70px" 
                   oninput="input_on('milleageTo', this.value)"  
                   onchange="input_chamged('milleageTo', this.value)" onclick="this.select()">                    
             </div>
         </div>
 
-        <div class="frame-filter__item no_advanced" onmouseenter="onCard(this)">
+        <div class="frame-filter__item no_advanced">
             <comb data-placeholder='Тип кузова'/>
         </div>
 
 
 
-        <div class="frame-filter__item no_advanced" onmouseenter="onCard(this)">
+        <div class="frame-filter__item no_advanced">
             <comb data-placeholder='Тип КПП'/>
         </div>
 
-        <div class="frame-filter__item no_advanced" onmouseenter="onCard(this)">
+        <div class="frame-filter__item no_advanced">
             <comb data-placeholder='Тип двигателя'/>
         </div>
 
         <div class="no_advanced">
-           <div class="big-combo control-flex" onmouseenter="onCard(this)">
-            <span style="width: 160px">Объем двигателя до: </span>
-             <input class="big-comb__input" style="width: 60px" 
+           <div class="big-combo control-flex">
+            <span style="width: 165px">Объем двигателя до:&nbsp;</span>
+             <input class="big-comb__input" style="width: 70px" 
               oninput="input_on('engineCapacity', this.value)"  
               onchange="input_chamged('engineCapacity', this.value)" onclick="this.select()">      
           </div>
         </div>
 
 <!--        <div class="no_advanced">-->
-<!--            <div class="big-combo control-flex" onmouseenter="onCard(this)">-->
+<!--            <div class="big-combo control-flex">-->
 <!--                <span style="width: 187px">Мощность двигателя до: </span>-->
 <!--                <input class="big-comb__input" style="width: 60px" value="" onclick="this.select()">-->
 <!--            </div>-->
 <!--        </div>-->
 
-        <div class="frame-filter__item no_advanced" onmouseenter="onCard(this)">
+        <div class="frame-filter__item no_advanced">
             <comb data-placeholder='Тип привода'/>
         </div>
 
-        <div class="frame-filter__item no_advanced" onmouseenter="onCard(this)">
+        <div class="frame-filter__item no_advanced">
             <comb data-placeholder='Руль'/>
         </div>
     </div>
@@ -149,7 +148,7 @@ const carVitrina = `<div class="car_vitrina">
                 </div>
             </span>
 
-            <span class='coin'>
+            <span class='coin' title="Отсортируйте по цене">
                 <span>цена <img src="/svg/arrow-down.svg" alt="" loading="lazy"
                  width='10' style="transform: rotate(-90deg)"></span>
             </span>
@@ -172,7 +171,6 @@ if (brandName && !hasId) {
 if (hasId) {
     // document.querySelector('#alone').innerHTML = alone
 
-    console.log('66445', 121212)
 
 }
 
@@ -182,14 +180,20 @@ let currentComb = null
 let yearGap = []
 api_getYearGap(res => yearGap = res)
 
+let datelist1 = document.querySelector('#list1')
+let datelist2 = document.querySelector('#list2')
+
+window.addEventListener("click", () => {
+    if (datelist1) datelist1.style.left = '-1000px'
+    if (datelist2) datelist2.style.left = '-1000px'
+})
+
 window.onCard = function (val) {
     let inp = val.querySelector('input')
-    let datelist1 = document.querySelector('#list1')
-    let datelist2 = document.querySelector('#list2')
+    let xy = val.getBoundingClientRect()
 
     currentInput = null
     currentComb = null
-    let xy = val.getBoundingClientRect()
     if (inp) {
         let value = val.querySelector('input').value
         if (value) {
@@ -220,13 +224,13 @@ window.onCard = function (val) {
                 el.addEventListener('click', val => {
                     inp.value = val.target.innerText
                     input_chamged('yearReleasedFrom', val.target.innerText)
-                    datelist1.style.left = '-1000px'
                 })
             })
         }
-        datelist1.style.left = xy.x + 'px'
-        datelist1.style.top = (45 + xy.y + window.scrollY) + 'px'
-        datelist2.style.left = '-1000px'
+        setTimeout(() => {
+            datelist1.style.left = xy.x + 'px'
+            datelist1.style.top = (45 + xy.y + window.scrollY) + 'px'
+        }, 100)
 
     } else if (val.querySelector('span') &&
         val.querySelector('span').innerHTML &&
@@ -244,21 +248,12 @@ window.onCard = function (val) {
                 })
             })
         }
-
-        datelist2.style.left = xy.x + 'px'
-        datelist2.style.top = (45 + xy.y + window.scrollY) + 'px'
-        datelist1.style.left = '-1000px'
-    } else {
-        datelist1.style.left = '-1000px'
-        datelist2.style.left = '-1000px'
+        setTimeout(() => {
+            datelist2.style.left = xy.x + 'px'
+            datelist2.style.top = (45 + xy.y + window.scrollY) + 'px'
+        }, 100)
     }
-
     if (val.querySelector('input')) val.querySelector('input').focus()
-
-    setTimeout(()=>{
-        datelist1.style.left = '-1000px'
-        datelist2.style.left = '-1000px'
-    }, 6000)
 
 }
 document.querySelector('#deleter').addEventListener('click', () => {

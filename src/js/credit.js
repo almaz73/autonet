@@ -159,9 +159,10 @@ bid_for_car && bid_for_car.addEventListener('click', () => {
     const captcha = document.querySelector('.capctha-div.n3')
     const button = document.querySelector('.main_cred-col button')
     const checkbox = document.getElementById('n3')
+    const agree = document.querySelector(`[name="agree"]`)
     const attent = document.querySelector('.attent.n3')
 
-    if (checkFormFields([input_name, input_tel, captcha, checkbox, attent])) return false
+    if (checkFormFields([input_name, input_tel, captcha, checkbox, attent, agree])) return false
 
     const params = {
         // formName: 'spesialCredit',
@@ -173,16 +174,18 @@ bid_for_car && bid_for_car.addEventListener('click', () => {
         yearCred: field4.innerHTML,
         fio: input_name.value,
         phone: input_tel.value,
+        agree: agree.checked
     }
     showPreloader(true, button)
     api_postEmail(params).then(res => {
+        showPreloader(false, button)
+        if (res.error) return sendMessage('Ошибка '+res.error, 'error')
         if (res) {
             setTimeout(() => sendMessage('Ваша заявка успешно отправлена'), 500);
             document.querySelector(`.fileds`).innerHTML =
                 '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
             clearFields()
         }
-        showPreloader(false, button)
     })
 
     function clearFields() {

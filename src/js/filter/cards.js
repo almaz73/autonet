@@ -184,7 +184,7 @@ setTimeout(() => {
     let TYPE_VIEW = localStorage.getItem('TYPE_VIEW') || 'dot4'
     let dot = document.querySelector('.' + TYPE_VIEW)
     dot && dot.classList.add('active')
-    dot && setTypeView({srcElement: {classList: {value: TYPE_VIEW}}})
+    setTimeout(() => dot && setTypeView({srcElement: {classList: {value: TYPE_VIEW}}}))
 })
 
 

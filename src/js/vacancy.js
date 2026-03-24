@@ -84,6 +84,14 @@ function initVacancies(city) {
                         персональных <a href="/privacy-policy/" target="_blank">данных</a> в соответствии с политикой&nbsp;конфиденциальности.</label>
                     </div>
                 </div>
+                <div class='details checkbox-line'>
+                    <label class="cont">
+                      <input type="checkbox" name="agree"  id="ds${ind}">
+                    </label>
+                    <div class="check text"><label for="ds${ind}">
+                      Согласие на рекламную <a href="/privacy-policy/agreement.html" target="_blank">коммуникацию</a>
+                    </div>
+                </div>
                 <button class="vacansyButton"  onclick="sendResume('fff${ind}')"
                         class="uk-button a-button-add a-button-warning ng-scope punch-button">
                     Отправить отклик
@@ -212,12 +220,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
         showPreloader(true, button)
         api_PostEmailWithAttachement(params).then(res => {
+            showPreloader(false, button)
+            if (res.error) return sendMessage('Ошибка '+res.error, 'error')
             if (res) {
-                setTimeout(() => sendMessage('Ваша заявка успешно отправлена'), 500);
+                setTimeout(() => sendMessage('Ваше резюме успешно отправлена'), 500);
                 document.querySelector(`.${fName}`).innerHTML =
                     '<br>Спасибо! Ваша заявка успешно отправлена, в ближайшее время мы выйдем с Вами на связь.<br><br><br>'
             }
-            showPreloader(false, button)
         })
 
     }

@@ -28,17 +28,17 @@
                     <comb data-placeholder='Город' />
                 </div>
 
-                <div style="flex-grow: 1"  onmouseenter="onCard(this)">
+                <div style="flex-grow: 1" onmousedown="onCard(this)">
                     <div class="big-combo control-flex" >
                         <span style="width: 60px">Год от:</span>
-                      <input class="big-comb__input" style="width: 80px"
+                        <input class="big-comb__input" style="width: 80px"
                              oninput="input_on('yearReleasedFrom', this.value)"
                              onchange="input_chamged('yearReleasedFrom', this.value)">
                     </div>
                 </div>
 
                 <div style="flex-grow: 1" class="no_advanced" >
-                    <div class="big-combo control-flex" onmouseenter="onCard(this)">
+                    <div class="big-combo control-flex" onmousedown="onCard(this)">
                         <span style="width: 60px">Год до:</span>
                         <input class="big-comb__input" style="width: 80px"
                                oninput="input_on('yearReleasedTo', this.value)"

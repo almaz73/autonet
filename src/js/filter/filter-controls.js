@@ -27,6 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
         timer1 = setTimeout(() => input_chamged(type, val), 1000)
     }
 
+    window.addEventListener("click", () => {
+        if (datelist1) datelist1.style.left = '-1000px'
+        if (datelist2) datelist2.style.left = '-1000px'
+    })
 
     /* Сюда же добавим управление видом фильтров */
     let advanced = document.querySelector('.frame-filter__controls-advanced')
@@ -71,13 +75,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         el.addEventListener('click', val => {
                             inp.value = val.target.innerText
                             input_chamged('yearReleasedFrom', val.target.innerText)
-                            datelist1.style.left = '-1000px'
                         })
                     })
                 }
-                datelist1.style.left = (xy.x - qqq_X) + 'px'
-                datelist1.style.top = (xy.y - qqq_Y + window.scrollY - 473) + 'px'
-                datelist2.style.left = '-1000px'
+                setTimeout(() => {
+                    datelist1.style.left = (xy.x - qqq_X) + 'px'
+                    datelist1.style.top = (xy.y - qqq_Y + window.scrollY - 473) + 'px'
+                }, 100)
             } else if (val.querySelector('span') &&
                 val.querySelector('span').innerHTML &&
                 ['Год до:'].includes(val.querySelector('span').innerHTML)) {
@@ -90,36 +94,21 @@ document.addEventListener('DOMContentLoaded', () => {
                         el.addEventListener('click', val => {
                             inp.value = val.target.innerText
                             input_chamged('yearReleasedTo', val.target.innerText)
-                            datelist2.style.left = '-1000px'
                         })
                     })
                 }
 
-                datelist2.style.left = (xy.x - qqq_X) + 'px'
-                datelist2.style.top = (xy.y - qqq_Y + window.scrollY - 473) + 'px'
-                datelist1.style.left = '-1000px'
-            } else {
-                datelist1.style.left = '-1000px'
-                datelist2.style.left = '-1000px'
+                setTimeout(() => {
+                    datelist2.style.left = (xy.x - qqq_X) + 'px'
+                    datelist2.style.top = (xy.y - qqq_Y + window.scrollY - 473) + 'px'
+                }, 100)
             }
 
             if (val.querySelector('input')) val.querySelector('input').focus()
-
-            setTimeout(() => {
-                datelist1.style.left = '-1000px'
-                datelist2.style.left = '-1000px'
-            }, 5000)
-
         }
     }
 
 
-
-
-    carVitrina && carVitrina.addEventListener('mousemove', () => {
-        if (datelist1) datelist1.style.left = '-1000px'
-        if (datelist2) datelist2.style.left = '-1000px'
-    })
 
     advanced && advanced.addEventListener('click', () => {
         if (advanced.classList.length === 1) {
