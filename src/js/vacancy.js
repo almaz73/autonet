@@ -1,4 +1,4 @@
-import {api_PostEmailWithAttachement} from "@/js/apibase.js";
+import {api_postEmailWithAttachement} from "@/js/apibase.js";
 import {cities, vacanciesList} from "@/js/global-constants.js"
 import {checkFormFields, formatterShowPrice} from "@/js/global-func.js";
 
@@ -70,7 +70,7 @@ function initVacancies(city) {
                 <span class="fileLabel">
                     <input placeholder="Резюме *" type="file" name="resume" accept=".doc, .docx, .odt, .pdf, .rtf, .tex, .wpd">
                     Резюме
-                    <span class="filePlace"> Выберите файйл </span>
+                    <span class="filePlace"> Выберите файл </span>
                 </span>
                 </div>
                 <div class="details">
@@ -219,7 +219,7 @@ window.addEventListener('DOMContentLoaded', () => {
         if (email && email.value) params.email = email.value
 
         showPreloader(true, button)
-        api_PostEmailWithAttachement(params).then(res => {
+        api_postEmailWithAttachement(params).then(res => {
             showPreloader(false, button)
             if (res.error) return sendMessage('Ошибка '+res.error, 'error')
             if (res) {

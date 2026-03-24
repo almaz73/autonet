@@ -42,9 +42,9 @@ export function api_postEmail(params) {
 }
 
 
-export function api_PostEmailWithAttachement(params) {
+export function api_postEmailWithAttachement(params) {
     // - Отправка файла резюме
-    let request = '/api/PostEmailWithAttachement'
+    let request = '/api/postEmailWithAttachement'
 
     // 2. Создаем FormData и добавляем файл
     const formData = new FormData();
