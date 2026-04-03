@@ -46,7 +46,7 @@ import{d as h,I as b,J as g,K as p,h as _}from"./main-DuPff5mA.js";/* empty css 
                 от <span>${_(s.salary)} ₽</span>
             </div>
             <span class="show_detail">
-                <img src="/red_arrow.svg" loading='lazy' alt=''>
+                <img src="/st/red_arrow.svg" loading='lazy' alt=''>
                 Подробнее
             </span>
         </div>

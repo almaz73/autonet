@@ -78,8 +78,12 @@ export default defineConfig({
 				p651625: resolve(__dirname, './promo/651625/index.html'),
 				p651626: resolve(__dirname, './promo/651626/index.html'),
 				p657231: resolve(__dirname, './promo/657231/index.html'),
-				з655683: resolve(__dirname, './promo/655683/index.html'),
+				p655683: resolve(__dirname, './promo/655683/index.html'),
 				p657018: resolve(__dirname, './promo/657018/index.html'),
+				p660786: resolve(__dirname, './promo/660786/index.html'),
+				p660787: resolve(__dirname, './promo/660787/index.html'),
+				p660788: resolve(__dirname, './promo/660788/index.html'),
+				p660789: resolve(__dirname, './promo/660789/index.html'),
 				about: resolve(__dirname, './about-the-company/index.html'),
 
 				news: resolve(__dirname, './news/index.html'),
