@@ -3,7 +3,9 @@
 // export const server = 'https://ext.cartat.ru/exchange'
 // export const server  = 'http://almaz7k0.beget.tech'
 // export const server  = 'http://localhost:3000'
-export const server  = 'https://xn--80aej9alefdt2f.xn--p1ai/'
+
+
+export const server  = 'https://xn--80aej9aped4f.xn--p1ai/'
 
 
 export const dealers = [

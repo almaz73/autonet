@@ -12,7 +12,7 @@ export default defineConfig({
 		proxy: {
 			'/api': { // тут пока прикидываясь новым сайтом или самим сервером не получается достать данные
 				// target: 'ext.cartat.ru/exchange',
-				target: 'https://xn--80aej9alefdt2f.xn--p1ai',
+                target: 'https://xn--80aej9aped4f.xn--p1ai',
 				changeOrigin: true,
 				// secure: false,
 				// withCredentials: true,
@@ -40,7 +40,9 @@ export default defineConfig({
 		}),
 		sitemap({
 			// Ваши настройки, например, домен
-			hostname: 'https://xn--80aej9alefdt2f.xn--p1ai',
+
+
+            hostname: 'https://xn--80aej9aped4f.xn--p1ai',
 			outDir: 'dict', // Выходная папка
 			changefreq: 'monthly', // Устанавливаем частоту 'weekly' (еженедельно)
 		}),
