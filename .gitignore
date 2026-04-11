@@ -11,3 +11,5 @@ docs_test/node_modules
 
 
 autosite_dev .env
+/dict/
+.env
