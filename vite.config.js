@@ -10,13 +10,9 @@ export default defineConfig({
 	server: {
 		port: 9173,
 		proxy: {
-			'/api': { // тут пока прикидываясь новым сайтом или самим сервером не получается достать данные
-				// target: 'ext.cartat.ru/exchange',
+			'/api': {
                 target: 'https://xn--80aej9aped4f.xn--p1ai',
 				changeOrigin: true,
-				// secure: false,
-				// withCredentials: true,
-				// rewrite: path => path.replace(/^\/api/, '')
 			}
 		},
 	},
@@ -30,14 +26,6 @@ export default defineConfig({
 			reloadOnPartialChange: true,
 		}),
 		liveReload(resolve(__dirname, 'src/partials/**/*'), { alwaysReload: true }),
-		// viteStaticCopy({
-		// 	targets: [
-		// 		{
-		// 			src: 'CNAME', // Этот файл копируем, чтобы сообщить гитхаб привязку к домену
-		// 			dest: '.'
-		// 		}
-		// 	]
-		// }),
 		sitemap({
 			// Ваши настройки, например, домен
 
