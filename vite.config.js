@@ -30,14 +30,14 @@ export default defineConfig({
 			reloadOnPartialChange: true,
 		}),
 		liveReload(resolve(__dirname, 'src/partials/**/*'), { alwaysReload: true }),
-		viteStaticCopy({
-			targets: [
-				{
-					src: 'CNAME', // Этот файл копируем, чтобы сообщить гитхаб привязку к домену
-					dest: '.'
-				}
-			]
-		}),
+		// viteStaticCopy({
+		// 	targets: [
+		// 		{
+		// 			src: 'CNAME', // Этот файл копируем, чтобы сообщить гитхаб привязку к домену
+		// 			dest: '.'
+		// 		}
+		// 	]
+		// }),
 		sitemap({
 			// Ваши настройки, например, домен
 
