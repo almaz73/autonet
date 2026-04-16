@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let stateForrm2 = document.querySelector('.formBlock.v2')
 
     stateForrm2.innerHTML = constructorForm('st2',
-        ['name*', 'phone*', 'city', 'price'],
+        ['name*', 'phone*', 'city*', 'price'],
         'sendBid',
         'Отправить заявку',
         'Заявка на <span class="red">автокредит </span>')

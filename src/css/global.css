@@ -307,9 +307,6 @@ main h2, main h1 {
     cursor: pointer;
     z-index: 100000000;
 }
-.map-modal > .closer:hover{
-    background: #ccc;
-}
 
 .red {
     color: var(--color-red);

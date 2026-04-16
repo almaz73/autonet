@@ -179,6 +179,22 @@ export const dealers = [
         map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A6d26f637308738722b92d9f7211e78b4410c02bcb4ed096449da348add2097b4&amp;source=constructor'
     },
     {
+        city: 'Стерлитамак',
+        url: '/photo/contacts/chelna_myra.webp',
+        address: 'ул. Западная,9',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Aef6bb701583dddba7ff6df4a006b7c536be137f1bc5adc1a11ca7c7e0cc21a80&amp;source=constructor'
+    },
+    {
+        city: 'Стерлитамак',
+        url: '/photo/contacts/chelna_myra.webp',
+        address: 'ул. Элеваторная, 39',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A94815265a45cbf35ebf50d46c1495ce676cf6d77785b05a1bfe97f4bfcafbfe6&amp;source=constructor'
+    },
+    {
         city: 'Тверь',
         url: '/photo/contacts/chelna_myra.webp',
         coords: '56.823085, 35.874940',
