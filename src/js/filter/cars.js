@@ -138,18 +138,18 @@ const carVitrina = `<div class="car_vitrina">
         <span class="view_buttons">
             <span class='type_views'>
                 <div class='dot8'>
-                    <img src='/svg/dot8.svg' alt="">
+                    <img src='/st/svg/dot8.svg' alt="">
                 </div>
                 <div class='dot4'>
-                    <img src='/svg/dot4.svg' alt="">
+                    <img src='/st/svg/dot4.svg' alt="">
                 </div>
                 <div class='dot1'>
-                    <img src='/svg/dot1.svg' alt="">
+                    <img src='/st/svg/dot1.svg' alt="">
                 </div>
             </span>
 
             <span class='coin' title="Отсортируйте по цене">
-                <span>цена <img src="/svg/arrow-down.svg" alt="" loading="lazy"
+                <span>цена <img src="/st/svg/arrow-down.svg" alt="" loading="lazy"
                  width='10' style="transform: rotate(-90deg)"></span>
             </span>
         </span>

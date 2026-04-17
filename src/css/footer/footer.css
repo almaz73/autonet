@@ -31,7 +31,7 @@
     font-weight: 600;
     color: var(--color-red);
     padding-left: 20px;
-    background: url(/svg/city-icon.svg) left no-repeat;
+    background: url(/st/svg/city-icon.svg) left no-repeat;
     cursor: pointer;
 }
 
@@ -55,7 +55,7 @@
     text-decoration: none;
     color: black;
     padding-left: 20px;
-    background: url(/svg/point-icon.svg) left no-repeat;
+    background: url(/st/svg/point-icon.svg) left no-repeat;
 }
 
 .footer__subscription {
@@ -66,13 +66,13 @@
 .youtube2 {
     width: 40px;
     height: 30px;
-    background: url(/svg/youtube-icon.svg) left no-repeat;
+    background: url(/st/svg/youtube-icon.svg) left no-repeat;
 }
 
 .vk2 {
     width: 40px;
     height: 30px;
-    background: url(/svg/vk-icon.svg) left no-repeat;
+    background: url(/st/svg/vk-icon.svg) left no-repeat;
 }
 
 

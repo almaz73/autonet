@@ -22,7 +22,7 @@ function initChangeCity() {
           <span class='big-comb__placeholder'>${the_Items.value || comb_name}</span>
           <input class='big-comb__input' type="text">
         </span>
-        <img src='/svg/arrow-down.svg' alt='arrow' loading='lazy' width='10' height='18'>            
+        <img src='/st/svg/arrow-down.svg' alt='arrow' loading='lazy' width='10' height='18'>            
         <div class='big_comb__items'>
             ${items_list.join('')}
         </div>

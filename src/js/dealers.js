@@ -136,16 +136,16 @@ class Carousel {
 
 // Массив с URL фотографий (можно заменить на свои)
 const images = [
-    {src: '/photo/franshiza/Казань.webp', name: 'Казань', aff: '3 филиала'},
-    {src: '/photo/franshiza/Альметьевск.webp', name: 'Альметьевск', aff: '2 филиала'},
-    {src: '/photo/franshiza/Астрахань.webp', name: 'Астрахань', aff: '1 филиал'},
-    {src: '/photo/franshiza/Буинск.webp', name: 'Буинск', aff: '1 филиал'},
-    {src: '/photo/franshiza/Екат.webp', name: 'Екатеринбург', aff: '1 филиал'},
-    {src: '/photo/franshiza/Магнитогорск.webp', name: 'Магнитогорск', aff: '1 филиал'},
-    {src: '/photo/franshiza/НабЧелны.webp', name: 'Набережные Челны', aff: '2 филиала'},
-    {src: '/photo/franshiza/Нижнекамск.webp', name: 'Нижнекамск', aff: '3 филиала'},
-    {src: '/photo/franshiza/НижТагил.webp', name: 'Нижний Тагил', aff: '2 филиала'},
-    {src: '/photo/franshiza/Самара.webp', name: 'Самара', aff: '1 филиал'},
+    {src: '/st/photo/franshiza/Казань.webp', name: 'Казань', aff: '3 филиала'},
+    {src: '/st/photo/franshiza/Альметьевск.webp', name: 'Альметьевск', aff: '2 филиала'},
+    {src: '/st/photo/franshiza/Астрахань.webp', name: 'Астрахань', aff: '1 филиал'},
+    {src: '/st/photo/franshiza/Буинск.webp', name: 'Буинск', aff: '1 филиал'},
+    {src: '/st/photo/franshiza/Екат.webp', name: 'Екатеринбург', aff: '1 филиал'},
+    {src: '/st/photo/franshiza/Магнитогорск.webp', name: 'Магнитогорск', aff: '1 филиал'},
+    {src: '/st/photo/franshiza/НабЧелны.webp', name: 'Набережные Челны', aff: '2 филиала'},
+    {src: '/st/photo/franshiza/Нижнекамск.webp', name: 'Нижнекамск', aff: '3 филиала'},
+    {src: '/st/photo/franshiza/НижТагил.webp', name: 'Нижний Тагил', aff: '2 филиала'},
+    {src: '/st/photo/franshiza/Самара.webp', name: 'Самара', aff: '1 филиал'},
     {src: '/photo/franshiza/Стерлитамак.webp', name: 'Стерлитамак', aff: '1 филиал'}
 ];
 

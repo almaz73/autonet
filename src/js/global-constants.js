@@ -9,7 +9,7 @@ export const server  = 'https://xn--80aej9aped4f.xn--p1ai'
 export const dealers = [
     {
         city: 'Альметьевски',
-        url: '/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/chelna_myra.webp',
         coords: '54.912580,52.320238',
         address: 'ул. Герцена, 1б',
         tel: '8–800–500–11–56',
@@ -18,7 +18,7 @@ export const dealers = [
     },
     {
         city: 'Альметьевски',
-        url: '/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/chelna_myra.webp',
         coords: '54.912580,52.320238',
         address: 'ул. Советская, 182/1',
         tel: '8–800–500–11–56',
@@ -27,7 +27,7 @@ export const dealers = [
     },
     {
         city: 'Астрахань',
-        url: '/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/chelna_myra.webp',
         coords: '46.288304, 47.971339',
         address: 'ул. Адмирала Нахимова, 76',
         tel: '8–800–500–11–56',
@@ -36,7 +36,7 @@ export const dealers = [
     },
     {
         city: 'Буинск',
-        url: '/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/chelna_myra.webp',
         coords: '54.952455, 48.286585',
         address: 'ул. Ефремова, 2а',
         tel: '8–800–500–11–56',
@@ -45,7 +45,7 @@ export const dealers = [
     },
     {
         city: 'Екатеринбург',
-        url: '/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/chelna_myra.webp',
         coords: '56.789579, 60.607625',
         address: 'ул. 8 марта, 205А',
         tel: '8–800–500–11–56',
@@ -54,7 +54,7 @@ export const dealers = [
     },
     {
         city: 'Казань',
-        url: '/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/chelna_myra.webp',
         coords: '55.823581, 49.159553',
         address: 'пр. Ямашева, 115а',
         tel: '8–800–500–11–56',
@@ -63,7 +63,7 @@ export const dealers = [
     },
     {
         city: 'Казань',
-        url: '/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/chelna_myra.webp',
         coords: '55.826655, 49.022026',
         address: 'Горьковское шоссе, 55',
         tel: '8–800–500–11–56',
@@ -72,7 +72,7 @@ export const dealers = [
     },
     {
         city: 'Казань',
-        url: '/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/chelna_myra.webp',
         coords: '55.803967, 49.208709',
         address: 'пр. Победы, 212к2',
         tel: '8–800–500–11–56',
@@ -81,7 +81,7 @@ export const dealers = [
     },
     {
         city: 'Магнитогорск',
-        url: '/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/chelna_myra.webp',
         coords: '53.367384, 59.063538',
         address: 'Шоссе Космонавтов 59А',
         tel: '8–800–500–11–56',
@@ -90,7 +90,7 @@ export const dealers = [
     },
     {
         city: 'Набережные Челны',
-        url: '/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/chelna_myra.webp',
         coords: '55.734962, 52.421602',
         address: 'пр. Хасана Туфана, 3',
         tel: '8–800–500–11–56',
@@ -99,7 +99,7 @@ export const dealers = [
     },
     {
         city: 'Набережные Челны',
-        url: '/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/chelna_myra.webp',
         coords: '55.674714, 52.281223',
         address: 'пр. Мусы Джалиля, 15',
         tel: '8–800–500–11–56',
@@ -108,7 +108,7 @@ export const dealers = [
     },
     {
         city: 'Нижнекамск',
-        url: '/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/chelna_myra.webp',
         coords: '55.613672, 51.779136',
         address: 'ул. Южная, 5г',
         tel: '8–800–500–11–56',
@@ -566,12 +566,12 @@ export const tyresForList = [
         price: '15 000',
         // fromPerMonth: '1 100',
         info: '',
-        images: ['/photo-tyres/1/NK0_03b04be8_00002.jpg',
-            '/photo-tyres/1/NK0_351bedd2_00002.jpg',
-            '/photo-tyres/1/NK0_351bedd2_00003.jpg',
-            '/photo-tyres/1/NK0_ff8cd2b6_00003.jpg',
-            '/photo-tyres/1/NK0_ff8cd2b6_00004.jpg',
-            '/photo-tyres/1/NK0_ff8cd2b6_00004.jpg'
+        images: ['/st/photo-tyres/1/NK0_03b04be8_00002.jpg',
+            '/st/photo-tyres/1/NK0_351bedd2_00002.jpg',
+            '/st/photo-tyres/1/NK0_351bedd2_00003.jpg',
+            '/st/photo-tyres/1/NK0_ff8cd2b6_00003.jpg',
+            '/st/photo-tyres/1/NK0_ff8cd2b6_00004.jpg',
+            '/st/photo-tyres/1/NK0_ff8cd2b6_00004.jpg'
 
         ]
     },
@@ -585,12 +585,12 @@ export const tyresForList = [
         // fromPerMonth: '1 100',
         info: '',
         images: [
-            '/photo-tyres/1/NK0_351bedd2_00002.jpg',
-            '/photo-tyres/1/NK0_03b04be8_00002.jpg',
-            '/photo-tyres/1/NK0_351bedd2_00003.jpg',
-            '/photo-tyres/1/NK0_ff8cd2b6_00003.jpg',
-            '/photo-tyres/1/NK0_ff8cd2b6_00004.jpg',
-            '/photo-tyres/1/NK0_ff8cd2b6_00004.jpg'
+            '/st/photo-tyres/1/NK0_351bedd2_00002.jpg',
+            '/st/photo-tyres/1/NK0_03b04be8_00002.jpg',
+            '/st/photo-tyres/1/NK0_351bedd2_00003.jpg',
+            '/st/photo-tyres/1/NK0_ff8cd2b6_00003.jpg',
+            '/st/photo-tyres/1/NK0_ff8cd2b6_00004.jpg',
+            '/st/photo-tyres/1/NK0_ff8cd2b6_00004.jpg'
         ]
     },
     {
@@ -604,11 +604,11 @@ export const tyresForList = [
         // fromPerMonth: '1 100',
         info: '',
         images: [
-            '/photo-tyres/1/NK0_351bedd2_00003.jpg',
-            '/photo-tyres/1/NK0_03b04be8_00002.jpg',
-            '/photo-tyres/1/NK0_351bedd2_00002.jpg',
-            '/photo-tyres/1/NK0_ff8cd2b6_00003.jpg',
-            '/photo-tyres/1/NK0_ff8cd2b6_00004.jpg'
+            '/st/photo-tyres/1/NK0_351bedd2_00003.jpg',
+            '/st/photo-tyres/1/NK0_03b04be8_00002.jpg',
+            '/st/photo-tyres/1/NK0_351bedd2_00002.jpg',
+            '/st/photo-tyres/1/NK0_ff8cd2b6_00003.jpg',
+            '/st/photo-tyres/1/NK0_ff8cd2b6_00004.jpg'
         ]
     },
     {
@@ -622,11 +622,11 @@ export const tyresForList = [
         // fromPerMonth: '1 100',
         info: '',
         images: [
-            '/photo-tyres/1/NK0_ff8cd2b6_00003.jpg',
-            '/photo-tyres/1/NK0_03b04be8_00002.jpg',
-            '/photo-tyres/1/NK0_351bedd2_00002.jpg',
-            '/photo-tyres/1/NK0_351bedd2_00003.jpg',
-            '/photo-tyres/1/NK0_ff8cd2b6_00004.jpg'
+            '/st/photo-tyres/1/NK0_ff8cd2b6_00003.jpg',
+            '/st/photo-tyres/1/NK0_03b04be8_00002.jpg',
+            '/st/photo-tyres/1/NK0_351bedd2_00002.jpg',
+            '/st/photo-tyres/1/NK0_351bedd2_00003.jpg',
+            '/st/photo-tyres/1/NK0_ff8cd2b6_00004.jpg'
         ]
     },
     {
@@ -639,11 +639,11 @@ export const tyresForList = [
         // fromPerMonth: '1 100',
         info: '',
         images: [
-            '/photo-tyres/1/NK0_ff8cd2b6_00004.jpg',
-            '/photo-tyres/1/NK0_03b04be8_00002.jpg',
-            '/photo-tyres/1/NK0_351bedd2_00002.jpg',
-            '/photo-tyres/1/NK0_351bedd2_00003.jpg',
-            '/photo-tyres/1/NK0_ff8cd2b6_00003.jpg',
+            '/st/photo-tyres/1/NK0_ff8cd2b6_00004.jpg',
+            '/st/photo-tyres/1/NK0_03b04be8_00002.jpg',
+            '/st/photo-tyres/1/NK0_351bedd2_00002.jpg',
+            '/st/photo-tyres/1/NK0_351bedd2_00003.jpg',
+            '/st/photo-tyres/1/NK0_ff8cd2b6_00003.jpg',
         ]
     },
 ]

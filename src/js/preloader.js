@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
            pointer-events: none;
            display: none;
            z-index: 10000">
-    <img src="/icons/load.gif" alt="" style="width: 73px">
+    <img src="/st/icons/load.gif" alt="" style="width: 73px">
 </div>`
 
 })

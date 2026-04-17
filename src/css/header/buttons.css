@@ -16,7 +16,7 @@
 
 .button__call {
     width: 40px;
-    background: var(--color-red) url(/svg/call2.svg) no-repeat center;
+    background: var(--color-red) url(/st/svg/call2.svg) no-repeat center;
 }
 
 .button__callback {
@@ -33,13 +33,13 @@
     height: 40px;
     width: 40px;
     border-radius: 7px;
-    background: #000 url(/svg/burger.svg) no-repeat center;
+    background: #000 url(/st/svg/burger.svg) no-repeat center;
     cursor: pointer;
     margin-left: 30px;
 }
 
 .button__burger.close {
-    background: #000 url(/svg/close.svg) no-repeat center;
+    background: #000 url(/st/svg/close.svg) no-repeat center;
 }
 
 .footer__subscription .social {
@@ -49,14 +49,14 @@
 .button__vk {
     height: 40px;
     width: 40px;
-    background: url(/svg/vk.svg) center no-repeat;
+    background: url(/st/svg/vk.svg) center no-repeat;
     cursor: pointer;
 }
 
 .button__youtube {
     height: 40px;
     width: 40px;
-    background: url(/svg/youtube.svg) center no-repeat;
+    background: url(/st/svg/youtube.svg) center no-repeat;
     cursor: pointer;
 }
 
@@ -70,7 +70,7 @@
     .button__callback {
         padding: 0;
         width: 40px;
-        background: var(--color-red) url(/svg/call.svg) no-repeat center;
+        background: var(--color-red) url(/st/svg/call.svg) no-repeat center;
     }
 
     .button__callback span {
@@ -82,7 +82,7 @@
     .button__callback {
         padding: 0;
         width: 40px;
-        background: var(--color-red) url(/svg/call.svg) no-repeat center;
+        background: var(--color-red) url(/st/svg/call.svg) no-repeat center;
     }
 
     .button__callback span {
@@ -273,7 +273,7 @@
 
 .button__mail {
     width: 32px;
-    background: var(--color-red) url(/svg/mail.svg) no-repeat center;
+    background: var(--color-red) url(/st/svg/mail.svg) no-repeat center;
 }
 
 @media (max-width: 576px) {

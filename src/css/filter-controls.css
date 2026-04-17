@@ -168,7 +168,7 @@
     display: inline-block;
     width: 15px;
     height: 15px;
-    background: url(/svg/reset.svg) center no-repeat;
+    background: url(/st/svg/reset.svg) center no-repeat;
 }
 
 @media (max-width: 533px) {

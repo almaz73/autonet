@@ -11,8 +11,8 @@ function createNode(item, N) {
               <div class='cart__slide'>
                   <span class='dark-fon'></span>
                   <div class="fast_show">Быстрый просмотр</div>
-                  ${!item.deleted?("<img class='photo' alt=''><div class='cart__blank'>"+item.address+"</div>" +
-            "<div class='field'><div class='red'></div></div>"):"<div style='margin:0 40px'> <br><br><br>☹ <br><br>АВТОМОБИЛЬ <br>СНЯТ <br>С ПРОДАЖИ </div>"}
+                  ${!item.deleted ? ("<img class='photo' alt=''><div class='cart__blank'>" + item.address + "</div>" +
+            "<div class='field'><div class='red'></div></div>") : "<div style='margin:0 40px'> <br><br><br>☹ <br><br>АВТОМОБИЛЬ <br>СНЯТ <br>С ПРОДАЖИ </div>"}
               </div>
               <a class="big_link" 
                  href="javascript:openCar('${item.href}','${item.images[0]}')" 
@@ -32,10 +32,10 @@ function createNode(item, N) {
                   </div>
                   <div class='cart__box--bottom' style="display: ${item.type === 'tyres' ? 'none' : ''}">
                       <a href="javascript:addCompare('${item.id}')" ondblclick="dblCompare('${item.id}')">
-                          <img id="compareId_${item.id}" src='/icons/compare_cars.svg' alt=''>
+                          <img id="compareId_${item.id}" src='/st/icons/compare_cars.svg' alt=''>
                       </a>
                       <a href="javascript:addFavorite('${item.id}')">
-                          <img id="favoriteId_${item.id}" src='/icons/penta.svg' alt=''>
+                          <img id="favoriteId_${item.id}" src='/st/icons/penta.svg' alt=''>
                       </a>
                   </div>
               </a>
@@ -80,7 +80,7 @@ function galeryEvents(id, images) {
     if (!photo) return false
 
     photo.src = images[0];
-    photo.onerror = () => photo.src = '/photo/tmp_auto.webp'
+    photo.onerror = () => photo.src = '/st/photo/tmp_auto.webp'
 
     preloadImages([images[1], images[2], images[3], images[4]]);
     function mouseMoved(e) {
@@ -90,10 +90,10 @@ function galeryEvents(id, images) {
             photo.style.opacity = '0'; // мигаем
             setTimeout(() => {
                 photo.style.opacity = '1';
-                photo.src = '/photo/tmp_auto.webp '
+                photo.src = '/st/photo/tmp_auto.webp '
                 photo.src = images[z];// Новая картинка
             }, 73);
-            photo.onerror = () => photo.src = '/photo/tmp_auto.webp '
+            photo.onerror = () => photo.src = '/st/photo/tmp_auto.webp '
             z_zona = z
         }
         red.style.left = z * 20 + '%';

@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Если только одна фотка - показываю без swiper
         if (urls.length === 1) {
             let src = urls[0]
-            if (!src) src = '/photo/tmp_auto.webp'
+            if (!src) src = '/st/photo/tmp_auto.webp'
             autoSwip.innerHTML = `<img style="aspect-ratio:600/400; width: 100%" src="${src}" alt="">`
             return false
         }
@@ -145,8 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (favorite_chosen) {
                         favorite_chosen.innerHTML = `
 <a href="javascript:addCompare('${res.id}')" ondblclick="dblCompare('${res.id}')">
-<img id="compareId_${res.id}" src='/icons/compare_cars.svg' alt='' style="width: 23px; margin-right: 18px"></a>
-<a href="javascript:addFavorite('${res.id}')"><img id="favoriteId_${res.id}" src='/icons/penta.svg' alt='' style="width: 20px"></a>`
+<img id="compareId_${res.id}" src='/st/icons/compare_cars.svg' alt='' style="width: 23px; margin-right: 18px"></a>
+<a href="javascript:addFavorite('${res.id}')"><img id="favoriteId_${res.id}" src='/st/icons/penta.svg' alt='' style="width: 20px"></a>`
                     }
 
                     window.favorCars = prepareCars([res])

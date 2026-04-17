@@ -89,7 +89,7 @@
     left: 10px;
     width: 24px;
     height: 24px;
-    background: url(/svg/icon_pdf.svg) center center no-repeat;
+    background: url(/st/svg/icon_pdf.svg) center center no-repeat;
     background-size: contain;
     margin-top: -12px;
 }
@@ -101,7 +101,7 @@
     right: 0;
     width: 24px;
     height: 24px;
-    background: url(/svg/icon_download.svg) center center no-repeat;
+    background: url(/st/svg/icon_download.svg) center center no-repeat;
     margin-top: -12px;
 }
 
@@ -306,7 +306,7 @@
 /*}*/
 
 .bigbaner p.grey {
-    background: url(/svg/icon_mouse.svg) left center no-repeat;
+    background: url(/st/svg/icon_mouse.svg) left center no-repeat;
     font-size: 0.9em !important;
     font-family: Gilro, sans-serif;
     opacity: 0.6;
@@ -364,104 +364,104 @@
 
 /*большие баннеры*/
 .shinny_f {
-    background-image: url(/photo/shinny/srv_bnr_01.webp)
+    background-image: url(/st/photo/shinny/srv_bnr_01.webp)
 }
 
 .vykup_f {
-    background-image: url(/photo/vyk/banner_vykup.webp)
+    background-image: url(/st/photo/vyk/banner_vykup.webp)
 }
 
 .podbor_f {
-    background-image: url(/photo/podbor/autopodbor_bnr.webp)
+    background-image: url(/st/photo/podbor/autopodbor_bnr.webp)
 }
 
 .podbor_ff {
-    background-image: url(/photo/podbor/autopodbor_bottom_bnr.webp)
+    background-image: url(/st/photo/podbor/autopodbor_bottom_bnr.webp)
 }
 
 .franshiza_f {
-    background-image: url(/photo/franshiza/banner_franshiza.webp)
+    background-image: url(/st/photo/franshiza/banner_franshiza.webp)
 }
 
 .franshiza_ff {
-    background-image: url(/photo/franshiza/bnr_franshiza_02.webp)
+    background-image: url(/st/photo/franshiza/bnr_franshiza_02.webp)
 }
 
 .credit_f {
-    background-image: url(/photo/insurance/credit_banner.webp)
+    background-image: url(/st/photo/insurance/credit_banner.webp)
 }
 
 .credit_ff {
-    background-image: url(/photo/insurance/elvira_gaifulina.webp);
+    background-image: url(/st/photo/insurance/elvira_gaifulina.webp);
     margin-top: 140px
 }
 
 .insurance_f {
-    background-image: url(/photo/insurance/insurance_bnr.webp)
+    background-image: url(/st/photo/insurance/insurance_bnr.webp)
 }
 
 .osmotr_f {
-    background-image: url(/photo/obslug/osmotr.webp)
+    background-image: url(/st/photo/obslug/osmotr.webp)
 }
 
 .remony_f {
-    background-image: url(/photo/remont/banner_dvs.webp)
+    background-image: url(/st/photo/remont/banner_dvs.webp)
 }
 
 .akkp_f {
-    background-image: url(/photo/akpp/banner_akpp.webp)
+    background-image: url(/st/photo/akpp/banner_akpp.webp)
 }
 
 .zamena_f {
-    background-image: url(/photo/masla/banner_oil.webp)
+    background-image: url(/st/photo/masla/banner_oil.webp)
 }
 
 @media (max-width: 500px) {
     .shinny_f {
-        background-image: url(/photo/shinny/srv_bnr_01_little.webp)
+        background-image: url(/st/photo/shinny/srv_bnr_01_little.webp)
     }
 
     .vykup_f {
-        background-image: url(/photo/vyk/banner_vykup_little.webp)
+        background-image: url(/st/photo/vyk/banner_vykup_little.webp)
     }
 
     .podbor_f {
-        background-image: url(/photo/podbor/autopodbor_bnr_little.webp)
+        background-image: url(/st/photo/podbor/autopodbor_bnr_little.webp)
     }
 
     .podbor_ff {
-        background-image: url(/photo/podbor/autopodbor_bottom_bnr_little.webp)
+        background-image: url(/st/photo/podbor/autopodbor_bottom_bnr_little.webp)
     }
 
     .franshiza_f {
-        background-image: url(/photo/franshiza/banner_franshiza_little.webp)
+        background-image: url(/st/photo/franshiza/banner_franshiza_little.webp)
     }
 
     .franshiza_ff {
-        background-image: url(/photo/franshiza/bnr_franshiza_02_little.webp)
+        background-image: url(/st/photo/franshiza/bnr_franshiza_02_little.webp)
     }
 
     .credit_f {
-        background-image: url(/photo/insurance/credit_banner_little.webp)
+        background-image: url(/st/photo/insurance/credit_banner_little.webp)
     }
 
     .insurance_f {
-        background-image: url(/photo/insurance/insurance_bnr_little.webp)
+        background-image: url(/st/photo/insurance/insurance_bnr_little.webp)
     }
 
     .osmotr_f {
-        background-image: url(/photo/obslug/osmotr_little.webp)
+        background-image: url(/st/photo/obslug/osmotr_little.webp)
     }
 
     .remony_f {
-        background-image: url(/photo/remont/banner_dvs_little.webp)
+        background-image: url(/st/photo/remont/banner_dvs_little.webp)
     }
 
     .akkp_f {
-        background-image: url(/photo/akpp/banner_akpp_little.webp)
+        background-image: url(/st/photo/akpp/banner_akpp_little.webp)
     }
 
     .zamena_f {
-        background-image: url(/photo/masla/banner_oil_little.webp)
+        background-image: url(/st/photo/masla/banner_oil_little.webp)
     }
 }
