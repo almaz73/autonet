@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+    <link rel='icon' type='image/svg+xml' sizes='any' href='/st/Favicon_as.svg'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Промоакции. Редактирование - Автосеть.РФ</title>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+    <meta name='robots' content='noindex'>
+
+    <link rel='stylesheet' href='../src/css/style.css'/>
+    <link rel='stylesheet' href='../src/css/filter-controls.css'/>
+    <link rel='stylesheet' href='../src/css/admin.css'/>
+    <script type='module' src='../src/js/admin-promo.js'></script>
+    <script>
+
+    </script>
+
+</head>
+<body style='margin-top: 73px'>
+
+<h3 class="head_admin">
+    Админка. Промоакции.
+    <span style="font-size: small"><a href="/"> Перейти к сайту </a></span>
+</h3>
+
+
+<main>
+    <h1> Редактирование промоакций </h1>
+    <br>
+    <div class="buttons">
+        <button class="admin_add_button" onclick="editPromo()"> Добавить новый</button>
+        <button class="admin_add_button hidd" onclick="cancelPromo()"> Отменить изменения</button>
+        <button class="admin_add_button hidd" onclick="savePromo()"> Сохранить изменения</button>
+    </div>
+    <br><br><br>
+
+
+    <div id="promo_table_1" class="table_head"></div>
+    <div id="promo_table_2" class="table_content"></div>
+
+
+</main>
+
+<dialog id="myModal" class="type new">
+    <button id="closeBtn">✖</button>
+    <h2 class="type_new">Новая промоакция</h2>
+    <h2 class="type_edit">Редактирование промоакции</h2>
+
+    <div>
+        <label>Название</label>
+        <input style="width: 100%" id="qw0">
+    </div>
+
+    <div style="display: flex">
+        <div>
+            <div>
+                <label for="qw1">На главной</label>
+                <input type="checkbox" id="qw1">
+            </div>
+            <div>
+                <label>Место в показе</label>
+                <input style="width: 50px" id="qw2">
+            </div>
+            <div>
+                <label for="qw3">Включено</label>
+                <input type="checkbox" id="qw3">
+            </div>
+        </div>
+        <div>
+            <div>
+                <label>Фото 278х500</label>
+                <input id="qw4">
+            </div>
+            <div>
+                <label>Фото 278х500</label>
+                <input type="checkbox" id="qw5">
+            </div>
+            <div>
+                <label>Фото 278х500</label>
+                <input id="qw6">
+            </div>
+        </div>
+    </div>
+    <button class="type_new" style="float: right" onclick="saveNewPromoModal()">Сохранить новую промоакцию</button>
+    <button class="type_edit" style="float: right" onclick="savePromoModal()">Изменить промоакцию</button>
+
+</dialog>
+
+
+</body>
+</html>

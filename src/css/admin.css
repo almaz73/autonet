@@ -1,0 +1,93 @@
+.head_admin {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    color: red;
+    padding: 9px;
+    margin-top: 0;
+    text-align: center;
+    z-index: 1000;
+    background: pink
+}
+
+.ramka {
+    border: 10px solid pink;
+    padding: 8px;
+    width: 100%;
+}
+
+.admin_table {
+    border-collapse: collapse; /* Убирает двойные рамки */
+    width: 100%;
+}
+
+.admin_table, th, td {
+    border: 1px solid pink;
+}
+
+.admin_table th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+.remove-bt {
+    float: right;
+    cursor: pointer;
+    padding: 2px 8px;
+}
+
+.remove-bt:hover {
+    background: #00000011;
+}
+
+.admin_table input {
+    width: 73px;
+}
+
+.admin_add_button {
+    float: right;
+    margin: 8px 15px 0 0;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.admin_add_button.hidd {
+    display: none;
+}
+
+.dirty .admin_add_button.hidd {
+    display: block;
+}
+
+.table_head {
+    height: 40px;
+    overflow: hidden;
+    background: #22222222;
+    margin-right: 15px;
+}
+
+.table_content {
+    height: 550px;
+    overflow-y: scroll;
+}
+
+#closeBtn {
+    position: absolute;
+    right: 8px;
+}
+
+#myModal div {
+    margin: 20px;
+}
+
+.type .type_edit, .type .type_new {
+    display: none;
+}
+
+.type.edit .type_edit {
+    display: block;
+}
+
+.type.new .type_new {
+    display: block;
+}

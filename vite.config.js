@@ -141,7 +141,8 @@ export default defineConfig({
 				favorite: resolve(__dirname, './personal/favorite-cars/index.html'),
 				reserve: resolve(__dirname, './reserve/index.html'),
 
-				vacancyAdmin: resolve(__dirname, './admin/vacancy.html')
+				vacancyAdmin: resolve(__dirname, './admin/vacancy.html'),
+				promoAdmin: resolve(__dirname, './admin/promo.html')
 			},
 		},
 
