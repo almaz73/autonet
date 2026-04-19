@@ -146,7 +146,7 @@ const images = [
     {src: '/st/photo/franshiza/Нижнекамск.webp', name: 'Нижнекамск', aff: '3 филиала'},
     {src: '/st/photo/franshiza/НижТагил.webp', name: 'Нижний Тагил', aff: '2 филиала'},
     {src: '/st/photo/franshiza/Самара.webp', name: 'Самара', aff: '1 филиал'},
-    {src: '/photo/franshiza/Стерлитамак.webp', name: 'Стерлитамак', aff: '1 филиал'}
+    {src: '/st/photo/franshiza/Стерлитамак.webp', name: 'Стерлитамак', aff: '1 филиал'}
 ];
 
 // Инициализация карусели
