@@ -1,4 +1,11 @@
 import {api_createPromo, api_deletePromo, api_getPromo, api_savePromo} from "@/js/apibase_admin.js";
+import { checkAuth } from '@/js/auth-service.js';
+
+checkAuth(val=>{
+    // Если нет токена перебрасываем на авторизацию
+    if (!val) window.location.href = 'login.html?redirect=promo.html';
+})
+
 
 let datas = []
 let dirties = [] // список измененных

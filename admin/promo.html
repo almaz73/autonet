@@ -2,7 +2,7 @@
 <html lang='ru'>
 <head>
     <link rel='icon' type='image/svg+xml' sizes='any' href='/st/Favicon_as.svg'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Промоакции. Редактирование - Автосеть.РФ</title>
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
@@ -11,20 +11,7 @@
     <link rel='stylesheet' href='../src/css/style.css'/>
     <link rel='stylesheet' href='../src/css/filter-controls.css'/>
     <link rel='stylesheet' href='../src/css/admin.css'/>
-    <script type='module' src='../src/js/auth-service.js'></script>
     <script type='module' src='../src/js/admin-promo.js'></script>
-    <script type='module'>
-        import { checkAuth } from '../src/js/auth-service.js';
-    
-        // Check authentication before allowing access to the admin page
-        checkAuth((isLoggedIn) => {
-            if (!isLoggedIn) {
-                // Redirect to login page with a redirect parameter
-                window.location.href = 'login.html?redirect=promo.html';
-            }
-        });
-    </script>
-
 </head>
 <body style='margin-top: 73px'>
 
@@ -32,7 +19,6 @@
     Админка. Промоакции.
     <span style="font-size: small"><a href="/"> Перейти к сайту </a></span>
 </h3>
-
 
 <main>
     <h1> Редактирование промоакций </h1>
@@ -61,7 +47,7 @@
         <input style="width: 100%" id="qw0">
     </div>
 
-    <div style="display: flex">
+    <div style="display: flex; flex-wrap: wrap">
         <div>
             <div>
                 <label for="qw1">На главной</label>
@@ -77,18 +63,16 @@
             </div>
         </div>
         <div>
-            <div>
-                <label>Фото 278х402</label>
-                <button onclick="uploadPhoto('278х402')"> Добавить фото </button>
-            </div>
-            <div>
-                <label>Фото 585х200</label>
-                <button onclick="uploadPhoto('585х200')"> Добавить фото </button>
-            </div>
-            <div>
-                <label>Фото 1200х501</label>
-                <button onclick="uploadPhoto('1200х501')"> Добавить фото </button>
-            </div>
+            <label>Фото 278х402</label>
+            <button onclick="uploadPhoto('278х402')"> Добавить  </button>
+        </div>
+        <div>
+            <label>Фото 585х200</label>
+            <button onclick="uploadPhoto('585х200')"> Добавить  </button>
+        </div>
+        <div>
+            <label>Фото 1200х501</label>
+            <button onclick="uploadPhoto('1200х501')"> Добавить  </button>
         </div>
     </div>
     <button class="type_new" style="float: right" onclick="saveNewPromoModal()">Сохранить новую промоакцию</button>
