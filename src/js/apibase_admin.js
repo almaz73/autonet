@@ -12,8 +12,13 @@ function getAuthHeaders() {
 
 /*** Получение кол-во автомобилей разбитых по бренду. Отсортировано от большего к меньшему ***/
 export function api_getPromo(callback) {
-    let request = '/api/promo'
-    return fetch(server + request).then(res => {
+    let request = '/api/promo';
+    const token = localStorage.getItem('admin_token');
+    const headers = token ? { 'Authorization': `Bearer ${token}` } : {};
+    return fetch(server + request, {
+        method: 'GET',
+        headers: headers
+    }).then(res => {
         if (!res.ok) console.log(`HTTP error! status: ${res.status}`)
         return res.json();
     })

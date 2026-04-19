@@ -103,7 +103,7 @@
             function result (val) {
                 if (val.success) {
                     const urlParams = new URLSearchParams(window.location.search);
-                    const redirectUrl = urlParams.get('redirect') || '../promo.html';
+                    const redirectUrl = urlParams.get('redirect') || '../admin/promo.html';
                     window.location.href = redirectUrl;
                 } else {
                     errorMessage.textContent = val.error || 'Неверный логин или пароль';
