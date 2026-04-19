@@ -11,9 +11,18 @@
     <link rel='stylesheet' href='../src/css/style.css'/>
     <link rel='stylesheet' href='../src/css/filter-controls.css'/>
     <link rel='stylesheet' href='../src/css/admin.css'/>
+    <script type='module' src='../src/js/auth-service.js'></script>
     <script type='module' src='../src/js/admin-promo.js'></script>
-    <script>
-
+    <script type='module'>
+        import { checkAuth } from '../src/js/auth-service.js';
+    
+        // Check authentication before allowing access to the admin page
+        checkAuth((isLoggedIn) => {
+            if (!isLoggedIn) {
+                // Redirect to login page with a redirect parameter
+                window.location.href = 'login.html?redirect=promo.html';
+            }
+        });
     </script>
 
 </head>
@@ -69,16 +78,16 @@
         </div>
         <div>
             <div>
-                <label>Фото 278х500</label>
-                <input id="qw4">
+                <label>Фото 278х402</label>
+                <button onclick="uploadPhoto('278х402')"> Добавить фото </button>
             </div>
             <div>
-                <label>Фото 278х500</label>
-                <input type="checkbox" id="qw5">
+                <label>Фото 585х200</label>
+                <button onclick="uploadPhoto('585х200')"> Добавить фото </button>
             </div>
             <div>
-                <label>Фото 278х500</label>
-                <input id="qw6">
+                <label>Фото 1200х501</label>
+                <button onclick="uploadPhoto('1200х501')"> Добавить фото </button>
             </div>
         </div>
     </div>

@@ -166,6 +166,74 @@ window.savePromo = function () {
     }
 }
 
+//// работа с фотками
+window.uploadPhoto = function(type) {
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = 'image/*'; // Accept only images
+    
+    console.log('fileInput = ',fileInput)
+
+    // When a file is selected, upload it
+    fileInput.addEventListener('change', () => {
+        const file = fileInput.files[0];
+        if (!file) return;
+        
+        console.log('file = ',file)
+
+        // Create a FormData object to send the file
+        const formData = new FormData();
+        formData.append('photo', file);
+
+        let path = 'savePhoto.php'
+        if (type === 'banner') {
+            if (!['01.jpg', '02.jpg', '03.jpg', '04.jpg'].includes(file.name)) return alert('Карусель поддерживает только 4 варианта файла: 01.jpg, 02.jpg, 03.jpg, 04.jpg, Переименуйте если хотите поменять один из них  ')
+            console.log('file = ', file)
+            path = 'saveBanner.php'
+        }
+        // todo
+        // Send the file to the server
+        /*fetch(path, {// Changed from save.php to savePhoto.php
+            method: 'POST',
+            body: formData
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    if (currentId) {
+                        let elem = goods.models.find(el => Object.entries(el)[0][0] === currentId)[currentId];
+                        if (currentGal_img !== undefined) {
+                            elem.photos.all.splice(1, 0, 'tovar/' + data.filename)
+                            document.querySelector('[data-dismiss="modal"]').click()
+                            document.getElementById('my-dialog').closest('dialog').close()
+                        } else if (elem) {
+                            elem.img = 'tovar/' + data.filename;
+                            document.getElementById('my-dialog').closest('dialog').close()
+                            show();
+                        }
+                    }
+                    if (type === 'banner') location.reload()
+
+                } else {
+                    alert('Ошибка при загрузке фото:' + (data.error || 'Неизвестная ошибка'));
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                alert('Произошла ошибка при загрузке фото: ' + error.message);
+            });
+        */
+    });
+
+    // Trigger the file selection dialog
+    fileInput.click();
+}
+
 
 
 

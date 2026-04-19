@@ -1,5 +1,14 @@
 import {server} from "@/js/global-constants.js";
+import { checkAuth } from "./auth-service.js";
 
+// Simple function to get the auth token from localStorage
+function getAuthHeaders() {
+    const token = localStorage.getItem('admin_token');
+    return {
+        'Content-Type': 'application/json',
+        'Authorization': token ? `Bearer ${token}` : ''
+    };
+}
 
 /*** Получение кол-во автомобилей разбитых по бренду. Отсортировано от большего к меньшему ***/
 export function api_getPromo(callback) {
@@ -14,10 +23,19 @@ export function api_getPromo(callback) {
 
 export function api_savePromo(newRow, callback) {
     let request = '/api/promo/' + newRow.id
+    // Check authentication before making API calls
+    const token = localStorage.getItem('admin_token');
+    if (!token) {
+        // Redirect to login if no token is found
+        window.location.href = '../admin/login.html?redirect=promo.html';
+        return;
+    }
+    
     return fetch(server + request, {
         method: 'PUT', // Метод запроса
         headers: {
-            'Content-Type': 'application/json;charset=utf-8' // Указываем формат данных
+            'Content-Type': 'application/json;charset=utf-8', // Указываем формат данных
+            'Authorization': `Bearer ${localStorage.getItem('admin_token')}` // Добавляем токен авторизации
         },
         body: JSON.stringify(newRow) // Преобразуем объект в строку
     }).then(res => {
@@ -30,10 +48,19 @@ export function api_savePromo(newRow, callback) {
 
 export function api_createPromo(newRow, callback) {
     let request = '/api/promo'
+    // Check authentication before making API calls
+    const token = localStorage.getItem('admin_token');
+    if (!token) {
+        // Redirect to login if no token is found
+        window.location.href = '../admin/login.html?redirect=promo.html';
+        return;
+    }
+        
     return fetch(server + request, {
         method: 'POST', // Метод запроса
         headers: {
-            'Content-Type': 'application/json' // Указываем формат данных
+            'Content-Type': 'application/json', // Указываем формат данных
+            'Authorization': `Bearer ${localStorage.getItem('admin_token')}` // Добавляем токен авторизации
         },
         body: JSON.stringify(newRow) // Преобразуем объект в строку
     }).then(res => {
@@ -47,10 +74,19 @@ export function api_createPromo(newRow, callback) {
 export function api_deletePromo(id, callback) {
     let request = '/api/promo/' + id
 
+    // Check authentication before making API calls
+    const token = localStorage.getItem('admin_token');
+    if (!token) {
+        // Redirect to login if no token is found
+        window.location.href = '../admin/login.html?redirect=promo.html';
+        return;
+    }
+    
     return fetch(server + request, {
         method: 'DELETE', // Метод запроса
         headers: {
-            'Content-Type': 'application/json;charset=utf-8' // Указываем формат данных
+            'Content-Type': 'application/json;charset=utf-8', // Указываем формат данных
+            'Authorization': `Bearer ${localStorage.getItem('admin_token')}` // Добавляем токен авторизации
         },
     }).then(res => {
         if (!res.ok) console.log(`HTTP error! status: ${res.status}`)
