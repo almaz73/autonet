@@ -46,10 +46,11 @@ function showPromo(result) {
     let content = ''
     for (let row of result) {
         content += ` <tr>
-            <td style="max-width: 700px"> ${row.name}
+            <td style="max-width: 700px; min-width: 105px"> ${row.name}
                 <span class="remove-bt" onclick="deletePromo(${row.id})">❌</span>
                 <span class="remove-bt" onclick="editPromo(${row.id})">✎</span>
             </td>
+            <td><img style="width: 25px" class="${row.photo278 && row.photo585 && row.photo1200 ? '' : 'hidden-img'}" src="/pub_promo/${row.photo278}" /></td>
             <td><input type="checkbox" ${row.onMain === 1 ? 'checked' : ''} onchange="changedFiled(${row.id}, 'onMain', this.checked)"></td>
             <td > <input value="${row.priority}" onchange="onlyNumber(this); changedFiled(${row.id}, 'priority', this.value)"/></td>
             <td><input type="checkbox" ${row.active === 1 ? 'checked' : ''} onchange="changedFiled(${row.id}, 'active',this.checked)"></td>
@@ -61,9 +62,10 @@ function showPromo(result) {
     promo_table.innerHTML = `<table class="admin_table">
         <tr>
             <th> Название</th>
-            <th> На главной</th>
-            <th> Место в показе</th>
-            <th> Включено</th>
+            <th></th>
+            <th style="white-space: nowrap"> На главной</th>
+            <th> Порядок</th>
+            <th> Актив</th>
         </tr>
         ${content}
     </table>`
@@ -71,9 +73,10 @@ function showPromo(result) {
     promo_table2.innerHTML = `<table class="admin_table">
         <tr style="opacity: 0; top: 40px">
             <th> Название</th>
-            <th> На главной</th>
-            <th> Место в показе</th>
-            <th> Включено</th>
+            <th></th>
+           <th style="white-space: nowrap"> На главной</th>
+            <th> Порядок</th>
+            <th> Актив</th>
         </tr>
         ${content}
     </table>`

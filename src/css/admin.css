@@ -22,12 +22,19 @@
 }
 
 .admin_table, th, td {
-    border: 1px solid pink;
+    border: 1px solid #ddd;
 }
 
 .admin_table th, td {
     padding: 10px;
     text-align: left;
+}
+
+@media (width < 600px) {
+    .admin_table th, td {
+        padding: 12px 0;
+        font-size: small;
+    }
 }
 
 .remove-bt {
@@ -41,7 +48,7 @@
 }
 
 .admin_table input {
-    width: 73px;
+    width: 60px;
 }
 
 .admin_add_button {
@@ -100,4 +107,8 @@
 .type.edit .photo-div{
     opacity: 1;
     pointer-events: initial;
+}
+
+.hidden-img{
+    display: none;
 }
