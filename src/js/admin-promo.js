@@ -1,7 +1,7 @@
 import {api_createPromo, api_deletePromo, api_getPromo, api_savePromo, api_uploadPhoto} from "@/js/apibase_admin.js";
-import { checkAuth } from '@/js/auth-service.js';
+import {checkAuth} from '@/js/auth-service.js';
 
-checkAuth(val=>{
+checkAuth(val => {
     // Если нет токена перебрасываем на авторизацию
     if (!val) window.location.href = 'login.html?redirect=promo.html';
 })
@@ -88,6 +88,9 @@ function prepareModal(id) {
     document.querySelector('#_278').src = ''
     document.querySelector('#_585').src = ''
     document.querySelector('#_1200').src = ''
+    document.querySelector('#_278').alt = ''
+    document.querySelector('#_585').alt = ''
+    document.querySelector('#_1200').alt = ''
 
     let type = document.querySelector('.type')
     if (id) {
@@ -126,8 +129,10 @@ window.editPromo = function (id) {
         document.querySelector('#qw2').value = row.priority
         document.querySelector('#qw3').checked = row.active
 
-        console.log('row = ',row)
-       // setPhoto(res.photoUrl)
+        console.log('row = ', row)
+        if (row.photo278) setPhoto(row.photo278)
+        if (row.photo585) setPhoto(row.photo585)
+        if (row.photo1200) setPhoto(row.photo1200)
     }
 }
 
@@ -136,13 +141,11 @@ function getModalFields() {
         name: document.querySelector('#qw0').value,
         onMain: document.querySelector('#qw1').checked,
         priority: +document.querySelector('#qw2').value,
-        active: document.querySelector('#qw3').checked
+        active: document.querySelector('#qw3').checked,
+        photo278: document.querySelector('#_278').alt,
+        photo585: document.querySelector('#_585').alt,
+        photo1200: document.querySelector('#_1200').alt,
     }
-    //          photoBig,
-    //         photoMiddle,
-    //         photoSmall,
-    //         photoSM_ver,
-    //         photoSM_hor
 }
 
 window.saveNewPromoModal = function () {
@@ -156,11 +159,12 @@ window.saveNewPromoModal = function () {
     toDirty(null, 'clean')
 }
 
-window.savePromoModal = function (){
+window.savePromoModal = function (withoutClose) {
     let data = getModalFields()
     data.id = dirties[0]
+
     api_savePromo(data, val => {
-        modal.close()
+        if (!withoutClose) modal.close()
         api_getPromo(showPromo)
     })
 }
@@ -179,22 +183,44 @@ window.savePromo = function () {
 }
 
 function setPhoto(link) {
-    if (link.includes('v_b')) document.querySelector('#_278').src = '/pub_promo/' + link
-    if (link.includes('h_b')) document.querySelector('#_585').src = '/pub_promo/' + link
-    if (link.includes('h_m')) document.querySelector('#_1200').src = '/pub_promo/' + link
+    if (link.includes('v_b')) {
+        document.querySelector('#_278').src = '/pub_promo/' + link
+        document.querySelector('#_278').alt = link
+    }
+    if (link.includes('h_b')) {
+        document.querySelector('#_585').src = '/pub_promo/' + link
+        document.querySelector('#_585').alt = link
+    }
+    if (link.includes('h_m')) {
+        document.querySelector('#_1200').src = '/pub_promo/' + link
+        document.querySelector('#_1200').alt = link
+    }
 }
 
 //// работа с фотками
-window.uploadPhoto = function(type) {
+window.uploadPhoto = function (type) {
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
     fileInput.accept = 'image/*'; // Accept only images
+    const id = dirties[0]
+
 
     fileInput.addEventListener('change', () => {
         const file = fileInput.files[0];
         if (!file) return;
         if (file.name.indexOf(type) == -1) return alert('Файл должен называться ' + type + '.jpg');
-        api_uploadPhoto({file, name: type+'_'+dirties[0]}, res=>setPhoto(res.photoUrl))
+        api_uploadPhoto({file, name: type + '_' + id}, res => {
+            // сохраним в базе
+            const url = res.photoUrl
+            const data = datas.find(el => el.id === id)
+            if (url.includes('v_b')) data.photo278 = url
+            if (url.includes('h_b')) data.photo585 = url
+            if (url.includes('h_m')) data.photo1200 = url
+
+            // отобразим
+            setPhoto(url)
+            window.savePromoModal('withoutClose')
+        })
     });
 
     // Trigger the file selection dialog
