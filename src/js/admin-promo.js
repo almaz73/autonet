@@ -88,6 +88,7 @@ function prepareModal(id) {
     document.querySelector('#qw1').checked = false
     document.querySelector('#qw2').value = ''
     document.querySelector('#qw3').checked = false
+    document.querySelector('#qw4').value = ''
     document.querySelector('#_278').src = ''
     document.querySelector('#_585').src = ''
     document.querySelector('#_1200').src = ''
@@ -131,6 +132,7 @@ window.editPromo = function (id) {
         document.querySelector('#qw1').checked = row.onMain
         document.querySelector('#qw2').value = row.priority
         document.querySelector('#qw3').checked = row.active
+        document.querySelector('#qw4').value = row.description
 
         console.log('row = ', row)
         if (row.photo278) setPhoto(row.photo278)
@@ -145,6 +147,7 @@ function getModalFields() {
         onMain: document.querySelector('#qw1').checked,
         priority: +document.querySelector('#qw2').value,
         active: document.querySelector('#qw3').checked,
+        description: document.querySelector('#qw4').value,
         photo278: document.querySelector('#_278').alt,
         photo585: document.querySelector('#_585').alt,
         photo1200: document.querySelector('#_1200').alt,
@@ -228,6 +231,19 @@ window.uploadPhoto = function (type) {
 
     // Trigger the file selection dialog
     fileInput.click();
+}
+
+window.codGeneration = function () {
+    console.log('datas = ',datas)
+    let dep = datas.map(el=>parseInt(el.description))
+    console.log('dep = ',dep)
+    let max = Math.max(...dep)
+    console.log('max = ',max)
+    document.querySelector('#qw4').value = ++max
+}
+
+window.changeCod = function (obj) {
+    obj.value = parseInt(obj.value)
 }
 
 

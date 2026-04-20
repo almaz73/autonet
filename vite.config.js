@@ -40,6 +40,7 @@ export default defineConfig({
 		rollupOptions: {
 			input: {
 				main: resolve(__dirname, 'index.html'),
+                main2: resolve(__dirname, 'index2.html'),
 				privacyPolicy: resolve(__dirname, './privacy-policy/index.html'),
 				agreement: resolve(__dirname, './privacy-policy/agreement.html'),
 				_404: resolve(__dirname, '404.html'),
