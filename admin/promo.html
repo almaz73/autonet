@@ -62,21 +62,26 @@
                 <input type="checkbox" id="qw3">
             </div>
         </div>
-        <div>
-            <label>Фото 278х402</label>
-            <button onclick="uploadPhoto('278х402')"> Добавить  </button>
-        </div>
-        <div>
-            <label>Фото 585х200</label>
-            <button onclick="uploadPhoto('585х200')"> Добавить  </button>
-        </div>
-        <div>
-            <label>Фото 1200х501</label>
-            <button onclick="uploadPhoto('1200х501')"> Добавить  </button>
+        <div class="photo-div">
+            <div>
+                <img id="_278" style="width: 50px" alt="">
+                <label>Фото 278х402</label>
+                <button onclick="uploadPhoto('278х402')"> Добавить</button>
+            </div>
+            <div>
+                <img id="_585" style="width: 50px" alt="">
+                <label>Фото 585х200</label>
+                <button onclick="uploadPhoto('585х200')"> Добавить</button>
+            </div>
+            <div>
+                <img id="_1200" style="width: 50px" alt="">
+                <label>Фото 1200х501</label>
+                <button onclick="uploadPhoto('1200х501')"> Добавить</button>
+            </div>
         </div>
     </div>
-    <button class="type_new" style="float: right" onclick="saveNewPromoModal()">Сохранить новую промоакцию</button>
-    <button class="type_edit" style="float: right" onclick="savePromoModal()">Изменить промоакцию</button>
+    <button class="type_new" style="float: right" onclick="saveNewPromoModal()">Создать промоакцию</button>
+    <button class="type_edit" style="float: right" onclick="savePromoModal()">Сохранить промоакцию</button>
 
 </dialog>
 

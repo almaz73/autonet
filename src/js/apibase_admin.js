@@ -101,7 +101,7 @@ export function api_deletePromo(id, callback) {
         .catch(error => console.error('Произошла ошибка:', error));
 }
 
-export function api_uploadPhoto(file, callback) {
+export function api_uploadPhoto(obj, callback) {
     const token = localStorage.getItem('admin_token');
     if (!token) {
         window.location.href = '../admin/login.html?redirect=promo.html';
@@ -110,8 +110,8 @@ export function api_uploadPhoto(file, callback) {
 
     // Create FormData to send the photo
     const formData = new FormData();
-    formData.append('id', file.name);
-    formData.append('photo', file);
+    formData.append('fileName', obj.name);
+    formData.append('photo', obj.file);
 
     return fetch(server + '/api/promo/upload', {
         method: 'POST',

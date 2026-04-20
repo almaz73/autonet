@@ -91,3 +91,13 @@
 .type.new .type_new {
     display: block;
 }
+
+.type.new  .photo-div{
+    opacity: .5;
+    pointer-events: none;
+}
+
+.type.edit .photo-div{
+    opacity: 1;
+    pointer-events: initial;
+}

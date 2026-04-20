@@ -142,7 +142,8 @@ export default defineConfig({
 				reserve: resolve(__dirname, './reserve/index.html'),
 
 				vacancyAdmin: resolve(__dirname, './admin/vacancy.html'),
-				promoAdmin: resolve(__dirname, './admin/promo.html')
+				promoAdmin: resolve(__dirname, './admin/promo.html'),
+                loginAdmin: resolve(__dirname, './admin/login.html')
 			},
 		},
 

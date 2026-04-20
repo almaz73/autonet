@@ -41,10 +41,10 @@ window.changedFiled = function (id, type, value) {
 
 api_getPromo(showPromo)
 
-function showPromo(data) {
-    datas = data
+function showPromo(result) {
+    datas = result
     let content = ''
-    for (let row of data) {
+    for (let row of result) {
         content += ` <tr>
             <td style="max-width: 700px"> ${row.name}
                 <span class="remove-bt" onclick="deletePromo(${row.id})">❌</span>
@@ -85,6 +85,9 @@ function prepareModal(id) {
     document.querySelector('#qw1').checked = false
     document.querySelector('#qw2').value = ''
     document.querySelector('#qw3').checked = false
+    document.querySelector('#_278').src = ''
+    document.querySelector('#_585').src = ''
+    document.querySelector('#_1200').src = ''
 
     let type = document.querySelector('.type')
     if (id) {
@@ -122,6 +125,9 @@ window.editPromo = function (id) {
         document.querySelector('#qw1').checked = row.onMain
         document.querySelector('#qw2').value = row.priority
         document.querySelector('#qw3').checked = row.active
+
+        console.log('row = ',row)
+       // setPhoto(res.photoUrl)
     }
 }
 
@@ -172,26 +178,23 @@ window.savePromo = function () {
     }
 }
 
+function setPhoto(link) {
+    if (link.includes('v_b')) document.querySelector('#_278').src = '/pub_promo/' + link
+    if (link.includes('h_b')) document.querySelector('#_585').src = '/pub_promo/' + link
+    if (link.includes('h_m')) document.querySelector('#_1200').src = '/pub_promo/' + link
+}
+
 //// работа с фотками
 window.uploadPhoto = function(type) {
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
     fileInput.accept = 'image/*'; // Accept only images
-    
-    console.log('fileInput = ',fileInput)
 
-    // When a file is selected, upload it
     fileInput.addEventListener('change', () => {
         const file = fileInput.files[0];
         if (!file) return;
-        
-        console.log('file = ',file)
-
-        api_uploadPhoto(file, res=>{
-            console.log('res = ',res)
-        })
-        
-
+        if (file.name.indexOf(type) == -1) return alert('Файл должен называться ' + type + '.jpg');
+        api_uploadPhoto({file, name: type+'_'+dirties[0]}, res=>setPhoto(res.photoUrl))
     });
 
     // Trigger the file selection dialog
