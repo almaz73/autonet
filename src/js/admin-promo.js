@@ -1,4 +1,4 @@
-import {api_createPromo, api_deletePromo, api_getPromo, api_savePromo} from "@/js/apibase_admin.js";
+import {api_createPromo, api_deletePromo, api_getPromo, api_savePromo, api_uploadPhoto} from "@/js/apibase_admin.js";
 import { checkAuth } from '@/js/auth-service.js';
 
 checkAuth(val=>{
@@ -161,7 +161,6 @@ window.savePromoModal = function (){
 
 window.savePromo = function () {
     if (confirm("Вы уверены, что хотите сохранить изменения?")) {
-        console.log('dirties = ', dirties)
 
         dirties.forEach(id => {
             let data = datas.find(el => el.id === id)
@@ -188,53 +187,11 @@ window.uploadPhoto = function(type) {
         
         console.log('file = ',file)
 
-        // Create a FormData object to send the file
-        const formData = new FormData();
-        formData.append('photo', file);
-
-        let path = 'savePhoto.php'
-        if (type === 'banner') {
-            if (!['01.jpg', '02.jpg', '03.jpg', '04.jpg'].includes(file.name)) return alert('Карусель поддерживает только 4 варианта файла: 01.jpg, 02.jpg, 03.jpg, 04.jpg, Переименуйте если хотите поменять один из них  ')
-            console.log('file = ', file)
-            path = 'saveBanner.php'
-        }
-        // todo
-        // Send the file to the server
-        /*fetch(path, {// Changed from save.php to savePhoto.php
-            method: 'POST',
-            body: formData
+        api_uploadPhoto(file, res=>{
+            console.log('res = ',res)
         })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.success) {
-                    if (currentId) {
-                        let elem = goods.models.find(el => Object.entries(el)[0][0] === currentId)[currentId];
-                        if (currentGal_img !== undefined) {
-                            elem.photos.all.splice(1, 0, 'tovar/' + data.filename)
-                            document.querySelector('[data-dismiss="modal"]').click()
-                            document.getElementById('my-dialog').closest('dialog').close()
-                        } else if (elem) {
-                            elem.img = 'tovar/' + data.filename;
-                            document.getElementById('my-dialog').closest('dialog').close()
-                            show();
-                        }
-                    }
-                    if (type === 'banner') location.reload()
+        
 
-                } else {
-                    alert('Ошибка при загрузке фото:' + (data.error || 'Неизвестная ошибка'));
-                }
-            })
-            .catch(error => {
-                console.error('Ошибка:', error);
-                alert('Произошла ошибка при загрузке фото: ' + error.message);
-            });
-        */
     });
 
     // Trigger the file selection dialog

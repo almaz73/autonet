@@ -100,3 +100,37 @@ export function api_deletePromo(id, callback) {
         .then(res => callback(res))
         .catch(error => console.error('Произошла ошибка:', error));
 }
+
+export function api_uploadPhoto(file, callback) {
+    const token = localStorage.getItem('admin_token');
+    if (!token) {
+        window.location.href = '../admin/login.html?redirect=promo.html';
+        return;
+    }
+
+    // Create FormData to send the photo
+    const formData = new FormData();
+    formData.append('id', file.name);
+    formData.append('photo', file);
+
+    return fetch(server + '/api/promo/upload', {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+        body: formData
+    }).then(res => {
+        if (!res.ok) {
+            console.log(`HTTP error! status: ${res.status}`);
+            throw new Error('Network response was not ok');
+        }
+        return res.json();
+    })
+    .then(data => {
+        // console.log('Photo uploaded successfully:', data);
+        callback(data);
+    })
+    .catch(error => {
+        console.error('Error uploading photo:', error);
+    });
+} 
