@@ -344,7 +344,7 @@ export function acceptWithoutPhoto(items) {
 
 /* опрашиваем авто на удаленность */
 export function checkDeletedCars(cars, callback) {
-    const fetchData = (id) => api_getFullAutoInfo(id, res => res.status === 404 ? false : res)
+    const fetchData = (id) => api_getFullAutoInfo(id, res => res && res.status === 404 ? false : res)
     const promises = cars.map(el => fetchData(el.id));
 
     Promise.all(promises)

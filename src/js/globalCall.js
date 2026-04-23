@@ -41,7 +41,9 @@ window.sendBid = function (fName) {
         brand: brand && brand.value,
         model: model && model.value,
         year: year && year.value,
-        agree: agree.checked
+        agree: agree.checked,
+        link: location.href,
+        autoAdress: document.querySelector('.address') && document.querySelector('.address').innerHTML
     }
 
     showPreloader(true, button)

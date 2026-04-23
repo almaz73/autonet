@@ -29,7 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
             phone: phone.value,
             email: email.value,
             id: id,
-            agree: agree.checked
+            agree: agree.checked,
+            link: location.href,
+            autoAdress: document.querySelector('.address') && document.querySelector('.address').innerHTML
         }
         showPreloader(true, button)
         api_postEmail(parans).then(res => {

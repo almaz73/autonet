@@ -23,7 +23,9 @@ export function api_postEmail(params) {
     if (params.model) letter += 'Модель: ' + params.model + '\n'
     if (params.year) letter += 'Год: ' + params.year + '\n'
     if (params.osago) letter += 'Автострахование: ' + params.osago + '\n'
-    if (params.agree) letter += 'Согласие на рекламу: ДА'
+    if (params.agree) letter += 'Согласие на рекламу: ДА' + '\n'
+    if (params.link) letter += 'Ссылка: ' + params.link + '\n'
+    if (params.autoAdress) letter += 'Авто адрес: '  + params.autoAdress + '\n'
 
     return fetch(server + request, {
         method: 'POST',

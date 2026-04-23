@@ -165,7 +165,6 @@ bid_for_car && bid_for_car.addEventListener('click', () => {
     if (checkFormFields([input_name, input_tel, captcha, checkbox, attent, agree])) return false
 
     const params = {
-        // formName: 'spesialCredit',
         type: 6,
         price: formatterShowPrice(price) + ' ₽',
         credit: field2.innerHTML,
@@ -174,7 +173,9 @@ bid_for_car && bid_for_car.addEventListener('click', () => {
         yearCred: field4.innerHTML,
         fio: input_name.value,
         phone: input_tel.value,
-        agree: agree.checked
+        agree: agree.checked,
+        link: location.href,
+        autoAdress: document.querySelector('.address') && document.querySelector('.address').innerHTML
     }
     showPreloader(true, button)
     api_postEmail(params).then(res => {
