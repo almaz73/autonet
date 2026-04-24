@@ -1,5 +1,4 @@
-import {server} from "@/js/global-constants.js";
-import { checkAuth } from "./auth-service.js";
+import {checkAuth} from "./auth-service.js";
 
 // Simple function to get the auth token from localStorage
 function getAuthHeaders() {
@@ -14,8 +13,8 @@ function getAuthHeaders() {
 export function api_getPromo(callback) {
     let request = '/api/promo';
     const token = localStorage.getItem('admin_token');
-    const headers = token ? { 'Authorization': `Bearer ${token}` } : {};
-    return fetch(server + request, {
+    const headers = token ? {'Authorization': `Bearer ${token}`} : {};
+    return fetch(request, {
         method: 'GET',
         headers: headers
     }).then(res => {
@@ -35,8 +34,8 @@ export function api_savePromo(newRow, callback) {
         window.location.href = '../admin/login.html?redirect=promo.html';
         return;
     }
-    
-    return fetch(server + request, {
+
+    return fetch(request, {
         method: 'PUT', // Метод запроса
         headers: {
             'Content-Type': 'application/json;charset=utf-8', // Указываем формат данных
@@ -60,8 +59,8 @@ export function api_createPromo(newRow, callback) {
         window.location.href = '../admin/login.html?redirect=promo.html';
         return;
     }
-        
-    return fetch(server + request, {
+
+    return fetch(request, {
         method: 'POST', // Метод запроса
         headers: {
             'Content-Type': 'application/json', // Указываем формат данных
@@ -86,8 +85,8 @@ export function api_deletePromo(id, callback) {
         window.location.href = '../admin/login.html?redirect=promo.html';
         return;
     }
-    
-    return fetch(server + request, {
+
+    return fetch(request, {
         method: 'DELETE', // Метод запроса
         headers: {
             'Content-Type': 'application/json;charset=utf-8', // Указываем формат данных
@@ -113,7 +112,7 @@ export function api_uploadPhoto(obj, callback) {
     formData.append('fileName', obj.name);
     formData.append('photo', obj.file);
 
-    return fetch(server + '/api/promo/upload', {
+    return fetch('/api/promo/upload', {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${token}`
@@ -126,11 +125,11 @@ export function api_uploadPhoto(obj, callback) {
         }
         return res.json();
     })
-    .then(data => {
-        // console.log('Photo uploaded successfully:', data);
-        callback(data);
-    })
-    .catch(error => {
-        console.error('Error uploading photo:', error);
-    });
+        .then(data => {
+            // console.log('Photo uploaded successfully:', data);
+            callback(data);
+        })
+        .catch(error => {
+            console.error('Error uploading photo:', error);
+        });
 } 

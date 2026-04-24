@@ -1,5 +1,4 @@
 // Simple authentication service
-import {server} from "@/js/global-constants.js";
 
 export function checkAuth(callback) {
     // In a real application, this would make an API call to check authentication
@@ -15,7 +14,7 @@ export function checkAuth(callback) {
 }
 
 export async function login(credentials, callback) {
-     await fetch(server +'/api/auth/login', {
+     await fetch('/api/auth/login', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -46,7 +45,7 @@ export async function login(credentials, callback) {
 
 // export function logout() {
 //     // In a real application, this would invalidate the token on the server
-//     fetch(server +'/api/auth/verify', {
+//     fetch('/api/auth/verify', {
 //         method: 'POST',
 //         credentials: 'include',
 //         headers: {

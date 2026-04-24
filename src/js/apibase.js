@@ -1,6 +1,4 @@
 import {withCache} from "@/js/apibase_cache.js"
-import {server} from "@/js/global-constants.js";
-
 
 export function api_postEmail(params) {
     let request = '/api/postEmail'
@@ -25,9 +23,9 @@ export function api_postEmail(params) {
     if (params.osago) letter += 'Автострахование: ' + params.osago + '\n'
     if (params.agree) letter += 'Согласие на рекламу: ДА' + '\n'
     if (params.link) letter += 'Ссылка: ' + params.link + '\n'
-    if (params.autoAdress) letter += 'Авто адрес: '  + params.autoAdress + '\n'
+    if (params.autoAdress) letter += 'Авто адрес: ' + params.autoAdress + '\n'
 
-    return fetch(server + request, {
+    return fetch(request, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
@@ -65,7 +63,7 @@ export function api_postEmailWithAttachement(params) {
     formData.append('text', letter);
     formData.append('file', params.resume);
 
-    return fetch(server + request, {
+    return fetch(request, {
         method: 'POST',
         body: formData //   body:  JSON.stringify(param)
     })

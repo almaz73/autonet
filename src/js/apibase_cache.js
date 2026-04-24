@@ -1,5 +1,3 @@
-import {server} from "@/js/global-constants.js";
-
 const Cache_serv = localStorage.getItem('CACHE_SERV')
 let CACHE = Cache_serv ? JSON.parse(Cache_serv) : {}
 if (CACHE instanceof Array) CACHE = {}
@@ -15,21 +13,15 @@ Object.keys(CACHE).map(key => {
 /* Некоторые методы кэшируем пока не загрузится основной, для мгновенного показа, если нет времени ожидания */
 
 export function withCache(request, callback, hour) {
-   if (CACHE[request] ) {
+   if (CACHE[request] && !location.href.includes('localhost')) {
         if (hour && CACHE[request].hour > Date.now()) {
             return callback(CACHE[request].data)
         }
-
-       // if (hour && location.href.includes('localhost')) { // для меня
-       //     // не брать из интернета
-       //     return callback(CACHE[request].data)
-       // }
-        callback(CACHE[request].data)
     }
 
 
     // console.warn('Н А  С Е Р В Е Р   ! ! !')
-    return fetch(server + request).then(res => {
+    return fetch(request).then(res => {
         if (!res.ok) console.log(`HTTP error! status: ${res.status}`)
         showPreloader(false)
         return res.json();
