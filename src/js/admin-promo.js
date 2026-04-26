@@ -238,11 +238,9 @@ window.uploadPhoto = function (type) {
 }
 
 window.codGeneration = function () {
-    console.log('datas = ',datas)
-    let dep = datas.map(el=>parseInt(el.description))
-    console.log('dep = ',dep)
+    let dep = datas.map(el => parseInt(el.description))
     let max = Math.max(...dep)
-    console.log('max = ',max)
+    if (max === -Infinity) max = 0
     document.querySelector('#qw4').value = ++max
 }
 

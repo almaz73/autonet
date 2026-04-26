@@ -84,7 +84,7 @@
 }
 
 #myModal div {
-    margin: 20px;
+    margin: 0 10px 10px 10px;
 }
 
 .type .type_edit, .type .type_new {
@@ -99,16 +99,16 @@
     display: block;
 }
 
-.type.new  .photo-div{
+.type.new .photo-div {
     opacity: .5;
     pointer-events: none;
 }
 
-.type.edit .photo-div{
+.type.edit .photo-div {
     opacity: 1;
     pointer-events: initial;
 }
 
-.hidden-img{
+.hidden-img {
     display: none;
 }

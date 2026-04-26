@@ -1,5 +1,7 @@
 /* случайно вытаскивает 4 банера для раздела промо-акции */
 
+import {api_getPromo} from "@/js/apibase_admin.js";
+
 let links=''
 
 /**удаленные  */
@@ -46,3 +48,10 @@ for (let i = 0; i < 4; i++) {
 
 let div = document.querySelector('.promo-photos')
 div.innerHTML = links
+
+///////
+console.log('22222 = ',22222)
+
+api_getPromo(res=>{
+    console.log('r1111 es = ',res)
+})
