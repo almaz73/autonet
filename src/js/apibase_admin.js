@@ -19,6 +19,7 @@ export function api_getPromo(callback) {
         headers: headers
     }).then(res => {
         if (!res.ok) console.log(`HTTP error! status: ${res.status}`)
+        if (res.status === 401) window.location.href = '../admin/login.html?redirect=promo.html';
         return res.json();
     })
         .then(res => callback(res))

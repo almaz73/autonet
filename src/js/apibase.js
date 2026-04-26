@@ -175,7 +175,7 @@ export function api_getColorList(callback) {
 }
 
 export function api_get_mainBanners(callback) {
-    let request = '/api/main_banners'
+    let request = '/api/getMainBanners'
     return withCache(request, callback, 60)
 }
 

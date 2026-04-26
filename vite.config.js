@@ -182,6 +182,7 @@ export default defineConfig({
 		outDir: 'dict', // Выходная папка
 		// sourcemap: true, // Генерация sourcemaps (путь js)
 		chunkSizeWarningLimit: 1000, // Sets the warning limit to 1000 kB (1MB)
+        manifest: true, // Создаст manifest.json в папке сборки
 	},
 	resolve: {
 		alias: {
