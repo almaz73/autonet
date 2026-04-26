@@ -42,29 +42,3 @@ export async function login(credentials, callback) {
         callback({ success: false, error: 'Неверный логин или пароль' });
     });
 }
-
-// export function logout() {
-//     // In a real application, this would invalidate the token on the server
-//     fetch('/api/auth/verify', {
-//         method: 'POST',
-//         credentials: 'include',
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'Authorization': `Bearer ${localStorage.getItem('admin_token')}`
-//         }
-//     })
-//     .then(res => {
-//         if (!res.ok) {
-//             throw new Error('Authentication failed');
-//         }
-//         return res.json();
-//     })
-//     .then(data => {
-//         // Store token
-//         localStorage.setItem('admin_token', data.token);
-//         callback({ success: true, token: data.token });
-//     })
-//     .catch(error => {
-//         callback({ success: false, error: 'Invalid credentials' });
-//     });
-// }

@@ -109,6 +109,10 @@ function prepareModal(id) {
 
 closeBtn.onclick = () => modal.close();
 
+window.logoutExit = async function () {
+    localStorage.removeItem('admin_token')
+    location.reload()
+}
 
 window.cancelPromo = function () {
     api_getPromo(showPromo)
