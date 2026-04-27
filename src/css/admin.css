@@ -58,13 +58,6 @@
     cursor: pointer;
 }
 
-.admin_add_button.hidd {
-    display: none;
-}
-
-.dirty .admin_add_button.hidd {
-    display: block;
-}
 
 .table_head {
     height: 40px;

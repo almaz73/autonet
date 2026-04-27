@@ -12,18 +12,20 @@ let dirties = [] // список измененных
 
 const modal = document.getElementById("myModal");
 const closeBtn = document.getElementById("closeBtn");
+const hideField = document.querySelector('.hideField')
 
 window.onlyNumber = (field => field.value = parseInt(field.value))
 window.toDirty = function (id, val) {
     dirties.push(id)
-    if (val === undefined) document.querySelector('.buttons').classList.add('dirty')
+    if (val === undefined) hideField.style.display = 'block'
     else {
-        document.querySelector('.buttons').classList.remove('dirty')
+        hideField.style.display = 'none'
         dirties = []
     }
 }
 
 window.changedFiled = function (id, type, value) {
+    toDirty(id)
     let row = datas.find(row => row.id === id)
     switch (type) {
         case 'onMain':
@@ -36,7 +38,6 @@ window.changedFiled = function (id, type, value) {
             row.active = value
             break
     }
-    toDirty(id)
 }
 
 api_getPromo(showPromo)
@@ -52,7 +53,7 @@ function showPromo(result) {
             </td>
             <td><img style="width: 25px" class="${row.photo278 && row.photo585 && row.photo1200 ? '' : 'hidden-img'}" src="/pub_promo/${row.photo278}" /></td>
             <td><input type="checkbox" ${row.onMain === 1 ? 'checked' : ''} onchange="changedFiled(${row.id}, 'onMain', this.checked)"></td>
-            <td > <input value="${row.priority}" onchange="onlyNumber(this); changedFiled(${row.id}, 'priority', this.value)"/></td>
+            <td><input value="${row.priority}" oninput="onlyNumber(this);changedFiled(${row.id}, 'priority', this.value)"/></td>
             <td><input type="checkbox" ${row.active === 1 ? 'checked' : ''} onchange="changedFiled(${row.id}, 'active',this.checked)"></td>
         </tr>`
     }
@@ -116,6 +117,7 @@ window.logoutExit = async function () {
 
 window.cancelPromo = function () {
     api_getPromo(showPromo)
+    hideField.style.display = 'none'
 }
 
 window.deletePromo = function (id) {
@@ -132,16 +134,18 @@ window.editPromo = function (id) {
 
     if (id) {
         let row = datas.find(row => row.id === id)
-        document.querySelector('#qw0').value = row.name
-        document.querySelector('#qw1').checked = row.onMain
-        document.querySelector('#qw2').value = row.priority
-        document.querySelector('#qw3').checked = row.active
-        document.querySelector('#qw4').value = row.description
+        if (row) {
+            document.querySelector('#qw0').value = row.name
+            document.querySelector('#qw1').checked = row.onMain
+            document.querySelector('#qw2').value = row.priority
+            document.querySelector('#qw3').checked = row.active
+            document.querySelector('#qw4').value = row.code
+            if (row.photo278) setPhoto(row.photo278)
+            if (row.photo585) setPhoto(row.photo585)
+            if (row.photo1200) setPhoto(row.photo1200)
 
-        console.log('row = ', row)
-        if (row.photo278) setPhoto(row.photo278)
-        if (row.photo585) setPhoto(row.photo585)
-        if (row.photo1200) setPhoto(row.photo1200)
+            if (!row.code) codGeneration()
+        }
     }
 }
 
@@ -151,7 +155,7 @@ function getModalFields() {
         onMain: document.querySelector('#qw1').checked,
         priority: +document.querySelector('#qw2').value,
         active: document.querySelector('#qw3').checked,
-        description: document.querySelector('#qw4').value,
+        code: document.querySelector('#qw4').value,
         photo278: document.querySelector('#_278').alt,
         photo585: document.querySelector('#_585').alt,
         photo1200: document.querySelector('#_1200').alt,
@@ -161,16 +165,18 @@ function getModalFields() {
 window.saveNewPromoModal = function () {
     let params = getModalFields()
 
+    if (datas.find(el => !el.name)) return alert('В списке есть акция без названия, используйте')
     api_createPromo(params, val => {
-        modal.close()
         api_getPromo(showPromo)
+        window.editPromo(val.id)
+        codGeneration()
+        toDirty(null, 'clean')
     })
-
-    toDirty(null, 'clean')
 }
 
 window.savePromoModal = function (withoutClose) {
     let data = getModalFields()
+    if (!data.name) return alert('Поле "Название" обязателен для заполнения')
     data.id = dirties[0]
 
     api_savePromo(data, val => {
@@ -180,16 +186,13 @@ window.savePromoModal = function (withoutClose) {
 }
 
 window.savePromo = function () {
-    if (confirm("Вы уверены, что хотите сохранить изменения?")) {
-
-        dirties.forEach(id => {
-            let data = datas.find(el => el.id === id)
-            api_savePromo(data, val => {
-                api_getPromo(showPromo)
-            })
+    dirties.forEach(id => {
+        let data = datas.find(el => el.id === id)
+        api_savePromo(data, val => {
+            api_getPromo(showPromo)
         })
-        toDirty(null, 'clean')
-    }
+    })
+    toDirty(null, 'clean')
 }
 
 function setPhoto(link) {
@@ -218,7 +221,7 @@ window.uploadPhoto = function (type) {
     fileInput.addEventListener('change', () => {
         const file = fileInput.files[0];
         if (!file) return;
-        if (file.name.indexOf(type) == -1) return alert('Файл должен называться ' + type + '.jpg');
+        if (file.name.indexOf(type) == -1) return alert('Файл должен называться ' + type);
         api_uploadPhoto({file, name: type + '_' + id}, res => {
             // сохраним в базе
             const url = res.photoUrl
@@ -238,7 +241,7 @@ window.uploadPhoto = function (type) {
 }
 
 window.codGeneration = function () {
-    let dep = datas.map(el => parseInt(el.description))
+    let dep = datas.map(el => el.code && parseInt(el.code))
     let max = Math.max(...dep)
     if (max === -Infinity) max = 0
     document.querySelector('#qw4').value = ++max

@@ -25,9 +25,11 @@
     <h1> Редактирование промоакций </h1>
     <br>
     <div class="buttons">
-        <button class="admin_add_button" onclick="editPromo()"> Добавить новый</button>
-        <button class="admin_add_button hidd" onclick="cancelPromo()"> Отменить изменения</button>
-        <button class="admin_add_button hidd" onclick="savePromo()"> Сохранить изменения</button>
+        <button class="admin_add_button" onclick="saveNewPromoModal()"> Добавить новый</button>
+        <div class="hideField" style="display: none">
+            <button class="admin_add_button" onclick="cancelPromo()"> Отменить изменения</button>
+            <button class="admin_add_button" onclick="savePromo()"> Сохранить изменения</button>
+        </div>
     </div>
     <br><br><br>
 
@@ -43,27 +45,31 @@
     <h2 class="type_new">Новая промоакция</h2>
     <h2 class="type_edit">Редактирование промоакции</h2>
 
+    <details title="Код промоакции, автоматически создается" style="text-align: center">
+        <summary></summary>
+        <div>
+            <label>Код</label>
+            <input style="width: 73px" id="qw4" oninput="changeCod(this)">
+            <small> * код акции рекомендуется не менять. Для SEO</small>
+        </div>
+    </details>
+
     <div>
         <label>Название</label>
         <input style="width: 100%" id="qw0">
     </div>
-    <div>
-        <label>Код</label>
-        <input style="width: 73px" id="qw4" oninput="changeCod(this)">
-        <button style="cursor: pointer" onclick="codGeneration()" title="Генерировать только для новых акций">Генерировать</button>
-    </div>
 
     <div style="display: flex; flex-wrap: wrap">
         <div>
-            <div>
+            <div title="Акции можно включить для показа на главной странице">
                 <label for="qw1">На главной</label>
                 <input type="checkbox" id="qw1">
             </div>
-            <div>
+            <div title="Влияет на очередность появления в списке">
                 <label>Порядок</label>
                 <input id="qw2">
             </div>
-            <div>
+            <div title="Тут акцию можно выключить">
                 <label for="qw3">Актив</label>
                 <input type="checkbox" id="qw3">
             </div>
@@ -80,7 +86,7 @@
                 <button onclick="uploadPhoto('585х200')"> Добавить</button>
             </div>
             <div>
-                <img id="_1200" style="width: 50px" alt="">
+                <img id="_1200" style="width: 330px" alt="">
                 <label>Фото 1200х501</label>
                 <button onclick="uploadPhoto('1200х501')"> Добавить</button>
             </div>
