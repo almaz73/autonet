@@ -1,57 +1,61 @@
 /* случайно вытаскивает 4 банера для раздела промо-акции */
 
-import {api_getPromo} from "@/js/apibase_admin.js";
+import {api_get_activeBanners} from "@/js/apibase.js";
 
-let links=''
+let links = ''
+let promos = []
 
-/**удаленные  */
-    // '<a href="/promo/633448/" class="ver"><img src="/st/photo-action/p_0.webp" loading="lazy" alt="Премиум авто"></a>',
-    // '<a href="/" class="ver"> <img src="/st/photo-action/p_1.webp" loading="lazy" alt="Подбор авто"></a>',
-    // '<a href="/promo/651626/" class="ver"> <img src="/st/photo-action/p_6.webp" loading="lazy" alt="Снижение цен на нормо-час"></a>',
+function set4rondomBaner() {
+    for (let i = 0; i < 4; i++) {
+        const num = Math.floor(Math.random() * promos.length);
+        const el = promos[num];
+        links += (el)
+        promos.splice(num, 1);
+    }
 
-    // '<a href="/promo/651614/" class="ver"><img src="/st/photo-action/p_18.webp" loading="lazy" alt="Гарантия на авто с пробегом"></a>',
-
-let promos = [
-    '<a href="/promo/660786/" class="ver"><img src="/st/photo-action/p_20.webp" loading="lazy" alt="2 сертификата в сервис номиналом по 3 000"></a>'+
-    '<a href="/promo/651613/" class="ver"><img src="/st/photo-action/p_19.webp" loading="lazy" alt="Скидка на 20% на аренду авто"></a>',
-
-    // '<a href="/promo/644223/" class="ver"> <img src="/st/photo-action/p_2.webp" loading="lazy" alt="Выкуп автомобилей с пробегом"></a>',
-    // '<a href="/promo/644340/" class="ver"> <img src="/st/photo-action/p_3.webp" loading="lazy" alt="Сделка через салон"></a>',
-    '<a href="/promo/647168/" class="ver"> <img src="/st/photo-action/p_4.webp" loading="lazy" alt="Постановка на учёт в ГИБДД"></a>',
-    // '<a href="/promo/647169/" class="ver"><img src="/st/photo-action/p_5.webp" loading="lazy" alt="Поставьте авто на комиссию"></a>',
-    '<a href="/promo/651625/" class="ver"> <img src="/st/photo-action/p_7.webp" loading="lazy" alt="Установка парктроников от 4500"></a>',
-    '<a href="/promo/651624/" class="ver"> <img src="/st/photo-action/p_8.webp" loading="lazy" alt="Трейд-ин с повышенной оценкой"></a>',
-    // '<a href="/promo/651623/" class="ver"> <img src="/st/photo-action/p_9.webp" loading="lazy" alt="Скидка 10% в День рождения"></a>',
-    '<a href="/promo/651621/" class="ver"> <img src="/st/photo-action/p_11.webp" loading="lazy" alt="Саквояж или EVA ковры"></a>',
-    '<a href="/promo/651620/" class="ver"> <img src="/st/photo-action/p_12.webp" loading="lazy" alt="Установка видеорегистратора"></a>',
-    // '<a href="/promo/651619/" class="ver"> <img src="/st/photo-action/p_13.webp" loading="lazy" alt="Компрессор в подарок"></a>',
-    '<a href="/promo/651618/" class="ver"> <img src="/st/photo-action/p_14.webp" loading="lazy" alt="Тонировка задней полусферы"></a>',
-    // '<a href="/promo/651617/" class="ver"> <img src="/st/photo-action/p_15.webp" loading="lazy" alt="Скидка 2000 рублей при покупке автомобиля с пробегом"></a>',
-    '<a href="/promo/651616/" class="ver"> <img src="/st/photo-action/p_16.webp" loading="lazy" alt="Первый взнос 0 рублей"></a>',
-    // '<a href="/promo/651615/" class="ver"><img src="/st/photo-action/p_17.webp" loading="lazy" alt="Обмен или возврат"></a>',
-
-    '<a href="/promo/657231/" class="ver"><img src="/st/photo-action/p_21.webp" loading="lazy" alt="Коммерческий транспорт с пробегом">',
-    '<a href="/promo/655683/" class="ver"><img src="/st/photo-action/p_22.webp" loading="lazy" alt="Cнижение цен на нормо-час до 20%">',
-
-
-    '<a href="/promo/651622/" class="ver"><img src="/st/photo-action/p_10.webp" loading="lazy" alt="Скидка на ТО (Solaris/Jetour)"></a>',
-]
-// * тут 2 последних скрыто, так как для них нет вертикальных фоток они случайно не будут предлагаться
-
-
-for (let i = 0; i < 4; i++) {
-    const num = Math.floor(Math.random() * promos.length);
-    const el = promos[num];
-    links += (el)
-    promos.splice(num, 1);
+    let div = document.querySelector('.promo-photos')
+    if (div) div.innerHTML = links
 }
 
-let div = document.querySelector('.promo-photos')
-div.innerHTML = links
 
-///////
-console.log('22222 = ',22222)
+function showBigBannerval(el) {
+    let bigBanner = ` <a href='/promo/${el.code}/'>
+            <img src='/pub_promo/${el.id + '_h_b'}.webp' alt='${el.name}' class='big'>
+            <img src='/pub_promo/${el.id + '_v_b'}.webp' alt='${el.name}' class='small'>
+        </a>`
+    if (document.querySelector('.container.promo-banner')) {
+        document.querySelector('.container.promo-banner').innerHTML = bigBanner
+    }
 
-api_getPromo(res=>{
-    console.log('r1111 es = ',res)
+}
+
+let isAllBanners = isNaN(location.pathname.split('/')[2])
+
+//
+api_get_activeBanners(res => {
+    let listPromo = []
+    let count = 0
+    if (isAllBanners) showBigBannerval(res.splice(0, 1)[0])
+    res.forEach((el, ind) => {
+        let orientattion = '' // ver/hor
+        count++
+        if (count < 5) orientattion = 'ver'
+        if (count === 5 || count === 6) orientattion = 'hor'
+        if (count > 5) count = 0
+        if (orientattion === 'ver') {
+            listPromo += `<a href='/promo/${el.code}/' class='ver'> <img style="max-width: 275px;" 
+src='/pub_promo/${el.id + '_v_l'}.webp' loading='lazy' alt='${el.name}'></a>`
+        } else {
+            listPromo += `<a href='/promo/${el.code}/' class='hor'> <img 
+src='/pub_promo/${el.id + '_h_l'}.webp' loading='lazy' alt='${el.name}'></a>`
+        }
+        promos.push(`<a href='/promo/${el.code}/' class='ver'> <img style="max-width: 275px;" 
+src='/pub_promo/${el.id + '_v_l'}.webp' loading='lazy' alt='${el.name}'></a>`)
+    })
+
+    if (isAllBanners && document.querySelector('.container.promo-photos')) {
+        document.querySelector('.container.promo-photos').innerHTML = listPromo
+    } else {
+        set4rondomBaner()
+    }
 })

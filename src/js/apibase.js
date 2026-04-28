@@ -179,3 +179,8 @@ export function api_get_mainBanners(callback) {
     return withCache(request, callback, 60)
 }
 
+export function api_get_activeBanners(callback) {
+    let request = '/api/getActiveBanners'
+    return withCache(request, callback, 60)
+}
+

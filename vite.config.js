@@ -16,6 +16,7 @@ const pages = {
     car: resolve(__dirname, './cars/car.html'),
     podbor: resolve(__dirname, './services/autopodbor/index.html'),
     promo: resolve(__dirname, './promo/index.html'),
+    promo2: resolve(__dirname, './promo/index2.html'),
     p644223: resolve(__dirname, './promo/644223/index.html'),
     p644340: resolve(__dirname, './promo/644340/index.html'),
     p647168: resolve(__dirname, './promo/647168/index.html'),
@@ -166,8 +167,6 @@ export default defineConfig({
 		liveReload(resolve(__dirname, 'src/partials/**/*'), { alwaysReload: true }),
 		sitemap({
 			// Ваши настройки, например, домен
-
-
             hostname: 'https://xn--80aej9aped4f.xn--p1ai',
 			outDir: 'dict', // Выходная папка
 			changefreq: 'monthly', // Устанавливаем частоту 'weekly' (еженедельно)

@@ -16,17 +16,18 @@ const hideField = document.querySelector('.hideField')
 
 window.onlyNumber = (field => field.value = parseInt(field.value))
 window.toDirty = function (id, val) {
-    dirties.push(id)
+    if (id) dirties.push(id)
     if (val === undefined) hideField.style.display = 'block'
-    else {
-        hideField.style.display = 'none'
-        dirties = []
-    }
+    else hideField.style.display = 'none'
 }
 
 window.changedFiled = function (id, type, value) {
     toDirty(id)
     let row = datas.find(row => row.id === id)
+    let isPhoto = row.photo278 && row.photo585 && row.photo1200
+
+    if (!isPhoto && type !== 'priority') return alert('Необходимо прикрепить фотографии')
+
     switch (type) {
         case 'onMain':
             row.onMain = value
@@ -45,7 +46,11 @@ api_getPromo(showPromo)
 function showPromo(result) {
     datas = result
     let content = ''
+    let activeCount = 0
+    let mainCount = 0
     for (let row of result) {
+        if (row.active) activeCount++
+        if (row.onMain && row.active) mainCount++
         content += ` <tr>
             <td style="max-width: 700px; min-width: 105px"> ${row.name}
                 <span class="remove-bt" onclick="deletePromo(${row.id})">❌</span>
@@ -81,6 +86,8 @@ function showPromo(result) {
         </tr>
         ${content}
     </table>`
+
+    document.querySelector('.summ').innerHTML = `Активных акций - ${activeCount}, на главной - ${mainCount} `
 }
 
 
