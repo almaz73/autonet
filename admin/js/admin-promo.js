@@ -1,10 +1,12 @@
-import {api_createPromo, api_deletePromo, api_getPromo, api_savePromo, api_uploadPhoto} from "@/js/apibase_admin.js";
-import {checkAuth} from '@/js/auth-service.js';
+import {set_panel, api_createPromo, api_deletePromo, api_getPromo, api_savePromo, api_uploadPhoto} from "./apibase_admin.js";
+import {checkAuth} from './auth-service.js';
+
 
 checkAuth(val => {
     // Если нет токена перебрасываем на авторизацию
     if (!val) window.location.href = 'login.html?redirect=promo.html';
 })
+set_panel('promo.html')
 
 
 let datas = []

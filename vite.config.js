@@ -10,6 +10,7 @@ const pages = {
     privacyPolicy: resolve(__dirname, './privacy-policy/index.html'),
     agreement: resolve(__dirname, './privacy-policy/agreement.html'),
     _404: resolve(__dirname, '404.html'),
+    documents: resolve(__dirname, 'documents/index.html'),
     cars: resolve(__dirname, './cars/index.html'),
     vykup: resolve(__dirname, './services/vykup/index.html'),
     tyres: resolve(__dirname, './tyres/index.html'),

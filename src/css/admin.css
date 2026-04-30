@@ -67,8 +67,9 @@
 }
 
 .table_content {
-    height: 550px;
+    height: 573px;
     overflow-y: scroll;
+    border-bottom: 1px solid #ddd;
 }
 
 #closeBtn {

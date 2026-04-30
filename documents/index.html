@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+    <meta charset='UTF-8'/>
+    <link rel='icon' type='image/svg+xml' sizes='any' href='/st/Favicon_as.svg'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Документы - Автосеть.РФ</title>
+    <meta property='og:type' content='website'>
+    <meta property='og:title' content='Документы'>
+    <meta property='og:image' content='https://xn--80aej9aped4f.xn--p1ai/st/auto.webp'>
+    <meta property='og:url' content='https://автосеть.рф/documents'>
+    <meta property='og:locale' content='ru_RU'>
+    <meta property='og:site_name' content='АВТОСЕТЬ.РФ'>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+    <meta name='robots' content='index, follow'>
+    <meta name='keywords' content='Документы Автосеть.рф'>
+    <meta name='description'
+          content='На данной странице представлена информация для клиентов.
+          По возникшим вопросам звоните по телефону 8-800-500-11-56.'>
+    <link rel='stylesheet' href='../src/css/style.css'/>
+
+    <script type='module' src='../src/js/main.js'></script>
+
+
+    <!-- Google Fonts + Font Awesome для иконок и чистого стиля -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f6fa;
+            color: #1e2a3e;
+            line-height: 1.4;
+        }
+
+        /* обертка-контейнер как на основном сайте (сетка, отступы) */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Хлебные крошки (light, как на многих страницах) */
+        .breadcrumbs {
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            color: #5b6e8c;
+        }
+        .breadcrumbs a {
+            text-decoration: none;
+            color: #2c3e66;
+            transition: color 0.2s;
+        }
+        .breadcrumbs a:hover {
+            color: #c9252c;
+        }
+        .breadcrumbs span {
+            margin: 0 6px;
+        }
+        .breadcrumbs .current {
+            color: #1e2a3e;
+            font-weight: 500;
+        }
+
+        /* Заголовок страницы */
+        .page-header {
+            margin-bottom: 2.5rem;
+            border-left: 5px solid #c9252c;
+            padding-left: 1.2rem;
+        }
+        .page-header h1 {
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: #0a1c2f;
+            letter-spacing: -0.3px;
+        }
+        .page-header p {
+            color: #4a627a;
+            margin-top: 0.5rem;
+            font-size: 1rem;
+        }
+
+        /* карточки документов */
+        .docs-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        /* каждый документ — карточка в стиле минималистичного блока,
+           похожего на дизайн сайта (белые карточки с тенью, скругления) */
+        .doc-card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02), 0 2px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.2s ease;
+            border: 1px solid #eef2f8;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 1.2rem 1.5rem;
+        }
+        .doc-card:hover {
+            box-shadow: 0 12px 22px rgba(0, 0, 0, 0.08);
+            border-color: #dce5ef;
+        }
+
+        /* левая часть: иконка + информация */
+        .doc-info {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            flex: 2 1 260px;
+        }
+        .doc-icon {
+            width: 52px;
+            height: 52px;
+            background: #f0f4fa;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #c9252c;
+            font-size: 1.8rem;
+            transition: background 0.2s;
+        }
+        .doc-details {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .doc-name {
+            font-weight: 700;
+            font-size: 1.12rem;
+            color: #0f2b3f;
+            letter-spacing: -0.2px;
+            line-height: 1.3;
+        }
+        .doc-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: #6c86a3;
+        }
+        .doc-size {
+            background: #eef2f9;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+        }
+        .doc-size i {
+            font-size: 0.7rem;
+            color: #5e7a9f;
+        }
+
+        /* кнопка скачивания (в стиле автосети: красный акцент, но сдержанный) */
+        .download-btn {
+            background: transparent;
+            border: 1.5px solid #c9252c;
+            border-radius: 40px;
+            padding: 10px 24px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            color: #c9252c;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: white;
+            margin-left: 10px;
+        }
+        .download-btn i {
+            font-size: 1rem;
+            transition: transform 0.2s;
+        }
+        .download-btn:hover {
+            background-color: #c9252c;
+            color: white;
+            border-color: #c9252c;
+            box-shadow: 0 4px 10px rgba(201, 37, 44, 0.2);
+        }
+        .download-btn:hover i {
+            transform: translateY(1px);
+        }
+
+        /* футер-лайт для соответствия главной (минималистичный) */
+        .footer-note {
+            margin-top: 3.5rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.8rem;
+            color: #6f8aac;
+            text-align: center;
+        }
+        .footer-note a {
+            color: #c9252c;
+            text-decoration: none;
+        }
+
+        /* адаптивность: для экранов меньше 640px меняем направление */
+        @media (max-width: 640px) {
+            .container {
+                padding: 1.2rem 1rem;
+            }
+            .doc-card {
+                padding: 1rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .doc-info {
+                width: 100%;
+            }
+            .download-btn {
+                width: 100%;
+                justify-content: center;
+                margin-left: 0;
+            }
+            .page-header h1 {
+                font-size: 1.7rem;
+            }
+        }
+
+        /* ссылка на скачивание должна выглядеть как кнопка, но с атрибутом download */
+        .download-btn {
+            text-decoration: none;
+            background-color: white;
+        }
+    </style>
+
+    {{> verbox_chat}}
+</head>
+
+
+<body>
+{{> 'header/header' }}
+<main>
+    <div class='page_padding_20'>
+        <div class='bread_cranbs'>
+            <a href='/'>Главная</a> /
+            <span>Документы</span>
+        </div>
+    </div>
+
+
+
+
+    <div class="container">
+            <div class="page-header">
+                <h1>Документы автосалона</h1>
+                <p>Официальная информация, регулирующая отношения с клиентами, условия обработки данных и правовая база</p>
+            </div>
+
+            <div class="docs-grid">
+                <!-- 1. Федеральный закон о рекламе -->
+                <div class="doc-card">
+                    <div class="doc-info">
+                        <div class="doc-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <div class="doc-details">
+                            <div class="doc-name">Правила выдачи и использования именных сертификатов на скидку при покупке
+                                автомобиля в дилерских центрах ООО «Форум»</div>
+                            <div class="doc-meta">
+                                <span class="doc-size"><i class="far fa-file-pdf"></i> PDF-документ</span>
+                                <span class="doc-size"><i class="fas fa-database"></i> 164,5 кб</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://автосеть.рф/st/upload/rule_sertificates.pdf" download class="download-btn" data-filename="zakon_o_reklame_286-fz.pdf" data-size="486.7">
+                        <i class="fas fa-download"></i> Скачать
+                    </a>
+                </div>
+
+                <!-- 2. Политика конфиденциальности -->
+<!--                <div class="doc-card">-->
+<!--                    <div class="doc-info">-->
+<!--                        <div class="doc-icon">-->
+<!--                            <i class="fas fa-lock"></i>-->
+<!--                        </div>-->
+<!--                        <div class="doc-details">-->
+<!--                            <div class="doc-name">Правила выдачи и использования именных сертификатов на скидку при покупке-->
+<!--                                автомобиля в дилерских центрах ООО «Форум»</div>-->
+<!--                            <div class="doc-meta">-->
+<!--                                <span class="doc-size"><i class="far fa-file-pdf"></i> PDF-документ</span>-->
+<!--                                <span class="doc-size"><i class="fas fa-database"></i> 312,6 кб</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <a href="https://автосеть.рф/st/rule_sertificates.pdf" download class="download-btn" data-filename="politika_konfidentsialnosti.pdf" data-size="312.6">-->
+<!--                        <i class="fas fa-download"></i> Скачать-->
+<!--                    </a>-->
+<!--                </div>-->
+
+
+
+            <div class="footer-note">
+                <i class="far fa-building"></i> Автосеть.РФ — официальные документы. <br>
+                Актуальная версия документов размещена <strong>«29» апреля 2026 г.</strong> <br>
+            </div>
+        </div>
+
+
+
+
+
+
+
+</main>
+
+{{> 'footer/footer' }}
+
+
+</body>
+</html>

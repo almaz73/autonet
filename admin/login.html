@@ -84,12 +84,14 @@
 </div>
 
 <script type="module">
-    import {login} from '../src/js/auth-service.js'
+    import {login} from './js/auth-service.js'
 
     async function handleLogin() {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
         const errorMessage = document.getElementById('error-message');
+
+        console.log('username = ', username)
 
         if (!username || !password) {
             errorMessage.textContent = 'Пожалуйста, введите логин и пароль';
@@ -100,11 +102,19 @@
         try {
             await login({username, password}, result);
 
-            function result (val) {
+            function result(val) {
                 if (val.success) {
                     const urlParams = new URLSearchParams(window.location.search);
                     const redirectUrl = urlParams.get('redirect') || '../admin/promo.html';
-                    window.location.href = redirectUrl;
+                    let part1 = redirectUrl.split('.')[0]
+                    let part2 = username.split('_')[0]
+
+                    if (part1 == part2) window.location.href = redirectUrl;
+                    else if (!part1 && part2 === 'promo') window.location.href = redirectUrl;
+                    else {
+                        errorMessage.textContent = val.error || 'Логин и пароль не соответствуют';
+                        errorMessage.style.display = 'block';
+                    }
                 } else {
                     errorMessage.textContent = val.error || 'Неверный логин или пароль';
                     errorMessage.style.display = 'block';
