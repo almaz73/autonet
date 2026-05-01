@@ -20,22 +20,24 @@ function set4rondomBaner() {
 
 function showBigBannerval(el) {
     let bigBanner = ` <a href='/promo/${el.code}/'>
-            <img src='/pub_promo/${el.id + '_h_b'}.webp' alt='${el.name}' class='big'>
+            <img src='/pub_promo/${el.id + '_h_m'}.webp' alt='${el.name}' class='big'>
             <img src='/pub_promo/${el.id + '_v_b'}.webp' alt='${el.name}' class='small'>
         </a>`
     if (document.querySelector('.container.promo-banner')) {
         document.querySelector('.container.promo-banner').innerHTML = bigBanner
     }
-
 }
 
-let isAllBanners = isNaN(location.pathname.split('/')[2])
+let isAllBanners = isNaN(location.pathname.split('/promo/')[2])
 
 //
 api_get_activeBanners(res => {
     let listPromo = []
     let count = 0
-    if (isAllBanners) showBigBannerval(res.splice(0, 1)[0])
+    if (isAllBanners) {
+        showBigBannerval(res.splice(0, 1)[0])
+        showBigBannerval(res.splice(0, 1)[0])
+    } // дважды
     res.forEach((el, ind) => {
         let orientattion = '' // ver/hor
         count++

@@ -23,8 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 })
 
+let isInited = false
 export function initSwipper() {
-    if (swiper) return false
+    if (swiper || isInited) return false
+    isInited = true
+
     let params = {
         spaceBetween: 30,
         loop: true,
@@ -57,7 +60,7 @@ export function initSwipper() {
         else window.showSlide(0)
     }
 
-    ewcursiveWaitswiper()
+    setTimeout(ewcursiveWaitswiper, 1100)
 }
 
 

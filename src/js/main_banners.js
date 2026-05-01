@@ -38,5 +38,5 @@ api_get_mainBanners(res => {
 
 
     fillSwiper(banners)
-    setTimeout(initSwipper, 3000)
+    setTimeout(initSwipper)
 })
