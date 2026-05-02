@@ -11,6 +11,7 @@ set_panel('promo.html')
 
 let datas = []
 let dirties = [] // список измененных
+let selectedField = null
 
 const modal = document.getElementById("myModal");
 const closeBtn = document.getElementById("closeBtn");
@@ -53,8 +54,10 @@ function showPromo(result) {
     for (let row of result) {
         if (row.active) activeCount++
         if (row.onMain && row.active) mainCount++
-        content += ` <tr>
-            <td style="max-width: 700px; min-width: 105px"> ${row.name}
+        content += ` <tr onclick="setSelected(${row.id}, this)" class='SEL'>
+            <td style="max-width: 700px; min-width: 105px">
+             <a href="/promo/${row.code}" style="min-width:150px; padding-right: 20px; font-size:10px">${row.code}</a>
+             ${row.name}
                 <span class="remove-bt" onclick="deletePromo(${row.id})">❌</span>
                 <span class="remove-bt" onclick="editPromo(${row.id})">✎</span>
             </td>
@@ -258,6 +261,13 @@ window.codGeneration = function () {
 
 window.changeCod = function (obj) {
     obj.value = parseInt(obj.value)
+}
+
+window.setSelected = function (val, self) {
+    let SEL = document.querySelectorAll('.SEL')
+    SEL.forEach(el=> el.classList.remove('selected'))
+    self.classList.add('selected')
+    selectedField = val
 }
 
 

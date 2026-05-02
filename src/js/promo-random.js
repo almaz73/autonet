@@ -17,7 +17,6 @@ function set4rondomBaner() {
     if (div) div.innerHTML = links
 }
 
-
 function showBigBannerval(el) {
     let bigBanner = ` <a href='/promo/${el.code}/'>
             <img src='/pub_promo/${el.id + '_h_m'}.webp' alt='${el.name}' class='big'>
@@ -28,14 +27,12 @@ function showBigBannerval(el) {
     }
 }
 
-let isAllBanners = isNaN(location.pathname.split('/promo/')[2])
-
+let isAllBanners = isNaN(parseInt(location.pathname.split('/promo/')[1]))
 //
 api_get_activeBanners(res => {
     let listPromo = []
     let count = 0
     if (isAllBanners) {
-        showBigBannerval(res.splice(0, 1)[0])
         showBigBannerval(res.splice(0, 1)[0])
     } // дважды
     res.forEach((el, ind) => {
@@ -45,13 +42,17 @@ api_get_activeBanners(res => {
         if (count === 5 || count === 6) orientattion = 'hor'
         if (count > 5) count = 0
         if (orientattion === 'ver') {
-            listPromo += `<a href='/promo/${el.code}/' class='ver'> <img style="max-width: 275px;" 
-src='/pub_promo/${el.id + '_v_l'}.webp' loading='lazy' alt='${el.name}'></a>`
+//             listPromo += `<a href='/promo/${el.code}/' class='ver'> <img style="max-width: 275px;"
+// src='/pub_promo/${el.id + '_v_l'}.webp' loading='lazy' alt='${el.name}'></a>`
+            listPromo += `<a href='#'><img style="max-width: 275px;" src='/pub_promo/${el.id + '_v_l'}.webp' loading='lazy' alt='${el.name}'></a>`
         } else {
-            listPromo += `<a href='/promo/${el.code}/' class='hor'> <img 
-src='/pub_promo/${el.id + '_h_l'}.webp' loading='lazy' alt='${el.name}'></a>`
+//             listPromo += `<a href='/promo/${el.code}/' class='hor'> <img
+// src='/pub_promo/${el.id + '_h_l'}.webp' loading='lazy' alt='${el.name}'></a>`
+            listPromo += `<a href='#'><img src='/pub_promo/${el.id + '_h_l'}.webp' loading='lazy' alt='${el.name}'></a>`
         }
-        promos.push(`<a href='/promo/${el.code}/' class='ver'> <img style="max-width: 275px;" 
+//         promos.push(`<a href='/promo/${el.code}/' class='ver'> <img style="max-width: 275px;"
+// src='/pub_promo/${el.id + '_v_l'}.webp' loading='lazy' alt='${el.name}'></a>`)
+        promos.push(`<a href='#'><img style="max-width: 275px;" 
 src='/pub_promo/${el.id + '_v_l'}.webp' loading='lazy' alt='${el.name}'></a>`)
     })
 
