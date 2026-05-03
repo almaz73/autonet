@@ -16,7 +16,7 @@
 
 .button__call {
     width: 40px;
-    background: var(--color-red) url(/st/svg/call2.svg) no-repeat center;
+    background: var(--color-red) url('/st/svg/call2.svg') no-repeat center;
 }
 
 .button__callback {
