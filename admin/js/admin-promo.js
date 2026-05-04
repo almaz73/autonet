@@ -1,4 +1,11 @@
-import {set_panel, api_createPromo, api_deletePromo, api_getPromo, api_savePromo, api_uploadPhoto} from "./apibase_admin.js";
+import {
+    set_panel,
+    api_createPromo,
+    api_deletePromo,
+    api_getPromo,
+    api_savePromo,
+    api_uploadPhoto
+} from "./apibase_admin.js";
 import {checkAuth} from './auth-service.js';
 
 
@@ -92,11 +99,10 @@ function showPromo(result) {
         ${content}
     </table>`
 
-    document.querySelector('.summ').innerHTML = `Активных акций - ${activeCount}, на главной - ${mainCount} `
+    document.querySelector('.summ').innerHTML = `Активных акций - ${activeCount}, на главной - ${mainCount}, выключенных - ${result.length - activeCount}`
 }
 
-
-function prepareModal(id) {
+function clearPanel() {
     document.querySelector('#qw0').value = ''
     document.querySelector('#qw1').checked = false
     document.querySelector('#qw2').value = ''
@@ -108,6 +114,10 @@ function prepareModal(id) {
     document.querySelector('#_278').alt = ''
     document.querySelector('#_585').alt = ''
     document.querySelector('#_1200').alt = ''
+}
+
+function prepareModal(id) {
+    clearPanel()
 
     let type = document.querySelector('.type')
     if (id) {
@@ -194,6 +204,7 @@ window.savePromoModal = function (withoutClose) {
     api_savePromo(data, val => {
         if (!withoutClose) modal.close()
         api_getPromo(showPromo)
+        clearPanel()
     })
 }
 
@@ -259,13 +270,24 @@ window.codGeneration = function () {
     document.querySelector('#qw4').value = ++max
 }
 
+function checkDublicateCode(code) {
+    return datas.find(el => el.code === code)
+}
+
 window.changeCod = function (obj) {
     obj.value = parseInt(obj.value)
+    let itWas = datas.find(el => el.id === selectedField).code
+    if (checkDublicateCode(obj.value)) {
+        confirm(`${obj.value} - Этот код уже используется. \n Вернуть как было  ${itWas} ?`)
+        {
+            obj.value = itWas
+        }
+    }
 }
 
 window.setSelected = function (val, self) {
     let SEL = document.querySelectorAll('.SEL')
-    SEL.forEach(el=> el.classList.remove('selected'))
+    SEL.forEach(el => el.classList.remove('selected'))
     self.classList.add('selected')
     selectedField = val
 }
