@@ -1,6 +1,7 @@
 /* случайно вытаскивает 4 банера для раздела промо-акции */
 
 import {api_get_activeBanners} from "@/js/apibase.js";
+import {initSwipper} from "@/js/swiper-starter.js";
 
 let links = ''
 let promos = []
@@ -27,6 +28,8 @@ function showBigBannerval(el) {
     }
 }
 
+let littleBanners = ` <section class="swiper mySwiper buy_swiper" style="z-index: 1">
+    <div class="swiper-wrapper">`
 let isAllBanners = isNaN(parseInt(location.pathname.split('/promo/')[1]))
 //
 api_get_activeBanners(res => {
@@ -50,7 +53,19 @@ src='/pub_promo/${el.id + '_h_l'}.webp' loading='lazy' alt='${el.name}'></a>`
         }
         promos.push(`<a href='/promo/${el.code}/' class='ver'> <img style="max-width: 275px;"
 src='/pub_promo/${el.id + '_v_l'}.webp' loading='lazy' alt='${el.name}'></a>`)
+        littleBanners += ` <div class="swiper-slide">
+            <a href='/promo/${el.code}/'> 
+            <img class="buy_lg" src="/pub_promo/${el.id + '_h_l'}.webp" alt="${el.name}">
+            <img class="buy_mg" src="/pub_promo/${el.id + '_v_l'}.webp" alt="${el.name}">
+            </a>
+        </div>`
     })
+
+    littleBanners += `</div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+</section>`
 
     if (isAllBanners && document.querySelector('.container.promo-photos')) {
         document.querySelector('.container.promo-photos').innerHTML = listPromo
@@ -58,3 +73,11 @@ src='/pub_promo/${el.id + '_v_l'}.webp' loading='lazy' alt='${el.name}'></a>`)
         set4rondomBaner()
     }
 })
+
+/** для страницк cars*/
+window.reloadLittleSwiper = function (){
+    let swiper_buy = document.querySelector('swiper_buy')
+    if(!swiper_buy) return false
+    if(swiper_buy)swiper_buy.innerHTML = littleBanners
+    initSwipper()
+}

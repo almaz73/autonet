@@ -6,7 +6,6 @@ import liveReload from 'vite-plugin-live-reload'
 import sitemap from 'vite-plugin-sitemap'; // Импортируем плагин
 const pages = {
     main: resolve(__dirname, 'index.html'),
-    main2: resolve(__dirname, 'index2.html'),
     privacyPolicy: resolve(__dirname, './privacy-policy/index.html'),
     agreement: resolve(__dirname, './privacy-policy/agreement.html'),
     _404: resolve(__dirname, '404.html'),
@@ -17,7 +16,8 @@ const pages = {
     car: resolve(__dirname, './cars/car.html'),
     podbor: resolve(__dirname, './services/autopodbor/index.html'),
     promo: resolve(__dirname, './promo/index.html'),
-    promo2: resolve(__dirname, './promo/index2.html'),
+    p655683: resolve(__dirname, './promo/655683/index.html'),
+    p660786: resolve(__dirname, './promo/660786/index.html'),
     p660787: resolve(__dirname, './promo/660787/index.html'),
     p660788: resolve(__dirname, './promo/660788/index.html'),
     about: resolve(__dirname, './about-the-company/index.html'),
@@ -148,7 +148,8 @@ export default defineConfig({
             hostname: 'https://xn--80aej9aped4f.xn--p1ai',
 			outDir: 'dict', // Выходная папка
 			changefreq: 'monthly', // Устанавливаем частоту 'weekly' (еженедельно)
-		}),
+            exclude: ['/admin/promo', '/admin/articles', '/admin/vacancy', '/admin/login'],
+        }),
 	],
 	base: '/',
 	build: {

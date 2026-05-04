@@ -24,50 +24,10 @@
 
 
     <!-- Google Fonts + Font Awesome для иконок и чистого стиля -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f4f6fa;
-            color: #1e2a3e;
-            line-height: 1.4;
-        }
-
-        /* обертка-контейнер как на основном сайте (сетка, отступы) */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-        }
-
-        /* Хлебные крошки (light, как на многих страницах) */
-        .breadcrumbs {
-            font-size: 0.85rem;
-            margin-bottom: 1.5rem;
-            color: #5b6e8c;
-        }
-        .breadcrumbs a {
-            text-decoration: none;
-            color: #2c3e66;
-            transition: color 0.2s;
-        }
-        .breadcrumbs a:hover {
-            color: #c9252c;
-        }
-        .breadcrumbs span {
-            margin: 0 6px;
-        }
-        .breadcrumbs .current {
-            color: #1e2a3e;
-            font-weight: 500;
-        }
 
         /* Заголовок страницы */
         .page-header {
@@ -75,27 +35,7 @@
             border-left: 5px solid #c9252c;
             padding-left: 1.2rem;
         }
-        .page-header h1 {
-            font-size: 2.1rem;
-            font-weight: 700;
-            color: #0a1c2f;
-            letter-spacing: -0.3px;
-        }
-        .page-header p {
-            color: #4a627a;
-            margin-top: 0.5rem;
-            font-size: 1rem;
-        }
 
-        /* карточки документов */
-        .docs-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-
-        /* каждый документ — карточка в стиле минималистичного блока,
-           похожего на дизайн сайта (белые карточки с тенью, скругления) */
         .doc-card {
             background: #ffffff;
             border-radius: 20px;
@@ -108,6 +48,7 @@
             flex-wrap: wrap;
             padding: 1.2rem 1.5rem;
         }
+
         .doc-card:hover {
             box-shadow: 0 12px 22px rgba(0, 0, 0, 0.08);
             border-color: #dce5ef;
@@ -120,6 +61,7 @@
             gap: 1.2rem;
             flex: 2 1 260px;
         }
+
         .doc-icon {
             width: 52px;
             height: 52px;
@@ -132,11 +74,12 @@
             font-size: 1.8rem;
             transition: background 0.2s;
         }
-        .doc-details {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
+
+        /*.doc-details {*/
+        /*    display: flex;*/
+        /*    flex-direction: column;*/
+        /*    gap: 6px;*/
+        /*}*/
         .doc-name {
             font-weight: 700;
             font-size: 1.12rem;
@@ -144,6 +87,7 @@
             letter-spacing: -0.2px;
             line-height: 1.3;
         }
+
         .doc-meta {
             display: flex;
             flex-wrap: wrap;
@@ -151,6 +95,7 @@
             font-size: 0.8rem;
             color: #6c86a3;
         }
+
         .doc-size {
             background: #eef2f9;
             padding: 0.2rem 0.7rem;
@@ -160,6 +105,7 @@
             gap: 6px;
             font-weight: 500;
         }
+
         .doc-size i {
             font-size: 0.7rem;
             color: #5e7a9f;
@@ -183,16 +129,19 @@
             background-color: white;
             margin-left: 10px;
         }
+
         .download-btn i {
             font-size: 1rem;
             transition: transform 0.2s;
         }
+
         .download-btn:hover {
             background-color: #c9252c;
             color: white;
             border-color: #c9252c;
             box-shadow: 0 4px 10px rgba(201, 37, 44, 0.2);
         }
+
         .download-btn:hover i {
             transform: translateY(1px);
         }
@@ -206,6 +155,7 @@
             color: #6f8aac;
             text-align: center;
         }
+
         .footer-note a {
             color: #c9252c;
             text-decoration: none;
@@ -213,25 +163,14 @@
 
         /* адаптивность: для экранов меньше 640px меняем направление */
         @media (max-width: 640px) {
-            .container {
-                padding: 1.2rem 1rem;
-            }
             .doc-card {
-                padding: 1rem;
-                flex-direction: column;
-                align-items: flex-start;
                 gap: 1rem;
             }
-            .doc-info {
-                width: 100%;
-            }
+
             .download-btn {
-                width: 100%;
+                width: 60%;
                 justify-content: center;
-                margin-left: 0;
-            }
-            .page-header h1 {
-                font-size: 1.7rem;
+                margin: auto;
             }
         }
 
@@ -256,68 +195,61 @@
         </div>
     </div>
 
-
-
-
     <div class="container">
-            <div class="page-header">
-                <h1>Документы автосалона</h1>
-                <p>Официальная информация, регулирующая отношения с клиентами, условия обработки данных и правовая база</p>
-            </div>
-
-            <div class="docs-grid">
-                <!-- 1. Федеральный закон о рекламе -->
-                <div class="doc-card">
-                    <div class="doc-info">
-                        <div class="doc-icon">
-                            <i class="fas fa-gavel"></i>
-                        </div>
-                        <div class="doc-details">
-                            <div class="doc-name">Правила выдачи и использования именных сертификатов на скидку при покупке
-                                автомобиля в дилерских центрах ООО «Форум»</div>
-                            <div class="doc-meta">
-                                <span class="doc-size"><i class="far fa-file-pdf"></i> PDF-документ</span>
-                                <span class="doc-size"><i class="fas fa-database"></i> 164,5 кб</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="https://автосеть.рф/st/upload/rule_sertificates.pdf" download class="download-btn" data-filename="zakon_o_reklame_286-fz.pdf" data-size="486.7">
-                        <i class="fas fa-download"></i> Скачать
-                    </a>
-                </div>
-
-                <!-- 2. Политика конфиденциальности -->
-<!--                <div class="doc-card">-->
-<!--                    <div class="doc-info">-->
-<!--                        <div class="doc-icon">-->
-<!--                            <i class="fas fa-lock"></i>-->
-<!--                        </div>-->
-<!--                        <div class="doc-details">-->
-<!--                            <div class="doc-name">Правила выдачи и использования именных сертификатов на скидку при покупке-->
-<!--                                автомобиля в дилерских центрах ООО «Форум»</div>-->
-<!--                            <div class="doc-meta">-->
-<!--                                <span class="doc-size"><i class="far fa-file-pdf"></i> PDF-документ</span>-->
-<!--                                <span class="doc-size"><i class="fas fa-database"></i> 312,6 кб</span>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <a href="https://автосеть.рф/st/rule_sertificates.pdf" download class="download-btn" data-filename="politika_konfidentsialnosti.pdf" data-size="312.6">-->
-<!--                        <i class="fas fa-download"></i> Скачать-->
-<!--                    </a>-->
-<!--                </div>-->
-
-
-
-            <div class="footer-note">
-                <i class="far fa-building"></i> Автосеть.РФ — официальные документы. <br>
-                Актуальная версия документов размещена <strong>«29» апреля 2026 г.</strong> <br>
-            </div>
+        <div class="page-header">
+            <h1>Документы автосалона</h1>
+            <p>Официальная информация, регулирующая отношения с клиентами, условия обработки данных и правовая база</p>
         </div>
 
+        <!-- 1. Федеральный закон о рекламе -->
+        <div class="doc-card">
+            <div class="doc-info">
+                <div class="doc-icon">
+<!--                    <i class="fas fa-gavel"></i>-->
+                    ✔
+                </div>
+                <div>
+                    <div class="doc-name">Правила выдачи и использования именных сертификатов на скидку при покупке
+                        автомобиля в дилерских центрах ООО «Форум»
+                    </div>
+                    <div class="doc-meta">
+                        <span class="doc-size"><i class="far fa-file-pdf"></i> PDF-документ</span>
+                        <span class="doc-size"><i class="fas fa-database"></i> 164,5 кб</span>
+                    </div>
+                </div>
+            </div>
+            <a href="https://автосеть.рф/st/upload/rule_sertificates.pdf" download class="download-btn">
+<!--                <i class="fas fa-download"></i>  -->
+                <span style="font-size: large"> ≚ </span> Скачать
+            </a>
+        </div>
+
+        <!-- 2. Политика конфиденциальности -->
+        <!--                <div class="doc-card">-->
+        <!--                    <div class="doc-info">-->
+        <!--                        <div class="doc-icon">-->
+        <!--                            <i class="fas fa-lock"></i>-->
+        <!--                        </div>-->
+        <!--                        <div class="doc-details">-->
+        <!--                            <div class="doc-name">Правила выдачи и использования именных сертификатов на скидку при покупке-->
+        <!--                                автомобиля в дилерских центрах ООО «Форум»</div>-->
+        <!--                            <div class="doc-meta">-->
+        <!--                                <span class="doc-size"><i class="far fa-file-pdf"></i> PDF-документ</span>-->
+        <!--                                <span class="doc-size"><i class="fas fa-database"></i> 312,6 кб</span>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                    <a href="https://автосеть.рф/st/rule_sertificates.pdf" download class="download-btn" data-filename="politika_konfidentsialnosti.pdf" data-size="312.6">-->
+        <!--                        <i class="fas fa-download"></i> Скачать-->
+        <!--                    </a>-->
+        <!--                </div>-->
 
 
-
-
+        <div class="footer-note">
+            <i class="far fa-building"></i> Автосеть.РФ — официальные документы. <br>
+            Актуальная версия документов размещена <strong>«29» апреля 2026 г.</strong> <br>
+        </div>
+    </div>
 
 
 </main>

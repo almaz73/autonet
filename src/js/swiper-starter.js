@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 let isInited = false
 export function initSwipper() {
-    if (swiper || isInited) return false
+    if (isCarPage && (swiper || isInited)) return false
     isInited = true
 
     let params = {
@@ -57,7 +57,6 @@ export function initSwipper() {
     function ewcursiveWaitswiper() {
         swiper = new Swiper('.mySwiper', params)
         if (!swiper) setTimeout(ewcursiveWaitswiper, 730)
-        else window.showSlide(0)
     }
 
     setTimeout(ewcursiveWaitswiper, 1100)
