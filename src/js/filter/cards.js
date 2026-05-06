@@ -17,7 +17,7 @@ function createNode(item, N) {
               <a class="big_link" 
                  href="javascript:openCar('${item.href}','${item.images[0]}')" 
                  data-href="${item.href}"
-                 title="Перейти">
+                 title="Перейти к характеристикам автомобиля">
                   <div class='name'>
                       <br>                      
                       ${item.name}, ${item.yearReleased}
@@ -31,10 +31,12 @@ function createNode(item, N) {
                       ${item.info}
                   </div>
                   <div class='cart__box--bottom' style="display: ${item.type === 'tyres' ? 'none' : ''}">
-                      <a href="javascript:addCompare('${item.id}')" ondblclick="dblCompare('${item.id}')">
+                      <a href="javascript:addCompare('${item.id}')"
+                      title="Добавить в список сравнения" 
+                        ondblclick="dblCompare('${item.id}')">
                           <img id="compareId_${item.id}" src='/st/icons/compare_cars.svg' alt=''>
                       </a>
-                      <a href="javascript:addFavorite('${item.id}')">
+                      <a href="javascript:addFavorite('${item.id}')" title="Добавить в избранные">
                           <img id="favoriteId_${item.id}" src='/st/icons/penta.svg' alt=''>
                       </a>
                   </div>

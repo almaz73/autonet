@@ -148,7 +148,7 @@ export default defineConfig({
             hostname: 'https://xn--80aej9aped4f.xn--p1ai',
 			outDir: 'dict', // Выходная папка
 			changefreq: 'monthly', // Устанавливаем частоту 'weekly' (еженедельно)
-            exclude: ['/admin/promo', '/admin/articles', '/admin/vacancy', '/admin/login'],
+            exclude: ['/admin/promo', '/admin/article', '/admin/vacancy', '/admin/login'],
         }),
 	],
 	base: '/',
