@@ -1,5 +1,5 @@
 .bigbaner {
-    min-height: calc(100vh - 90px);
+    min-height: calc(100vh - 240px);
     background-position: center center;
     background-size: cover;
     color: white;
@@ -12,7 +12,7 @@
     content: '';
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 50%;
     background: linear-gradient(to bottom, #00000000 0%, #000000A5 53%, #000000F2 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#f2000000', GradientType=0);
 }
@@ -24,6 +24,17 @@
     align-items: flex-end;
     margin-bottom: 20px;
     padding: 0 20px;
+
+}
+
+.bigbaner__filed.bread_margin{
+    margin-top: 160px;
+}
+
+@media (width<1000px) {
+    .bigbaner__filed.bread_margin{
+        margin-top: 0;
+    }
 }
 
 /* textBlock**/
@@ -366,11 +377,13 @@
 }
 
 .podbor_f {
-    background-image: url(/st/photo/podbor/autopodbor_bnr.webp)
+    background-image: url(/st/photo/podbor/autopodbor_bnr.webp);
+    /*min-height: calc(100vh - 210px);*/
 }
 
 .podbor_ff {
-    background-image: url(/st/photo/podbor/autopodbor_bottom_bnr.webp)
+    background-image: url(/st/photo/podbor/autopodbor_bottom_bnr.webp);
+
 }
 
 .franshiza_f {

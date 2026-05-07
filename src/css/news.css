@@ -88,3 +88,7 @@ main img {
     border-radius: 6px;
     aspect-ratio: 191/107;
 }
+
+main > .content{
+    margin: 2rem 0 4rem;
+}

@@ -47,6 +47,10 @@ main h2, main h1 {
     padding: 20px 0 10px;
 }
 
+.bigbaner .page_padding_20 {
+    padding: 20px;
+}
+
 @media (max-width: 500px) {
 
     .mainPhoto_little {
