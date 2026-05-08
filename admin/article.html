@@ -12,6 +12,32 @@
     <link rel='stylesheet' href='../src/css/filter-controls.css'/>
     <link rel='stylesheet' href='../src/css/admin.css'/>
     <script type='module' src='js/admin-article.js'></script>
+    <style>
+        #myModal [contenteditable="true"]:hover {
+            background: pink;
+            outline: thin;
+
+        }
+
+        #myModal span.label {
+            background: yellow;
+            font-size: 12px;
+        }
+
+        #myModal .buttons--sticky {
+            position: sticky;
+            bottom: -16px;
+            padding: 3px 12px;
+            background: #ddddddee;
+        }
+        #myModal .modalcloser--sticky {
+            position: sticky;
+            top: -16px;
+            padding: 4px 12px;
+            float: right;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body style='margin-top: 73px'>
 
@@ -22,10 +48,10 @@
 </h3>
 
 <main>
-    <h1> Редактирование статей и новостей </h1>
+    <h1> Редактор статей и новостей </h1>
     <br>
     <div class="buttons">
-        <small class="summ" style="float: left">Активных акций - 0, на главной - 0 </small>
+        <small class="summ" style="float: left">Статей - 0, не активных статей - 0 </small>
         <button class="admin_add_button" onclick="saveNewArticleModal()"> Добавить новый</button>
         <div class="hideField" style="display: none">
             <button class="admin_add_button" onclick="cancelArticle()"> Отменить изменения</button>
@@ -35,14 +61,13 @@
     <br><br><br>
 
 
-    <div id="article_table_1" class="table_head"></div>
-    <div id="article_table_2" class="table_content"></div>
+    <div id="article_table_1"></div>
 
 
 </main>
 
-<dialog id="myModal" class="type new">
-    <button id="closeBtn">✖</button>
+<dialog id="myModal" class="type new" style="max-width: 900px; min-width: 700px">
+    <button id="closeBtn" class="modalcloser--sticky">✖</button>
     <h2 class="type_new">Новая статья</h2>
     <h2 class="type_edit">Редактирование статьи</h2>
 
@@ -51,50 +76,68 @@
         <div>
             <label>Код</label>
             <input style="width: 73px" id="qw4" oninput="changeCod(this)">
-            <small> * код акции рекомендуется не менять. Для SEO</small>
+            <small> * код статьи рекомендуется не менять. Для SEO</small>
         </div>
-    </details>
+        <button onclick="codGeneration()"
+                title="Используйте только если уверены, что хотите из поисковиков удалить прежнюю ссылку">
+            Генерировать новый код
+        </button>
+        <br><br>
+        <div title="Влияет на очередность появления в списке">
+            <label>Порядок</label>
+            <input id="qw2">
+        </div>
 
-    <div>
-        <label>Название</label>
-        <input style="width: 100%" id="qw0">
-    </div>
+    </details>
+    <br><br>
 
     <div style="display: flex; flex-wrap: wrap">
-        <div>
-            <div title="Акции можно включить для показа на главной странице">
-                <label for="qw1">На главной</label>
-                <input type="checkbox" id="qw1">
-            </div>
-            <div title="Влияет на очередность появления в списке">
-                <label>Порядок</label>
-                <input id="qw2">
-            </div>
+        <div style="display: flex; justify-content: space-between; width: 100%">
             <div title="Тут акцию можно выключить">
-                <label for="qw3">Актив</label>
+                <label for="qw3">Опубликовано на сайте</label>
                 <input type="checkbox" id="qw3">
+            </div>
+            <div><a href="#">Предварительный просмотр</a>
             </div>
         </div>
         <div class="photo-div">
             <div>
-                <img id="_278" style="width: 50px" alt="">
-                <label>Фото 278х402</label>
-                <button onclick="uploadPhoto('278х402')"> Добавить</button>
-            </div>
-            <div>
-                <img id="_585" style="width: 50px" alt="">
-                <label>Фото 585х200</label>
-                <button onclick="uploadPhoto('585х200')"> Добавить</button>
-            </div>
-            <div>
-                <img id="_1200" style="width: 330px" alt="">
-                <label>Фото 1200х501</label>
-                <button onclick="uploadPhoto('1200х501')"> Добавить</button>
+                <img id="_278" style="width: 840px" alt="">
+                <button onclick="uploadPhoto()"> Добавить/сменить фото</button>
             </div>
         </div>
     </div>
-    <button class="type_new" style="float: right" onclick="saveNewArticleModal()">Создать статью</button>
-    <button class="type_edit" style="float: right" onclick="saveArticleModal()">Сохранить статью</button>
+    <div>
+
+        <span class="label">Краткий анонс</span>
+        <div contenteditable="true" id="qw10">
+        </div>
+
+        <div>
+            <span class="label">Заголовок</span>
+            <h2 contenteditable="true" id="qw0">
+            </h2>
+        </div>
+
+        <span class="label">Содержимое статьи</span>
+        <div contenteditable="true" id="qw11"></div>
+    </div>
+
+
+    <div class="buttons--sticky">
+        <div>
+            <button onclick="insertTextAtCursor('qw11', ' <h2>Заголовок</h2> ')">Заголовок1</button>
+            <button>Заголовок2</button>
+            <button>Новый абзац</button>
+            <button>Перечисление</button>
+            <button>Заголовок2</button>
+            <button>Линия</button>
+        </div>
+        <div>
+            <button class="type_new" onclick="saveNewArticleModal()">Создать статью</button>
+            <button class="type_edit" onclick="saveArticleModal()">Сохранить статью</button>
+        </div>
+    </div>
 
 </dialog>
 

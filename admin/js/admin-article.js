@@ -3,8 +3,8 @@ import {
     api_deleteArticle,
     api_getArticle,
     api_saveArticle,
-    set_panel,
-    api_uploadPhotoArticle
+    api_uploadPhotoArticle,
+    set_panel
 } from "./apibase_admin.js";
 import {checkAuth} from './auth-service.js';
 
@@ -30,7 +30,7 @@ const closeBtn = document.getElementById("closeBtn");
 window.changedFiled = function (id, type, value) {
     toDirty(id)
     let row = datas.find(row => row.id === id)
-    let isPhoto = row.photo278 && row.photo585 && row.photo1200
+    let isPhoto = !!row.photo
 
     if (!isPhoto && type !== 'priority') return alert('Необходимо прикрепить фотографии')
 
@@ -50,56 +50,40 @@ window.changedFiled = function (id, type, value) {
 closeBtn.onclick = () => modal.close();
 
 
+api_getArticle(showArticle)
 
-api_getArticle(showArticles)
-
-function showArticles(result) {
+function showArticle(result) {
     datas = result
     let content = ''
     let activeCount = 0
-    let mainCount = 0
     for (let row of result) {
         if (row.active) activeCount++
-        if (row.onMain && row.active) mainCount++
         content += ` <tr onclick="setSelected(${row.id}, this)" class='SEL'>
             <td style="max-width: 700px; min-width: 105px">
-             <a href="/article/${row.code}" style="min-width:150px; padding-right: 20px; font-size:10px">${row.code}</a>
+             <a href="/news/${row.code}" style="min-width:150px; padding-right: 20px; font-size:10px">${row.code}</a>
              ${row.name}
                 <span class="remove-bt" onclick="deleteArticle(${row.id})">❌</span>
                 <span class="remove-bt" onclick="editArticle(${row.id})">✎</span>
             </td>
-            <td><img style="width: 25px" class="${row.photo278 && row.photo585 && row.photo1200 ? '' : 'hidden-img'}" src="/pub_article/${row.photo278}" /></td>
-            <td><input type="checkbox" ${row.onMain === 1 ? 'checked' : ''} onchange="changedFiled(${row.id}, 'onMain', this.checked)"></td>
+            <td><img style="width: 100px" class="${row.photo ? '' : 'hidden-img'}" src="/pub_article/${row.photo}" /></td>
             <td><input value="${row.priority}" oninput="onlyNumber(this);changedFiled(${row.id}, 'priority', this.value)"/></td>
             <td><input type="checkbox" ${row.active === 1 ? 'checked' : ''} onchange="changedFiled(${row.id}, 'active',this.checked)"></td>
         </tr>`
     }
 
     let article_table = document.querySelector('#article_table_1')
-    let article_table2 = document.querySelector('#article_table_2')
     article_table.innerHTML = `<table class="admin_table">
-        <tr>
+        <tr style="background: #dddddd">
             <th> Название</th>
             <th></th>
-            <th style="white-space: nowrap"> На главной</th>
-            <th> Порядок</th>
-            <th> Актив</th>
+            <th title="по умолчанию все должны быть 10"> Порядок</th>
+            <th> На сайте</th>
         </tr>
         ${content}
     </table>`
 
-    article_table2.innerHTML = `<table class="admin_table">
-        <tr style="opacity: 0; top: 40px">
-            <th> Название</th>
-            <th></th>
-           <th style="white-space: nowrap"> На главной</th>
-            <th> Порядок</th>
-            <th> Актив</th>
-        </tr>
-        ${content}
-    </table>`
 
-    document.querySelector('.summ').innerHTML = `Активных акций - ${activeCount}, на главной - ${mainCount}, выключенных - ${result.length - activeCount}`
+    document.querySelector('.summ').innerHTML = `Всего - ${activeCount}, не опубликованныхf - ${result.length - activeCount}`
 }
 
 window.saveNewArticleModal = function () {
@@ -114,65 +98,16 @@ window.saveNewArticleModal = function () {
     })
 }
 
-function showArticle(result) {
-    datas = result
-    let content = ''
-    let activeCount = 0
-    let mainCount = 0
-    for (let row of result) {
-        if (row.active) activeCount++
-        if (row.onMain && row.active) mainCount++
-        content += ` <tr onclick="setSelected(${row.id}, this)" class='SEL'>
-            <td style="max-width: 700px; min-width: 105px">
-             <a href="/article/${row.code}" style="min-width:150px; padding-right: 20px; font-size:10px">${row.code}</a>
-             ${row.name}
-                <span class="remove-bt" onclick="deleteArticle(${row.id})">❌</span>
-                <span class="remove-bt" onclick="editArticle(${row.id})">✎</span>
-            </td>
-            <td><img style="width: 25px" class="${row.photo278 && row.photo585 && row.photo1200 ? '' : 'hidden-img'}" src="/pub_article/${row.photo278}" /></td>
-            <td><input type="checkbox" ${row.onMain === 1 ? 'checked' : ''} onchange="changedFiled(${row.id}, 'onMain', this.checked)"></td>
-            <td><input value="${row.priority}" oninput="onlyNumber(this);changedFiled(${row.id}, 'priority', this.value)"/></td>
-            <td><input type="checkbox" ${row.active === 1 ? 'checked' : ''} onchange="changedFiled(${row.id}, 'active',this.checked)"></td>
-        </tr>`
-    }
-
-    let article_table = document.querySelector('#article_table_1')
-    let article_table2 = document.querySelector('#article_table_2')
-    article_table.innerHTML = `<table class="admin_table">
-        <tr>
-            <th> Название</th>
-            <th></th>
-            <th style="white-space: nowrap"> На главной</th>
-            <th> Порядок</th>
-            <th> Актив</th>
-        </tr>
-        ${content}
-    </table>`
-
-    article_table2.innerHTML = `<table class="admin_table">
-        <tr style="opacity: 0; top: 40px">
-            <th> Название</th>
-            <th></th>
-           <th style="white-space: nowrap"> На главной</th>
-            <th> Порядок</th>
-            <th> Актив</th>
-        </tr>
-        ${content}
-    </table>`
-
-    document.querySelector('.summ').innerHTML = `Активных акций - ${activeCount}, на главной - ${mainCount}, выключенных - ${result.length - activeCount}`
-}
 
 function getModalFields() {
     return {
-        name: document.querySelector('#qw0').value,
-        onMain: document.querySelector('#qw1').checked,
+        name: document.querySelector('#qw0').innerHTML,
+        shortContent: document.querySelector('#qw10').innerHTML,
+        content: document.querySelector('#qw11').innerHTML,
         priority: +document.querySelector('#qw2').value,
         active: document.querySelector('#qw3').checked,
         code: document.querySelector('#qw4').value,
-        photo278: document.querySelector('#_278').alt,
-        photo585: document.querySelector('#_585').alt,
-        photo1200: document.querySelector('#_1200').alt,
+        photo: document.querySelector('#_278').alt
     }
 }
 
@@ -201,19 +136,17 @@ window.codGeneration = function () {
     if (max === -Infinity) max = 0
     document.querySelector('#qw4').value = ++max
 }
+
 function clearPanel() {
-    document.querySelector('#qw0').value = ''
-    document.querySelector('#qw1').checked = false
+    document.querySelector('#qw0').innerHTML = ''
+    document.querySelector('#qw10').innerHTML = ''
+    document.querySelector('#qw11').innerHTML = ''
     document.querySelector('#qw2').value = ''
     document.querySelector('#qw3').checked = false
     document.querySelector('#qw4').value = ''
     document.querySelector('#_278').src = ''
-    document.querySelector('#_585').src = ''
-    document.querySelector('#_1200').src = ''
-    document.querySelector('#_278').alt = ''
-    document.querySelector('#_585').alt = ''
-    document.querySelector('#_1200').alt = ''
 }
+
 function prepareModal(id) {
     clearPanel()
 
@@ -235,14 +168,13 @@ window.editArticle = function (id) {
     if (id) {
         let row = datas.find(row => row.id === id)
         if (row) {
-            document.querySelector('#qw0').value = row.name
-            document.querySelector('#qw1').checked = row.onMain
+            document.querySelector('#qw0').innerHTML = row.name
+            document.querySelector('#qw10').innerHTML = row.shortContent
+            document.querySelector('#qw11').innerHTML = row.content
             document.querySelector('#qw2').value = row.priority
             document.querySelector('#qw3').checked = row.active
             document.querySelector('#qw4').value = row.code
-            if (row.photo278) setPhoto(row.photo278)
-            if (row.photo585) setPhoto(row.photo585)
-            if (row.photo1200) setPhoto(row.photo1200)
+            if (row.photo) setPhoto(row.photo)
 
             if (!row.code) codGeneration()
         }
@@ -252,6 +184,8 @@ window.editArticle = function (id) {
 window.saveArticleModal = function (withoutClose) {
     let data = getModalFields()
     if (!data.name) return alert('Поле "Название" обязателен для заполнения')
+    if (!data.content) return alert('Поле "Содержимое статьи" обязателен для заполнения')
+    if (!data.shortContent) return alert('Поле "Краткий анонс" обязателен для заполнения')
     data.id = dirties[0]
 
     api_saveArticle(data, val => {
@@ -270,23 +204,12 @@ window.deleteArticle = function (id) {
 }
 
 //// работа с фотками
-
 function setPhoto(link) {
-    if (link.includes('v_b')) {
-        document.querySelector('#_278').src = '/pub_article/' + link
-        document.querySelector('#_278').alt = link
-    }
-    if (link.includes('h_b')) {
-        document.querySelector('#_585').src = '/pub_article/' + link
-        document.querySelector('#_585').alt = link
-    }
-    if (link.includes('h_m')) {
-        document.querySelector('#_1200').src = '/pub_article/' + link
-        document.querySelector('#_1200').alt = link
-    }
+    document.querySelector('#_278').src = '/pub_article/' + link
+    document.querySelector('#_278').alt = link
 }
 
-window.uploadPhoto = function (type) {
+window.uploadPhoto = function () {
     const fileInput = document.createElement('input');
     fileInput.type = 'file';
     fileInput.accept = 'image/*'; // Accept only images
@@ -297,13 +220,12 @@ window.uploadPhoto = function (type) {
         const file = fileInput.files[0];
         if (!file) return;
         // if (file.name.indexOf(type) == -1) return alert('Файл должен называться ' + type);
-        api_uploadPhotoArticle({file, name: type + '_' + id}, res => {
+        api_uploadPhotoArticle({file, name: 'news_' + id}, res => {
             // сохраним в базе
             const url = res.photoUrl
             const data = datas.find(el => el.id === id)
-            if (url.includes('v_b')) data.photo278 = url
-            if (url.includes('h_b')) data.photo585 = url
-            if (url.includes('h_m')) data.photo1200 = url
+
+            data.photo = url
 
             // отобразим
             setPhoto(url)
