@@ -238,6 +238,12 @@ window.uploadPhoto = function () {
 }
 
 
+/// работа tiniMCE
 
+// 3. Инициализация TinyMCE
+console.log('bkLib = ',bkLib)
+bkLib.onDomLoaded(function () {
+    nicEditors.allTextAreas()
+});
 
 

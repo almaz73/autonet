@@ -12,6 +12,7 @@
     <link rel='stylesheet' href='../src/css/filter-controls.css'/>
     <link rel='stylesheet' href='../src/css/admin.css'/>
     <script type='module' src='js/admin-article.js'></script>
+    <script type="text/javascript" src="js/nicEdit-latest.js"></script>
     <style>
         #myModal [contenteditable="true"]:hover {
             background: pink;
@@ -30,12 +31,23 @@
             padding: 3px 12px;
             background: #ddddddee;
         }
+
         #myModal .modalcloser--sticky {
             position: sticky;
             top: -16px;
             padding: 4px 12px;
             float: right;
             cursor: pointer;
+        }
+
+        #myModal .mainPhoto_big{
+            width: 840px;
+        }
+
+        @media (width<500px) {
+            #myModal .mainPhoto_big{
+                width: 300px;
+            }
         }
     </style>
 </head>
@@ -48,7 +60,7 @@
 </h3>
 
 <main>
-    <h1> Редактор статей и новостей </h1>
+    <h1> Редактор</h1>
     <br>
     <div class="buttons">
         <small class="summ" style="float: left">Статей - 0, не активных статей - 0 </small>
@@ -63,6 +75,12 @@
 
     <div id="article_table_1"></div>
 
+    <div id="sample">
+        <h4> Second Textarea </h4>
+        <textarea name="area2" style="width: 100%;">
+                Some Initial Content was in this textarea
+            </textarea>
+    </div>
 
 </main>
 
@@ -102,7 +120,7 @@
         </div>
         <div class="photo-div">
             <div>
-                <img id="_278" style="width: 840px" alt="">
+               111 <img id="_278" class="mainPhoto_big" alt="">222
                 <button onclick="uploadPhoto()"> Добавить/сменить фото</button>
             </div>
         </div>
@@ -125,14 +143,6 @@
 
 
     <div class="buttons--sticky">
-        <div>
-            <button onclick="insertTextAtCursor('qw11', ' <h2>Заголовок</h2> ')">Заголовок1</button>
-            <button>Заголовок2</button>
-            <button>Новый абзац</button>
-            <button>Перечисление</button>
-            <button>Заголовок2</button>
-            <button>Линия</button>
-        </div>
         <div>
             <button class="type_new" onclick="saveNewArticleModal()">Создать статью</button>
             <button class="type_edit" onclick="saveArticleModal()">Сохранить статью</button>
