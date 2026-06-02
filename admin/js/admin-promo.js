@@ -201,10 +201,12 @@ window.savePromoModal = function (withoutClose) {
     if (!data.name) return alert('Поле "Название" обязателен для заполнения')
     data.id = dirties[0]
 
-    api_savePromo(data, val => {
-        if (!withoutClose) modal.close()
+    api_savePromo(data, val => {        
         api_getPromo(showPromo)
-        clearPanel()
+        if (!withoutClose) {
+            modal.close()
+            clearPanel()
+        }
     })
 }
 

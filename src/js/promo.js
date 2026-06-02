@@ -19,6 +19,7 @@ function set4rondomBaner() {
 }
 
 function showBigBannerval(el) {
+    if(!el) return false
     let bigBanner = ` <a href='/promo/${el.code}/'>
             <img src='/pub_promo/${el.id + '_h_m'}.webp' alt='${el.name}' class='big'>
             <img src='/pub_promo/${el.id + '_v_b'}.webp' alt='${el.name}' class='small'>
