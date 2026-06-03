@@ -50,9 +50,9 @@
     <details title="Код промоакции, автоматически создается" style="text-align: center">
         <summary></summary>
         <div>
-            <label>Код</label>
+            <label>Код акции</label>
             <input style="width: 73px" id="qw4" oninput="changeCod(this)">
-            <small> * код акции рекомендуется не менять. Для SEO</small>
+            <small> * рекомендуется не менять. Для SEO</small>
             <br>
             <button onclick="codGeneration()"
                     title="Используйте только если уверены, что хотите из поисковиков удалить прежнюю ссылку">
@@ -82,20 +82,19 @@
             </div>
         </div>
         <div class="photo-div">
-            <div>
+            <div><button onclick="uploadPhoto('278х402')"> Добавить</button>
                 <img id="_278" style="width: 50px" alt="">
                 <label>Фото 278х402</label>
-                <button onclick="uploadPhoto('278х402')"> Добавить</button>
             </div>
             <div>
+                <button onclick="uploadPhoto('585х200')"> Добавить</button>
                 <img id="_585" style="width: 50px" alt="">
                 <label>Фото 585х200</label>
-                <button onclick="uploadPhoto('585х200')"> Добавить</button>
             </div>
             <div>
+                <button onclick="uploadPhoto('1200х501')"> Добавить</button>
                 <img id="_1200" style="width: 330px" alt="">
                 <label>Фото 1200х501</label>
-                <button onclick="uploadPhoto('1200х501')"> Добавить</button>
             </div>
         </div>
     </div>

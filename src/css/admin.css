@@ -107,6 +107,10 @@
     pointer-events: initial;
 }
 
+.type.edit .photo-div button{
+    cursor: pointer;
+}
+
 .hidden-img {
     display: none;
 }

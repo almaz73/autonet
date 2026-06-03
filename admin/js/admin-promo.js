@@ -222,15 +222,15 @@ window.savePromo = function () {
 
 function setPhoto(link) {
     if (link.includes('v_b')) {
-        document.querySelector('#_278').src = '/pub_promo/' + link
+        document.querySelector('#_278').src = '/pub_promo/' + link + '?' + parseInt(Math.random() * 10000)
         document.querySelector('#_278').alt = link
     }
     if (link.includes('h_b')) {
-        document.querySelector('#_585').src = '/pub_promo/' + link
+        document.querySelector('#_585').src = '/pub_promo/' + link + '?' + parseInt(Math.random() * 10000)
         document.querySelector('#_585').alt = link
     }
     if (link.includes('h_m')) {
-        document.querySelector('#_1200').src = '/pub_promo/' + link
+        document.querySelector('#_1200').src = '/pub_promo/' + link + '?' + parseInt(Math.random() * 10000)
         document.querySelector('#_1200').alt = link
     }
 }
