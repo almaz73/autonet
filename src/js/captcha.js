@@ -28,6 +28,7 @@ export function initCaptcha(){
 class PuzzleCaptcha {
     constructor(order, parent) {
         this.parent = parent
+        this.parentRect = parent.getBoundingClientRect();
         this.puzzlePiece = document.querySelector(`.puzzle-piece.${order}`);
         this.targetArea = document.querySelector(`.target-area.${order}`);
         this.instructions = document.querySelector(`.instructions.${order}`);
@@ -99,14 +100,16 @@ class PuzzleCaptcha {
     }
 
     updatePosition() {
+        if (this.currentX > 305) this.currentX = this.parentRect.width - 44
+
         this.puzzlePiece.style.transform = `translateX(${this.currentX}px)`;
         this.offsetX = this.currentX;
     }
 
     verify() {
-        const parentRect = this.parent.getBoundingClientRect();
+        this.parentRect = this.parent.getBoundingClientRect();
         const childRect = this.puzzlePiece.getBoundingClientRect();
-        const offsetLeftPercent = ((childRect.left - parentRect.left) / parentRect.width) * 100;
+        const offsetLeftPercent = ((childRect.left - this.parentRect.left) / this.parentRect.width) * 100;
         if (Math.abs(this.targetX - offsetLeftPercent) < 1) {
             this.parent.style.border = ''
             this.parent.classList.add('checked')
