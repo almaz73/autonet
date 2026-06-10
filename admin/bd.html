@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+  <link rel='icon' type='image/svg+xml' sizes='any' href='/st/Favicon_as.svg'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Статьи и новости. Редактирование - Автосеть.РФ</title>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+  <meta name='robots' content='noindex'>
+
+  <link rel='stylesheet' href='../src/css/style.css'/>
+  <link rel='stylesheet' href='../src/css/filter-controls.css'/>
+  <link rel='stylesheet' href='../src/css/admin.css'/>
+  <script type='module' src='js/admin-bd.js'></script>
+  <style>
+      body {
+          font-size: small;
+      }
+
+      #myModal [contenteditable="true"]:hover {
+          background: pink;
+          outline: thin;
+
+      }
+
+      #myModal span.label {
+          background: yellow;
+          font-size: 12px;
+      }
+
+      #myModal .buttons--sticky {
+          position: sticky;
+          bottom: -16px;
+          padding: 3px 12px;
+          background: #ddddddee;
+      }
+
+      #myModal .modalcloser--sticky {
+          position: sticky;
+          top: -16px;
+          padding: 4px 12px;
+          float: right;
+          cursor: pointer;
+      }
+
+      #myModal .mainPhoto_big {
+          width: 840px;
+      }
+
+      @media (width < 500px) {
+          #myModal .mainPhoto_big {
+              width: 300px;
+          }
+      }
+  </style>
+</head>
+<body style='margin-top: 73px'>
+
+<h3 class="head_admin">
+  <span style="font-size: small; float:left"><a href="/"> Перейти к сайту </a></span>
+  Админка. Данные из форм.
+  <button style="float: right; margin-right: 18px" onclick="logoutExit()">Выйти из админки</button>
+</h3>
+
+<main>
+  <div id="bd_table_1"></div>
+</main>
+
+</body>
+</html>
