@@ -29,7 +29,6 @@ export function api_getPromo(callback) {
 }
 
 export function api_getArticle(callback) {
-    api_getArticle
     let request = '/api/article';
     const token = localStorage.getItem('admin_token');
     const headers = token ? {'Authorization': `Bearer ${token}`} : {};
@@ -261,4 +260,21 @@ export function api_uploadPhotoArticle(obj, callback) {
         .catch(error => {
             console.error('Error uploading photo:', error);
         });
+}
+
+// работа с формами
+export function api_getBD(callback) {
+    let request = '/api/bd';
+    const token = localStorage.getItem('admin_token');
+    const headers = token ? {'Authorization': `Bearer ${token}`} : {};
+    return fetch(request, {
+        method: 'GET',
+        headers: headers
+    }).then(res => {
+        if (!res.ok) console.log(`HTTP error! status: ${res.status}`)
+        if (res.status === 401) window.location.href = '../admin/login.html?redirect=' + init_admin_panel;
+        return res.json();
+    })
+        .then(res => callback(res))
+        .catch(error => console.error('Произошла ошибка:', error));
 }
