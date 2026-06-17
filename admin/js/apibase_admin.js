@@ -263,8 +263,11 @@ export function api_uploadPhotoArticle(obj, callback) {
 }
 
 // работа с формами
-export function api_getBD(callback) {
+export function api_getBD(callback, params) {
     let request = '/api/bd';
+    if (params.page) request += `?page=${params.page}&pageSize=${params.pageSize}`
+    if (params.city) request += `&city=${params.city}`
+
     const token = localStorage.getItem('admin_token');
     const headers = token ? {'Authorization': `Bearer ${token}`} : {};
     return fetch(request, {
