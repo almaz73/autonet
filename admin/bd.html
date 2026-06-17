@@ -17,6 +17,10 @@
           font-size: small;
       }
 
+      .head_admin{
+        background: #ccffff;
+      }
+
       #myModal [contenteditable="true"]:hover {
           background: pink;
           outline: thin;
@@ -58,12 +62,17 @@
 
 <h3 class="head_admin">
   <span style="font-size: small; float:left"><a href="/"> Перейти к сайту </a></span>
-  Админка. Данные из форм.
+  Данные из форм.
   <button style="float: right; margin-right: 18px" onclick="logoutExit()">Выйти из админки</button>
 </h3>
 
 <main>
   <div id="bd_table_1"></div>
+
+  <br>
+  <div class='bottom-nav pager'>
+    Страницы: <span id='pager'></span>
+  </div>
 </main>
 
 </body>
