@@ -90,7 +90,8 @@ const pages = {
     vacancyAdmin: resolve(__dirname, './admin/vacancy.html'),
     promoAdmin: resolve(__dirname, './admin/promo.html'),
     articleAdmin: resolve(__dirname, './admin/article.html'),
-    loginAdmin: resolve(__dirname, './admin/login.html')
+    loginAdmin: resolve(__dirname, './admin/login.html'),
+    bdAdmin: resolve(__dirname, './admin/bd.html')
 }
 // Превращаем пути в массив имен файлов для проверки (index.html, admin.html)
 const allowedHtmlFiles = Object.values(pages).map(p => p.split('/').pop());
