@@ -64,7 +64,8 @@
     <br>
     <div class="buttons">
         <small class="summ" style="float: left">Статей - 0, не активных статей - 0 </small>
-        <button class="admin_add_button" onclick="saveNewArticleModal()"> Добавить новый</button>
+        <button class="admin_add_button" onclick="saveNewArticleModal()"> Добавить новый (старый)</button>
+        <button class="admin_add_button" onclick="createNewArticle()"> Добавить новый</button>
         <div class="hideField" style="display: none">
             <button class="admin_add_button" onclick="cancelArticle()"> Отменить изменения</button>
             <button class="admin_add_button" onclick="saveArticle()"> Сохранить изменения</button>
@@ -75,7 +76,48 @@
 
     <div id="article_table_1"></div>
 
-    <div id="sample">
+    <div id="newArticle">
+
+
+        <h4  style="background: yellow; text-align: center"> НОВАЯ СТАТЬЯ </h4>
+        <details title="Код статьи, автоматически создается" style="text-align: center">
+            <summary></summary>
+            <div>
+                <label>Код статьи</label>
+                <input style="width: 73px" id="qw4" oninput="changeCod(this)">
+                <small> * рекомендуется не менять. Для SEO</small>
+            </div>
+            <button onclick="codGeneration()"
+                    title="Используйте только если уверены, что хотите из поисковиков удалить прежнюю ссылку">
+                Генерировать новый код
+            </button>
+            <br><br>
+            <div title="Влияет на очередность появления в списке">
+                <label>Порядок</label>
+                <input id="qw2">
+            </div>
+
+        </details>
+
+        <span class="label">Краткий анонс</span>
+        <div contenteditable="true" id="qw10" style="border: 1px dotted #999">
+        </div>
+
+        <div>
+            <span class="label">Заголовок</span>
+            <div contenteditable="true" id="qw0" style="border: 1px dotted #999">
+            </div>
+        </div>
+
+        <span class="label">Содержимое статьи</span>
+        <div contenteditable="true" id="qw11" style="border: 1px dotted #999"></div>
+
+        <div style="text-align: center">
+            <button class="type_edit" onclick="saveNewArticle()">Создать новую статью</button>
+        </div>
+    </div>
+
+    <div id="editArticle">
         <h4> Second Textarea </h4>
         <textarea name="area2" style="width: 100%;">
                 Some Initial Content was in this textarea
@@ -89,25 +131,7 @@
     <h2 class="type_new">Новая статья</h2>
     <h2 class="type_edit">Редактирование статьи</h2>
 
-    <details title="Код статьи, автоматически создается" style="text-align: center">
-        <summary></summary>
-        <div>
-            <label>Код статьи</label>
-            <input style="width: 73px" id="qw4" oninput="changeCod(this)">
-            <small> * рекомендуется не менять. Для SEO</small>
-        </div>
-        <button onclick="codGeneration()"
-                title="Используйте только если уверены, что хотите из поисковиков удалить прежнюю ссылку">
-            Генерировать новый код
-        </button>
-        <br><br>
-        <div title="Влияет на очередность появления в списке">
-            <label>Порядок</label>
-            <input id="qw2">
-        </div>
 
-    </details>
-    <br><br>
 
     <div style="display: flex; flex-wrap: wrap">
         <div style="display: flex; justify-content: space-between; width: 100%">
@@ -127,18 +151,7 @@
     </div>
     <div>
 
-        <span class="label">Краткий анонс</span>
-        <div contenteditable="true" id="qw10">
-        </div>
 
-        <div>
-            <span class="label">Заголовок</span>
-            <h2 contenteditable="true" id="qw0">
-            </h2>
-        </div>
-
-        <span class="label">Содержимое статьи</span>
-        <div contenteditable="true" id="qw11"></div>
     </div>
 
 

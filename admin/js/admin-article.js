@@ -86,6 +86,35 @@ function showArticle(result) {
     document.querySelector('.summ').innerHTML = `Всего - ${activeCount}, не опубликованныхf - ${result.length - activeCount}`
 }
 
+let newArticle = document.querySelector('#newArticle')
+let editArticle = document.querySelector('#editArticle')
+
+newArticle.style.display = 'none'
+editArticle.style.display = 'none'
+
+
+window.createNewArticle = function (){
+    console.log('createNewArticle = ')
+    newArticle.style.display = 'block'
+    codGeneration()
+}
+
+window.saveArticle = function (){
+    newArticle.style.display = 'none'
+    editArticle.style.display = 'block'
+}
+
+window.saveNewArticle = function () {
+    let params = getModalFields()
+
+    if (datas.find(el => !el.name)) return alert('В списке есть акция без названия, используйте')
+    api_createArticle(params, val => {
+        api_getArticle(showArticle)
+        newArticle.style.display = 'none'
+    })
+}
+
+
 window.saveNewArticleModal = function () {
     let params = getModalFields()
 
