@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCaptcha()
 });
 
-export function initCaptcha(){
+export function initCaptcha() {
     const parents = document.querySelectorAll('.capctha-div')
 
     parents.forEach((el, ind) => {
@@ -100,7 +100,7 @@ class PuzzleCaptcha {
     }
 
     updatePosition() {
-        if (this.currentX > 305) this.currentX = this.parentRect.width - 44
+        if (this.currentX > this.parentRect.width - 44) this.currentX = this.parentRect.width - 44
 
         this.puzzlePiece.style.transform = `translateX(${this.currentX}px)`;
         this.offsetX = this.currentX;
