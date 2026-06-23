@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
+import fs from 'fs';
 import { fileURLToPath, URL } from 'node:url'
 import handlebars from 'vite-plugin-handlebars'
 import liveReload from 'vite-plugin-live-reload'
@@ -94,7 +95,7 @@ const pages = {
     bdAdmin: resolve(__dirname, './admin/bd.html')
 }
 // Превращаем пути в массив имен файлов для проверки (index.html, admin.html)
-const allowedHtmlFiles = Object.values(pages).map(p => p.split('/').pop());
+// const allowedHtmlFiles = Object.values(pages).map(p => p.split('/').pop());
 
 export default defineConfig({
 	server: {
@@ -150,8 +151,19 @@ export default defineConfig({
             hostname: 'https://xn--80aej9aped4f.xn--p1ai',
 			outDir: 'dict', // Выходная папка
 			changefreq: 'monthly', // Устанавливаем частоту 'weekly' (еженедельно)
-            exclude: ['/admin/promo', '/admin/article', '/admin/vacancy', '/admin/login'],
+            exclude: ['/admin/bd', '/admin/promo', '/admin/article', '/admin/vacancy', '/admin/login'],
         }),
+        // Кастомный хук для дозаписи во все виды robots.txt
+        {
+            name: 'append-second-sitemap',
+            closeBundle() {
+                const robotsPath = resolve(__dirname, 'dict/robots.txt');
+                // Проверяем, существует ли файл после работы основного плагина
+                if (fs.existsSync(robotsPath)) {
+                    fs.appendFileSync(robotsPath, '\nSitemap: https://xn--80aej9aped4f.xn--p1ai/sitemap2.xml');
+                }
+            }
+        }
 	],
 	base: '/',
 	build: {
