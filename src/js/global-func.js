@@ -82,7 +82,7 @@ function transliterate(text) {
 }
 
 function makeFrendly(el) {
-    let frendly = el.brand + '-' + el.model + '-' + el.yearReleased + '-' + el.city + '-' + el.price
+    let frendly = el.brand + '-' + el.model + '-' + el.yearReleased + '-' + el.city + '-' + el.price + '-' + el.milleage+'km'
     frendly = frendly.replaceAll(" ", "");
     return transliterate(frendly)
 }
