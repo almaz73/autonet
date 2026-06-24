@@ -54,16 +54,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (urls.length === 1) {
             let src = urls[0]
             if (!src) src = '/st/photo/tmp_auto.webp'
-            autoSwip.innerHTML = `<img style="aspect-ratio:600/400; width: 100%" src="${src}" alt="">`
+            autoSwip.innerHTML = `<img style="aspect-ratio:600/400; width: 100%; height: fit-content" src="${src}" alt="">`
             return false
         }
 
         autoSwip.innerHTML = ''
         urls.forEach(el => {
-            autoSwip.innerHTML += `<div class="swiper-slide" ondblclick="toBig('big')"><img src="${el}" alt=""></div>`
+            autoSwip.innerHTML += `<div class="swiper-slide" style="height: fit-content" ondblclick="toBig('big')"><img src="${el}" alt=""></div>`
         })
         initSwipper()
-        setTimeout(() => showSlide(0), 1000)
+        // setTimeout(() => showSlide(0), 1000)
     }
 
     setTimeout(() => {

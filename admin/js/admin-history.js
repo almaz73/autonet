@@ -53,8 +53,7 @@ function showHistory_forms(result) {
         <tr style="background: #dddddd">
             <th>Дата</th> 
             <th>Кол-во</th>            
-            <th>авто</th>
-           
+            <th>Бренд-модель-год-город-цена-пробег</th>
         </tr>
         ${content}
     </table>`
