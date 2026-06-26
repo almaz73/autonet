@@ -300,3 +300,21 @@ export function api_getHistory(callback, params) {
         .catch(error => console.error('Произошла ошибка:', error));
 }
 
+export function api_getHistoryPeriod(callback, params) {
+    let request = '/api/history_period';
+    if (params.page) request += `?page=${params.page}&pageSize=${params.pageSize}`
+
+    const token = localStorage.getItem('admin_token');
+    const headers = token ? {'Authorization': `Bearer ${token}`} : {};
+    return fetch(request, {
+        method: 'GET',
+        headers: headers
+    }).then(res => {
+        if (!res.ok) console.log(`HTTP error! status: ${res.status}`)
+        if (res.status === 401) window.location.href = '../admin/login.html?redirect=' + init_admin_panel;
+        return res.json();
+    })
+        .then(res => callback(res))
+        .catch(error => console.error('Произошла ошибка:', error));
+}
+
