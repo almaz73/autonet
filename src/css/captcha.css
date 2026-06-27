@@ -69,10 +69,14 @@
     position: absolute;
     z-index: 80;
     top: -48px;
-    font-size: 41px;
+    font-size: 41.2px;
     width: 100%;
     display: none;
     background: white;
+}
+
+.result > span {
+    margin-left: 12px;
 }
 
 .capctha-div.checked .result {
