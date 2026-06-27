@@ -21,7 +21,7 @@ let selectedField = null
 
 let params={
     page:1,
-    pageSize:5,
+    pageSize:15,
     city: ''
 }
 
@@ -31,8 +31,6 @@ const search = new URLSearchParams(location.href);
 const page = search.get('page'); // вернет "3"
 if(page) params.page = page
 
-
-api_getHistory(showHistory_forms, params)
 
 api_getHistoryPeriod(result=>{
     // console.log('result = ',result.items[0])
@@ -46,32 +44,19 @@ api_getHistoryPeriod(result=>{
             <td>${row.days}</td>            
         </tr>`
     }
-},params)
 
-function showHistory_forms(result) {
-    // console.log('result = ',result.items[0])
-    let content = ''
-    preparePager(result.totalPages)
-    for (let row of result.items) {
-        content += ` <tr class='SEL'>
-            <td style="width: 50px;">${new Date(row.date).toLocaleString()}</td>
-            <td>${row.count}</td>
-            <td style="column-count: 3"><small>${row.carsPerDay.replaceAll(',',',<br>')}</small></td>
-            
-        </tr>`
-    }
-
-    let article_table = document.querySelector('#history_table')
+    let article_table = document.querySelector('#history_table_period')
     article_table.innerHTML = `<table class="admin_table">
         <tr style="background: #dddddd">
-            <th>Дата</th> 
-            <th>Кол-во</th>            
-            <th>Бренд-модель-год-город-цена-пробег</th>
+            <th>Авто</th>
+            <th>Дата добавления</th>
+            <th>Дата удаления</th> 
+            <th>Дни</th>            
         </tr>
         ${content}
     </table>`
+},params)
 
-}
 
 
 
