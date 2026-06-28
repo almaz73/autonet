@@ -94,6 +94,7 @@ const pages = {
     loginAdmin: resolve(__dirname, './admin/login.html'),
     bdAdmin: resolve(__dirname, './admin/bd.html'),
     bdHistory: resolve(__dirname, './admin/history.html'),
+    bdHistoryPeriod: resolve(__dirname, './admin/history_period.html'),
 }
 // Превращаем пути в массив имен файлов для проверки (index.html, admin.html)
 // const allowedHtmlFiles = Object.values(pages).map(p => p.split('/').pop());

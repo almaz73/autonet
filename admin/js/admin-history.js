@@ -1,6 +1,5 @@
 import {
     api_getHistory,
-    api_getHistoryPeriod,
     set_panel
 } from "./apibase_admin.js";
 import {checkAuth} from './auth-service.js';
@@ -33,20 +32,6 @@ if(page) params.page = page
 
 
 api_getHistory(showHistory_forms, params)
-
-api_getHistoryPeriod(result=>{
-    // console.log('result = ',result.items[0])
-    let content = ''
-    preparePager(result.totalPages)
-    for (let row of result.items) {
-        content += ` <tr  class='SEL'>
-            <td>${row.car}</td>
-            <td style="width: 120px;">${new Date(row.startedDate).toLocaleString()}</td>
-            <td style="width: 120px;">${new Date(row.endDate).toLocaleString()}</td>
-            <td>${row.days}</td>            
-        </tr>`
-    }
-},params)
 
 function showHistory_forms(result) {
     // console.log('result = ',result.items[0])
