@@ -1,5 +1,5 @@
 import {
-    api_getHistoryPeriod,
+    api_getHistoryPeriodDays,
     set_panel
 } from "./apibase_admin.js";
 import {checkAuth} from './auth-service.js';
@@ -18,43 +18,39 @@ window.logoutExit = async function () {
 
 let selectedField = null
 
-let params={
-    page:1,
-    pageSize:100
+let params = {
+    page: 1,
+    pageSize: 5
 }
 
 // Создаем объект параметров
 const search = new URLSearchParams(location.href);
-// Получаем значение переменной page
 const page = search.get('page'); // вернет "3"
-if(page) params.page = page
+if (page) params.page = page
 
 
-api_getHistoryPeriod(result=>{
+api_getHistoryPeriodDays(result => {
     let content = ''
     preparePager(result.totalPages)
     for (let row of result.items) {
-        content += ` <tr  class='SEL'>
-            <td>${row.car}</td>
-            <td style="width: 120px;">${row.startedDate?new Date(row.startedDate).toLocaleString():'-'}</td>
-            <td style="width: 120px;">${new Date(row.endDate).toLocaleString()}</td>
-            <td>${row.days}</td>            
+        content += ` <tr class='SEL'>
+            <td style="width: 50px;">${new Date(row.date).toLocaleString()}</td>
+            <td>${row.count}</td>
+            <td style="column-count: 3"><small>${row.carsPerDay.replaceAll(',', ',<br>')}</small></td>
+            
         </tr>`
     }
 
-    let article_table = document.querySelector('#history_table_period')
+    let article_table = document.querySelector('#history_table_period_days')
     article_table.innerHTML = `<table class="admin_table">
         <tr style="background: #dddddd">
-            <th>Авто</th>
-            <th>Дата добавления</th>
-            <th>Дата удаления</th> 
-            <th>Дни</th>            
+            <th>Дата</th> 
+            <th>Кол-во</th>            
+            <th>Бренд-модель-год-город-цена-пробег</th>
         </tr>
         ${content}
     </table>`
-},params)
-
-
+}, params)
 
 
 window.setSelected = function (val, self) {

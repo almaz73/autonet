@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+    <link rel='icon' type='image/svg+xml' sizes='any' href='/st/favicon.svg'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>История продажи/удаления авто из витрины - Автосеть.РФ</title>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+    <meta name='robots' content='noindex'>
+
+    <link rel='stylesheet' href='../src/css/style.css'/>
+    <link rel='stylesheet' href='../src/css/filter-controls.css'/>
+    <link rel='stylesheet' href='../src/css/admin.css'/>
+    <script type='module' src='js/admin-history_period_days.js'></script>
+    <style>
+        body {
+            font-size: small;
+        }
+
+        .head_admin {
+            background: #ffccff;
+        }
+    </style>
+</head>
+<body style='margin-top: 73px'>
+
+<h3 class="head_admin">
+    <span style="font-size: small; float:left"><a href="/"> Перейти к сайту </a></span>
+    Данные из форм.
+    <button style="float: right; margin-right: 18px" onclick="logoutExit()">Выйти из админки</button>
+</h3>
+
+<main>
+    <h3 style="display: flex; justify-content: space-between">
+        <a href="history.html">История добавления</a>
+        История удаления
+    </h3>
+
+    <h2 style="text-align: center">История удаления
+        <a href="history_period.html"><small>детально</small></a>
+    </h2>
+    <div id="history_table_period_days"></div>
+
+    <br>
+    <div class='bottom-nav pager'>
+        Страницы: <span id='pager'></span>
+    </div>
+
+</main>
+
+</body>
+</html>
