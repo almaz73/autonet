@@ -27,11 +27,10 @@ window.addCompare = function (val) {
 }
 
 function getComparedCars() {
-    let storage = localStorage.getItem('ComparedCars')
-    if (storage) storage = JSON.parse(storage)
-    else storage = []
+    let comparedCars = localStorage.getItem('ComparedCars')
+    comparedCars = comparedCars ? JSON.parse(comparedCars) : []
 
-    return storage
+    return comparedCars
 }
 
 function showCountButton(storage) {
@@ -65,11 +64,11 @@ window.openCar = function (href, linkPhoto, isDeleted) {
     setTimeout(() => location.href = href, 400)
 }
 
-function showChosen(storage_) {
+function showChosen() {
     myComments = localStorage.getItem('myComments')
     myComments = myComments ? JSON.parse(myComments) : {}
 
-    let cars = storage_ || storage
+    let cars =  storage
     showCountButton(cars)
 
     cars.forEach(el => {
@@ -99,7 +98,7 @@ function showChosen(storage_) {
         let COMMENT = ''
 
         cars.forEach(el => {
-            if (el.images) el.images = el.images[0]
+            if (el.images instanceof Array) el.images = el.images[0]
             if (el.address) el.fullAddress = el.address
             if (el.name) {
                 el.brand = el.name.split(' ')[0]
@@ -108,7 +107,6 @@ function showChosen(storage_) {
 
             if (el.info) {
                 let q = el.info.split(',')
-                console.log(q)
                 el.milleage = parseInt(q[0].replace(/\s/g, ''))
                 el.engineCapacity = q[1]
                 el.bodyType = q[2]
@@ -243,10 +241,10 @@ export function initChosen() {
     }
 
 
-    showChosen()
-    showPreloader(false)
-
     if (location.pathname === '/personal/list-compared/') checkDeletedCars(storage, showChosen)
+    else showChosen()
+
+    showPreloader(false)
 }
 
 window.commentChanged = function (id, value) {
