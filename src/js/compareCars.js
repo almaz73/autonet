@@ -110,15 +110,15 @@ function showChosen(storage_) {
                 el.engineType = q[4]
             }
 
-            DELETE += `<td><a href="javascript:deleteCar('${el.id}')">Удалить</a></td>`
-            if (!el.deleted) PREVIEW_PICTURE += `<td><a href="javascript:openCar('/cars/car.html?id=${el.id}','${el.images}','${el.deleted}')"><img src="${el.images}" alt=""></a></td>`
+            DELETE += `<td><a href="/cars/car.html?id=${el.id}" onclick="deleteCar('${el.id}')">Удалить</a></td>`
+            if (!el.deleted) PREVIEW_PICTURE += `<td><a onclick="openCar('/cars/car.html?id=${el.id}','${el.images}','${el.deleted}')" href="/cars/car.html?id=${el.id}"><img src="${el.images}" alt=""></a></td>`
             else PREVIEW_PICTURE += `<td> ☹ Автомобиль <br> снят с продажи </td>`
-            NAME += `<td><a href="javascript:openCar('/cars/car.html?id=${el.id}','${el.images}','${el.deleted}')">${el.brand} ${el.model || ''}</a></td>`
+            NAME += `<td><a onclick="openCar('/cars/car.html?id=${el.id}','${el.images}','${el.deleted}')"  href="/cars/car.html?id=${el.id}">${el.brand} ${el.model || ''}</a></td>`
             PRICE += `<td>${formatterShowPrice(el.price)} руб.</td>`
             if (el.milleage) PROBEG += `<td>${formatterShowPrice(el.milleage) || ''} км</td>`
             GOD_VYPUSKA += `<td>${el.yearReleased || ''}</td>`
             TSVET += `<td>${el.color || ''}</td>`
-            OBEM_DVIGATELYA += `<td>${el.engineCapacity || ''}</td>`
+            OBEM_DVIGATELYA += `<td>${(el.engineCapacity/1000) || ''}</td>`
             TIP_DVIGATELYA += `<td>${el.engineType || ''}</td>`
             MOSHCHNOST_DVIGATELYA += `<td>${el.enginePower || ''} л.с.</td>`
 
@@ -149,6 +149,10 @@ function showChosen(storage_) {
                 <td>Название</td>
                 ${NAME}
             </tr>
+             <tr class="GOD_VYPUSKA">
+                <td>Год выпуска</td>
+               ${GOD_VYPUSKA}
+            </tr>
             <tr class="PRICE">
                 <td>Цена</td>                
                ${PRICE}
@@ -157,21 +161,17 @@ function showChosen(storage_) {
                 <td>Пробег</td>
                 ${PROBEG}
             </tr>
-            <tr class="GOD_VYPUSKA">
-                <td>Год выпуска</td>
-               ${GOD_VYPUSKA}
-            </tr>
             <tr class="OBEM_DVIGATELYA">
                 <td>Объем двигателя</td>
                ${OBEM_DVIGATELYA}
             </tr>
+             <tr class="MOSHCHNOST_DVIGATELYA">
+                <td>Мощность двигателя</td>
+                 ${MOSHCHNOST_DVIGATELYA}
+            </tr>
             <tr class="TIP_DVIGATELYA">
                 <td>Тип двигателя</td>
                  ${TIP_DVIGATELYA}
-            </tr>
-            <tr class="MOSHCHNOST_DVIGATELYA">
-                <td>Мощность двигателя</td>
-                 ${MOSHCHNOST_DVIGATELYA}
             </tr>
             <tr class="TIP_KPP">
                 <td>Тип КПП</td>
@@ -197,14 +197,7 @@ function showChosen(storage_) {
                 <td>Руль</td>
                 ${RULE}
             </tr>
-            <tr class="MARKA">
-                <td>Марка</td>
-                ${MARKA}
-            </tr>
-            <tr class="MODEL">
-                <td>Модель</td>
-                ${MODEL}
-            </tr>`
+            `
         if (cars.length === 0) {
             compareDiv.innerHTML = '<div class="nodata">НЕТ ВЫБРАННЫХ АВТОМОБИЛЕЙ ДЛЯ СРАВНЕНИЯ</div>'
             sendConfirm()

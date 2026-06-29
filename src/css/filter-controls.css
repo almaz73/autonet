@@ -116,8 +116,6 @@
     border: none;
     outline: none;
     background: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
     user-select: none;
     cursor: pointer;
 }
