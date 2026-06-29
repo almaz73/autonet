@@ -118,7 +118,7 @@ function showChosen(storage_) {
             if (el.milleage) PROBEG += `<td>${formatterShowPrice(el.milleage) || ''} км</td>`
             GOD_VYPUSKA += `<td>${el.yearReleased || ''}</td>`
             TSVET += `<td>${el.color || ''}</td>`
-            OBEM_DVIGATELYA += `<td>${(el.engineCapacity/1000) || ''}</td>`
+            OBEM_DVIGATELYA += `<td>${(el.engineCapacity / 1000) || ''}</td>`
             TIP_DVIGATELYA += `<td>${el.engineType || ''}</td>`
             MOSHCHNOST_DVIGATELYA += `<td>${el.enginePower || ''} л.с.</td>`
 
