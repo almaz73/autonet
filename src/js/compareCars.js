@@ -1,5 +1,8 @@
 import {formatterShowPrice, checkDeletedCars} from '@/js/global-func.js'
 
+let myComments=''
+let storage = getComparedCars()
+
 window.addCompare = function (val) {
     let currentCar = window.compareCars.find(el => el.id === val)
 
@@ -43,7 +46,6 @@ window.deleteAllCar = function () {
     window.deleteCar()
 }
 window.deleteCar = function (id) {
-    let storage = getComparedCars()
     if (id) storage = storage.filter(el => el.id !== id)
     else storage = []
 
@@ -64,7 +66,10 @@ window.openCar = function (href, linkPhoto, isDeleted) {
 }
 
 function showChosen(storage_) {
-    let cars = storage_ || getComparedCars()
+    myComments = localStorage.getItem('myComments')
+    myComments = myComments ? JSON.parse(myComments) : {}
+
+    let cars = storage_ || storage
     showCountButton(cars)
 
     cars.forEach(el => {
@@ -91,6 +96,7 @@ function showChosen(storage_) {
         let RULE = ''
         let MARKA = ''
         let MODEL = ''
+        let COMMENT = ''
 
         cars.forEach(el => {
             if (el.images) el.images = el.images[0]
@@ -134,6 +140,8 @@ function showChosen(storage_) {
             RULE += `<td>${el.wheelType || ''}</td>`
             MARKA += `<td>${el.brand || ''}</td>`
             MODEL += `<td>${el.model || ''}</td>`
+            COMMENT += `<td><textarea  title="Можно оставить свою запись" style="border: 1px solid #eee" onchange="commentChanged('${el.id}', this.value)">
+${myComments[el.id]?myComments[el.id]:''}</textarea></td>`
         })
 
         compareDiv.innerHTML = `
@@ -197,6 +205,10 @@ function showChosen(storage_) {
                 <td>Руль</td>
                 ${RULE}
             </tr>
+            <tr class="Руль" title="Свои записи для этого браузера">
+                <td>Заметка</td>
+                ${COMMENT}
+            </tr>
             `
         if (cars.length === 0) {
             compareDiv.innerHTML = '<div class="nodata">НЕТ ВЫБРАННЫХ АВТОМОБИЛЕЙ ДЛЯ СРАВНЕНИЯ</div>'
@@ -210,8 +222,11 @@ export function initChosen() {
     let isDragging = false;
     let startX;
     let tableScroll = document.querySelector('.bx_compare')
+    const body = document.body;
     if (tableScroll) {
         tableScroll.addEventListener('mousedown', (e) => {
+            if (!e.ctrlKey) return false
+            body.style.cursor = 'pointer'
             isDragging = true;
             startX = e.clientX;
             e.preventDefault();
@@ -221,14 +236,27 @@ export function initChosen() {
             tableScroll.scrollBy(startX - e.clientX, 0); // Прокрутка контейнера
             startX = e.clientX;
         });
-        tableScroll.addEventListener('mouseup', () => isDragging = false);
+        tableScroll.addEventListener('mouseup', () => {
+            body.style.cursor = 'text'
+            isDragging = false
+        });
     }
 
 
     showChosen()
     showPreloader(false)
 
-    if (location.pathname === '/personal/list-compared/') checkDeletedCars(getComparedCars(), showChosen)
+    if (location.pathname === '/personal/list-compared/') checkDeletedCars(storage, showChosen)
+}
+
+window.commentChanged = function (id, value) {
+    let storageIds = storage && storage.map(el => el.id)
+    let myNewComments={}
+    myComments[id] = value
+    storageIds.forEach(el => {
+        if (myComments[el]) myNewComments[el] = myComments[el]
+    })
+    localStorage.setItem('myComments', JSON.stringify(myNewComments))
 }
 
 window.initChosen = initChosen
