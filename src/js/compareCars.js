@@ -116,7 +116,7 @@ function showChosen(storage_) {
                 el.engineType = q[4]
             }
 
-            DELETE += `<td><a href="/cars/car.html?id=${el.id}" onclick="deleteCar('${el.id}')">Удалить</a></td>`
+            DELETE += `<td><a href="#" onclick="deleteCar('${el.id}')">Удалить</a></td>`
             if (!el.deleted) PREVIEW_PICTURE += `<td><a onclick="openCar('/cars/car.html?id=${el.id}','${el.images}','${el.deleted}')" href="/cars/car.html?id=${el.id}"><img src="${el.images}" alt=""></a></td>`
             else PREVIEW_PICTURE += `<td> ☹ Автомобиль <br> снят с продажи </td>`
             NAME += `<td><a onclick="openCar('/cars/car.html?id=${el.id}','${el.images}','${el.deleted}')"  href="/cars/car.html?id=${el.id}">${el.brand} ${el.model || ''}</a></td>`
@@ -140,7 +140,7 @@ function showChosen(storage_) {
             RULE += `<td>${el.wheelType || ''}</td>`
             MARKA += `<td>${el.brand || ''}</td>`
             MODEL += `<td>${el.model || ''}</td>`
-            COMMENT += `<td><textarea  title="Можно оставить свою запись" style="border: 1px solid #eee" onchange="commentChanged('${el.id}', this.value)">
+            COMMENT += `<td><textarea  title="Запишите себе на заметку" style="border: 1px solid #eee" onchange="commentChanged('${el.id}', this.value)">
 ${myComments[el.id]?myComments[el.id]:''}</textarea></td>`
         })
 
@@ -226,7 +226,7 @@ export function initChosen() {
     if (tableScroll) {
         tableScroll.addEventListener('mousedown', (e) => {
             if (!e.ctrlKey) return false
-            body.style.cursor = 'pointer'
+            body.style.cursor = 'all-scroll'
             isDragging = true;
             startX = e.clientX;
             e.preventDefault();
