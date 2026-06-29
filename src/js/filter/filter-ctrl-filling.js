@@ -12,6 +12,7 @@ import {
 } from "@/js/apibase.js"
 import {clearGlobalValues, getUrlParam, globalValues} from '@/js/global-func.js'
 import {eventBus} from '@/js/global-func.js'
+import {enToRu, ruToEn, ruAsEn} from '@/js/global-constants.js'
 
 
 // В зависимости от состояния фильтра загружаем кобобоксы
@@ -46,6 +47,7 @@ items['Руль'] = [] //
 
 function fillFields(onlyModels) {
     let combs = document.querySelectorAll('comb');
+    let isMobile = document.body.clientWidth < 500;
     combs.forEach(comb => {
         if (onlyModels && comb.dataset.placeholder !== 'Модель') return false
         let comb_name = comb.dataset.placeholder
@@ -55,7 +57,7 @@ function fillFields(onlyModels) {
             comb.innerHTML = `<div class='big-combo' tabindex='1' title="${the_Items.value || comb_name}">
     <span class='big-comb__selected'>
       <span class='big-comb__placeholder'>${the_Items.value || comb_name}</span>
-      <input class='big-comb__input' type="text">
+      <input class='big-comb__input' type="text" ${isMobile?'inputmode="none"':''}>
     </span>
     <img src='/st/svg/arrow-down.svg' alt='arrow' loading='lazy' width='10' height='18'>            
     <div class='big_comb__items' onclick='big_comb_select(event)'>
@@ -70,7 +72,7 @@ function fillFields(onlyModels) {
         let bigCombPlaceholder = comb.querySelector('.big-comb__placeholder')
         let comb_field_img = comb.querySelector('.big-combo img')
         bigCombo && bigCombo.addEventListener('focus', () => {
-            bigCombItems.style.display = 'block'
+            bigCombItems.style.visibility = 'visible'
             bigCombInput.style.display = 'inline'
             if (bigCombPlaceholder) bigCombPlaceholder.style.display = 'none'
             comb_field_img.style.rotate = '180deg'
@@ -85,10 +87,27 @@ function fillFields(onlyModels) {
             bigCombInput.addEventListener('input', val => {
                 let tx = val.target.value
                 if (!items_memory['Марка']) items_memory = JSON.parse(JSON.stringify(items))
-                items[comb_name] = items_memory[comb_name].filter(el => el.includes(val.target.value))
+                items[comb_name] = findWithAnyFont(val.target.value)
                 if (tx) bigCombItems.innerHTML = createFiledsForList(items[comb_name], comb_name).join('')
                 else bigCombItems.innerHTML = createFiledsForList(items_memory[comb_name], comb_name).join('')
             })
+        }
+
+        function findWithAnyFont(value) {
+            let enQuery = ''
+            let ruQuery = ''
+            let ruAs = ''
+            for (const char of value.toLowerCase()) {
+                enQuery += ruToEn[char] || char;
+                ruQuery += enToRu[char] || char;
+                ruAs += ruAsEn[char] || char;
+            }
+            let ruTxt = items_memory[comb_name].filter(el => el.toLowerCase().includes(enQuery)) || []
+            let enTxt = items_memory[comb_name].filter(el => el.toLowerCase().includes(ruQuery))
+            let asTxt = items_memory[comb_name].filter(el => el.toLowerCase().includes(ruAs))
+            let arr = [...ruTxt, ...enTxt]
+            if(asTxt.length)asTxt.forEach(el=>!arr.includes(el) && arr.push(el))
+            return arr
         }
 
         function createFiledsForList(list, comb_name) {
@@ -96,7 +115,7 @@ function fillFields(onlyModels) {
         }
 
         function blur() {
-            if (bigCombItems) bigCombItems.style.display = 'none'
+            if (bigCombItems) bigCombItems.style.visibility = 'hidden'
             if (bigCombInput) bigCombInput.style.display = 'none'
             if (comb_field_img) comb_field_img.style.rotate = '0deg'
             if (bigCombPlaceholder) bigCombPlaceholder.style.display = ''

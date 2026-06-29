@@ -27,7 +27,7 @@
 }
 
 .big_comb__items {
-    display: none;
+    visibility: hidden;
     position: absolute;
     width: calc(100% - 10px);
     top: 47px;
