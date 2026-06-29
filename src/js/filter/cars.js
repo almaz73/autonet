@@ -4,15 +4,15 @@ import {api_getYearGap} from "@/js/apibase.js";
 const whiteFilter = `<div  class="filter-white">
 <div class="filter-white-back filter-fields">
         <div class="frame-filter__item">
-            <comb data-placeholder='Марка' />
+            <span class='comb' data-placeholder='Марка' />
             <label>Марка</label>
         </div>
         <div class="frame-filter__item">
-            <comb data-placeholder='Модель' />
+            <span class='comb' data-placeholder='Модель' />
             <label>Модель</label>
         </div>
         <div class="frame-filter__item">
-            <comb data-placeholder='Город' />
+            <span class='comb' data-placeholder='Город' />
             <label>Город</label>
         </div>
 
@@ -35,7 +35,7 @@ const whiteFilter = `<div  class="filter-white">
         </div>
         
         <div class="frame-filter__item no_advanced">
-            <comb data-placeholder='Цвет' />
+            <span class='comb' data-placeholder='Цвет' />
             <label>Цвет</label>
         </div> 
 
@@ -76,17 +76,17 @@ const whiteFilter = `<div  class="filter-white">
         </div>
 
         <div class="frame-filter__item no_advanced">
-            <comb data-placeholder='Тип кузова'/>
+            <span class='comb' data-placeholder='Тип кузова'/>
         </div>
 
 
 
         <div class="frame-filter__item no_advanced">
-            <comb data-placeholder='Тип КПП'/>
+            <span class='comb' data-placeholder='Тип КПП'/>
         </div>
 
         <div class="frame-filter__item no_advanced">
-            <comb data-placeholder='Тип двигателя'/>
+            <span class='comb' data-placeholder='Тип двигателя'/>
         </div>
 
         <div class="no_advanced">
@@ -106,11 +106,11 @@ const whiteFilter = `<div  class="filter-white">
 <!--        </div>-->
 
         <div class="frame-filter__item no_advanced">
-            <comb data-placeholder='Тип привода'/>
+            <span class='comb' data-placeholder='Тип привода'/>
         </div>
 
         <div class="frame-filter__item no_advanced">
-            <comb data-placeholder='Руль'/>
+            <span class='comb' data-placeholder='Руль'/>
         </div>
     </div>
 

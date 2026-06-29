@@ -3,7 +3,7 @@ import {cities, vacanciesList} from "@/js/global-constants.js"
 import {formatterShowPrice} from "@/js/global-func.js";
 
 function initChangeCity() {
-    let comb = document.querySelector('comb');
+    let comb = document.querySelector('.comb');
     let items = {'Город': cities}
 
     items['Город'].value = localStorage.getItem('selectedCity')

@@ -46,7 +46,7 @@ items['Руль'] = [] //
 ///////////////////////////
 
 function fillFields(onlyModels) {
-    let combs = document.querySelectorAll('comb');
+    let combs = document.querySelectorAll('.comb');
     let isMobile = document.body.clientWidth < 500;
     combs.forEach(comb => {
         if (onlyModels && comb.dataset.placeholder !== 'Модель') return false
