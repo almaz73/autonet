@@ -35,6 +35,9 @@ items['Тип КПП'] = []
 items['Тип двигателя'] = [] // 'Все', 'Бензиновый', 'Гибридный', 'Дизельный', 'Электро'
 items['Тип привода'] = []// ['Все', 'Задний', 'Передний', 'Полный']
 items['Руль'] = [] //
+let selectElemCount = -1
+let selectElems = null
+let selectScrollPlace = 0
 
 // items['Диски'] = ['Все', 'Отсутствуют']
 // items['Производитель'] = ['Amtel', 'Bfgoodrich', 'Cordiant', 'Formula', 'Gislaved', 'Hankook', 'Kormoran', 'Kumho', 'Nokian'];
@@ -57,7 +60,7 @@ function fillFields(onlyModels) {
             comb.innerHTML = `<div class='big-combo' tabindex='1' title="${the_Items.value || comb_name}">
     <span class='big-comb__selected'>
       <span class='big-comb__placeholder'>${the_Items.value || comb_name}</span>
-      <input class='big-comb__input' type="text" ${isMobile?'inputmode="none"':''}>
+      <input class='big-comb__input' type="text" ${isMobile ? 'inputmode="none"' : ''}>
     </span>
     <img src='/st/svg/arrow-down.svg' alt='arrow' loading='lazy' width='10' height='18'>            
     <div class='big_comb__items' onclick='big_comb_select(event)'>
@@ -78,12 +81,19 @@ function fillFields(onlyModels) {
             comb_field_img.style.rotate = '180deg'
             bigCombInput.focus()
             bigCombInput.select()
+            selectElemCount = -1
+            selectElems = bigCombItems.querySelectorAll('[data-parent="' + comb_name + '"]')
         })
 
         if (bigCombInput) {
             bigCombInput.addEventListener('blur', () => blur())
             bigCombInput.addEventListener('click', () => blur())
-            bigCombInput.addEventListener('keydown', (e) => e.key === 'Escape' && blur())
+            bigCombInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') blur()
+                if (e.key === 'ArrowDown') selectChoiseWithArrows(1)
+                if (e.key === 'ArrowUp') selectChoiseWithArrows(-1)
+                if (e.key === 'Enter') selectElems[selectElemCount].click()
+            })
             bigCombInput.addEventListener('input', val => {
                 let tx = val.target.value
                 if (!items_memory['Марка']) items_memory = JSON.parse(JSON.stringify(items))
@@ -91,6 +101,20 @@ function fillFields(onlyModels) {
                 if (tx) bigCombItems.innerHTML = createFiledsForList(items[comb_name], comb_name).join('')
                 else bigCombItems.innerHTML = createFiledsForList(items_memory[comb_name], comb_name).join('')
             })
+        }
+
+        function selectChoiseWithArrows(val) {
+            selectElemCount += val
+            if (selectElemCount < 0) selectElemCount = 0
+            if (selectElemCount > selectElems.length - 1) selectElemCount = selectElems.length - 1
+
+            if (selectElemCount - selectScrollPlace / 38 < 6 && selectElemCount - selectScrollPlace / 38 > 1) {
+            } else if (selectElemCount > 5 && val > 0) selectScrollPlace = selectElemCount * 38 - 200
+            else if (val < 0) selectScrollPlace = selectElemCount * 38
+
+            bigCombItems.scrollTo(0, selectScrollPlace)
+            selectElems.forEach(el => el.classList.remove('selectedSel'))
+            selectElems[selectElemCount].classList.add('selectedSel')
         }
 
         function findWithAnyFont(value) {
@@ -106,7 +130,7 @@ function fillFields(onlyModels) {
             let enTxt = items_memory[comb_name].filter(el => el.toLowerCase().includes(ruQuery))
             let asTxt = items_memory[comb_name].filter(el => el.toLowerCase().includes(ruAs))
             let arr = [...ruTxt, ...enTxt]
-            if(asTxt.length)asTxt.forEach(el=>!arr.includes(el) && arr.push(el))
+            if (asTxt.length) asTxt.forEach(el => !arr.includes(el) && arr.push(el))
             return arr
         }
 
@@ -119,6 +143,7 @@ function fillFields(onlyModels) {
             if (bigCombInput) bigCombInput.style.display = 'none'
             if (comb_field_img) comb_field_img.style.rotate = '0deg'
             if (bigCombPlaceholder) bigCombPlaceholder.style.display = ''
+            bigCombItems.scrollTo(0, 0)
         }
 
         if (bigCombPlaceholder && ![
@@ -169,7 +194,7 @@ function getDatas() {
             api_GetCarCount(res => {
                 if (!res.length) return false
 
-                let newRes = res.filter(el=>el.count)
+                let newRes = res.filter(el => el.count)
 
                 items['Марка'] = newRes.map(el => el.name)
                 globalValues.brandsIds.push(...newRes)

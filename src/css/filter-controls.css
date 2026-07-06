@@ -45,6 +45,9 @@
 .big-comb__placeholder.bold {
     font-family: Gilroy-Bold, system-ui;
 }
+.selectedSel{
+    background: #ffeeee;
+}
 
 .big-combo:focus {
     outline: 2px solid #ddd;
