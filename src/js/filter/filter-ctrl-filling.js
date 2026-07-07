@@ -143,7 +143,7 @@ function fillFields(onlyModels) {
             if (bigCombInput) bigCombInput.style.display = 'none'
             if (comb_field_img) comb_field_img.style.rotate = '0deg'
             if (bigCombPlaceholder) bigCombPlaceholder.style.display = ''
-            bigCombItems.scrollTo(0, 0)
+            setTimeout(()=> bigCombItems.scrollTo(0, 0), 200)
         }
 
         if (bigCombPlaceholder && ![
