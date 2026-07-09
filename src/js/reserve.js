@@ -23,6 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function save() {
         if (checkFormFields([capcthadiv, fio, phone, email, checkbox, agree])) return false
 
+        if (!["рф", "ru", "su"].includes(email.value.split('.').pop())){
+            return sendMessage('В целях исполнения закона от 26.06.2026 г. №210-ФЗ необходимо указать российский электронный почтовый адрес', 'warning')
+        }
+
         let parans = {
             type: 2,
             name: fio.value,

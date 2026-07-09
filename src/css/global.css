@@ -202,6 +202,7 @@ main h2, main h1 {
     transform: translateY(32px);
     transition: all 0.3s ease-out;
     cursor: pointer;
+    max-width: 350px;
 }
 
 .message-span.show { /*всплытие*/

@@ -32,6 +32,10 @@ window.sendBid = function (fName) {
 
     if (checkFormFields([capcthadiv, name, phone, checkbox, agree])) return false
 
+    if (email && !["рф", "ru", "su"].includes(email.value.split('.').pop())) {
+        return sendMessage('В целях исполнения закона от 26.06.2026 г. №210-ФЗ необходимо указать российский электронный почтовый адрес', 'warning')
+    }
+
     const params = {
         type: 1,
         name: name.value,

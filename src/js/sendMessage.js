@@ -33,7 +33,7 @@ window.sendMessage = function (text, type) {
             notification.classList.remove('show')
             reorder(notification.id)
         }
-    }, 3000);
+    }, 3500);
 }
 
 function reorder(id) {
