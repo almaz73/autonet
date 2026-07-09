@@ -76,7 +76,6 @@ function getVitrina(ishandEvent) {
 
     if (location.pathname === '/') {
         if (cars_link) cars_link.style.display = 'block'
-        // localStorage.setItem('TYPE_VIEW', 'dot4')
         localStorage.removeItem('TYPE_VIEW')
     } else {
         if (cars_link) cars_link.style.display = 'none'

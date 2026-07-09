@@ -188,7 +188,7 @@ setTimeout(() => {
     let dot = document.querySelector('.' + TYPE_VIEW)
     dot && dot.classList.add('active')
     setTimeout(() => dot && setTypeView({srcElement: {classList: {value: TYPE_VIEW}}}))
-})
+}, 200)
 
 
 function setTypeView(e) {
