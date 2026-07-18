@@ -39,7 +39,7 @@ function showHistory_forms(result) {
     preparePager(result.totalPages)
     for (let row of result.items) {
         content += ` <tr class='SEL'>
-            <td style="width: 50px;">${new Date(row.date).toLocaleString()}</td>
+            <td style="width: 50px;">${new Date(row.date).toLocaleDateString()}</td>
             <td>${row.count}</td>
             <td style="column-count: 3"><small>${row.carsPerDay.replaceAll(',',',<br>')}</small></td>
             

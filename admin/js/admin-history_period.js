@@ -36,8 +36,8 @@ api_getHistoryPeriod(result=>{
     for (let row of result.items) {
         content += ` <tr  class='SEL'>
             <td>${row.car}</td>
-            <td style="width: 120px;">${row.startedDate?new Date(row.startedDate).toLocaleString():'-'}</td>
-            <td style="width: 120px;">${new Date(row.endDate).toLocaleString()}</td>
+            <td style="width: 120px;">${row.startedDate?new Date(row.startedDate).toLocaleDateString():'-'}</td>
+            <td style="width: 120px;">${new Date(row.endDate).toLocaleDateString()}</td>
             <td>${row.days}</td>            
         </tr>`
     }
