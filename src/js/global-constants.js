@@ -6,7 +6,7 @@ export const dealers = [
         coords: '54.912580,52.320238',
         address: 'ул. Герцена, 1б',
         tel: '8–800–500–11–56',
-        days: 'ПН-ВС с 9:00 до 21:00',
+        days: 'ПН-ВС с 9: 00 до 21:00',
         map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Aef6e8fca746164e348adf860145722f5a890983a47408dc685ab04b8076a0f7b&amp;source=constructor'
     },
     {
@@ -39,12 +39,20 @@ export const dealers = [
     {
         city: 'Екатеринбург',
         url: '/st/photo/contacts/chelna_myra.webp',
-        coords: '56.789579, 60.607625',
-        address: 'ул. 8 марта, 205А',
-        tel: '8–800–500–11–56',
+        address: 'ул. Селькоровская, д.78Б',
+        tel: '8(343)211-10-01',
         days: 'ПН-ВС с 9:00 до 21:00',
         map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A7d97dc8bafe4d372c2b3d4cf1cb634f3835520141a7310296d2f363580c2075f&amp;source=constructor'
     },
+    {
+        city: 'Екатеринбург',
+        url: '/st/photo/contacts/chelna_myra.webp',
+        address: 'ул. 8 марта, 205Б',
+        tel: '8–800–500–11–56',
+        days: 'ПН-ВС с 9:00 до 21:00',
+        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A9e008b180329884d37dc67052a3fd935dd7d3b3ed0f9f2dcabef0ae006eca0cb&amp;source=constructor'
+    },
+
     {
         city: 'Казань',
         url: '/st/photo/contacts/chelna_myra.webp',
