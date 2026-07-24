@@ -114,7 +114,7 @@ function getVitrina(ishandEvent) {
         document.querySelector('#vitrina_name').innerHTML = 'Каталог шин'
         cars = tyresForList
         setTimeout(() => fill(cars))
-    } else if (location.pathname.includes('/cars/')) {
+    } else if (location.pathname.includes('/cars')) {
         fillCars(cars, ishandEvent, filterParams, fill)
     } else if (location.pathname === '/personal/favorite-cars/') {
         document.querySelector('#vitrina_name').innerHTML = 'Избранные автомобили'
