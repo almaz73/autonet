@@ -1,11 +1,9 @@
-import {getUrlParam} from "@/js/global-func.js"
+import {getBrandLat} from "@/js/global-func.js"
 /** Очень тонко настроенная работает Пагинации*/
 let currentPage = 1
 
-function getLink() {
-    let link = location.href
-    if (location.href.includes('&page')) link = location.href.slice(0, location.href.lastIndexOf('&page'))
-    return link + (link.includes('?') ? '' : '?')
+function getLink(pages) {
+    return `/cars/${pages}${window.ssr_brandSearch?'/'+getBrandLat(window.ssr_brandSearch):''}`
 }
 
 export function preparePager(pages) {
@@ -13,26 +11,24 @@ export function preparePager(pages) {
     if (!pager) return false
     let pagerText = ''
 
-    currentPage = +getUrlParam('page') || 1;
+    currentPage = +location.href.split('/')[4]+1 || 0;
+
     const delta = currentPage > 3 ? currentPage - 3 : 0
 
-    if (delta > 0) pagerText += `<a href=${getLink()}> 1</a> <span> | </span> ... <span> | </span>`
-
+    if (delta > 0) pagerText += `<a href=${getLink(0)}> 1</a> <span> | </span> ... <span> | </span>`
     for (let N = 1 + delta; N < pages; N++) {
         if (N - delta > 5) break
-        pagerText += `<a ${currentPage === N ? 'class="active"' : ''} href=${getLink()}&page=${N}>${N}</a><span> | </span>`
+        pagerText += `<a ${currentPage === N ? 'class="active"' : ''} href=${getLink(N-1)}>${N}</a><span> | </span>`
     }
-    if (pages > 5) pagerText += ` ... <span> | </span>  <a href=${getLink()}&page=${pages}>${pages}</a><span> | </span> `
+    if (pages > 5) pagerText += ` ... <span> | </span>  <a href=${getLink(pages-1)}>${pages}</a><span> | </span> `
     else if (pages === '1') pagerText += `<a class="active">1</a>`
-    else pagerText += ` <a href=${getLink()}&page=${pages} class=${pages !== currentPage ? "" : "active"}>${pages}</a><span> | </span> `
-    if (pages && pages !== currentPage && window.screen.width > 500) pagerText += `<a href="javascript:nextPage('${currentPage}')"> След.</a>`
+    else pagerText += ` <a href=${getLink(0)} class=${pages !== currentPage ? "" : "active"}>${pages}</a><span> | </span> `
+    if (pages && pages > 5 && pages !== currentPage && window.screen.width > 500) pagerText += `<a href="javascript:nextPage('${currentPage}')"> След.</a>`
     pager.innerHTML = pagerText
 }
 
 window.nextPage = (currentPage) => {
-    let newPage = (`&page=` + (+currentPage + 1))
-    if (location.href.includes('&page=')) location.href = getLink() + newPage
-    else location.href = location.href + newPage
+    if(currentPage) location.href = location.origin+getLink(currentPage)
 }
 
 

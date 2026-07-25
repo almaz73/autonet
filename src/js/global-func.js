@@ -82,7 +82,7 @@ function transliterate(text) {
 }
 
 function makeFrendly(el) {
-    let frendly = el.brand + '-' + el.model + '-' + el.yearReleased + '-' + el.city + '-' + el.price + '-' + el.milleage+'km'
+    let frendly =  el.yearReleased + '-' + el.city + '-' + el.price + '-' + el.milleage+'km'
     frendly = frendly.replaceAll(" ", "");
     return transliterate(frendly)
 }
@@ -106,7 +106,7 @@ export function prepareCars(res) {
             address: el.city + ' ' + (el.fullAddress || ''),
             id: el.id,
             name: el.brand + ' ' + el.model,
-            href: `/cars/car.html?${frendly}&id=` + el.id,
+            href: `${location.origin}/cars/${getBrandLat(el.brand)}/${transliterate(el.model).replaceAll(' ','')}/${frendly}?id=` + el.id,
             price: formatterShowPrice(el.price),
             fromPerMonth: fromPerMonth,
             info: info,
@@ -382,4 +382,13 @@ export function checkDeletedCars(cars, callback) {
             results.forEach((res, index) => cars[index].deleted = res === false)
             callback(cars, cars)
         })
+}
+
+const RussianBrandsRus = ['ВАЗ (LADA)', 'ЗАЗ', 'УАЗ', 'ИЖ', 'Богдан', 'ГАЗ', 'Атом', 'Москвич', 'ЛуАЗ', 'ВИС', 'ЗиС']
+const RussianBrandsLat = ['VAZ(LADA)', 'ZAZ', 'UAZ', 'IZH', 'Bogdan', 'GAZ', 'Atom', 'Moskvich', 'Luaz', 'VIS', 'ZiS']
+
+export function getBrandLat(brandName) {
+    let placeRusBrand = RussianBrandsRus.findIndex(el => el === brandName)
+    if (placeRusBrand != -1) brandName = RussianBrandsLat[placeRusBrand]
+    return brandName
 }

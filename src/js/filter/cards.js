@@ -170,6 +170,14 @@ export function fill(cars, currentCars, totalPages) {
         setTypeView(e)
         localStorage.setItem('TYPE_VIEW', e.srcElement.classList.value.slice(0, 4))
     })
+    setDot()
+}
+
+function setDot() {
+    let TYPE_VIEW = localStorage.getItem('TYPE_VIEW') || 'dot4'
+    let dot = document.querySelector('.' + TYPE_VIEW)
+    dot && dot.classList.add('active')
+    setTimeout(() => dot && setTypeView({srcElement: {classList: {value: TYPE_VIEW}}}))
 }
 
 let type_views;
@@ -183,12 +191,6 @@ let getWidth = () => {
 // document.addEventListener('DOMContentLoaded', () => setTimeout(getWidth, 500));
 window.addEventListener('resize', () => window.current_slide && window.current_slide.classList.remove('watch'));
 
-setTimeout(() => {
-    let TYPE_VIEW = localStorage.getItem('TYPE_VIEW') || 'dot4'
-    let dot = document.querySelector('.' + TYPE_VIEW)
-    dot && dot.classList.add('active')
-    setTimeout(() => dot && setTypeView({srcElement: {classList: {value: TYPE_VIEW}}}))
-}, 200)
 
 
 function setTypeView(e) {
