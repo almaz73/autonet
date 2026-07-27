@@ -199,7 +199,8 @@ function getDatas() {
                 items['Марка'] = newRes.map(el => el.name)
                 globalValues.brandsIds.push(...newRes)
 
-                const brand = getUrlParam('brand')
+                let brand = getUrlParam('brand')
+                if (!brand) brand = location.pathname.split('/')[3]
                 if (brand) getModelList(brand)
 
                 resolve()

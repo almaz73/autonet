@@ -10,17 +10,19 @@ let extention = false //  Есть ли выбранные элементы в �
 let Cache_serv = localStorage.getItem('CACHE_SERV')
 Cache_serv = JSON.parse(Cache_serv)
 
-/* Заполнение фильтр дюнными по адресной строке */
+/* Заполнение фильтр дюнными по адресной строке FROM SERVER */
 function FillFilterFromAddressBar(filterParams) {
     // заполнение фильтра по параметрам адресной строки
-    const brand = getUrlParam('brand')
+    let brand = getUrlParam('brand')
+    if (!brand) brand = location.pathname.split('/')[3]
     if (brand) {
         filterParams['brand'] = brand
         setCombName('Марка', brand)
     }
 
     const modelId = getUrlParam('modelId')
-    const model = getUrlParam('model')
+    let model = getUrlParam('model')
+    if (!model) model = location.pathname.split('/')[4]
     if (modelId) {
         filterParams['modelId'] = modelId
         filterParams['model'] = model
@@ -149,7 +151,8 @@ function FillFilterFromAddressBar(filterParams) {
         setPriceOrder(filterParams['priceOrder'])
     }
 
-    let offset = (getUrlParam('page') - 1) * 20
+    let offset = +location.pathname.split('/')[2] * 20 || 0
+
     if (offset < 0) offset = 0
     filterParams['offset'] = offset
     setExtention(extention)
@@ -171,6 +174,11 @@ function handleData() {
             // ниже строка удаляет выбранное значение комбобокса
             comb.querySelector('.big-comb__placeholder').innerText = el.value
             comb.querySelector('.big-comb__placeholder').classList.add('bold')
+
+            if (window.clearAllFilter) { // очиситка фильтра
+                comb.querySelector('.big-comb__placeholder').innerText = el.name
+                comb.querySelector('.big-comb__placeholder').classList.remove('bold')
+            }
         }
     })
     // eventBus.off('dataUpdated', handleData);
@@ -182,20 +190,31 @@ function setInputName(name, value) {
     if (inp) {
         inp.value = value
         inp.classList.add('bold')
+
+        if (window.clearAllFilter) {// очиситка фильтра
+            inp.value = ''
+            inp.classList.remove('bold')
+        }
     }
 }
 
 
-export function fillCars(cars, ishandEvent_, filterParams, fill) {
+export async function fillCars(cars, ishandEvent_, filterParams, fill) {
     ishandEvent = ishandEvent_
     if (!ishandEvent) FillFilterFromAddressBar(filterParams)
 
+    let totalCount = 0
     let bt = document.querySelector('#set_filter')
     showPreloader(true, bt)
 
     filterParams.limit = countPerPage
-    api_getList(filterParams, res => {
+
+    if (window.clearAllFilter) filterParams = {limit: 20}
+    if (filterParams.offset && ishandEvent) filterParams.offset = 0
+
+    await api_getList(filterParams, res => {
         res.totalCount = res.totalCount || 0
+        totalCount = res.totalCount
         res.items = acceptWithoutPhoto(res.items)
         // по кнопке Показать
         cars = prepareCars(res.items)
@@ -214,11 +233,12 @@ export function fillCars(cars, ishandEvent_, filterParams, fill) {
                 + ' ' + (filterParams.city ? `(город ${filterParams.city})` : ``)
         }
     })
+    return totalCount
 }
 
 function gotoShowCars() {
-    setTimeout(() => document.querySelector('#filter_cars').removeEventListener('mouseleave', go), 3000)
-    document.querySelector('#filter_cars').addEventListener('mouseleave', go)
+    setTimeout(() => document.querySelector('#filter_cars') && document.querySelector('#filter_cars').removeEventListener('mouseleave', go), 3000)
+    if (document.querySelector('#filter_cars')) document.querySelector('#filter_cars').addEventListener('mouseleave', go)
     function go() {
         document.getElementById('set_filter').scrollIntoView({behavior: 'smooth', block: 'start'}); // прокрутка
         document.querySelector('#filter_cars').removeEventListener('mouseleave', go)

@@ -67,6 +67,7 @@ function transliterate(text) {
         'ъ': '', 'ы': 'y', 'ь': '', 'э': 'e', 'ю': 'yu', 'я': 'ya'
     };
 
+    if (!text) return ''
     return text.split('').map(char => {
         // Проверяем регистр, чтобы сохранить его в латинице
         const isUpperCase = char === char.toUpperCase();
@@ -82,7 +83,7 @@ function transliterate(text) {
 }
 
 function makeFrendly(el) {
-    let frendly =  el.yearReleased + '-' + el.city + '-' + el.price + '-' + el.milleage+'km'
+    let frendly = el.yearReleased + '-' + el.city + '-' + el.price + '-' + el.milleage + 'km'
     frendly = frendly.replaceAll(" ", "");
     return transliterate(frendly)
 }
@@ -106,7 +107,7 @@ export function prepareCars(res) {
             address: el.city + ' ' + (el.fullAddress || ''),
             id: el.id,
             name: el.brand + ' ' + el.model,
-            href: `${location.origin}/cars/${getBrandLat(el.brand)}/${transliterate(el.model).replaceAll(' ','')}/${frendly}?id=` + el.id,
+            href: `${location.origin}/cars/${getBrandLat(el.brand)}/${transliterate(el.model).replaceAll(' ', '')}/${frendly}?id=` + el.id,
             price: formatterShowPrice(el.price),
             fromPerMonth: fromPerMonth,
             info: info,

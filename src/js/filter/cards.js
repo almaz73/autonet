@@ -160,7 +160,7 @@ export function fill(cars, currentCars, totalPages) {
         cards.innerHTML += `<div class="pager">Страницы: <span id="pager"></span></div>`
     }
 
-    preparePager(totalPages)
+    if (!window.isSPAquestion) preparePager(totalPages)
     initChosen()
     initFavotite()
 

@@ -6,11 +6,12 @@ import {
     globalValues,
     setPriceOrder,
     carCountText,
-    cleanCarsWithoutPhoto
+    cleanCarsWithoutPhoto, eventBus
 } from '@/js/global-func.js'
 import {fillCars} from '@/js/filter/filCars.js'
 import {getModelList, setExtention} from '@/js/filter/filter-ctrl-filling.js'
 import {tyresForList} from "@/js/global-constants.js";
+import {preparePagerSPA} from '@/js/pagination.js'
 
 export function filter_changed(items, name) {
     if (name === 'Марка') {
@@ -93,7 +94,7 @@ function getVitrina(ishandEvent) {
         showPreloader(true, bt)
 
 
-        filterParams.limit = 0
+        filterParams.limit = 20
         api_getList(filterParams, res => {
             showPreloader(false, bt)
             declOfNum(res.totalCount, ['предложение', 'предложений', 'предложений'])
@@ -114,8 +115,15 @@ function getVitrina(ishandEvent) {
         document.querySelector('#vitrina_name').innerHTML = 'Каталог шин'
         cars = tyresForList
         setTimeout(() => fill(cars))
-    } else if (location.pathname.includes('/cars')) {
-        fillCars(cars, ishandEvent, filterParams, fill)
+    } else if (location.pathname.includes('/cars') || location.pathname.includes('/cars/')) {
+        fillCars(cars, ishandEvent, filterParams, fill).then(totalPages => {
+            if (ishandEvent) {
+                window.isSPAquestion = true
+                preparePagerSPA(filterParams, Math.ceil(totalPages / 20))
+            }
+        })
+
+
     } else if (location.pathname === '/personal/favorite-cars/') {
         document.querySelector('#vitrina_name').innerHTML = 'Избранные автомобили'
 
@@ -130,13 +138,13 @@ function getVitrina(ishandEvent) {
 
 window.getVitrina = getVitrina
 window.goToCars = function () {
-    let link = `?`
+    let link = ``
     if (filterParams.brand) {
-        link = '?brand=' + (filterParams['Марка'] || filterParams['brand'])
+        link = '0/' + (filterParams['Марка'] || filterParams['brand'])
     }
     if (filterParams.modelId) {
-        link += '&model=' + (filterParams['Модель'] || filterParams['model'])
-        link += '&modelId=' + filterParams.modelId
+        link += '/' + (filterParams['Модель'] || filterParams['model'])
+        link += '?modelId=' + filterParams.modelId
     }
     if (filterParams.city) link += '&city=' + filterParams.city
     if (filterParams.gearboxType) link += '&gearboxType=' + filterParams.gearboxType
@@ -154,10 +162,23 @@ window.goToCars = function () {
     if (filterParams.engineCapacity) link += '&engineCapacity=' + filterParams.engineCapacity
     if (filterParams.priceOrder !== null && filterParams.priceOrder !== undefined) link += '&priceOrder=' + filterParams.priceOrder
 
+    if (!link.includes('?')) {
+        let place = link.indexOf('&')
+        if (place > -1) link = link.slice(0, place) + "?" + link.slice(place + 1)
+    }
+
+    link = link.replaceAll(' ', '')
+
     location.href = '/cars/' + link
 }
 window.clearFilter = function () {
-    location.href = location.pathname
+    window.clearAllFilter = true
+    getVitrina()
+    eventBus.emit('dataUpdated', {});
+    document.querySelector('#vitrina_name').innerHTML = 'Все автомобили'
+    filterParams = {limit: 20, offset: 0}
+    preparePagerSPA(filterParams, Math.ceil(totalPages / 20))
+    setTimeout(() => window.clearAllFilter = false, 3000)
 }
 
 document.addEventListener('DOMContentLoaded', () => {
