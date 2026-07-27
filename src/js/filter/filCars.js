@@ -1,6 +1,14 @@
 // обработка location.pathname === '/cars/
 import {api_getList} from "@/js/apibase.js"
-import {getUrlParam, prepareCars, eventBus, setPriceOrder, carCountText, acceptWithoutPhoto} from '@/js/global-func.js'
+import {
+    getUrlParam,
+    prepareCars,
+    eventBus,
+    setPriceOrder,
+    carCountText,
+    acceptWithoutPhoto,
+    getBrandRus
+} from '@/js/global-func.js'
 import {setExtention} from "@/js/filter/filter-ctrl-filling.js"
 
 const countPerPage = 20
@@ -14,7 +22,7 @@ Cache_serv = JSON.parse(Cache_serv)
 function FillFilterFromAddressBar(filterParams) {
     // заполнение фильтра по параметрам адресной строки
     let brand = getUrlParam('brand')
-    if (!brand) brand = location.pathname.split('/')[3]
+    if (!brand) brand = getBrandRus(location.pathname.split('/')[3])
     if (brand) {
         filterParams['brand'] = brand
         setCombName('Марка', brand)
@@ -25,8 +33,8 @@ function FillFilterFromAddressBar(filterParams) {
     if (!model) model = location.pathname.split('/')[4]
     if (modelId) {
         filterParams['modelId'] = modelId
-        filterParams['model'] = model
-        setCombName('Модель', model)
+        if (model && model != 'undefined') setCombName('Модель', model)
+        else setCombName('Модель', modelId)
     }
 
     const city = getUrlParam('city')

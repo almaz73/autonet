@@ -6,7 +6,9 @@ import {
     globalValues,
     setPriceOrder,
     carCountText,
-    cleanCarsWithoutPhoto, eventBus
+    cleanCarsWithoutPhoto,
+    eventBus,
+    getBrandLat
 } from '@/js/global-func.js'
 import {fillCars} from '@/js/filter/filCars.js'
 import {getModelList, setExtention} from '@/js/filter/filter-ctrl-filling.js'
@@ -117,9 +119,11 @@ function getVitrina(ishandEvent) {
         setTimeout(() => fill(cars))
     } else if (location.pathname.includes('/cars') || location.pathname.includes('/cars/')) {
         fillCars(cars, ishandEvent, filterParams, fill).then(totalPages => {
+            window.totalPages = totalPages
+
             if (ishandEvent) {
                 window.isSPAquestion = true
-                preparePagerSPA(filterParams, Math.ceil(totalPages / 20))
+                if (window.totalPages) preparePagerSPA(filterParams, Math.ceil(window.totalPages / 20))
             }
         })
 
@@ -140,7 +144,7 @@ window.getVitrina = getVitrina
 window.goToCars = function () {
     let link = ``
     if (filterParams.brand) {
-        link = '0/' + (filterParams['Марка'] || filterParams['brand'])
+        link = '0/' + getBrandLat(filterParams['Марка'] || filterParams['brand'])
     }
     if (filterParams.modelId) {
         link += '/' + (filterParams['Модель'] || filterParams['model'])
@@ -167,6 +171,7 @@ window.goToCars = function () {
         if (place > -1) link = link.slice(0, place) + "?" + link.slice(place + 1)
     }
 
+    link = link.replaceAll('undefined', '')
     link = link.replaceAll(' ', '')
 
     location.href = '/cars/' + link
@@ -177,8 +182,11 @@ window.clearFilter = function () {
     eventBus.emit('dataUpdated', {});
     document.querySelector('#vitrina_name').innerHTML = 'Все автомобили'
     filterParams = {limit: 20, offset: 0}
-    preparePagerSPA(filterParams, Math.ceil(totalPages / 20))
-    setTimeout(() => window.clearAllFilter = false, 3000)
+
+    setTimeout(() => {
+        if (window.totalPages) preparePagerSPA(filterParams, Math.ceil(window.totalPages / 20))
+        window.clearAllFilter = false
+    }, 3000)
 }
 
 document.addEventListener('DOMContentLoaded', () => {

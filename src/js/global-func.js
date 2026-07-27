@@ -393,3 +393,9 @@ export function getBrandLat(brandName) {
     if (placeRusBrand != -1) brandName = RussianBrandsLat[placeRusBrand]
     return brandName
 }
+
+export function getBrandRus(brandName) {
+    let placeLAtBrand = RussianBrandsLat.findIndex(el => el === brandName)
+    if (placeLAtBrand != -1) brandName = RussianBrandsRus[placeLAtBrand]
+    return brandName
+}

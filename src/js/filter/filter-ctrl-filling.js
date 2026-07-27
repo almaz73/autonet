@@ -178,6 +178,12 @@ export function getModelList(brandName) {
         items['Модель'] = res.map(el => el.name)
         items_memory = {}
         globalValues.modelsIds.push(...res)
+        let field = +document.querySelector('[title="Модель"] .big-comb__placeholder').innerText
+        if (typeof field === 'number') {
+            let brandName = globalValues.modelsIds.find(el => el.id == field)
+            if (brandName) setTimeout(() => document.querySelector('[title="Модель"] .big-comb__placeholder').innerText = brandName.name)
+        }
+
         fillFields('onlyModel')
     })
 
