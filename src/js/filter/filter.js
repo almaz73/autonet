@@ -143,13 +143,9 @@ function getVitrina(ishandEvent) {
 window.getVitrina = getVitrina
 window.goToCars = function () {
     let link = ``
-    if (filterParams.brand) {
-        link = '0/' + getBrandLat(filterParams['Марка'] || filterParams['brand'])
-    }
-    if (filterParams.modelId) {
-        link += '/' + (filterParams['Модель'] || filterParams['model'])
-        link += '?modelId=' + filterParams.modelId
-    }
+    if (filterParams.brand) link = '0/' + getBrandLat(filterParams['Марка'] || filterParams['brand'])
+    if (filterParams.modelId) link += '?modelId=' + filterParams.modelId
+
     if (filterParams.city) link += '&city=' + filterParams.city
     if (filterParams.gearboxType) link += '&gearboxType=' + filterParams.gearboxType
     if (filterParams.engineType) link += '&engineType=' + filterParams.engineType
@@ -171,7 +167,6 @@ window.goToCars = function () {
         if (place > -1) link = link.slice(0, place) + "?" + link.slice(place + 1)
     }
 
-    link = link.replaceAll('undefined', '')
     link = link.replaceAll(' ', '')
 
     location.href = '/cars/' + link

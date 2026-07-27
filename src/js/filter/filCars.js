@@ -34,7 +34,7 @@ function FillFilterFromAddressBar(filterParams) {
     if (modelId) {
         filterParams['modelId'] = modelId
         if (model && model != 'undefined') setCombName('Модель', model)
-        else setCombName('Модель', modelId)
+        else window.globalCurrentModel_Id = modelId
     }
 
     const city = getUrlParam('city')

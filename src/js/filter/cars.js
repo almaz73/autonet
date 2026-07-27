@@ -164,7 +164,7 @@ if (!hasId) document.querySelector('#car-vitrina').innerHTML = carVitrina
 
 if (brandName && !hasId) {
     if (brandName.includes('/')) brandName = brandName.split('/')[0]
-    document.querySelector('#path').innerHTML = brandName.toUpperCase()
+    if (brandName) document.querySelector('#path').innerHTML = brandName.toUpperCase()
     // document.querySelector('#vitrina_name').innerHTML = brandName.toUpperCase() + ' с пробегом — выбрать и купить в Автосеть.рф'
 }
 

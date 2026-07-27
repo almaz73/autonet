@@ -10,7 +10,7 @@ import {
     api_getColorList,
 
 } from "@/js/apibase.js"
-import {clearGlobalValues, getUrlParam, globalValues} from '@/js/global-func.js'
+import {clearGlobalValues, getBrandRus, getUrlParam, globalValues} from '@/js/global-func.js'
 import {eventBus} from '@/js/global-func.js'
 import {enToRu, ruToEn, ruAsEn} from '@/js/global-constants.js'
 
@@ -172,16 +172,18 @@ function fillFields(onlyModels) {
 ///////////////////////////
 
 export function getModelList(brandName) {
-    let brand = globalValues.brandsIds.find(el => el.name.toUpperCase() === brandName.toUpperCase())
-
+    let brand = globalValues.brandsIds.find(el => el.name.toUpperCase() === getBrandRus(brandName).toUpperCase())
     brand && api_GetModelList(brand.brandId, res => {
         items['Модель'] = res.map(el => el.name)
         items_memory = {}
         globalValues.modelsIds.push(...res)
-        let field = +document.querySelector('[title="Модель"] .big-comb__placeholder').innerText
-        if (typeof field === 'number') {
-            let brandName = globalValues.modelsIds.find(el => el.id == field)
-            if (brandName) setTimeout(() => document.querySelector('[title="Модель"] .big-comb__placeholder').innerText = brandName.name)
+
+        if (window.globalCurrentModel_Id) {
+            let brandName = globalValues.modelsIds.find(el => el.id == window.globalCurrentModel_Id)
+            if (brandName) setTimeout(() => {
+                document.querySelector('[title="Модель"] .big-comb__placeholder').innerText = brandName.name
+                document.querySelector('#vitrina_name').innerText+=' '+ brandName.name
+            })
         }
 
         fillFields('onlyModel')
