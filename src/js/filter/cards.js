@@ -147,7 +147,7 @@ export function fill(cars, currentCars, totalPages) {
     cars.forEach((el, i) => {
         createNode(el, i + 1)
         if (i === 2 && (location.pathname !== '/personal/favorite-cars/')) createNode(null, 'abdul')
-        if (i === 0 && (location.pathname === '/cars/' || location.pathname === '/autosite/cars/')) createNode(null, 'swiper_buy')
+        if (i === 0 && (location.pathname !== '/')) createNode(null, 'swiper_buy')
     }); // прикручиваем html
 
     if (!cars.length) {
