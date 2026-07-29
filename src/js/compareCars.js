@@ -138,7 +138,7 @@ function showChosen() {
             RULE += `<td>${el.wheelType || ''}</td>`
             MARKA += `<td>${el.brand || ''}</td>`
             MODEL += `<td>${el.model || ''}</td>`
-            COMMENT += `<td><textarea  title="Запишите себе на заметку" style="border: 1px solid #eee" onchange="commentChanged('${el.id}', this.value)">
+            COMMENT += `<td><textarea  title="Запишите заметку" style="border: 1px solid #eee" onchange="commentChanged('${el.id}', this.value)">
 ${myComments[el.id]?myComments[el.id]:''}</textarea></td>`
         })
 

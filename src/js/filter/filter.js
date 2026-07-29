@@ -141,6 +141,9 @@ function getVitrina(ishandEvent) {
 }
 
 window.getVitrina = getVitrina
+
+getVitrina()
+
 window.goToCars = function () {
     let link = ``
     if (filterParams.brand) link = '0/' + getBrandLat(filterParams['Марка'] || filterParams['brand'])
