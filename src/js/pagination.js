@@ -1,11 +1,37 @@
-import {getBrandLat} from "@/js/global-func.js"
+import {getBrandLat, getUrlParam} from "@/js/global-func.js"
 /** Очень тонко настроенная работает Пагинации*/
+
+function getLink0() {
+    let link = location.href
+    if (location.href.includes('&page')) link = location.href.slice(0, location.href.lastIndexOf('&page'))
+    return link + (link.includes('?') ? '' : '?')
+}
 
 function getLink(pages) {
     return `/cars/${pages}`
 }
 function getLinkSPA(pages) {
     return `/cars/${pages}${window.ssr_brandSearch ? '/' + getBrandLat(window.ssr_brandSearch) : ''}`
+}
+
+export function preparePager0 (pages) {
+    const pager = document.querySelector('#pager')
+    if (!pager) return false
+    let pagerText = ''
+
+    let currentPage = +getUrlParam('page') || 1;
+    const delta = currentPage > 3 ? currentPage - 3 : 0
+
+    if (delta > 0) pagerText += `<a href=${getLink0()}> 1</a> <span> | </span> ... <span> | </span>`
+
+    for (let N = 1 + delta; N < pages; N++) {
+        if (N - delta > 5) break
+        pagerText += `<a ${currentPage === N ? 'class="active"' : ''} href=${getLink0()}&page=${N}>${N}</a><span> | </span>`
+    }
+    if (pages > 5) pagerText += ` ... <span> | </span>  <a href=${getLink0()}&page=${pages}>${pages}</a> `
+    else if (pages === '1') pagerText += `<a class="active">1</a>`
+    else pagerText += ` <a href=${getLink0()}&page=${pages} class=${pages !== currentPage ? "" : "active"}>${pages}</a> `
+    pager.innerHTML = pagerText
 }
 
 export function preparePager(pages) {
@@ -29,6 +55,7 @@ export function preparePager(pages) {
     else pagerText += ` <a href=${getLink(pages - 1) + tail} class=${pages !== currentPage ? "" : "active"}>${pages}</a>`
     pager.innerHTML = pagerText
 }
+
 
 export function preparePagerSPA(params, pages) {
     const pager = document.querySelector('#pager')

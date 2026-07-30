@@ -3,7 +3,7 @@ import {
     set_panel
 } from "./apibase_admin.js";
 import {checkAuth} from './auth-service.js';
-import {preparePager} from '@/js/pagination.js'
+import {preparePager0} from '@/js/pagination.js'
 
 
 checkAuth(val => {
@@ -31,7 +31,7 @@ if (page) params.page = page
 
 api_getHistoryPeriodDays(result => {
     let content = ''
-    preparePager(result.totalPages)
+    preparePager0(result.totalPages)
     for (let row of result.items) {
         content += ` <tr class='SEL'>
             <td style="width: 50px;">${new Date(row.date).toLocaleDateString()}</td>

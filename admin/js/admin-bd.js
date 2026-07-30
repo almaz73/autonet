@@ -3,7 +3,7 @@ import {
     set_panel
 } from "./apibase_admin.js";
 import {checkAuth} from './auth-service.js';
-import {preparePager} from '@/js/pagination.js'
+import {preparePager0} from '@/js/pagination.js'
 
 
 checkAuth(val => {
@@ -36,7 +36,7 @@ api_getBD(showBD_forms, params)
 function showBD_forms(result) {
     let content = ''
     let activeCount = 0
-    preparePager(result.totalPages)
+    preparePager0(result.totalPages)
     for (let row of result.items) {
         if (row.active) activeCount++
         content += ` <tr onclick="setSelected(${row.id}, this)" class='SEL'>
