@@ -165,7 +165,7 @@ export default defineConfig({
                     disallow: [
                         '/admin',           // Запретить доступ к админке
                     ],
-                    cleanParam: 'brand&city /cars/',    // Пример добавления Clean-param (для Яндекса)
+                    cleanParam: 'brand&city&PAGEN_1&PAGEN_2&PAGEN_3&pm_position&pm_source&cm_id&page /cars/',    // Пример добавления Clean-param (для Яндекса)
                 },
                 {
                     // userAgent: 'Yandex',  // Отдельные правила для Яндекса

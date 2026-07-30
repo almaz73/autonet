@@ -170,8 +170,7 @@ window.goToCars = function () {
     }
 
     link = link.replaceAll(' ', '')
-
-    location.href = '/cars/' + link
+   location.href = '/cars' + (link?`/${link}`:'')
 }
 window.clearFilter = function () {
     window.clearAllFilter = true
