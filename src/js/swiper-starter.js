@@ -59,7 +59,7 @@ export function initSwipper() {
         if (!swiper) setTimeout(ewcursiveWaitswiper, 730)
     }
 
-    setTimeout(ewcursiveWaitswiper, 1100)
+    setTimeout(ewcursiveWaitswiper, 3000)
 }
 
 

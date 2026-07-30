@@ -5,8 +5,8 @@ import '@/js/abdul.js';
 import '@/js/global-func.js'
 import '@/js/captcha.js'
 import '@/js/globalCall.js'
-import '@/js/contacts_footer.js'
 import '@/js/compareCars.js'
 import '@/js/favoriteCars.js'
 import "@/js/sendMessage.js"
 import '@/js/preloader.js'
+import '@/js/contacts_footer.js'

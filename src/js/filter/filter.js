@@ -142,7 +142,6 @@ function getVitrina(ishandEvent) {
 
 window.getVitrina = getVitrina
 
-getVitrina()
 
 window.goToCars = function () {
     let link = ``
@@ -179,6 +178,7 @@ window.clearFilter = function () {
     getVitrina()
     eventBus.emit('dataUpdated', {});
     document.querySelector('#vitrina_name').innerHTML = 'Все автомобили'
+    document.querySelector('#path').innerHTML = ``
     filterParams = {limit: 20, offset: 0}
 
     setTimeout(() => {

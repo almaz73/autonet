@@ -5,6 +5,8 @@ import { fileURLToPath, URL } from 'node:url'
 import handlebars from 'vite-plugin-handlebars'
 import liveReload from 'vite-plugin-live-reload'
 import sitemap from 'vite-plugin-sitemap'; // Импортируем плагин
+let devDir = '../front' // 'dict'
+devDir = 'dict'
 const pages = {
     main: resolve(__dirname, 'index.html'),
     privacyPolicy: resolve(__dirname, './privacy-policy/index.html'),
@@ -153,15 +155,29 @@ export default defineConfig({
 		sitemap({
 			// Ваши настройки, например, домен
             hostname: 'https://xn--80aej9aped4f.xn--p1ai',
-			outDir: 'dict', // Выходная папка
+			outDir: devDir, // Выходная папка
 			changefreq: 'monthly', // Устанавливаем частоту 'weekly' (еженедельно)
             exclude: ['/admin/history','/admin/bd', '/admin/promo', '/admin/article', '/admin/vacancy', '/admin/login'],
+            robots: [
+                {
+                    userAgent: '*',       // Правила для всех роботов
+                    allow: '/',           // Разрешить индексацию сайта
+                    disallow: [
+                        '/admin',           // Запретить доступ к админке
+                    ],
+                    cleanParam: 'brand&city /cars/',    // Пример добавления Clean-param (для Яндекса)
+                },
+                {
+                    // userAgent: 'Yandex',  // Отдельные правила для Яндекса
+                    // disallow: '/secret',
+                }
+            ]
         }),
         // Кастомный хук для дозаписи во все виды robots.txt
         {
             name: 'append-second-sitemap',
             closeBundle() {
-                const robotsPath = resolve(__dirname, 'dict/robots.txt');
+                const robotsPath = resolve(__dirname, devDir+'/robots.txt');
                 // Проверяем, существует ли файл после работы основного плагина
                 if (fs.existsSync(robotsPath)) {
                     fs.appendFileSync(robotsPath, '\nSitemap: https://xn--80aej9aped4f.xn--p1ai/sitemap2.xml');
@@ -175,7 +191,7 @@ export default defineConfig({
 			input: pages,
 		},
 
-		outDir: 'dict', // Выходная папка
+		outDir: devDir, // Выходная папка
 		// sourcemap: true, // Генерация sourcemaps (путь js)
 		chunkSizeWarningLimit: 1000, // Sets the warning limit to 1000 kB (1MB)
         manifest: true, // Создаст manifest.json в папке сборки

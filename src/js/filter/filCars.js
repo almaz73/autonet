@@ -231,7 +231,6 @@ export async function fillCars(cars, ishandEvent_, filterParams, fill) {
         showPreloader(false, bt)
         carCountText(res.totalCount)
         if (ishandEvent || filterParams['brand']) {
-            gotoShowCars()
             let fw = document.querySelector('.filter-white')
             let vn = document.querySelector('#vitrina_name')
             document.getElementById('brands_dynamic').style.display = 'none'
@@ -244,11 +243,3 @@ export async function fillCars(cars, ishandEvent_, filterParams, fill) {
     return totalCount
 }
 
-function gotoShowCars() {
-    setTimeout(() => document.querySelector('#filter_cars') && document.querySelector('#filter_cars').removeEventListener('mouseleave', go), 3000)
-    if (document.querySelector('#filter_cars')) document.querySelector('#filter_cars').addEventListener('mouseleave', go)
-    function go() {
-        document.getElementById('set_filter').scrollIntoView({behavior: 'smooth', block: 'start'}); // прокрутка
-        document.querySelector('#filter_cars').removeEventListener('mouseleave', go)
-    }
-}

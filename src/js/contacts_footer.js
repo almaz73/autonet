@@ -26,7 +26,9 @@ window.addEventListener('DOMContentLoaded', () => {
                 </a>
             </div>`
         })
-        // window.getVitrina && getVitrina()
+        
+        console.log('777555_ver14 = ',777555)
+        window.getVitrina && getVitrina()
     }
 
     window.setCity = function (cityName) {
