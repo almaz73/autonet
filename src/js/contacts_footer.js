@@ -27,7 +27,6 @@ window.addEventListener('DOMContentLoaded', () => {
             </div>`
         })
         
-        console.log('777555_ver14 = ',777555)
         window.getVitrina && getVitrina()
     }
 

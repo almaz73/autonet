@@ -110,6 +110,11 @@ export function api_getSpecials(city, callback) {
     return withCache(request, callback, 60) // ЗВ 10 минут авто не подменят
 }
 
+export function api_getLatestCarArrivials(page, callback) {
+    let request = '/api/getLatestCarArrivials?page=' + page
+    return withCache(request, callback, 60) // ЗВ 10 минут авто не подменят
+}
+
 /*** Все данные по одной машине ***/
 export function api_getFullAutoInfo(guid, callback) {
     let request = '/api/getFullAutoInfo?guid=' + guid

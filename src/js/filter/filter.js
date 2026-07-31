@@ -1,5 +1,5 @@
 import {fill} from '@/js/filter/cards.js';
-import {api_getSpecials, api_getList} from "@/js/apibase.js"
+import {api_getSpecials, api_getList, api_getLatestCarArrivials} from "@/js/apibase.js"
 import {
     prepareCars,
     declOfNum,
@@ -89,7 +89,7 @@ function getVitrina(ishandEvent) {
     let cars
     if (location.pathname === '/') {
         // Пока берем первые семь, а надо бы спецпредложения от организации
-        document.querySelector('#vitrina_name').innerHTML = 'Специальные предложения по цене'
+        document.querySelector('#vitrina_name').innerHTML = 'Специальные предложения по цене' // Новые поступления
         if (!ishandEvent) setExtention(false)
 
         let bt = document.querySelector('#set_filter')
@@ -103,15 +103,9 @@ function getVitrina(ishandEvent) {
             carCountText(res.totalCount)
         })
 
-        let currentCity = localStorage.getItem('selectedCity') || ''
+        // let currentCity = localStorage.getItem('selectedCity') || ''
 
-        if (Object.keys(filterParams).length < 2) {
-            api_getSpecials(currentCity, res => {
-                res = cleanCarsWithoutPhoto(res)
-                cars = prepareCars(res)
-                if (!ishandEvent) fill(cars, res)
-            })
-        }
+        if (Object.keys(filterParams).length < 2) window.getLatestCars(cars)
 
     } else if (location.pathname === '/tyres/') {
         document.querySelector('#vitrina_name').innerHTML = 'Каталог шин'
@@ -184,6 +178,16 @@ window.clearFilter = function () {
         if (window.totalPages) preparePagerSPA(filterParams, Math.ceil(window.totalPages / 20))
         window.clearAllFilter = false
     }, 3000)
+}
+
+let countLatest = 0
+window.getLatestCars = function (cars) {
+    //api_getSpecials(currentCity, res => {
+    api_getLatestCarArrivials(++countLatest, res => {
+        res = cleanCarsWithoutPhoto(res)
+        cars = prepareCars(res)
+        fill(cars, res)
+    })
 }
 
 document.addEventListener('DOMContentLoaded', () => {
