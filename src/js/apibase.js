@@ -116,6 +116,12 @@ export function api_getFullAutoInfo(guid, callback) {
     return withCache(request, callback, 10) // ЗВ 10 минут авто не подменят
 }
 
+/*** Все данные по одной машине ***/
+export function api_getAutoByParams(brand, model, linkId, callback) {
+    let request = `/api/getAutoByParams?brand=${brand}&model=${model}&linkId=${linkId}`
+    return withCache(request, callback, 10) // ЗВ 10 минут авто не подменят
+}
+
 /*** Получение кол-во автомобилей разбитых по бренду. Отсортировано от большего к меньшему ***/
 export function api_GetCarCount(callback) {
     let request = '/api/getCarCount'

@@ -11,11 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const checkbox = document.querySelector(`[type="checkbox" ]`)
     const agree = document.querySelector(`[name="agree"]`)
     const capcthadiv = document.querySelector(`.capctha-div`)
-    const id = getUrlParam('id');
+    const auto = getUrlParam('auto');
     const name = getUrlParam('name');
     const h3_place = document.querySelector('#h3-place')
 
-    h3_place.innerHTML = `Вы бронируете автомобиль: <a href="/cars/car.html?id=${id}" target="_blank">${name}</a>`
+    h3_place.innerHTML = `Вы бронируете автомобиль: <a href="/cars/${auto}" target="_blank">${name}</a>`
 
     button.addEventListener('click', save)
 

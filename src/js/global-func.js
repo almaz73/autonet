@@ -107,7 +107,7 @@ export function prepareCars(res) {
             address: el.city + ' ' + (el.fullAddress || ''),
             id: el.id,
             name: el.brand + ' ' + el.model,
-            href: `${location.origin}/cars/${getBrandLat(el.brand)}/${transliterate(el.model).replaceAll(' ', '')}/${frendly}?id=` + el.id,
+            href: `${location.origin}/cars/${getBrandLat(el.brand)}/${transliterate(el.model).replaceAll(' ', '')}/${frendly}`,
             price: formatterShowPrice(el.price),
             fromPerMonth: fromPerMonth,
             info: info,

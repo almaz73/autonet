@@ -1,4 +1,4 @@
-import {api_getFullAutoInfo} from "@/js/apibase.js"
+import {api_getFullAutoInfo, api_getAutoByParams} from "@/js/apibase.js"
 import {formatterShowPrice, prepareCars, getUrlParam,} from "@/js/global-func.js";
 import {initSwipper} from "@/js/swiper-starter.js";
 
@@ -7,6 +7,12 @@ import "@/js/car_panels.js"
 
 
 const id = getUrlParam('id');
+let path = location.pathname.split('/')
+const brand = path[2]
+const model = path[3]
+const linkId = path[4]
+
+
 let autoName = ''
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -67,9 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     setTimeout(() => {
-            showPreloader(true)
-            api_getFullAutoInfo(id, res => {
-                showPreloader(false)
+        showPreloader(true)
+        api_getAutoByParams(brand, model, linkId, res => {
+            showPreloader(false)
                 /** Имя и характеристики и Хлебные крошки */
                 {
                     if (!res || !res.brand) sendConfirm('☹ ВОЗМОЖНО АВТОМОБИЛЬ СНЯТ С ПРОДАЖИ')
@@ -198,6 +204,6 @@ function showShareText() {
 
 function reserve() {
     /* бронирование */
-    let link = '?name=' + autoName[0].innerHTML + '&id=' + id
-    location.href = '/reserve/' + link
+    let link = '?name=' + autoName[0].innerHTML + '&auto=' + brand + '/' + model + '/' + linkId
+    location.href = '/reserve' + link
 }
