@@ -57,6 +57,7 @@
 
 .mySwiper {
     z-index: -1;
+    min-height: inherit;
 }
 
 .big .mySwiper {

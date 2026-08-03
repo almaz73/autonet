@@ -325,3 +325,22 @@ main h2, main h1 {
     background: var(--color-red) !important;
     height: 40px !important;
 }
+
+img[src="/st/red_arrow.svg"] {
+    width: 12px;
+    height: 10px;
+}
+
+img[src="/st/icons/compare_cars.svg"]{
+    width: 20px;
+    height: 18px;
+}
+
+img[src="/st/icons/penta.svg"]{
+    width: 20px;
+    height: 20px;
+}
+
+.filter_number{
+    min-width: 120px;
+}

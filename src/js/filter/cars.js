@@ -123,7 +123,7 @@ const whiteFilter = `<div  class="filter-white">
         <a href="javascript:void(0)" onclick="clearFilter()" class="frame-filter__controls-reset">Сбросить</a>
 
         <button class="frame-filter__submit" id="set_filter" onclick="goToCars()">
-            Найдено&nbsp;<span class="number"></span>
+            Найдено&nbsp;<span class="filter_number"></span>
         </button>
     </div>
 </div>

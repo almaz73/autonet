@@ -6,7 +6,7 @@ import handlebars from 'vite-plugin-handlebars'
 import liveReload from 'vite-plugin-live-reload'
 import sitemap from 'vite-plugin-sitemap'; // Импортируем плагин
 let devDir = '../front' // 'dict'
-// devDir = 'dict'
+devDir = 'dict'
 const pages = {
     main: resolve(__dirname, 'index.html'),
     privacyPolicy: resolve(__dirname, './privacy-policy/index.html'),

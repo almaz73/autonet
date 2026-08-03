@@ -348,7 +348,7 @@ ${field === 'phone' ? 'oninput="formattingPhone(this)"' : ''}>
 }
 
 export function carCountText(totalCount) {
-    let field = document.querySelector('#set_filter span.number')
+    let field = document.querySelector('#set_filter span.filter_number')
     if (field) field.innerHTML = totalCount
         + ' ' + declOfNum(totalCount, ['предложение', 'предложения', 'предложений'])
 }
