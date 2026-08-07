@@ -27,6 +27,9 @@ export function filter_changed(items, name) {
             filterParams['model'] = ''
         }
         getModelList(items[name].value)
+
+        // При смене марки обновляем хлебные крошки
+        document.querySelector('#path').innerHTML = brand.name
     }
     if (name === 'Модель') {
         let model = globalValues.modelsIds.find(el => el.name === items[name].value)

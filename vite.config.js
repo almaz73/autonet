@@ -156,14 +156,17 @@ export default defineConfig({
 			// Ваши настройки, например, домен
             hostname: 'https://xn--80aej9aped4f.xn--p1ai',
 			outDir: devDir, // Выходная папка
-			changefreq: 'monthly', // Устанавливаем частоту 'weekly' (еженедельно)
-            exclude: ['/admin/history','/admin/bd', '/admin/promo', '/admin/article', '/admin/vacancy', '/admin/login'],
+            exclude: ['/404', '/personal/favorite-cars','/personal/list-compared', '/cars/car', '/admin/history', '/admin/bd', '/admin/promo', '/admin/article',
+                '/admin/vacancy', '/admin/login', '/admin/history_period_days', '/admin/history_period'],
             robots: [
                 {
                     userAgent: '*',       // Правила для всех роботов
                     allow: '/',           // Разрешить индексацию сайта
                     disallow: [
                         '/admin',           // Запретить доступ к админке
+                        '/reserve',
+                        '/personal',
+                        '/auction'
                     ],
                     cleanParam: 'brand&city&PAGEN_1&PAGEN_2&PAGEN_3&pm_position&pm_source&cm_id&page /cars/',    // Пример добавления Clean-param (для Яндекса)
                 },
@@ -180,7 +183,7 @@ export default defineConfig({
                 const robotsPath = resolve(__dirname, devDir+'/robots.txt');
                 // Проверяем, существует ли файл после работы основного плагина
                 if (fs.existsSync(robotsPath)) {
-                    fs.appendFileSync(robotsPath, '\nSitemap: https://xn--80aej9aped4f.xn--p1ai/sitemap2.xml');
+                    fs.appendFileSync(robotsPath, '\nSitemap: https://xn--80aej9aped4f.xn--p1ai/sitemap_index.xml');
                 }
             }
         }

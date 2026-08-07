@@ -62,7 +62,7 @@ nav .header__nav-a:hover {
     margin: 0 auto;
     display: grid;
     grid-template-areas: "logo nav comb buttons";
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto max-content;
     align-items: center;
 }
 
