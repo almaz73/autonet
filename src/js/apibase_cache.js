@@ -1,3 +1,5 @@
+import {fetchWithTimeout} from '@/js/global-func.js'
+
 const Cache_serv = localStorage.getItem('CACHE_SERV')
 let CACHE = Cache_serv ? JSON.parse(Cache_serv) : {}
 if (CACHE instanceof Array) CACHE = {}
@@ -21,10 +23,10 @@ export function withCache(request, callback, hour) {
 
 
     // console.warn('Н А  С Е Р В Е Р   ! ! !')
-    return fetch(request).then(res => {
+    return fetchWithTimeout(request, {}, 1000).then(res => {
         if (!res.ok) console.log(`HTTP error! status: ${res.status}`)
         showPreloader(false)
-        return res.json();
+        return res.json && res.json();
     })
         .then(res => {
             CACHE[request] = {data: res}

@@ -390,12 +390,33 @@ const RussianBrandsLat = ['VAZ(LADA)', 'ZAZ', 'UAZ', 'IZH', 'Bogdan', 'GAZ', 'At
 
 export function getBrandLat(brandName) {
     let placeRusBrand = RussianBrandsRus.findIndex(el => el === brandName)
-    if (placeRusBrand != -1) brandName = RussianBrandsLat[placeRusBrand]
+    if (placeRusBrand !== -1) brandName = RussianBrandsLat[placeRusBrand]
     return brandName
 }
 
 export function getBrandRus(brandName) {
     let placeLAtBrand = RussianBrandsLat.findIndex(el => el === brandName)
-    if (placeLAtBrand != -1) brandName = RussianBrandsRus[placeLAtBrand]
+    if (placeLAtBrand !== -1) brandName = RussianBrandsRus[placeLAtBrand]
     return brandName
+}
+
+export async function fetchWithTimeout(url, options = {}, timeout = 5000) {
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), timeout);
+
+    try {
+        const response = await fetch(url, {
+            ...options,
+            signal: controller.signal
+        });
+        clearTimeout(id);
+        return response;
+    } catch (error) {
+        clearTimeout(id);
+        if (error.name === 'AbortError') {
+            sendMessage('🤔 Технические работы. Сервис временно недоступен. Пожалуйста, попробуйте позже. 🌚', 'error')
+            throw new Error('Превышено время ожидания запроса');
+        }
+        throw error;
+    }
 }

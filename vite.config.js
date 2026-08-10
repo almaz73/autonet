@@ -166,13 +166,19 @@ export default defineConfig({
                         '/admin',           // Запретить доступ к админке
                         '/reserve',
                         '/personal',
-                        '/auction'
+                        '/tag',
+                        '/upload',
+                        '/user',
+                        '/pub_auto',
+                        '/pub_promo',
+                        '/st',
+                        '/236',
+                        '/626'
                     ],
-                    cleanParam: 'brand&city&PAGEN_1&PAGEN_2&PAGEN_3&pm_position&pm_source&cm_id&page /cars/',    // Пример добавления Clean-param (для Яндекса)
                 },
                 {
-                    // userAgent: 'Yandex',  // Отдельные правила для Яндекса
-                    // disallow: '/secret',
+                    userAgent: 'Yandex',  // Отдельные правила для Яндекса
+                    cleanParam: 'brand&city&PAGEN_1&PAGEN_2&PAGEN_3&pm_position&pm_source&cm_id&page /cars/',    // Пример добавления Clean-param (для Яндекса)
                 }
             ]
         }),

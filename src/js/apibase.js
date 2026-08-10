@@ -1,4 +1,6 @@
 import {withCache} from "@/js/apibase_cache.js"
+import {fetchWithTimeout} from '@/js/global-func.js'
+
 
 export function api_postEmail(params) {
     let request = '/api/postEmail'
@@ -25,13 +27,13 @@ export function api_postEmail(params) {
     if (params.link) letter += 'Ссылка: ' + params.link + '\n'
     if (params.autoAdress) letter += 'Авто адрес: ' + params.autoAdress + '\n'
 
-    return fetch(request, {
+    return fetchWithTimeout(request, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify({type: params.type || 10, text: letter})
-    })
+    }, 5000)
         .then(res => res.json())
         .then(res => {
             showPreloader(false)
@@ -63,16 +65,16 @@ export function api_postEmailWithAttachement(params) {
     formData.append('text', letter);
     formData.append('file', params.resume);
 
-    return fetch(request, {
+      return fetchWithTimeout(request, {
         method: 'POST',
         body: formData //   body:  JSON.stringify(param)
-    })
+    }, 5000)
         .then(res => res.json())
         .then(res => {
             showPreloader(false)
             return res
         })
-        .catch(() => sendMessage('Сервер отказал!', 'error'));
+        .catch(err => console.log(err.message));
 }
 
 
