@@ -152,6 +152,7 @@ export default defineConfig({
 			reloadOnPartialChange: true,
 		}),
 		liveReload(resolve(__dirname, 'src/partials/**/*'), { alwaysReload: true }),
+        /* время от времени нужно будет обновлять sitemap например через  tools.saitreport.ru/xml-sitemap-generator
 		sitemap({
 			// Ваши настройки, например, домен
             hostname: 'https://xn--80aej9aped4f.xn--p1ai',
@@ -193,6 +194,8 @@ export default defineConfig({
                 }
             }
         }
+
+        */
 	],
 	base: '/',
 	build: {

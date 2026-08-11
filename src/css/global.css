@@ -154,6 +154,10 @@ main h2, main h1 {
 }
 
 /*****/
+#car-vitrina.container{
+    min-height: 500px;
+}
+
 .car_vitrina {
     display: flex;
     justify-content: space-between;
