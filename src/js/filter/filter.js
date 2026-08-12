@@ -92,7 +92,7 @@ function getVitrina(ishandEvent) {
     let cars
     if (location.pathname === '/') {
         // Пока берем первые семь, а надо бы спецпредложения от организации
-        document.querySelector('#vitrina_name').innerHTML = 'Специальные предложения по цене' // Новые поступления
+        document.querySelector('#vitrina_name').innerHTML = 'Новые списки автомобилей' // Новые поступления
         if (!ishandEvent) setExtention(false)
 
         let bt = document.querySelector('#set_filter')

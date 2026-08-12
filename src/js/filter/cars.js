@@ -133,7 +133,7 @@ const whiteFilter = `<div  class="filter-white">
 
 <div id="deleter" title="Очистить">x</div>`
 const carVitrina = `<div class="car_vitrina">
-        <h2 id="vitrina_name">Автомобили</h2>
+        <h1 id="vitrina_name">Автомобили</h1>
 
         <span class="view_buttons">
             <span class='type_views'>

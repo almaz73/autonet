@@ -154,8 +154,12 @@ main h2, main h1 {
 }
 
 /*****/
-#car-vitrina.container{
+#car-vitrina.container {
     min-height: 500px;
+}
+
+h1#vitrina_name {
+    font-size: 1.5em;
 }
 
 .car_vitrina {
