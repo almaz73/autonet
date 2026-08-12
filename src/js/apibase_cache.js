@@ -21,9 +21,10 @@ export function withCache(request, callback, hour) {
         }
     }
 
+    let timeOut = request.includes('getList') ? 3000 : 10000
 
     // console.warn('Н А  С Е Р В Е Р   ! ! !')
-    return fetchWithTimeout(request, {}, 1000).then(res => {
+    return fetchWithTimeout(request, {},timeOut).then(res => {
         if (!res.ok) console.log(`HTTP error! status: ${res.status}`)
         showPreloader(false)
         return res.json && res.json();

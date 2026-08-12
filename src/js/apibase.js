@@ -33,7 +33,7 @@ export function api_postEmail(params) {
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify({type: params.type || 10, text: letter})
-    }, 5000)
+    }, 10000)
         .then(res => res.json())
         .then(res => {
             showPreloader(false)
@@ -68,7 +68,7 @@ export function api_postEmailWithAttachement(params) {
       return fetchWithTimeout(request, {
         method: 'POST',
         body: formData //   body:  JSON.stringify(param)
-    }, 5000)
+    }, 10000)
         .then(res => res.json())
         .then(res => {
             showPreloader(false)
