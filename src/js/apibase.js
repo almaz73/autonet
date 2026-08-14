@@ -124,8 +124,8 @@ export function api_getFullAutoInfo(guid, callback) {
 }
 
 /*** Все данные по одной машине ***/
-export function api_getAutoByParams(brand, model, linkId, callback) {
-    let request = `/api/getAutoByParams?brand=${brand}&model=${model}&linkId=${linkId}`
+export function api_getAutoByParams(brand, model, linkId, isSmallPhoto, callback) {
+    let request = `/api/getAutoByParams?brand=${brand}&model=${model}&linkId=${linkId}&isSmallPhoto=${isSmallPhoto}`
     return withCache(request, callback, 10) // ЗВ 10 минут авто не подменят
 }
 

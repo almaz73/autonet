@@ -1,12 +1,11 @@
-import {api_getFullAutoInfo, api_getAutoByParams} from "@/js/apibase.js"
-import {formatterShowPrice, prepareCars, getUrlParam,} from "@/js/global-func.js";
+import {api_getAutoByParams} from "@/js/apibase.js"
+import {formatterShowPrice, prepareCars} from "@/js/global-func.js";
 import {initSwipper} from "@/js/swiper-starter.js";
 
 import {calculator} from "@/js/credit.js"
 import "@/js/car_panels.js"
 
 
-const id = getUrlParam('id');
 let path = location.pathname.split('/')
 const brand = path[2]
 const model = path[3]
@@ -69,12 +68,13 @@ document.addEventListener('DOMContentLoaded', () => {
             autoSwip.innerHTML += `<div class="swiper-slide" style="height: fit-content" ondblclick="toBig('big')"><img src="${el}" alt=""></div>`
         })
         initSwipper()
-        // setTimeout(() => showSlide(0), 1000)
     }
 
     setTimeout(() => {
         showPreloader(true)
-        api_getAutoByParams(brand, model, linkId, res => {
+        let isSmallPhoto = window.innerWidth < 900
+
+        api_getAutoByParams(brand, model, linkId, isSmallPhoto, res => {
             showPreloader(false)
                 /** Имя и характеристики и Хлебные крошки */
                 {
