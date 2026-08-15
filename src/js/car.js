@@ -70,11 +70,33 @@ document.addEventListener('DOMContentLoaded', () => {
         initSwipper()
     }
 
+    // проверяем наличие фотки, если нет, меняет ссылку фото с small на big
+    function checkImage(url) {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => resolve(true);   // Картинка есть и загрузилась
+            img.onerror = () => resolve(false);  // Ошибка (нет файла, 404, неверный формат)
+            img.src = url;
+        });
+    }
+    
+    // если нет фотки, меняем ссылку
+    async function replaceLink(images) {
+        let newImages = []
+        if (!images || !images.length) return []
+        for (const url of images) {
+            let isExist = await checkImage(url) // не все фотки переведены в маленький формат, для них по прежнему показываем большие
+            let newUrl = isExist ? url : url.replace('_small.webp', '_big.webp')
+            newImages.push(newUrl)
+        }
+        return newImages
+    }
+
     setTimeout(() => {
         showPreloader(true)
         let isSmallPhoto = window.innerWidth < 900
 
-        api_getAutoByParams(brand, model, linkId, isSmallPhoto, res => {
+        api_getAutoByParams(brand, model, linkId, isSmallPhoto, async function (res)  {
             showPreloader(false)
                 /** Имя и характеристики и Хлебные крошки */
                 {
@@ -125,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 /** Фотки */
                 {
 
+                    res.images = await replaceLink(res.images)
                     preloadAndShowPhotos(res.images)
 
                     let autoMore = document.querySelector('#auto-more')

@@ -232,11 +232,11 @@
     }
 }
 
-@media (max-width: 640px) {
-    .alone .fotos {
-        display: none;
-    }
-}
+/*@media (max-width: 640px) {*/
+/*    .alone .fotos {*/
+/*        display: none;*/
+/*    }*/
+/*}*/
 
 .big_viewer {
     position: absolute;
