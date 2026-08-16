@@ -184,11 +184,14 @@ window.clearFilter = function () {
 }
 
 let countLatest = 0
+let countNewCars = 0
 window.getLatestCars = function (cars) {
     //api_getSpecials(currentCity, res => {
     api_getLatestCarArrivials(++countLatest, res => {
         res = cleanCarsWithoutPhoto(res)
         cars = prepareCars(res)
+        if (countNewCars < res.length) countNewCars = res.length
+        else document.querySelector('#more').innerHTML = 'Всего было добавлено сегодня: ' + countNewCars
         fill(cars, res)
     })
 }
