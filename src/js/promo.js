@@ -47,17 +47,17 @@ api_get_activeBanners(res => {
         if (count > 5) count = 0
         if (orientattion === 'ver') {
             listPromo += `<a href='/promo/${el.code}/' class='ver'> <img style="max-width: 275px;"
-src='/pub_promo/${el.id + '_v_l'}.webp?ver=1' loading='lazy' alt='${el.name}'></a>`
+src='/pub_promo/${el.id + '_v_l'}.webp' loading='lazy' alt='${el.name}'></a>`
         } else {
             listPromo += `<a href='/promo/${el.code}/' class='hor'> <img
-src='/pub_promo/${el.id + '_h_l'}.webp?ver=1' loading='lazy' alt='${el.name}'></a>`
+src='/pub_promo/${el.id + '_h_l'}.webp' loading='lazy' alt='${el.name}'></a>`
         }
         promos.push(`<a href='/promo/${el.code}/' class='ver'> <img style="max-width: 275px;"
-src='/pub_promo/${el.id + '_v_l'}.webp?ver=1' loading='lazy' alt='${el.name}'></a>`)
+src='/pub_promo/${el.id + '_v_l'}.webp' loading='lazy' alt='${el.name}'></a>`)
         littleBanners += ` <div class="swiper-slide">
             <a href='/promo/${el.code}/'> 
-            <img class="buy_lg" src="/pub_promo/${el.id + '_h_l'}.webp?ver=1" alt="${el.name}">
-            <img class="buy_mg" src="/pub_promo/${el.id + '_v_l'}.webp?ver=1" alt="${el.name}">
+            <img class="buy_lg" src="/pub_promo/${el.id + '_h_l'}.webp" alt="${el.name}">
+            <img class="buy_mg" src="/pub_promo/${el.id + '_v_l'}.webp" alt="${el.name}">
             </a>
         </div>`
     })
