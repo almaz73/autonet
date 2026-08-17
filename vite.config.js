@@ -80,7 +80,7 @@ const pages = {
     insurance: resolve(__dirname, './services/insurance/index.html'),
     landlords: resolve(__dirname, './landlords/index.html'),
     crediting: resolve(__dirname, './services/crediting/index.html'),
-    shinny: resolve(__dirname, './services/shinnyy-сentr/index.html'),
+    shinny: resolve(__dirname, './services/shinnyy-centr/index.html'),
     osmotr: resolve(__dirname, './services/tehnicheskiy-osmotr/index.html'),
     obsluzh: resolve(__dirname, './services/servisnoe-obsluzhivanie/index.html'),
     remont: resolve(__dirname, './services/remont-dvigatel/index.html'),

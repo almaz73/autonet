@@ -332,7 +332,7 @@ test('Форма Заявка на страховани(2) ', async ({page}) => 
 });
 
 test('Шинный центр', async ({page}) => {
-    await page.goto(testPath+'services/shinnyy-сentr/');
+    await page.goto(testPath+'services/shinnyy-centr/');
     await page.getByRole('button', { name: 'Прекрасно' }).click()
 
     const loc = '.st1'

@@ -27,7 +27,7 @@ window.sendBid = function (fName) {
     if (checkFormFields([capcthadiv, name, phone, checkbox, agree])) return false
 
     const params = {
-        // form: '/services/shinnyy-сentr/',
+        // form: '/services/shinnyy-centr/',
         // description: 'Шинный центр. Подарок по диагностике колес, если сюда пишут',
         type: 5,
         name: name.value,
