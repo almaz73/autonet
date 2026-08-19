@@ -15,11 +15,11 @@ Object.keys(CACHE).map(key => {
 /* Некоторые методы кэшируем пока не загрузится основной, для мгновенного показа, если нет времени ожидания */
 
 export function withCache(request, callback, hour) {
-   if (CACHE[request] && !location.href.includes('localhost')) {
-        if (hour && CACHE[request].hour > Date.now()) {
-            return callback(CACHE[request].data)
-        }
-    }
+   // if (CACHE[request] && !location.href.includes('localhost')) {
+   //      if (hour && CACHE[request].hour > Date.now()) {
+   //          return callback(CACHE[request].data)
+   //      }
+   //  }
 
     let timeOut = request.includes('getList') ? 3000 : 10000
 
