@@ -167,7 +167,7 @@ window.goToCars = function () {
     }
 
     link = link.replaceAll(' ', '')
-   location.href = '/cars' + (link?`/${link}`:'')
+    location.href = '/cars' + (link ? `/${link}` : '') + '#vitrina_name'
 }
 window.clearFilter = function () {
     window.clearAllFilter = true

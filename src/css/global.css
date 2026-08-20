@@ -20,6 +20,11 @@
     font-weight: 400;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+
 body {
     font-family: 'Gilroy', system-ui;
     margin: 0;
