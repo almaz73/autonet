@@ -99,6 +99,7 @@ const pages = {
     bdHistory: resolve(__dirname, './admin/history.html'),
     bdHistoryPeriod: resolve(__dirname, './admin/history_period.html'),
     bdHistoryPeriodDays: resolve(__dirname, './admin/history_period_days.html'),
+    ajax: resolve(__dirname, './ajax/index.html'),
     // fids: resolve(__dirname, './fids/autoset1.xml'),
 }
 // Превращаем пути в массив имен файлов для проверки (index.html, admin.html)
