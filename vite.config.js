@@ -6,7 +6,7 @@ import handlebars from 'vite-plugin-handlebars'
 import liveReload from 'vite-plugin-live-reload'
 import sitemap from 'vite-plugin-sitemap'; // Импортируем плагин
 let devDir = '../front' // 'dict'
-devDir = 'dict'
+// devDir = 'dict'
 const pages = {
     main: resolve(__dirname, 'index.html'),
     privacyPolicy: resolve(__dirname, './privacy-policy/index.html'),
@@ -100,6 +100,11 @@ const pages = {
     bdHistoryPeriod: resolve(__dirname, './admin/history_period.html'),
     bdHistoryPeriodDays: resolve(__dirname, './admin/history_period_days.html'),
     ajax: resolve(__dirname, './ajax/index.html'),
+    tg: resolve(__dirname, './tg/index.html'),
+    tg_2347: resolve(__dirname, './tg/tg_2347.html'),
+    tg_2345: resolve(__dirname, './tg/tg_2345.html'),
+    tg_2344: resolve(__dirname, './tg/tg_2344.html'),
+
     // fids: resolve(__dirname, './fids/autoset1.xml'),
 }
 // Превращаем пути в массив имен файлов для проверки (index.html, admin.html)
