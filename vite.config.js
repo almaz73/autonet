@@ -1,11 +1,10 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
-import fs from 'fs';
 import { fileURLToPath, URL } from 'node:url'
 import handlebars from 'vite-plugin-handlebars'
 import liveReload from 'vite-plugin-live-reload'
-import sitemap from 'vite-plugin-sitemap'; // Импортируем плагин
 let devDir = '../front' // 'dict'
+let __dirname = import.meta.dirname
 // devDir = 'dict'
 const pages = {
     main: resolve(__dirname, 'index.html'),
@@ -99,12 +98,6 @@ const pages = {
     bdHistory: resolve(__dirname, './admin/history.html'),
     bdHistoryPeriod: resolve(__dirname, './admin/history_period.html'),
     bdHistoryPeriodDays: resolve(__dirname, './admin/history_period_days.html'),
-    ajax: resolve(__dirname, './ajax/index.html'),
-    tg: resolve(__dirname, './tg/index.html'),
-    tg_2347: resolve(__dirname, './tg/tg_2347.html'),
-    tg_2345: resolve(__dirname, './tg/tg_2345.html'),
-    tg_2344: resolve(__dirname, './tg/tg_2344.html'),
-
     // fids: resolve(__dirname, './fids/autoset1.xml'),
 }
 // Превращаем пути в массив имен файлов для проверки (index.html, admin.html)
@@ -121,35 +114,6 @@ export default defineConfig({
 		},
 	},
 	plugins: [
-        { // не очень работает, оставим на потом, нужно лишь для режима девелопа, чтобы 404 ловил
-            name: 'handle-404',
-            // configureServer(server) {
-            //         server.middlewares.use((req, res, next) => {
-            //             const url = new URL(req.url, `http://${req.headers.host}`);
-            //             let pathname = url.pathname;
-            //             // 2. Логика сопоставления:
-            //             if (pathname === '/' ||
-            //                 pathname.includes('@vite') ||
-            //                 pathname.includes('/api/') ||
-            //                 (!pathname.endsWith('.html') &&
-            //                 pathname.includes('.'))
-            //             ) return next();
-            //             const fileName = pathname.replace('/', '');
-            //             // // 3. Проверка: есть ли такой файл в наших входных точках?
-            //             const isPageExists = !!allowedHtmlFiles.find(el=> el.includes(fileName));
-            //             if (!isPageExists) {
-            //                 console.log(`[404] Страница не найдена: ${req.url}`);
-            //                 console.log(`[Redirect] ${pathname} -> /404.html`);
-            //                 res.statusCode = 302; // Временный редирект
-            //                 res.setHeader('Location', '/404.html');
-            //                 res.end();
-            //                 return;
-            //             }
-            //             next();
-            //         });
-            //     }
-
-        },
 		handlebars({
 			compileOptions: {
 				// Example config option: avoid auto-indenting partials
@@ -159,50 +123,6 @@ export default defineConfig({
 			reloadOnPartialChange: true,
 		}),
 		liveReload(resolve(__dirname, 'src/partials/**/*'), { alwaysReload: true }),
-        /* время от времени нужно будет обновлять sitemap например через  tools.saitreport.ru/xml-sitemap-generator
-		sitemap({
-			// Ваши настройки, например, домен
-            hostname: 'https://xn--80aej9aped4f.xn--p1ai',
-			outDir: devDir, // Выходная папка
-            exclude: ['/404', '/personal/favorite-cars','/personal/list-compared', '/cars/car', '/admin/history', '/admin/bd', '/admin/promo', '/admin/article',
-                '/admin/vacancy', '/admin/login', '/admin/history_period_days', '/admin/history_period'],
-            robots: [
-                {
-                    userAgent: '*',       // Правила для всех роботов
-                    allow: '/',           // Разрешить индексацию сайта
-                    disallow: [
-                        '/admin',           // Запретить доступ к админке
-                        '/reserve',
-                        '/personal',
-                        '/tag',
-                        '/upload',
-                        '/user',
-                        '/pub_auto',
-                        '/pub_promo',
-                        '/st',
-                        '/236',
-                        '/626'
-                    ],
-                },
-                {
-                    userAgent: 'Yandex',  // Отдельные правила для Яндекса
-                    cleanParam: 'brand&city&PAGEN_1&PAGEN_2&PAGEN_3&pm_position&pm_source&cm_id&page /cars/',    // Пример добавления Clean-param (для Яндекса)
-                }
-            ]
-        }),
-        // Кастомный хук для дозаписи во все виды robots.txt
-        {
-            name: 'append-second-sitemap',
-            closeBundle() {
-                const robotsPath = resolve(__dirname, devDir+'/robots.txt');
-                // Проверяем, существует ли файл после работы основного плагина
-                if (fs.existsSync(robotsPath)) {
-                    fs.appendFileSync(robotsPath, '\nSitemap: https://xn--80aej9aped4f.xn--p1ai/sitemap_index.xml');
-                }
-            }
-        }
-
-        */
 	],
 	base: '/',
 	build: {
@@ -211,7 +131,6 @@ export default defineConfig({
 		},
 
 		outDir: devDir, // Выходная папка
-		// sourcemap: true, // Генерация sourcemaps (путь js)
 		chunkSizeWarningLimit: 1000, // Sets the warning limit to 1000 kB (1MB)
         manifest: true, // Создаст manifest.json в папке сборки
 	},

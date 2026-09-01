@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
             img.src = url;
         });
     }
-    
+
     // если нет фотки, меняем ссылку
     async function replaceLink(images) {
         let newImages = []
@@ -192,6 +192,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function openInYndx(address) {
         const yandexMapsUrl = `https://yandex.ru/maps/?text=${encodeURIComponent(address)}`;
         window.open(yandexMapsUrl, '_blank');
+    }
+    if (window.outerWidth < 500) {
+        setTimeout(() => {
+          window.scrollTo(0, document.querySelector('.big').offsetTop - 100);
+          window.showMore();
+          setTimeout(window.showMore, 500);
+        }, 100);
     }
 })
 
