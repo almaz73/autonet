@@ -3,7 +3,7 @@ let fotos = document.querySelector('.alone .fotos')
 let fotos_black = document.querySelector('.fotos_black')
 let big = document.querySelector('.big')
 let swiperSection = document.querySelector('.swiper.mySwiper')
-let isCarPage = location.pathname.includes('car.html')
+let isCarPage = document.querySelector('.alone')
 const isMainPage = location.pathname === '/'
 
 

@@ -191,7 +191,8 @@ window.getLatestCars = function (cars) {
         res = cleanCarsWithoutPhoto(res)
         cars = prepareCars(res)
         if (countNewCars < res.length) countNewCars = res.length
-        else document.querySelector('#more').innerHTML = 'Всего сегодня было добавлено: ' + countNewCars
+        else if(countNewCars) document.querySelector('#more').innerHTML = 'Всего сегодня новых: ' + countNewCars
+        else document.querySelector('#more').innerHTML = ''
         fill(cars, res)
     })
 }
