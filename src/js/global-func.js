@@ -400,7 +400,7 @@ export function getBrandRus(brandName) {
     return brandName
 }
 
-export async function fetchWithTimeout(url, options = {}, timeout = 10000) {
+export async function fetchWithTimeout(url, options = {}, timeout = 15000) {
     const controller = new AbortController();
     const id = setTimeout(() => controller.abort(), timeout);
 
@@ -414,7 +414,7 @@ export async function fetchWithTimeout(url, options = {}, timeout = 10000) {
     } catch (error) {
         clearTimeout(id);
         if (error.name === 'AbortError') {
-            sendMessage('🤔 Технические работы. Сервис временно недоступен. Пожалуйста, попробуйте позже.', 'warning')
+            sendMessage('🤔 Запрос отменен, возможно неполадки связи. Пожалуйста, попробуйте позже.', 'warning')
             throw new Error('Превышено время ожидания запроса');
         }
         throw error;

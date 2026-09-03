@@ -1,19 +1,18 @@
 /* ромашка isWait loader*/
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelector('.footer__bottom').innerHTML +=`
+  document.querySelector('.footer__bottom').innerHTML += `
   <div id="preloader"
            style="position: fixed;
-           transform: translateY(-50%);
+           transform: translateX(-50%);
            left: 50%;
-           top: 50px;
+           top: 173px;
            pointer-events: none;
            display: none;
            z-index: 10000">
     <img src="/st/icons/load.gif" alt="" style="width: 73px">
 </div>`
-
-})
+});
 
 /**  Глобальный дизаблинг кнопок, во время обращения к серверу? если отправляется кнопка **/
 /* не всегда кнопки сами сообщают что он нажат (фильтре) дизаблить надо их тоже */
