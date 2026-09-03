@@ -19,7 +19,7 @@ const pages = {
     podbor: resolve(__dirname, './services/autopodbor/index.html'),
     promo: resolve(__dirname, './promo/index.html'),
     p660822: resolve(__dirname, './promo/660822/index.html'),
-    // p655683: resolve(__dirname, './promo/655683/index.html'),
+    p660823: resolve(__dirname, './promo/660823/index.html'),
     // p660786: resolve(__dirname, './promo/660786/index.html'),
     // p660787: resolve(__dirname, './promo/660787/index.html'),
     // p660788: resolve(__dirname, './promo/660788/index.html'),
