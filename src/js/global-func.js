@@ -400,7 +400,7 @@ export function getBrandRus(brandName) {
     return brandName
 }
 
-export async function fetchWithTimeout(url, options = {}, timeout = 15000) {
+export async function fetchWithTimeout(url, options = {}, timeout = 30000) {
     const controller = new AbortController();
     const id = setTimeout(() => controller.abort(), timeout);
 

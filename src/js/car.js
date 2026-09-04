@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const autoSwip = document.querySelector('#auto-swip')
 
-    let small_image = localStorage.getItem('CAR_SMALL_PHOTO')
-    if (small_image) setPhotosInSwiper([small_image])
+    // let small_image = localStorage.getItem('CAR_SMALL_PHOTO')
+    // if (small_image) setPhotosInSwiper([small_image])
 
 
     function preloadAndShowPhotos(urls) {

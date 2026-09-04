@@ -132,7 +132,7 @@ function galeryEvents(id, images) {
 }
 
 window.openCar = function (href, linkPhoto) {
-    localStorage.setItem('CAR_SMALL_PHOTO', linkPhoto)
+    // localStorage.setItem('CAR_SMALL_PHOTO', linkPhoto)
     setTimeout(() => location.href = href)
 }
 
