@@ -19,7 +19,7 @@ function set4rondomBaner() {
 }
 
 function showBigBannerval(el) {
-    if(!el) return false
+    if (!el) return false
     let conditions = `<div class="inscription" style="${el.styles || ''}">${el.description || ''}</div>`
     let bigBanner = `${conditions}<a href='/promo/${el.code}/'>
             <img src='/pub_promo/${el.id + '_h_m'}.webp?v=1' alt='${el.name}' class='big'>
@@ -33,10 +33,25 @@ function showBigBannerval(el) {
 let littleBanners = ` <section class="swiper mySwiper buy_swiper" style="z-index: 1">
     <div class="swiper-wrapper">`
 let isAllBanners = isNaN(parseInt(location.pathname.split('/promo/')[1]))
-//
+
+// Если это статичная страница, подставляем надпись о времени акции
+function descriptionForStaticPage(res) {
+    let noSSRpage = document.querySelector('#onlyForStaticPage')
+    if (noSSRpage) { // не созданный бакендом страница
+        let code = location.pathname.split('/')[2]
+        let action = res.find(el => el.code === code)
+        noSSRpage.innerHTML = action.description
+        noSSRpage.style.cssText = action.styles
+    }
+}
+
+
 api_get_activeBanners(res => {
     let listPromo = []
     let count = 0
+
+    descriptionForStaticPage(res)
+
     if (res && isAllBanners) {
         showBigBannerval(res.splice(0, 1)[0])
     }
@@ -47,30 +62,16 @@ api_get_activeBanners(res => {
         if (count === 5 || count === 6) orientattion = 'hor'
         if (count > 5) count = 0
         if (orientattion === 'ver') {
-            listPromo += `<a href='/promo/${el.code}/' class='ver'>
-<!--<div style="background: #ddffdd55; position: absolute; bottom: 24px; left: 46px; font-size: small "> -->
-<!--    <div>Данная акция действует на территории г.Казани, проспект Победы 212к2</div>-->
-<!--    <div>Акции не суммируются и не являются офертой. Срок действия до 30.09.2026</div>111-->
-<!--</div>-->
- <img style="max-width: 275px;"
+            listPromo += `<a href='/promo/${el.code}/' class='ver'><img style="max-width: 275px;"
 src='/pub_promo/${el.id + '_v_l'}.webp' loading='lazy' alt='${el.name}'></a>`
         } else {
-            listPromo += `<a href='/promo/${el.code}/' class='hor'>
-<!--<div style="background: #ffdddd55; position: absolute; bottom: 24px; left: 46px; font-size: small "> -->
-<!--    <div>Данная акция действует на территории г.Казани, проспект Победы 212к2</div>-->
-<!--    <div>Акции не суммируются и не являются офертой. Срок действия до 30.09.2026</div>222-->
-<!--</div>-->
- <img
-src='/pub_promo/${el.id + '_h_l'}.webp' loading='lazy' alt='${el.name}'></a>`
+            listPromo += `<a href='/promo/${el.code}/' class='hor'><img src='/pub_promo/${el.id + '_h_l'}.webp' 
+loading='lazy' alt='${el.name}'></a>`
         }
         promos.push(`<a href='/promo/${el.code}/' class='ver'> <img style="max-width: 275px;"
 src='/pub_promo/${el.id + '_v_l'}.webp' loading='lazy' alt='${el.name}'></a>`)
         littleBanners += ` <div class="swiper-slide">
             <a href='/promo/${el.code}/'> 
-            <div style="background: #ffdddd55; position: absolute; bottom: 24px; left: 46px; font-size: small "> 
-    <div>Данная акция действует на территории г.Казани, проспект Победы 212к2</div>
-    <div>Акции не суммируются и не являются офертой. Срок действия до 30.09.2026</div>333
-</div>
             <img class="buy_lg" src="/pub_promo/${el.id + '_h_l'}.webp" alt="${el.name}">
             <img class="buy_mg" src="/pub_promo/${el.id + '_v_l'}.webp" alt="${el.name}">
             </a>
@@ -91,9 +92,9 @@ src='/pub_promo/${el.id + '_v_l'}.webp' loading='lazy' alt='${el.name}'></a>`)
 })
 
 /** для страницк cars*/
-window.reloadLittleSwiper = function (){
+window.reloadLittleSwiper = function () {
     let swiper_buy = document.querySelector('swiper_buy')
-    if(!swiper_buy) return false
-    if(swiper_buy)swiper_buy.innerHTML = littleBanners
+    if (!swiper_buy) return false
+    if (swiper_buy) swiper_buy.innerHTML = littleBanners
     initSwipper()
 }

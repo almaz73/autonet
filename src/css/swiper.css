@@ -149,7 +149,7 @@
 }
 
 @media (width < 500px) {
-    .swiper-slide .inscription, .promo-banner .inscription {
+    .swiper-slide .inscription{
         font-size: 12px;
         flex-wrap: wrap;
         text-align: center;
