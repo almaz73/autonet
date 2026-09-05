@@ -17,17 +17,19 @@ function fillSwiper(val) {
 api_get_mainBanners(res => {
     let banners = ''
     res.forEach((el, ind) => {
+        let styles = el.styles
+        let conditions = `<div class="inscription" style="${styles || ''}">${el.description||''}</div>`
         if (ind === 0) {
             banners += `
-    <div class='swiper-slide'>
-      <a href='/promo/${el.code}/'>
+    <div class='swiper-slide'>${conditions}
+      <a href='/promo/${el.code}/'> 
         <img class='img_lg' src='/pub_promo/${el.photo585}?v=1' alt='${el.name}' fetchpriority='high'>
         <img class='img_md' src='/pub_promo/${el.photo1200}?v=1' alt='${el.name}' fetchpriority='high'>
         <img class='img_sm' src='/pub_promo/${el.photo278}?v=1' alt='${el.name}' fetchpriority='high'>
       </a>
     </div>`} else {
             banners += `
-    <div class='swiper-slide'>
+    <div class='swiper-slide'>${conditions}
       <a href='/promo/${el.code}/'>
         <img class='img_lg' src='/pub_promo/${el.photo585}?v=1' alt='${el.name}' loading='lazy'>
         <img class='img_md' src='/pub_promo/${el.photo1200}?v=1' alt='${el.name}' loading='lazy'>
