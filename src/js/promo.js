@@ -20,7 +20,8 @@ function set4rondomBaner() {
 
 function showBigBannerval(el) {
     if(!el) return false
-    let bigBanner = ` <a href='/promo/${el.code}/'>
+    let conditions = `<div class="inscription" style="${el.styles || ''}">${el.description || ''}</div>`
+    let bigBanner = `${conditions}<a href='/promo/${el.code}/'>
             <img src='/pub_promo/${el.id + '_h_m'}.webp?v=1' alt='${el.name}' class='big'>
             <img src='/pub_promo/${el.id + '_v_b'}.webp?v=1' alt='${el.name}' class='small'>
         </a>`
@@ -46,16 +47,30 @@ api_get_activeBanners(res => {
         if (count === 5 || count === 6) orientattion = 'hor'
         if (count > 5) count = 0
         if (orientattion === 'ver') {
-            listPromo += `<a href='/promo/${el.code}/' class='ver'> <img style="max-width: 275px;"
+            listPromo += `<a href='/promo/${el.code}/' class='ver'>
+<!--<div style="background: #ddffdd55; position: absolute; bottom: 24px; left: 46px; font-size: small "> -->
+<!--    <div>Данная акция действует на территории г.Казани, проспект Победы 212к2</div>-->
+<!--    <div>Акции не суммируются и не являются офертой. Срок действия до 30.09.2026</div>111-->
+<!--</div>-->
+ <img style="max-width: 275px;"
 src='/pub_promo/${el.id + '_v_l'}.webp' loading='lazy' alt='${el.name}'></a>`
         } else {
-            listPromo += `<a href='/promo/${el.code}/' class='hor'> <img
+            listPromo += `<a href='/promo/${el.code}/' class='hor'>
+<!--<div style="background: #ffdddd55; position: absolute; bottom: 24px; left: 46px; font-size: small "> -->
+<!--    <div>Данная акция действует на территории г.Казани, проспект Победы 212к2</div>-->
+<!--    <div>Акции не суммируются и не являются офертой. Срок действия до 30.09.2026</div>222-->
+<!--</div>-->
+ <img
 src='/pub_promo/${el.id + '_h_l'}.webp' loading='lazy' alt='${el.name}'></a>`
         }
         promos.push(`<a href='/promo/${el.code}/' class='ver'> <img style="max-width: 275px;"
 src='/pub_promo/${el.id + '_v_l'}.webp' loading='lazy' alt='${el.name}'></a>`)
         littleBanners += ` <div class="swiper-slide">
             <a href='/promo/${el.code}/'> 
+            <div style="background: #ffdddd55; position: absolute; bottom: 24px; left: 46px; font-size: small "> 
+    <div>Данная акция действует на территории г.Казани, проспект Победы 212к2</div>
+    <div>Акции не суммируются и не являются офертой. Срок действия до 30.09.2026</div>333
+</div>
             <img class="buy_lg" src="/pub_promo/${el.id + '_h_l'}.webp" alt="${el.name}">
             <img class="buy_mg" src="/pub_promo/${el.id + '_v_l'}.webp" alt="${el.name}">
             </a>
