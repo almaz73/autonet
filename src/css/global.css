@@ -370,8 +370,9 @@ img[src="/st/icons/penta.svg"]{
     font-size: 12px;
     flex-wrap: wrap;
     text-align: center;
-    left: initial;
-    padding: 0 40px;
+    width: 73%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .promo-banner .inscription{
@@ -383,8 +384,9 @@ img[src="/st/icons/penta.svg"]{
         font-size: 12px;
         flex-wrap: wrap;
         text-align: center;
-        left: initial;
         width: 73%;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 /****/

@@ -40,7 +40,7 @@ function descriptionForStaticPage(res) {
     if (noSSRpage) { // не созданный бакендом страница
         let code = location.pathname.split('/')[2]
         let action = res.find(el => el.code === code)
-        noSSRpage.innerHTML = action.description
+        noSSRpage.innerHTML = action.description && action.description.split('\n').map(word => `<div>${word}</div>`).join('')
         noSSRpage.style.cssText = action.styles
     }
 }

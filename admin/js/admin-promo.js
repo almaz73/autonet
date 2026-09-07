@@ -63,7 +63,7 @@ function showPromo(result) {
         if (row.onMain && row.active) mainCount++
         content += ` <tr onclick="setSelected(${row.id}, this)" class='SEL'>
             <td style="max-width: 700px; min-width: 105px">
-             <a href="/promo/${row.code}" style="min-width:150px; padding-right: 20px; font-size:10px">${row.code}</a>
+             <a href="/promo/${row.code}/isEditor" style="min-width:150px; padding-right: 20px; font-size:10px">${row.code}</a>
              ${row.name}
                 <span class="remove-bt" onclick="deletePromo(${row.id})">❌</span>
                 <span class="remove-bt" onclick="editPromo(${row.id})">✎</span>
@@ -114,8 +114,8 @@ function clearPanel() {
     document.querySelector('#_278').alt = ''
     document.querySelector('#_585').alt = ''
     document.querySelector('#_1200').alt = ''
-    document.querySelector('#descriptionInput').innerHTML = ''
-    document.querySelector('#styles').innerHTML = ''
+    document.querySelector('#descriptionInput').value = ''
+    document.querySelector('#styles').value = ''
 }
 
 function prepareModal(id) {
@@ -164,8 +164,8 @@ window.editPromo = function (id) {
             document.querySelector('#qw2').value = row.priority
             document.querySelector('#qw3').checked = row.active
             document.querySelector('#qw4').value = row.code
-            document.querySelector('#descriptionInput').innerHTML = row.description
-            document.querySelector('#styles').innerHTML = row.styles
+            document.querySelector('#descriptionInput').value = row.description
+            document.querySelector('#styles').value = row.styles
             if (row.photo278) setPhoto(row.photo278)
             if (row.photo585) setPhoto(row.photo585)
             if (row.photo1200) setPhoto(row.photo1200)
@@ -186,8 +186,8 @@ function getModalFields() {
         photo278: document.querySelector('#_278').alt,
         photo585: document.querySelector('#_585').alt,
         photo1200: document.querySelector('#_1200').alt,
-        description: document.querySelector('#descriptionInput').innerHTML,
-        styles: document.querySelector('#styles').innerHTML,
+        description: document.querySelector('#descriptionInput').value,
+        styles: document.querySelector('#styles').value,
     }
 }
 
@@ -196,6 +196,7 @@ window.saveNewPromoModal = function () {
 
     if (datas.find(el => !el.name)) return alert('В списке есть акция без названия, используйте')
     api_createPromo(params, val => {
+        localStorage.setItem('IsEditorsComp', true)
         api_getPromo(showPromo)
         window.editPromo(val.id)
         codGeneration()
@@ -207,6 +208,7 @@ window.savePromoModal = function (withoutClose) {
     let data = getModalFields()
     if (!data.name) return alert('Поле "Название" обязателен для заполнения')
     data.id = dirties[0]
+    localStorage.setItem('IsEditorsComp', true)
 
     api_savePromo(data, val => {
         api_getPromo(showPromo)
@@ -302,13 +304,13 @@ window.setSelected = function (val, self) {
 }
 
 window.addDescription = function () {
-    document.querySelector('#descriptionInput').innerHTML = `Данная акция действует на территории г.Казани, проспект Победы 212к2
+    document.querySelector('#descriptionInput').value = `Данная акция действует на территории г.Казани, проспект Победы 212к2
 Акции не суммируются и не являются офертой. Срок действия до 30.09.2026`
     showOnBanner()
 }
 
 window.addStyles = function () {
-    document.querySelector('#styles').innerHTML = `color: white;background: pink`
+    document.querySelector('#styles').value = `color: white;background: pink`
     showOnBanner()
 }
 
@@ -322,11 +324,10 @@ descriptionInput.addEventListener('input', showOnBanner);
 stylesDiv.addEventListener('input', showOnBanner);
 
 function showOnBanner() {
-    let text = descriptionInput.innerHTML
-    let styles = stylesDiv.innerHTML
+    let text = descriptionInput.value
+    let styles = stylesDiv.value
     let lines = text.split('\n')
-    let html = ''
-    lines.forEach(el => html += '<div>' + el + '</div>')
+    let html = lines.map(word => `<div>${word}</div>`).join('')
 
     // Записываем это значение в оба дива
     descriptionShow1.innerHTML = html;

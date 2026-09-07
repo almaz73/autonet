@@ -187,13 +187,14 @@ export function api_getColorList(callback) {
     return withCache(request, callback, 60)
 }
 
+let isEditorsComp = localStorage.getItem('IsEditorsComp')
 export function api_get_mainBanners(callback) {
     let request = '/api/getMainBanners'
-    return withCache(request, callback, 60)
+    return withCache(request, callback, isEditorsComp?0:60)
 }
 
 export function api_get_activeBanners(callback) {
-    let request = '/api/getActiveBanners'
+    let request = '/api/getActiveBanners?isEditor=' + isEditorsComp
     return withCache(request, callback, 3)
 }
 
