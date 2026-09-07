@@ -6,6 +6,8 @@ let swiperSection = document.querySelector('.swiper.mySwiper')
 let isCarPage = document.querySelector('.alone')
 const isMainPage = location.pathname === '/'
 
+// isCarPage = true // todo   приостанавливает прокрутку баннеров
+
 
 document.addEventListener('DOMContentLoaded', () => {
     if (isMainPage) initSwipper()

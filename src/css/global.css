@@ -357,3 +357,34 @@ img[src="/st/icons/penta.svg"]{
 .filter_number{
     min-width: 120px;
 }
+/* надпись на акциях */
+.swiper-slide .inscription, .promo-banner .inscription, .modalBig .inscription ,.modalLittle .inscription{
+    position: absolute;
+    bottom: 24px;
+    left: 46px;
+    font-size: small;
+    color: black;
+}
+
+.modalLittle .inscription{
+    font-size: 12px;
+    flex-wrap: wrap;
+    text-align: center;
+    left: initial;
+    padding: 0 40px;
+}
+
+.promo-banner .inscription{
+    padding: 0 40px;
+}
+
+@media (width < 500px) {
+    .swiper-slide .inscription, .promo-banner .inscription{
+        font-size: 12px;
+        flex-wrap: wrap;
+        text-align: center;
+        left: initial;
+        width: 73%;
+    }
+}
+/****/

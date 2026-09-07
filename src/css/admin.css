@@ -81,10 +81,6 @@
     right: 8px;
 }
 
-#myModal div {
-    margin: 0 10px 10px 10px;
-}
-
 .type .type_edit, .type .type_new {
     display: none;
 }
