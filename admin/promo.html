@@ -47,27 +47,27 @@
     <h2 class="type_new">Новая промоакция</h2>
     <h2 class="type_edit">Редактирование промоакции</h2>
 
-    <details title="Код промоакции, автоматически создается" style="text-align: center">
-        <summary></summary>
+    <details title="Код промоакции, автоматически создается" style="text-align: right; margin: -40px 0 20px">
+        <summary>код акции</summary>
         <div>
-            <label>Код акции</label>
+            <label>Код</label>
             <input style="width: 73px" id="qw4" oninput="changeCod(this)">
-            <small> * рекомендуется не менять. Для SEO</small>
-            <br>
+            <small> * не менять ☝ для SEO.</small>
             <button onclick="codGeneration()"
                     title="Используйте только если уверены, что хотите из поисковиков удалить прежнюю ссылку">
                 Генерировать новый код
             </button>
+            <hr>
         </div>
     </details>
 
-    <div>
-        <label>Название</label>
-        <input style="width: 100%" id="qw0">
-    </div>
 
     <div style="display: flex; flex-wrap: wrap">
         <div>
+            <div>
+                <label>Название :</label><br>
+                <div contenteditable="true" id="qw0" style="border: 1px dotted black; padding: 8px; width: 404px"></div>
+            </div>
             <div title="Акции можно включить для показа на главной странице">
                 <label for="qw1">На главной</label>
                 <input type="checkbox" id="qw1">
@@ -80,26 +80,58 @@
                 <label for="qw3">Актив</label>
                 <input type="checkbox" id="qw3">
             </div>
+            <div style="margin-right: 0">
+                <label for="qw3">Текст надписи:</label>
+                <button title="Использовать пример" style="cursor: pointer;background: none;border: none;"
+                        onclick="addDescription()">☼
+                </button>
+                <span title="Переход строки - ENTER" style="cursor:pointer;"> ⎆ </span>
+                <br>
+                <div id="descriptionInput" contenteditable="true"
+                     style="border: 1px dotted black; padding: 8px; width: 404px"></div>
+            </div>
+            <div style="margin-right: 0">
+                <label for="qw3">Стили для надписи CSS :</label>
+                <button title="Использовать пример" style="cursor: pointer;background: none;border: none;" onclick="addStyles()">☼
+                </button>
+                <br>
+                <div id="styles" title="ПРИМЕР: color: white; background: pink" contenteditable="true"
+                     style="border: 1px dotted black; padding: 8px; width: 404px"></div>
+            </div>
         </div>
         <div class="photo-div">
-            <div><button onclick="uploadPhoto('278х402')"> Добавить</button>
-                <img id="_278" style="width: 50px" alt="">
-                <label>Фото 278х402</label>
-            </div>
-            <div>
-                <button onclick="uploadPhoto('585х200')"> Добавить</button>
-                <img id="_585" style="width: 50px" alt="">
-                <label>Фото 585х200</label>
-            </div>
-            <div>
-                <button onclick="uploadPhoto('1200х501')"> Добавить</button>
-                <img id="_1200" style="width: 330px" alt="">
-                <label>Фото 1200х501</label>
+            <div style="width: 300px;position: relative " class="modalLittle">
+                    <div class="inscription" id="descriptionShow2"></div>
+                    <img id="_278" style="width: 100%;" alt="">
             </div>
         </div>
+
+        <div class="photo-div" style="position: relative">
+
+            <div>
+                <button onclick="uploadPhoto('278х402')"> Добавить <label>Фото 278х402</label></button>
+                <button onclick="uploadPhoto('585х200')"> Добавить <label>Фото 585х200</label></button>
+                <button onclick="uploadPhoto('1200х501')">Добавить <label>Фото
+                    1200х501</label></button>
+                <br><br><br>
+                <img id="_585" style="width: 500px;" alt="">
+            </div>
+
+        </div>
+
     </div>
-    <button class="type_new" style="float: right" onclick="saveNewPromoModal()">Создать промоакцию</button>
-    <button class="type_edit" style="float: right" onclick="savePromoModal()">Сохранить промоакцию</button>
+    <div style=" text-align: center">
+
+        <div class="modalBig" style="position: relative; width: 1200px; margin: auto; text-align: left">
+            <div id="descriptionShow1" class="inscription" style="line-height: 0.5;"></div>
+            <img id="_1200" alt="">
+        </div>
+
+    </div>
+    <div style="width: 200px; margin: auto">
+        <button class="type_new" onclick="saveNewPromoModal()">Создать промоакцию</button>
+        <button class="type_edit" onclick="savePromoModal()">Сохранить промоакцию</button>
+    </div>
 
 </dialog>
 
