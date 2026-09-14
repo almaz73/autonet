@@ -358,7 +358,7 @@ img[src="/st/icons/penta.svg"]{
     min-width: 120px;
 }
 /* надпись на акциях */
-.swiper-slide .inscription, .promo-banner .inscription, .modalBig .inscription ,.modalLittle .inscription{
+.swiper-slide .inscription, .promo-banner .inscription, .modalBig .inscription ,.modalLittle .inscription, .modalMiddle .inscription{
     position: absolute;
     bottom: 24px;
     left: 46px;
@@ -375,13 +375,22 @@ img[src="/st/icons/penta.svg"]{
     transform: translateX(-50%);
 }
 
-.promo-banner .inscription{
-    padding: 0 40px;
+.modalMiddle img, .modalLittle img, .modalBig img {
+    border-radius: 10px;
+}
+
+.modalMiddle .inscription{
+    font-size: 10px;
+}
+
+@media (width < 700px) {
+    .swiper-slide .inscription{
+        font-size: 10px;
+    }
 }
 
 @media (width < 500px) {
     .swiper-slide .inscription, .promo-banner .inscription{
-        font-size: 12px;
         flex-wrap: wrap;
         text-align: center;
         width: 73%;

@@ -318,6 +318,7 @@ const descriptionInput = document.getElementById('descriptionInput');
 const stylesDiv = document.getElementById('styles');
 const descriptionShow1 = document.getElementById('descriptionShow1');
 const descriptionShow2 = document.getElementById('descriptionShow2');
+const descriptionShow3 = document.getElementById('descriptionShow3');
 
 
 descriptionInput.addEventListener('input', showOnBanner);
@@ -332,8 +333,10 @@ function showOnBanner() {
     // Записываем это значение в оба дива
     descriptionShow1.innerHTML = html;
     descriptionShow2.innerHTML = html;
+    descriptionShow3.innerHTML = html;
     descriptionShow1.style.cssText=styles
     descriptionShow2.style.cssText=styles
+    descriptionShow3.style.cssText=styles
 }
 
 
