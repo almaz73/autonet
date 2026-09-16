@@ -92,7 +92,8 @@ function getVitrina(ishandEvent) {
     let cars
     if (location.pathname === '/') {
         // Пока берем первые семь, а надо бы спецпредложения от организации
-        document.querySelector('#vitrina_name').innerHTML = 'Свежие поступления авто с пробегом' // Новые поступления
+        // document.querySelector('#vitrina_name').innerHTML = 'Свежие поступления авто с пробегом' // Новые поступления
+        document.querySelector('#vitrina_name').innerHTML = 'Специальные предложения по цене'
         if (!ishandEvent) setExtention(false)
 
         let bt = document.querySelector('#set_filter')
@@ -186,13 +187,13 @@ window.clearFilter = function () {
 let countLatest = 0
 let countNewCars = 0
 window.getLatestCars = function (cars) {
-    //api_getSpecials(currentCity, res => {
-    api_getLatestCarArrivials(++countLatest, res => {
+    api_getSpecials('', res => { // возвращаем Спец предложения по цене
+    // api_getLatestCarArrivials(++countLatest, res => {
         res = cleanCarsWithoutPhoto(res)
         cars = prepareCars(res)
-        if (countNewCars < res.length) countNewCars = res.length
-        else if(countNewCars) document.querySelector('#more').innerHTML = 'Всего сегодня новых: ' + countNewCars
-        else document.querySelector('#more').innerHTML = ''
+        // if (countNewCars < res.length) countNewCars = res.length
+        // else if(countNewCars) document.querySelector('#more').innerHTML = 'Всего сегодня новых: ' + countNewCars
+        // else document.querySelector('#more').innerHTML = ''
         fill(cars, res)
     })
 }
