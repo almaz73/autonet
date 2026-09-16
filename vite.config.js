@@ -21,6 +21,7 @@ const pages = {
     p660822: resolve(__dirname, './promo/660822/index.html'),
     p660823: resolve(__dirname, './promo/660823/index.html'),
     p660827: resolve(__dirname, './promo/660827/index.html'),
+    p660830: resolve(__dirname, './promo/660830/index.html'),
     // p660787: resolve(__dirname, './promo/660787/index.html'),
     // p660788: resolve(__dirname, './promo/660788/index.html'),
     about: resolve(__dirname, './about-the-company/index.html'),
