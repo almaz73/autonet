@@ -181,7 +181,19 @@
     transition: all 0.4s ease-in 0s;
 }
 
-.promo-form .page__btn{
+.promo-form .page__btn {
     width: 100%;
+}
+
+.pr-ban-ver {
+    position: relative;
+}
+
+.pr-ban-ver .dd {
+    position: absolute;
+    bottom: 15px;
+    padding: 0 15px;
+    /*font-size: 0.5cqw;*/
+    font-size: 6px;
 }
 
