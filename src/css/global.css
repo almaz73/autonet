@@ -369,7 +369,7 @@ img[src="/st/icons/penta.svg"]{
 .modalLittle .inscription{
     font-size: 12px;
     flex-wrap: wrap;
-    text-align: center;
+    /*text-align: center;*/
     width: 90%;
     left: 50%;
     transform: translateX(-50%);
@@ -380,7 +380,9 @@ img[src="/st/icons/penta.svg"]{
 }
 
 .modalMiddle .inscription{
-    font-size: 10px;
+    font-size: 8px;
+    left: 18px;
+    bottom: 12px;
 }
 
 @media (width < 700px) {
@@ -392,8 +394,9 @@ img[src="/st/icons/penta.svg"]{
 @media (width < 500px) {
     .swiper-slide .inscription, .promo-banner .inscription{
         flex-wrap: wrap;
-        text-align: center;
-        width: 73%;
+        /*text-align: center;*/
+        width: 90%;
+        font-size: 8px;
         left: 50%;
         transform: translateX(-50%);
     }
