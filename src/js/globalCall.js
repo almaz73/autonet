@@ -1,8 +1,8 @@
 import {initCaptcha} from "@/js/captcha.js";
-import {checkFormFields, constructorForm} from "@/js/global-func.js";
+import {checkFormFields, constructorForm, emailValidate} from "@/js/global-func.js";
 import {api_postEmail} from "@/js/apibase.js";
 
-
+window.emailValidate = emailValidate
 let globalcall = document.querySelector('.global-call')
 let right_panel_content = document.querySelector('#right_panel_content')
 globalcall.addEventListener('click', () => {
@@ -70,17 +70,18 @@ initCaptcha()
 window.sendBidPromo = function () {
     const capcthadiv = document.querySelector(`.capctha-div`)
     const name = document.querySelector(`[name="name"]`)
-    const year = document.querySelector(`[name="year"]`)
+    const phone = document.querySelector(`[name="phone"]`)
+    const email = document.querySelector(`[name="email"]`)
     const checkbox = document.querySelector(`[type="checkbox"]`)
     const agree = document.querySelector(`[name="agree"]`)
     const button = document.querySelector(`button`)
 
-    if (checkFormFields([capcthadiv, name, checkbox, agree])) return false
-
+    if (checkFormFields([capcthadiv, name, phone, checkbox, agree])) return false
     const params = {
         type: 16,
         name: name.value,
-        year: year.value,
+        phone: phone.value,
+        email: email.value,
         agree: agree.checked
     }
     showPreloader(true, button)
