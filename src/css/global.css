@@ -172,6 +172,11 @@ h1#vitrina_name {
     justify-content: space-between;
     align-items: center
 }
+@media (max-width: 500px) {
+    .car_vitrina {
+        display: block
+    }
+}
 
 
 .pager {
