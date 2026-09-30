@@ -82,7 +82,8 @@ window.sendBidPromo = function () {
         name: name.value,
         phone: phone.value,
         email: email.value,
-        agree: agree.checked
+        agree: agree.checked,
+        link: location.href
     }
     showPreloader(true, button)
     api_postEmail(params).then(res => {
