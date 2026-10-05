@@ -43,3 +43,31 @@ api_get_mainBanners(res => {
     fillSwiper(banners)
     setTimeout(initSwipper)
 })
+
+//// только для главной страницы
+document.addEventListener('DOMContentLoaded', () => {
+    let triggerFirstPage = localStorage.getItem('triggerFirstPage')
+    triggerFirstPage = triggerFirstPage === 'true'
+
+    let div = document.querySelector('#vitrina_name')
+    let divTrigger = document.querySelector('#vitrina_name_choose')
+
+    if (divTrigger) divTrigger.style.display = 'block'
+    if (triggerFirstPage) {
+        div.innerHTML = 'Свежие поступления авто с пробегом'
+        divTrigger.querySelector('span').innerHTML = 'Спец.предложения'
+        window.getLatestCars(triggerFirstPage)
+    } else {
+        div.innerHTML = 'Специальные предложения по цене'
+        divTrigger.querySelector('span').innerHTML = 'Свежие поступления'
+        window.getLatestCars(triggerFirstPage)
+        document.querySelector('.page__link.page').style.display = 'none'
+    }
+
+    divTrigger && divTrigger.addEventListener('click', () => {
+        triggerFirstPage = !triggerFirstPage
+        localStorage.setItem('triggerFirstPage', JSON.stringify(triggerFirstPage))
+    })
+
+    document.querySelector('.pager').style.display = 'none'
+})

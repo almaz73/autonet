@@ -91,14 +91,10 @@ function getVitrina(ishandEvent) {
 // в зависимости от страницы, запрашиваем нужные данные
     let cars
     if (location.pathname === '/') {
-        // Пока берем первые семь, а надо бы спецпредложения от организации
-        // document.querySelector('#vitrina_name').innerHTML = 'Свежие поступления авто с пробегом' // Новые поступления
-        document.querySelector('#vitrina_name').innerHTML = 'Специальные предложения по цене'
         if (!ishandEvent) setExtention(false)
 
         let bt = document.querySelector('#set_filter')
         showPreloader(true, bt)
-
 
         filterParams.limit = 20
         api_getList(filterParams, res => {
@@ -106,10 +102,6 @@ function getVitrina(ishandEvent) {
             declOfNum(res.totalCount, ['предложение', 'предложений', 'предложений'])
             carCountText(res.totalCount)
         })
-
-        // let currentCity = localStorage.getItem('selectedCity') || ''
-
-        if (Object.keys(filterParams).length < 2) window.getLatestCars(cars)
 
     } else if (location.pathname === '/tyres/') {
         document.querySelector('#vitrina_name').innerHTML = 'Каталог шин'
@@ -184,18 +176,49 @@ window.clearFilter = function () {
     }, 3000)
 }
 
-let countLatest = 0
-let countNewCars = 0
-window.getLatestCars = function (cars) {
-    api_getSpecials('', res => { // возвращаем Спец предложения по цене
-    // api_getLatestCarArrivials(++countLatest, res => {
-        res = cleanCarsWithoutPhoto(res)
-        cars = prepareCars(res)
-        // if (countNewCars < res.length) countNewCars = res.length
-        // else if(countNewCars) document.querySelector('#more').innerHTML = 'Всего сегодня новых: ' + countNewCars
-        // else document.querySelector('#more').innerHTML = ''
-        fill(cars, res)
-    })
+let totalPages = 0
+let memoryMoreCars= []
+let memoryMoreRes= []
+window.goToMore = function () { // добавление еще авто в список, без перезагрузки страницы
+    let startPage = parseInt(location.search.split('=')[1])
+    if (isNaN(startPage) || startPage < 0) startPage = 0
+    if (startPage < totalPages) {
+        startPage++
+        // без перезагрузки добавляем внизу
+        api_getLatestCarArrivials(startPage, res => {
+            totalPages = res.totalPages
+            res = cleanCarsWithoutPhoto(res.items)
+            let cars = prepareCars(res)
+
+            memoryMoreCars.push(...cars)
+            memoryMoreRes.push(...res)
+
+            fill(memoryMoreCars, memoryMoreRes)
+        })
+    }
+}
+
+window.getLatestCars = function (triggerFirstPage, more) {
+    let startPage = parseInt(location.search.split('=')[1])
+
+    if (isNaN(startPage) || startPage < 0) startPage = 0
+
+    if (triggerFirstPage) {
+        api_getLatestCarArrivials(startPage, res => {
+            totalPages = res.totalPages
+            res = cleanCarsWithoutPhoto(res.items)
+            let cars = prepareCars(res)
+            memoryMoreCars = cars
+            memoryMoreRes = res
+            fill(cars, res)
+        })
+    } else {
+        api_getSpecials('', res => { // возвращаем Спец предложения по цене
+            res = cleanCarsWithoutPhoto(res)
+            let cars = prepareCars(res)
+            fill(cars, res)
+        })
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
