@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
         ['name*', 'phone*', 'city*', 'brand', 'model', 'year'],
         'sendBid',
         'Отправить заявку',
-        'Оценить <span class="red">автомобиль</span>'
+        '<a href="/buyout" class="page__btn page__btn--current" style="padding:12px 22px  !important; font-size: large; color: yellow">' +
+        'Оценить автомобиль <span style="text-decoration: underline">Онлайн</span></a><br>или<br>отправить заявку'
     )
     stateForrm2.innerHTML = constructorForm('st2',
         ['name*', 'phone*', 'city*', 'brand', 'model', 'year'],

@@ -376,6 +376,10 @@
     background-image: url(/st/photo/vyk/banner_vykup.webp)
 }
 
+.vykup_f.button-only-m0bil{
+    display: none;
+}
+
 .podbor_f {
     background-image: url(/st/photo/podbor/autopodbor_bnr.webp);
     /*min-height: calc(100vh - 210px);*/
@@ -430,6 +434,11 @@
 
     .vykup_f {
         background-image: url(/st/photo/vyk/banner_vykup_little.webp)
+    }
+
+    .vykup_f.button-only-m0bil{
+        background: none;
+        display: block;
     }
 
     .podbor_f {

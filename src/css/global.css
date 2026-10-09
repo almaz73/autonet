@@ -170,7 +170,8 @@ h1#vitrina_name {
 .car_vitrina {
     display: flex;
     justify-content: space-between;
-    align-items: center
+    align-items: center;
+    width: 100%;
 }
 @media (max-width: 500px) {
     .car_vitrina {
