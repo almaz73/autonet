@@ -32,6 +32,10 @@ body {
     scrollbar-gutter: stable;
 }
 
+@view-transition {
+    navigation: auto; /*плавные переключения страниц*/
+}
+
 main {
     max-width: 1200px;
     margin: auto;
