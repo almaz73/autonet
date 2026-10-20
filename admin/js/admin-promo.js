@@ -196,7 +196,6 @@ window.saveNewPromoModal = function () {
 
     if (datas.find(el => !el.name)) return alert('В списке есть акция без названия, используйте')
     api_createPromo(params, val => {
-        localStorage.setItem('IsEditorsComp', true)
         api_getPromo(showPromo)
         window.editPromo(val.id)
         codGeneration()
@@ -208,7 +207,6 @@ window.savePromoModal = function (withoutClose) {
     let data = getModalFields()
     if (!data.name) return alert('Поле "Название" обязателен для заполнения')
     data.id = dirties[0]
-    localStorage.setItem('IsEditorsComp', true)
 
     api_savePromo(data, val => {
         api_getPromo(showPromo)

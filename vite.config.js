@@ -5,7 +5,7 @@ import handlebars from 'vite-plugin-handlebars'
 import liveReload from 'vite-plugin-live-reload'
 let devDir = '../front' // 'dict'
 let __dirname = import.meta.dirname
-// devDir = 'dict'
+devDir = 'dict'
 const pages = {
     main: resolve(__dirname, 'index.html'),
     privacyPolicy: resolve(__dirname, './privacy-policy/index.html'),
