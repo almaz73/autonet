@@ -5,7 +5,7 @@ import handlebars from 'vite-plugin-handlebars'
 import liveReload from 'vite-plugin-live-reload'
 let devDir = '../front' // 'dict'
 let __dirname = import.meta.dirname
-devDir = 'dict'
+// devDir = 'dict'
 const pages = {
     main: resolve(__dirname, 'index.html'),
     privacyPolicy: resolve(__dirname, './privacy-policy/index.html'),
@@ -18,12 +18,6 @@ const pages = {
     car: resolve(__dirname, './cars/car.html'),
     podbor: resolve(__dirname, './services/autopodbor/index.html'),
     promo: resolve(__dirname, './promo/index.html'),
-    // p660822: resolve(__dirname, './promo/660822/index.html'),
-    // p660823: resolve(__dirname, './promo/660823/index.html'),
-    // p660827: resolve(__dirname, './promo/660827/index.html'),
-    // p660830: resolve(__dirname, './promo/660830/index.html'),
-    // p660787: resolve(__dirname, './promo/660787/index.html'),
-    // p660788: resolve(__dirname, './promo/660788/index.html'),
     about: resolve(__dirname, './about-the-company/index.html'),
 
     news: resolve(__dirname, './news/index.html'),
