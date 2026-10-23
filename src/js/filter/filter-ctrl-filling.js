@@ -92,7 +92,9 @@ function fillFields(onlyModels) {
                 if (e.key === 'Escape') blur()
                 if (e.key === 'ArrowDown') selectChoiseWithArrows(1)
                 if (e.key === 'ArrowUp') selectChoiseWithArrows(-1)
-                if (e.key === 'Enter') selectElems[selectElemCount].click()
+                if (e.key === 'Enter') {
+                    if (selectElems[selectElemCount]) selectElems[selectElemCount].click()
+                }
             })
             bigCombInput.addEventListener('input', val => {
                 let tx = val.target.value
@@ -100,6 +102,9 @@ function fillFields(onlyModels) {
                 items[comb_name] = findWithAnyFont(val.target.value)
                 if (tx) bigCombItems.innerHTML = createFiledsForList(items[comb_name], comb_name).join('')
                 else bigCombItems.innerHTML = createFiledsForList(items_memory[comb_name], comb_name).join('')
+                selectElemCount = -1
+                selectScrollPlace = 0
+                selectElems = bigCombItems.querySelectorAll('[data-parent="' + comb_name + '"]')
             })
         }
 
@@ -134,10 +139,6 @@ function fillFields(onlyModels) {
             return arr
         }
 
-        function createFiledsForList(list, comb_name) {
-            return list && list.map(item => '<div data-parent="' + comb_name + '">' + item + '</div>')
-        }
-
         function blur() {
             if (bigCombItems) bigCombItems.style.visibility = 'hidden'
             if (bigCombInput) bigCombInput.style.display = 'none'
@@ -167,6 +168,19 @@ function fillFields(onlyModels) {
         }
     })
     eventBus.emit('dataUpdated', {});
+}
+
+function createFiledsForList(list, comb_name) {
+    return list && list.map(item => '<div data-parent="' + comb_name + '">' + item + '</div>')
+}
+
+// после фильтрации через findWithAnyFont items[combName] перезаписан усечённым массивом — восстанавливаем полный
+export function restoreFullList(combName, listElem) {
+    let full = items_memory[combName]
+    if (!full) return
+    if (items[combName] && items[combName].value) full.value = items[combName].value
+    items[combName] = full
+    if (listElem) listElem.innerHTML = createFiledsForList(items[combName], combName).join('')
 }
 
 ///////////////////////////

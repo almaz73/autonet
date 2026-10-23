@@ -1,5 +1,5 @@
 import {filter_changed, filter_changed_text} from '@/js/filter/filter.js';
-import {items, setExtention} from '@/js/filter/filter-ctrl-filling.js'
+import {items, setExtention, restoreFullList} from '@/js/filter/filter-ctrl-filling.js'
 import {api_getYearGap} from "@/js/apibase.js";
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         parent.querySelector('.big-comb__input').value = value
         parent.querySelector('.big-comb__input').blur()
         filter_changed(items, combName)
+        restoreFullList(combName, val.srcElement.parentElement)
     };
 
     window.input_chamged = function (type, val) {
