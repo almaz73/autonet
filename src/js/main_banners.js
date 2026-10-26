@@ -61,7 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
         div.innerHTML = 'Специальные предложения по цене'
         divTrigger.querySelector('span').innerHTML = 'Свежие поступления'
         window.getLatestCars(triggerFirstPage)
-        document.querySelector('.page__link.page').style.display = 'none'
+        let divPade = document.querySelector('.page__link.page')
+        if (divPade) divPade.style.display = 'none'
     }
 
     divTrigger && divTrigger.addEventListener('click', () => {

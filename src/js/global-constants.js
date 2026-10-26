@@ -20,7 +20,7 @@ export const dealers = [
     },
     {
         city: 'Астрахань',
-        url: '/st/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/astrahan_nahomova_76.webp',
         coords: '46.288304, 47.971339',
         address: 'ул. Адмирала Нахимова, 76',
         tel: '8–800–500–11–56',
@@ -29,7 +29,7 @@ export const dealers = [
     },
     {
         city: 'Буинск',
-        url: '/st/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/buynck_efremova2.webp',
         coords: '54.952455, 48.286585',
         address: 'ул. Ефремова, 2а',
         tel: '8–800–500–11–56',
@@ -38,7 +38,7 @@ export const dealers = [
     },
     {
         city: 'Екатеринбург',
-        url: '/st/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/Екат8mart205A АМК.webp',
         coords: '56.789579, 60.607625',
         address: 'ул. 8 марта, 205А',
         tel: '8–800–500–11–56',
@@ -63,7 +63,7 @@ export const dealers = [
     },
     {
         city: 'Казань',
-        url: '/st/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/kazanYamasheva115A.webp',
         coords: '55.823581, 49.159553',
         address: 'пр. Ямашева, 115а',
         tel: '8–800–500–11–56',
@@ -72,7 +72,7 @@ export const dealers = [
     },
     {
         city: 'Казань',
-        url: '/st/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/KazanGorShos55.webp',
         coords: '55.826655, 49.022026',
         address: 'Горьковское шоссе, 55',
         tel: '8–800–500–11–56',
@@ -81,7 +81,7 @@ export const dealers = [
     },
     {
         city: 'Казань',
-        url: '/st/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/kazanPrPobeds212k2.webp',
         coords: '55.803967, 49.208709',
         address: 'пр. Победы, 212к2',
         tel: '8–800–500–11–56',
@@ -90,7 +90,7 @@ export const dealers = [
     },
     {
         city: 'Магнитогорск',
-        url: '/st/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/magnitogorskKosmonavtov59a.webp',
         coords: '53.367384, 59.063538',
         address: 'Шоссе Космонавтов 59А',
         tel: '8–800–500–11–56',
@@ -108,7 +108,7 @@ export const dealers = [
     },
     {
         city: 'Набережные Челны',
-        url: '/st/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/chelnyDjalilia15.webp',
         coords: '55.674714, 52.281223',
         address: 'пр. Мусы Джалиля, 15',
         tel: '8–800–500–11–56',
@@ -135,7 +135,7 @@ export const dealers = [
     },
     {
         city: 'Нижнекамск',
-        url: '/st/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/nizhnekamskSportivnaya4a.webp',
         coords: '55.631989,51.828178',
         address: 'ул. Спортивная, 4а',
         tel: '8–800–500–11–56',
@@ -180,7 +180,7 @@ export const dealers = [
     },
     {
         city: 'Стерлитамак',
-        url: '/st/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/starlitamakShaimuratova12.webp',
         coords: '53.639303,55.911492',
         address: 'ул. Шаймуратова, 12',
         tel: '8–800–500–11–56',
@@ -214,7 +214,7 @@ export const dealers = [
     },
     {
         city: 'Тольятти',
-        url: '/st/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/tolyattiObvodnoe71.webp',
         coords: '53.570484, 49.469034',
         address: 'Обводное ш., 71',
         tel: '8–800–500–11–56',
@@ -223,7 +223,7 @@ export const dealers = [
     },
     {
         city: 'Уфа',
-        url: '/st/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/UfaOktyabrya4.webp',
         coords: '54.741061, 55.987866',
         address: 'пр. Октября, 4/1, ТЦ Мир, <br> 3 уровень',
         tel: '8–800–500–11–56',
@@ -232,7 +232,7 @@ export const dealers = [
     },
     {
         city: 'Уфа',
-        url: '/st/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/UfaZhukova16.webp',
         coords: '54.773538, 56.065914',
         address: 'ул. Маршала Жукова, 16',
         tel: '8–800–500–11–56',
@@ -335,7 +335,7 @@ export const punkts = [
 export const tyres = [
     {
         city: 'Казань',
-        url: '/st/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/kazanYamasheva115A.webp',
         coords: '55.823581, 49.159553',
         address: 'пр. Ямашева, 115а',
         tel: '8–800–500–11–56',
@@ -344,7 +344,7 @@ export const tyres = [
     },
     {
         city: 'Казань',
-        url: '/st/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/kazanPrPobeds212k2.webp',
         coords: '55.803967, 49.208709',
         address: 'пр. Победы, 212к2',
         tel: '8–800–500–11–56',
@@ -364,7 +364,7 @@ export const services = [
     },
     {
         city: 'Казань',
-        url: '/st/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/kazanPrPobeds212k2.webp',
         coords: '54.903324, 52.324269',
         address: 'пр. Победы, 212к2',
         tel: '8–800–500–11–56',
@@ -382,7 +382,7 @@ export const services = [
     },
     {
         city: 'Набережные Челны',
-        url: '/st/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/chelnyDjalilia15.webp',
         coords: '55.674714, 52.281223',
         address: 'пр. Мусы Джалиля, 15',
         tel: '8–800–500–11–56',
@@ -400,7 +400,7 @@ export const services = [
     },
     {
         city: 'Нижнекамск',
-        url: '/st/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/nizhnekamskSportivnaya4a.webp',
         coords: '55.631989,51.828178',
         address: 'ул. Спортивная, 4а',
         tel: '8–800–500–11–56',
@@ -418,7 +418,7 @@ export const services = [
     },
     {
         city: 'Уфа',
-        url: '/st/photo/contacts/chelna_myra.webp',
+        url: '/st/photo/contacts/UfaZhukova16.webp',
         coords: '54.773538, 56.065914',
         address: 'ул. Маршала Жукова, 16',
         tel: '8–800–500–11–56',
