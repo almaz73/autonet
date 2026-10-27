@@ -1,4 +1,5 @@
 import {dealers, punkts, tyres, services} from "@/js/global-constants.js"
+import "@/js/dealers-map.js"
 
 
 

@@ -1,0 +1,138 @@
+.dealers {
+    margin-bottom: 40px;
+}
+
+.dealers h2 {
+    margin-bottom: 20px;
+}
+
+.dealers__layout {
+    display: flex;
+    gap: 20px;
+    height: 600px;
+}
+
+.dealers__list {
+    position: relative;
+    flex: 0 0 330px;
+    width: 330px;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 6px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.08);
+    scrollbar-width: thin;
+    scrollbar-color: #c8c8d0 transparent;
+}
+
+.dealers__list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.dealers__list::-webkit-scrollbar-thumb {
+    background: #c8c8d0;
+    border-radius: 3px;
+}
+
+.dealers__map {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+    background: var(--color-grey);
+}
+
+.dealers__map iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    /* ч/б карта, как просили; SVG-метки и попапы тоже обесцвечиваются */
+    filter: grayscale(1) contrast(1.03);
+}
+
+.dealer-card {
+    padding: 14px 16px;
+    border-left: 3px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.dealer-card:hover {
+    background: var(--color-grey);
+}
+
+.dealer-card:focus-visible {
+    outline: 2px solid var(--color-red);
+    outline-offset: -2px;
+}
+
+.dealer-card.is-active {
+    background: var(--color-light-blue);
+    border-left-color: var(--color-red);
+}
+
+.dealer-card__city {
+    margin-bottom: 2px;
+    font-family: Gilroy-Bold, system-ui;
+    font-size: 0.95em;
+    color: #111;
+}
+
+.dealer-card__address {
+    font-size: 0.9em;
+    line-height: 1.35;
+    color: #333;
+}
+
+.dealer-card__tel {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 0.9em;
+    color: var(--color-red);
+    text-decoration: none;
+}
+
+.dealer-card__tel:hover {
+    text-decoration: underline;
+}
+
+.dealer-card__days {
+    margin-top: 4px;
+    font-size: 0.78em;
+    color: #8a8a95;
+}
+
+@media (max-width: 900px) {
+    .dealers__layout {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .dealers__map {
+        order: -1;
+        height: 420px;
+    }
+
+    .dealers__list {
+        flex: 0 0 auto;
+        width: 100%;
+        height: 420px;
+    }
+}
+
+@media (max-width: 560px) {
+    .dealers__map {
+        height: 320px;
+    }
+
+    .dealers__list {
+        height: 360px;
+    }
+}
