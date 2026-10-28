@@ -18,8 +18,7 @@ api_get_mainBanners(res => {
     let banners = ''
     res && res.forEach((el, ind) => {
         let styles = el.styles
-        let description =  el.description && el.description.split('\n').map(word => `<div>${word}</div>`).join('')
-        let conditions = `<div class="inscription" style="${styles || ''}">${description||''}</div>`
+        let conditions = `<div class="inscription" style="${styles || ''}">''}</div>`
         if (ind === 0) {
             banners += `
     <div class='swiper-slide'>${conditions}
