@@ -1,7 +1,6 @@
-import {dealers} from '@/js/global-constants.js'
-
 const MAP_WIDGET_URL = 'https://makemap.2gis.ru/widget'
 const MAP_ORIGIN = 'https://makemap.2gis.ru'
+const DEALERS_API = '/api/getDealers'
 const OVERVIEW_ZOOM = 4
 const DEALER_ZOOM = 16
 const MARKER_COLOR = '#E22427'
@@ -18,15 +17,24 @@ const parseCoords = (value) => {
 
 const telHref = (tel) => `tel:${(tel ?? '').replace(/[^\d+]/g, '')}`
 
-const items = dealers.map((dealer, index) => ({
-    ...dealer,
-    index,
-    point: parseCoords(dealer.coords),
-}))
+let items = []
+let points = []
 
-const points = items.filter((item) => item.point).map((item) => item.point)
+const loadItems = async () => {
+    const response = await fetch(DEALERS_API)
+    if (!response.ok) throw new Error(`Не удалось загрузить дилеров: HTTP ${response.status}`)
+
+    const data = await response.json()
+    items = data.map((dealer, index) => ({
+        ...dealer,
+        index,
+        point: parseCoords(dealer.coords),
+    }))
+    points = items.filter((item) => item.point).map((item) => item.point)
+}
 
 const overviewPosition = () => {
+    if (!points.length) return null
     const lats = points.map((point) => point.lat)
     const lons = points.map((point) => point.lon)
     return {
@@ -173,12 +181,22 @@ const init = async () => {
         ? {...items[hashIndex].point, zoom: DEALER_ZOOM}
         : overviewPosition()
 
+    if (!position) return
+
     const token = ++renderToken
     const src = await buildMapSrc(position, hashIndex)
     if (src && token === renderToken) mapFrame.src = src
 }
 
-const start = () => {
+const start = async () => {
+    try {
+        await loadItems()
+    } catch (error) {
+        console.error(error)
+        listEl.textContent = 'Не удалось загрузить список дилерских центров.'
+        return
+    }
+
     renderList()
 
     listEl.addEventListener('click', (event) => {

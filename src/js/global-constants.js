@@ -19,15 +19,6 @@ export const dealers = [
         map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Aa48691a6bc05dd67e7bcfb1ad8e429acaff3cf13a292a8f4a69e512dbacb7fda&amp;source=constructor'
     },
     {
-        city: 'Астрахань',
-        url: '/st/photo/contacts/astrahan_nahomova_76.webp',
-        coords: '46.288304, 47.971339',
-        address: 'ул. Адмирала Нахимова, 76',
-        tel: '8–800–500–11–56',
-        days: 'ПН-ВС с 9:00 до 21:00',
-        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A4e8033de51901c5bd7b5a457e33850072459acff83441bcc859c3b297b337a01&amp;source=constructor'
-    },
-    {
         city: 'Буинск',
         url: '/st/photo/contacts/buynck_efremova2.webp',
         coords: '54.952455, 48.286585',
@@ -223,15 +214,6 @@ export const dealers = [
     },
     {
         city: 'Уфа',
-        url: '/st/photo/contacts/UfaOktyabrya4.webp',
-        coords: '54.741061, 55.987866',
-        address: 'пр. Октября, 4/1, ТЦ Мир, <br> 3 уровень',
-        tel: '8–800–500–11–56',
-        days: 'ПН-ВС с 9:00 до 21:00',
-        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Ae6fc36ea5faa5164e18586cc2c35b1d09f1401830b27c11438377d20143a9303&amp;source=constructor'
-    },
-    {
-        city: 'Уфа',
         url: '/st/photo/contacts/UfaZhukova16.webp',
         coords: '54.773538, 56.065914',
         address: 'ул. Маршала Жукова, 16',
@@ -240,108 +222,8 @@ export const dealers = [
         map: 'https://yandex.ru/map-widget/v1/?um=constructor%3Ae77ab1daaa8f743e51e23372676cf7785ea83ffeaf29df86d7cec91039b41deb&amp;source=constructor'
     }
 ]
-export const punkts = [
-    {
-        city: 'Ижевск',
-        url: '/st/photo/contacts/chelna_myra.webp',
-        coords: '56.886263, 53.309622',
-        address: 'ул. Автозаводская, 5а/3<br> (Рулевой)',
-        tel: '8–800–500–11–56',
-        days: 'ПН-ВС с 9:00 до 21:00',
-        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A7a0aa8d3c0916b54b822ec3ef1b00b9a27b44491cd4c8d77c59098b1bcffa211&amp;source=constructor'
-    },
-    {
-        city: 'Йошкар-Ола',
-        url: '/st/photo/contacts/chelna_myra.webp',
-        coords: '56.643243, 47.927752',
-        address: 'Сернурский тракт, 23<br> (здание "Гарант Авто")',
-        tel: '8–800–500–11–56',
-        days: 'ПН-ВС с 9:00 до 21:00',
-        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A53fc65c2944e3744e91206e42120ad5319866b9bffb8f276fda6762447aab99c&amp;source=constructor'
-    },
-    {
-        city: 'Киров',
-        url: '/st/photo/contacts/chelna_myra.webp',
-        coords: '58.61728733640516, 49.629800881945016',
-        address: 'ул. Лепсе, 25/4',
-        tel: '8–800–500–11–56',
-        days: 'ПН-ВС с 9:00 до 21:00',
-        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A7889c8a92ec01c9122a48ddcaec1a8ac753bd68146338a1c4deed34d90f9aeab&amp;source=constructor'
-    },
-    {
-        city: 'Магнитогорск',
-        url: '/st/photo/contacts/chelna_myra.webp',
-        coords: '53.430389, 58.973231',
-        address: 'ул. Герцена 6, <br>БЦ АльфаЦентр, офис 103',
-        tel: '8–800–500–11–56',
-        days: 'ПН-ВС с 9:00 до 21:00',
-        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A5a56a953780b0e40fbf31ddf65b7633b6e20bbdb0bed23e6fb4c1f3993229fdf&amp;source=constructor'
-    },
-    {
-        city: 'Нижний Новгород',
-        url: '/st/photo/contacts/chelna_myra.webp',
-        coords: '56.311626, 44.070441',
-        address: 'ул.Родионова, 167 <br>("Тайм Сервис")',
-        tel: '8–800–500–11–56',
-        days: 'ПН-ВС с 9:00 до 21:00',
-        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A4ce9ad24bc1a339b419f7b5069aeb4503efc432c074ce7a41b2683995b08826d&amp;source=constructor'
-    },
-    {
-        city: 'Пенза',
-        url: '/st/photo/contacts/chelna_myra.webp',
-        coords: '53.18924053714283, 45.0405558150391',
-        address: 'ул. Измайлова, 26',
-        tel: '8–800–500–11–56',
-        days: 'ПН-ВС с 9:00 до 21:00',
-        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A32cbf070a2316cbc09c1d3d0d8399b6f3e035b51070bad0e7c3041e6d8845213&amp;source=constructor'
-    },
-    {
-        city: 'Пермь',
-        url: '/st/photo/contacts/chelna_myra.webp',
-        coords: '57.989155, 56.207758',
-        address: 'ул.Стахановская, 54а',
-        tel: '8–800–500–11–56',
-        days: 'ПН-ВС с 9:00 до 21:00',
-        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A8267dbdd95bb5fc764758e7ff0b66cf403880143d4dade949af88e5bcc1fa334&amp;source=constructor'
-    },
-    {
-        city: 'Самара',
-        url: '/st/photo/contacts/chelna_myra.webp',
-        coords: '53.21473485688437, 50.18689756337296',
-        address: 'ул. Авроры, 156в',
-        tel: '8–800–500–11–56',
-        days: 'ПН-ВС с 9:00 до 21:00',
-        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A8c201bb0fff1372a85f28f25de2c77cc80ea1d7272516bce6abd368c91324f6e&amp;source=constructor'
-    },
-    {
-        city: 'Чебоксары',
-        url: '/st/photo/contacts/chelna_myra.webp',
-        coords: '56.115825, 47.270554',
-        address: 'пр. Мира, 54б (Автомания)',
-        tel: '8–800–500–11–56',
-        days: 'ПН-ВС с 9:00 до 21:00',
-        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A68e72e069da58fd0337460e493c87575afafd93789bd40d35e1b5a606e335d3b&amp;source=constructor'
-    },
-    {
-        city: 'Челябинск',
-        url: '/st/photo/contacts/chelna_myra.webp',
-        coords: '55.154239, 61.303793',
-        address: 'БЦ Спиридонов, <br>ул. Ленина 21в, офис 1052',
-        tel: '8–800–500–11–56',
-        days: 'ПН-ВС с 9:00 до 21:00',
-        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A711b921703be62b7b6bb60f4a3a08775c26e9862880855f1d0f16835be8a4003&amp;source=constructor'
-    }
-]
+export const punkts = []
 export const tyres = [
-    {
-        city: 'Казань',
-        url: '/st/photo/contacts/kazanYamasheva115A.webp',
-        coords: '55.823581, 49.159553',
-        address: 'пр. Ямашева, 115а',
-        tel: '8–800–500–11–56',
-        days: 'ПН-ВС с 9:00 до 21:00',
-        map: 'https://yandex.ru/map-widget/v1/?um=constructor%3A6986b3ac4ba556c34180924eebb64192ba4696b58dab9b1e9fd7f5e34560aaa5&amp;source=constructor'
-    },
     {
         city: 'Казань',
         url: '/st/photo/contacts/kazanPrPobeds212k2.webp',
