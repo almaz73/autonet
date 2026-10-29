@@ -17,6 +17,16 @@ const parseCoords = (value) => {
 
 const telHref = (tel) => `tel:${(tel ?? '').replace(/[^\d+]/g, '')}`
 
+const escapeHtml = (value) => String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;')
+
+// в адресах из CMS встречается <br> — разрешаем только его, остальное экранируем
+const formatMultiline = (value) => escapeHtml(value).replace(/&lt;br\s*\/?&gt;/gi, '<br>')
+
 let items = []
 let points = []
 
@@ -73,10 +83,10 @@ const compress = async (text) => {
 const popupHtml = (item, active) => `
     <div style="font:14px/1.45 Gilroy,Arial,sans-serif;min-width:190px;cursor:pointer;background:white"
          onclick="window.top.postMessage({type:'dealer:select',index:${item.index}},'*')">
-        <div style="font-weight:700;color:#111;margin-bottom:2px;padding-left: 5px">${item.city}</div>
-        <div style="color:#333;padding-left: 5px">${item.address}</div>
-        <div style="margin-top:4px;padding-left: 5px"><a style="color:#E22427;text-decoration:none" href="${telHref(item.tel)}">${item.tel}</a></div>
-        <div style="color:#8a8a95;font-size:12px;margin-top:2px;padding-left: 5px">${item.days}</div>
+        <div style="font-weight:700;color:#111;margin-bottom:2px;padding-left: 5px">${escapeHtml(item.city)}</div>
+        <div style="color:#333;padding-left: 5px">${formatMultiline(item.address)}</div>
+        <div style="margin-top:4px;padding-left: 5px"><a style="color:#E22427;text-decoration:none" href="${escapeHtml(telHref(item.tel))}">${escapeHtml(item.tel)}</a></div>
+        <div style="color:#8a8a95;font-size:12px;margin-top:2px;padding-left: 5px">${escapeHtml(item.days)}</div>
         <div style="color:${active ? '#111' : '#E22427'};font-weight:600;margin-top:6px;padding-left: 5px">Показать в списке →</div>
     </div>`
 
@@ -117,10 +127,10 @@ const renderList = () => {
         card.tabIndex = 0
         card.setAttribute('role', 'button')
         card.innerHTML = `
-            <div class="dealer-card__city">${item.city}</div>
-            <div class="dealer-card__address">${item.address}</div>
-            <a class="dealer-card__tel" href="${telHref(item.tel)}">${item.tel}</a>
-            <div class="dealer-card__days">${item.days}</div>`
+            <div class="dealer-card__city">${escapeHtml(item.city)}</div>
+            <div class="dealer-card__address">${formatMultiline(item.address)}</div>
+            <a class="dealer-card__tel" href="${escapeHtml(telHref(item.tel))}">${escapeHtml(item.tel)}</a>
+            <div class="dealer-card__days">${escapeHtml(item.days)}</div>`
 
         card.querySelector('.dealer-card__tel').addEventListener('click', (event) => {
             event.stopPropagation()

@@ -10,3 +10,4 @@ import '@/js/favoriteCars.js'
 import "@/js/sendMessage.js"
 import '@/js/preloader.js'
 import '@/js/contacts_footer.js'
+import '@/js/dealers-map.js'

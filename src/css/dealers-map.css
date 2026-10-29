@@ -6,6 +6,17 @@
     margin-bottom: 20px;
 }
 
+.dealers__head {
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.dealers__head h2 {
+    margin-bottom: 0;
+}
+
 .dealers__layout {
     display: flex;
     gap: 20px;

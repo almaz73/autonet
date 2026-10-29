@@ -25,99 +25,268 @@
     content: url(/st/svg/city-icon.svg);
 }
 
-/****/
-.contact_items {
+/**** дилерские центры ****/
+.dealer-groups {
+    margin: 24px 0 40px;
+}
+
+.dealer-city {
+    margin-bottom: 34px;
+}
+
+.dealer-city:last-child {
+    margin-bottom: 0;
+}
+
+.dealer-city__title {
+    margin: 0 0 16px;
+    font-family: Gilroy-Bold, system-ui;
+    font-size: 1.35em;
+    color: #111;
+}
+
+.dealer-city__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.dealer-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #e9e9ef;
+    border-radius: 15px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.dealer-block:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.dealer-block__profile {
+    align-self: flex-start;
+    padding: 3px 10px;
+    font-size: 0.72em;
+    color: var(--color-red);
+    background: #fdecec;
+    border-radius: 20px;
+}
+
+.dealer-block__city {
+    font-family: Gilroy-Bold, system-ui;
+    font-size: 1.15em;
+    color: #111;
+}
+
+.dealer-block__address {
+    align-self: flex-start;
+    font-size: 0.95em;
+    line-height: 1.35;
+    color: #111;
+    text-decoration: none;
+    border-bottom: 1px dashed #b9b9c3;
+    cursor: pointer;
+}
+
+.dealer-block__address:hover {
+    color: var(--color-red);
+    border-bottom-color: var(--color-red);
+}
+
+.dealer-block__phone {
+    font-weight: 600;
+    color: var(--color-red);
+    text-decoration: none;
+}
+
+.dealer-block__phone:hover {
+    text-decoration: underline;
+}
+
+.dealer-block__days {
+    font-size: 0.9em;
+    color: #333;
+}
+
+.dealer-block__days span {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 0.8em;
+    color: #8a8a95;
+}
+
+.dealer-block__actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px 30px;
-    margin: 30px 0;
+    gap: 14px;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid #f0f0f4;
 }
 
-.contact_p {
-    flex: 0 0 calc(25% - 25px);
+.dealer-block__link {
+    font-size: 0.9em;
+    color: var(--color-red);
+    text-decoration: none;
+}
+
+.dealer-block__link:hover {
+    text-decoration: underline;
+}
+
+.dealer-empty {
+    margin: 20px 0;
+    color: #8a8a95;
+}
+
+/* страница отдельного дилерского центра */
+.dealer-page h1 {
+    margin-bottom: 24px;
+}
+
+.dealer-page__card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 30px;
+    margin-bottom: 30px;
+    padding: 30px;
+    background: #fff;
+    border: 1px solid #e9e9ef;
+    border-radius: 20px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.dealer-page__card--no-photo {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.dealer-page__info {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.dealer-page__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 0;
+}
+
+.dealer-page__row {
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr);
+    gap: 12px;
+}
+
+.dealer-page__row dt {
+    font-size: 0.85em;
+    color: #8a8a95;
+}
+
+.dealer-page__row dd {
+    margin: 0;
+    line-height: 1.45;
+    color: #111;
+}
+
+.dealer-page__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px;
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px solid #f0f0f4;
+}
+
+.dealer-page__back {
+    font-size: 0.9em;
+    color: var(--color-red);
+    text-decoration: none;
+}
+
+.dealer-page__back:hover {
+    text-decoration: underline;
+}
+
+.dealer-page__map {
+    height: 420px;
+    margin-bottom: 60px;
+    overflow: hidden;
+    background: var(--color-grey);
+    border: 1px solid #e9e9ef;
+    border-radius: 20px;
+}
+
+.dealer-page__map iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.dealer-page__photo {
+    overflow: hidden;
     border-radius: 15px;
-    background-size: cover;
-    position: relative;
-    color: white;
 }
 
-
-@media (max-width: 1110px) {
-    .contact_p {
-        flex: 0 0 calc(32% - 14px);
-        /*height: 300px;*/
-    }
+.dealer-page__photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 360px;
+    object-fit: cover;
 }
 
 @media (max-width: 840px) {
-    .contact_p {
-        flex: 0 0 45%;
+    .dealer-page__card {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 22px;
+    }
+
+    .dealer-page__photo {
+        order: -1;
+    }
+
+    .dealer-page__map {
+        height: 320px;
     }
 }
 
 @media (max-width: 570px) {
-    .contact_p {
-        flex: 1;
+    .dealer-page__row {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 4px;
     }
 }
 
-.contact_p .address a::before {
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 145px;
-    line-height: 0;
-    content: url(/st/svg/address-point.svg);
-    transform: translateX(20px) translateY(-90px);
+@media (max-width: 1110px) {
+    .dealer-city__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 }
 
-.contact_p a {
-    color: white;
-    text-decoration: none;
+@media (max-width: 840px) {
+    .dealer-city__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
-.contact_p .city {
-    font-size: large;
-    font-family: Gilroy-Bold, system-ui;
+@media (max-width: 570px) {
+    .dealer-city__grid {
+        grid-template-columns: 1fr;
+    }
 }
 
-.contact_p .contact__flex {
-    padding: 1.5em;
-    line-height: 1.7em;
-    border-radius: 12px;
-    background: linear-gradient(#00000077, #000000ff);
-}
-
-.contact_p .contact__flex:hover {
-    background: black;
-}
-
-.contact_p .address {
-    margin-left: 20px;
-    white-space: nowrap;
-}
-
-.contact_p .subname {
-    margin-top: 110px;
-    font-size: smaller;
-    color: #ffffff99;
-}
-
-.contact_p .navi {
-    position: absolute;
-    display: none;
-    margin-top: 25px;
-}
-
-.contact_p:hover .navi {
-    display: block;
-}
-
-.contact_p .navi button {
-    background: #3f3f3f;
-    color: white;
-    cursor: pointer;
-    padding: 3px 22px;
+/* карта 2ГИС в модальном окне */
+.map-modal .map iframe {
+    height: min(720px, calc(100vh - 80px)) !important;
 }
 
 .contacts h2 {
@@ -135,14 +304,4 @@
     height: 3rem;
     border-bottom: 2px solid rgba(0, 0, 0, 0.3);
 }
-
-.contacts .letter {
-    flex: 0 0 100%;
-    font-size: 1.5em;
-    font-family: Gilroy-Bold, system-ui;
-    color: var(--color-red);
-    font-weight: 600;
-    margin: 0 0 -15px;
-}
-
 
