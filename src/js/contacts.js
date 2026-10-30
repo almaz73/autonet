@@ -107,13 +107,15 @@ const cardHtml = (dealer) => {
         : ''
 
     return `
-        <article class="dealer-block">
-            ${profile}
-            <div class="dealer-block__city">${escapeHtml(dealer.city)}</div>
-            <a class="dealer-block__address" href="#" data-id="${dealer.id}">${formatMultiline(dealer.address)}</a>
-            ${phone}
-            ${days}
-            <div class="dealer-block__actions">${photo}${page}</div>
+        <article class="dealer-block${photoUrl ? ' dealer-block--photo' : ''}"${photoUrl ? ` style="background-image:url('${escapeHtml(photoUrl)}')"` : ''}>
+            <div class="dealer-block__body">
+                ${profile}
+                <div class="dealer-block__city">${escapeHtml(dealer.city)}</div>
+                <a class="dealer-block__address" href="#" data-id="${dealer.id}">${formatMultiline(dealer.address)}</a>
+                ${phone}
+                ${days}
+                <div class="dealer-block__actions">${photo}${page}</div>
+            </div>
         </article>`
 }
 
