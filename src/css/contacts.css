@@ -180,6 +180,15 @@
     font-size: 0.9em;
 }
 
+.dealer-block__email {
+    color: #fff;
+    text-decoration: none;
+}
+
+.dealer-block__email:hover {
+    text-decoration: underline;
+}
+
 .dealer-block__actions {
     display: flex;
     flex-wrap: wrap;

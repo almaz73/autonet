@@ -124,6 +124,13 @@ const cardHtml = (dealer) => {
                 <span>${brands.map(escapeHtml).join(', ')}</span>
            </div>`
         : ''
+    const email = String(dealer.email ?? '').trim()
+    const emailHtml = email
+        ? `<div class="dealer-block__brands">
+                <span class="dealer-block__label">Email</span>
+                <span><a class="dealer-block__email" href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></span>
+           </div>`
+        : ''
     const page = pageUrl
         ? '<span class="dealer-block__link">Страница центра</span>'
         : ''
@@ -134,6 +141,7 @@ const cardHtml = (dealer) => {
                 <div class="dealer-block__profile">${escapeHtml(dealer.city)}</div>
                 <a class="dealer-block__address" href="#" data-id="${dealer.id}">${formatMultiline(dealer.address)}</a>
                 ${phones}
+                ${emailHtml}
                 ${days}
                 ${profilesHtml}
                 ${brandsHtml}
