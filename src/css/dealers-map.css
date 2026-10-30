@@ -120,6 +120,18 @@
     color: #8a8a95;
 }
 
+.dealer-card__more {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 0.85em;
+    color: var(--color-red);
+    text-decoration: none;
+}
+
+.dealer-card__more:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 900px) {
     .dealers__layout {
         flex-direction: column;

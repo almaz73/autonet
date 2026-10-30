@@ -130,7 +130,8 @@ const renderList = () => {
             <div class="dealer-card__city">${escapeHtml(item.city)}</div>
             <div class="dealer-card__address">${formatMultiline(item.address)}</div>
             <a class="dealer-card__tel" href="${escapeHtml(telHref(item.tel))}">${escapeHtml(item.tel)}</a>
-            <div class="dealer-card__days">${escapeHtml(item.days)}</div>`
+            <div class="dealer-card__days">${escapeHtml(item.days)}</div>
+            ${item.link ? `<a class="dealer-card__more" href="${escapeHtml(item.link)}">Подробнее...</a>` : ''}`
 
         card.querySelector('.dealer-card__tel').addEventListener('click', (event) => {
             event.stopPropagation()
@@ -217,6 +218,7 @@ const start = async () => {
 
     listEl.addEventListener('keydown', (event) => {
         if (event.key !== 'Enter' && event.key !== ' ') return
+        if (event.target.closest('a')) return
         const card = event.target.closest('.dealer-card')
         if (!card) return
         event.preventDefault()
