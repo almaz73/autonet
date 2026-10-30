@@ -99,22 +99,19 @@ const cardHtml = (dealer) => {
     const days = dealer.days
         ? `<div class="dealer-block__days"><span>Режим работы</span>${escapeHtml(dealer.days)}</div>`
         : ''
-    const photo = photoUrl
-        ? `<a class="dealer-block__link" href="${escapeHtml(photoUrl)}" target="_blank" rel="noopener">Фото</a>`
-        : ''
     const page = pageUrl
-        ? `<a class="dealer-block__link" href="${escapeHtml(pageUrl)}">Страница центра</a>`
+        ? '<span class="dealer-block__link">Страница центра</span>'
         : ''
 
     return `
-        <article class="dealer-block${photoUrl ? ' dealer-block--photo' : ''}"${photoUrl ? ` style="background-image:url('${escapeHtml(photoUrl)}')"` : ''}>
+        <article class="dealer-block${photoUrl ? ' dealer-block--photo' : ''}"${photoUrl ? ` style="background-image:url('${escapeHtml(photoUrl)}')"` : ''}${pageUrl ? ` data-link="${escapeHtml(pageUrl)}" role="link" tabindex="0"` : ''}>
             <div class="dealer-block__body">
                 ${profile}
                 <div class="dealer-block__city">${escapeHtml(dealer.city)}</div>
                 <a class="dealer-block__address" href="#" data-id="${dealer.id}">${formatMultiline(dealer.address)}</a>
                 ${phone}
                 ${days}
-                <div class="dealer-block__actions">${photo}${page}</div>
+                <div class="dealer-block__actions">${page}</div>
             </div>
         </article>`
 }
@@ -176,10 +173,25 @@ const start = async () => {
 
     listEl.addEventListener('click', (event) => {
         const addressLink = event.target.closest('.dealer-block__address')
-        if (!addressLink) return
+        if (addressLink) {
+            event.preventDefault()
+            const dealer = dealers.find((item) => String(item.id) === addressLink.dataset.id)
+            if (dealer) openDealerMap(dealer)
+            return
+        }
+        // телефон и другие ссылки обрабатывает браузер
+        if (event.target.closest('a')) return
+        const card = event.target.closest('.dealer-block')
+        if (card?.dataset.link) window.location.href = card.dataset.link
+    })
+
+    listEl.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') return
+        if (event.target.closest('a')) return
+        const card = event.target.closest('.dealer-block')
+        if (!card?.dataset.link) return
         event.preventDefault()
-        const dealer = dealers.find((item) => String(item.id) === addressLink.dataset.id)
-        if (dealer) openDealerMap(dealer)
+        window.location.href = card.dataset.link
     })
 }
 

@@ -59,6 +59,7 @@
     background: linear-gradient(160deg, #4a4a55, #1b1b22) center / cover no-repeat;
     border-radius: 15px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
     transition: box-shadow 0.2s, transform 0.2s;
 }
 
@@ -152,12 +153,7 @@
 
 .dealer-block__link {
     font-size: 0.9em;
-    color: #fff;
-    text-decoration: none;
-}
-
-.dealer-block__link:hover {
-    text-decoration: underline;
+    color: rgba(255, 255, 255, 0.85);
 }
 
 .dealer-empty {
