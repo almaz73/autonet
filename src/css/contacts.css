@@ -94,16 +94,11 @@
 .dealer-block__profile {
     align-self: flex-start;
     padding: 3px 10px;
-    font-size: 0.72em;
+    font-family: Gilroy-Bold, system-ui;
+    font-size: 0.9em;
     color: #fff;
     background: rgba(226, 36, 39, 0.92);
     border-radius: 20px;
-}
-
-.dealer-block__city {
-    font-family: Gilroy-Bold, system-ui;
-    font-size: 1.15em;
-    color: #fff;
 }
 
 .dealer-block__address {
@@ -130,16 +125,59 @@
     text-decoration: underline;
 }
 
-.dealer-block__days {
-    font-size: 0.9em;
-    color: rgba(255, 255, 255, 0.85);
-}
-
-.dealer-block__days span {
+.dealer-block__label {
     display: block;
     margin-bottom: 2px;
     font-size: 0.8em;
     color: rgba(255, 255, 255, 0.6);
+}
+
+.dealer-block__phones {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+}
+
+/* «Режим работы»: подпись, значение второй строкой */
+.dealer-block__days .dealer-block__label {
+    margin-bottom: 2px;
+}
+
+.dealer-block__value {
+    font-size: 0.9em;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* профили: подпись слева, значения второй колонкой */
+.dealer-block__profiles {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    align-items: start;
+    column-gap: 14px;
+}
+
+.dealer-block__profiles .dealer-block__label {
+    margin-bottom: 0;
+}
+
+/* профили построчно, на более светлой подложке */
+.dealer-block__values {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 6px 10px;
+    font-size: 0.9em;
+    background: rgba(255, 255, 255, 0.13);
+    border-radius: 10px;
+}
+
+.dealer-block__brands {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 0.9em;
 }
 
 .dealer-block__actions {
@@ -209,6 +247,26 @@
 .dealer-page__row dd {
     margin: 0;
     line-height: 1.45;
+    color: #fff;
+}
+
+/* телефоны и профили — каждый элемент с новой строки */
+.dealer-page__list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+/* профили выделяем чуть более светлой подложкой */
+.dealer-page__list--panel {
+    gap: 8px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+}
+
+.dealer-page__profile {
     color: #fff;
 }
 

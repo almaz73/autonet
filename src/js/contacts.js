@@ -86,18 +86,43 @@ const buildMapSrc = async (dealer) => {
     return `${MAP_WIDGET_URL}?data=${toBase64Url(compressed)}`
 }
 
+const splitList = (value) => String(value ?? '')
+    .split(',')
+    .map((part) => part.trim())
+    .filter(Boolean)
+
 const cardHtml = (dealer) => {
     const photoUrl = dealer.url ? encodeURI(dealer.url) : ''
     const pageUrl = dealer.link ? encodeURI(dealer.link) : ''
+    const tels = splitList(dealer.tel)
+    const profiles = splitList(dealer.profile)
+    const brands = splitList(dealer.brands)
 
-    const profile = dealer.profile
-        ? `<div class="dealer-block__profile">${escapeHtml(dealer.profile)}</div>`
-        : ''
-    const phone = dealer.tel
-        ? `<a class="dealer-block__phone" href="${escapeHtml(telHref(dealer.tel))}">${escapeHtml(dealer.tel)}</a>`
+    const phones = tels.length
+        ? `<div class="dealer-block__phones">
+                <span class="dealer-block__label">Телефоны</span>
+                ${tels.map((tel) => `<a class="dealer-block__phone" href="${escapeHtml(telHref(tel))}">${escapeHtml(tel)}</a>`).join('')}
+           </div>`
         : ''
     const days = dealer.days
-        ? `<div class="dealer-block__days"><span>Режим работы</span>${escapeHtml(dealer.days)}</div>`
+        ? `<div class="dealer-block__days">
+                <span class="dealer-block__label">Режим работы</span>
+                <span class="dealer-block__value">${escapeHtml(dealer.days)}</span>
+           </div>`
+        : ''
+    const profilesHtml = profiles.length
+        ? `<div class="dealer-block__profiles">
+                <span class="dealer-block__label">Профили</span>
+                <span class="dealer-block__values">
+                    ${profiles.map((profile) => `<span>${escapeHtml(profile)}</span>`).join('')}
+                </span>
+           </div>`
+        : ''
+    const brandsHtml = brands.length
+        ? `<div class="dealer-block__brands">
+                <span class="dealer-block__label">Бренды</span>
+                <span>${brands.map(escapeHtml).join(', ')}</span>
+           </div>`
         : ''
     const page = pageUrl
         ? '<span class="dealer-block__link">Страница центра</span>'
@@ -106,11 +131,12 @@ const cardHtml = (dealer) => {
     return `
         <article class="dealer-block${photoUrl ? ' dealer-block--photo' : ''}"${photoUrl ? ` style="background-image:url('${escapeHtml(photoUrl)}')"` : ''}${pageUrl ? ` data-link="${escapeHtml(pageUrl)}" role="link" tabindex="0"` : ''}>
             <div class="dealer-block__body">
-                ${profile}
-                <div class="dealer-block__city">${escapeHtml(dealer.city)}</div>
+                <div class="dealer-block__profile">${escapeHtml(dealer.city)}</div>
                 <a class="dealer-block__address" href="#" data-id="${dealer.id}">${formatMultiline(dealer.address)}</a>
-                ${phone}
+                ${phones}
                 ${days}
+                ${profilesHtml}
+                ${brandsHtml}
                 <div class="dealer-block__actions">${page}</div>
             </div>
         </article>`
