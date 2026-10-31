@@ -55,6 +55,19 @@ cards.dot8 .cart {
     }
 }
 
+/* резервируем место под фото до его загрузки (иначе контент прыгает) */
+@media (max-width: 499px) {
+    cards .cart__slide:not(.watch) img {
+        aspect-ratio: 600/400;
+        height: auto;
+    }
+}
+
+swiper_buy {
+    display: block;
+    min-height: 19px;
+}
+
 cards.dot4 .cart__slide.watch img, cards.dot8 .cart__slide.watch img {
     max-height: 400px; /* чтобы разноразмерные файлы не прыгали на экране */
 }
@@ -140,6 +153,8 @@ cards.dot1 .cart__box--bottom {
 .cart .name {
     grid-area: name;
     margin-left: 1em;
+    /* явная высота строки: при подмене шрифта (font-display: swap) высота карточки не скачет */
+    line-height: 1.19;
 }
 
 .cart .name a {
@@ -179,6 +194,7 @@ cards.dot1 .cart__box--bottom {
     font-size: 1.25em;
     display: inline-block;
     margin-right: 5px;
+    line-height: 1.15;
 }
 
 @media (max-width: 575px) {
@@ -216,6 +232,7 @@ cards.dot1 .cart__box--bottom {
     color: var(--color-red);
     font-size: 0.875em;
     display: inline-block;
+    line-height: 1.14;
 }
 
 .cart__info {
@@ -224,6 +241,7 @@ cards.dot1 .cart__box--bottom {
     max-width: 170px;
     grid-area: c_info;
     margin-left: 1em;
+    line-height: 1.15;
 }
 
 .cart__box--bottom {

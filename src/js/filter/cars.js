@@ -5,15 +5,12 @@ const whiteFilter = `<div  class="filter-white">
 <div class="filter-white-back filter-fields">
         <div class="frame-filter__item">
             <span class='comb' data-placeholder='Марка' />
-            <label>Марка</label>
         </div>
         <div class="frame-filter__item">
             <span class='comb' data-placeholder='Модель' />
-            <label>Модель</label>
         </div>
         <div class="frame-filter__item">
             <span class='comb' data-placeholder='Город' />
-            <label>Город</label>
         </div>
 
         <div style="flex-grow: 1">
@@ -36,7 +33,6 @@ const whiteFilter = `<div  class="filter-white">
         
         <div class="frame-filter__item no_advanced">
             <span class='comb' data-placeholder='Цвет' />
-            <label>Цвет</label>
         </div> 
 
         <div class="no_advanced">
@@ -159,8 +155,14 @@ const carVitrina = `<div class="car_vitrina">
 let brandName = getUrlParam('brand');
 const hasId = getUrlParam('id');
 
-if (!hasId) document.querySelector('#filter_cars').innerHTML = whiteFilter
-if (!hasId) document.querySelector('#car-vitrina').innerHTML = carVitrina
+// На SSR-странице фильтр и витрина уже отрисованы сервером — не пересоздаём их,
+// иначе происходит layout shift. В dev-режиме разметки нет, тогда вставляем шаблон.
+if (!hasId && !document.querySelector('#filter_cars .filter-white-back')) {
+    document.querySelector('#filter_cars').innerHTML = whiteFilter
+}
+if (!hasId && !document.querySelector('#car-vitrina .car_vitrina')) {
+    document.querySelector('#car-vitrina').innerHTML = carVitrina
+}
 
 if (brandName && !hasId) {
     if (brandName.includes('/')) brandName = brandName.split('/')[0]

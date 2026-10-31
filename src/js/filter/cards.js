@@ -136,6 +136,16 @@ window.openCar = function (href, linkPhoto) {
     setTimeout(() => location.href = href)
 }
 
+function bindTypeViews() {
+    type_views = document.querySelector('.type_views');
+    if (!type_views || type_views.dataset.bound) return
+    type_views.dataset.bound = '1'
+    type_views.addEventListener('click', (e) => {
+        setTypeView(e)
+        saveView(e.srcElement.classList.value.slice(0, 4))
+    })
+}
+
 export function fill(cars, currentCars, totalPages) {
     cards = document.querySelector('cards');
 
@@ -165,16 +175,42 @@ export function fill(cars, currentCars, totalPages) {
     initFavotite()
 
     cars.forEach((el, i) => galeryEvents(i + 1, el.images)); // прикрепляем события
-    type_views = document.querySelector('.type_views');
-    type_views && type_views.addEventListener('click', (e) => {
-        setTypeView(e)
-        localStorage.setItem('TYPE_VIEW', e.srcElement.classList.value.slice(0, 4))
-    })
+    bindTypeViews()
     setDot()
+}
+
+/**
+ * Гидратация серверной разметки: DOM уже на месте, навешиваем только события.
+ * Перерисовка здесь дала бы layout shift.
+ */
+export function hydrate(cars, currentCars, totalPages) {
+    cards = document.querySelector('cards');
+
+    window.compareCars = currentCars
+    window.favorCars = cars
+    if (!cards || !cards.querySelector('.cart')) return fill(cars, currentCars, totalPages)
+
+    if (!window.isSPAquestion) preparePager(totalPages)
+    initChosen()
+    initFavotite()
+
+    cars.forEach((el, i) => galeryEvents(i + 1, el.images));
+    bindTypeViews()
+    setDot()
+
+    setTimeout(() => window.reloadAbdul && window.reloadAbdul())
+    setTimeout(() => window.reloadLittleSwiper && window.reloadLittleSwiper())
+}
+
+function saveView(TYPE_VIEW) {
+    localStorage.setItem('TYPE_VIEW', TYPE_VIEW)
+    // дублируем в cookie, чтобы SSR сразу отрисовал нужный вид и не было сдвига
+    document.cookie = 'TYPE_VIEW=' + TYPE_VIEW + '; path=/; max-age=31536000'
 }
 
 function setDot() {
     let TYPE_VIEW = localStorage.getItem('TYPE_VIEW') || 'dot4'
+    saveView(TYPE_VIEW)
     let dot = document.querySelector('.' + TYPE_VIEW)
     dot && dot.classList.add('active')
     setTimeout(() => dot && setTypeView({srcElement: {classList: {value: TYPE_VIEW}}}))

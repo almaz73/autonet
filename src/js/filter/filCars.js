@@ -1,5 +1,6 @@
 // обработка location.pathname === '/cars/
 import {api_getList} from "@/js/apibase.js"
+import {hydrate} from "@/js/filter/cards.js"
 import {
     getUrlParam,
     prepareCars,
@@ -210,6 +211,29 @@ function setInputName(name, value) {
 export async function fillCars(cars, ishandEvent_, filterParams, fill) {
     ishandEvent = ishandEvent_
     if (!ishandEvent) FillFilterFromAddressBar(filterParams)
+
+    // Первая загрузка /cars: разметка уже отрисована сервером, не перерисовываем её
+    if (!ishandEvent && window.__carsSSR && !window.__carsHydrated) {
+        window.__carsHydrated = true
+        const ssrItems = acceptWithoutPhoto(window.__carsSSR.items || [])
+        const ssrCars = prepareCars(ssrItems)
+        const totalPages = Math.ceil((window.__carsSSR.totalCount || 0) / countPerPage)
+
+        hydrate(ssrCars, ssrItems, totalPages)
+        carCountText(window.__carsSSR.totalCount || 0)
+
+        if (filterParams['brand']) {
+            const fw = document.querySelector('.filter-white')
+            const vn = document.querySelector('#vitrina_name')
+            const brands = document.getElementById('brands_dynamic')
+            if (brands) brands.style.display = 'none'
+            if (fw) fw.style.marginBottom = 0
+            if (vn) vn.innerHTML = 'Автомобили ' + (filterParams.brand || '')
+                + ' ' + (filterParams.model || '')
+                + (filterParams.city ? `(город ${filterParams.city})` : ``)
+        }
+        return window.__carsSSR.totalCount || 0
+    }
 
     let totalCount = 0
     let bt = document.querySelector('#set_filter')
