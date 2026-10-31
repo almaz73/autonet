@@ -17,6 +17,13 @@ const parseCoords = (value) => {
 
 const telHref = (tel) => `tel:${(tel ?? '').replace(/[^\d+]/g, '')}`
 
+const splitList = (value) => String(value ?? '')
+    .split(',')
+    .map((part) => part.trim())
+    .filter(Boolean)
+
+const firstPhone = (tel) => splitList(tel)[0] ?? ''
+
 const escapeHtml = (value) => String(value ?? '')
     .replaceAll('&', '&amp;')
     .replaceAll('<', '&lt;')
@@ -126,14 +133,15 @@ const renderList = () => {
         card.dataset.index = String(item.index)
         card.tabIndex = 0
         card.setAttribute('role', 'button')
+        const phone = firstPhone(item.tel)
         card.innerHTML = `
             <div class="dealer-card__city">${escapeHtml(item.city)}</div>
             <div class="dealer-card__address">${formatMultiline(item.address)}</div>
-            <a class="dealer-card__tel" href="${escapeHtml(telHref(item.tel))}">${escapeHtml(item.tel)}</a>
+            ${phone ? `<a class="dealer-card__tel" href="${escapeHtml(telHref(phone))}">${escapeHtml(phone)}</a>` : ''}
             <div class="dealer-card__days">${escapeHtml(item.days)}</div>
             ${item.link ? `<a class="dealer-card__more" href="${escapeHtml(item.link)}">Подробнее...</a>` : ''}`
 
-        card.querySelector('.dealer-card__tel').addEventListener('click', (event) => {
+        card.querySelector('.dealer-card__tel')?.addEventListener('click', (event) => {
             event.stopPropagation()
         })
 
