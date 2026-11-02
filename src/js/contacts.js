@@ -153,7 +153,7 @@ const cardHtml = (dealer) => {
 const render = () => {
     const query = (searchField?.value ?? '').trim().toLowerCase()
     const filtered = query
-        ? dealers.filter((dealer) => [dealer.city, dealer.address]
+        ? dealers.filter((dealer) => [dealer.city, dealer.address, dealer.profile]
             .some((value) => String(value ?? '').toLowerCase().includes(query)))
         : dealers
 
