@@ -24,6 +24,7 @@
   <link rel='stylesheet' href='../../src/css/Blocks4.css'/>
   <link rel='stylesheet' href='../../src/css/index/ourservice.css'/>
   <link rel='stylesheet' href='../../src/css/ourprices.css'/>
+  <link rel='stylesheet' href='../../src/css/dealers-map.css'/>
 
 
   <link rel='stylesheet' href='../../src/css/swiper-bundle.min.css'/>
@@ -400,6 +401,8 @@
   </div>
 
 
+
+
 </main>
 
 
@@ -423,6 +426,19 @@
 
 <main>
   {{> 'index/ourservice' }}
+
+
+  <section class="dealers" data-dealers-map data-profiles="СТО, Сервис">
+    <h2>Адреса сервисных центров Автосеть.РФ</h2>
+    <div class="dealers__layout">
+      <div class="dealers__list" aria-label="Список сервисных центров"></div>
+      <div class="dealers__map">
+        <iframe title="Карта сервисных центров Автосеть.РФ" frameborder="0"
+                allow="fullscreen"
+                sandbox="allow-modals allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation"></iframe>
+      </div>
+    </div>
+  </section>
 
   <div class='container'>
     <h2 dir='ltr'>Сервисное обслуживание автомобилей в Казани и других городах России</h2>
