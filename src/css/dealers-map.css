@@ -20,7 +20,7 @@
 .dealers__layout {
     display: flex;
     gap: 20px;
-    height: 600px;
+    height: 400px;
 }
 
 .dealers__list {
