@@ -83,12 +83,13 @@
     margin: 40px 0 0 0;
 }
 
-main img {
+/* только страницы новостей: без ограничения селектора правило ломало галереи на других страницах */
+.news-page img {
     width: 100%;
     border-radius: 6px;
     aspect-ratio: 191/107;
 }
 
-main > .content{
+.news-page > .content{
     margin: 2rem 0 4rem;
 }
