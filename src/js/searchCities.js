@@ -1,14 +1,27 @@
-import {cities} from "@/js/global-constants.js"
+import {getDealerCities} from "@/js/dealer-data.js"
 
 let innerCity = document.querySelector('#innerCity');
 let cityInput = document.querySelector('.form__modal-place--group input');
 
-let letters = ['А', 'Б', 'Е', 'К', 'М', 'Н', 'О', 'С', 'Т', 'У'];
+let dealerCities = null
 
-export function fillCities(txt) {
+export async function fillCities(txt = '') {
+  if (!innerCity) return
+  if (!dealerCities) {
+    try {
+      dealerCities = await getDealerCities()
+    } catch (error) {
+      console.error(error)
+      dealerCities = []
+    }
+  }
+
+  const letters = [...new Set(dealerCities.map(city => city.slice(0, 1)))]
+    .sort((a, b) => a.localeCompare(b, 'ru'))
+
   let inner = '';
   letters.forEach(letter => {
-    let towns = cities.filter(el => el.slice(0, 1) === letter);
+    let towns = dealerCities.filter(el => el.slice(0, 1) === letter);
     let innerTowns = ``;
 
     towns.forEach(el => {
@@ -26,5 +39,3 @@ export function fillCities(txt) {
 cityInput && cityInput.addEventListener('input', () => {
   fillCities(cityInput.value.toUpperCase());
 });
-
-

@@ -1,6 +1,16 @@
-import {dealers} from '@/js/global-constants.js'
+import {loadDealers} from '@/js/dealer-data.js'
 
-window.addEventListener('DOMContentLoaded', () => {
+const escapeHtml = (value) => String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;')
+
+// в адресах из CMS встречается <br> — разрешаем только его, остальное экранируем
+const formatMultiline = (value) => escapeHtml(value).replace(/&lt;br\s*\/?&gt;/gi, '<br>')
+
+window.addEventListener('DOMContentLoaded', async () => {
     let cityButton = document.querySelector('.footer-city-button');
     let select_div = document.querySelector('.comb__selected');
     let cities = document.querySelector('.main-nav.cities');
@@ -10,31 +20,38 @@ window.addEventListener('DOMContentLoaded', () => {
     let photoModal = document.querySelector('.photo-modal')
     let photoModalPic = document.querySelector('.photo-modal .pic')
 
-    cityButton.innerHTML = localStorage.getItem('selectedCity') || 'Россия';
-    setAddress(cityButton.innerHTML)
-
-    function setAddress(cityName) {
-        let obj = dealers.filter(el => el.city === cityName)
-        addr_foot.innerHTML = ''
-        obj && obj.forEach(el => {
-            addr_foot.innerHTML += `
-            <div class="address">
-                <a href="javascript:openMap('${el.map}')">
-                ${el.address}
-                </a>
-            </div>`
-        })
-        
-        window.getVitrina && getVitrina()
+    let allDealers = []
+    try {
+        allDealers = await loadDealers()
+    } catch (error) {
+        console.error(error)
     }
+
+    // в футере показываем только адреса выбранного города — без карт
+    function setAddress(cityName) {
+        if (!addr_foot) return
+        const list = allDealers.filter(el => el.city === cityName)
+        addr_foot.innerHTML = list
+            .map(el => `<div class="address">${formatMultiline(el.address)}</div>`)
+            .join('')
+    }
+
+    const savedCity = localStorage.getItem('selectedCity') || 'Россия'
+    if (cityButton) cityButton.innerHTML = savedCity
+    if (select_div) select_div.innerHTML = savedCity
+    setAddress(savedCity)
+
+    const cityBContacts = document.querySelector('#city-contacts')
+    if (cityBContacts && savedCity !== 'Россия') cityBContacts.innerHTML = savedCity
 
     window.setCity = function (cityName) {
         setAddress(cityName)
         localStorage.setItem('selectedCity', cityName);
-        cities.style.transform = 'translateX(150vw)';
-        select_div.innerHTML = cityButton.innerHTML = cityName
+        if (cities) cities.style.transform = 'translateX(150vw)';
+        if (select_div) select_div.innerHTML = cityName
+        if (cityButton) cityButton.innerHTML = cityName
+        if (cityBContacts) cityBContacts.innerHTML = cityName
     }
-
 
     if (mapModal) {
         window.openMap = function (val) {
@@ -43,16 +60,20 @@ window.addEventListener('DOMContentLoaded', () => {
                 ? `<iframe src="${val}" width="100%" height="720"></iframe>`
                 : ''
         }
+    }
 
+    if (photoModal) {
         window.openPhoto = function (val) {
-            if (photoModal) photoModal.style.display = val ? 'grid' : 'none'
+            photoModal.style.display = val ? 'grid' : 'none'
             if (photoModalPic) photoModalPic.innerHTML = `<img alt="" src ="${val}">`
         }
+    }
 
+    if (mapModal || photoModal) {
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mapModal) {
-                window.openMap(false)
-                window.openPhoto(false)
+            if (e.key === 'Escape') {
+                window.openMap && window.openMap(false)
+                window.openPhoto && window.openPhoto(false)
             }
         })
     }

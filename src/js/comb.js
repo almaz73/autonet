@@ -1,4 +1,4 @@
-import {cities} from "@/js/global-constants.js";
+import {getDealerCities} from "@/js/dealer-data.js"
 
 let option_div = document.querySelector('.comb__items');
 let comb_field = document.querySelector('.comb_field');
@@ -10,14 +10,21 @@ let mySwiper = document.querySelector('.mySwiper')
 
 let selectedCity = localStorage.getItem('selectedCity');
 
-option_div.innerHTML = ''
-cities.forEach(el=>option_div.innerHTML += `<div class="comb__item">${el}</div>`)
+if (option_div) option_div.innerHTML = ''
 
 if (comb_field) {
   select_div.innerHTML = selectedCity || 'Россия';
   document.addEventListener('click', () => openOptions(false));
   comb_field.addEventListener('click', event => openComb(event));
   option_div.addEventListener('click', event => getCity(event));
+
+  getDealerCities()
+    .then(dealerCities => {
+      option_div.innerHTML = dealerCities
+        .map(city => `<div class="comb__item">${city}</div>`)
+        .join('')
+    })
+    .catch(error => console.error(error))
 }
 
 function getCity(e) {

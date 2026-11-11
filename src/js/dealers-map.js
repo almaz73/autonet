@@ -1,22 +1,11 @@
+import {loadDealers} from '@/js/dealer-data.js'
+
 const MAP_WIDGET_URL = 'https://makemap.2gis.ru/widget'
 const MAP_ORIGIN = 'https://makemap.2gis.ru'
-const DEALERS_API = '/api/getDealers'
 const OVERVIEW_ZOOM = 4
 const DEALER_ZOOM = 16
 const MARKER_COLOR = '#E22427'
 const ACTIVE_MARKER_COLOR = '#111111'
-
-let dealersPromise = null
-
-const loadDealers = () => {
-    if (!dealersPromise) {
-        dealersPromise = fetch(DEALERS_API).then((response) => {
-            if (!response.ok) throw new Error(`Не удалось загрузить дилеров: HTTP ${response.status}`)
-            return response.json()
-        })
-    }
-    return dealersPromise
-}
 
 const parseCoords = (value) => {
     if (!value) return null

@@ -47,15 +47,11 @@
 }
 
 .footer__top .address {
-    margin-bottom: 1.3em;
-}
-
-.footer__top .address a {
     font-size: 0.9375rem;
-    text-decoration: none;
     color: black;
     padding-left: 20px;
-    background: url(/st/svg/point-icon.svg) left no-repeat;
+    background: url(/st/svg/point-icon.svg) left center no-repeat;
+    margin-bottom: 1.3em;
 }
 
 .footer__subscription {

@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     autoColor[0].innerHTML = autoColor[1].innerHTML = res.color || ''
 
                     let addr = document.querySelector('.main__card-product--top .address')
-                    addr.addEventListener('click', () => openInYndx(res.city + ' ' + (res.fullAddress || '')))
+                    addr.addEventListener('click', () => openInMap(res.city + ' ' + (res.fullAddress || '')))
 
                     addr.innerHTML = res.city + ' ' + (res.fullAddress || '')
                 }
@@ -189,9 +189,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     )
 
-    function openInYndx(address) {
-        const yandexMapsUrl = `https://yandex.ru/maps/?text=${encodeURIComponent(address)}`;
-        window.open(yandexMapsUrl, '_blank');
+    function openInMap(address) {
+        const mapUrl = `https://2gis.ru/search/${encodeURIComponent(address)}`;
+        window.open(mapUrl, '_blank');
     }
     if (window.outerWidth < 500) {
         setTimeout(() => {

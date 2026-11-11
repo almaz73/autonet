@@ -1,4 +1,5 @@
-const DEALERS_API = '/api/getDealers'
+import {loadDealers} from '@/js/dealer-data.js'
+
 const MAP_WIDGET_URL = 'https://makemap.2gis.ru/widget'
 const DEALER_ZOOM = 16
 const MARKER_COLOR = '#E22427'
@@ -193,9 +194,7 @@ const start = async () => {
     listEl.innerHTML = '<p class="dealer-empty">Загрузка…</p>'
 
     try {
-        const response = await fetch(DEALERS_API)
-        if (!response.ok) throw new Error(`HTTP ${response.status}`)
-        dealers = await response.json()
+        dealers = await loadDealers()
         render()
     } catch (error) {
         console.error(error)
