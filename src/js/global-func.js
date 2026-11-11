@@ -88,6 +88,11 @@ function makeFrendly(el) {
     return transliterate(frendly)
 }
 
+// канонический адрес карточки авто: старые /cars/car.html?id=... отдают 410
+export function carHref(el) {
+    return `/cars/${getBrandLat(el.brand)}/${transliterate(el.model || '').replaceAll(' ', '')}/${makeFrendly(el)}`
+}
+
 export function prepareCars(res) {
     let cars = []
     res && res.forEach(el => {
@@ -101,13 +106,12 @@ export function prepareCars(res) {
         if (el.engineType) info += ', ' + el.engineType
 
         let fromPerMonth = formatterShowPrice(parseInt(el.price / 90.12))
-        let frendly = makeFrendly(el)
 
         cars.push({
             address: el.city + ' ' + (el.fullAddress || ''),
             id: el.id,
             name: el.brand + ' ' + el.model,
-            href: `${location.origin}/cars/${getBrandLat(el.brand)}/${transliterate(el.model).replaceAll(' ', '')}/${frendly}`,
+            href: `${location.origin}${carHref(el)}`,
             price: formatterShowPrice(el.price),
             fromPerMonth: fromPerMonth,
             info: info,

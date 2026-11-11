@@ -1,4 +1,4 @@
-import {formatterShowPrice, checkDeletedCars} from '@/js/global-func.js'
+import {formatterShowPrice, checkDeletedCars, carHref} from '@/js/global-func.js'
 
 let myComments=''
 let storage = getComparedCars()
@@ -114,10 +114,13 @@ function showChosen() {
                 el.engineType = q[4]
             }
 
+            // старые адреса /cars/car.html?id=... отдают 410, поэтому ведём на каноническую карточку
+            const href = el.href || carHref(el)
+
             DELETE += `<td><a href="#" onclick="deleteCar('${el.id}')">Удалить</a></td>`
-            if (!el.deleted) PREVIEW_PICTURE += `<td><a onclick="openCar('/cars/car.html?id=${el.id}','${el.images}','${el.deleted}')" href="/cars/car.html?id=${el.id}"><img src="${el.images}" alt=""></a></td>`
+            if (!el.deleted) PREVIEW_PICTURE += `<td><a onclick="openCar('${href}','${el.images}','${el.deleted}')" href="${href}"><img src="${el.images}" alt=""></a></td>`
             else PREVIEW_PICTURE += `<td> ☹ Автомобиль <br> снят с продажи </td>`
-            NAME += `<td><a onclick="openCar('/cars/car.html?id=${el.id}','${el.images}','${el.deleted}')"  href="/cars/car.html?id=${el.id}">${el.brand} ${el.model || ''}</a></td>`
+            NAME += `<td><a onclick="openCar('${href}','${el.images}','${el.deleted}')"  href="${href}">${el.brand} ${el.model || ''}</a></td>`
             PRICE += `<td>${formatterShowPrice(el.price)} руб.</td>`
             if (el.milleage) PROBEG += `<td>${formatterShowPrice(el.milleage) || ''} км</td>`
             GOD_VYPUSKA += `<td>${el.yearReleased || ''}</td>`
