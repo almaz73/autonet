@@ -191,6 +191,7 @@ window.goToMore = function () { // добавление еще авто в сп�
         startPage++
         // без перезагрузки добавляем внизу
         api_getLatestCarArrivials(startPage, res => {
+            if (!res || !Array.isArray(res.items)) return // база ещё не обновлена, сервер вернул null
             totalPages = res.totalPages
             res = cleanCarsWithoutPhoto(res.items)
             let cars = prepareCars(res)
@@ -210,6 +211,7 @@ window.getLatestCars = function (triggerFirstPage, more) {
 
     if (triggerFirstPage) {
         api_getLatestCarArrivials(startPage, res => {
+            if (!res || !Array.isArray(res.items)) return // база ещё не обновлена, сервер вернул null
             totalPages = res.totalPages
             res = cleanCarsWithoutPhoto(res.items)
             let cars = prepareCars(res)
@@ -219,6 +221,7 @@ window.getLatestCars = function (triggerFirstPage, more) {
         })
     } else {
         api_getSpecials('', res => { // возвращаем Спец предложения по цене
+            if (!Array.isArray(res)) return // база ещё не обновлена, сервер вернул null
             res = cleanCarsWithoutPhoto(res)
             let cars = prepareCars(res)
             fill(cars, res)
