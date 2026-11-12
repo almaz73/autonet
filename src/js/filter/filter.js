@@ -133,6 +133,10 @@ function getVitrina(ishandEvent) {
 
 window.getVitrina = getVitrina
 
+// первичное заполнение комбобоксов и счётчика при загрузке страницы:
+// без этого фильтр не раскрывается до нажатия «Расширенный фильтр»
+getVitrina()
+
 
 window.goToCars = function () {
     let link = ``
