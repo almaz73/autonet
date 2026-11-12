@@ -1,27 +1,27 @@
-import {getDealerCities} from "@/js/dealer-data.js"
+import {loadCities} from "@/js/cities.js"
 
 let innerCity = document.querySelector('#innerCity');
 let cityInput = document.querySelector('.form__modal-place--group input');
 
-let dealerCities = null
+let cityList = null
 
 export async function fillCities(txt = '') {
   if (!innerCity) return
-  if (!dealerCities) {
+  if (!cityList) {
     try {
-      dealerCities = await getDealerCities()
+      cityList = await loadCities()
     } catch (error) {
       console.error(error)
-      dealerCities = []
+      cityList = []
     }
   }
 
-  const letters = [...new Set(dealerCities.map(city => city.slice(0, 1)))]
+  const letters = [...new Set(cityList.map(city => city.slice(0, 1)))]
     .sort((a, b) => a.localeCompare(b, 'ru'))
 
   let inner = '';
   letters.forEach(letter => {
-    let towns = dealerCities.filter(el => el.slice(0, 1) === letter);
+    let towns = cityList.filter(el => el.slice(0, 1) === letter);
     let innerTowns = ``;
 
     towns.forEach(el => {

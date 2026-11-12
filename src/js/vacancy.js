@@ -1,10 +1,18 @@
 import {api_postEmailWithAttachement} from "@/js/apibase.js";
-import {cities, vacanciesList} from "@/js/global-constants.js"
+import {loadCities} from "@/js/cities.js";
+import {vacanciesList} from "@/js/global-constants.js"
 import {checkFormFields, formatterShowPrice} from "@/js/global-func.js";
 
-function initChangeCity() {
-    let comb = document.querySelector('.comb');
-    let items = {'Город': cities}
+async function initChangeCity() {
+    let comb = document.querySelector('.choice_comb .comb');
+    if (!comb) return
+    let items = {'Город': []}
+
+    try {
+        items['Город'] = await loadCities()
+    } catch (error) {
+        console.error(error)
+    }
 
     items['Город'].value = localStorage.getItem('selectedCity')
 

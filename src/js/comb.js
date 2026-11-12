@@ -1,4 +1,4 @@
-import {getDealerCities} from "@/js/dealer-data.js"
+import {loadCities} from "@/js/cities.js"
 
 let option_div = document.querySelector('.comb__items');
 let comb_field = document.querySelector('.comb_field');
@@ -18,9 +18,9 @@ if (comb_field) {
   comb_field.addEventListener('click', event => openComb(event));
   option_div.addEventListener('click', event => getCity(event));
 
-  getDealerCities()
-    .then(dealerCities => {
-      option_div.innerHTML = dealerCities
+  loadCities()
+    .then(cities => {
+      option_div.innerHTML = cities
         .map(city => `<div class="comb__item">${city}</div>`)
         .join('')
     })

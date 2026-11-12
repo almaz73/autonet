@@ -16,10 +16,3 @@ export const loadDealers = () => {
     }
     return dealersPromise
 }
-
-// города берём из базы (таблица dealers), чтобы список городов совпадал с адресами в футере
-export const getDealerCities = async () => {
-    const dealers = await loadDealers()
-    return [...new Set(dealers.map((dealer) => dealer.city).filter(Boolean))]
-        .sort((a, b) => a.localeCompare(b, 'ru'))
-}
