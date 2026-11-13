@@ -13,7 +13,7 @@ const pages = {
     _404: resolve(__dirname, '404.html'),
     documents: resolve(__dirname, 'documents/index.html'),
     cars: resolve(__dirname, './cars/index.html'),
-    newCars: resolve(__dirname, './newCars/index.html'),
+    newCars: resolve(__dirname, './new-cars/index.html'),
     vykup: resolve(__dirname, './services/vykup/index.html'),
     tyres: resolve(__dirname, './tyres/index.html'),
     car: resolve(__dirname, './cars/car.html'),
