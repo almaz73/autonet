@@ -203,6 +203,37 @@
     color: rgba(255, 255, 255, 0.85);
 }
 
+/* ссылки на страницы отзывов точки */
+.dealer-block__reviews {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.dealer-block__reviews .dealer-block__label {
+    display: inline;
+    margin-bottom: 0;
+}
+
+.dealer-block__review-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.dealer-block__review-link {
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.dealer-block__review-link:hover {
+    color: #fff;
+    border-bottom-color: #fff;
+}
+
 .dealer-empty {
     margin: 20px 0;
     color: #8a8a95;

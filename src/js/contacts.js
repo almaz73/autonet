@@ -92,9 +92,20 @@ const splitList = (value) => String(value ?? '')
     .map((part) => part.trim())
     .filter(Boolean)
 
+// площадки, где у точки есть страница отзывов
+const REVIEW_PLATFORMS = [
+    ['Яндекс', 'reviews_yandex'],
+    ['Google', 'reviews_google'],
+    ['2ГИС', 'reviews_2gis'],
+    ['Авито', 'reviews_avito'],
+]
+
 const cardHtml = (dealer) => {
     const photoUrl = dealer.url ? encodeURI(dealer.url) : ''
     const pageUrl = dealer.link ? encodeURI(dealer.link) : ''
+    const reviewLinks = REVIEW_PLATFORMS
+        .map(([name, field]) => [name, String(dealer[field] ?? '').trim()])
+        .filter(([, url]) => url)
     const tels = splitList(dealer.tel)
     const profiles = splitList(dealer.profile)
     const brands = splitList(dealer.brands)
@@ -132,9 +143,16 @@ const cardHtml = (dealer) => {
                 <span><a class="dealer-block__email" href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></span>
            </div>`
         : ''
-    const page = pageUrl
-        ? '<span class="dealer-block__link">Страница центра</span>'
-        : ''
+    const reviews = reviewLinks.length
+        ? `<div class="dealer-block__reviews">
+                <span class="dealer-block__label">Отзывы</span>
+                <span class="dealer-block__review-links">
+                    ${reviewLinks.map(([name, url]) => `<a class="dealer-block__review-link" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer nofollow">${name}</a>`).join('')}
+                </span>
+           </div>`
+        : pageUrl
+            ? '<span class="dealer-block__link">Страница центра</span>'
+            : ''
 
     return `
         <article class="dealer-block${photoUrl ? ' dealer-block--photo' : ''}"${photoUrl ? ` style="background-image:url('${escapeHtml(photoUrl)}')"` : ''}${pageUrl ? ` data-link="${escapeHtml(pageUrl)}" role="link" tabindex="0"` : ''}>
@@ -146,7 +164,7 @@ const cardHtml = (dealer) => {
                 ${days}
                 ${profilesHtml}
                 ${brandsHtml}
-                <div class="dealer-block__actions">${page}</div>
+                <div class="dealer-block__actions">${reviews}</div>
             </div>
         </article>`
 }
