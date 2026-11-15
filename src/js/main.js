@@ -8,6 +8,7 @@ import '@/js/globalCall.js'
 import '@/js/compareCars.js'
 import '@/js/favoriteCars.js'
 import "@/js/sendMessage.js"
+import '@/js/reviews-form.js'
 import '@/js/preloader.js'
 import '@/js/contacts_footer.js'
 import '@/js/dealers-map.js'
