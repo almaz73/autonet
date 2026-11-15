@@ -113,6 +113,7 @@ class PuzzleCaptcha {
         if (Math.abs(this.targetX - offsetLeftPercent) < 1) {
             this.parent.style.border = ''
             this.parent.classList.add('checked')
+            this.parent.dispatchEvent(new CustomEvent('captcha:verified'))
         }
     }
 }

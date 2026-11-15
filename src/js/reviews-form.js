@@ -6,16 +6,22 @@ const form = document.querySelector('.review-form')
 if (form) {
     const success = document.querySelector('.review-form__success')
     const button = form.querySelector('button[type="submit"]')
+    const captcha = form.querySelector('.capctha-div')
+
+    // кнопка доступна только после того, как капча пройдена
+    const syncCaptcha = () => {
+        button.disabled = !captcha.classList.contains('checked')
+    }
+    syncCaptcha()
+    captcha.addEventListener('captcha:verified', syncCaptcha)
 
     form.addEventListener('submit', async (event) => {
         event.preventDefault()
 
         const fio = form.elements.fio
         const text = form.elements.review
-        const consent = form.elements.consent
-        const captcha = form.querySelector('.capctha-div')
 
-        if (checkFormFields([fio, text, captcha, consent])) return
+        if (checkFormFields([fio, text, captcha])) return
 
         const rating = Number(form.querySelector('input[name="rating"]:checked')?.value || 0)
         if (!rating) {
@@ -39,7 +45,7 @@ if (form) {
         } catch (error) {
             sendMessage(error.message, 'error')
         } finally {
-            button.disabled = false
+            syncCaptcha()
         }
     })
 }
