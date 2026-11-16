@@ -26,6 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 let isInited = false
+// если слайды дорисовали после инициализации (баннеры акций приходят с API),
+// Swiper нужно попросить перечитать разметку
+export function updateSwipper() {
+    if (swiper) swiper.update()
+}
+
 export function initSwipper() {
     if (isCarPage && (swiper || isInited)) return false
     isInited = true

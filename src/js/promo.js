@@ -1,7 +1,7 @@
 /* случайно вытаскивает 4 банера для раздела промо-акции */
 
 import {api_get_activeBanners} from "@/js/apibase.js";
-import {initSwipper} from "@/js/swiper-starter.js";
+import {initSwipper, updateSwipper} from "@/js/swiper-starter.js";
 
 let links = ''
 let promos = []
@@ -32,6 +32,7 @@ function showBigBannerval(el) {
 
 let littleBanners = ` <section class="swiper mySwiper buy_swiper" style="z-index: 1">
     <div class="swiper-wrapper">`
+let littleBannersReady = false
 let isAllBanners = isNaN(parseInt(location.pathname.split('/promo/')[1]))
 
 // Если это статичная страница, подставляем надпись о времени акции
@@ -95,12 +96,19 @@ src='/pub_promo/${el.id + '_v_l'}.webp' loading='lazy' alt='${el.name}'></a>`)
     } else {
         set4rondomBaner()
     }
+
+    littleBannersReady = true
+    // на /cars разметка уже отрисована сервером: <swiper_buy> есть сразу,
+    // а баннеры приходят позже — дорисовываем карусель, когда данные загрузились
+    if (document.querySelector('swiper_buy')) window.reloadLittleSwiper()
 })
 
 /** для страницк cars*/
 window.reloadLittleSwiper = function () {
     let swiper_buy = document.querySelector('swiper_buy')
-    if (!swiper_buy) return false
-    if (swiper_buy) swiper_buy.innerHTML = littleBanners
+    if (!swiper_buy || !littleBannersReady || swiper_buy.dataset.rendered) return false
+    swiper_buy.dataset.rendered = '1'
+    swiper_buy.innerHTML = littleBanners
     initSwipper()
+    updateSwipper()
 }
