@@ -62,10 +62,6 @@
     white-space: nowrap;
 }
 
-.review-stars__empty {
-    color: #e6e6ee;
-}
-
 .review-card__text {
     margin: 0;
     font-size: .95rem;
@@ -345,42 +341,23 @@ a.review-card__source:hover {
     white-space: pre-line;
 }
 
-.review-card__answer-collapse {
-    position: relative;
-}
-
-/* свёрнутый ответ: одна строка, кнопка лежит поверх конца текста */
-.review-card__answer-collapse.is-collapsed .review-card__answer-text {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+/* свёрнутый ответ скрыт целиком: остаётся только строка «Ответ … Читать» */
+.review-card__answer-collapse.is-collapsed {
+    display: none;
 }
 
 .review-card__answer-toggle {
-    margin-top: 2px;
+    margin: 0 0 0 4px;
     padding: 0;
     border: 0;
     background: none;
-    color: var(--color-red);
+    color: inherit;
     font: inherit;
-    font-size: .78rem;
-    text-decoration: underline;
     cursor: pointer;
 }
 
-.review-card__answer-collapse.is-collapsed .review-card__answer-toggle {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    margin: 0;
-    padding: 0 0 0 26px;
-    background: linear-gradient(90deg, rgba(251, 251, 251, 0) 0, #fbfbfb 35%);
-    text-decoration: none;
-}
-
 .review-card__answer-toggle:hover {
-    text-decoration: none;
+    color: var(--color-red);
 }
 
 .review-card__answer-toggle[hidden] {
