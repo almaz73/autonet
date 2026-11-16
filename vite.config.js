@@ -46,6 +46,30 @@ const pages = {
     bdHistory: resolve(__dirname, './admin/history.html'),
     bdHistoryPeriod: resolve(__dirname, './admin/history_period.html'),
     bdHistoryPeriodDays: resolve(__dirname, './admin/history_period_days.html'),
+
+    // страницы телеграм-канала: ссылка из шапки ведёт на /tg/
+    tg: resolve(__dirname, './tg/index.html'),
+    tg_0121: resolve(__dirname, './tg/tg_0121.html'),
+    tg_0483: resolve(__dirname, './tg/tg_0483.html'),
+    tg_0800: resolve(__dirname, './tg/tg_0800.html'),
+    tg_0804: resolve(__dirname, './tg/tg_0804.html'),
+    tg_0873: resolve(__dirname, './tg/tg_0873.html'),
+    tg_1014: resolve(__dirname, './tg/tg_1014.html'),
+    tg_1183: resolve(__dirname, './tg/tg_1183.html'),
+    tg_1518: resolve(__dirname, './tg/tg_1518.html'),
+    tg_2344: resolve(__dirname, './tg/tg_2344.html'),
+    tg_2345: resolve(__dirname, './tg/tg_2345.html'),
+    tg_2347: resolve(__dirname, './tg/tg_2347.html'),
+    tg_4758: resolve(__dirname, './tg/tg_4758.html'),
+    tg_5302: resolve(__dirname, './tg/tg_5302.html'),
+    tg_5606: resolve(__dirname, './tg/tg_5606.html'),
+    tg_7779: resolve(__dirname, './tg/tg_7779.html'),
+    tg_8948: resolve(__dirname, './tg/tg_8948.html'),
+    tg_9337: resolve(__dirname, './tg/tg_9337.html'),
+    tg_9656: resolve(__dirname, './tg/tg_9656.html'),
+    tg_9729: resolve(__dirname, './tg/tg_9729.html'),
+    tg_9731: resolve(__dirname, './tg/tg_9731.html'),
+
     // fids: resolve(__dirname, './fids/autoset1.xml'),
 }
 // Превращаем пути в массив имен файлов для проверки (index.html, admin.html)
