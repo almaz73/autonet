@@ -58,6 +58,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         if (select_div) select_div.innerHTML = cityName
         if (cityButton) cityButton.innerHTML = cityName
         if (cityBContacts) cityBContacts.innerHTML = cityName
+        document.dispatchEvent(new CustomEvent('selectedCityChanged', {detail: {city: cityName}}))
     }
 
     if (mapModal) {

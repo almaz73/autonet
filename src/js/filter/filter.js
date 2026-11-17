@@ -8,10 +8,13 @@ import {
     carCountText,
     cleanCarsWithoutPhoto,
     eventBus,
-    brandSlug
+    brandSlug,
+    getUrlParam
 } from '@/js/global-func.js'
 import {fillCars} from '@/js/filter/filCars.js'
 import {getModelList, setExtention} from '@/js/filter/filter-ctrl-filling.js'
+import {loadCities, resolveSelectedCity} from '@/js/cities.js'
+import {showFilterEmpty, hasFilterCity} from '@/js/filter/emptyState.js'
 import {tyresForList} from "@/js/global-constants.js";
 import {preparePagerSPA} from '@/js/pagination.js'
 
@@ -110,6 +113,10 @@ function getVitrina(ishandEvent) {
             showPreloader(false, bt)
             declOfNum(res.totalCount, ['предложение', 'предложений', 'предложений'])
             carCountText(res.totalCount)
+            showFilterEmpty(
+                document.querySelector('.filter__wrapper'),
+                res.totalCount === 0 && hasFilterCity(filterParams.city)
+            )
         })
 
     } else if (location.pathname === '/tyres/') {
@@ -141,9 +148,43 @@ function getVitrina(ishandEvent) {
 
 window.getVitrina = getVitrina
 
+// выбранный пользователем город подставляем в фильтр, если он не задан адресом
+async function bootFilter() {
+    try {
+        const cities = await loadCities()
+        const city = resolveSelectedCity(cities)
+        const cityInAddress = getUrlParam('city') || window.ssr_cityName
+        if (city !== 'Россия' && !cityInAddress) {
+            window.__filterCityAuto = true
+            filterParams.city = city
+        }
+    } catch (error) {
+        console.error(error)
+    }
+    getVitrina()
+}
+
+function setCityComb(city) {
+    const placeholder = document.querySelector('.comb[data-placeholder="Город"] .big-comb__placeholder')
+    if (!placeholder) return
+    placeholder.innerText = city || 'Город'
+    placeholder.classList.toggle('bold', Boolean(city))
+}
+
+// после каждой перерисовки комбобоксов показываем город, который реально в фильтре
+eventBus.on('dataUpdated', () => setCityComb(filterParams.city))
+
+document.addEventListener('selectedCityChanged', (event) => {
+    if (!window.__filterCityAuto) return
+    const city = event.detail && event.detail.city
+    filterParams.city = city && city !== 'Россия' ? city : ''
+    setCityComb(filterParams.city)
+    getVitrina('ishandEvent')
+})
+
 // первичное заполнение комбобоксов и счётчика при загрузке страницы:
 // без этого фильтр не раскрывается до нажатия «Расширенный фильтр»
-getVitrina()
+bootFilter()
 
 
 window.goToCars = function () {
@@ -174,11 +215,13 @@ window.goToCars = function () {
 }
 window.clearFilter = function () {
     window.clearAllFilter = true
+    filterParams = {limit: 20, offset: 0}
     getVitrina()
     eventBus.emit('dataUpdated', {});
-    document.querySelector('#vitrina_name').innerHTML = 'Все автомобили'
-    document.querySelector('#path').innerHTML = ``
-    filterParams = {limit: 20, offset: 0}
+    const vitrinaName = document.querySelector('#vitrina_name')
+    const path = document.querySelector('#path')
+    if (vitrinaName) vitrinaName.innerHTML = 'Все автомобили'
+    if (path) path.innerHTML = ``
 
     setTimeout(() => {
         if (window.totalPages) preparePagerSPA(filterParams, Math.ceil(window.totalPages / 20))

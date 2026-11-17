@@ -11,6 +11,7 @@ import {
     getBrandRus
 } from '@/js/global-func.js'
 import {setExtention} from "@/js/filter/filter-ctrl-filling.js"
+import {showFilterEmpty, hasFilterCity} from "@/js/filter/emptyState.js"
 
 const countPerPage = 20
 const combValuesForAfterUpdate = []
@@ -44,7 +45,11 @@ function FillFilterFromAddressBar(filterParams) {
         setCombName('Модель', model)
     }
 
-    const city = getUrlParam('city') || window.ssr_cityName || ''
+    const cityFromAddress = getUrlParam('city') || window.ssr_cityName || ''
+    // город из шапки подставляем, только если страница сама его не задаёт
+    const city = cityFromAddress || filterParams.city || ''
+    // SSR отрисовал витрину без города — её придётся перезапросить
+    if (!cityFromAddress && city) window.__cityFilterApplied = true
     if (city) {
         filterParams.city = city
         setCombName('Город', city)
@@ -218,8 +223,9 @@ export async function fillCars(cars, ishandEvent_, filterParams, fill) {
     ishandEvent = ishandEvent_
     if (!ishandEvent) FillFilterFromAddressBar(filterParams)
 
-    // Первая загрузка /cars: разметка уже отрисована сервером, не перерисовываем её
-    if (!ishandEvent && window.__carsSSR && !window.__carsHydrated) {
+    // Первая загрузка /cars: разметка уже отрисована сервером, не перерисовываем её.
+    // Исключение — город из шапки: серверная витрина без него, нужен свежий запрос.
+    if (!ishandEvent && window.__carsSSR && !window.__carsHydrated && !window.__cityFilterApplied) {
         window.__carsHydrated = true
         const ssrItems = acceptWithoutPhoto(window.__carsSSR.items || [])
         const ssrCars = prepareCars(ssrItems)
@@ -254,17 +260,27 @@ export async function fillCars(cars, ishandEvent_, filterParams, fill) {
         // по кнопке Показать
         cars = prepareCars(res.items)
         let totalPages = Math.ceil(res.totalCount / countPerPage)
-        setTimeout(() => fill(cars, res.items, totalPages))
+        setTimeout(() => {
+            fill(cars, res.items, totalPages)
+            showFilterEmpty(
+                document.querySelector('cards'),
+                res.totalCount === 0 && hasFilterCity(filterParams.city),
+                true
+            )
+        })
         showPreloader(false, bt)
         carCountText(res.totalCount)
-        if (ishandEvent || filterParams['brand']) {
+        if (ishandEvent || filterParams['brand'] || filterParams.city) {
             let fw = document.querySelector('.filter-white')
             let vn = document.querySelector('#vitrina_name')
-            document.getElementById('brands_dynamic').style.display = 'none'
+            let brands = document.getElementById('brands_dynamic')
+            if (brands) brands.style.display = 'none'
             if (fw) fw.style.marginBottom = 0
-            if (vn && !window.ssr_modelSlug) vn.innerHTML = 'Автомобили ' + (filterParams.brand || '')
-                + ' ' + (filterParams.model || '')
-                + ' ' + (filterParams.city ? `(город ${filterParams.city})` : ``)
+            if ((filterParams.brand || filterParams.model) && vn && !window.ssr_modelSlug) {
+                vn.innerHTML = 'Автомобили ' + (filterParams.brand || '')
+                    + ' ' + (filterParams.model || '')
+                    + ' ' + (filterParams.city ? `(город ${filterParams.city})` : ``)
+            }
         }
     })
     return totalCount

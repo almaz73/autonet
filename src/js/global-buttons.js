@@ -46,6 +46,8 @@ function openSideBar() {
   fillCities();
 }
 
+window.openCityPanel = openSideBar
+
 cityClose && cityClose.addEventListener('click', () => {
   cities.style.transform = 'translateX(150vw)';
 });
