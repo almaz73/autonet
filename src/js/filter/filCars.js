@@ -23,7 +23,8 @@ Cache_serv = JSON.parse(Cache_serv)
 function FillFilterFromAddressBar(filterParams) {
     // заполнение фильтра по параметрам адресной строки
     let brand = getUrlParam('brand')
-    if (!brand) brand = getBrandRus(location.pathname.split('/')[3])
+    // сервер уже нормализовал бренд из пути: «vaz-lada» → «ВАЗ (LADA)»
+    if (!brand) brand = window.ssr_brandDbName || getBrandRus(location.pathname.split('/')[3])
     if (brand) {
         filterParams['brand'] = brand
         setCombName('Марка', brand)

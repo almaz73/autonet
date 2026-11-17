@@ -1,4 +1,4 @@
-import {getBrandLat, getUrlParam} from "@/js/global-func.js"
+import {brandSlug, getUrlParam} from "@/js/global-func.js"
 /** Очень тонко настроенная работает Пагинации*/
 
 function getLink0() {
@@ -8,10 +8,11 @@ function getLink0() {
 }
 
 function getLink(pages) {
-    return `/cars/${pages}`
+    return pages ? `/cars/${pages}` : '/cars'
 }
 function getLinkSPA(pages) {
-    return `/cars/${pages}${window.ssr_brandSearch ? '/' + getBrandLat(window.ssr_brandSearch) : ''}`
+    const brand = window.ssr_brandSlug ? '/' + window.ssr_brandSlug : ''
+    return `/cars${pages ? '/' + pages : ''}${brand}`
 }
 
 export function preparePager0 (pages) {
@@ -39,8 +40,10 @@ export function preparePager(pages) {
     if (!pager) return false
     let pagerText = ''
 
-    let currentPage = +location.pathname.split('/')[2] + 1 || 0
-    let brand = location.pathname.split('/')[3] || ''
+    const second = location.pathname.split('/')[2] || ''
+    const isPageSegment = /^\d+$/.test(second)
+    let currentPage = isPageSegment ? +second + 1 : 1
+    let brand = isPageSegment ? (location.pathname.split('/')[3] || '') : second
 
     const delta = currentPage > 3 ? currentPage - 3 : 0
     let tail = (brand ? '/' + brand : '') + location.search
@@ -67,7 +70,7 @@ export function preparePagerSPA(params, pages) {
     const delta = currentPage > 3 ? currentPage - 3 : 0
     let tail = ''
 
-    if (params.brand) window.ssr_brandSearch = params.brand
+    window.ssr_brandSlug = params.brand ? brandSlug(params.brand) : ''
     if (params.modelId) tail += '&modelId=' + params.modelId
     if (params.offset) tail += '&offset=' + params.offset
     if (params.priceOrder !== null && params.priceOrder !== undefined) tail += '&priceOrder=' + params.priceOrder

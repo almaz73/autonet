@@ -401,6 +401,14 @@ export function getBrandLat(brandName) {
     return brandName
 }
 
+// slug бренда для адресов каталога: «ВАЗ (LADA)» → vaz-lada, «Mercedes-Benz» → mercedes-benz
+export function brandSlug(brandName) {
+    return transliterate(String(brandName || ''))
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+}
+
 export function getBrandRus(brandName) {
     let placeLAtBrand = RussianBrandsLat.findIndex(el => el === brandName)
     if (placeLAtBrand !== -1) brandName = RussianBrandsRus[placeLAtBrand]

@@ -8,7 +8,7 @@ import {
     carCountText,
     cleanCarsWithoutPhoto,
     eventBus,
-    getBrandLat
+    brandSlug
 } from '@/js/global-func.js'
 import {fillCars} from '@/js/filter/filCars.js'
 import {getModelList, setExtention} from '@/js/filter/filter-ctrl-filling.js'
@@ -139,33 +139,28 @@ getVitrina()
 
 
 window.goToCars = function () {
-    let link = ``
-    if (filterParams.brand) link = '0/' + getBrandLat(filterParams['Марка'] || filterParams['brand'])
-    if (filterParams.modelId) link += '?modelId=' + filterParams.modelId
+    const params = new URLSearchParams()
+    if (filterParams.modelId) params.set('modelId', filterParams.modelId)
+    if (filterParams.city) params.set('city', filterParams.city)
+    if (filterParams.gearboxType) params.set('gearboxType', filterParams.gearboxType)
+    if (filterParams.engineType) params.set('engineType', filterParams.engineType)
+    if (filterParams.driveType) params.set('driveType', filterParams.driveType)
+    if (filterParams.wheelType) params.set('wheelType', filterParams.wheelType)
+    if (filterParams.bodyType) params.set('bodyType', filterParams.bodyType)
+    if (filterParams.color) params.set('color', filterParams.color)
+    if (filterParams.yearReleasedFrom) params.set('yearReleasedFrom', filterParams.yearReleasedFrom)
+    if (filterParams.yearReleasedTo) params.set('yearReleasedTo', filterParams.yearReleasedTo)
+    if (filterParams.priceTo) params.set('priceTo', filterParams.priceTo)
+    if (filterParams.priceFrom) params.set('priceFrom', filterParams.priceFrom)
+    if (filterParams.milleageFrom) params.set('milleageFrom', filterParams.milleageFrom)
+    if (filterParams.milleageTo) params.set('milleageTo', filterParams.milleageTo)
+    if (filterParams.engineCapacity) params.set('engineCapacity', filterParams.engineCapacity)
+    if (filterParams.priceOrder !== null && filterParams.priceOrder !== undefined) params.set('priceOrder', filterParams.priceOrder)
 
-    if (filterParams.city) link += '&city=' + filterParams.city
-    if (filterParams.gearboxType) link += '&gearboxType=' + filterParams.gearboxType
-    if (filterParams.engineType) link += '&engineType=' + filterParams.engineType
-    if (filterParams.driveType) link += '&driveType=' + filterParams.driveType
-    if (filterParams.wheelType) link += '&wheelType=' + filterParams.wheelType
-    if (filterParams.bodyType) link += '&bodyType=' + filterParams.bodyType
-    if (filterParams.color) link += '&color=' + filterParams.color
-    if (filterParams.yearReleasedFrom) link += '&yearReleasedFrom=' + filterParams.yearReleasedFrom
-    if (filterParams.yearReleasedTo) link += '&yearReleasedTo=' + filterParams.yearReleasedTo
-    if (filterParams.priceTo) link += '&priceTo=' + filterParams.priceTo
-    if (filterParams.priceFrom) link += '&priceFrom=' + filterParams.priceFrom
-    if (filterParams.milleageFrom) link += '&milleageFrom=' + filterParams.milleageFrom
-    if (filterParams.milleageTo) link += '&milleageTo=' + filterParams.milleageTo
-    if (filterParams.engineCapacity) link += '&engineCapacity=' + filterParams.engineCapacity
-    if (filterParams.priceOrder !== null && filterParams.priceOrder !== undefined) link += '&priceOrder=' + filterParams.priceOrder
-
-    if (!link.includes('?')) {
-        let place = link.indexOf('&')
-        if (place > -1) link = link.slice(0, place) + "?" + link.slice(place + 1)
-    }
-
-    link = link.replaceAll(' ', '')
-    location.href = '/cars' + (link ? `/${link}` : '') + '#vitrina_name'
+    const brand = filterParams.brand || filterParams['Марка']
+    const brandPath = brand ? '/' + brandSlug(brand) : ''
+    const query = params.toString()
+    location.href = '/cars' + brandPath + (query ? '?' + query : '') + '#vitrina_name'
 }
 window.clearFilter = function () {
     window.clearAllFilter = true

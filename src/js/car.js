@@ -1,5 +1,5 @@
 import {api_getAutoByParams} from "@/js/apibase.js"
-import {formatterShowPrice, prepareCars} from "@/js/global-func.js";
+import {brandSlug, formatterShowPrice, prepareCars} from "@/js/global-func.js";
 import {initSwipper} from "@/js/swiper-starter.js";
 
 import {calculator} from "@/js/credit.js"
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     autoName[0].innerHTML = autoName[1].innerHTML = autoName[2].innerHTML = (res.brand || '') + ' ' + (res.model || '') + ', ' + (res.yearReleased || '')
 
                     let brandPath = document.querySelector('#auto-brand-path')
-                    brandPath.innerHTML = `<a href='/cars/?brand=${res.brand}'>Автомобили ${res.brand} с пробегом</a>`
+                    brandPath.innerHTML = `<a href='/cars/${brandSlug(res.brand)}'>Автомобили ${res.brand} с пробегом</a>`
 
                     let autoPrice = document.querySelectorAll('.auto-price')
                     autoPrice[0].innerHTML = autoPrice[1].innerHTML = formatterShowPrice(res.price) + ' ₽'
