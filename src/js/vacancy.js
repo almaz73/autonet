@@ -1,5 +1,5 @@
 import {api_postEmailWithAttachement} from "@/js/apibase.js";
-import {loadCities} from "@/js/cities.js";
+import {loadCities, resolveSelectedCity} from "@/js/cities.js";
 import {vacanciesList} from "@/js/global-constants.js"
 import {checkFormFields, formatterShowPrice} from "@/js/global-func.js";
 
@@ -14,9 +14,8 @@ async function initChangeCity() {
         console.error(error)
     }
 
-    items['Город'].value = localStorage.getItem('selectedCity')
-
-    items['Город'].value = 'Казань' // todo для тестирования временно всегда при открытии Казань
+    // выбранный город мог исчезнуть из базы — тогда показываем «Россию»
+    items['Город'].value = resolveSelectedCity(items['Город'])
 
     selectedCity(items['Город'].value)
 
@@ -63,7 +62,7 @@ function initVacancies(city) {
     let html = ''
     initListeners(false)
     let newDatas
-    if (!city) newDatas = vacanciesList
+    if (!city || city === 'Россия') newDatas = vacanciesList
     else newDatas = vacanciesList.filter(el => el.city === city)
 
     newDatas.forEach((item, ind) => {

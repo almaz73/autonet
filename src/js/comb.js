@@ -1,4 +1,4 @@
-import {loadCities} from "@/js/cities.js"
+import {loadCities, resolveSelectedCity} from "@/js/cities.js"
 
 let option_div = document.querySelector('.comb__items');
 let comb_field = document.querySelector('.comb_field');
@@ -23,6 +23,14 @@ if (comb_field) {
       option_div.innerHTML = cities
         .map(city => `<div class="comb__item">${city}</div>`)
         .join('')
+
+      const actual = resolveSelectedCity(cities)
+      if (actual === (selectedCity || 'Россия')) return
+      selectedCity = actual
+      select_div.innerHTML = actual
+      if (cityButton) cityButton.innerHTML = actual
+      if (cityB_contacts) cityB_contacts.innerHTML = actual
+      window.setCity && window.setCity(actual)
     })
     .catch(error => console.error(error))
 }

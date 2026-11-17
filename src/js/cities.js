@@ -28,3 +28,13 @@ export const loadCities = () => {
     }
     return citiesPromise
 }
+
+// выбранный город мог пропасть из базы вместе с последними авто этого города:
+// тогда откатываемся на «Россию», чтобы селекторы не показывали город, которого уже нет
+export function resolveSelectedCity(cities) {
+    const saved = localStorage.getItem('selectedCity')
+    if (!saved || saved === 'Россия') return 'Россия'
+    if (Array.isArray(cities) && cities.includes(saved)) return saved
+    localStorage.setItem('selectedCity', 'Россия')
+    return 'Россия'
+}

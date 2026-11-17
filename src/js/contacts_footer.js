@@ -1,4 +1,5 @@
 import {loadDealers} from '@/js/dealer-data.js'
+import {loadCities, resolveSelectedCity} from '@/js/cities.js'
 
 const escapeHtml = (value) => String(value ?? '')
     .replaceAll('&', '&amp;')
@@ -36,7 +37,13 @@ window.addEventListener('DOMContentLoaded', async () => {
             .join('')
     }
 
-    const savedCity = localStorage.getItem('selectedCity') || 'Россия'
+    // город мог исчезнуть из базы — тогда показываем «Россию», а не пустой город
+    let savedCity = localStorage.getItem('selectedCity') || 'Россия'
+    try {
+        savedCity = resolveSelectedCity(await loadCities())
+    } catch (error) {
+        console.error(error)
+    }
     if (cityButton) cityButton.innerHTML = savedCity
     if (select_div) select_div.innerHTML = savedCity
     setAddress(savedCity)
