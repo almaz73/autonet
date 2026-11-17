@@ -149,18 +149,21 @@ function getVitrina(ishandEvent) {
 window.getVitrina = getVitrina
 
 // выбранный пользователем город подставляем в фильтр, если он не задан адресом
-async function bootFilter() {
+async function getSelectedCity() {
     try {
         const cities = await loadCities()
         const city = resolveSelectedCity(cities)
-        const cityInAddress = getUrlParam('city') || window.ssr_cityName
-        if (city !== 'Россия' && !cityInAddress) {
-            window.__filterCityAuto = true
-            filterParams.city = city
-        }
+        return city && city !== 'Россия' ? city : ''
     } catch (error) {
         console.error(error)
+        return ''
     }
+}
+
+async function bootFilter() {
+    const city = await getSelectedCity()
+    const cityInAddress = getUrlParam('city') || window.ssr_cityName
+    if (city && !cityInAddress) filterParams.city = city
     getVitrina()
 }
 
@@ -175,11 +178,18 @@ function setCityComb(city) {
 eventBus.on('dataUpdated', () => setCityComb(filterParams.city))
 
 document.addEventListener('selectedCityChanged', (event) => {
-    if (!window.__filterCityAuto) return
     const city = event.detail && event.detail.city
-    filterParams.city = city && city !== 'Россия' ? city : ''
-    setCityComb(filterParams.city)
-    getVitrina('ishandEvent')
+    // посадочные, которые сами задают город, не переопределяем
+    const cityInAddress = getUrlParam('city') || window.ssr_cityName
+    if (!cityInAddress) {
+        filterParams.city = city && city !== 'Россия' ? city : ''
+        setCityComb(filterParams.city)
+        getVitrina('ishandEvent')
+    }
+    // витрина главной тоже показывает авто выбранного города
+    if (location.pathname === '/') {
+        window.getLatestCars(localStorage.getItem('triggerFirstPage') === 'true')
+    }
 })
 
 // первичное заполнение комбобоксов и счётчика при загрузке страницы:
@@ -232,13 +242,14 @@ window.clearFilter = function () {
 let totalPages = 0
 let memoryMoreCars= []
 let memoryMoreRes= []
-window.goToMore = function () { // добавление еще авто в список, без перезагрузки страницы
+window.goToMore = async function () { // добавление еще авто в список, без перезагрузки страницы
     let startPage = parseInt(location.search.split('=')[1])
     if (isNaN(startPage) || startPage < 0) startPage = 0
     if (startPage < totalPages) {
         startPage++
+        const city = await getSelectedCity()
         // без перезагрузки добавляем внизу
-        api_getLatestCarArrivials(startPage, res => {
+        api_getLatestCarArrivials(startPage, city, res => {
             if (!res || !Array.isArray(res.items)) return // база ещё не обновлена, сервер вернул null
             totalPages = res.totalPages
             res = cleanCarsWithoutPhoto(res.items)
@@ -252,13 +263,15 @@ window.goToMore = function () { // добавление еще авто в сп�
     }
 }
 
-window.getLatestCars = function (triggerFirstPage, more) {
+window.getLatestCars = async function (triggerFirstPage, more) {
     let startPage = parseInt(location.search.split('=')[1])
 
     if (isNaN(startPage) || startPage < 0) startPage = 0
 
+    const city = await getSelectedCity()
+
     if (triggerFirstPage) {
-        api_getLatestCarArrivials(startPage, res => {
+        api_getLatestCarArrivials(startPage, city, res => {
             if (!res || !Array.isArray(res.items)) return // база ещё не обновлена, сервер вернул null
             totalPages = res.totalPages
             res = cleanCarsWithoutPhoto(res.items)
@@ -268,7 +281,7 @@ window.getLatestCars = function (triggerFirstPage, more) {
             fill(cars, res)
         })
     } else {
-        api_getSpecials('', res => { // возвращаем Спец предложения по цене
+        api_getSpecials(city, res => { // возвращаем Спец предложения по цене
             if (!Array.isArray(res)) return // база ещё не обновлена, сервер вернул null
             res = cleanCarsWithoutPhoto(res)
             let cars = prepareCars(res)

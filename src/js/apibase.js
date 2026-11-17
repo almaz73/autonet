@@ -112,12 +112,13 @@ export function api_getList(params, callback) {
 }
 
 export function api_getSpecials(city, callback) {
-    let request = '/api/getSpecials?city=' + city
+    let request = '/api/getSpecials?city=' + encodeURIComponent(city || '')
     return withCache(request, callback, 60) // ЗВ 10 минут авто не подменят
 }
 
-export function api_getLatestCarArrivials(page, callback) {
+export function api_getLatestCarArrivials(page, city, callback) {
     let request = '/api/getLatestCarArrivials?page=' + page
+    if (city) request += '&city=' + encodeURIComponent(city)
     return withCache(request, callback, 60) // ЗВ 10 минут авто не подменят
 }
 
