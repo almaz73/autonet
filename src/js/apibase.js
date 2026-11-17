@@ -86,6 +86,10 @@ export function api_getList(params, callback) {
     // if (params.brandId) request += '&brandId=' + params.brandId
     if (params.brand) request += '&brand=' + params.brand
     if (params.modelId) request += '&modelId=' + params.modelId
+    // посадочная модели фильтрует сразу по всему кластеру вариантов
+    if (Array.isArray(params.models)) {
+        params.models.forEach(model => request += '&models=' + encodeURIComponent(model))
+    }
     if (params.offset) request += '&offset=' + params.offset
     if (params.priceOrder !== null && params.priceOrder !== undefined) request += '&priceOrder=' + params.priceOrder
     if (params.city && params.city !== 'Все') request += '&city=' + params.city

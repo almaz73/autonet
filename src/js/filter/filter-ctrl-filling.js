@@ -221,8 +221,12 @@ function getDatas() {
                 items['Марка'] = newRes.map(el => el.name)
                 globalValues.brandsIds.push(...newRes)
 
-                let brand = getUrlParam('brand')
-                if (!brand) brand = location.pathname.split('/')[3]
+                let brand = getUrlParam('brand') || window.ssr_brandSearch || ''
+                if (!brand) {
+                    // /cars[/N]/<brand>[/<model>[/<city>]] — бренд первый нечисловой сегмент
+                    const segs = location.pathname.split('/').slice(2).filter(part => part && !/^\d+$/.test(part))
+                    brand = getBrandRus(segs[0] || '')
+                }
                 if (brand) getModelList(brand)
 
                 resolve()

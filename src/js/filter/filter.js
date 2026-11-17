@@ -21,10 +21,16 @@ export function filter_changed(items, name) {
 
         window.globalCurrentBrandName = brand.name
         window.globalCurrentModel = ''
+        // прошлая посадочная модели/города больше не действует
+        window.ssr_modelSlug = ''
+        window.ssr_modelName = ''
+        window.ssr_citySlug = ''
+        window.ssr_cityName = ''
         if (brand) {
             filterParams['brand'] = brand.name
             filterParams['modelId'] = ''
             filterParams['model'] = ''
+            filterParams['models'] = []
         }
         getModelList(items[name].value)
 
@@ -37,6 +43,8 @@ export function filter_changed(items, name) {
         if (model) {
             filterParams['modelId'] = model.id
             filterParams['model'] = model.name
+            // выбрана конкретная модель — кластер прошлой посадочной больше не нужен
+            filterParams['models'] = []
         }
         window.globalCurrentModel = model.name
     }
@@ -158,9 +166,11 @@ window.goToCars = function () {
     if (filterParams.priceOrder !== null && filterParams.priceOrder !== undefined) params.set('priceOrder', filterParams.priceOrder)
 
     const brand = filterParams.brand || filterParams['Марка']
-    const brandPath = brand ? '/' + brandSlug(brand) : ''
+    let path = brand ? '/' + brandSlug(brand) : ''
+    // модель живёт в пути: сервер сам сведёт её к кластеру и отбросит modelId
+    if (path && filterParams.model) path += '/' + brandSlug(filterParams.model)
     const query = params.toString()
-    location.href = '/cars' + brandPath + (query ? '?' + query : '') + '#vitrina_name'
+    location.href = '/cars' + path + (query ? '?' + query : '') + '#vitrina_name'
 }
 window.clearFilter = function () {
     window.clearAllFilter = true

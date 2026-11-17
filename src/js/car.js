@@ -106,7 +106,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     autoName[0].innerHTML = autoName[1].innerHTML = autoName[2].innerHTML = (res.brand || '') + ' ' + (res.model || '') + ', ' + (res.yearReleased || '')
 
                     let brandPath = document.querySelector('#auto-brand-path')
-                    brandPath.innerHTML = `<a href='/cars/${brandSlug(res.brand)}'>Автомобили ${res.brand} с пробегом</a>`
+                    const brandUrl = '/cars/' + brandSlug(res.brand)
+                    brandPath.innerHTML = `<a href='${brandUrl}'>Автомобили ${res.brand} с пробегом</a>`
+                        + (res.model ? ` / <a href='${brandUrl}/${brandSlug(res.model)}'>${res.brand} ${res.model} с пробегом</a>` : '')
 
                     let autoPrice = document.querySelectorAll('.auto-price')
                     autoPrice[0].innerHTML = autoPrice[1].innerHTML = formatterShowPrice(res.price) + ' ₽'

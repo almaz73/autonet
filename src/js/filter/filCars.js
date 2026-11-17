@@ -32,14 +32,19 @@ function FillFilterFromAddressBar(filterParams) {
 
     const modelId = getUrlParam('modelId')
     let model = getUrlParam('model')
-    if (!model) model = location.pathname.split('/')[4]
+    if (!model) model = window.ssr_modelName || location.pathname.split('/')[4] || location.pathname.split('/')[3]
+    // посадочная модели фильтрует не по одному разделу, а по всему кластеру («Rio» + «Rio X-Line»)
+    if (Array.isArray(window.ssr_models) && window.ssr_models.length) filterParams.models = window.ssr_models
     if (modelId) {
         filterParams['modelId'] = modelId
         if (model && model != 'undefined') setCombName('Модель', model)
         else window.globalCurrentModel_Id = modelId
+    } else if (model && model != 'undefined') {
+        filterParams.model = model
+        setCombName('Модель', model)
     }
 
-    const city = getUrlParam('city')
+    const city = getUrlParam('city') || window.ssr_cityName || ''
     if (city) {
         filterParams.city = city
         setCombName('Город', city)
@@ -225,13 +230,10 @@ export async function fillCars(cars, ishandEvent_, filterParams, fill) {
 
         if (filterParams['brand']) {
             const fw = document.querySelector('.filter-white')
-            const vn = document.querySelector('#vitrina_name')
             const brands = document.getElementById('brands_dynamic')
             if (brands) brands.style.display = 'none'
             if (fw) fw.style.marginBottom = 0
-            if (vn) vn.innerHTML = 'Автомобили ' + (filterParams.brand || '')
-                + ' ' + (filterParams.model || '')
-                + (filterParams.city ? `(город ${filterParams.city})` : ``)
+            // H1 сервер уже отрисовал под посадочную (модель, город) — не затираем
         }
         return window.__carsSSR.totalCount || 0
     }
@@ -260,7 +262,7 @@ export async function fillCars(cars, ishandEvent_, filterParams, fill) {
             let vn = document.querySelector('#vitrina_name')
             document.getElementById('brands_dynamic').style.display = 'none'
             if (fw) fw.style.marginBottom = 0
-            if (vn) vn.innerHTML = 'Автомобили ' + (filterParams.brand || '')
+            if (vn && !window.ssr_modelSlug) vn.innerHTML = 'Автомобили ' + (filterParams.brand || '')
                 + ' ' + (filterParams.model || '')
                 + ' ' + (filterParams.city ? `(город ${filterParams.city})` : ``)
         }

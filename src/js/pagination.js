@@ -12,7 +12,9 @@ function getLink(pages) {
 }
 function getLinkSPA(pages) {
     const brand = window.ssr_brandSlug ? '/' + window.ssr_brandSlug : ''
-    return `/cars${pages ? '/' + pages : ''}${brand}`
+    const model = window.ssr_modelSlug ? '/' + window.ssr_modelSlug : ''
+    const city = window.ssr_citySlug ? '/' + window.ssr_citySlug : ''
+    return `/cars${pages ? '/' + pages : ''}${brand}${model}${city}`
 }
 
 export function preparePager0 (pages) {
@@ -43,10 +45,11 @@ export function preparePager(pages) {
     const second = location.pathname.split('/')[2] || ''
     const isPageSegment = /^\d+$/.test(second)
     let currentPage = isPageSegment ? +second + 1 : 1
-    let brand = isPageSegment ? (location.pathname.split('/')[3] || '') : second
+    // после бренда в пути могут идти модель и город — сохраняем их в ссылках пейджера
+    const rest = location.pathname.split('/').slice(isPageSegment ? 3 : 2).filter(Boolean)
+    const tail = rest.map(part => '/' + part).join('') + location.search
 
     const delta = currentPage > 3 ? currentPage - 3 : 0
-    let tail = (brand ? '/' + brand : '') + location.search
 
     if (delta > 0) pagerText += `<a href=${getLink(0) + tail}> 1</a> <span> | </span> ... <span> | </span>`
     for (let N = 1 + delta; N < pages; N++) {
@@ -70,11 +73,19 @@ export function preparePagerSPA(params, pages) {
     const delta = currentPage > 3 ? currentPage - 3 : 0
     let tail = ''
 
-    window.ssr_brandSlug = params.brand ? brandSlug(params.brand) : ''
+    const brandSlugValue = params.brand ? brandSlug(params.brand) : ''
+    // сменили бренд — модель и город прошлой посадочной больше не действуют
+    if (brandSlugValue && window.ssr_brandSearch && brandSlugValue !== brandSlug(window.ssr_brandSearch)) {
+        window.ssr_modelSlug = ''
+        window.ssr_modelName = ''
+        window.ssr_citySlug = ''
+        window.ssr_cityName = ''
+    }
+    window.ssr_brandSlug = brandSlugValue
     if (params.modelId) tail += '&modelId=' + params.modelId
     if (params.offset) tail += '&offset=' + params.offset
     if (params.priceOrder !== null && params.priceOrder !== undefined) tail += '&priceOrder=' + params.priceOrder
-    if (params.city) tail += '&city=' + params.city
+    if (params.city && params.city !== 'Все' && params.city !== window.ssr_cityName) tail += '&city=' + params.city
     if (params.gearboxType) tail += '&gearboxType=' + params.gearboxType
     if (params.engineType) tail += '&engineType=' + params.engineType
     if (params.driveType) tail += '&driveType=' + params.driveType
