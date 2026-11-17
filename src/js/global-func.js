@@ -88,9 +88,9 @@ function makeFrendly(el) {
     return transliterate(frendly)
 }
 
-// канонический адрес карточки авто: старые /cars/car.html?id=... отдают 410
+// канонический адрес карточки авто: бренд и модель — те же слаги, что у посадочных
 export function carHref(el) {
-    return `/cars/${getBrandLat(el.brand)}/${transliterate(el.model || '').replaceAll(' ', '')}/${makeFrendly(el)}`
+    return `/cars/${brandSlug(el.brand)}/${brandSlug(el.model || '')}/${makeFrendly(el)}`
 }
 
 export function prepareCars(res) {
