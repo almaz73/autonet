@@ -210,7 +210,8 @@ function saveView(TYPE_VIEW) {
 
 function setDot() {
     let TYPE_VIEW = localStorage.getItem('TYPE_VIEW') || 'dot4'
-    saveView(TYPE_VIEW)
+    // на главной вид не запоминаем: после неё /cars должен открыться с dot8
+    if (location.pathname !== '/') saveView(TYPE_VIEW)
     let dot = document.querySelector('.' + TYPE_VIEW)
     dot && dot.classList.add('active')
     setTimeout(() => dot && setTypeView({srcElement: {classList: {value: TYPE_VIEW}}}))

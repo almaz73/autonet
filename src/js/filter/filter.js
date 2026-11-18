@@ -95,6 +95,8 @@ function getVitrina(ishandEvent) {
     if (location.pathname === '/') {
         if (cars_link) cars_link.style.display = 'block'
         localStorage.removeItem('TYPE_VIEW')
+        // сбрасываем и cookie: SSR /cars рисует сетку по ней, после главной должен быть dot8
+        document.cookie = 'TYPE_VIEW=; path=/; max-age=0'
     } else {
         if (cars_link) cars_link.style.display = 'none'
         if (!localStorage.getItem('TYPE_VIEW')) localStorage.setItem('TYPE_VIEW', 'dot8')
