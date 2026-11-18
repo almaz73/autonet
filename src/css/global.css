@@ -183,6 +183,49 @@ h1#vitrina_name {
     }
 }
 
+.vitrina_tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 28px;
+    margin: 10px 0 18px;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.vitrina_tab {
+    position: relative;
+    padding: 10px 0;
+    border: 0;
+    background: none;
+    font-family: Gilroy, system-ui;
+    font-size: 1em;
+    color: #888;
+    cursor: pointer;
+}
+
+.vitrina_tab:hover {
+    color: var(--color-red);
+}
+
+.vitrina_tab.active {
+    color: #000;
+    font-weight: bold;
+}
+
+.vitrina_tab.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    background: var(--color-red);
+}
+
+.vitrina_tab:focus-visible {
+    outline: 2px solid var(--color-red);
+    outline-offset: 2px;
+}
+
 
 .pager {
     grid-column: 1 / -1

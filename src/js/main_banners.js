@@ -42,30 +42,68 @@ api_get_mainBanners(res => {
 })
 
 //// только для главной страницы
+const VITRINA_TITLES = {
+    specials: 'Специальные предложения по цене',
+    latest: 'Свежие поступления авто с пробегом'
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    let triggerFirstPage = localStorage.getItem('triggerFirstPage')
-    triggerFirstPage = triggerFirstPage === 'true'
+    const tabs = Array.from(document.querySelectorAll('.vitrina_tab'))
+    if (!tabs.length) return
 
-    let div = document.querySelector('#vitrina_name')
-    let divTrigger = document.querySelector('#vitrina_name_choose')
+    let isLatest = localStorage.getItem('triggerFirstPage') === 'true'
 
-    if (divTrigger) divTrigger.style.display = 'block'
-    if (triggerFirstPage) {
-        div.innerHTML = 'Свежие поступления авто с пробегом'
-        divTrigger.querySelector('span').innerHTML = 'Спец.предложения'
-        window.getLatestCars(triggerFirstPage)
-    } else {
-        div.innerHTML = 'Специальные предложения по цене'
-        divTrigger.querySelector('span').innerHTML = 'Свежие поступления'
-        window.getLatestCars(triggerFirstPage)
-        let divPade = document.querySelector('.page__link.page')
-        if (divPade) divPade.style.display = 'none'
-    }
+    renderTab(isLatest)
+    window.getLatestCars(isLatest)
 
-    divTrigger && divTrigger.addEventListener('click', () => {
-        triggerFirstPage = !triggerFirstPage
-        localStorage.setItem('triggerFirstPage', JSON.stringify(triggerFirstPage))
+    tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => selectTab(tab.dataset.tab === 'latest'))
+
+        // клавиатурная навигация, ожидаемая от tablist
+        tab.addEventListener('keydown', (event) => {
+            const step = event.key === 'ArrowRight' ? 1 : event.key === 'ArrowLeft' ? -1 : 0
+            let nextIndex = null
+            if (step) nextIndex = (index + step + tabs.length) % tabs.length
+            if (event.key === 'Home') nextIndex = 0
+            if (event.key === 'End') nextIndex = tabs.length - 1
+            if (nextIndex === null) return
+
+            event.preventDefault()
+            tabs[nextIndex].focus()
+            selectTab(tabs[nextIndex].dataset.tab === 'latest')
+        })
     })
 
-    document.querySelector('.pager').style.display = 'none'
+    const pager = document.querySelector('.pager')
+    if (pager) pager.style.display = 'none'
+
+    function selectTab(latest) {
+        if (latest === isLatest) return
+        isLatest = latest
+        // витрина запоминается между заходами и используется при смене города
+        localStorage.setItem('triggerFirstPage', JSON.stringify(latest))
+        renderTab(latest)
+        window.getLatestCars(latest)
+    }
+
+    function renderTab(latest) {
+        const activeTab = latest ? 'latest' : 'specials'
+
+        tabs.forEach(tab => {
+            const active = tab.dataset.tab === activeTab
+            tab.classList.toggle('active', active)
+            tab.setAttribute('aria-selected', active ? 'true' : 'false')
+            tab.tabIndex = active ? 0 : -1
+        })
+
+        const title = document.querySelector('#vitrina_name')
+        if (title) title.textContent = VITRINA_TITLES[activeTab]
+
+        const cards = document.querySelector('#main_vitrina_cards')
+        if (cards) cards.setAttribute('aria-labelledby', 'vitrina_tab_' + activeTab)
+
+        // «Показать еще» листает только свежие поступления
+        const more = document.querySelector('.page__link.page')
+        if (more) more.style.display = latest ? '' : 'none'
+    }
 })
