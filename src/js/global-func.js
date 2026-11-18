@@ -133,20 +133,27 @@ export function getUrlParam(val) {
 }
 
 export function setPriceOrder(statePriceOrder) {
-    let price_order = document.querySelector('.coin');
+    const price_order = document.querySelector('.coin')
+    if (!price_order) return
+
+    const label = price_order.querySelector('.coin__text')
+    const arrow = price_order.querySelector('.coin__arrow')
+    if (!label || !arrow) return
 
     if (statePriceOrder === false) {
-        price_order.querySelector('span').title = 'По возрастанию'
-        price_order.querySelector('img').style.transform = 'rotate(180deg)'
+        label.textContent = 'Цена по возрастанию'
+        arrow.style.display = ''
+        arrow.style.transform = 'rotate(180deg)'
+    } else if (statePriceOrder === true) {
+        label.textContent = 'Цена по убыванию'
+        arrow.style.display = ''
+        arrow.style.transform = 'rotate(0deg)'
+    } else {
+        label.textContent = 'Сортировать по цене'
+        arrow.style.display = 'none'
     }
-    if (statePriceOrder === null) {
-        price_order.querySelector('span').title = 'Не упорядоченно'
-        price_order.querySelector('img').style.transform = 'rotate(270deg)';
-    }
-    if (statePriceOrder === true) {
-        price_order.querySelector('span').title = 'По убыванию'
-        price_order.querySelector('img').style.transform = 'rotate(0deg)'
-    }
+
+    price_order.title = label.textContent
 }
 
 

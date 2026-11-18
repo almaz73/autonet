@@ -87,6 +87,7 @@ export function filter_changed_text(type, val) {
 }
 
 let filterParams = {}
+let priceOrderState = null // null — без сортировки, false — по возрастанию, true — по убыванию
 
 /** Запрос сервера и отображения витрины **/
 function getVitrina(ishandEvent) {
@@ -228,6 +229,8 @@ window.goToCars = function () {
 window.clearFilter = function () {
     window.clearAllFilter = true
     filterParams = {limit: 20, offset: 0}
+    priceOrderState = null
+    setPriceOrder(null)
     getVitrina()
     eventBus.emit('dataUpdated', {});
     const vitrinaName = document.querySelector('#vitrina_name')
@@ -293,13 +296,18 @@ window.getLatestCars = async function (triggerFirstPage, more) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    let statePriceOrder = null
-    let price_order = document.querySelector('.coin');
+    // страница могла открыться с сортировкой в адресе — продолжаем цикл с неё
+    const priceOrderFromUrl = getUrlParam('priceOrder')
+    if (priceOrderFromUrl !== null && priceOrderFromUrl !== '') {
+        priceOrderState = priceOrderFromUrl === 'true'
+    }
+
+    const price_order = document.querySelector('.coin');
     price_order && price_order.addEventListener('click', () => {
-        if (statePriceOrder === false) statePriceOrder = true
-        else if (statePriceOrder === null) statePriceOrder = false
-        else if (statePriceOrder === true) statePriceOrder = null
-        setPriceOrder(statePriceOrder)
-        filter_changed_text('priceOrder', statePriceOrder)
+        if (priceOrderState === false) priceOrderState = true
+        else if (priceOrderState === null) priceOrderState = false
+        else priceOrderState = null
+        setPriceOrder(priceOrderState)
+        filter_changed_text('priceOrder', priceOrderState)
     });
 })
