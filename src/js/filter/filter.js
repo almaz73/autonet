@@ -29,6 +29,7 @@ export function filter_changed(items, name) {
         window.ssr_modelName = ''
         window.ssr_citySlug = ''
         window.ssr_cityName = ''
+        window.ssr_landing = null
         if (brand) {
             filterParams['brand'] = brand.name
             filterParams['modelId'] = ''
@@ -165,7 +166,8 @@ async function getSelectedCity() {
 
 async function bootFilter() {
     const city = await getSelectedCity()
-    const cityInAddress = getUrlParam('city') || window.ssr_cityName
+    // посадочная сама задаёт набор фильтров — город из шапки в него не подмешиваем
+    const cityInAddress = getUrlParam('city') || window.ssr_cityName || window.ssr_landing
     if (city && !cityInAddress) filterParams.city = city
     getVitrina()
 }
@@ -235,6 +237,7 @@ window.goToCars = function () {
 }
 window.clearFilter = function () {
     window.clearAllFilter = true
+    window.ssr_landing = null
     filterParams = {limit: 20, offset: 0}
     priceOrderState = null
     setPriceOrder(null)

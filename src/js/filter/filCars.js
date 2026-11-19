@@ -23,9 +23,11 @@ Cache_serv = JSON.parse(Cache_serv)
 /* Заполнение фильтр дюнными по адресной строке FROM SERVER */
 function FillFilterFromAddressBar(filterParams) {
     // заполнение фильтра по параметрам адресной строки
+    // на фильтровой посадочной сегменты пути — это город/кузов/цена, а не бренд и модель
+    const landing = window.ssr_landing
     let brand = getUrlParam('brand')
     // сервер уже нормализовал бренд из пути: «vaz-lada» → «ВАЗ (LADA)»
-    if (!brand) brand = window.ssr_brandDbName || getBrandRus(location.pathname.split('/')[3])
+    if (!brand && !landing) brand = window.ssr_brandDbName || getBrandRus(location.pathname.split('/')[3])
     if (brand) {
         filterParams['brand'] = brand
         setCombName('Марка', brand)
@@ -33,7 +35,7 @@ function FillFilterFromAddressBar(filterParams) {
 
     const modelId = getUrlParam('modelId')
     let model = getUrlParam('model')
-    if (!model) model = window.ssr_modelName || location.pathname.split('/')[4] || location.pathname.split('/')[3]
+    if (!model && !landing) model = window.ssr_modelName || location.pathname.split('/')[4] || location.pathname.split('/')[3]
     // посадочная модели фильтрует не по одному разделу, а по всему кластеру («Rio» + «Rio X-Line»)
     if (Array.isArray(window.ssr_models) && window.ssr_models.length) filterParams.models = window.ssr_models
     if (modelId) {
@@ -45,14 +47,39 @@ function FillFilterFromAddressBar(filterParams) {
         setCombName('Модель', model)
     }
 
-    const cityFromAddress = getUrlParam('city') || window.ssr_cityName || ''
+    const cityFromAddress = getUrlParam('city') || window.ssr_cityName || (landing && landing.city) || ''
     // город из шапки подставляем, только если страница сама его не задаёт
     const city = cityFromAddress || filterParams.city || ''
-    // SSR отрисовал витрину без города — её придётся перезапросить
-    if (!cityFromAddress && city) window.__cityFilterApplied = true
+    // SSR отрисовал витрину без города — её придётся перезапросить.
+    // посадочная сама задаёт набор фильтров: город из шапки в него не подмешиваем
+    if (!cityFromAddress && city && !landing) window.__cityFilterApplied = true
     if (city) {
         filterParams.city = city
         setCombName('Город', city)
+    }
+
+    // фильтры, которые на посадочной пришли из пути, а не из query
+    if (landing) {
+        if (landing.bodyType) {
+            extention = true
+            filterParams.bodyType = landing.bodyType
+            setCombName('Тип кузова', landing.bodyType)
+        }
+        if (landing.gearboxType) {
+            extention = true
+            filterParams.gearboxType = landing.gearboxType
+            setCombName('Тип КПП', landing.gearboxType)
+        }
+        if (landing.priceFrom) {
+            extention = true
+            filterParams.priceFrom = landing.priceFrom
+            setInputName('priceFrom', landing.priceFrom)
+        }
+        if (landing.priceTo) {
+            extention = true
+            filterParams.priceTo = landing.priceTo
+            setInputName('priceTo', landing.priceTo)
+        }
     }
 
     const color = getUrlParam('color')
@@ -171,7 +198,11 @@ function FillFilterFromAddressBar(filterParams) {
         setPriceOrder(filterParams['priceOrder'])
     }
 
-    let offset = +location.pathname.split('/')[2] * 20 || 0
+    // страница посадочной лежит последним сегментом: /cars/<city>/<фильтры>/<N>
+    const landingPage = landing ? Number(landing.page) || 0 : null
+    let offset = landingPage !== null
+        ? landingPage * 20
+        : (+location.pathname.split('/')[2] || 0) * 20
 
     if (offset < 0) offset = 0
     filterParams['offset'] = offset
