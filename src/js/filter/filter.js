@@ -202,8 +202,16 @@ bootFilter()
 
 window.goToCars = function () {
     const params = new URLSearchParams()
-    if (filterParams.modelId) params.set('modelId', filterParams.modelId)
-    if (filterParams.city) params.set('city', filterParams.city)
+    // модель отправляем id в query: сервер сам решит, тянуть ли её в путь посадочной.
+    // в путь модель попадает только если id не нашёлся в разделах
+    let modelId = filterParams.modelId
+    if (!modelId && filterParams.model) {
+        const model = globalValues.modelsIds.find(el => el.name === filterParams.model)
+        if (model) modelId = model.id
+    }
+    if (modelId) params.set('modelId', modelId)
+    // «Все» — отсутствие фильтра по городу, а не город
+    if (filterParams.city && filterParams.city !== 'Все') params.set('city', filterParams.city)
     if (filterParams.gearboxType) params.set('gearboxType', filterParams.gearboxType)
     if (filterParams.engineType) params.set('engineType', filterParams.engineType)
     if (filterParams.driveType) params.set('driveType', filterParams.driveType)
@@ -221,8 +229,7 @@ window.goToCars = function () {
 
     const brand = filterParams.brand || filterParams['Марка']
     let path = brand ? '/' + brandSlug(brand) : ''
-    // модель живёт в пути: сервер сам сведёт её к кластеру и отбросит modelId
-    if (path && filterParams.model) path += '/' + brandSlug(filterParams.model)
+    if (path && filterParams.model && !modelId) path += '/' + brandSlug(filterParams.model)
     const query = params.toString()
     location.href = '/cars' + path + (query ? '?' + query : '') + '#vitrina_name'
 }
