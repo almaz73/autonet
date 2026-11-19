@@ -10,8 +10,6 @@ const isMainPage = location.pathname === '/'
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (isMainPage) initSwipper()
-
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && fotos) {
             fotos.style.height = '76px';
@@ -39,8 +37,7 @@ export function initSwipper() {
     let params = {
         spaceBetween: 30,
         loop: true,
-        // utoplay: isCarPage ? "" : {delay: 5000, disableOnInteraction: false},
-        utoplay: {delay: 5000, disableOnInteraction: false},
+        autoplay: {delay: 6000, disableOnInteraction: false},
         pauseOnMouseEnter: true, // Пауза при наведении мыши
         waitForTransition: true, // Ждать завершения анимации
         disableOnInteraction: true, // Продолжить автоплей после свайпа
@@ -58,7 +55,11 @@ export function initSwipper() {
             init() {
                 if (!isCarPage) this.autoplay.start()
             }
-        }
+        },
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true // Предыдущий слайд плавно исчезает одновременно с появлением нового
+        },
     }
 
 
@@ -67,7 +68,7 @@ export function initSwipper() {
         if (!swiper) setTimeout(ewcursiveWaitswiper, 730)
     }
 
-    setTimeout(ewcursiveWaitswiper, 3000)
+    setTimeout(ewcursiveWaitswiper, 4000)
 }
 
 
