@@ -1,4 +1,4 @@
-import {filter_changed, filter_changed_text} from '@/js/filter/filter.js';
+import {filter_changed, filter_changed_text, getFilterCity} from '@/js/filter/filter.js';
 import {items, setExtention, restoreFullList} from '@/js/filter/filter-ctrl-filling.js'
 import {api_getYearGap} from "@/js/apibase.js";
 
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (advanced.classList.length === 1) {
             advanced && advanced.classList.add("active")
             filterAdvanced && filterAdvanced.classList.add("active")
-            setExtention(true)
+            setExtention(true, getFilterCity())
         } else {
             advanced.classList.remove("active")
             filterAdvanced && filterAdvanced.classList.remove("active")

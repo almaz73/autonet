@@ -1,4 +1,3 @@
-import {api_GetCarCount} from "@/js/apibase.js"
 import {brandSlug, eventBus, getUrlParam, globalValues} from "@/js/global-func.js"
 
 const hasBrand = getUrlParam('brand');
@@ -402,7 +401,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     eventBus.on('dataUpdated', filBrands); // событие загрузки всех комбобоксов из сервера
     function filBrands() {
-        let res = globalValues.brandsIds
+        // в справочнике могут быть марки без машин в выбранном городе — карточки не показываем
+        let res = globalValues.brandsIds.filter(el => el && el.count)
 
         let newList = []
 

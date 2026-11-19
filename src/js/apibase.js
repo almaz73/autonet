@@ -134,9 +134,10 @@ export function api_getAutoByParams(brand, model, linkId, isSmallPhoto, callback
     return withCache(request, callback, 5) // ЗВ 10 минут авто не подменят
 }
 
-/*** Получение кол-во автомобилей разбитых по бренду. Отсортировано от большего к меньшему ***/
-export function api_GetCarCount(callback) {
+/*** Получение кол-во автомобилей разбитых по бренду. Отсортировано от большего к меньшему. city — только авто этого города ***/
+export function api_GetCarCount(city, callback) {
     let request = '/api/getCarCount'
+    if (city && city !== 'Все') request += '?city=' + encodeURIComponent(city)
     return withCache(request, callback, 5) // тут 5 минут только кешируем
 }
 
