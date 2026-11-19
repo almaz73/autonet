@@ -436,7 +436,7 @@ export async function fetchWithTimeout(url, options = {}, timeout = 45000) {
     } catch (error) {
         clearTimeout(id);
         if (error.name === 'AbortError') {
-            sendMessage('🤔 Запрос отменен, возможно неполадки связи. Пожалуйста, попробуйте позже.', 'warning')
+            sendMessage('Не удалось загрузить данные: похоже, пропала связь. Проверьте интернет и попробуйте ещё раз.', 'warning')
             throw new Error('Превышено время ожидания запроса');
         }
         throw error;
