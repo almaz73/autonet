@@ -17,9 +17,9 @@ import {enToRu, ruToEn, ruAsEn} from '@/js/global-constants.js'
 
 // В зависимости от состояния фильтра загружаем кобобоксы
 let extention = false
-export let setExtention = function (val, city) {
+export let setExtention = function (val) {
     extention = val
-    getDatas(city)
+    getDatas()
 }
 
 
@@ -48,7 +48,7 @@ let selectScrollPlace = 0
 
 ///////////////////////////
 
-function fillFields(onlyModels, silent) {
+function fillFields(onlyModels) {
     let combs = document.querySelectorAll('.comb');
     let isMobile = document.body.clientWidth < 500;
     combs.forEach(comb => {
@@ -167,16 +167,11 @@ function fillFields(onlyModels, silent) {
             bigCombPlaceholder.classList.add('bold')
         }
     })
-    if (!silent) eventBus.emit('dataUpdated', {});
+    eventBus.emit('dataUpdated', {});
 }
 
 function createFiledsForList(list, comb_name) {
     return list && list.map(item => '<div data-parent="' + comb_name + '">' + item + '</div>')
-}
-
-// перерисовать комбобоксы без события dataUpdated — оно перетирает выбранные значения старой адресной строкой
-export function rerenderCombs() {
-    fillFields(false, true)
 }
 
 // после фильтрации через findWithAnyFont items[combName] перезаписан усечённым массивом — восстанавливаем полный
@@ -212,39 +207,19 @@ export function getModelList(brandName) {
 }
 
 
-// марки для фильтра пересобираем при смене города: те, у кого в городе нет машин, из списка уходят
-export function refreshBrandsForCity(city) {
-    const cityName = city && city !== 'Все' ? city : ''
-    // из кэша withCache отдаёт результат синхронно — приводим к промису, чтобы .then работал всегда
-    return Promise.resolve(api_GetCarCount(cityName, res => {
-        const full = Array.isArray(res) ? res : []
-        // справочник марок держим полным (нужен для поиска бренда и его id), а фильтр — только с авто
-        globalValues.brandsIds.length = 0
-        globalValues.brandsIds.push(...full)
-
-        const list = full.filter(el => el.count).map(el => el.name)
-        const prev = items['Марка'].value
-        items['Марка'] = list
-        items['Марка'].value = list.includes(prev) ? prev : ''
-        items_memory = {}
-        fillFields(false, true)
-        return list
-    }))
-}
-
-function getDatas(city = '') {
+function getDatas() {
     showPreloader(true)
     clearGlobalValues()
 
     Promise.all([
         new Promise(resolve => {
-            api_GetCarCount(city, res => {
-                if (!Array.isArray(res) || !res.length) return false
+            api_GetCarCount(res => {
+                if (!res.length) return false
 
                 let newRes = res.filter(el => el.count)
 
                 items['Марка'] = newRes.map(el => el.name)
-                globalValues.brandsIds.push(...res)
+                globalValues.brandsIds.push(...newRes)
 
                 let brand = getUrlParam('brand') || window.ssr_brandSearch || ''
                 if (!brand) {

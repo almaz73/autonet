@@ -206,7 +206,7 @@ function FillFilterFromAddressBar(filterParams) {
 
     if (offset < 0) offset = 0
     filterParams['offset'] = offset
-    setExtention(extention, filterParams.city)
+    setExtention(extention)
 }
 
 function setCombName(name, value) {

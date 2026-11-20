@@ -12,27 +12,11 @@ import {
     getUrlParam
 } from '@/js/global-func.js'
 import {fillCars} from '@/js/filter/filCars.js'
-import {getModelList, setExtention, refreshBrandsForCity, rerenderCombs, items} from '@/js/filter/filter-ctrl-filling.js'
+import {getModelList, setExtention} from '@/js/filter/filter-ctrl-filling.js'
 import {loadCities, resolveSelectedCity} from '@/js/cities.js'
 import {showFilterEmpty, hasFilterCity} from '@/js/filter/emptyState.js'
 import {tyresForList} from "@/js/global-constants.js";
 import {preparePagerSPA} from '@/js/pagination.js'
-
-// марки без машин в выбранном городе убираем из списка, выбранную «исчезнувшую» марку сбрасываем
-function resetBrandIfMissing(list) {
-    if (!Array.isArray(list)) return
-    if (!filterParams.brand || list.includes(filterParams.brand)) return
-
-    filterParams.brand = ''
-    filterParams.model = ''
-    filterParams.modelId = ''
-    filterParams.models = []
-    window.globalCurrentBrandName = ''
-    window.globalCurrentModel = ''
-    items['Модель'] = ['Не выбрана марка ']
-    items['Модель'].value = ''
-    rerenderCombs()
-}
 
 export function filter_changed(items, name) {
     if (name === 'Марка') {
@@ -68,15 +52,7 @@ export function filter_changed(items, name) {
         }
         window.globalCurrentModel = model.name
     }
-    if (name === 'Город') {
-        filterParams.city = items[name].value
-        // список марок зависит от города: дожидаемся его, затем фильтруем витрину
-        refreshBrandsForCity(filterParams.city).then(list => {
-            resetBrandIfMissing(list)
-            getVitrina('ishandEvent')
-        }).catch(() => getVitrina('ishandEvent'))
-        return
-    }
+    if (name === 'Город') filterParams.city = items[name].value
     if (name === 'Тип КПП') {
         let element = globalValues.gearboxTypes.find(el => el.title === items[name].value)
         filterParams.gearboxType = element.title
@@ -114,10 +90,6 @@ export function filter_changed_text(type, val) {
 let filterParams = {}
 let priceOrderState = null // null — без сортировки, false — по возрастанию, true — по убыванию
 
-export function getFilterCity() {
-    return filterParams.city || ''
-}
-
 /** Запрос сервера и отображения витрины **/
 function getVitrina(ishandEvent) {
     let cars_link = document.querySelector('.cars_link')
@@ -135,7 +107,7 @@ function getVitrina(ishandEvent) {
 // в зависимости от страницы, запрашиваем нужные данные
     let cars
     if (location.pathname === '/') {
-        if (!ishandEvent) setExtention(false, filterParams.city)
+        if (!ishandEvent) setExtention(false)
 
         let bt = document.querySelector('#set_filter')
         showPreloader(true, bt)
@@ -217,7 +189,6 @@ document.addEventListener('selectedCityChanged', (event) => {
     if (!cityInAddress) {
         filterParams.city = city && city !== 'Россия' ? city : ''
         setCityComb(filterParams.city)
-        refreshBrandsForCity(filterParams.city).then(resetBrandIfMissing)
         getVitrina('ishandEvent')
     }
     // витрина главной тоже показывает авто выбранного города
