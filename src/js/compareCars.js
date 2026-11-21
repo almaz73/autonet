@@ -114,7 +114,7 @@ function showChosen() {
                 el.engineType = q[4]
             }
 
-            // старые адреса /cars/car.html?id=... отдают 410, поэтому ведём на каноническую карточку
+            // старые адреса /cars/car.html?id=... редиректят 301 в каталог, поэтому ведём на каноническую карточку
             const href = el.href || carHref(el)
 
             DELETE += `<td><a href="#" onclick="deleteCar('${el.id}')">Удалить</a></td>`
