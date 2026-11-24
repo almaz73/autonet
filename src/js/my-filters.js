@@ -69,6 +69,17 @@ export function rememberFilter(url) {
     return next
 }
 
+export function removeMyFilter(url) {
+    const normalized = normalizeFilterUrl(url) || url
+    const next = getMyFilters().filter(item => (normalizeFilterUrl(item) || item) !== normalized)
+    try {
+        localStorage.setItem(MY_FILTERS_KEY, JSON.stringify(next))
+    } catch {
+        return next
+    }
+    return next
+}
+
 function prettySlug(slug) {
     return String(slug)
         .split('-')

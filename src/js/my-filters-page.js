@@ -1,6 +1,13 @@
-import {getMyFilters, describeFilter} from '@/js/my-filters.js'
+import {getMyFilters, describeFilter, removeMyFilter} from '@/js/my-filters.js'
 
-function renderItem(item, index) {
+// после удаления строки нумерация остаётся сквозной: 1, 2, 3…
+function renumber(list) {
+    list.querySelectorAll('.personal-filter__index').forEach((node, index) => {
+        node.textContent = String(index + 1)
+    })
+}
+
+function renderItem(item, index, list) {
     const li = document.createElement('li')
     li.className = 'personal-filter'
 
@@ -23,12 +30,30 @@ function renderItem(item, index) {
     indexText.className = 'personal-filter__index'
     indexText.textContent = String(index + 1)
 
+    const actions = document.createElement('div')
+    actions.className = 'personal-filter__actions'
+
     const link = document.createElement('a')
     link.className = 'personal-filter__button'
     link.href = item.url
     link.textContent = 'Открыть фильтр'
 
-    li.append(indexText, text, link)
+    const remove = document.createElement('button')
+    remove.type = 'button'
+    remove.className = 'personal-filter__delete'
+    remove.title = 'Удалить фильтр'
+    remove.setAttribute('aria-label', 'Удалить фильтр «' + item.title + '»')
+    remove.textContent = 'Удалить'
+    remove.addEventListener('click', () => {
+        removeMyFilter(item.url)
+        li.remove()
+        renumber(list)
+        const empty = document.querySelector('#my-filters-empty')
+        if (empty && !list.children.length) empty.hidden = false
+    })
+
+    actions.append(link, remove)
+    li.append(indexText, text, actions)
     return li
 }
 
@@ -45,6 +70,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     const described = await Promise.all(filters.map(url => describeFilter(url)))
-    list.append(...described.map(renderItem))
+    list.append(...described.map((item, index) => renderItem(item, index, list)))
     if (empty) empty.hidden = true
 })
