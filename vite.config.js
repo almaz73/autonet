@@ -38,6 +38,7 @@ const pages = {
     favorite: resolve(__dirname, './personal/favorite-cars/index.html'),
     personalRoom: resolve(__dirname, './personal/personal-page.html'),
     visits: resolve(__dirname, './personal/visits/index.html'),
+    myFilters: resolve(__dirname, './personal/my-filters/index.html'),
     reserve: resolve(__dirname, './reserve/index.html'),
 
     vacancyAdmin: resolve(__dirname, './admin/vacancy.html'),

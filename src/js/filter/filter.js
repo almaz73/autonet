@@ -17,6 +17,7 @@ import {loadCities, resolveSelectedCity} from '@/js/cities.js'
 import {showFilterEmpty, hasFilterCity} from '@/js/filter/emptyState.js'
 import {tyresForList} from "@/js/global-constants.js";
 import {preparePagerSPA} from '@/js/pagination.js'
+import {rememberFilter} from '@/js/my-filters.js'
 
 export function filter_changed(items, name) {
     if (name === 'Марка') {
@@ -202,7 +203,7 @@ document.addEventListener('selectedCityChanged', (event) => {
 bootFilter()
 
 
-window.goToCars = function () {
+function buildCarsUrl() {
     const params = new URLSearchParams()
     // модель отправляем id в query: сервер сам решит, тянуть ли её в путь посадочной.
     // в путь модель попадает только если id не нашёлся в разделах
@@ -233,7 +234,26 @@ window.goToCars = function () {
     let path = brand ? '/' + brandSlug(brand) : ''
     if (path && filterParams.model && !modelId) path += '/' + brandSlug(filterParams.model)
     const query = params.toString()
-    location.href = '/cars' + path + (query ? '?' + query : '') + '#vitrina_name'
+    return '/cars' + path + (query ? '?' + query : '') + '#vitrina_name'
+}
+
+window.goToCars = function () {
+    const url = buildCarsUrl()
+    // «Найдено … предложений» запоминаем в личной комнате
+    rememberFilter(filterRecordUrl(url))
+    location.href = url
+}
+
+// в личной комнате модель показываем путём, как в итоговом адресе: /cars/ford/focus
+function filterRecordUrl(url) {
+    if (!filterParams.model) return url
+    const parsed = new URL(url, location.origin)
+    if (!parsed.searchParams.has('modelId')) return url
+    // заменяем query-модель на путь только когда марка уже есть в пути
+    if (parsed.pathname.split('/').filter(Boolean).length !== 2) return url
+    parsed.pathname += '/' + brandSlug(filterParams.model)
+    parsed.searchParams.delete('modelId')
+    return parsed.pathname + parsed.search
 }
 window.clearFilter = function () {
     window.clearAllFilter = true

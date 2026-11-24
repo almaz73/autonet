@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+    <link rel='icon' type='image/svg+xml' sizes='any' href='/st/favicon.svg'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Ваши фильтры - Автосеть.РФ</title>
+    <meta name='robots' content='noindex, nofollow'>
+    <meta name='description' content='Сохранённые фильтры поиска автомобилей: последние 20 подборок. Данные хранятся только в вашем браузере.'>
+    <meta property='og:type' content='website'>
+    <meta property='og:title' content='Ваши фильтры'>
+    <meta property='og:image' content='https://xn--80aej9aped4f.xn--p1ai/st/auto.webp'>
+    <meta property='og:url' content='https://автосеть.рф/personal/my-filters/'>
+    <meta property='og:locale' content='ru_RU'>
+    <meta property='og:site_name' content='АВТОСЕТЬ.РФ'>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+    <link rel='stylesheet' href='../../src/css/style.css'/>
+    <script type='module' src='../../src/js/main.js'></script>
+    <script type='module' src='../../src/js/my-filters-page.js'></script>
+
+    {{> verbox_chat}}
+</head>
+<body>
+{{> 'header/header' }}
+
+<main>
+    <div class='page_padding_20'>
+        {{> 'personal/personal-nav' filters=true}}
+        <div class='bread_cranbs'>
+            <a href='/'>Главная</a> /
+            <a href='/personal/personal-page.html'>Личная комната</a> /
+            <span>Ваши фильтры</span>
+        </div>
+
+        <h1 class='personal-visits__title'>Ваши фильтры</h1>
+        <p class='personal-note'>
+            Здесь собраны последние 20 подборок, которые вы открывали через фильтр и «Топ 20 марок».
+            Данные хранятся только в вашем браузере: очистка кэша или истории браузера удалит их.
+        </p>
+
+        <ul class='personal-filters' id='my-filters-list'></ul>
+        <p class='personal-empty' id='my-filters-empty' hidden>
+            Сохранённых фильтров пока нет. Нажмите «Найдено … предложений» в фильтре
+            или выберите марку из «Топ 20 марок по продаже», и подборки появятся здесь.
+        </p>
+
+        <br><br>
+    </div>
+</main>
+
+{{> 'footer/footer' }}
+
+</body>
+</html>
