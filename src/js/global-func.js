@@ -210,9 +210,13 @@ export function checkFormFields(arr) {
                 el.removeEventListener('change', filled)
             }
         }
-        if (el && el.classList.contains('capctha-div') && !el.classList.contains('checked')) {
-            el.style.border = '1px solid red';
-            exist = true
+        if (el && el.classList.contains('capctha-div')) {
+            // токен выдаёт /api/captcha/verify, заявка без него не пройдёт
+            window.__captchaToken = el.dataset.captchaToken || ''
+            if (!el.classList.contains('checked')) {
+                el.style.border = '1px solid red';
+                exist = true
+            }
         }
         if (el && el.type === 'checkbox') {
             let checked = el.checked

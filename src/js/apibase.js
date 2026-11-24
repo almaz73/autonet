@@ -32,7 +32,7 @@ export function api_postEmail(params) {
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
         },
-        body: JSON.stringify({type: params.type || 10, text: letter})
+        body: JSON.stringify({type: params.type || 10, text: letter, captchaToken: window.__captchaToken || ''})
     }, 10000)
         .then(res => res.json())
         .then(res => {
@@ -63,6 +63,7 @@ export function api_postEmailWithAttachement(params) {
 
 
     formData.append('text', letter);
+    formData.append('captchaToken', window.__captchaToken || '');
     formData.append('file', params.resume);
 
       return fetchWithTimeout(request, {

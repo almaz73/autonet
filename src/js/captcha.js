@@ -1,48 +1,55 @@
 // Капчу можно использовать сразу несколько на одной странице.
-// Для улучшения можно добавить назначение секретного числа серверу.
+// Позицию цели выдаёт сервер (/api/captcha), ответ сверяется на сервере (/api/captcha/verify),
+// а после решения капча кладёт одноразовый токен в data-captcha-token — его требуют почтовые заявки.
 document.addEventListener('DOMContentLoaded', () => {
     initCaptcha()
 });
 
+let captchaIndex = 0
+
 export function initCaptcha() {
     const parents = document.querySelectorAll('.capctha-div')
 
-    parents.forEach((el, ind) => {
-        let order = '_' + ind
-        let parent = el
+    parents.forEach(el => {
+        // initCaptcha вызывают несколько модулей — повторно не пересобираем
+        if (el.dataset.captchaInit === '1') return
+        el.dataset.captchaInit = '1'
 
-        if (parent) {
-            parent.innerHTML = `<p class="instructions ${order}">
+        const order = '_' + (captchaIndex++)
+        el.innerHTML = `<p class="instructions ${order}">
           Подтвердите, что вы не робот<br>
           Сдвиньте квадрат в белую область</p>
         <p class="result">✅<span>Спасибо !</span></p>
         <div class="target-area ${order}"></div>
         <div class="puzzle-piece ${order}">⇦ ⇨</div>`
 
-            new PuzzleCaptcha(order, parent);
-        }
+        new PuzzleCaptcha(el)
     })
 }
 
 
 class PuzzleCaptcha {
-    constructor(order, parent) {
+    constructor(parent) {
         this.parent = parent
-        this.parentRect = parent.getBoundingClientRect();
-        this.puzzlePiece = document.querySelector(`.puzzle-piece.${order}`);
-        this.targetArea = document.querySelector(`.target-area.${order}`);
-        this.instructions = document.querySelector(`.instructions.${order}`);
-        this.isDragging = false;
-        this.initialX = 0;
-        this.currentX = 0; // Начальная позиция X
-        this.offsetX = 0;
-        this.targetX = parseInt(Math.random() * 73) + 5; // Позиция цели X (300px ширина контейнера - 40px правая граница - 80px ширина элемента)
-        this.parent && this.init();
+        this.parentRect = parent.getBoundingClientRect()
+        this.puzzlePiece = parent.querySelector('.puzzle-piece')
+        this.targetArea = parent.querySelector('.target-area')
+        this.instructions = parent.querySelector('.instructions')
+        this.isDragging = false
+        this.initialX = 0
+        this.currentX = 0
+        this.offsetX = 0
+        this.challenge = null // {id, offset} от сервера
+        this.loading = false
+        this.verified = false
+        this.parent.dataset.captchaToken = ''
+        this.init();
     }
 
     init() {
-        this.setupEventListeners();
-        this.updatePosition();
+        this.setupEventListeners()
+        this.updatePosition()
+        this.loadChallenge()
     }
 
     setupEventListeners() {
@@ -57,43 +64,66 @@ class PuzzleCaptcha {
         document.addEventListener('touchend', this.stopDragging.bind(this));
     }
 
+    async loadChallenge() {
+        if (this.loading) return
+        this.loading = true
+        try {
+            const res = await fetch('/api/captcha', {cache: 'no-store'})
+            if (!res.ok) throw new Error('Капча недоступна')
+            const data = await res.json()
+            if (!data || !data.id || !Number.isFinite(data.offset)) throw new Error('Капча недоступна')
+            this.challenge = {id: data.id, offset: data.offset}
+            // если пользователь уже начал тянуть — покажем цель, как только она пришла
+            if (this.isDragging) this.targetArea.style.left = data.offset + '%'
+        } catch (error) {
+            this.challenge = null
+        } finally {
+            this.loading = false
+        }
+    }
+
     startDragging(e) {
-        this.instructions.style.left = '-10000px'
-        this.targetArea.style.left = this.targetX + '%'
-        this.isDragging = true;
-        this.initialX = e.clientX - this.offsetX;
-        this.puzzlePiece.style.cursor = 'grabbing';
-        e.preventDefault();
+        this.beginDrag(e.clientX, e)
     }
 
     startDraggingTouch(e) {
+        this.beginDrag(e.touches[0].clientX, e)
+    }
+
+    beginDrag(clientX, e) {
+        if (this.verified) return
+        if (!this.challenge) {
+            this.loadChallenge()
+            return
+        }
+        this.parentRect = this.parent.getBoundingClientRect()
         this.instructions.style.left = '-10000px'
-        this.targetArea.style.left = this.targetX + '%'
+        this.targetArea.style.left = this.challenge.offset + '%'
         this.isDragging = true;
-        const touch = e.touches[0];
-        this.initialX = touch.clientX - this.offsetX;
+        this.initialX = clientX - this.offsetX;
+        this.puzzlePiece.style.cursor = 'grabbing';
         e.preventDefault();
     }
 
     drag(e) {
         if (!this.isDragging) return;
         e.preventDefault();
-        this.currentX = e.clientX - this.initialX;
-        if (this.currentX < 0) this.currentX = 0
-        if (this.currentX < 0) this.currentX = 0
-        this.updatePosition();
+        this.moveTo(e.clientX);
     }
 
     dragTouch(e) {
         if (!this.isDragging) return;
-        const touch = e.touches[0];
-        this.currentX = touch.clientX - this.initialX;
+        this.moveTo(e.touches[0].clientX);
+    }
 
+    moveTo(clientX) {
+        this.currentX = clientX - this.initialX;
         if (this.currentX < 0) this.currentX = 0
         this.updatePosition();
     }
 
     stopDragging() {
+        if (!this.isDragging) return
         this.isDragging = false;
         this.puzzlePiece.style.cursor = 'move';
         this.verify()
@@ -106,15 +136,57 @@ class PuzzleCaptcha {
         this.offsetX = this.currentX;
     }
 
-    verify() {
+    resetPosition() {
+        this.isDragging = false
+        this.currentX = 0
+        this.offsetX = 0
+        this.puzzlePiece.style.transform = ''
+        this.puzzlePiece.style.cursor = 'move'
+        this.targetArea.style.left = '100%'
+        this.instructions.style.left = ''
+    }
+
+    resetChallenge() {
+        this.resetPosition()
+        this.verified = false
+        this.challenge = null
+        this.parent.dataset.captchaToken = ''
+        this.loadChallenge()
+    }
+
+    async verify() {
+        if (!this.challenge) {
+            this.resetChallenge()
+            return
+        }
+
         this.parentRect = this.parent.getBoundingClientRect();
         const childRect = this.puzzlePiece.getBoundingClientRect();
-        const offsetLeftPercent = ((childRect.left - this.parentRect.left) / this.parentRect.width) * 100;
-        if (Math.abs(this.targetX - offsetLeftPercent) < 1) {
+        const answer = ((childRect.left - this.parentRect.left) / this.parentRect.width) * 100;
+
+        if (Math.abs(this.challenge.offset - answer) >= 1) {
+            // не попал — даём попробовать ещё раз с той же целью
+            this.resetPosition()
+            return
+        }
+
+        try {
+            const res = await fetch('/api/captcha/verify', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json;charset=utf-8'},
+                body: JSON.stringify({id: this.challenge.id, answer})
+            })
+            const data = await res.json().catch(() => null)
+            if (!res.ok || !data || !data.token) throw new Error((data && data.error) || 'Капча не принята')
+
+            this.verified = true
+            this.parent.dataset.captchaToken = data.token
             this.parent.style.border = ''
             this.parent.classList.add('checked')
             this.parent.dispatchEvent(new CustomEvent('captcha:verified'))
+        } catch (error) {
+            this.resetChallenge()
+            if (window.sendMessage) window.sendMessage(error.message || 'Не удалось пройти проверку, попробуйте ещё раз', 'warning')
         }
     }
 }
-
