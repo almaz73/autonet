@@ -1,13 +1,6 @@
 import {getMyFilters, describeFilter, removeMyFilter} from '@/js/my-filters.js'
 
-// после удаления строки нумерация остаётся сквозной: 1, 2, 3…
-function renumber(list) {
-    list.querySelectorAll('.personal-filter__index').forEach((node, index) => {
-        node.textContent = String(index + 1)
-    })
-}
-
-function renderItem(item, index, list) {
+function renderItem(item) {
     const li = document.createElement('li')
     li.className = 'personal-filter'
 
@@ -26,10 +19,6 @@ function renderItem(item, index, list) {
         text.append(details)
     }
 
-    const indexText = document.createElement('span')
-    indexText.className = 'personal-filter__index'
-    indexText.textContent = String(index + 1)
-
     const actions = document.createElement('div')
     actions.className = 'personal-filter__actions'
 
@@ -47,13 +36,12 @@ function renderItem(item, index, list) {
     remove.addEventListener('click', () => {
         removeMyFilter(item.url)
         li.remove()
-        renumber(list)
         const empty = document.querySelector('#my-filters-empty')
         if (empty && !list.children.length) empty.hidden = false
     })
 
     actions.append(link, remove)
-    li.append(indexText, text, actions)
+    li.append(text, actions)
     return li
 }
 
@@ -70,6 +58,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     const described = await Promise.all(filters.map(url => describeFilter(url)))
-    list.append(...described.map((item, index) => renderItem(item, index, list)))
+    list.append(...described.map(renderItem))
     if (empty) empty.hidden = true
+
+    // пришли с кнопки «Мои фильтры» в каталоге — сразу показываем список, а не личную комнату
+    if (location.hash === '#my-filters-list') {
+        // глобальный scroll-behavior: smooth не даёт прыгнуть к списку до первого кадра
+        const html = document.documentElement
+        const behavior = html.style.scrollBehavior
+        html.style.scrollBehavior = 'auto'
+        list.scrollIntoView({block: 'start'})
+        html.style.scrollBehavior = behavior
+    }
 })

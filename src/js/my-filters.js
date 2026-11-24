@@ -211,6 +211,35 @@ export async function describeFilter(url) {
     }
 }
 
+// на странице каталога подсказываем про личную комнату, если фильтры уже есть
+const PERSONAL_FILTERS_LINK_ID = 'personal_filters_link'
+
+function mountPersonalFiltersLink() {
+    if (!/^\/cars(\/|$)/.test(location.pathname)) return
+    const host = document.querySelector('#filter_cars')
+    if (!host) return
+
+    const count = getMyFilters().length
+    const existing = document.getElementById(PERSONAL_FILTERS_LINK_ID)
+    if (!count) {
+        if (existing) existing.remove()
+        return
+    }
+
+    const wrap = document.createElement('div')
+    wrap.className = 'personal-filters-link'
+    wrap.id = PERSONAL_FILTERS_LINK_ID
+
+    const link = document.createElement('a')
+    link.className = 'personal-filters-link__button'
+    link.href = '/personal/my-filters/#my-filters-list'
+    link.append('Мои фильтры ')
+    wrap.append(link)
+    host.prepend(wrap)
+}
+
+document.addEventListener('DOMContentLoaded', mountPersonalFiltersLink)
+
 // «Топ 20 марок по продаже»: запоминаем марку по клику, как бы ссылка ни выглядела
 document.addEventListener('click', (event) => {
     const link = event.target instanceof Element && event.target.closest('#brands_dynamic a[href]')
