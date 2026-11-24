@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+    <link rel='icon' type='image/svg+xml' sizes='any' href='/st/favicon.svg'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Личная комната - Автосеть.РФ</title>
+    <meta name='robots' content='noindex, nofollow'>
+    <meta name='description' content='Личная комната: избранные автомобили и список сравнения. Данные хранятся только в вашем браузере.'>
+    <meta property='og:type' content='website'>
+    <meta property='og:title' content='Личная комната'>
+    <meta property='og:image' content='https://xn--80aej9aped4f.xn--p1ai/st/auto.webp'>
+    <meta property='og:url' content='https://автосеть.рф/personal/personal-page.html'>
+    <meta property='og:locale' content='ru_RU'>
+    <meta property='og:site_name' content='АВТОСЕТЬ.РФ'>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+    <link rel='stylesheet' href='../src/css/style.css'/>
+    <script type='module' src='../src/js/main.js'></script>
+
+    {{> verbox_chat}}
+</head>
+<body>
+{{> 'header/header' }}
+
+<main>
+    <div class='page_padding_20'>
+        <div class='bread_cranbs'>
+            <a href='/'>Главная</a> /
+            <span>Личная комната</span>
+        </div>
+    </div>
+
+    <section class='personal-hero'>
+        <h1 class='personal-hero__title'>Личная комната</h1>
+        <p class='personal-hero__text'>
+            Здесь собрано всё, что вы отметили на сайте: избранные автомобили, список сравнения
+            и другие полезные разделы. Эти данные хранятся только в вашем браузере и на сервер
+            не отправляются. Если очистить кэш или историю браузера, они удалятся.
+        </p>
+    </section>
+
+    <section class='personal-cards' aria-label='Разделы личной комнаты'>
+        <a class='personal-card' href='/personal/favorite-cars/'>
+            <span class='personal-card__title'>Избранные автомобили</span>
+            <span class='personal-card__text'>Машины, которые вы отметили, чтобы вернуться к ним позже.</span>
+            <span class='personal-card__arrow' aria-hidden='true'>&rarr;</span>
+        </a>
+        <a class='personal-card' href='/personal/list-compared/'>
+            <span class='personal-card__title'>Список сравнения</span>
+            <span class='personal-card__text'>Характеристики выбранных автомобилей рядом, в одной таблице.</span>
+            <span class='personal-card__arrow' aria-hidden='true'>&rarr;</span>
+        </a>
+        <div class='personal-card personal-card--soon'>
+            <span class='personal-card__title'>Ваши фильтры</span>
+            <span class='personal-card__text'>Сохранённые параметры поиска автомобилей.</span>
+            <span class='personal-card__soon'>Скоро</span>
+        </div>
+        <a class='personal-card' href='/personal/visits/'>
+            <span class='personal-card__title'>История посещения сайта</span>
+            <span class='personal-card__text'>Дни, когда вы заходили на сайт, — последние 20 посещений.</span>
+            <span class='personal-card__arrow' aria-hidden='true'>&rarr;</span>
+        </a>
+    </section>
+
+    <br><br>
+</main>
+
+{{> 'footer/footer' }}
+
+</body>
+</html>

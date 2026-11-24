@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+    <link rel='icon' type='image/svg+xml' sizes='any' href='/st/favicon.svg'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>История посещения сайта - Автосеть.РФ</title>
+    <meta name='robots' content='noindex, nofollow'>
+    <meta name='description' content='История посещения сайта: последние 20 дней, когда вы заходили на Автосеть.РФ. Данные хранятся только в вашем браузере.'>
+    <meta property='og:type' content='website'>
+    <meta property='og:title' content='История посещения сайта'>
+    <meta property='og:image' content='https://xn--80aej9aped4f.xn--p1ai/st/auto.webp'>
+    <meta property='og:url' content='https://автосеть.рф/personal/visits/'>
+    <meta property='og:locale' content='ru_RU'>
+    <meta property='og:site_name' content='АВТОСЕТЬ.РФ'>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+    <link rel='stylesheet' href='../../src/css/style.css'/>
+    <script type='module' src='../../src/js/main.js'></script>
+    <script type='module' src='../../src/js/visits-page.js'></script>
+
+    {{> verbox_chat}}
+</head>
+<body>
+{{> 'header/header' }}
+
+<main>
+    <div class='page_padding_20'>
+        {{> 'personal/personal-nav' visits=true}}
+        <div class='bread_cranbs'>
+            <a href='/'>Главная</a> /
+            <a href='/personal/personal-page.html'>Личная комната</a> /
+            <span>История посещения сайта</span>
+        </div>
+
+        <h1 class='personal-visits__title'>История посещения сайта</h1>
+        <p class='personal-note'>
+            Здесь собраны дни, когда вы заходили на сайт, — последние 20. Повторные заходы
+            в один день считаются одним посещением. Данные хранятся только в вашем браузере:
+            очистка кэша или истории браузера удалит их.
+        </p>
+
+        <div class='personal-table-wrap'>
+            <table class='personal-table' id='visits-table'>
+                <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Дата</th>
+                    <th>День недели</th>
+                </tr>
+                </thead>
+                <tbody id='visits-body'></tbody>
+            </table>
+        </div>
+        <p class='personal-empty' id='visits-empty' hidden>Посещений пока нет — история появится после первого визита.</p>
+
+        <br><br>
+    </div>
+</main>
+
+{{> 'footer/footer' }}
+
+</body>
+</html>
