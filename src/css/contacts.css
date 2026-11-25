@@ -420,3 +420,30 @@
     border-bottom: 2px solid rgba(0, 0, 0, 0.3);
 }
 
+
+/* личная страница города */
+.city-page__head {
+    margin-bottom: 26px;
+}
+
+.city-page__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 12px;
+}
+
+.city-page__dealer h2,
+.city-page__text h2,
+.city-page__links h2 {
+    margin: 40px 0 18px;
+}
+
+.city-page__text p {
+    margin: 0 0 14px;
+    line-height: 1.55;
+}
+
+.city-page .dealer-page__map {
+    margin-bottom: 30px;
+}
