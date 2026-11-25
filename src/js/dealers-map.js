@@ -70,7 +70,9 @@ const createSection = (section, dealers, {withHash = false} = {}) => {
     if (!listEl || !mapFrame) return
 
     const wantedProfiles = splitList(section.dataset.profiles).map((part) => part.toLowerCase())
+    const wantedCity = (section.dataset.city ?? '').trim().toLowerCase()
     const items = dealers
+        .filter((dealer) => !wantedCity || String(dealer.city ?? '').trim().toLowerCase() === wantedCity)
         .filter((dealer) => matchesProfiles(dealer, wantedProfiles))
         .map((dealer, index) => ({
             ...dealer,
