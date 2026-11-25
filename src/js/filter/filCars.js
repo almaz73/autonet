@@ -20,6 +20,11 @@ let extention = false //  Есть ли выбранные элементы в �
 let Cache_serv = localStorage.getItem('CACHE_SERV')
 Cache_serv = JSON.parse(Cache_serv)
 
+// после сброса фильтра значения из адресной строки не должны снова попадать в комбобоксы
+export function clearAddressBarCombValues() {
+    combValuesForAfterUpdate.length = 0
+}
+
 /* Заполнение фильтр дюнными по адресной строке FROM SERVER */
 function FillFilterFromAddressBar(filterParams) {
     // заполнение фильтра по параметрам адресной строки
@@ -251,8 +256,10 @@ function setInputName(name, value) {
 
 
 export async function fillCars(cars, ishandEvent_, filterParams, fill) {
-    ishandEvent = ishandEvent_
-    if (!ishandEvent) FillFilterFromAddressBar(filterParams)
+    // 'reset' — сброс фильтра: адресную строку не читаем, но и как обычный пересчёт не оформляем
+    const isReset = ishandEvent_ === 'reset'
+    ishandEvent = isReset ? undefined : ishandEvent_
+    if (!ishandEvent && !isReset) FillFilterFromAddressBar(filterParams)
 
     // Первая загрузка /cars: разметка уже отрисована сервером, не перерисовываем её.
     // Исключение — город из шапки: серверная витрина без него, нужен свежий запрос.

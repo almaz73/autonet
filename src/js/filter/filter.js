@@ -11,8 +11,8 @@ import {
     brandSlug,
     getUrlParam
 } from '@/js/global-func.js'
-import {fillCars} from '@/js/filter/filCars.js'
-import {getModelList, setExtention} from '@/js/filter/filter-ctrl-filling.js'
+import {fillCars, clearAddressBarCombValues} from '@/js/filter/filCars.js'
+import {getModelList, setExtention, items} from '@/js/filter/filter-ctrl-filling.js'
 import {loadCities, resolveSelectedCity} from '@/js/cities.js'
 import {showFilterEmpty, hasFilterCity} from '@/js/filter/emptyState.js'
 import {tyresForList} from "@/js/global-constants.js";
@@ -255,18 +255,88 @@ function filterRecordUrl(url) {
     parsed.searchParams.delete('modelId')
     return parsed.pathname + parsed.search
 }
+// сброс полей фильтра: комбобоксы возвращаются к подписям-заглушкам, числовые поля пустеют
+function resetFilterControls() {
+    // выбранные значения хранятся и в items — иначе они вернутся при перерисовке комбобоксов
+    Object.values(items).forEach((list) => {
+        if (Array.isArray(list)) list.value = ''
+    })
+    document.querySelectorAll('.filter-white .comb').forEach((comb) => {
+        const placeholder = comb.querySelector('.big-comb__placeholder')
+        if (!placeholder) return
+        placeholder.innerText = comb.dataset.placeholder || ''
+        placeholder.classList.remove('bold')
+    })
+    document.querySelectorAll('.filter-white .big-comb__input').forEach((input) => {
+        input.value = ''
+        input.classList.remove('bold')
+    })
+}
+
+// head и посадочные блоки в SSR описывают прежнюю выборку — приводим страницу к состоянию /cars
+function resetCatalogPage() {
+    const vitrinaName = document.querySelector('#vitrina_name')
+    if (vitrinaName) vitrinaName.innerHTML = 'Автомобили'
+    document.querySelectorAll('.vitrina_intro, .vitrina_links').forEach((el) => el.remove())
+    const brands = document.querySelector('#brands_dynamic')
+    if (brands) brands.style.display = ''
+    const filterWhite = document.querySelector('.filter-white')
+    if (filterWhite) filterWhite.style.marginBottom = ''
+
+    const catalogUrl = location.origin + '/cars'
+    document.title = 'Авто с пробегом (БУ). Купить авто в автосалонах Казани и всей России - Автосеть.РФ'
+    const canonical = document.querySelector('link[rel="canonical"]')
+    if (canonical) canonical.href = catalogUrl
+    const ogUrl = document.querySelector('meta[property="og:url"]')
+    if (ogUrl) ogUrl.content = catalogUrl
+    const robots = document.querySelector('meta[name="robots"]')
+    if (robots) robots.content = 'index, follow'
+    const description = document.querySelector('meta[name="description"]')
+    if (description) {
+        description.content = 'Автомобили с пробегом в Казани и других городах России. ✔ Иномарки и Lada, '
+            + 'большой выбор марок и моделей б/у в автосалонах Автосеть.РФ — проверка, кредит, обмен. ☎ 8-800-500-11-56.'
+    }
+}
+
 window.clearFilter = function () {
     window.clearAllFilter = true
     window.ssr_landing = null
+    // фильтры посадочной заданы адресом и SSR-переменными — иначе они вернутся в filterParams
+    window.ssr_brandSearch = ''
+    window.ssr_brandSlug = ''
+    window.ssr_brandDbName = ''
+    window.ssr_modelSlug = ''
+    window.ssr_modelName = ''
+    window.ssr_citySlug = ''
+    window.ssr_cityName = ''
+    window.ssr_models = []
+    window.globalCurrentBrandName = ''
+    window.globalCurrentModel = ''
+    window.globalCurrentModel_Id = ''
     filterParams = {limit: 20, offset: 0}
     priceOrderState = null
     setPriceOrder(null)
-    getVitrina()
+    // 'reset' — fillCars не читает фильтры из адресной строки и не скрывает блок марок
+    const onCarsPage = location.pathname.startsWith('/cars')
+    getVitrina(onCarsPage ? 'reset' : undefined)
+    clearAddressBarCombValues()
     eventBus.emit('dataUpdated', {});
+    resetFilterControls()
     const vitrinaName = document.querySelector('#vitrina_name')
     const path = document.querySelector('#path')
     if (vitrinaName) vitrinaName.innerHTML = 'Все автомобили'
     if (path) path.innerHTML = ``
+    if (onCarsPage) {
+        resetCatalogPage()
+        // крошки посадочной больше не описывают выборку — оставляем «Главная / Автомобили»
+        const crumbs = document.querySelector('.bread_cranbs')
+        const carsLink = crumbs && crumbs.querySelectorAll(':scope > a')[1]
+        while (carsLink && carsLink.nextSibling) crumbs.removeChild(carsLink.nextSibling)
+    }
+    // адрес каталога приводим к /cars без перезагрузки, иначе F5 и ссылки вернут фильтр посадочной
+    if (onCarsPage && (location.pathname !== '/cars' || location.search)) {
+        history.replaceState(null, '', '/cars' + location.hash)
+    }
 
     setTimeout(() => {
         if (window.totalPages) preparePagerSPA(filterParams, Math.ceil(window.totalPages / 20))
