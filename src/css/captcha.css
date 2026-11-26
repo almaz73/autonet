@@ -14,10 +14,11 @@
 
 .target-area {
     position: absolute;
-    width: 42px;
-    height: 42px;
+    width: 43px;
+    height: 43px;
     background-color: white;
-    border: 2px dashed red;
+    top: 1px;
+    box-shadow: inset 0 0 0 2px red;
     border-radius: 4px;
     left: 100%;
     pointer-events: none;
@@ -26,9 +27,10 @@
 
 .puzzle-piece {
     position: absolute;
-    width: 45px;
-    height: 45px;
+    width: 43px;
+    height: 43px;
     background-color: #191E21;
+    top: 1px;
     border-radius: 4px;
     cursor: move;
     display: flex;

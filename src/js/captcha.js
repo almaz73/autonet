@@ -18,7 +18,7 @@ export function initCaptcha() {
         const order = '_' + (captchaIndex++)
         el.innerHTML = `<p class="instructions ${order}">
           Подтвердите, что вы не робот<br>
-          Сдвиньте квадрат в белую область</p>
+          Сдвиньте квадрат в нужную область</p>
         <p class="result">✅<span>Спасибо !</span></p>
         <div class="target-area ${order}"></div>
         <div class="puzzle-piece ${order}">⇦ ⇨</div>`
