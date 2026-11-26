@@ -16,6 +16,7 @@
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
     <link rel='stylesheet' href='../src/css/style.css'/>
     <script type='module' src='../src/js/main.js'></script>
+    <script type='module' src='../src/js/developer-feedback.js'></script>
 
     {{> verbox_chat}}
 </head>
@@ -60,6 +61,23 @@
             <span class='personal-card__text'>Дни, когда вы заходили на сайт, — последние 20 посещений.</span>
             <span class='personal-card__arrow' aria-hidden='true'>&rarr;</span>
         </a>
+    </section>
+
+    <section class='personal-feedback' aria-labelledby='personal-feedback-title'>
+        <h2 class='personal-feedback__title' id='personal-feedback-title'>
+            Ваши идеи и замечания по работе сайта:
+        </h2>
+        <form class='personal-feedback__form' novalidate style="max-width: 100%">
+            <textarea id='review-text' name='review' rows='6' maxlength='5000' required
+                      placeholder='Что нам стоит улучшить?'></textarea>
+            <div class='personal-feedback__submit'>
+                <div class='capctha-div'></div>
+                <button type='submit' class='page__btn page__btn--current' disabled><span>Отправить сообщение</span></button>
+            </div>
+        </form>
+        <div class='personal-feedback__success' id='personal-feedback-success' role='status' aria-live='polite' hidden>
+            Спасибо! Ваше сообщение отправлено разработчикам.
+        </div>
     </section>
 
     <br><br>

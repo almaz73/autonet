@@ -1,0 +1,9 @@
+<div class='personal-nav'>
+    <a class='personal-nav__title' href='/personal/personal-page.html'>Личная комната</a>
+    <nav class='personal-nav__links' aria-label='Разделы личной комнаты'>
+        <a class='personal-nav__link{{#if favorite}} is-active{{/if}}' href='/personal/favorite-cars/'{{#if favorite}} aria-current='page'{{/if}}>Избранные автомобили</a>
+        <a class='personal-nav__link{{#if compared}} is-active{{/if}}' href='/personal/list-compared/'{{#if compared}} aria-current='page'{{/if}}>Список сравнения</a>
+        <a class='personal-nav__link{{#if filters}} is-active{{/if}}' href='/personal/my-filters/'{{#if filters}} aria-current='page'{{/if}}>Ваши фильтры</a>
+        <a class='personal-nav__link{{#if visits}} is-active{{/if}}' href='/personal/visits/'{{#if visits}} aria-current='page'{{/if}}>История посещения сайта</a>
+    </nav>
+</div>

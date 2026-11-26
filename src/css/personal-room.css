@@ -1,0 +1,410 @@
+/* Личная комната: красный блок-переключатель и карточки разделов */
+
+.personal-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    padding: 14px 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background: var(--color-red);
+    color: #fff;
+}
+
+.personal-nav__title {
+    font-family: Gilroy-Bold, system-ui;
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.personal-nav__title:hover {
+    text-decoration: underline;
+}
+
+.personal-nav__links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 20px;
+    font-size: 14px;
+}
+
+.personal-nav__link {
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+a.personal-nav__link:hover {
+    color: #fff;
+    border-bottom-color: rgba(255, 255, 255, 0.6);
+}
+
+.personal-nav__link.is-active {
+    border-bottom-color: #fff;
+    color: #fff;
+    font-weight: 600;
+}
+
+@media (max-width: 700px) {
+    .personal-nav {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+        padding: 14px 16px;
+    }
+}
+
+.personal-hero {
+    padding: 32px;
+    margin-bottom: 24px;
+    border-radius: 14px;
+    background: var(--color-red);
+    color: #fff;
+}
+
+.personal-hero__title {
+    margin: 0 0 12px;
+    color: #fff;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.15;
+}
+
+.personal-hero__text {
+    max-width: 780px;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.personal-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+.personal-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 132px;
+    padding: 20px;
+    border: 1px solid #e4e4ea;
+    border-radius: 12px;
+    background: #fff;
+    color: #111;
+    text-decoration: none;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+a.personal-card:hover {
+    border-color: var(--color-red);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+.personal-card__title {
+    font-family: Gilroy-Bold, system-ui;
+    font-size: 18px;
+    line-height: 1.25;
+}
+
+.personal-card__text {
+    color: #6b7785;
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+.personal-card__arrow {
+    margin-top: auto;
+    align-self: flex-end;
+    color: var(--color-red);
+    font-size: 20px;
+    line-height: 1;
+}
+
+.personal-visits__title {
+    margin: 0 0 8px;
+    font-size: clamp(24px, 3vw, 32px);
+}
+
+.personal-filters {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.personal-filter {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 18px;
+    border: 1px solid #e4e4ea;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.personal-filter__text {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    font-size: 16px;
+    line-height: 1.45;
+}
+
+.personal-filter__title {
+    font-family: Gilroy-Bold, system-ui;
+}
+
+.personal-filter__details {
+    color: #6b7785;
+    font-size: 14px;
+}
+
+.personal-filter__actions {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 8px;
+}
+
+.personal-filter__button {
+    flex-shrink: 0;
+    padding: 10px 18px;
+    border-radius: 8px;
+    background: var(--color-red);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.personal-filter__button:hover {
+    background: #c41d20;
+}
+
+.personal-filter__delete {
+    flex-shrink: 0;
+    padding: 9px 14px;
+    border: 1px solid #d6d6de;
+    border-radius: 8px;
+    background: #fff;
+    color: #6b7785;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.personal-filter__delete:hover {
+    border-color: var(--color-red);
+    background: #fdf2f2;
+    color: var(--color-red);
+}
+
+@media (max-width: 600px) {
+    .personal-filter {
+        flex-wrap: wrap;
+    }
+
+    .personal-filter__actions {
+        width: 100%;
+    }
+
+    .personal-filter__button,
+    .personal-filter__delete {
+        flex: 1;
+        text-align: center;
+    }
+}
+
+.personal-note {
+    margin: 0 0 16px;
+    color: #6b7785;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.personal-table-wrap {
+    overflow-x: auto;
+    border: 1px solid #e4e4ea;
+    border-radius: 12px;
+}
+
+.personal-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+.personal-table th,
+.personal-table td {
+    padding: 12px 16px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.personal-table th {
+    background: #fafafc;
+    color: #6b7785;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.personal-table tbody tr + tr td {
+    border-top: 1px solid #f0f0f4;
+}
+
+.personal-table tbody tr:nth-child(even) td {
+    background: #fbfbfd;
+}
+
+.personal-table td:first-child,
+.personal-table th:first-child {
+    width: 64px;
+    color: #6b7785;
+}
+
+.personal-empty {
+    padding: 28px;
+    border: 1px dashed #d6d6de;
+    border-radius: 12px;
+    color: #6b7785;
+    text-align: center;
+}
+
+@media (max-width: 500px) {
+    .personal-hero {
+        padding: 22px 18px;
+    }
+
+    .personal-hero__text {
+        font-size: 15px;
+    }
+}
+
+/* Обратная связь разработчикам под карточками личной комнаты */
+.personal-feedback {
+    margin-top: 28px;
+    padding: 24px;
+    border: 1px solid #e4e4ea;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.personal-feedback__title {
+    margin: 0 0 16px;
+    font-size: clamp(20px, 2.4vw, 26px);
+    line-height: 1.3;
+}
+
+.personal-feedback__form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 640px;
+}
+
+.personal-feedback__label {
+    font-weight: 600;
+}
+
+.personal-feedback__form textarea {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 120px;
+    padding: 12px 14px;
+    border: 1px solid #d9d9e0;
+    border-radius: 6px;
+    background: #fff;
+    font: inherit;
+    resize: vertical;
+}
+
+/* капча и кнопка в одну строку; кнопка активна только после прохождения капчи */
+.personal-feedback__submit {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+}
+
+.personal-feedback__submit .capctha-div {
+    flex: 1 1 300px;
+    max-width: 360px;
+}
+
+.personal-feedback__submit .page__btn {
+    flex: 1 1 auto;
+    padding: 12px 40px;
+    color: yellow;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.personal-feedback__submit .page__btn:disabled {
+    opacity: .55;
+    cursor: not-allowed;
+}
+
+.personal-feedback__submit .page__btn:disabled::before {
+    display: none;
+}
+
+/* подсказка и «Спасибо» должны помещаться внутри блока капчи */
+.personal-feedback .instructions {
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    padding: 0 8px;
+    font-size: .72em;
+    line-height: 1.3;
+}
+
+.personal-feedback .result {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #f2f2f7;
+    font-size: 20px;
+}
+
+.personal-feedback .result > span {
+    margin: 0;
+    font-size: .85rem;
+}
+
+.personal-feedback__success {
+    max-width: 100%;
+    padding: 16px 18px;
+    border-radius: 7px;
+    background: #eaf7ea;
+    color: #1e6b2f;
+    font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    .personal-feedback {
+        padding: 18px 16px;
+    }
+}
