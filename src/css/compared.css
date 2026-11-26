@@ -39,6 +39,15 @@
     text-align: center;
 }
 
+/* авто удалено из базы: предупреждаем рядом с названием (список сравнения и избранное) */
+.car-removed-note {
+    display: block;
+    margin-top: 2px;
+    font-size: 11px;
+    line-height: 1.25;
+    color: var(--color-red);
+}
+
 .compare-clear #delete-all{
     height: 40px;
     padding: 0 26px;

@@ -7,6 +7,10 @@ let cards = document.querySelector('cards');
 function createNode(item, N) {
     let txt
     if (!isNaN(N)) {
+        // удалённое авто не ведём на редирект: показываем пометку и гасим ссылку карточки
+        const linkAttrs = item.deleted
+            ? `href="javascript:void(0)" onclick="return false"`
+            : `href="${item.href}" onclick="openCar('${item.href}','${item.images[0]}')" data-href="${item.href}"`
         txt = `<div class='cart' id='galery_${N}' >
               <div class='cart__slide'>
                   <span class='dark-fon'></span>
@@ -15,13 +19,12 @@ function createNode(item, N) {
             "<div class='field'><div class='red'></div></div>") : "<div style='margin:0 40px'> <br><br><br>☹ <br><br>АВТОМОБИЛЬ <br>СНЯТ <br>С ПРОДАЖИ </div>"}
               </div>
               <a class="big_link" 
-                 href="${item.href}" 
-                 onclick="openCar('${item.href}','${item.images[0]}')"
-                 data-href="${item.href}"
+                 ${linkAttrs}
                  title="Перейти к характеристикам автомобиля">
                   <div class='name'>
                       <br>                      
                       ${item.name}, ${item.yearReleased}
+                      ${item.deleted ? '<span class="car-removed-note">снят с продажи</span>' : ''}
                   </div>
                        
                   <div class='cart__price'>

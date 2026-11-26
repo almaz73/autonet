@@ -120,7 +120,9 @@ function showChosen() {
             DELETE += `<td><a href="#" onclick="deleteCar('${el.id}')">Удалить</a></td>`
             if (!el.deleted) PREVIEW_PICTURE += `<td><a onclick="openCar('${href}','${el.images}','${el.deleted}')" href="${href}"><img src="${el.images}" alt=""></a></td>`
             else PREVIEW_PICTURE += `<td> ☹ Автомобиль <br> снят с продажи </td>`
-            NAME += `<td><a onclick="openCar('${href}','${el.images}','${el.deleted}')"  href="${href}">${el.brand} ${el.model || ''}</a></td>`
+            // удалённое авто не ведём на редирект: в строке названия сразу предупреждаем
+            if (!el.deleted) NAME += `<td><a onclick="openCar('${href}','${el.images}','${el.deleted}')"  href="${href}">${el.brand} ${el.model || ''}</a></td>`
+            else NAME += `<td>${el.brand} ${el.model || ''}<span class="car-removed-note">снят с продажи</span></td>`
             PRICE += `<td>${formatterShowPrice(el.price)} руб.</td>`
             if (el.milleage) PROBEG += `<td>${formatterShowPrice(el.milleage) || ''} км</td>`
             GOD_VYPUSKA += `<td>${el.yearReleased || ''}</td>`

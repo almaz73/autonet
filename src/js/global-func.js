@@ -1,5 +1,5 @@
 // export let global_brandsIds= [];
-import {api_getFullAutoInfo} from "@/js/apibase.js"
+import {api_getExistingCarIds} from "@/js/apibase.js"
 
 export const eventBus = {
     // Хранилище событий: { 'event_name': [callback1, callback2] }
@@ -391,16 +391,20 @@ export function acceptWithoutPhoto(items) {
     })
 }
 
-/* опрашиваем авто на удаленность */
+/* какие авто из сохранённого списка ещё есть в каталоге — остальные помечаем удалёнными */
 export function checkDeletedCars(cars, callback) {
-    const fetchData = (id) => api_getFullAutoInfo(id, res => res && res.status === 404 ? false : res)
-    const promises = cars.map(el => fetchData(el.id));
+    if (!cars.length) return callback(cars, cars)
 
-    Promise.all(promises)
-        .then(results => {
-            results.forEach((res, index) => cars[index].deleted = res === false)
-            callback(cars, cars)
-        })
+    api_getExistingCarIds(cars.map(el => el.id), (existing) => {
+        // каталог недоступен — не показываем ложное «снят с продажи»
+        if (Array.isArray(existing)) {
+            const alive = new Set(existing.map(String))
+            cars.forEach(el => {
+                el.deleted = !alive.has(String(el.id))
+            })
+        }
+        callback(cars, cars)
+    })
 }
 
 const RussianBrandsRus = ['ВАЗ (LADA)', 'ЗАЗ', 'УАЗ', 'ИЖ', 'Богдан', 'ГАЗ', 'Атом', 'Москвич', 'ЛуАЗ', 'ВИС', 'ЗиС']

@@ -123,10 +123,13 @@ export function api_getLatestCarArrivials(page, city, callback) {
     return withCache(request, callback, 60) // ЗВ 10 минут авто не подменят
 }
 
-/*** Все данные по одной машине ***/
-export function api_getFullAutoInfo(guid, callback) {
-    let request = '/api/getFullAutoInfo?guid=' + guid
-    return withCache(request, callback, 10) // ЗВ 10 минут авто не подменят
+/*** Какие авто из списка сравнения ещё есть в каталоге (id — guid карточки) ***/
+export function api_getExistingCarIds(ids, callback) {
+    const request = '/api/getExistingCarIds?ids=' + ids.slice(0, 50).join(',')
+    return fetchWithTimeout(request, {}, 10000)
+        .then((res) => (res.ok ? res.json() : null))
+        .then((res) => callback(res && Array.isArray(res.ids) ? res.ids : null))
+        .catch(() => callback(null))
 }
 
 /*** Все данные по одной машине ***/
