@@ -362,10 +362,19 @@ ${field === 'phone' ? 'oninput="formattingPhone(this)"' : ''}>
     return html
 }
 
-export function carCountText(totalCount) {
+export function carCountText(totalCount, city) {
     let field = document.querySelector('#set_filter span.filter_number')
     if (field) field.innerHTML = totalCount
         + ' ' + declOfNum(totalCount, ['предложение', 'предложения', 'предложений'])
+
+    // выбранный город показываем перед «Найдено», чтобы было видно, по какому городу счёт
+    const cityField = document.querySelector('#set_filter .filter_city')
+    if (cityField) {
+        const name = city && city !== 'Все' && city !== 'Россия' ? String(city).trim() : ''
+        // неразрывный пробел: кнопка — flex-контейнер, обычный пробел в конце схлопнется
+        cityField.textContent = name ? name + '.\u00A0' : ''
+        cityField.hidden = !name
+    }
 }
 
 export function cleanCarsWithoutPhoto(items) {

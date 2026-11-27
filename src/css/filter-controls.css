@@ -197,6 +197,8 @@
     background-color: var(--color-red);
     transition: all ease-in-out 0.1s;
     cursor: pointer;
+    flex-wrap: wrap;
+    align-content: center;
 }
 
 /* Подсказка о сохранённых фильтрах над фильтром на /cars */

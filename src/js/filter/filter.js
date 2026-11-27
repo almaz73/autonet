@@ -117,7 +117,7 @@ function getVitrina(ishandEvent) {
         api_getList(filterParams, res => {
             showPreloader(false, bt)
             declOfNum(res.totalCount, ['предложение', 'предложений', 'предложений'])
-            carCountText(res.totalCount)
+            carCountText(res.totalCount, filterParams.city)
             showFilterEmpty(
                 document.querySelector('.filter__wrapper'),
                 res.totalCount === 0 && hasFilterCity(filterParams.city)

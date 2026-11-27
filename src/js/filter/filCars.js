@@ -270,7 +270,7 @@ export async function fillCars(cars, ishandEvent_, filterParams, fill) {
         const totalPages = Math.ceil((window.__carsSSR.totalCount || 0) / countPerPage)
 
         hydrate(ssrCars, ssrItems, totalPages)
-        carCountText(window.__carsSSR.totalCount || 0)
+        carCountText(window.__carsSSR.totalCount || 0, filterParams.city)
 
         if (filterParams['brand']) {
             const fw = document.querySelector('.filter-white')
@@ -307,7 +307,7 @@ export async function fillCars(cars, ishandEvent_, filterParams, fill) {
             )
         })
         showPreloader(false, bt)
-        carCountText(res.totalCount)
+        carCountText(res.totalCount, filterParams.city)
         if (ishandEvent || filterParams['brand'] || filterParams.city) {
             let fw = document.querySelector('.filter-white')
             let vn = document.querySelector('#vitrina_name')
